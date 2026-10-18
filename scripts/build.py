@@ -152,6 +152,8 @@ def validate_tka(name, bank):
     for t in bank.get("teks", []):
         if not t.get("id") or t["id"] in passages:
             errors.append(f"{where}: teks entry with an empty or duplicate id ({t.get('id')})")
+        if not isinstance(t.get("teks"), str) or not t["teks"].strip():
+            errors.append(f"{where}: teks entry {t.get('id')} has no text in 'teks'")
         passages.add(t.get("id"))
     seen = set()
     for it in bank.get("soal", []):

@@ -1,0 +1,789 @@
+{
+  "id": "tka-fisika-pilihan-2025",
+  "kode": "FIS25",
+  "mapel": "Fisika",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Fisika_SMA_2025_Pilihan.pdf",
+    "halaman": 23,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber (mis. \"tuntuk\", \"kodisi\", \"dukur\", \"sehinga\"); huruf miring (mis. jump shot, hebel, stopwatch, Air Conditioner) ditulis sebagai teks biasa; pangkat satuan ditulis dengan karakter Unicode (m.s⁻¹, km.jam⁻¹, rad.s⁻²).",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan', dihitung ulang dengan Python, dan harus dicocokkan dengan kunci resmi sebelum dipakai.",
+    "PDF hanya memuat 22 soal: nomor 1–5, 7–12, dan 15–25. Nomor 6 tidak ada (halaman 5 memuat catatan \"SOAL NO.6 OTW\"); nomor 13 dan 14 juga tidak ada, tanpa catatan apa pun (halaman 11 memuat nomor 12 dan halaman 12 langsung nomor 15).",
+    "Soal tidak diberi nomor tersendiri; nomor diambil dari angka dalam kurung di akhir indikator pada kotak Hierarki Indikator.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber (mis. 25FISKINUKRF01SA-000000-0537) disimpan di kolom kode_sumber tiap soal dan label bentuk soal asli di kolom bentuk_sumber; teks bersama tidak punya kode sendiri sehingga kode_sumber teks bernilai null.",
+    "Stimulus \"Uji Coba Mobil\" (nomor 3–4, P01) dan \"PERCOBAAN KONDUKSI KALOR\" (nomor 18–19, P02) dicetak ulang utuh pada setiap soal; salinan-salinannya dibandingkan secara visual dan isinya sama, sehingga disimpan sekali di daftar teks.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" (tabel Tepat/Tidak Tepat pada nomor 17) sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama.",
+    "Stimulus yang hanya dipakai satu soal disimpan di kolom soal; penanda [Gambar] dan [Tabel] menunjukkan letak gambar (diuraikan di kolom gambar) dan tabel (di kolom tabel).",
+    "Nomor 2 kehilangan data jarak dan waktu berangkat, dan narasi nomor 7 bertentangan dengan angka-angkanya; lihat catatan_transkripsi pada kedua soal itu."
+  ],
+  "teks": [
+    {
+      "id": "P01",
+      "judul": "Uji Coba Mobil",
+      "teks": "Di sebuah jalan lurus yang sepi di pinggiran kota, dua sahabat yaitu Rafi dan Dion memutuskan untuk melakukan uji coba mobil mereka. Dua mobil yaitu mobil A dan mobil B berangkat dari titik yang sama secara bersamaan (t = 0) dan ingin mencapai jarak tertentu. Mereka ingin mengetahui mobil mana yang akan sampai tujuan lebih cepat. Kedua mobil tersebut memiliki kombinasi kecepatan awal dan percepatan seperti pada grafik berikut.\n\n[Gambar]\n\n[Gambar] Grafik kecepatan terhadap waktu. Sumbu tegak berlabel \"V(m/s)\" dengan nilai 15 dan 25; sumbu datar berlabel \"t(s)\" dengan nilai 0 dan 5. Garis A berupa garis lurus dari titik asal (0; 0) naik ke (5; 25) dan berlanjut lebih curam ke atas. Garis B berupa garis lurus dari (0; 15) naik lebih landai ke (5; 25) dan berlanjut ke kanan atas. Kedua garis berpotongan di (5; 25); garis putus-putus mendatar ditarik dari 25 dan dari 15 pada sumbu tegak, dan garis titik-titik tegak ditarik dari t = 5 ke titik potong.",
+      "jenis": "stimulus grafik kecepatan–waktu",
+      "halaman": [
+        3,
+        4
+      ]
+    },
+    {
+      "id": "P02",
+      "judul": "PERCOBAAN KONDUKSI KALOR",
+      "teks": "Perhatikan rancangan percobaan berikut.\n\nTujuan\n\nMenyelidiki pengaruh panjang efektif logam terhadap daya konduksinya.\n\n[Gambar]\n\nAlat dan Bahan\n\nBatang logam panjang (besi);\n\nLilin kecil (dipotong tipis-tipis) atau mentega padat;\n\nKompor listrik atau spiritus;\n\nStopwatch;\n\nPenggaris; dan\n\nKorek api\n\nLangkah Percobaan\n\nSiapkan batang logam (besi) dan letakkan secara horizontal (dapat diletakkan di atas penyangga atau bata tahan panas).\n\nLetakkan potongan-potongan kecil lilin (atau mentega) pada batang logam dengan jarak yang sama, misalnya tiap 5 cm dari ujung yang akan dipanaskan.\n\nNyalakan sumber panas dan arahkan ke salah satu ujung batang logam.\n\nMulai nyalakan stopwatch saat pemanasan dimulai.\n\nAmati urutan lilin yang meleleh dan catat waktu melelehnya setiap titik.\n\nCatat waktu melelehnya lilin (waktu) dan jaraknya diukur dari sumber kalor (spirtus) (sebagai panjang logam) pada tabel hasil pengamatan\n\nDengan definisi daya sebagai energi tiap satuan waktu, buat kesimpulan bagaimana hubungan antara panjang logam dengan daya konduksinya.\n\n[Gambar] Batang logam abu-abu mendatar ditopang dua balok penyangga di kedua ujungnya. Di atas batang berderet enam potongan lilin kuning berjarak sama; di atas dua lilin pertama ada penanda jarak \"5 cm\". Pembakar spiritus menyala di bawah ujung kiri batang; di bawah batang dekat api ada tanda garis kecil. Di kanan atas ada gambar stopwatch analog.",
+      "jenis": "rancangan percobaan",
+      "halaman": [
+        15,
+        17
+      ]
+    }
+  ],
+  "soal": [
+    {
+      "id": "FIS25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25FISKINUKRF01SA-000000-0537",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Kinematika",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Menelaah hasil pengukuran suatu besaran dengan alat ukur yang sesuai serta menyatakan hasil pengukuran sesuai aturan angka penting",
+      "subkompetensi": null,
+      "indikator": "Menganalisis hasil pembacaan pengukuran besaran panjang menggunakan salah satu alat ukur panjang. (1)",
+      "soal": "Hega akan membuat wadah untuk tempat manik-manik yang berbentuk tabung dan terbuat dari karton bekas. Hega mengukur ketebalan dan diameter luar tabung dengan menggunakan mikrometer sekrup. Hasil pengukurannya sebagai berikut.\n[Gambar]\n\nBerdasarkan hasil pengukuran tersebut, diameter manik-manik mana saja yang dapat masuk ke dalam wadah yang dibuat oleh Hega?\nKlik pada setiap diameter yang sesuai. Jawaban benar lebih dari satu.",
+      "gambar": "Dua gambar mikrometer sekrup (tangkapan dari simulasi), masing-masing dengan keterangan \"Sumber: https://simphy.com/\". (1) Berjudul \"Diameter luar tabung\": skala utama bertanda 0, 5, 10 dengan garis milimeter di atas garis acuan dan garis setengah milimeter di bawahnya; garis setengah milimeter setelah angka 10 (10,5 mm) masih terlihat di tepi selubung; pada skala putar angka 45 tepat segaris dengan garis acuan (terlihat juga 0 di atasnya dan 40 di bawahnya). (2) Berjudul \"Ketebalan tabung\": pada skala utama hanya terlihat angka 0 dan satu garis setengah milimeter di bawah garis acuan sebelum tepi selubung; pada skala putar angka 30 tepat segaris dengan garis acuan (35 di atasnya, 25 di bawahnya).",
+      "opsi": [
+        "8,80 mm",
+        "9,30 mm",
+        "9,60 mm",
+        "10,10 mm",
+        "10,30 mm"
+      ],
+      "kunci": [
+        0,
+        1
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Diameter luar: skala utama 10,5 mm (garis setengah milimeter setelah angka 10 terlihat) + skala putar 45 × 0,01 mm = 10,95 mm. Ketebalan: skala utama 0,5 mm + skala putar 30 × 0,01 mm = 0,80 mm. Diameter dalam = 10,95 − 2 × 0,80 = 9,35 mm, sehingga manik-manik yang masuk berdiameter 8,80 mm dan 9,30 mm.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Kunci bergantung pada pembacaan gambar mikrometer (garis 0,5 mm pada skala utama tipis tetapi terbaca); soal tidak menyebut bahwa diameter dalam = diameter luar − 2 × ketebalan, itu tafsiran penyusun transkripsi."
+      ]
+    },
+    {
+      "id": "FIS25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKINGLRF02SA-000000-0009",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kinematika",
+      "subelemen": "Gerak Lurus",
+      "kompetensi": "Menganalisis keterkaitan beberapa besaran pada gerak lurus berdasarkan data yang ada untuk menyelesaikan masalah yang relevan",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi strategi-strategi dalam menyelesaikan permasalahan sehari-hari menggunakan konsep gerak relatif. (2)",
+      "soal": "[Gambar]\n\nJika saat itu arus air laut bergerak dari arah barat ke timur dengan kecepatan 2 km.jam⁻¹ dan kapal harus sampai tepat pukul 09.00, strategi apa yang harus diterapkan agar kapal datang tepat waktu?",
+      "gambar": "Ilustrasi peta laut berwarna biru dengan mawar arah di kiri atas (U di atas, S di bawah, B di kiri, T di kanan). Pulau A di kiri dan pulau B di kanan (sejajar, B di sebelah timur A). Sebuah kapal berada di dekat pantai timur pulau A. Panah lengkung besar dari pulau A melengkung ke atas lalu turun ke pulau B. Tidak ada angka jarak atau waktu pada gambar.",
+      "opsi": [
+        "Bergerak ke arah timur dengan kecepatan 12 km.jam⁻¹",
+        "Bergerak ke arah tenggara dengan kecepatan 10 km.jam⁻¹.",
+        "Bergerak ke arah barat dengan kecepatan 10 km.jam⁻¹.",
+        "Bergerak ke arah timur laut dengan kecepatan 10 km.jam⁻¹",
+        "Bergerak ke arah timur dengan kecepatan 8 km.jam⁻¹."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pulau B berada di timur pulau A, dan arus searah gerak kapal (ke timur, 2 km/jam). Jika kecepatan terhadap dasar laut yang diperlukan 10 km/jam (angka 10 km/jam muncul pada tiga pilihan), kapal cukup bergerak ke timur dengan kecepatan relatif terhadap air 10 − 2 = 8 km/jam. Data jarak dan waktu berangkat tidak tercetak, jadi kunci ini tebakan.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": [
+        "Soal tidak memuat jarak A–B maupun waktu keberangkatan kapal, sehingga kecepatan yang diperlukan tidak dapat dihitung; kemungkinan teks stimulus terpotong dari tangkapan layar.",
+        "Kunci E hanya berlaku bila kecepatan terhadap bumi yang diperlukan 10 km/jam; bila yang diperlukan 14 km/jam, jawabannya A. Cocokkan dengan kunci resmi."
+      ]
+    },
+    {
+      "id": "FIS25-003",
+      "passage": "P01",
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKINGLRF02SA-250004-0708",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kinematika",
+      "subelemen": "Gerak Lurus",
+      "kompetensi": "Menganalisis keterkaitan beberapa besaran pada gerak lurus berdasarkan data yang ada untuk menyelesaikan masalah yang relevan",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasikan grafik kecepatan terhadap waktu dari peristiwa gerak lurus dalam kehidupan sehari-hari. (3)",
+      "soal": "Berdasarkan grafik, kondisi manakah yang menggambarkan gerak dari mobil A dan B?",
+      "opsi": [
+        "Kecepatan mobil A dan kecepatan mobil B selalu konstan.",
+        "Pada detik ke-5, mobil A dan mobil B berada pada posisi yang sama.",
+        "Mobil A akan menyalip mobil B pada detik ke-5.",
+        "Pada detik ke-5, kecepatan kedua mobil sama.",
+        "Percepatan kedua mobil pada detik ke-5 yaitu 25 m.s⁻²"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Garis A dan B berpotongan di t = 5 s, v = 25 m/s, jadi kecepatannya sama. Percepatan a_A = 25/5 = 5 m/s², a_B = (25 − 15)/5 = 2 m/s². Posisi pada t = 5 s: x_A = ½·5·5² = 62,5 m dan x_B = 15·5 + ½·2·5² = 100 m, jadi belum bertemu (B dan C salah).",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-004",
+      "passage": "P01",
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKINGLRF02SA-250004-0702",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kinematika",
+      "subelemen": "Gerak Lurus",
+      "kompetensi": "Menganalisis keterkaitan beberapa besaran pada gerak lurus berdasarkan data yang ada untuk menyelesaikan masalah yang relevan",
+      "subkompetensi": null,
+      "indikator": "Menentukan salah satu besaran berdasarkan grafik kecepatan terhadap waktu dari peristiwa gerak lurus dalam kehidupan sehari-hari. (4)",
+      "soal": "Mobil A akan menyusul mobil B setelah menempuh jarak ....",
+      "opsi": [
+        "150 m",
+        "200 m",
+        "250 m",
+        "300 m",
+        "400 m"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "a_A = 5 m/s², v₀B = 15 m/s, a_B = 2 m/s². Menyusul saat ½·5·t² = 15t + ½·2·t² → 1,5t² = 15t → t = 10 s. Jarak = ½·5·10² = 250 m.",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKINGLRF02SA-000000-0460",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kinematika",
+      "subelemen": "Gerak Lurus",
+      "kompetensi": "Menganalisis keterkaitan beberapa besaran pada gerak lurus berdasarkan data yang ada untuk menyelesaikan masalah yang relevan",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual dan relevan menggunakan konsep gerak vertikal. (5)",
+      "soal": "[Gambar]\nPercepatan gravitasi Bumi 10 m.s⁻².\n\nBerapakah perbedaan ketinggian kedua roket air setelah 3 detik diluncurkan?",
+      "gambar": "Dua roket air dari botol plastik (hidung merah, sirip merah, berisi air biru) berdiri di atas landasan peluncur di atas tanah berumput. Roket kiri berlabel A dengan panah tegak ke atas berlabel \"40 m.s⁻¹\"; roket kanan berlabel B dengan panah tegak ke atas yang lebih panjang berlabel \"50 m.s⁻¹\". Masing-masing landasan terhubung dengan selang hijau ke pompa tangan berpengukur tekanan (pompa kiri untuk A, pompa kanan untuk B).",
+      "opsi": [
+        "30 m",
+        "50 m",
+        "75 m",
+        "105 m",
+        "180 m"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "h = v₀t − ½gt². h_A = 40·3 − 5·9 = 75 m, h_B = 50·3 − 5·9 = 105 m; selisih = 105 − 75 = 30 m (kedua roket masih naik karena t_puncak A = 4 s).",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Soal tidak menyatakan dalam kalimat bahwa 40 m.s⁻¹ dan 50 m.s⁻¹ adalah kecepatan awal peluncuran; nilai itu hanya tercetak sebagai label panah pada gambar."
+      ]
+    },
+    {
+      "id": "FIS25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKINGLKF03SA-000000-0520",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kinematika",
+      "subelemen": "Gerak Lengkung",
+      "kompetensi": "Mengaitkan hubungan antar variabel dalam gerak parabola dan gerak melingkar beraturan pada peristiwa dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menganalisis keterkaitan beberapa besaran gerak parabola pada peristiwa sehari-hari. (7)",
+      "soal": "Adrian dan Bisma merupakan tim olah raga basket di sekolahnya. Saat latihan basket, Adrian dan Bisma melakukan lemparan melompat (jump shot) dari titik yang sama 3 m dari ring basket. Keduanya melepaskan bola pada sudut 50° dari horizontal dan dari ketinggian 2 m. Tinggi ring basket adalah 3,05 m. Pada percobaan pertama keduanya menembakkan bola dengan kecepatan awal 7,5 m.s⁻¹ sehingga bola masuk ke ring.\n[Gambar]\nPada percobaan kedua, Adrian tetap menembakkan bola dengan kecepatan 7,5 m.s⁻¹, sedangkan Bisma menembakkan bola dengan menurunkan kecepatan menjadi 6,5 m.s⁻¹ dengan sudut tetap.\n\nBerdasarkan perubahan tersebut, kondisi apa yang akan terjadi pada hasil tembakan bola Bisma jika dibandingkan dengan bola Adrian? (Diketahui sin (50) = 0.766 dan cos (50) = 0.643)",
+      "gambar": "Dua pemain basket digambar bertumpuk di kiri: Adrian (kaos merah) di atas dan Bisma (kaos biru) di bawah, masing-masing melepaskan bola pada ketinggian \"h = 2 m\" (panah tegak dari lantai ke bola) dengan vektor kecepatan berlabel \"v₀ = 7,5 m.s⁻¹\" membentuk sudut \"50°\" terhadap garis datar putus-putus. Panah mendatar \"x = 3 m\" dari posisi pemain ke tiang ring. Di kanan, papan dan ring basket pada tiang hitam, dengan panah tegak \"h = 3,05 m\" dari lantai ke ring.",
+      "opsi": [
+        "Kedua bola tetap masuk ke ring karena sudut dan tinggi awalnya tidak berubah.",
+        "Bola Bisma dipastikan masih dapat masuk ke dalam ring karena sudutnya besar.",
+        "Bola Bisma jatuh lebih cepat dan gagal masuk karena kecepatannya lebih kecil.",
+        "Bola Bisma akan melengkung lebih tinggi sehingga justru lebih mudah masuk.",
+        "Bola Adrian diperkirakan akan melewati ring karena kecepatannya terlalu besar."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pada x = 3 m: t = x/(v₀ cos 50°). Untuk v₀ = 7,5 m/s, t = 3/(7,5·0,643) = 0,622 s dan y = 2 + 7,5·0,766·0,622 − ½g·0,622² = 3,64 m (g = 10) atau 3,68 m (g = 9,8), jadi bola Adrian lewat sekitar 0,6 m di atas ring. Untuk v₀ = 6,5 m/s, t = 0,718 s dan y = 3,00 m (g = 10) atau 3,049 m (g = 9,8) saat bola sudah turun, tepat setinggi ring. Hitungan mendukung E (bola Bisma masuk, bola Adrian melewati ring); C hanya benar bila pernyataan stimulus bahwa 7,5 m/s masuk ring dianggap benar.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan stimulus bahwa bola dengan kecepatan awal 7,5 m.s⁻¹ masuk ke ring bertentangan dengan data: dengan sudut 50°, tinggi lepas 2 m, dan jarak 3 m, bola itu berada sekitar 3,64–3,68 m saat x = 3 m, jauh di atas ring 3,05 m.",
+        "Dengan g = 9,8 m/s² bola 6,5 m.s⁻¹ tepat mencapai 3,05 m di x = 3 m, sehingga angka soal tampaknya dirancang agar bola Bisma yang masuk; jika penyusun berpegang pada narasi, kuncinya C. Cocokkan dengan kunci resmi.",
+        "Nilai percepatan gravitasi tidak diberikan dalam soal.",
+        "Pangkat \"-1\" pada \"7,5 m.s⁻¹\" di kalimat percobaan kedua terpotong pada pindaian (hanya tampak titik); ditulis sebagai m.s⁻¹.",
+        "Sin dan cos ditulis dengan titik desimal (0.766, 0.643), berbeda dengan koma desimal di bagian lain; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "FIS25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISDINHGNF04SA-000000-0637",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Dinamika",
+      "subelemen": "Hubungan Gaya dan Gerak (Hukum Newton)",
+      "kompetensi": "Mengaitkan hubungan antara gaya dan gerak pada peristiwa yang terjadi dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi beberapa fenomena yang menerapkan hukum Newton yang sama. (8)",
+      "soal": "Ketika sebuah mobil tiba-tiba mengerem, penumpang di dalamnya akan terdorong ke depan seperti pada gambar berikut ini.\n[Gambar]\n\nDiantara beberapa fenomena berikut ini yang menunjukkan penerapan hukum yang sama dengan fenomena sesuai pada gambar adalah...",
+      "gambar": "Ilustrasi mobil biru dari samping di depan lampu lalu lintas yang menyala merah. Pengemudi perempuan memegang setir dan penumpang di kursi belakang tampak condong ke depan, dengan garis-garis gerak di belakang tubuh mereka.",
+      "opsi": [
+        "Semakin besar gaya yang diberikan pada suatu benda, semakin besar percepatannya.",
+        "Ketika mendayung perahu ke depan, air akan mendorong perahu ke belakang.",
+        "Sebuah buku akan tetap diam di atas meja sampai ada gaya yang menggerakkannya.",
+        "Sebuah bola kasti yang dilempar vertikal ke atas oleh seseorang akan kembali jatuh ke tanah.",
+        "Dibutuhkan gaya yang lebih besar untuk mempercepat truk dibandingkan mempercepat sepeda motor."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Penumpang terdorong ke depan saat mobil mengerem karena kelembaman (Hukum I Newton). Buku yang tetap diam sampai ada gaya yang bekerja juga contoh Hukum I. A dan E adalah Hukum II, B Hukum III, D pengaruh gaya gravitasi.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [
+        "Pilihan B secara fisika keliru arah (saat mendayung, dayung mendorong air ke belakang dan air mendorong perahu ke depan), tetapi tetap bukan Hukum I sehingga tidak memengaruhi kunci."
+      ]
+    },
+    {
+      "id": "FIS25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISDINHGNF04SA-000000-0102",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Dinamika",
+      "subelemen": "Hubungan Gaya dan Gerak (Hukum Newton)",
+      "kompetensi": "Mengaitkan hubungan antara gaya dan gerak pada peristiwa yang terjadi dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menganalisis keterkaitan gaya yang bekerja terhadap perubahan kondisi gerak benda pada peristiwa sehari-hari. (9)",
+      "soal": "Seorang nelayan tradisional menggunakan perahu motor untuk melaut di perairan yang terkenal dengan arus lautnya yang kuat. Perahu nelayan bergerak dengan kecepatan konstan 6 m.s⁻¹ ke arah utara menuju lokasi penangkapan ikan. Tiba-tiba, arus laut yang kuat dari arah barat memberikan gaya horizontal sebesar 300 N selama 4 detik ke arah timur. Massa perahu beserta muatannya adalah 150 kg. Selama gaya arus bekerja, mesin perahu tetap memberikan gaya dorong konstan ke utara sehingga kecepatan ke utara tetap 6 m.s⁻¹.\n[Gambar]\n\nSetelah 4 detik gaya arus bekerja, kondisi gerak perahu adalah... .",
+      "gambar": "Perahu kayu dilihat dari atas di atas air biru muda, haluan menghadap ke atas. Penunjuk arah \"U\" dengan panah ke atas di kanan atas. Panah hitam ke atas dari haluan berlabel \"v = 6 m.s⁻¹\" dan panah hitam ke kanan (timur) dari tengah perahu berlabel \"F= 300 N\".",
+      "opsi": [
+        "kecepatan resultannya 10 m.s⁻¹ dengan arah 53° ke timur dari utara, kemudian bergerak lurus dengan kecepatan konstan",
+        "kecepatan resultannya 8 m.s⁻¹ dengan arah 45° ke timur dari utara, kemudian bergerak lurus dengan percepatan tetap",
+        "kecepatan resultannya 10 m.s⁻¹ dengan arah 37° ke timur dari utara, kemudian bergerak lurus dan mengalami perlambatan",
+        "kecepatan resultannya 12 m.s⁻¹ dengan arah 37° ke timur dari utara, kemudian bergerak lurus dengan percepatan konstan",
+        "kecepatan resultannya 6 m.s⁻¹ dengan arah 45° ke timur dari utara, kemudian bergerak lurus dengan percepatan tetap"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "a_timur = F/m = 300/150 = 2 m/s²; setelah 4 s v_timur = 2·4 = 8 m/s, v_utara = 6 m/s. v = √(6² + 8²) = 10 m/s, arah tan θ = 8/6 → θ = 53° ke timur dari utara. Setelah gaya arus berhenti, resultan gaya nol sehingga perahu bergerak lurus dengan kecepatan konstan.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Soal tidak menyatakan secara eksplisit bahwa gaya arus berhenti setelah 4 detik; kunci mengandaikan demikian (\"selama 4 detik\")."
+      ]
+    },
+    {
+      "id": "FIS25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISDINMMIF05SA-000000-0545",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Dinamika",
+      "subelemen": "Momentum dan Impuls",
+      "kompetensi": "Menerapkan konsep momentum dan impuls bagi penyelesaian masalah sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan fenomena kehidupan sehari-hari menggunakan konsep momentum dan impuls. (10)",
+      "soal": "Dalam sebuah pertunjukan bela diri, seorang atlet karate berhasil memecahkan tumpukan batu bata ringan (hebel) dengan pukulan cepat. Tumpukan batu bata dapat pecah meskipun hanya bersentuhan dengan tangan dalam waktu singkat.\n\nPenjelasan yang paling tepat tuntuk fenomena ini adalah ...",
+      "opsi": [
+        "Impuls yang kecil menyebabkan tumpukan batu bata pecah karena kecepatan pukulan sangat tinggi.",
+        "Gaya menjadi sangat besar karena perubahan momentum terjadi dalam waktu yang sangat singkat.",
+        "Impuls yang diterima hebel menjadi kecil karena waktu sentuh sangat singkat.",
+        "Tidak ada perubahan momentum, karena batu bata kodisi awalnya diam.",
+        "Impuls yang besar terjadi karena gaya dan waktu sentuh yang besar."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "F = Δp/Δt: perubahan momentum tangan yang cepat terjadi dalam selang waktu sangat singkat sehingga gaya impulsif sangat besar dan bata pecah.",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik sumber \"tuntuk\" (pertanyaan) dan \"kodisi\" (pilihan D) disalin apa adanya."
+      ]
+    },
+    {
+      "id": "FIS25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISDINDRTF06SA-000000-0290",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Dinamika",
+      "subelemen": "Dinamika Rotasi (Momen Gaya dan Momen Inersia)",
+      "kompetensi": "Menerapkan konsep momen gaya dan momen inersia yang dimanfaatkan dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual dan relevan menggunakan konsep dinamika rotasi terkait momen gaya dan momen inersia. (11)",
+      "soal": "Sebuah kunci pas digunakan untuk memutar baut dengan tujuan mengencangkan atau mengendorkan baut seperti gambar.\n[Gambar]\n\nAgar kunci pas dapat berfungsi optimal untuk mengencangkan baut, maka diperlukan gaya F = 15 N membentuk sudut 37° terhadap posisi horizontal kunci pas yang panjangnya 20 cm. Berapakah percepatan sudut yang dihasilkan oleh gaya F tersebut jika kunci pas dianggap batang homogen bermassa 500 gram?\n(sin 37° = 0,6 dan cos 37° = 0,8)",
+      "gambar": "Kunci inggris mendatar dengan rahang di kanan menjepit baut segi enam; gagang di kiri. Dari ujung kiri gagang keluar panah gaya hitam miring ke kanan bawah berlabel \"F\"; sudut antara gagang kunci dan panah gaya ditandai \"37°\".",
+      "opsi": [
+        "180 rad.s⁻²",
+        "270 rad.s⁻²",
+        "360 rad.s⁻²",
+        "1080 rad.s⁻²",
+        "1440 rad.s⁻²"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Poros di baut (ujung kunci), gaya di ujung lain: τ = F sin 37° · L = 15 · 0,6 · 0,2 = 1,8 N·m. Batang homogen diputar di ujung: I = ⅓mL² = ⅓ · 0,5 · 0,2² = 0,00667 kg·m². α = τ/I = 1,8/0,00667 = 270 rad/s².",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Model soal mengabaikan hambatan baut dan memperlakukan kunci sebagai batang bebas yang berputar di ujungnya; dengan I = (1/12)mL² hasilnya 1080 rad/s² (pilihan D) dan dengan cos 37° hasilnya 360 rad/s² (pilihan C), jadi kunci B bergantung pada anggapan poros di ujung.",
+        "Gambar memperlihatkan kunci inggris (kunci yang dapat distel), sedangkan teks menyebut \"kunci pas\"."
+      ]
+    },
+    {
+      "id": "FIS25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISFLUFLDF07SA-000000-0109",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Fluida",
+      "subelemen": "Fluida Statis dan Dinamis",
+      "kompetensi": "Menerapkan konsep yang berkaitan dengan fluida statis dan dinamis pada teknologi yang dimanfaatkan dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan nilai besaran yang tidak diketahui menggunakan konsep Hukum Pascal. (12)",
+      "soal": "Kursi yang digunakan oleh dokter gigi saat praktik seringkali dapat dinaikkan dan diturunkan dengan mudah menggunakan sistem hidrolik seperti gambar berikut.\n[Gambar]\n\nPada sistem hidrolik ini bekerja gaya tertentu pada piston kecil sehingga dapat mengangkat beban tertentu melalui piston yang lebih besar. Jika beban yang dapat diangkat oleh piston besar yaitu 540 N dengan diameter 3 cm, maka gaya terkecil yang digunakan pada piston kecil yang berukuran 0,5 cm adalah...",
+      "gambar": "Seorang perempuan bermasker duduk di kursi beroda dengan tiang hidrolik. Panah ke bawah di atas kepalanya berlabel \"540 N\". Pada tiang kursi ada dua penunjuk: panah ke bagian tiang atas yang lebih kecil berlabel \"0,5cm\" dan panah ke bagian tiang bawah yang lebih besar berlabel \"3 cm\".",
+      "opsi": [
+        "15 N",
+        "90 N",
+        "240 N",
+        "3240 N",
+        "19440 N"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hukum Pascal: F₁/A₁ = F₂/A₂ → F₁ = F₂ (d₁/d₂)² = 540 · (0,5/3)² = 15 N.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Soal menyebut piston kecil \"berukuran 0,5 cm\" tanpa menyatakan diameter; kunci mengandaikan 0,5 cm adalah diameter (jika dibandingkan secara linear hasilnya 90 N, pilihan B)."
+      ]
+    },
+    {
+      "id": "FIS25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISGELBNYF08SA-000000-0332",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Gelombang",
+      "subelemen": "Bunyi",
+      "kompetensi": "Menganalisis keterkaitan sifat bunyi dengan parameter gelombangnya berdasarkan peristiwa dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan salah satu besaran fisis terkait bunyi dan gelombang menggunakan data yang disajikan. (15)",
+      "soal": "Seorang siswa melakukan percobaan membuat alat musik sederhana dari pipa PVC yang diisi air. Ia memukul bagian atas pipa untuk menghasilkan bunyi. Panjang pipa adalah 80 cm dan sebagian diisi air sehingga hanya tersisa kolom udara setinggi 40 cm yang berfungsi sebagai kolom udara terbuka di salah satu ujungnya. Diketahui bahwa cepat rambat bunyi di udara adalah 340 m.s⁻¹.\n\nJika pada saat itu pipa menghasilkan nada dasar (harmonik pertama), berapa frekuensi bunyi yang dihasilkan oleh pipa tersebut?",
+      "opsi": [
+        "212,5 Hz",
+        "425,0 Hz",
+        "637,5 Hz",
+        "850 Hz",
+        "1062,5 Hz"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kolom udara 40 cm tertutup air di bawah dan terbuka di atas (pipa organa tertutup): f₀ = v/(4L) = 340/(4 · 0,40) = 212,5 Hz.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISGELCHYF09SA-000000-0212",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Gelombang",
+      "subelemen": "Cahaya",
+      "kompetensi": "Menganalisis keterkaitan sifat cahaya dengan peristiwa dalam kehidupan sehari-hari serta penerapannya dalam cermin, lensa, dan alat optik",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan fenomena kehidupan sehari-hari menggunakan konsep sifat-sifat cahaya. (16)",
+      "soal": "Seseorang sedang dalam perjalanan pulang melalui tanah lapang. Kondisi permukaan lapangan tersebut sangat panas. Saat itu dia melihat tanaman-tanaman pendek di seberang lapangan seperti dalam gelombang air yang tampak seperti pada gambar.\n[Gambar]\nSetelah dia mendekatinya, ternyata itu hanyalah ilusi.\n\nSesuai prinsip sifat-sifat cahaya, bagaimana penjelasan ilmiah dari fenomena ilusi tersebut?",
+      "gambar": "Lukisan pemandangan: pegunungan biru keabu-abuan di bawah langit biru muda, beberapa semak dan pohon palem kecil di kejauhan, dan hamparan tanah berpasir cokelat muda di latar depan. Di kaki semak tampak pita biru berkilau seperti genangan air yang memantulkan bayangan semak secara terbalik dan beriak.",
+      "opsi": [
+        "Cahaya dari tanaman terlihat beriak seperti gelombang air karena tertiup angin.",
+        "Permukaan lapangan terlihat bergelombang sehingga cahaya dari tanaman terlihat beriak.",
+        "Permukaan lapangan yang tidak rata menyebabkan pemantulan cahaya yang tidak teratur.",
+        "Panas permukaan lapangan menyebabkan perbedaan kerapatan udara sehingga cahaya mengalami pembiasan.",
+        "Tanah lapang yang panas membuat tarikan gravitasi saat cahaya merambat menuju siswa menjadi berbelok."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Fatamorgana: udara dekat permukaan yang panas lebih renggang (indeks bias lebih kecil) daripada udara di atasnya, sehingga cahaya dari tanaman dibiaskan (hingga pemantulan total) dan tampak seperti bayangan di permukaan air.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E menyebut \"siswa\" padahal stimulus menyebut \"seseorang\"; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "FIS25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "benar-salah",
+      "kode_sumber": "25FISGELCHYF09SA-000000-0247",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Gelombang",
+      "subelemen": "Cahaya",
+      "kompetensi": "Menganalisis keterkaitan sifat cahaya dengan peristiwa dalam kehidupan sehari-hari serta penerapannya dalam cermin, lensa, dan alat optik",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi strategi-strategi dalam menyelesaikan permasalahan sehari-hari menggunakan prinsip cermin, lensa, dan alat optik. (17)",
+      "soal": "Rina adalah seorang pelajar SMA yang sering mengeluh pusing dan mata lelah saat membaca buku atau menatap layar laptop. Setelah memeriksakan diri ke dokter mata, diketahui bahwa ia menderita hipermetropi dengan titik dekat mata 50 cm (titik dekat mata normal adalah 25 cm). Dokter meresepkan lensa kacamata untuk membantunya melihat jelas. Namun, Rina menunda-nunda untuk membuat kacamatanya hingga ia kerepotan saat mengerjakan tugas kelompok di rumah teman.\n\nBagaimana strategi yang tepat untuk dilakukan Rina dalam situasi tersebut?\nPilihlah Tepat atau Tidak Tepat untuk setiap strategi berikut.",
+      "opsi": [
+        "Membuat kacamata dengan kekuatan +2 dioptri.",
+        "Membaca dengan jarak lebih dari 50 cm.",
+        "Menggunakan kacamata temannya yang terbuat dari lensa cekung."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "P = 100/s_n − 100/PP = 100/25 − 100/50 = 4 − 2 = +2 dioptri (lensa cembung), jadi pernyataan 1 tepat. Mata hipermetropi melihat jelas benda yang lebih jauh dari titik dekatnya (50 cm), jadi membaca lebih dari 50 cm adalah strategi sementara yang tepat. Lensa cekung untuk miopi sehingga pernyataan 3 tidak tepat.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 2 dapat diperdebatkan: membaca pada jarak lebih dari 50 cm memungkinkan Rina melihat jelas, tetapi bukan solusi yang dianjurkan; cocokkan dengan kunci resmi."
+      ],
+      "kolom": [
+        "Tepat",
+        "Tidak Tepat"
+      ]
+    },
+    {
+      "id": "FIS25-018",
+      "passage": "P02",
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKALKLPF10SA-250023-0720",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalor dan Termodinamika",
+      "subelemen": "Kalor dan Perpindahannya",
+      "kompetensi": "Menguraikan pengaruh kalor terhadap kenaikan suhu, perubahan wujud zat, serta faktor-faktor yang mempengaruhi perpindahan kalor dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan jenis variabel dalam rancangan percobaan terkait konsep kalor. (18)",
+      "soal": "Berdasarkan rancangan percobaan, apa variabel kontrol, variabel bebas, dan variabel terikat dari percobaan tersebut?",
+      "opsi": [
+        "variabel kontrol = jenis bahan\nvariabel bebas = daya konduksi\nvariabel terikat = panjang logam",
+        "variabel kontrol = waktu melelehnya lilin\nvariabel bebas = jenis bahan\nvariabel terikat = daya konduksi",
+        "variabel kontrol = jenis logam\nvariabel bebas = jarak lilin dari sumber\nvariabel terikat = waktu melelehnya lilin",
+        "variabel kontrol = waktu melelehnya lilin\nvariabel bebas = panjang logam\nvariabel terikat = jenis logam",
+        "variabel kontrol = panjang logam\nvariabel bebas = jenis bahan\nvariabel terikat = daya konduksi"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hanya satu batang besi yang dipakai (jenis logam tetap = kontrol); yang diubah adalah jarak lilin dari sumber kalor atau panjang efektif logam (bebas); yang diukur adalah waktu lilin meleleh (terikat).",
+      "halaman": [
+        15,
+        16
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-019",
+      "passage": "P02",
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKALKLPF10SA-250023-0717",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalor dan Termodinamika",
+      "subelemen": "Kalor dan Perpindahannya",
+      "kompetensi": "Menguraikan pengaruh kalor terhadap kenaikan suhu, perubahan wujud zat, serta faktor-faktor yang mempengaruhi perpindahan kalor dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi prosedur percobaan dari rancangan percobaan terkait konsep kalor. (19)",
+      "soal": "Dari rancangan percobaan, apa salah satu kelemahan yang akan menyebabkan data tidak akurat?",
+      "opsi": [
+        "Jenis lilin dan ukuran lilin tidak dipastikan sama sehingga tidak homogen.",
+        "Jenis logam yang tidak diganti-ganti sehingga menyebabkan tidak ada pembanding.",
+        "Penempatan sumber panas di ujung logam menyebabkan kalor tidak menyebar secara merata.",
+        "Pengukuran waktu menggunakan stopwatch sulit dilakukan sehingga muncul penyimpangan data waktu.",
+        "Panjang keseluruhan logam tidak dukur sehingga tidak dapat dibandingkan."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Waktu leleh dipakai sebagai ukuran kalor yang sampai, sehingga lilin harus sama jenis dan ukurannya; rancangan hanya menyebut \"lilin kecil (dipotong tipis-tipis) atau mentega\" tanpa memastikan keseragaman, jadi data waktu bisa tidak akurat. Jenis logam memang sengaja dibuat tetap (B), pemanasan di ujung memang tujuan rancangan (C), dan panjang keseluruhan logam tidak relevan karena yang diukur jarak tiap lilin (E).",
+      "halaman": [
+        17,
+        18
+      ],
+      "catatan_transkripsi": [
+        "Pilihan D (kesulitan pencatatan waktu dengan stopwatch untuk banyak titik) juga dapat dibela sebagai sumber ketidakakuratan; cocokkan dengan kunci resmi.",
+        "Salah ketik sumber \"dukur\" pada pilihan E disalin apa adanya."
+      ]
+    },
+    {
+      "id": "FIS25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKALGIDF12SA-000000-0115",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalor dan Termodinamika",
+      "subelemen": "Gas Ideal",
+      "kompetensi": "Mengidentifikasi besaran tertentu pada perubahan suhu, tekanan, dan/atau volume gas ideal dalam ruang tertutup",
+      "subkompetensi": null,
+      "indikator": "Menentukan salah satu nilai besaran fisis menggunakan konsep gas ideal. (20)",
+      "soal": "Gas ideal di dalam tabung memiliki volume awal 2 liter, suhu 300 kelvin dan tekanan 1 atmosfer. Jika gas dimampatkan hingga volumenya menjadi 1 liter dengan suhu dinaikkan 2 kali semula, maka tekanan akhirnya adalah ....",
+      "opsi": [
+        "0,5 atmosfer",
+        "1 atmosfer",
+        "2 atmosfer",
+        "4 atmosfer",
+        "6 atmosfer"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "P₁V₁/T₁ = P₂V₂/T₂ → P₂ = P₁ · (V₁/V₂) · (T₂/T₁) = 1 · (2/1) · (600/300) = 4 atm.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISKALTRMF13SA-000000-0438",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalor dan Termodinamika",
+      "subelemen": "Termodinamika",
+      "kompetensi": "Menganalisis perubahan kalor, perubahan energi dalam, atau usaha dalam proses termodinamika",
+      "subkompetensi": null,
+      "indikator": "Menganalisis salah satu besaran fisis berdasarkan data menggunakan prinsip hukum termodinamika. (21)",
+      "soal": "Sebuah mesin kalor menyerap kalor dari sumber panas, melakukan usaha, dan membuang sisa kalor ke lingkungan. Pada tahap awal, mesin ini memiliki efisiensinya 30%, dan usaha yang dihasilkan tiap siklus adalah 600 J. Setelah beberapa waktu, mesin ini diperbaiki sehinga memiliki efisiensi 50%.\n\nAgar mesin ini tetap dapat menghasilkan usaha yang sama dan kondisi lingkungan kerja tetap, bagaimana kebutuhan kalor masuk pada mesin tersebut setelah diperbaiki?",
+      "opsi": [
+        "Membutuhkan kalor 40% lebih banyak.",
+        "Membutuhkan kalor 40% lebih sedikit.",
+        "Membutuhkan kalor 75% kalor lebih sedikit.",
+        "Membutuhkan kalor 25% kalor lebih banyak.",
+        "Membutuhkan kalor 50% kalor lebih sedikit."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Q = W/η. Sebelum: Q₁ = 600/0,3 = 2000 J; sesudah: Q₂ = 600/0,5 = 1200 J. Penurunan = (2000 − 1200)/2000 = 40% lebih sedikit.",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik sumber \"memiliki efisiensinya\" dan \"sehinga\" pada stimulus serta pengulangan kata \"kalor\" pada pilihan C–E disalin apa adanya."
+      ]
+    },
+    {
+      "id": "FIS25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25FISKALPMGF11SA-000000-0027",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Kalor dan Termodinamika",
+      "subelemen": "Pemanasan Global",
+      "kompetensi": "Menganalisis penyebab, proses, dan cara mengatasi permasalahan terkait dengan pemanasan global",
+      "subkompetensi": null,
+      "indikator": "Menganalisis penyebab/penanganan dari anomali kondisi lingkungan akibat pemanasan global. (22)",
+      "soal": "Grafik berikut ini menunjukkan data hasil pengukuran suhu rerata tahunan di kota X dalam kurun waktu 2005 sampai 2025.\n[Gambar]\n\nData lainnya menunjukkan bahwa selama periode yang sama (2005-2025), terjadi peningkatan drastis dalam jumlah kendaraan bermotor dan penggunaan AC di rumah dan gedung perkantoran. Selain itu, area hijau kota menurun 40% akibat pembangunan.\nBerdasarkan data di atas, pilihlah semua pernyataan yang benar sesuai dengan kondisi dan fenomena tersebut !\nKlik pada setiap jawaban yang Benar! Jawaban benar lebih dari satu.",
+      "gambar": "Grafik garis merah berjudul \"Perubahan Suhu Rata-rata Tahunan di Kota X (2005–2025)\". Sumbu tegak \"Suhu (°C)\" dari 26,5 sampai 30,0 dengan skala 0,5; sumbu datar \"Tahun\" bertanda 2005, 2010, 2015, 2020, 2025. Titik data (dibaca dari grafik): 2005 = 27,0; 2010 = 27,5; 2015 = 28,3; 2020 = 29,0; 2025 = 29,6 °C, dihubungkan garis yang terus naik.",
+      "opsi": [
+        "Grafik menunjukkan tren kenaikan suhu yang dapat disebabkan oleh peningkatan energi termal di lingkungan akibat aktivitas manusia.",
+        "Emisi dari kendaraan dan AC menyebabkan peningkatan kalor laten di udara yang mengurangi efek rumah kaca.",
+        "Penurunan area hijau menyebabkan berkurangnya pendinginan alami akibat proses transpirasi dan evaporasi.",
+        "Kenaikan suhu udara dalam jangka panjang menunjukkan adanya ketidakseimbangan antara energi yang diserap dan dipancarkan kembali oleh permukaan bumi.",
+        "Peningkatan suhu udara berarti peningkatan energi kinetik rata-rata partikel udara di atmosfer."
+      ],
+      "kunci": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Suhu naik dari 27,0 °C (2005) ke sekitar 29,6 °C (2025) seiring bertambahnya kendaraan, AC, dan berkurangnya ruang hijau (A benar). Emisi kendaraan menambah gas rumah kaca, bukan mengurangi efek rumah kaca (B salah). Vegetasi mendinginkan lingkungan lewat transpirasi/evaporasi (C benar). Kenaikan suhu jangka panjang menandakan energi yang diserap lebih besar daripada yang dipancarkan kembali (D benar). Suhu sebanding dengan energi kinetik rata-rata partikel (E benar).",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan E benar secara fisika tetapi tidak menjelaskan penyebab kondisi kota X, jadi penyusun soal mungkin tidak memasukkannya ke kunci; cocokkan dengan kunci resmi.",
+        "Grafik terpotong oleh sambungan tangkapan layar di sekitar suhu 28,0 °C, tetapi titik data tetap terbaca."
+      ]
+    },
+    {
+      "id": "FIS25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISLISLSSF14SA-000000-0606",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelistrikan",
+      "subelemen": "Listrik Statis",
+      "kompetensi": "Menganalisis keterkaitan besaran listrik statis dalam peristiwa yang terjadi dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan salah satu nilai besaran tertentu menggunakan konsep listrik statis. (23)",
+      "soal": "Dalam sistem printer elektrostatik, dua elektroda dipasang sejajar pada kertas cetak untuk mengarahkan partikel toner. Perhatikan kedua muatan yang terpisah pada jarak tertentu seperti ditunjukkan dalam gambar berikut.\n[Gambar]\n\nDimanakah letak suatu titik di sepanjang sumbu-x yang dapat memiliki kuat medan listrik total sama dengan nol?",
+      "gambar": "Sumbu x mendatar dan sumbu y tegak. Muatan Q₁ (lingkaran biru bertanda \"-\") di titik asal \"x = 0\" berlabel \"Q₁ = 4 μC\"; muatan Q₂ (lingkaran biru bertanda \"-\") di \"x = 8 cm\" berlabel \"Q₂ = 9 μC\".",
+      "opsi": [
+        "Di sebelah kiri Q₁, yaitu pada x = −3,2 cm.",
+        "Di sebelah kanan Q₁, yaitu pada x = 3,2 cm.",
+        "Tepat di antara kedua muatan, yaitu pada x = 4 cm.",
+        "Di sebelah kanan Q₁, yaitu pada x = 4,8 cm.",
+        "Di sebelah kanan Q₂, yaitu pada x = 11,2 cm."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kedua muatan sejenis, sehingga titik E = 0 berada di antara keduanya, lebih dekat ke muatan kecil: kQ₁/x² = kQ₂/(8 − x)² → x/(8 − x) = √(4/9) = 2/3 → x = 3,2 cm.",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": [
+        "Gambar menandai kedua muatan dengan tanda \"-\" di dalam lingkaran, sedangkan labelnya Q₁ = 4 μC dan Q₂ = 9 μC tanpa tanda negatif; karena keduanya sejenis, kunci tidak terpengaruh."
+      ]
+    },
+    {
+      "id": "FIS25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISLISRASF15SA-000000-0361",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelistrikan",
+      "subelemen": "Rangkaian Arus Searah",
+      "kompetensi": "Menguraikan hubungan antara kuat arus, tegangan, dan hambatan dalam rangkaian listrik arus searah berdasarkan hukum-hukum kelistrikan",
+      "subkompetensi": null,
+      "indikator": "Memodifikasi rangkaian listrik sederhana sehingga memenuhi kondisi tertentu berdasarkan hukum kelistrikan. (24)",
+      "soal": "Perhatikan dua rangkaian listrik berikut:\n[Gambar]\n\nAgar besar arus listrik pada kedua rangkaian tersebut nilainya sama, bagaimana cara modifikasi rangkaian yang tepat?",
+      "gambar": "Rangkaian A: baterai 12 V di sisi kiri, dua resistor 6 Ω dan 6 Ω dirangkai seri di sisi atas, kawat tertutup; panah arus I_A di sisi bawah mengarah ke kiri. Rangkaian B: baterai 6 V di sisi kiri, dua resistor 3 Ω dirangkai paralel di sisi atas (satu di atas yang lain), kawat tertutup; panah arus I_B di sisi bawah mengarah ke kiri.",
+      "opsi": [
+        "Ubah sumber tegangan rangkaian A menjadi 6 V.",
+        "Tambah satu resistor 6 Ω secara paralel pada Rangkaian A.",
+        "Ubah susunan resistor Rangkaian B menjadi seri.",
+        "Ganti tegangan sumber Rangkaian B menjadi 12 V.",
+        "Tambah satu resistor 3 Ω secara seri pada Rangkaian B."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Awalnya I_A = 12/(6 + 6) = 1 A dan I_B = 6/(3 ∥ 3) = 6/1,5 = 4 A. Jika resistor B diseri: I_B = 6/(3 + 3) = 1 A = I_A. Pilihan lain: A → 0,5 A; B → 3 A (paralel dengan keduanya) atau 1,33 A; D → 8 A; E → 6/4,5 = 1,33 A.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "FIS25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25FISLISRASF15SA-000000-0362",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelistrikan",
+      "subelemen": "Rangkaian Arus Searah",
+      "kompetensi": "Menguraikan hubungan antara kuat arus, tegangan, dan hambatan dalam rangkaian listrik arus searah berdasarkan hukum-hukum kelistrikan",
+      "subkompetensi": null,
+      "indikator": "Menganalisis keputusan berdasarkan permasalahan kontekstual sehari-hari menggunakan konsep energi dan daya listrik. (25)",
+      "soal": "Diberikan data spesifikasi dan durasi penggunaan peralatan elektronik dari sebuah keluarga sebagai berikut:\n[Tabel]\nJika tarif listrik yang berlaku adalah Rp1.500,00 per kWh, dan keluarga tersebut ingin agar total biaya listrik tetap di bawah Rp375.000,00 per bulan, keputusan terbaik apa yang dapat diambil untuk mencapai tujuan tersebut?",
+      "tabel": [
+        [
+          "Peralatan Elektronik",
+          "Daya (Watt)",
+          "Lama Penggunaan per Hari (Jam)",
+          "Frekuensi Penggunaan per Bulan (Hari)"
+        ],
+        [
+          "AC (Air Conditioner)",
+          "1.000",
+          "8",
+          "30"
+        ],
+        [
+          "Kulkas",
+          "150",
+          "24",
+          "30"
+        ],
+        [
+          "Mesin Cuci",
+          "350",
+          "1",
+          "8"
+        ],
+        [
+          "Setrika",
+          "300",
+          "1",
+          "12"
+        ],
+        [
+          "Televisi",
+          "100",
+          "5",
+          "30"
+        ]
+      ],
+      "opsi": [
+        "Mengurangi penggunaan AC menjadi 4 jam per hari.",
+        "Mengurangi durasi menonton televisi 1 jam per hari dan mengurangi penggunaan mesin cuci 1 hari per bulan.",
+        "Mengurangi durasi menonton TV menjadi 2 jam per hari.",
+        "Tidak menggunakan mesin cuci sama sekali.",
+        "Mengurangi frekuensi menyetrika menjadi 4 hari per bulan."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Energi per bulan: AC 1000·8·30 = 240 kWh, kulkas 150·24·30 = 108 kWh, mesin cuci 350·1·8 = 2,8 kWh, setrika 300·1·12 = 3,6 kWh, TV 100·5·30 = 15 kWh; total 369,4 kWh = Rp554.100. AC 4 jam/hari menghemat 120 kWh → 249,4 kWh = Rp374.100 < Rp375.000. Pilihan lain tetap di atas Rp540.000 (B Rp549.075; C Rp540.600; D Rp549.900; E Rp550.500).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": []
+    }
+  ]
+}

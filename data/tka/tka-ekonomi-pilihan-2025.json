@@ -1,0 +1,1290 @@
+{
+  "id": "tka-ekonomi-pilihan-2025",
+  "kode": "EKO25",
+  "mapel": "Ekonomi",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Ekonomi_SMA_2025_Pilihan.pdf",
+    "halaman": 30,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber (mis. \"Disposible\", \"Komsumsi\", \"kesejahateraan\", \"permasalah serius\", \"Mengintreprestasikan\"); huruf miring pada istilah asing tidak dipertahankan.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "PDF memuat 30 soal lengkap (nomor 1–30), satu soal per halaman; tidak ada catatan soal yang belum tersedia dan tidak ada soal ganda atau versi alternatif.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong dan setiap soal memuat stimulusnya sendiri di kolom soal; penanda [Gambar] dan [Tabel] menunjukkan letak gambar (diuraikan di kolom gambar) dan tabel (di kolom tabel).",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber (mis. 25EKOKDIKDEE01SA-000000-0453) disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom (Benar/Salah) ada di medan 'kolom', dan kunci true berarti kolom pertama.",
+    "Pilihan E nomor 1 terpotong di tepi tangkapan layar; nomor 6 tidak memiliki pernyataan yang benar bila dihitung dengan pajak Rp25,00 seperti tercetak (lihat catatan soal)."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "EKO25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOKDIKDEE01SA-000000-0453",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Konsep Dasar Ilmu Ekonomi",
+      "subelemen": "Konsep Dasar Ilmu Ekonomi (Kelangkaan, Biaya Peluang, dan Kegiatan Ekonomi)",
+      "kompetensi": "Menganalisis konsep dasar ilmu ekonomi mencakup kelangkaan, biaya peluang, dan kegiatan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menentukan solusi permasalahan kelangkaan sumber daya ekonomi (1)",
+      "soal": "Di kawasan pinggiran kota besar, alih fungsi lahan pertanian menjadi kawasan perumahan dan komersial terus meningkat. Akibatnya, harga bahan pangan lokal naik karena pasokan terbatas dan biaya distribusi dari luar kota meningkat. Petani kecil kehilangan lahannya karena tawaran harga tinggi dari pengembang, namun setelah menjual, sebagian besar tidak mampu lagi bertani. Pemerintah kota mempertimbangkan opsi dengan membatasi izin pengembang, menyediakan insentif bertani di lahan sempit, atau mendorong urban farming dan lahan produktif vertikal.\n\nApa penyebab peralihan lahan dan solusi berdasarkan prinsip ekonomi dari masalah tersebut?",
+      "opsi": [
+        "Meningkatnya permintaan hasil pertanian diperkotaan dan solusi menghentikan seluruh pembangunan perumahan baru di wilayah tersebut.",
+        "Memberi peringatan kepada pemilik lahan agar tidak membangun dan solusinya memberi bantuan tunai kepada petani agar tidak menjual lahan mereka.",
+        "Meningkatnya pembangunan gedung-gedung berbanding terbalik dengan ketersediaan tanah dan solusinya menetapkan zona perlindungan lahan.",
+        "Terjadinya pemekaran wilayah dipinggiran kota dan solusinya menurunkan pajak pembangunan untuk menurunkan harga rumah.",
+        "Konflik kepentingan karena adanya persaingan ketat dan solusinya mengimpor bahan pangan dari luar kota untuk [terpotong]"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Penyebabnya adalah pembangunan perumahan/komersial yang terus bertambah sementara tanah terbatas (kelangkaan lahan), dan solusi yang sejalan dengan opsi pemerintah dalam teks (membatasi izin pengembang) adalah menetapkan zona perlindungan lahan pertanian (C). Pilihan lain tidak sesuai penyebab dalam teks atau solusinya ekstrem/tidak menyelesaikan masalah.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E terpotong di tepi bawah tangkapan layar setelah kata \"untuk\"; sisa kalimatnya tidak terbaca."
+      ]
+    },
+    {
+      "id": "EKO25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOKDIKDEE01SA-000000-0304",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Konsep Dasar Ilmu Ekonomi",
+      "subelemen": "Konsep Dasar Ilmu Ekonomi (Kelangkaan, Biaya Peluang, dan Kegiatan Ekonomi)",
+      "kompetensi": "Menganalisis konsep dasar ilmu ekonomi mencakup kelangkaan, biaya peluang, dan kegiatan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menentukan biaya peluang berdasarkan kegiatan ekonomi. (2)",
+      "soal": "Safia baru saja menyelesaikan pendidikan S1. Setelah lulus kuliah, ia dihadapkan pada tiga pilihan, yaitu bekerja di salah satu perusahaan kolega orang tuanya dengan gaji Rp10.000.000,00 per bulan, menempuh pendidikan S2 di dalam negeri dengan jalur beasiswa dan mendapatkan uang saku sebesar Rp2.000.000,00 setiap bulannya, serta membuka usaha di bidang kuliner yaitu steak tendaan bersama salah satu temannya dengan perkiraan omset sebesar Rp16.000.000,00 per bulan.\n\nBerapakah jumlah biaya peluang yang dikorbankan oleh Safia apabila ia memilih untuk membuka usaha di bidang kuliner?",
+      "opsi": [
+        "Rp18.000.000,00.",
+        "Rp16.000.000,00.",
+        "Rp12.000.000,00.",
+        "Rp10.000.000,00.",
+        "Rp2.000.000,00."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Biaya peluang adalah nilai alternatif terbaik berikutnya yang dikorbankan. Jika memilih usaha kuliner, alternatif yang dikorbankan adalah gaji kerja Rp10.000.000,00 dan uang saku S2 Rp2.000.000,00; yang terbaik adalah gaji Rp10.000.000,00 (D).",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": [
+        "Pilihan C (Rp12.000.000,00 = jumlah kedua alternatif yang dikorbankan) dapat dipilih bila penyusun memakai konvensi menjumlahkan semua alternatif; definisi baku buku SMA memakai alternatif terbaik berikutnya saja."
+      ]
+    },
+    {
+      "id": "EKO25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOKDIKDEE01SA-000000-0463",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Konsep Dasar Ilmu Ekonomi",
+      "subelemen": "Konsep Dasar Ilmu Ekonomi (Kelangkaan, Biaya Peluang, dan Kegiatan Ekonomi)",
+      "kompetensi": "Menganalisis konsep dasar ilmu ekonomi mencakup kelangkaan, biaya peluang, dan kegiatan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan cara memecahkan masalah yang dihadapi pelaku ekonomi (3)",
+      "soal": "Perusahaan minuman sehat “Segar Abadi” mengalami kenaikan harga bahan baku utama seperti jahe, madu, dan lemon akibat gagal panen di daerah penghasil. Jika perusahaan tetap menggunakan bahan yang sama, biaya produksi meningkat dan keuntungan menurun. Namun jika mengganti bahan baku dengan bahan sintetis, harga bisa ditekan, tetapi kualitas produk menurun dan kepercayaan konsumen bisa terganggu.\n\nBerdasarkan ilustrasi tersebut, manakah tindakan yang paling tepat diambil oleh perusahaan dengan mempertimbangkan prinsip ekonomi?",
+      "opsi": [
+        "Mencari alternatif bahan baku alami dari daerah lain dengan harga lebih kompetitif.",
+        "Mengganti bahan alami dengan bahan sintetis agar biaya produksi murah dan harga produk tetap.",
+        "Mengurangi produksi agar tidak mengalami kerugian besar sampai harga bahan baku kembali normal.",
+        "Menurunkan kualitas produk untuk menjaga keuntungan dan keberlangsungan perusahaan.",
+        "Menaikkan harga jual dua kali lipat agar perusahaan tetap memperoleh keuntungan dan keberlangsungan usaha tetap terjaga."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Prinsip ekonomi: memperoleh hasil terbaik dengan pengorbanan tertentu tanpa mengorbankan kualitas. Mencari bahan baku alami dari daerah lain yang lebih murah menekan biaya sekaligus menjaga kualitas dan kepercayaan konsumen (A).",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMPPKE02SA-000000-0537",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Permintaan, Penawaran dan Keseimbangan Pasar",
+      "kompetensi": "Menganalisis permintaan, penawaran dan keseimbangan pasar",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan faktor yang memengaruhi perubahan harga pada keseimbangan pasar. (4)",
+      "soal": "Perusahaan “Adiwastra Jaya” merupakan perusahaan yang memproduksi berbagai macam pakaian jadi dalam jumlah besar sehingga perusahaan tersebut memiliki tenaga kerja yang cukup banyak. Ketika pemerintah menetapkan Kenaikan Upah Minimum Provinsi (UMP) tahun 2025 sebesar 6,5% dari UMP tahun sebelumnya, maka biaya produksi Perusahaan “Adiwastra Jaya” mengalami kenaikan. Kenaikan biaya produksi tersebut akan berdampak pada keseimbangan pasar yaitu ....",
+      "opsi": [
+        "harga naik dan jumlah barang tetap",
+        "harga naik dan jumlah barang turun",
+        "harga naik dan jumlah barang naik",
+        "harga turun dan jumlah barang naik",
+        "harga turun dan jumlah barang turun"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kenaikan upah menaikkan biaya produksi sehingga kurva penawaran bergeser ke kiri; dengan permintaan tetap, harga keseimbangan naik dan jumlah keseimbangan turun (B).",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMPPKE02SA-000000-0507",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Permintaan, Penawaran dan Keseimbangan Pasar",
+      "kompetensi": "Menganalisis permintaan, penawaran dan keseimbangan pasar",
+      "subkompetensi": null,
+      "indikator": "Menerapkan konsep fungsi penawaran berdasarkan perubahan harga atau barang yang ditawarkan (5)",
+      "soal": "Toko “Kue Impian” merupakan toko bahan-bahan kue yang terkenal di daerahnya. Toko ini menjual berbagai macam kebutuhan untuk membuat kue seperti halnya tepung, telur, dan gula. Berikut ini fungsi penawaran dan harga dari ketiga bahan tersebut.\n[Tabel]\n\nJika semua harga jual dari ketiga bahan tersebut naik sebesar Rp3.000,00/kg maka berapakah jumlah tepung, telur, dan gula yang ditawarkan Toko “Kue Impian”?",
+      "tabel": [
+        [
+          "No",
+          "Nama",
+          "Fungsi Penawaran",
+          "Harga Jual"
+        ],
+        [
+          "1",
+          "Tepung",
+          "Qs = -1250 + 0,25P",
+          "Rp15.000,00/kg"
+        ],
+        [
+          "2",
+          "Telur",
+          "Qs = 500 + 0,04P",
+          "Rp30.000,00/kg"
+        ],
+        [
+          "3",
+          "Gula",
+          "Qs = -1200 + 0,3P",
+          "Rp20.000,00/kg"
+        ]
+      ],
+      "opsi": [
+        "Tepung 3.250kg, Telur 1.820kg, dan Gula 5.700kg.",
+        "Tepung 3.250kg, Telur 1.700kg, dan Gula 5.700kg.",
+        "Tepung 3.250kg, Telur 1.700kg, dan Gula 4.800kg.",
+        "Tepung 2.500kg, Telur 1.700kg, dan Gula 4.800kg.",
+        "Tepung 2.500kg, Telur 1.820kg, dan Gula 4.800kg."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Harga baru: tepung Rp18.000, telur Rp33.000, gula Rp23.000. Tepung: -1250 + 0,25(18.000) = 3.250; telur: 500 + 0,04(33.000) = 1.820; gula: -1200 + 0,3(23.000) = 5.700 (A). Diperiksa dengan Python.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMPPKE02SA-000000-0208",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Permintaan, Penawaran dan Keseimbangan Pasar",
+      "kompetensi": "Menganalisis permintaan, penawaran dan keseimbangan pasar",
+      "subkompetensi": null,
+      "indikator": "Menganalisis keseimbangan pasar sebelum dan setelah pajak. (6)",
+      "soal": "Pasar komoditas barang konsumsi X memiliki fungsi permintaan Qd = -20P + 500 dan fungsi penawaran Qs = 5P + 100. Pemerintah menetapkan pajak untuk barang tersebut yaitu sebesar Rp25,00 per unit. Manakah kesimpulan yang tepat berdasarkan kondisi tersebut?\nKlik jawaban yang benar dari setiap pernyataan. Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Kuantitas keseimbangan sebelum pajak yaitu sebesar 80 unit dan setelah pajak sebesar 180 unit.",
+        "Terjadi penurunan harga barang sebesar Rp4,00 .",
+        "Terjadi kenaikan harga barang sebesar Rp3,00.",
+        "Kuantitas barang mengalami penurunan sebanyak 60 unit.",
+        "Titik harga keseimbangan sebelum pajak yaitu Rp16,00 dan setelah pajak yaitu 19."
+      ],
+      "kunci": [
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Sebelum pajak: -20P + 500 = 5P + 100, P = 16, Q = 180. Setelah pajak Rp25/unit: Qs' = 5(P - 25) + 100 = 5P - 25, sehingga -20P + 500 = 5P - 25, P = 21, Q = 80; harga naik Rp5 dan kuantitas turun 100 unit. Dengan pajak Rp25 tidak ada pernyataan yang benar (A membalik urutan 180 dan 80). Pernyataan C, D, dan E tepat bila pajaknya Rp15/unit (P = 19, Q = 120, harga naik Rp3, kuantitas turun 60), sehingga C, D, E diusulkan sebagai kunci yang dimaksud penyusun. Diperiksa dengan Python.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Dengan pajak Rp25,00 per unit seperti tercetak, hasil hitungan (P 16 menjadi 21, Q 180 menjadi 80, harga naik Rp5, kuantitas turun 100 unit) tidak cocok dengan satu pun pernyataan.",
+        "Pernyataan C, D, dan E cocok bila pajaknya Rp15,00 per unit; kemungkinan angka pajak atau kunci di sumber keliru, cocokkan dengan kunci resmi.",
+        "Pernyataan E menulis harga setelah pajak \"19\" tanpa \"Rp\" dan pernyataan B memiliki spasi sebelum titik (\"Rp4,00 .\")."
+      ]
+    },
+    {
+      "id": "EKO25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMPPKE02SA-000000-0579",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Permintaan, Penawaran dan Keseimbangan Pasar",
+      "kompetensi": "Menganalisis permintaan, penawaran dan keseimbangan pasar",
+      "subkompetensi": null,
+      "indikator": "Mengintreprestasikan grafik permintaan berdasarkan perubahan harga atau barang yang diminta (7)",
+      "soal": "Perhatikan kurva permintaan sepeda motor berikut ini.\n[Gambar]\n\nPada awalnya, kurva permintaan sepeda motor berada pada titik D1. Sepeda motor dan BBM merupakan barang komplementer sehingga ketika terjadi kenaikan harga BBM, maka analisis perubahan permintaan sepeda motor yang baru adalah....",
+      "gambar": "Grafik dengan sumbu tegak tanpa label (bertanda P1 dan P2, P2 lebih tinggi) dan sumbu datar berlabel Q (bertanda Q3, Q1, Q2 dari kiri ke kanan, pada tanda skala ke-3, ke-5, dan ke-6). Tiga garis cokelat sejajar berkemiringan negatif dengan titik-titik hijau: garis kiri melalui titik merah D3 (Q3, P1), garis tengah melalui titik merah D1 (Q1, P1), dan garis kanan melalui titik merah D2 (Q2, P2). Sebuah kurva hitam tebal mendatar pada ketinggian P1 dari sedikit kiri D3 melalui D3 sampai D1, lalu melengkung naik melalui D2. Garis putus-putus biru menghubungkan P1 ke D3 dan D1, P2 ke D2, serta D3, D1, D2 tegak lurus ke Q3, Q1, Q2.",
+      "opsi": [
+        "kurva permintaan sepeda motor bergerak ke atas (D2)",
+        "kurva permintaan sepeda motor bergerak kebawah (D3)",
+        "jumlah permintaan sepeda motor bergeser ke kanan (Q2)",
+        "jumlah permintaan sepeda motor bergeser ke kiri (Q3)",
+        "jumlah permintaan tetap, tidak mengalami perubahan (Q1)"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Kenaikan harga BBM (barang komplementer) menurunkan permintaan sepeda motor pada setiap tingkat harga, sehingga kurva permintaan bergeser ke kiri dari D1 ke D3 dan jumlah yang diminta pada harga P1 turun dari Q1 ke Q3 (D).",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [
+        "Pilihan B juga menunjuk ke D3; D dipilih karena D3 terletak di kiri D1 pada harga yang sama (P1), bukan di bawahnya, dan istilah \"bergeser ke kiri\" sesuai dengan pergeseran kurva permintaan, tetapi kunci perlu dicocokkan dengan kunci resmi.",
+        "Kurva hitam tebal pada gambar (mendatar lalu naik melalui D1 dan D2) tidak berbentuk kurva permintaan dan tidak dijelaskan dalam soal."
+      ]
+    },
+    {
+      "id": "EKO25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMPNEE03SA-000000-0480",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Pendapatan Nasional, Pertumbuhan Ekonomi dan Peran Ekonomi Digital Dalam Pembangunan Ekonomi",
+      "kompetensi": "Menganalisis konsep pendapatan nasional, pertumbuhan ekonomi dan peran ekonomi digital dalam pembangunan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menentukan hasil perhitungan pendapatan nasional (8)",
+      "soal": "Berikut ini data pendapatan nasional dari Negara ”Alamanda” tahun 2025 (dalam miliar):\n[Tabel]\n\nBerdasarkan data tersebut, besarnya Disposible Income (DI) adalah ....",
+      "tabel": [
+        [
+          "Komponen Pendapatan Nasional",
+          "Jumlah"
+        ],
+        [
+          "Produk domestik bruto (PDB)",
+          "Rp 1.200.000"
+        ],
+        [
+          "Produk netto luar negeri",
+          "Rp 80.000"
+        ],
+        [
+          "Pajak langsung",
+          "Rp 30.000"
+        ],
+        [
+          "Pajak tidak langsung",
+          "Rp 10.000"
+        ],
+        [
+          "Penyusutan barang modal",
+          "Rp 15.000"
+        ],
+        [
+          "Iuran asuransi",
+          "Rp 30.000"
+        ],
+        [
+          "Laba ditahan",
+          "Rp 8.000"
+        ],
+        [
+          "Pajak perseroan",
+          "Rp 9.000"
+        ],
+        [
+          "Transfer payment",
+          "Rp 12.000"
+        ],
+        [
+          "Komsumsi Rumah Tangga",
+          "Rp 750.000"
+        ],
+        [
+          "Investasi",
+          "Rp 100.000"
+        ],
+        [
+          "Pengeluaran Pemerintah",
+          "Rp 100.000"
+        ],
+        [
+          "Ekspor",
+          "Rp 500.000"
+        ],
+        [
+          "Impor",
+          "Rp 250.000"
+        ]
+      ],
+      "opsi": [
+        "Rp1.030.000 miliar",
+        "Rp1.166.000 miliar",
+        "Rp1.190.000 miliar",
+        "Rp1.220.000 miliar",
+        "Rp1.284.000 miliar"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "PNB = 1.200.000 + 80.000 = 1.280.000; NNP = 1.280.000 - 15.000 = 1.265.000; NNI = 1.265.000 - 10.000 = 1.255.000; PI = 1.255.000 - (30.000 + 8.000 + 9.000) + 12.000 = 1.220.000; DI = 1.220.000 - 30.000 (pajak langsung) = 1.190.000 miliar (C). Data konsumsi, investasi, pengeluaran pemerintah, ekspor, dan impor tidak dipakai. Diperiksa dengan Python.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Sumber menulis \"Disposible Income\" (seharusnya Disposable) dan \"Komsumsi\" di tabel; disalin apa adanya.",
+        "Data pengeluaran (C + I + G + X - M = 1.200.000) konsisten dengan PDB pada tabel."
+      ]
+    },
+    {
+      "id": "EKO25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMPNEE03SA-000000-0606",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Pendapatan Nasional, Pertumbuhan Ekonomi dan Peran Ekonomi Digital Dalam Pembangunan Ekonomi",
+      "kompetensi": "Menganalisis konsep pendapatan nasional, pertumbuhan ekonomi dan peran ekonomi digital dalam pembangunan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menentukan faktor yang memengaruhi pertumbuhan ekonomi (9)",
+      "soal": "Pertumbuhan ekonomi adalah aspek yang mendukung serta meningkatkan kemakmuran rakyat dalam suatu negara.\n\nBerdasarkan pernyataan tersebut, manakah faktor yang dapat memengaruhi pertumbuhan ekonomi suatu negara?\nKlik jawaban benar pada setiap pernyataan. Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Munculnya inovasi dan penggunaan teknologi terbaru dalam kegiatan ekonomi.",
+        "Peningkatan dan pemerataan akses pendidikan di seluruh wilayah.",
+        "Meningkatnya akses layanan perbankan terutama dalam penyaluran kredit usaha.",
+        "Peningkatan pemberian bantuan sosial untuk masyarakat menengah bawah.",
+        "Kestabilan harga barang kebutuhan pokok dalam perekonomian negara"
+      ],
+      "kunci": [
+        0,
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Faktor pertumbuhan ekonomi dalam buku SMA: teknologi dan inovasi (A), kualitas sumber daya manusia melalui pendidikan (B), dan ketersediaan modal, termasuk kredit usaha (C). Bantuan sosial (D) adalah kebijakan distribusi/perlindungan sosial, bukan faktor pendorong produksi.",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E (kestabilan harga) dapat dianggap faktor pertumbuhan bila penyusun memasukkan stabilitas ekonomi makro; cocokkan dengan kunci resmi."
+      ]
+    },
+    {
+      "id": "EKO25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "benar-salah",
+      "kode_sumber": "25EKOEMMPNEE03SA-000000-0007",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Pendapatan Nasional, Pertumbuhan Ekonomi dan Peran Ekonomi Digital Dalam Pembangunan Ekonomi",
+      "kompetensi": "Menganalisis konsep pendapatan nasional, pertumbuhan ekonomi dan peran ekonomi digital dalam pembangunan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasi keterkaitan antara pertumbuhan ekonomi terhadap kesejahteraan masyarakat. (10)",
+      "soal": "Perhatikan data pertumbuhan ekonomi dan indeks gini di Indonesia tahun 2020 hingga 2024 berdasarkan data dari Badan Pusat Statistik (BPS):\n[Tabel]\n\nBerdasarkan data di atas, lakukan analisis bagaimana keterkaitan pertumbuhan ekonomi dengan kesejahteraan masyarakat Indonesia dengan menentukan pernyataan berikut benar atau salah!",
+      "tabel": [
+        [
+          "Tahun",
+          "Pertumbuhan Ekonomi (%)",
+          "Indeks Gini"
+        ],
+        [
+          "2020",
+          "-2.07",
+          "0.381"
+        ],
+        [
+          "2021",
+          "3.70",
+          "0.384"
+        ],
+        [
+          "2022",
+          "5.31",
+          "0.384"
+        ],
+        [
+          "2023",
+          "5.05",
+          "0.388"
+        ],
+        [
+          "2024",
+          "5.03",
+          "0.379"
+        ]
+      ],
+      "opsi": [
+        "Peningkatan pertumbuhan ekonomi dari tahun 2021 hingga 2023 diikuti oleh peningkatan Indeks Gini, yang menunjukkan bahwa ketimpangan pendapatan.",
+        "Penurunan Indeks Gini pada tahun 2024 menunjukkan bahwa pertumbuhan ekonomi yang stabil mulai dirasakan lebih merata oleh masyarakat.",
+        "Setiap kali pertumbuhan ekonomi meningkat, Indeks Gini selalu menurun, menandakan distribusi pendapatan yang lebih merata."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "1) Pertumbuhan 2021 (3,70%) ke 2023 (5,05%) naik dan Indeks Gini naik dari 0,384 ke 0,388, artinya ketimpangan meningkat: benar. 2) Gini turun ke 0,379 pada 2024 saat pertumbuhan stabil sekitar 5%: benar. 3) Pada 2021 pertumbuhan naik tetapi Gini naik (0,381 ke 0,384), jadi \"selalu menurun\" salah.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 1 tidak lengkap (\"menunjukkan bahwa ketimpangan pendapatan.\"; kata seperti \"meningkat\" hilang) dan pertumbuhan 2023 (5,05) sebenarnya lebih rendah dari 2022 (5,31), sehingga penilaiannya bergantung pada tafsiran penyusun.",
+        "Tabel memakai titik desimal (mis. -2.07, 0.381), bukan koma; disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "EKO25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMPNEE03SA-000000-0300",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Pendapatan Nasional, Pertumbuhan Ekonomi dan Peran Ekonomi Digital Dalam Pembangunan Ekonomi",
+      "kompetensi": "Menganalisis konsep pendapatan nasional, pertumbuhan ekonomi dan peran ekonomi digital dalam pembangunan ekonomi",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasikan kondisi pembangunan ekonomi berdasarkan data dua negara (11)",
+      "soal": "Berikut ini merupakan informasi terkait kondisi perekonomian negara Vietnam dan Indonesia pada tahun 2024.\n[Tabel]\n\nBerdasarkan informasi tersebut manakah pernyataan yang tepat terkait kondisi pembangunan ekonomi di kedua negara?\nKlik jawaban benar pada setiap pernyataan. Jawaban benar lebih dari satu.",
+      "tabel": [
+        [
+          "Indikator Pembangunan Ekonomi",
+          "Negara Vietnam",
+          "Negara Indonesia"
+        ],
+        [
+          "Produk Domestik Bruto (PDB)",
+          "7,09%",
+          "5,03%"
+        ],
+        [
+          "Pendapatan per kapita",
+          "US$4.700",
+          "US$4.960"
+        ],
+        [
+          "Indeks Pembangunan Manusia",
+          "0,766",
+          "0,750"
+        ]
+      ],
+      "opsi": [
+        "Nilai Indeks Pembangunan Manusia (IPM) kedua negara termasuk dalam kategori tinggi yang mencerminkan tingginya tingkat pendidikan, tingkat kesehatan, dan kesejahteraan penduduknya.",
+        "Tingkat laju pertumbuhan ekonomi pada Negara Indonesia lebih pesat dibandingkan dengan Negara Vietnam meningkat sebesar 2%.",
+        "Kedua negara termasuk dalam kategori negara berpendapatan menengah atas meskipun tingkat kesejahteraan penduduk negara Indonesia lebih tinggi dibandingkan negara Vietnam.",
+        "Tingkat kesejahateraan pada penduduk Negara Vietnam lebih tinggi dibandingkan penduduk Negara Indonesia.",
+        "Kapasitas produksi barang dan jasa kedua negara tersebut terbilang pesat sehingga mencerminkan terjadinya pembangunan ekonomi."
+      ],
+      "kunci": [
+        0,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "A benar: IPM 0,766 dan 0,750 berada pada kategori tinggi (0,700–0,799). B salah: pertumbuhan Vietnam (7,09%) lebih pesat daripada Indonesia (5,03%); selisihnya 2,06 poin persen. D benar bila kesejahteraan diukur dengan IPM (Vietnam 0,766 > Indonesia 0,750), sehingga bagian \"kesejahteraan Indonesia lebih tinggi\" pada C salah. E dinilai salah karena laju pertumbuhan PDB mencerminkan pertumbuhan ekonomi, bukan otomatis pembangunan ekonomi.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan C dan D saling bertentangan tentang kesejahteraan; C benar jika kesejahteraan diukur dengan pendapatan per kapita (Indonesia US$4.960 > Vietnam US$4.700), D benar jika diukur dengan IPM, sehingga kunci bergantung pada ukuran yang dimaksud penyusun.",
+        "Pernyataan E dapat dianggap benar oleh penyusun bila pertumbuhan 7,09% dan 5,03% dipandang pesat dan mencerminkan pembangunan; cocokkan dengan kunci resmi.",
+        "Baris \"Produk Domestik Bruto (PDB)\" berisi persentase, yang sebenarnya laju pertumbuhan PDB, bukan nilai PDB.",
+        "Angka IPM Indonesia 0,750 tampaknya IPM versi BPS 2024 (75,02), sedangkan 0,766 untuk Vietnam tampaknya HDI versi UNDP; jika benar, keduanya dihitung dengan metode berbeda (belum diverifikasi, tidak mengubah kunci usulan).",
+        "Salah ketik \"kesejahateraan\" pada pernyataan D disalin apa adanya."
+      ]
+    },
+    {
+      "id": "EKO25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "benar-salah",
+      "kode_sumber": "25EKOEMMKTNE04SA-000000-0328",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Ketenagakerjaan",
+      "kompetensi": "mengidentifikasi konsep ketenagakerjaan dan permasalahannya",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi jenis pengangguran (12)",
+      "soal": "Perhatikan pernyataan tentang kondisi pengangguran berikut ini.\nMely baru saja lulus kuliah jurusan ekonomi pembangunan dari salah satu universitas ternama di kotanya, dan sedang berusaha mendapatkan pekerjaan pertamanya.\nYoga seorang lulusan SMA yang sedang mencoba melamar beberapa pekerjaan, namun Yoga belum juga mendapatkan panggilan akibat tidak memenuhi kualifikasi perusahaan.\nPratiwi mengundurkan diri dari pekerjaannya sebagai pegawai pemerintah daerah karena harus pindah ke luar kota mengikuti keluarganya.\nBagas menolak untuk menerima pekerjaan sebagai staf keuangan salah satu perusahaan karena upah yang ditawarkan perusahaan tidak sesuai dengan harapannya.\nAndi mengalami pemutusan hubungan kerja karena perusahaan tempatnya bekerja mengalami kerugian akibat menurunnya permintaan barang yang diproduksi perusahaannya.\n\nTentukan Benar atau Salah pernyataan berikut ini terkait jenis pengangguran yang dialami oleh masing-masing individu.",
+      "opsi": [
+        "Mely dan Yoga merupakan pengangguran siklis.",
+        "Mely dan Bagas merupakan pengangguran friksional.",
+        "Andy dan Pratiwi merupakan pengangguran struktural."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Mely (mencari kerja pertama) dan Bagas (menolak upah yang tidak sesuai, masih mencari pekerjaan yang cocok) termasuk pengangguran friksional; Pratiwi (pindah kota) juga friksional. Yoga (tidak memenuhi kualifikasi) termasuk struktural, dan Andi (PHK karena permintaan turun) termasuk siklis. Jadi 1 salah, 2 benar, 3 salah.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Nama ditulis \"Andi\" pada stimulus tetapi \"Andy\" pada pernyataan 3.",
+        "Sebagian buku menggolongkan Bagas sebagai pengangguran sukarela; dalam penggolongan menurut penyebab, kasusnya termasuk friksional."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "EKO25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMKTNE04SA-000000-0012",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Ketenagakerjaan",
+      "kompetensi": "mengidentifikasi konsep ketenagakerjaan dan permasalahannya",
+      "subkompetensi": null,
+      "indikator": "Menganalisis pemecahan masalah pengangguran (13)",
+      "soal": "Perhatikan data BPS per Februari 2025 tentang Tingkat Pengangguran Terbuka (TPT) berdasarkan umur berikut ini!\n[Tabel]\n\nMeskipun Tingkat Pengangguran Terbuka (TPT) secara nasional menurun menjadi 4,76%, kelompok usia muda (15-24 Tahun) tetap menjadi penyumbang tertinggi pengangguran dengan TPT mencapai 16,16%. Kondisi ini menunjukkan adanya permasalah serius terkait ketidaksesuaian antara keterampilan lulusan muda dan kebutuhan dunia kerja.\n\nBerdasarkan informasi, solusi apa yang paling tepat untuk mengatasi permasalahan tersebut?",
+      "tabel": [
+        [
+          "No",
+          "Umur",
+          "Tingkat Pengangguran Terbuka"
+        ],
+        [
+          "1",
+          "15-24 Tahun",
+          "16,16%"
+        ],
+        [
+          "2",
+          "25-59 Tahun",
+          "3,04%"
+        ],
+        [
+          "3",
+          ">60 Tahun",
+          "1,67%"
+        ]
+      ],
+      "opsi": [
+        "Memberikan bantuan keuangan rutin kepada lulusan muda hingga mendapat pekerjaan tetap.",
+        "Menurunkan batas usia minimum bekerja agar remaja dapat memasuki dunia kerja lebih awal.",
+        "Mewajibkan perusahaan swasta mempekerjakan lulusan muda tanpa persyaratan memiliki pengalaman kerja.",
+        "Membangun lebih banyak industri padat karya di daerah dengan tingkat pengangguran muda yang tinggi.",
+        "Menyediakan pelatihan keterampilan di bidang kewirausahaan industri melalui integrasi dalam sistem pendidikan."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Masalahnya adalah ketidaksesuaian keterampilan lulusan muda dengan kebutuhan dunia kerja (pengangguran struktural), sehingga solusi yang paling tepat adalah pelatihan keterampilan yang diintegrasikan dalam sistem pendidikan (E).",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"permasalah serius\" (seharusnya permasalahan) disalin apa adanya."
+      ]
+    },
+    {
+      "id": "EKO25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMIHIE05SA-000000-0399",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Indeks Harga dan Inflasi",
+      "kompetensi": "Mengaplikasikan konsep indeks harga dan inflasi",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi faktor penyebab inflasi. (14)",
+      "soal": "Pada kuartal pertama tahun ini, Badan Pusat Statistik (BPS) mencatat lonjakan harga pada sejumlah bahan pokok seperti beras, minyak goreng, telur ayam, dan cabai rawit di berbagai daerah di Indonesia. Kenaikan harga ini terjadi menjelang bulan Ramadan, di mana konsumsi masyarakat meningkat pesat. Di sisi lain, hasil panen beberapa komoditas menurun akibat curah hujan yang sangat tinggi dan banjir di sejumlah sentra pertanian.\n\nBerdasarkan ilustrasi tersebut, faktor utama yang menyebabkan inflasi adalah ....",
+      "opsi": [
+        "melemahnya nilai tukar Rupiah terhadap dolar Amerika Serikat",
+        "kenaikan upah buruh dan harga bahan baku industri",
+        "peningkatan biaya distribusi karena kenaikan harga Bahan Bakar Minyak (BBM)",
+        "penurunan produksi akibat perpindahan tenaga kerja ke sektor jasa",
+        "peningkatan permintaan barang yang lebih cepat dari pasokannya"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Konsumsi melonjak menjelang Ramadan (tarikan permintaan) sementara pasokan turun karena gagal panen, sehingga permintaan tumbuh lebih cepat daripada pasokan (E). Pilihan lain tidak disebut dalam ilustrasi.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMIHIE05SA-000000-0396",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Indeks Harga dan Inflasi",
+      "kompetensi": "Mengaplikasikan konsep indeks harga dan inflasi",
+      "subkompetensi": null,
+      "indikator": "Menghitung indeks harga konsumen (IHK) dengan metode agregat sederhana (15)",
+      "soal": "Perhatikan data harga bahan pokok di daerah Adidaya berikut ini.\n[Tabel]\n\nBesarnya nilai Indeks Harga Konsumen (IHK) tahun 2025 dengan metode agregatif sederhana adalah ....",
+      "tabel": [
+        [
+          "Nama barang",
+          "Harga barang (Rp) Tahun 2024",
+          "Harga barang (Rp) Tahun 2025"
+        ],
+        [
+          "Daging ayam (Kg)",
+          "40.000",
+          "45.000"
+        ],
+        [
+          "Telur (Kg)",
+          "24.000",
+          "26.000"
+        ],
+        [
+          "Gula (Kg)",
+          "22.000",
+          "25.000"
+        ],
+        [
+          "Cabai merah (Kg)",
+          "14.000",
+          "19.000"
+        ]
+      ],
+      "opsi": [
+        "115%",
+        "111,62%",
+        "110%",
+        "95,6%",
+        "90,9%"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "IHK agregatif sederhana = ΣPn/ΣP0 × 100% = 115.000/100.000 × 100% = 115% (A), dengan tahun 2024 sebagai tahun dasar. Diperiksa dengan Python.",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Tabel sumber memakai judul kolom bertingkat (\"Harga barang (Rp)\" di atas \"Tahun 2024\" dan \"Tahun 2025\"); di sini digabung menjadi satu baris judul."
+      ]
+    },
+    {
+      "id": "EKO25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMIHIE05SA-000000-0364",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Indeks Harga dan Inflasi",
+      "kompetensi": "Mengaplikasikan konsep indeks harga dan inflasi",
+      "subkompetensi": null,
+      "indikator": "Menganalisis yang berdampak terhadapl aju inflasi (16)",
+      "soal": "Perhatikan data Indeks Harga Konsumen (IHK) berikut, berdasarkan tiga sektor dalam empat periode. Dengan tahun 2022 sebagai indeks harga tahun dasar.\n[Tabel]\n\nBerdasarkan tabel tersebut, manakah sektor yang paling berdampak terhadap tingkat inflasi?",
+      "tabel": [
+        [
+          "Tahun",
+          "Sektor Pariwisata",
+          "Sektor Transportasi",
+          "Sektor Kesehatan"
+        ],
+        [
+          "2022",
+          "100",
+          "100",
+          "100"
+        ],
+        [
+          "2023",
+          "110",
+          "107",
+          "109"
+        ],
+        [
+          "2024",
+          "112",
+          "115",
+          "114"
+        ],
+        [
+          "2025",
+          "117",
+          "116",
+          "118"
+        ]
+      ],
+      "opsi": [
+        "Sektor pariwisata memberikan dampak tertinggi terhadap inflasi karena mengalami kenaikan IHK sebesar 17% selama periode 2022–2025.",
+        "Sektor transportasi menjadi penyumbang inflasi terbesar karena memiliki lonjakan indeks paling tajam pada tahun 2024.",
+        "Kenaikan indeks sektor kesehatan relatif rendah, sehingga tidak signifikan terhadap inflasi nasional.",
+        "Semua sektor mengalami kenaikan IHK yang sama, sehingga dampaknya terhadap inflasi dianggap setara.",
+        "Sektor kesehatan memberikan dampak terbesar karena mengalami kenaikan indeks harga tertinggi selama periode 2022–2025."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kenaikan indeks 2022–2025: pariwisata 17%, transportasi 16%, kesehatan 18%. Kenaikan tertinggi ada pada sektor kesehatan (E). Lonjakan transportasi pada 2024 (107 ke 115, sekitar 7,48%) memang paling tajam untuk satu tahun, tetapi kenaikan kumulatifnya paling kecil; A salah karena 17% bukan yang tertinggi. Diperiksa dengan Python.",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "Indikator tertulis \"terhadapl aju inflasi\" (spasi salah letak) dan disalin apa adanya.",
+        "Tanpa bobot tiap sektor, sumbangan sektor terhadap inflasi umum sebenarnya tidak dapat dihitung; kunci mengikuti kenaikan indeks tertinggi."
+      ]
+    },
+    {
+      "id": "EKO25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMBSME06SA-000000-0462",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Bank Sentral dan Kebijakan Moneter",
+      "kompetensi": "Mengidentifikasi peran bank sentral dan menganalisis kebijakan moneter dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi peran dan fungsi bank sentral (17)",
+      "soal": "Bank Sentral bertanggung jawab agar keuangan suatu negara tetap stabil. Berikut ini mana yang merupakan peran dan fungsi Bank Indonesia?\nKlik jawaban benar pada setiap pernyataan. Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Mengatur suku bunga acuan untuk mengendalikan inflasi",
+        "Menyediakan layanan giro, tabungan, dan deposito untuk masyarakat",
+        "Mengawasi kelancaran sistem pembayaran nasional",
+        "Menyalurkan kredit langsung kepada pelaku usaha kecil",
+        "Menjaga stabilitas sistem keuangan nasional"
+      ],
+      "kunci": [
+        0,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Tugas Bank Indonesia: menetapkan dan melaksanakan kebijakan moneter, termasuk suku bunga acuan (A); mengatur dan menjaga kelancaran sistem pembayaran (C); serta kebijakan makroprudensial untuk stabilitas sistem keuangan (E). Layanan giro/tabungan/deposito dan kredit langsung kepada usaha kecil adalah fungsi bank umum (B, D).",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMBSME06SA-000000-0115",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Bank Sentral dan Kebijakan Moneter",
+      "kompetensi": "Mengidentifikasi peran bank sentral dan menganalisis kebijakan moneter dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan instrumen kebijakan moneter (18)",
+      "soal": "Di Indonesia, momen Hari Raya telah menjadi bagian penting dari siklus ekonomi tahunan. Pada periode ini, terjadi peningkatan aktivitas ekonomi masyarakat yang ditandai dengan percepatan peredaran uang dan peningkatan konsumsi rumah tangga. Efek kenaikan upah dari THR (Tunjangan Hari Raya) mendorong peningkatan konsumsi yang kemudian berimbas pada kenaikan harga. Hari Raya juga identik dengan meningkatnya belanja di kalangan masyarakat. Hampir setiap rumah tangga mengalokasikan anggaran konsumsi untuk berbagai hal. Berbagai aktivitas masyarakat di masa Lebaran ini terpotret dari arus perputaran uang yang lebih cepat dibandingkan dengan hari biasa sehingga memicu terjadinya inflasi.\n\nBerdasarkan ilustrasi tersebut, kebijakan moneter apa yang sesuai untuk mengantisipasi kondisi tersebut? Klik semua jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Menaikkan suku bunga simpanan untuk mendorong peningkatan tabungan masyarakat di perbankan.",
+        "Menjual surat berharga untuk menarik dana masyarakat dan mendukung pembiayaan fiskal.",
+        "Menurunkan suku bunga simpanan guna mengalihkan preferensi masyarakat dari menabung ke investasi.",
+        "Melonggarkan kebijakan kredit untuk meningkatkan akses pembiayaan bagi sektor rumah tangga dan industri.",
+        "Menurunkan rasio cadangan wajib minimum (reserve requirement) agar bank memiliki ruang likuiditas lebih besar untuk menyalurkan kredit dan investasi."
+      ],
+      "kunci": [
+        0,
+        1
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Inflasi karena peredaran uang dan konsumsi yang meningkat memerlukan kebijakan moneter kontraktif: menaikkan suku bunga agar masyarakat menabung (A) dan operasi pasar terbuka dengan menjual surat berharga untuk menyerap uang beredar (B). C, D, dan E adalah kebijakan ekspansif yang menambah jumlah uang beredar.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": [
+        "Pilihan B menyebut tujuan \"mendukung pembiayaan fiskal\", yang bukan tujuan kebijakan moneter (operasi pasar terbuka); B tetap diusulkan benar karena tindakannya (menjual surat berharga) bersifat kontraktif, tetapi cocokkan dengan kunci resmi."
+      ]
+    },
+    {
+      "id": "EKO25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMBSME06SA-000000-0011",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Bank Sentral dan Kebijakan Moneter",
+      "kompetensi": "Mengidentifikasi peran bank sentral dan menganalisis kebijakan moneter dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi instrumen kebijakan moneter (19)",
+      "soal": "Pertumbuhan ekonomi Indonesia pada kuartal I-2025 hanya mencapai 4,87%, mengalami penurunan dibanding kuartal-kuartal sebelumnya. Penurunan ini terutama disebabkan oleh lesunya konsumsi rumah tangga, yang hanya tumbuh 4,89% (YOY), meskipun kontribusinya terhadap PDB masih sangat besar, yaitu sekitar 54,53%. Penurunan konsumsi ini erat kaitannya dengan melemahnya daya beli dan penyusutan kelas menengah dari 57,33 juta orang pada 2019 menjadi hanya 47,85 juta orang pada 2024. Untuk merespons situasi tersebut, Bank Indonesia (BI) mengambil langkah menurunkan rasio Cadangan Wajib Minimum (GWM).\n\nManakah pernyataan berikut yang tepat menggambarkan konsekuensi dan efektivitas dari kebijakan tersebut? Klik semua jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Langkah yang diambil BI dapat memperluas ruang likuiditas perbankan sehingga memperkuat kemampuan pembiayaan terhadap konsumsi rumah tangga.",
+        "Kebijakan yang dilakukan BI berisiko gagal meningkatkan konsumsi jika tidak dibarengi dengan perbaikan sisi permintaan seperti kenaikan pendapatan riil Masyarakat.",
+        "Kebijakan yang dilakukan BI dapat menjadi sinyal ekspansi moneter, namun dampaknya terbatas bila perbankan memilih menahan kredit karena kehati-hatian terhadap risiko gagal bayar.",
+        "Langkah BI ini akan secara otomatis meningkatkan konsumsi karena dana murah akan terserap langsung oleh rumah tangga menengah bawah.",
+        "Kebijakan yang diambil BI dengan pengawasan alokasi kredit dapat membuat dana justru terserap ke sektor spekulatif seperti aset finansial dan property."
+      ],
+      "kunci": [
+        0,
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Penurunan GWM menambah likuiditas bank (A), tetapi efektivitasnya bergantung pada permintaan kredit dan daya beli (B) serta kesediaan bank menyalurkan kredit (C). D salah karena dampaknya tidak otomatis. E sebagaimana tertulis tidak logis: pengawasan alokasi kredit justru mencegah dana lari ke sektor spekulatif.",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan E kemungkinan dimaksudkan \"tanpa pengawasan alokasi kredit\"; jika demikian, E juga benar dan kunci menjadi A, B, C, E. Cocokkan dengan kunci resmi.",
+        "Singkatan GWM dipakai untuk \"Cadangan Wajib Minimum\" (istilah resminya Giro Wajib Minimum); disalin apa adanya."
+      ]
+    },
+    {
+      "id": "EKO25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMKFPE07SA-000000-0458",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Kebijakan Fiskal dan Perpajakan",
+      "kompetensi": "Menerapkan konsep perpajakan dan menganalisis kebijakan fiskal dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menentukan dampak dari penerapan fungsi pajak. (20)",
+      "soal": "Rokok, minuman beralkohol, dan kendaraan berbahan bakar fosil merupakan barang yang dikategorikan sebagai demerit goods karena dapat membahayakan kesehatan. Oleh karena, pemerintah menerapkan kebijakan fungsi regulasi pajak, yakni menaikkan tarif pajak atas produk-produk yang memiliki eksternalitas negatif. Sebagai pelengkap, pemerintah juga memberikan insentif pajak kepada industri yang mengembangkan alternatif ramah lingkungan seperti kendaraan listrik dan produk substitusi non-alkohol.\n\nBerdasarkan ilustrasi tersebut, dampak yang paling tepat dari penerapan fungsi regulasi pajak adalah....",
+      "opsi": [
+        "terhambatnya ekspansi industri berbasis energi fosil akibat insentif yang tidak merata",
+        "perubahan preferensi konsumsi masyarakat menuju barang yang lebih sehat dan ramah lingkungan",
+        "meningkatnya ketergantungan fiskal terhadap sektor barang dengan dampak eksternalitas tinggi",
+        "penurunan pendapatan masyarakat akibat meningkatnya harga barang konsumsi umum",
+        "peningkatan keuntungan produsen barang substitusi sebagai akibat dari kenaikan permintaan"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Fungsi regulasi (mengatur) pajak bertujuan mengarahkan perilaku: pajak tinggi atas demerit goods dan insentif untuk alternatif ramah lingkungan mengubah preferensi konsumsi masyarakat ke barang yang lebih sehat dan ramah lingkungan (B).",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Frasa \"Oleh karena,\" (tanpa \"itu\") disalin apa adanya; istilah demerit goods dicetak miring di sumber."
+      ]
+    },
+    {
+      "id": "EKO25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMKFPE07SA-000000-0008",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Kebijakan Fiskal dan Perpajakan",
+      "kompetensi": "Menerapkan konsep perpajakan dan menganalisis kebijakan fiskal dalam kehidupan sehari-hari",
+      "subkompetensi": null,
+      "indikator": "Menyimpulkan jenis/peran/fungsi/prinsip perpajakan. (21)",
+      "soal": "Pak Andi seorang karyawan swasta. Gaji bulanannya dipotong secara otomatis untuk membayar Pajak Penghasilan (PPh) Pasal 21, yang disetorkan oleh perusahaannya ke kas negara. Ia memiliki Nomor Pokok Wajib Pajak (NPWP) dan rutin melaporkan SPT Tahunan secara online. Sedangkan Ibu Rani seorang pemilik toko kelontong. Ia menjual barang-barang kebutuhan rumah tangga dan secara berkala menyetorkan Pajak Pertambahan Nilai (PPN) atas penjualannya serta membayar PPh Final UMKM. Uang pajak yang disetorkan oleh Pak Andi dan Ibu Rani digunakan untuk membangun fasilitas umum seperti puskesmas dan sekolah, serta membayar gaji pegawai Aparatur Sipil Negara (ASN).\n\nBerdasarkan ilustrasi tersebut, manakah pernyataan berikut yang benar terkait jenis pajak, peran, fungsi, dan prinsip pajak? Tentukan jawaban yang benar. Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Pak Andi membayar pajak langsung, sedangkan Ibu Rani membayar pajak tidak langsung. Keduanya menerapkan prinsip kemudahan dalam pembayaran pajak.",
+        "Pajak yang dibayarkan keduanya menunjukkan penerapan fungsi budgeter karena uang pajak digunakan untuk membiayai pengeluaran negara.",
+        "Pak Andi membayar pajak tidak langsung dengan prinsip kemudahan, sedangkan Ibu Rani membayar pajak langsung dengan prinsip efisiensi karena rendahnya biaya yang dikeluarkan untuk membayar pajak.",
+        "Pajak yang dibayarkan keduanya menunjukkan penerapan fungsi distribusi karena uang yang diterima pemerintah dialokasikan ke berbagai sektor pembangunan dan perluasan lapangan pekerjaan.",
+        "Pak Andi dan Ibu Rani membayar pajak langsung dengan prinsip keadilan karena besarnya jumlah pajak yang dibayarkan keduanya sama tanpa memperhatikan objek pajaknya."
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "A: PPh Pasal 21 adalah pajak langsung, PPN yang disetorkan Ibu Rani adalah pajak tidak langsung, dan pemotongan otomatis serta pelaporan online mencerminkan asas kemudahan (convenience). B: pajak membiayai pengeluaran negara (fungsi budgeter). D: buku SMA mendefinisikan fungsi redistribusi pendapatan sebagai penggunaan pajak untuk membiayai kepentingan umum dan pembangunan sehingga membuka lapangan kerja. C membalik jenis pajak, dan E salah karena jumlah pajak keduanya tidak disebut sama dan keadilan justru memperhatikan objek/kemampuan.",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan A kurang tepat karena Ibu Rani juga membayar PPh Final UMKM, yang merupakan pajak langsung; A tetap diusulkan benar karena PPN yang disebut adalah pajak tidak langsung.",
+        "Pernyataan D bergantung pada istilah buku: \"fungsi distribusi\" disamakan dengan fungsi redistribusi pendapatan; cocokkan dengan kunci resmi.",
+        "Istilah online dan budgeter dicetak miring di sumber."
+      ]
+    },
+    {
+      "id": "EKO25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEMMMBUE08SA-000000-0312",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Manajemen Badan Usaha Dalam Perekonomian Indonesia (BUMN, BUMD, BUMS, dan Koperasi)",
+      "kompetensi": "Mendiskripsikan konsep manajemen badan usaha koperasi dalam perekonomian Indonesia",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan solusi yang tepat untuk mengatasi masalah badan usaha (22)",
+      "soal": "Taliukir adalah sebuah perusahaan yang bergerak di bidang kerajinan tangan berbahan dasar kulit, seperti tas, dompet, dan sabuk. CV. Taliukir sangat mengutamakan kualitas produk yang dibuat secara tradisional, sehingga setiap produk memiliki sentuhan unik dan nilai seni tinggi. Produk mereka beredar di pasar menengah atas dan turis. Meskipun produknya berkualitas, CV. Taliukir kesulitan mendapatkan modal besar untuk mengembangkan usaha, seperti membeli mesin modern untuk efisiensi produksi massal atau membuka cabang di kota besar. Selain itu pasokan kulit berkualitas tinggi mulai langka dan harganya terus naik. Hal ini disebabkan semakin ketatnya regulasi lingkungan yang membatasi industri penyamakan kulit dan peningkatan permintaan dari industri fesyen global. Solusi yang bisa dilakukan untuk mengatasi permasalahan tersebut yaitu ....\nPilihlah jawaban benar pada setiap pernyataan. Jawaban benar lebih dari satu.",
+      "opsi": [
+        "menghentikan produksi kerajinan kulit dan beralih ke kerajinan dengan bahan baku lain yang lebih mudah didapat.",
+        "membentuk kerjasama dengan peternak sapi atau industri pengolahan kulit mentah untuk memastikan pasokan kulit, dan mencari investor dengan skema bagi hasil.",
+        "menimbun kulit berkualitas tinggi dalam jumlah besar saat tersedia, meskipun harganya mahal, dan mengajukan pinjaman bank dengan agunan aset pribadi pemilik CV.",
+        "berinvestasi dalam riset dan pengembangan untuk menemukan bahan kulit sintetis berkualitas tinggi yang menyerupai kulit asli.",
+        "mengurangi standar kualitas produk agar bisa menggunakan bahan baku kulit dengan kualitas lebih rendah dan biaya produksi lebih murah."
+      ],
+      "kunci": [
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Masalahnya adalah keterbatasan modal dan kelangkaan kulit berkualitas. B menjawab keduanya (kemitraan pasokan dan investor bagi hasil). D mengatasi kelangkaan bahan baku dengan bahan pengganti berkualitas tinggi tanpa menurunkan mutu. A meninggalkan keunggulan usaha, C menambah beban modal dan risiko (menimbun saat harga mahal), dan E bertentangan dengan keunggulan kualitas.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": [
+        "Pilihan D dapat diperdebatkan karena riset dan pengembangan membutuhkan modal besar (yang justru kurang) dan bahan sintetis menjauh dari produk kulit tradisional; D dipilih karena soal menyatakan jawaban benar lebih dari satu dan pilihan lain lebih lemah.",
+        "Penulisan \"CV. Taliukir\" (dengan titik) dan istilah fesyen yang dicetak miring disalin apa adanya."
+      ]
+    },
+    {
+      "id": "EKO25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMMBUE08SA-000000-0435",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Manajemen Badan Usaha Dalam Perekonomian Indonesia (BUMN, BUMD, BUMS, dan Koperasi)",
+      "kompetensi": "Mendiskripsikan konsep manajemen badan usaha koperasi dalam perekonomian Indonesia",
+      "subkompetensi": null,
+      "indikator": "Menganalisis pemecahan masalah manajemen badan usaha (23)",
+      "soal": "CV Surya Karya, sebuah badan usaha jasa interior, menghadapi masalah keuangan dalam tiga bulan terakhir. Meski pendapatan meningkat karena banyaknya proyek, perusahaan justru mengalami kesulitan membayar gaji karyawan dan tagihan vendor tepat waktu. Setelah dilakukan penelusuran, diketahui bahwa manajer keuangan sering menggunakan dana masuk untuk membayar utang lama tanpa membuat perencanaan arus kas yang jelas. Selain itu, tidak ada pemisahan dana antara proyek satu dengan proyek lainnya, sehingga dana dari satu proyek sering digunakan untuk kebutuhan proyek lain. Akibatnya, banyak pengeluaran tidak terkontrol dan laporan keuangan sulit disusun secara akurat.\n\nBerdasarkan uraian tersebut, solusi yang paling tepat untuk mengatasi permasalahan manajemen keuangan yang terjadi adalah...",
+      "opsi": [
+        "menambah jumlah staf administrasi keuangan agar pengelolaan dana lebih terdistribusi.",
+        "mengajukan pinjaman jangka pendek ke bank agar kebutuhan operasional segera terpenuhi.",
+        "meningkatkan pemasaran agar pemasukan lebih besar dan menutupi kekurangan kas.",
+        "menyusun sistem pengelolaan arus kas yang terencana dan pemisahan dana untuk setiap proyek.",
+        "mengurangi proyek yang dikerjakan agar fokus pengelolaan keuangan tidak tersebar."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Akar masalahnya adalah tidak adanya perencanaan arus kas dan tidak adanya pemisahan dana per proyek, sehingga solusi yang tepat adalah menyusun sistem arus kas terencana dan memisahkan dana setiap proyek (D).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEMMMBUE08SA-000000-0651",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Mikro dan Makro",
+      "subelemen": "Manajemen Badan Usaha Dalam Perekonomian Indonesia (BUMN, BUMD, BUMS, dan Koperasi)",
+      "kompetensi": "Mendiskripsikan konsep manajemen badan usaha koperasi dalam perekonomian Indonesia",
+      "subkompetensi": null,
+      "indikator": "Menghitung Sisa Hasil Usaha (SHU) yang diperoleh anggota koperasi. (24)",
+      "soal": "Perhatikan data laporan keuangan Koperasi Kilau Gemitang berikut ini.\n[Tabel]\n\nBerdasarkan data tersebut, jika jumlah pengurus koperasi sebanyak 20 orang, dan Pak Faiz merupakan salah satu pengurus dengan total simpanan Rp1.000.000,00 serta transaksi penjualan Rp2.000.000,00, maka total SHU yang diterima pak Faiz pada akhir tahun 2025 adalah ....",
+      "tabel": [
+        [
+          "Jumlah Simpanan anggota",
+          "Rp80.000.000,00"
+        ],
+        [
+          "Jumlah penjualan selama satu tahun",
+          "Rp250.000.000,00"
+        ],
+        [
+          "SHU tahun berjalan",
+          "Rp200.000.000,00"
+        ],
+        [
+          "Jasa usaha",
+          "50%"
+        ],
+        [
+          "Jasa modal",
+          "30%"
+        ],
+        [
+          "Jasa pengurus",
+          "15%"
+        ],
+        [
+          "Dana lain-lain",
+          "5%"
+        ]
+      ],
+      "opsi": [
+        "Rp4.550.000,00",
+        "Rp3.400.000,00",
+        "Rp3.230.000,00",
+        "Rp3.050.000,00",
+        "Rp3.000.000,00"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Jasa modal = 1.000.000/80.000.000 × 30% × 200.000.000 = 750.000; jasa usaha = 2.000.000/250.000.000 × 50% × 200.000.000 = 800.000; jasa pengurus = 15% × 200.000.000 / 20 = 1.500.000. Total = 3.050.000 (D). Diperiksa dengan Python.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Tabel sumber tidak memiliki baris judul; kedua kolom berisi nama pos dan nilainya."
+      ]
+    },
+    {
+      "id": "EKO25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEINEKIE09SA-000000-0381",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Internasional",
+      "subelemen": "Kerja Sama Ekonomi dan Perdagangan Internasional",
+      "kompetensi": "Menganalisis kerjasama ekonomi dan perdagangan internasional",
+      "subkompetensi": null,
+      "indikator": "Menentukan jenis kerjasama internasional (25)",
+      "soal": "Beberapa negara di Asia Tenggara termasuk Indonesia membentuk sebuah organisasi yang bertujuan mempererat hubungan politik, ekonomi, dan sosial di kawasan mereka. Sementara itu, Indonesia juga menjalin perjanjian perdagangan barang dan jasa dengan Korea Selatan yang hanya melibatkan kedua negara tersebut. Di sisi lain, ada organisasi global yang anggotanya berasal dari berbagai negara di seluruh dunia yang fokus pada masalah perdagangan internasional. Berdasarkan ilustrasi tersebut, apa jenis kerja sama internasional yang tepat?",
+      "opsi": [
+        "Kerja sama bilateral untuk ASEAN, kerja sama regional untuk perjanjian Indonesia-Korea, dan kerja sama multilateral untuk organisasi perdagangan global.",
+        "Kerja sama multilateral untuk ASEAN, kerja sama bilateral untuk perjanjian Indonesia-Korea, dan kerja sama multilateral untuk organisasi perdagangan global.",
+        "Kerja sama regional untuk ASEAN, kerja sama multilateral untuk perjanjian Indonesia-Korea, dan kerja sama bilateral untuk organisasi perdagangan global.",
+        "Kerja sama bilateral untuk ASEAN, kerja sama multilateral untuk perjanjian Indonesia-Korea, dan kerja sama regional untuk organisasi perdagangan global.",
+        "Kerja sama regional untuk ASEAN, kerja sama bilateral untuk perjanjian Indonesia-Korea, dan kerja sama multilateral untuk organisasi perdagangan global."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "ASEAN adalah kerja sama regional (satu kawasan), perjanjian Indonesia–Korea Selatan adalah kerja sama bilateral (dua negara), dan organisasi perdagangan global (WTO) adalah kerja sama multilateral (E).",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-026",
+      "passage": null,
+      "nomor": "26",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOEINEKIE09SA-000000-0033",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Ekonomi Internasional",
+      "subelemen": "Kerja Sama Ekonomi dan Perdagangan Internasional",
+      "kompetensi": "Menganalisis kerjasama ekonomi dan perdagangan internasional",
+      "subkompetensi": null,
+      "indikator": "Menganalisis kebijakan perdagangan internasional yang sesuai untuk mengatasi permasalahan tersebut. (26)",
+      "soal": "Selama beberapa tahun terakhir, Negara X mengalami defisit neraca perdagangan yang semakin memburuk. Sebagai negara berkembang, negara X bergantung pada ekspor sumber daya alam seperti kelapa sawit, batubara, dan karet. Nilai ekspor negara tersebut stagnan bahkan cenderung mengalami penurunan karena rendahnya kualitas dan inovasi produk domestik. Rendahnya nilai ekspor juga dipengaruhi oleh tingginya biaya logistik sehingga menyebabkan harga produk ekspor menjadi tinggi. Di sisi lain, negara X juga dibanjiri produk impor. Tingginya volume impor barang konsumsi seperti tekstil dan makanan olahan menyebabkan produk lokal kehilangan daya saing. Sementara itu, Pemerintah ingin mengambil kebijakan perdagangan internasional yang tepat untuk menyeimbangkan kembali kondisi tersebut dan melindungi industri nasional.\n\nBerdasarkan ilustrasi tersebut, manakah kebijakan perdagangan internasional yang paling tepat untuk mengatasi permasalahan Negara X?",
+      "opsi": [
+        "Meningkatkan kuota impor barang konsumsi agar harga barang di dalam negeri lebih stabil dan tercukupinya kebutuhan masyarakat.",
+        "Menghapus semua hambatan perdagangan agar negara lebih terbuka terhadap investasi asing, sehingga terciptanya lapangan pekerjaan.",
+        "Memberikan subsidi dan insentif kepada industri lokal serta melakukan diversifikasi produk agar lebih kompetitif di pasar global.",
+        "Menurunkan nilai tukar mata uang secara drastis untuk mendorong ekspor, sehingga neraca perdagangan kembali surplus.",
+        "Menurunkan tarif impor agar masyarakat menikmati barang konsumsi impor dengan harga murah sehingga daya beli masyarakat meningkat."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Masalahnya adalah ekspor bergantung pada SDA mentah dengan kualitas/inovasi rendah dan biaya tinggi, serta impor barang konsumsi yang melemahkan industri lokal. Subsidi dan insentif bagi industri lokal serta diversifikasi produk meningkatkan daya saing ekspor sekaligus melindungi industri nasional (C). A dan E menambah impor, B menghapus perlindungan, dan D (devaluasi drastis) berisiko inflasi dan tidak menyelesaikan masalah kualitas.",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [
+        "Istilah volume dicetak miring di sumber."
+      ]
+    },
+    {
+      "id": "EKO25-027",
+      "passage": null,
+      "nomor": "27",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOEINEKIE09SA-000000-0001",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Ekonomi Internasional",
+      "subelemen": "Kerja Sama Ekonomi dan Perdagangan Internasional",
+      "kompetensi": "Menganalisis kerjasama ekonomi dan perdagangan internasional",
+      "subkompetensi": null,
+      "indikator": "Menganalisis dampak dari hambatan perdagangan terhadap daya saing ekspor. (27)",
+      "soal": "Pada Oktober 2023, American Shrimp Processors Association (ASPA) mengajukan petisi kepada Departemen Perdagangan Amerika Serikat (USDOC) dan Komisi Perdagangan Internasional Amerika Serikat (USITC). Petisi tersebut menuduh bahwa Indonesia melakukan praktik dumping dan menerima subsidi tidak adil dalam ekspor udang tropis beku, yang dianggap merugikan industri udang lokal di Amerika Serikat. Akibat tuduhan ini, ekspor udang Indonesia menghadapi risiko dikenai bea masuk anti-dumping dan countervailing duty (tarif subsidi). Jika tuduhan tersebut berlanjut dan pemerintah Amerika Serikat mengenakan bea masuk tambahan terhadap udang Indonesia.\n\nManakah yang merupakan dampak logis terhadap daya saing ekspor udang Indonesia ke Amerika Serikat?\nKlik setiap pernyataan jawaban benar.Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Harga jual udang Indonesia menjadi lebih rendah di pasar Amerika Serikat dibandingkan pesaing seperti India atau Ekuador.",
+        "Dapat menurunkan kepercayaan pembeli dan mencoreng reputasi produk perikanan Indonesia di pasar global.",
+        "Eksportir Indonesia harus meningkatkan sertifikasi perdagangan untuk menghindari diskriminasi tarif di masa mendatang.",
+        "Dapat menjadi peluang bagi Indonesia untuk mendominasi pasar udang beku karena dianggap memiliki harga yang kompetitif.",
+        "Dapat memicu negara tujuan lain untuk melakukan penyelidikan serupa terhadap produk ekspor Indonesia."
+      ],
+      "kunci": [
+        1,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Bea masuk anti-dumping dan countervailing duty menaikkan harga udang Indonesia di AS sehingga daya saingnya turun; A dan D menyatakan kebalikannya. Tuduhan dumping/subsidi dapat merusak reputasi (B), mendorong eksportir memperbaiki sertifikasi dan kepatuhan agar tidak dikenai tarif lagi (C), dan dapat memicu penyelidikan serupa di negara tujuan lain (E).",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan C lebih merupakan langkah tanggapan daripada dampak, dan sertifikasi tidak secara langsung mencegah bea anti-dumping; kunci dapat hanya B dan E, cocokkan dengan kunci resmi.",
+        "Kalimat \"Jika tuduhan tersebut berlanjut dan pemerintah Amerika Serikat mengenakan bea masuk tambahan terhadap udang Indonesia.\" tidak lengkap (anak kalimat tanpa induk) di sumber.",
+        "Nama asosiasi dan istilah countervailing duty dicetak miring di sumber; spasi setelah titik pada \"benar.Jawaban\" hilang di sumber."
+      ]
+    },
+    {
+      "id": "EKO25-028",
+      "passage": null,
+      "nomor": "28",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25EKOKDAPAKE10SA-000000-0003",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Konsep Dasar Akuntansi",
+      "subelemen": "Persamaan Dasar Akuntansi dan Laporan Keuangan",
+      "kompetensi": "Menganalisis persamaan dasar akuntansi dan laporan keuangan",
+      "subkompetensi": null,
+      "indikator": "Menentukan pengaruh perubahan transaksi pada persamaan dasar akuntansi. (28)",
+      "soal": "Perhatikan beberapa transaksi keuangan berikut yang terjadi di PT Solusi Jasa Mandiri bergerak di perusahaan jasa konsultan teknologi:\nDiterima pembayaran tunai sebesar Rp10.000.000,00 dari klien atas jasa yang telah diberikan.\nDibayar sewa kantor untuk 3 bulan ke depan sebesar Rp6.000.000,00 secara tunai.\nMembeli peralatan kantor senilai Rp12.000.000,00 secara kredit.\nPemilik menambahkan investasi pribadi ke dalam perusahaan sebesar Rp15.000.000,00 melalui rekening bank perusahaan.\nMenerima tagihan listrik bulan ini sebesar Rp800.000,00 yang belum dibayar.\n\nBerdasarkan transaksi tersebut, manakah yang menyebabkan perubahan pada aset maupun kewajiban dalam persamaan dasar akuntansi?\nKlik pada semua jawaban yang benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Transaksi 1",
+        "Transaksi 2",
+        "Transaksi 3",
+        "Transaksi 4",
+        "Transaksi 5"
+      ],
+      "kunci": [
+        0,
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pengaruh pada persamaan Aset = Kewajiban + Modal: (1) kas +10.000.000, modal +10.000.000; (2) kas -6.000.000, sewa dibayar di muka +6.000.000, total aset tetap; (3) peralatan +12.000.000, utang +12.000.000; (4) kas/bank +15.000.000, modal +15.000.000; (5) utang +800.000, modal -800.000 (beban). Transaksi 1, 3, 4, dan 5 mengubah jumlah aset atau kewajiban; transaksi 2 hanya menukar satu aset dengan aset lain. Diperiksa keseimbangannya dengan Python.",
+      "halaman": [
+        28
+      ],
+      "catatan_transkripsi": [
+        "Transaksi pada stimulus tidak diberi nomor; nomor 1–5 pada pilihan diasumsikan mengikuti urutan baris.",
+        "Maksud \"perubahan pada aset maupun kewajiban\" ambigu: bila perubahan susunan aset dihitung, transaksi 2 juga benar (semua transaksi); bila dimaksud perubahan aset dan kewajiban sekaligus, hanya transaksi 3 yang memenuhi, padahal soal menyatakan jawaban benar lebih dari satu.",
+        "Perusahaan disebut \"PT\" padahal transaksinya memakai \"Pemilik menambahkan investasi pribadi\" (pola perusahaan perseorangan); disalin apa adanya."
+      ]
+    },
+    {
+      "id": "EKO25-029",
+      "passage": null,
+      "nomor": "29",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOKDAPAKE10SA-000000-0567",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Konsep Dasar Akuntansi",
+      "subelemen": "Persamaan Dasar Akuntansi dan Laporan Keuangan",
+      "kompetensi": "Menganalisis persamaan dasar akuntansi dan laporan keuangan",
+      "subkompetensi": null,
+      "indikator": "Menentukan catatan perubahan transaksi pada persamaan dasar akuntansi. (29)",
+      "soal": "Data keuangan Bengkel Tuan Akhtar periode Desember 2024 sebagai berikut:\nKas Rp10.000.000,00\nPiutang Rp7.000.000,00\nSewa dibayar dimuka Rp6.000.000,00\nPeralatan Rp8.500.000,00\nUtang usaha Rp8.000.000,00\nModal Rp23.500.000,00.\n\nApabila perusahaan membayar utang sebesar Rp2.000.000,00 dan biaya bunga sebesar Rp50.000,00 maka perubahan persamaan dasar akuntansi yang benar adalah ....",
+      "opsi": [
+        "harta berkurang menjadi Rp23.450.000,00, utang berkurang menjadi Rp6.000.000,00, dan modal bertambah menjadi Rp29.450.000,00",
+        "harta berkurang menjadi Rp29.450.000,00, utang berkurang menjadi Rp6.000.000,00, dan modal berkurang menjadi Rp23.450.000,00",
+        "harta berkurang menjadi Rp29.500.000,00, utang berkurang menjadi Rp6.000.000,00, dan modal tetap sebesar Rp23.500.000,00",
+        "harta bertambah menjadi Rp31.500.000,00, utang bertambah menjadi Rp8.000.000,00, dan modal tetap sebesar Rp23.500.000,00",
+        "harta bertambah menjadi Rp33.550.000,00, utang bertambah menjadi Rp10.000.000,00, dan modal bertambah menjadi Rp23.550.000,00"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Harta awal = 10.000.000 + 7.000.000 + 6.000.000 + 8.500.000 = 31.500.000 = utang 8.000.000 + modal 23.500.000. Membayar utang 2.000.000 dan bunga 50.000 tunai: harta 29.450.000, utang 6.000.000, modal 23.500.000 - 50.000 (beban bunga) = 23.450.000 (B). Diperiksa dengan Python.",
+      "halaman": [
+        29
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "EKO25-030",
+      "passage": null,
+      "nomor": "30",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25EKOKDAPAKE10SA-000000-0101",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Konsep Dasar Akuntansi",
+      "subelemen": "Persamaan Dasar Akuntansi dan Laporan Keuangan",
+      "kompetensi": "Menganalisis persamaan dasar akuntansi dan laporan keuangan",
+      "subkompetensi": null,
+      "indikator": "Menghitung modal awal atau modal akhir perusahaan jasa. (30)",
+      "soal": "Diketahui data keuangan rental kendaraan ”Sat Set” pada bulan Desember 2024 sebagai berikut!\n[Tabel]\n\nBerdasarkan data tersebut, besarnya modal awal adalah ....",
+      "tabel": [
+        [
+          "Akun",
+          "Jumlah"
+        ],
+        [
+          "Pendapatan operasional",
+          "Rp93.000.000,00"
+        ],
+        [
+          "Pendapatan non operasional",
+          "Rp300.000,00"
+        ],
+        [
+          "Beban operasional",
+          "Rp17.950.000,00"
+        ],
+        [
+          "Beban non operasional",
+          "Rp3.050.000,00"
+        ],
+        [
+          "Prive",
+          "Rp2.500.000,00"
+        ],
+        [
+          "Modal akhir",
+          "Rp195.000.000,00"
+        ]
+      ],
+      "opsi": [
+        "Rp120.200.000,00",
+        "Rp122.700.000,00",
+        "Rp125.200.000,00",
+        "Rp267.300.000,00",
+        "Rp269.800.000,00"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Laba bersih = 93.000.000 + 300.000 - 17.950.000 - 3.050.000 = 72.300.000. Modal akhir = modal awal + laba - prive, sehingga modal awal = 195.000.000 - 72.300.000 + 2.500.000 = 125.200.000 (C). Diperiksa dengan Python.",
+      "halaman": [
+        30
+      ],
+      "catatan_transkripsi": []
+    }
+  ]
+}

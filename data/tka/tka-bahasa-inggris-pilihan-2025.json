@@ -1,0 +1,1337 @@
+{
+  "id": "tka-bahasa-inggris-pilihan-2025",
+  "kode": "BINGP25",
+  "mapel": "Bahasa Inggris",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Bahasa_Inggris_SMA_2025_Pilihan.pdf",
+    "halaman": 41,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai.",
+    "Sumber tidak mencetak nomor soal; nomor diambil dari angka di akhir indikator pada kotak \"Hierarki Indikator\" (1)–(30). Halaman tanpa kotak indikator dianggap versi lain dari nomor sebelumnya dan memakai kompetensi, subkompetensi, dan indikator dari kotak tersebut.",
+    "Nomor 1–5 dan 26–30 masing-masing muncul dalam dua versi (A dan B) dengan teks berbeda: teks \"Balancing Our Online and Offline Selves\" (P01) dan teks BNPL (P02).",
+    "Nomor 26–30 (halaman 32–41) mengulang soal nomor 1–5 dengan kode soal, teks, dan pilihan yang sama; hanya kotak indikatornya yang berbeda pada nomor 27–30.",
+    "Teks bacaan dicetak ulang utuh di setiap halaman soal; salinan-salinan itu dibandingkan secara visual dan tidak ditemukan perbedaan isi. Tiap tangkapan layar terpotong menjadi dua atau tiga bagian, tetapi tidak ada kalimat yang hilang.",
+    "Beberapa kotak indikator memuat subkompetensi dan indikator yang tidak sejalan (mis. nomor 2, 14, 27–30), dan isi beberapa soal tidak cocok dengan indikatornya (mis. nomor 3 versi B, 7–10, 12). Kompetensi, subkompetensi, dan indikator disalin apa adanya dari kotak.",
+    "Soal bertabel dua kolom (True/False, Agree/Disagree, Cause/Effect, dsb.) dicatat sebagai format benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama.",
+    "Medan tambahan 'kode_sumber' pada tiap soal memuat kode soal yang tercetak di atas teks (mis. 25BIGLANPTXI18SL-250079-0690), karena kode berbeda untuk setiap soal walaupun teksnya sama."
+  ],
+  "teks": [
+    {
+      "id": "P01",
+      "judul": "Balancing Our Online and Offline Selves",
+      "teks": "In today's world, the line between our online and offline lives is becoming less clear. Many people create ideal versions of themselves on social media, which often do not fully match who they really are. This difference is called \"digital dissonance\"—the gap between how we present ourselves online and who we truly are in real life. This can affect our mental health and the quality of our relationships.\n\nFirst, the pressure to keep a perfect online image can cause stress, anxiety, and low self-esteem. When we compare ourselves to the happy and successful posts of others, we may feel like we are not good enough. It is important to remember that what we see online is only a small part of someone's life, not the whole story. Reminding ourselves of this can reduce the harmful effects of unrealistic comparisons and improve our self-worth.\n\nSecond, carefully crafted online personas can reduce honesty in real-life interactions. People might act differently online to gain approval or likes. This can harm genuine communication and relationships. Over time, this may create distance between friends or family members who feel they no longer know the \"real\" person behind the screen.\n\nTo address this, we need to be mindful and responsible when using digital platforms. Being mindful means paying attention to whether our online behavior reflects our true values. It means thinking carefully before posting, being honest about our experiences, and understanding that social media is not the only way to measure success. Practicing digital mindfulness can help us use technology in a healthier, more balanced way.\n\nBy staying true to ourselves both online and offline, we can enjoy the benefits of technology without losing our authenticity. This balance helps us build better self-confidence and stronger, more meaningful relationships. In a connected world, being mindful of how we present ourselves online leads to a more honest and peaceful life.\n\nSumber: Adapted from: https://medium.com/@alextimofte/the-vanishing-line-where-our-online-and-offline-selves-meet-90188f187b42",
+      "jenis": "nonfiksi (exposition text)",
+      "halaman": [
+        1,
+        4,
+        5,
+        7,
+        10,
+        32,
+        35,
+        36,
+        38,
+        41
+      ]
+    },
+    {
+      "id": "P02",
+      "judul": "The Influence of Buy Now Pay Later (BNPL) Existence on the Level of Impulsive Buying Behavior in Society",
+      "teks": "The impact of the Buy Now Pay Later (BNPL) system is evident in individual behaviors, where it can ease payments in urgent situations, particularly when buying necessary items rather than merely desired ones, especially when financial conditions are inadequate. This phenomenon is notably prevalent among individuals aged 18 to 21 years, as late adolescents are still influenced by various internal and external psychological factors, which hampers their ability to self-regulate.\n\nThe findings from a study highlight the significant impact of BNPL on impulsive buying behavior among e-commerce users in Indonesia. The increasing integration of pay later options within e-commerce platforms offers a convenient solution for users to defer payments. This convenience, while beneficial for those in need of flexible financial solutions, inadvertently encourages users to make more impulsive purchases, driven by the perceived ease and lack of immediate financial commitment.\n\nOne notable aspect observed in the study is the correlation between gender and shopping frequency, with women showing a higher tendency for frequent shopping compared to men. Women, for example, tend to be more responsive to promotions and discounts, especially in ecommerce, where targeted advertisements are tailored to attract shoppers with offers that appeal to their preferences.\n\nAdditionally, the convenience of shopping from home and the availability of various options for household, personal care, and family needs align more closely with women's purchasing behavior patterns. Technological advancements in online transactions have made shopping easier and more accessible than ever before. Features like BNPL not only add flexibility but also make the purchasing process more seamless.\n\nTo wrap up, the BNPL system has two sides: the positive aspect, which assists users in acquiring essential products during financial crises and represents an innovation in payment methods; and the negative aspect, where this system may encourage consumerist behavior and lead to impulsive buying tendencies within society.\n\nSumber: Adapted from: https://journal.unm.ac.id/index.php/JE3S/article/download/4659/2722",
+      "jenis": "nonfiksi (exposition/discussion text)",
+      "halaman": [
+        2,
+        3,
+        6,
+        8,
+        9,
+        33,
+        34,
+        37,
+        39,
+        40
+      ]
+    },
+    {
+      "id": "P03",
+      "judul": "Do Electric Vehicles Shape a Sustainable Future?",
+      "teks": "The growing popularity of electric vehicles (EVs) has sparked global discussions about their role in shaping a sustainable future. As nations strive to reduce carbon emissions and transition to cleaner energy sources, EVs have been widely promoted as a practical alternative to traditional gasoline-powered cars. However, despite their many benefits, the future of electric vehicles remains a topic of debate due to various challenges that must still be addressed.\n\nOn the one hand, the advantages of electric vehicles are clear. EVs produce zero tailpipe emissions, which means they do not release harmful gases such as carbon dioxide or nitrogen oxide that contribute to air pollution and climate change. Furthermore, they are quieter, reducing noise pollution in cities. As battery technology improves, EVs can travel longer distances, making them more convenient for everyday use. Additionally, governments around the world are offering financial incentives, including tax breaks and subsidies, to encourage people to buy electric cars, making them more affordable than ever before.\n\nOn the other hand, there are still several drawbacks to consider. One major concern is the limited availability of charging stations, especially in rural or remote areas, which makes long-distance travel more difficult. Charging times can also be inconvenient compared to the quick refueling of conventional cars. Another issue is the environmental cost of battery production. Mining for lithium and other rare materials used in EV batteries can harm ecosystems and involve high energy use. Moreover, disposing of used batteries poses a long-term environmental risk unless proper recycling methods are widely adopted.\n\nIn conclusion, while electric vehicles offer a promising solution to some of the world's most pressing environmental problems, their future success depends on addressing current limitations. Investment in charging infrastructure, sustainable battery production, and public awareness will be essential to ensure that EVs are not only clean but also practical and accessible for everyone. The future of transportation may well be electric, but it will require careful planning and cooperation among governments, industries, and individuals to realize its full potential.\n\nSumber: SME News Service. (2025, July 12). Electric vehicles: The road ahead - Benefits, drawbacks & what the future holds. Sustainability ME News. https://www.sustainabilitymenews.com/transport/electric-vehicles-the-road-ahead-benefits-drawbacks-what-the-future-holds; The Lifeology Editorial Team. (2024, July 3). Advantages and disadvantages of electric vehicles: A comprehensive analysis. Lifeology. https://thelifeology.com/advantages-and-disadvantages-of-electric-vehicles/2024; Alanazi, F. (2023). Electric vehicles: benefits, challenges, and potential solutions for widespread adaptation. Applied sciences, 13(10), 6016.",
+      "jenis": "nonfiksi (discussion text)",
+      "halaman": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "id": "P04",
+      "judul": "The Rise of Finfluencers",
+      "teks": "In today's rapidly evolving digital age, understanding personal finance has become essential—yet many still find investing, budgeting, and growing wealth difficult to grasp. That's where financial influencers, or \"finfluencers,\" play a crucial role. These individuals simplify complex financial topics, making them accessible to a broader audience and empowering people to make informed financial choices.\n\nFinfluencers share useful advice on managing money, from saving and investing to tackling debt. Unlike conservative advisors, they utilize social media and create short videos as tools to educate followers. A study in 2023 found that 76% of people learn faster through visual and short form content vs. traditional articles. Therefore, whether you're just starting to study the stock market or trying to structure monthly budget, finfluencers provide real, practical, and easy-to-understand insights.\n\nOne of the major advantages of following finfluencers is their openness. Many share their personal experiences, including financial wins and setbacks, which builds authenticity and trust. A survey in 2024 reveals that 78% of consumers trust 'people like themselves' or relatable experts over corporations. This shows their authenticity will drive positive result. Furthermore, they also stay current with economic trends, cryptocurrency updates, and passive income ideas, which help their audiences stay ahead in a shifting financial landscape.\n\nAdditionally, finfluencers serve as motivation by sharing relatable success stories and encouraging habits like saving for early retirement or building financial independence. Some even help protect their followers by debunking financial myths and warning against high-risk ventures like meme stocks and speculative crypto schemes.\n\nWith the right guidance, you can become more financially empowered. There's no need to navigate your financial journey alone when credible, expert advice is just a scroll away. Start learning from finfluencers today and begin shaping a more secure financial future.\n\nSumber: Adapted from: 1. https://artafinance.com/insights/gen-z-in-crisis-money-mental-health-and-the-fight-for-stability#whats-fueling-the-crisis; 2. https://www.wesleyan.co.uk/the-next-step/blog/detail/financial-influencers; 3. https://dfpi.ca.gov/news/insights/social-media-finfluencers-who-should-you-trust/; 4. https://www.simplyacademy.com/news-post/the-impact-of-finfluencers-on-the-financial-advice-sector/; 5. https://www.youtube.com/watch?v=ILsXSJeF9Xc&ab_channel=ThePlainBagel",
+      "jenis": "nonfiksi (exposition text)",
+      "halaman": [
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "id": "P05",
+      "judul": "Urban Farming: Vertical Garden as an Alternative",
+      "teks": "As urban populations grow and farmland becomes scarcer, vertical farming has emerged as an innovative solution to food production challenges. Vertical farming involves growing crops in stacked layers, often in controlled indoor environments using hydroponics or aeroponics. This method promises many benefits, but it also comes with some drawbacks that must be considered.\n\nOne major advantage of vertical farming is its efficient use of space. Since crops are grown vertically rather than horizontally, this system is ideal for cities where land is limited. It allows fresh produce to be grown close to consumers, reducing transportation costs and carbon emissions. Additionally, vertical farms can operate year-round, independent of seasonal changes, ensuring a steady supply of food.\n\nAnother benefit is the reduced environmental impact compared to traditional farming. Vertical gardens use up to 90% less water because they recycle water within the system. They also eliminate the need for chemical pesticides and herbicides, resulting in cleaner water systems and healthier ecosystems. Moreover, since crops don't require soil, there is no risk of soil degradation or erosion.\n\nHowever, there are also notable disadvantages to vertical farming. One of the biggest concerns is the high initial cost of setting up a vertical farm. These systems require advanced technology, LED lighting, climate control, and automation, which can be expensive to install and maintain. In addition, vertical farming uses a significant amount of electricity, especially for lighting, which may offset some of its environmental benefits if the energy is not sourced from renewable resources.\n\nDespite these challenges, vertical farming remains a promising option for sustainable agriculture, especially in urban areas. While it may not fully replace traditional farming, it offers a way to grow food more efficiently in the face of population growth and climate change. As technology improves and costs decrease, vertical farming could play a key role in feeding future generations in a more sustainable way.\n\nSumber: (n.d.). Advantages and disadvantages of vertical farming. Agri Planting. https://agriplanting.com/advantages-and-disadvantages-of-vertical-farming/; Glover, E., & Urwin, M. (2024, January 5). Is vertical farming the future of agriculture? Inside the growing tech industry changing the way we cultivate food. Built In. https://builtin.com/articles/vertical-farming; New Agri India. (2024, November 1). Vertical farming: A modern approach to urban agriculture. New Agri India. https://newagriindia.com/vertical-farming-an-approach-to-urban-agriculture/",
+      "jenis": "nonfiksi (discussion text)",
+      "halaman": [
+        21,
+        22,
+        23,
+        24,
+        25
+      ]
+    },
+    {
+      "id": "P06",
+      "judul": "Fast Fashion: Convenience at a Cost",
+      "teks": "Fast fashion refers to the production of inexpensive clothing in response to rapidly changing trends. It allows people to buy stylish clothes quickly and at low prices. In many cities, young people enjoy following online trends and changing their outfits often. But this lifestyle choice comes with serious consequences, especially for the environment.\n\nSupporters of fast fashion argue that it makes clothing more accessible. In the past, many people could only afford new clothes a few times a year. Now, with lower prices and faster delivery, fashion feels more democratic. Some businesses are even trying to reduce waste by reusing materials or selling secondhand clothing. These small steps are part of what is called a \"circular economy,\" where products are reused or recycled instead of thrown away. If supported by technology and better systems, this approach could help reduce the negative impact of fast fashion.\n\nHowever, the problems linked to fast fashion are still severe. The fashion industry is responsible for around 8–10% of global carbon emissions and about 20% of industrial water pollution. Producing just one cotton shirt uses up enough water to supply a person with drinking water for two years. Many fast fashion items are made from materials that are not biodegradable, meaning they stay in landfills for hundreds of years. Because these clothes are often low in quality, people wear them only a few times before discarding them. In some countries, clothing consumption has grown by over 50% in the last decade, while the average use of each item has fallen sharply.\n\nFinding a balance between style and responsibility is not easy. Recycling clothes remains a challenge, and not all donated clothes are reused. Still, changes are possible. Some governments are starting to create rules that make companies more responsible for waste. Education also plays an important role. If more people understand the impact of their shopping habits, they may begin to choose better quality items and buy fewer things. In the end, fashion can still be fun—but it must also be fair and sustainable.\n\nSumber: Source: Long, X. (2025). How does fast fashion affect the environment? Economics Observatory. https://www.economicsobservatory.com/how-does-fast-fashion-affect-the-environment",
+      "jenis": "nonfiksi (discussion text)",
+      "halaman": [
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ]
+    }
+  ],
+  "soal": [
+    {
+      "id": "BINGP25-001A",
+      "passage": "P01",
+      "nomor": "1 (versi A)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan/mengidentifikasi informasi: Mampu menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan informasi eksplisit pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (1)",
+      "soal": "What are the negative effects of online life on a person's mental health?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "It may distance friends or family.",
+        "It can lower self-confidence.",
+        "It can reduce honesty.",
+        "It may cause anxiety.",
+        "It can lead to stress."
+      ],
+      "kunci": [
+        1,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Paragraf kedua: tekanan citra daring \"can cause stress, anxiety, and low self-esteem\"; low self-esteem disamakan dengan menurunnya rasa percaya diri. Jarak dengan keluarga dan berkurangnya kejujuran disebut sebagai dampak pada hubungan, bukan kesehatan mental.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI18SL-250079-0690"
+    },
+    {
+      "id": "BINGP25-001B",
+      "passage": "P02",
+      "nomor": "1 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan/mengidentifikasi informasi: Mampu menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan informasi eksplisit pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (1)",
+      "soal": "Which statement supports the study result about BNPL impact on consumerism?",
+      "opsi": [
+        "Simplified payments via BNPL can prompt impulsive purchases.",
+        "Adults who manage spending well are the main BNPL users.",
+        "BNPL drives customers to seek unnecessary promotions.",
+        "Payment preferences such as BNPL affects global economic conditions.",
+        "BNPL offers a convenient lifestyle for young adults aged 18-21 years old."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf kedua: kemudahan menunda pembayaran \"inadvertently encourages users to make more impulsive purchases\".",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI22SL-250115-0418"
+    },
+    {
+      "id": "BINGP25-002A",
+      "passage": "P02",
+      "nomor": "2 (versi A)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan sebab-akibat: Mampu menyimpulkan suatu peristiwa/kebijakan/fenomena dalam teks memengaruhi atau dipengaruhi oleh faktor lain.",
+      "indikator": "Menilai cakupan perspektif pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (2)",
+      "soal": "Which of the following ideas could be effectively added before the conclusion to strengthen the writer's argument?",
+      "opsi": [
+        "BNPL is also influenced by seasonal changes such as end-of-year sales or the holiday season.",
+        "Many BNPL companies have experienced rapid growth and have expanded into international markets.",
+        "BNPL allows consumers to purchase goods and services and defer payment over time.",
+        "The growing use of BNPL reflects broader shifts in consumer culture and financial habits.",
+        "The concept of BNPL offers consumers an alternative to traditional credit."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Kesimpulan teks menekankan dampak BNPL pada perilaku konsumtif; gagasan bahwa penggunaan BNPL mencerminkan pergeseran budaya konsumen dan kebiasaan finansial paling langsung memperkuatnya. Pilihan C dan E hanya mengulang definisi BNPL.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPINI23SL-250115-0436"
+    },
+    {
+      "id": "BINGP25-002B",
+      "passage": "P01",
+      "nomor": "2 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan sebab-akibat: Mampu menyimpulkan suatu peristiwa/kebijakan/fenomena dalam teks memengaruhi atau dipengaruhi oleh faktor lain.",
+      "indikator": "Menilai cakupan perspektif pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (2)",
+      "soal": "Which option indicates that the text represents only a single viewpoint?",
+      "opsi": [
+        "The text discusses only the negative effects of social media.",
+        "The text only discusses the history of digital dissonance.",
+        "The text only emphasizes the solution for mental illness.",
+        "The text presents problems without solutions.",
+        "The text provide less factual evidence."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks hanya membahas dampak negatif digital dissonance (stres, kecemasan, berkurangnya kejujuran) tanpa menyajikan sisi positif media sosial; pilihan D salah karena teks memberi solusi (mindfulness).",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPINI26SL-250079-0687"
+    },
+    {
+      "id": "BINGP25-003A",
+      "passage": "P01",
+      "nomor": "3 (versi A)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Menilai keakuratan dan kecukupan informasi: Mampu menilai kredibilitas informasi menilai kredibilitas informasi yang disajikan di dalam teks.",
+      "indikator": "Menilai kredibilitas informasi pada exposition text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (3)",
+      "soal": "The text presents certain facts about the issue. Mrs Laurent claims these facts are not entirely accurate.\nWhich statement below most strongly supports her claim?\nThere is more than one correct answers. Please choose more than one correct answers!",
+      "opsi": [
+        "Certain information in the text cannot be verified.",
+        "The facts presented happened only in the past.",
+        "Some information in the text lacks verifiable evidence.",
+        "The text presents problems without providing solutions.",
+        "The text highlights issues that are irrelevant to modern times"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks tidak mencantumkan data, penelitian, atau sumber untuk klaim seperti dampak stres dan kecemasan, sehingga informasinya tidak dapat diverifikasi; pilihan lain tidak sesuai isi teks (teks memberi solusi dan membahas masa kini).",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Tokoh \"Mrs Laurent\" disebut dalam soal tanpa pengenalan di teks maupun di bagian lain soal.",
+        "Pilihan A dan C hampir sama maknanya (informasi tidak dapat diverifikasi / tidak memiliki bukti yang dapat diverifikasi)."
+      ],
+      "kode_sumber": "25BIGLANEVAI30SL-250079-0695"
+    },
+    {
+      "id": "BINGP25-003B",
+      "passage": "P02",
+      "nomor": "3 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Menilai keakuratan dan kecukupan informasi: Mampu menilai kredibilitas informasi menilai kredibilitas informasi yang disajikan di dalam teks.",
+      "indikator": "Menilai kredibilitas informasi pada exposition text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (3)",
+      "soal": "Why did the writer choose to present both the benefits and drawbacks of the Buy Now Pay Later system?",
+      "opsi": [
+        "To analyze and inform readers about the dual impact of the BNPL system, especially in the context of e-commerce in Indonesia.",
+        "To expose the downside of BNPL, where the ease and convenience of deferred payment can lead to impulsive buying behavior.",
+        "To generalize the concept of the Buy Now Pay Later (BNPL) system and its tremendous effect on Indonesian e-commerce.",
+        "To evaluate the effectiveness of the Buy Now Pay Later (BNPL) system on the economic growth in Indonesia.",
+        "To convince the readers to use the Buy Now Pay Later (BNPL) system as the ultimate payment system in Indonesia."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Penutup teks: \"the BNPL system has two sides\" (positif dan negatif) dalam konteks pengguna e-commerce di Indonesia; penulis menginformasikan dampak ganda itu, bukan hanya sisi negatif.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Soal menanyakan tujuan penulisan (kode soal PINI), sedangkan kotak indikator nomor 3 yang mendahuluinya tentang menilai kredibilitas informasi."
+      ],
+      "kode_sumber": "25BIGLANPINI24SL-250115-0427"
+    },
+    {
+      "id": "BINGP25-004A",
+      "passage": "P01",
+      "nomor": "4 (versi A)",
+      "format": "benar-salah",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Menilai fakta atau opini: Mampu mengevaluasi fakta atau opini dalam teks berdasarkan bukti-bukti pendukung yang disajikan penulis",
+      "indikator": "Mengevaluasi fakta/opini pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (4)",
+      "soal": "Which of the following statements reflect digital dissonance or mindful digital behavior? For each statement, select DIGITAL DISSONANCE or DIGITAL BEHAVIOUR!",
+      "opsi": [
+        "Thinking carefully before posting to reflect personal values.",
+        "Using social media as a tool to build authentic relationships.",
+        "Acting differently online to hide true feelings and impress others."
+      ],
+      "kunci": [
+        false,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Digital Dissonance, Salah = Mindful Digital Behavior.) Berpikir sebelum mengunggah dan membangun hubungan autentik termasuk perilaku mindful (paragraf 4-5); bertindak berbeda secara daring untuk mendapat pengakuan termasuk digital dissonance (paragraf 3).",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [
+        "Perintah soal menyebut pilihan \"DIGITAL BEHAVIOUR\", sedangkan judul kolom tabel \"Mindful Digital Behavior\"."
+      ],
+      "kolom": [
+        "Digital Dissonance",
+        "Mindful Digital Behavior"
+      ],
+      "kode_sumber": "25BIGLANEVAI29SL-250079-0762"
+    },
+    {
+      "id": "BINGP25-004B",
+      "passage": "P02",
+      "nomor": "4 (versi B)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Menilai fakta atau opini: Mampu mengevaluasi fakta atau opini dalam teks berdasarkan bukti-bukti pendukung yang disajikan penulis",
+      "indikator": "Mengevaluasi fakta/opini pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (4)",
+      "soal": "How does BNPL affect shopping behaviour of certain gender?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Both men and women have a similar shopping behavior that leads to consumerism.",
+        "BNPL leads women to be more impulsive in their buying behavior as it is easier and more comfortable.",
+        "Factors like age, gender, marketing strategies, and technology are related to the shift of BNPL.",
+        "The BNPL, as the latest payment system, enables men to purchase items they previously could not afford.",
+        "BNPL prevents men from aggressive shopping behaviour as it is mostly used by women."
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Paragraf 3-4: perempuan lebih sering berbelanja dan BNPL membuat belanja lebih mudah dan mulus (B); teks juga mengaitkan usia 18-21, gender, iklan bertarget, dan kemajuan teknologi (C).",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Hanya pilihan B yang jelas didukung teks; C dipilih sebagai jawaban kedua karena soal meminta lebih dari satu jawaban, tetapi rumusannya (\"the shift of BNPL\") kabur."
+      ],
+      "kode_sumber": "25BIGLANPINI25SL-250115-0428"
+    },
+    {
+      "id": "BINGP25-005A",
+      "passage": "P02",
+      "nomor": "5 (versi A)",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Memprediksi implikasi atau konsekuensi: Mampu memperkirakan dampak dari suatu gagasan atau argumen yang disampaikan dalam teks.",
+      "indikator": "Memperkirakan dampak dari suatu gagasan pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (5)",
+      "soal": "Please decide whether you agree or disagree with the writer's arguments below.",
+      "opsi": [
+        "The arguments presented in the text are not only logical but also persuasive as they are supported by data from a study.",
+        "The text presents reasonable arguments and may possibly convince readers aged 18–21 to use BNPL.",
+        "The text has strong points about BNPL because the data are based on research."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "(Benar = Agree, Salah = Disagree.) Argumen teks bersandar pada temuan sebuah studi (paragraf 2-3), tetapi teks tidak bermaksud meyakinkan pembaca usia 18-21 untuk memakai BNPL; justru usia itu disebut sulit mengendalikan diri.",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Soal meminta pendapat (setuju/tidak setuju) sehingga kunci bergantung pada penilaian; pernyataan 1 juga bisa dinilai Disagree karena teks tidak menyajikan data angka dari studi tersebut.",
+        "Kode soal (EVAI) menunjukkan elemen Evaluasi, sedangkan kotak indikator nomor 5 yang mendahuluinya adalah Pemahaman Inferensial (memperkirakan dampak)."
+      ],
+      "kolom": [
+        "Agree",
+        "Disagree"
+      ],
+      "kode_sumber": "25BIGLANEVAI32SL-250115-0432"
+    },
+    {
+      "id": "BINGP25-005B",
+      "passage": "P01",
+      "nomor": "5 (versi B)",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Memprediksi implikasi atau konsekuensi: Mampu memperkirakan dampak dari suatu gagasan atau argumen yang disampaikan dalam teks.",
+      "indikator": "Memperkirakan dampak dari suatu gagasan pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari (5)",
+      "soal": "Which of the following situations may lead to increased stress or a loss of authenticity?\nPlease choose Increased Stress or Loss of Authencity based on the information presented in the text!",
+      "opsi": [
+        "Creating an idealized online persona that differs from one's real self.",
+        "Constantly comparing oneself to others' seemingly perfect social media posts.",
+        "Hiding one's true feelings on social media to avoid judgment."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Increased Stress, Salah = Loss of Authenticity.) Paragraf 2: membandingkan diri dengan unggahan orang lain menimbulkan stres; persona ideal dan menyembunyikan perasaan asli berkaitan dengan hilangnya keaslian (paragraf 1, 3, 5).",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 1 juga dapat dikaitkan dengan stres (paragraf 2: tekanan menjaga citra sempurna), sehingga kunci baris pertama tidak mutlak."
+      ],
+      "kolom": [
+        "Increased Stress",
+        "Loss of Authenticity"
+      ],
+      "kode_sumber": "25BIGLANPINI28SL-250079-0769"
+    },
+    {
+      "id": "BINGP25-006",
+      "passage": "P03",
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Mensintesis: mampu menggabungkan informasi dari sumber lain untuk mendapatkan pemahaman yang lebih komprehensif tentang suatu isu atau topik.",
+      "indikator": "Menyimpulkan beberapa informasi pada discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (6)",
+      "soal": "According to the text, why are electric vehicles considered better for the environment?",
+      "opsi": [
+        "They help reduce noise and air pollution.",
+        "They require no energy to produce batteries.",
+        "Their battery production is cheaper and more efficient.",
+        "They can be charged easily anywhere, even in rural areas.",
+        "They release carbon dioxide that contributes to global warming."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 2: EV tidak mengeluarkan gas penyebab polusi udara dan \"reducing noise pollution in cities\".",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI18SL-250077-0620"
+    },
+    {
+      "id": "BINGP25-007",
+      "passage": "P03",
+      "nomor": "7",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan detail pendukung: Mampu memperkirakan fakta tambahan yang mungkin dapat memperkuat atau memperjelas argumen dalam teks.",
+      "indikator": "Memperkirakan fakta tambahan pada discussion text dengan struktur kalimat kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (7)",
+      "soal": "What is mainly discussed in the text?\nDecide whether each statement is True or False according to the text!",
+      "opsi": [
+        "Electric vehicles do not produce harmful gases that cause air pollution and climate change.",
+        "The future of electric vehicles remains a topic of debate due to various challenges that must still be addressed.",
+        "Electric vehicles offer environmental solutions, but their success depends on addressing existing challenges."
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pernyataan 2 dan 3 merangkum gagasan utama (paragraf 1 dan 4). Pernyataan 1 hanya rincian paragraf 2 dan terlalu mutlak karena teks menyebut dampak lingkungan produksi baterai.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 1 benar sebagai rincian teks (\"zero tailpipe emissions\"), sehingga bisa dinilai True bila soal dibaca sebagai \"sesuai teks\", bukan \"gagasan utama\".",
+        "Soal menanyakan gagasan utama, sedangkan kotak indikator nomor 7 tentang memperkirakan fakta tambahan; isi soal nomor 7 dan 8 tampak tertukar terhadap indikatornya."
+      ],
+      "kolom": [
+        "True",
+        "False"
+      ],
+      "kode_sumber": "25BIGLANPTXI18SL-250077-0757"
+    },
+    {
+      "id": "BINGP25-008",
+      "passage": "P03",
+      "nomor": "8",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menyimpulkan tujuan penulisan pada discussion text dengan struktur kalimat kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (8)",
+      "soal": "Which additional facts would strengthen the writer's opinion that the limited availability of charging stations makes long-distance travel difficult?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Rural zones often have well-maintained roads for EV travel.",
+        "Some rural communities prefer gasoline cars over EVs.",
+        "Rural regions often lack more than a few charging stations per 100 km.",
+        "A new technology allows EV batteries to be fully recharged in under 10 minutes.",
+        "In rural zones, EV drivers may travel over 50 km before reaching a charging station."
+      ],
+      "kunci": [
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hanya fakta tentang sedikitnya stasiun pengisian dan jauhnya jarak antarstasiun di daerah pedesaan yang mendukung klaim paragraf 3; A dan D justru melemahkan, B tidak relevan.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Soal menanyakan fakta tambahan, sedangkan kotak indikator nomor 8 tentang menyimpulkan tujuan penulisan."
+      ],
+      "kode_sumber": "25BIGLANPINI23SL-250077-0741"
+    },
+    {
+      "id": "BINGP25-009",
+      "passage": "P03",
+      "nomor": "9",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan antar-ide: Mampu menghubungkan berbagai argumen, alasan, dan bukti dalam teks untuk memahami logika penyajian informasi.",
+      "indikator": "Menghubungkan bukti/argumen untuk memahami logika penyajian informasi pada discussion text dengan struktur kalimat kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (9)",
+      "soal": "What is the overall purpose of the text?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "To promote electric vehicles as a key solution to climate problems.",
+        "To argue that EVs may currently cause more harm than good.",
+        "To inform readers about both the pros and cons of electric vehicles.",
+        "To encourage balanced thinking about electric vehicle development.",
+        "To criticize governments for lacking support for electric transport."
+      ],
+      "kunci": [
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Teks diskusi menyajikan sisi \"On the one hand\" dan \"On the other hand\" lalu menyimpulkan bahwa keberhasilan EV bergantung pada penanganan keterbatasannya.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Soal menanyakan tujuan penulisan, sedangkan kotak indikator nomor 9 tentang menghubungkan bukti/argumen."
+      ],
+      "kode_sumber": "25BIGLANPINI24SL-250077-0753"
+    },
+    {
+      "id": "BINGP25-010",
+      "passage": "P03",
+      "nomor": "10",
+      "format": "benar-salah",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Menilai kekuatan argumen: Mampu mengevaluasi seberapa logis dan meyakinkan argumen yang disajikan dalam teks.",
+      "indikator": "Mengevaluasi seberapa logis dan meyakinkan argumen yang disajikan pada discussion text dengan struktur kalimat kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (10)",
+      "soal": "Which of the following statements presents a cause or an effect based on the text?\nDecide whether each statement is  CAUSE or  EFFECT according to the text!",
+      "opsi": [
+        "People are being incentivized to invest in electric vehicles.",
+        "Governments worldwide offer incentives to make EVs affordable.",
+        "People are encouraged to buy electric cars."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Cause, Salah = Effect.) Paragraf 2: pemerintah memberi insentif (sebab) \"to encourage people to buy electric cars\" (akibat).",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 1 dan 3 hampir bermakna sama, dan pernyataan 1 juga dapat dibaca sebagai sebab; kunci baris pertama tidak pasti.",
+        "Soal tentang hubungan sebab-akibat, sedangkan kotak indikator nomor 10 tentang menilai seberapa logis dan meyakinkan argumen."
+      ],
+      "kolom": [
+        "Cause",
+        "Effect"
+      ],
+      "kode_sumber": "25BIGLANPINI25SL-250077-0734"
+    },
+    {
+      "id": "BINGP25-011",
+      "passage": "P04",
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan/mengidentifikasi informasi: Mampu menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan informasi penting yang eksplisit exposition text dengan struktur kalimat sederhana serta kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (11)",
+      "soal": "People learn more easily from finfluencers and believe in them because the people ...",
+      "opsi": [
+        "enjoy finfluencers' short contents and think they have things in common.",
+        "no longer believe in traditional advisors because they are out of date.",
+        "anticipate a financial change which require guidance from finfluencers.",
+        "are facing more complicated financial issues that are difficult to tackle.",
+        "have used social media frequently in recent years and trust them more."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 2: 76% orang belajar lebih cepat lewat konten pendek; paragraf 3: 78% konsumen percaya pada \"people like themselves\".",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI22SL-250059-0655"
+    },
+    {
+      "id": "BINGP25-012",
+      "passage": "P04",
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Mengklasifikasi: Mampu mengelompokkan argumen, fakta, dan pendapat dalam teks berdasarkan kategori atau pola penyajian tertentu.",
+      "indikator": "Mengelompokkan argumen berdasarkan kategori atau pola penyajian tertentu exposition text dengan struktur kalimat sederhana serta kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (12)",
+      "soal": "What extra evidence could strengthen the point made in the text?",
+      "opsi": [
+        "Many social media channels invite finfluencers to their programme.",
+        "Finfluencers' contents used to get a little hype in social media.",
+        "Most of the people remain think financial issues are negligible.",
+        "Most audience are already well informed about personal finance.",
+        "Current financial topics rarely become trending in social media."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks menekankan peran dan pengaruh finfluencer; bukti bahwa banyak kanal mengundang finfluencer menunjukkan pengakuan atas peran itu, sedangkan pilihan lain justru melemahkan pentingnya finfluencer.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Soal menanyakan bukti tambahan, sedangkan kotak indikator nomor 12 tentang mengelompokkan argumen."
+      ],
+      "kode_sumber": "25BIGLANPINI23SL-250059-0653"
+    },
+    {
+      "id": "BINGP25-013",
+      "passage": "P04",
+      "nomor": "13",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menyimpulkan tujuan penulisan teks yang secara implisit disebutkan pada exposition text dengan struktur kalimat sederhana serta kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (13)",
+      "soal": "From the text, the writer wants to convince people to ....",
+      "opsi": [
+        "follow finfluencers in transforming their finance condition",
+        "join the trend by watching more finfluencers in social media",
+        "tackle their own finance problems by becoming finfluencer",
+        "learn how to be a reputable and knowledgeable finfluencer",
+        "create more short-form contents about financial independence"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf terakhir: \"Start learning from finfluencers today and begin shaping a more secure financial future.\"",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPINI24SL-250059-0639"
+    },
+    {
+      "id": "BINGP25-014",
+      "passage": "P04",
+      "nomor": "14",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menghubungkan bukti/agrumen untuk memahami logika penyajian informasi pada teks exposition dengan struktur kalimat sederhana serta kompleks dan menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (14)",
+      "soal": "What reasons does the writer give to support their main opinion?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Finfluencers' content is easy-to-digest for their audience.",
+        "Finfluencers' openness will damage their trustworthiness.",
+        "Finfluencers protect people from making reckless financial choices.",
+        "Finfluencers are those who study finance in higher education.",
+        "Finfluencers broaden their audience by employing social media."
+      ],
+      "kunci": [
+        0,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks menyebut konten finfluencer \"easy-to-understand\" (paragraf 2), mereka melindungi pengikut dengan membongkar mitos dan memperingatkan investasi berisiko (paragraf 4), dan memakai media sosial sehingga menjangkau \"a broader audience\" (paragraf 1-2).",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E menggabungkan dua bagian teks (media sosial dan audiens yang lebih luas) sehingga bisa saja tidak dimaksudkan sebagai kunci; hanya A dan C yang dinyatakan langsung sebagai alasan."
+      ],
+      "kode_sumber": "25BIGLANPINI25SL-250059-0638"
+    },
+    {
+      "id": "BINGP25-015",
+      "passage": "P04",
+      "nomor": "15",
+      "format": "benar-salah",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Mengevaluasi fakta atau opini dalam teks berdasarkan bukti-bukti pendukung yang disajikan penulis",
+      "indikator": "Mengevaluasi seberapa logis dan meyakinkan argumen yang disajikan dalam teks exposition dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (15)",
+      "soal": "In the text, the crucial role of finfluencers is well explained.\nWhich statement best supports the idea above?\nDecide whether each statement is Suitable or Unsuitable according to the text!",
+      "opsi": [
+        "They make financial lessons easier to understand for everyone.",
+        "Finfluencers mainly focus on warning people about risky investments.",
+        "Finfluencers' openness builds trust and keeps followers informed."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Suitable, Salah = Unsuitable.) Paragraf 1-3: finfluencer menyederhanakan topik keuangan dan keterbukaan mereka membangun kepercayaan; peringatan investasi berisiko hanya disebut \"Some even\", bukan fokus utama.",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Suitable",
+        "Unsuitable"
+      ],
+      "kode_sumber": "25BIGLANEVAI32SL-250059-0676"
+    },
+    {
+      "id": "BINGP25-016",
+      "passage": "P05",
+      "nomor": "16",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Mengidentifikasi informasi penting/poin-poin utama yang eksplisit disebutkan pada teks discussion/exposition dengan struktur kalimat kompleks menggunakan konteks akademik/vokasi/kehidupan sehari-hari. (16)",
+      "soal": "According to the text, which of the following is a major disadvantage of vertical farming?",
+      "opsi": [
+        "It uses more land than traditional farming.",
+        "It requires a large amount of electricity.",
+        "It pollutes water sources with pesticides.",
+        "It can only grow crops in certain seasons.",
+        "It increases transportation costs."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 4: \"vertical farming uses a significant amount of electricity, especially for lighting\".",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI18SL-250074-0419"
+    },
+    {
+      "id": "BINGP25-017",
+      "passage": "P05",
+      "nomor": "17",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan gagasan utama yang secara eksplisit disebutkan dalam teks pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (17)",
+      "soal": "What is the main focus of the text above?\nChoose the correct category!",
+      "opsi": [
+        "The development of vertical farming in cities.",
+        "The advanced technology system o used in vertical farming.",
+        "The potential benefits and challenges of vertical farming"
+      ],
+      "kunci": [
+        false,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Paragraf 1: metode ini \"promises many benefits, but it also comes with some drawbacks\"; isi teks membahas keuntungan dan kerugian, bukan perkembangan di kota atau teknologinya.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 2 memuat salah ketik \"system o\" dari sumber."
+      ],
+      "kolom": [
+        "True",
+        "False"
+      ],
+      "kode_sumber": "25BIGLANPTXI18SL-250074-0425"
+    },
+    {
+      "id": "BINGP25-018",
+      "passage": "P05",
+      "nomor": "18",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Memperkirakan fakta tambahan yang mungkin dapat memperkuat atau memperjelas argumen dalam teks.",
+      "indikator": "Memperkirakan fakta tambahan yang mungkin dapat memperkuat argumen pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (18)",
+      "soal": "Which of the following ideas would support the argument that vertical farming is a promising solution for sustainable food production?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Pests are rarely a problem in indoor vertical farms.",
+        "Some vertical farms are powered by solar and wind energy.",
+        "Many urban consumers prefer locally grown food from vertical farms.",
+        "Vertical farms use up to 95% less water than traditional farming.",
+        "Vertical farms need technical skills that few people currently have."
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Energi surya dan angin menjawab kekhawatiran konsumsi listrik (paragraf 4); sedikitnya hama mendukung tidak perlunya pestisida dan hemat air mendukung dampak lingkungan yang rendah (paragraf 3). Pilihan E melemahkan argumen.",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": [
+        "Pilihan D menyebut \"up to 95% less water\", sedangkan teks menyebut \"up to 90%\".",
+        "Pilihan C (preferensi konsumen kota) juga dapat dianggap mendukung, dan D bisa dianggap salah karena angkanya berbeda dari teks."
+      ],
+      "kode_sumber": "25BIGLANPINI23SL-250074-0413"
+    },
+    {
+      "id": "BINGP25-019",
+      "passage": "P05",
+      "nomor": "19",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menyimpulkan tujuan penulisan teks yang secara implisit dinyatakan pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (19)",
+      "soal": "What is the implied purpose of the text?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "To describe how vertical farming works and where it is typically used.",
+        "To explain why vertical farming is suitable for areas with limited farmland.",
+        "To persuade readers to support vertical farming over traditional farming.",
+        "To highlight both the benefits and challenges of vertical farming.",
+        "To show how vertical farming can contribute to future food sustainability."
+      ],
+      "kunci": [
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks membahas keuntungan dan kerugian (paragraf 1-4) lalu menyimpulkan bahwa vertical farming \"could play a key role in feeding future generations in a more sustainable way\" (paragraf 5).",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPINI24SL-250074-0414"
+    },
+    {
+      "id": "BINGP25-020",
+      "passage": "P05",
+      "nomor": "20",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan antar-ide: Mampu menghubungkan berbagai argumen, alasan, dan bukti dalam teks untuk memahami logika penyajian informasi.",
+      "indikator": "Menyimpulkan informasi/opini/fakta/argumen pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (20)",
+      "soal": "Read each statement below. Decide whether it is an argument or an explanation.",
+      "opsi": [
+        "Another benefit is the reduced environmental impact compared to traditional farming.",
+        "Vertical gardens use up to 90% less water because they recycle water within the system.",
+        "They eliminate the need for chemical pesticides and herbicides, resulting in cleaner water systems."
+      ],
+      "kunci": [
+        true,
+        false,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Argument, Salah = Explanation.) Kalimat 1 adalah kalimat utama paragraf 3 yang berisi klaim; kalimat 2 dan 3 menjelaskan/menyokong klaim itu dengan sebab dan akibat.",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 3 (\"resulting in cleaner water systems\") juga dapat dibaca sebagai argumen, sehingga kunci baris ketiga tidak pasti."
+      ],
+      "kolom": [
+        "Argument",
+        "Explanation"
+      ],
+      "kode_sumber": "25BIGLANPINI25SL-250074-0410"
+    },
+    {
+      "id": "BINGP25-021",
+      "passage": "P06",
+      "nomor": "21",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Mengidentifikasi informasi penting/poin-poin utama yang secara eksplisit disebutkan pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (21)",
+      "soal": "According to the text, what is one environmental impact caused by fast fashion?",
+      "opsi": [
+        "It makes clothes more affordable for many people.",
+        "It encourages people to recycle their old clothes.",
+        "It produces a significant amount of water pollution.",
+        "It produces appealing but low-quality clothing.",
+        "It encourages the emergence of the \"circular economy\"."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 3: industri fesyen bertanggung jawab atas \"about 20% of industrial water pollution\".",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [],
+      "kode_sumber": "25BIGLANPTXI18SL-250156-0783"
+    },
+    {
+      "id": "BINGP25-022",
+      "passage": "P06",
+      "nomor": "22",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Mengidentikasi informasi penting tersurat (kelompok argumen/ringkasan) pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (22)",
+      "soal": "What does the text say about fast fashion?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "The fashion industry is responsible for up to 10% of global carbon emissions.",
+        "A circular economy involves customers reusing or recycling materials to reduce waste.",
+        "Fast fashion clothes are created to be worn only a few times before being thrown away.",
+        "The use of biodegradable materials has reduced fast fashion's environmental impact.",
+        "Fast fashion became popular because it offers stylish and trendy clothes at low prices."
+      ],
+      "kunci": [
+        0,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Paragraf 3: \"around 8–10% of global carbon emissions\"; paragraf 1: fast fashion memungkinkan orang membeli pakaian bergaya dengan cepat dan murah. D bertentangan dengan teks.",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [
+        "Pilihan B dapat dianggap benar (teks: produk \"reused or recycled\"), tetapi teks mengaitkan circular economy dengan pelaku usaha, bukan konsumen.",
+        "Pilihan C dapat dianggap benar (pakaian dipakai \"only a few times\"), tetapi teks menyebut sebabnya mutu rendah, bukan bahwa pakaian dibuat untuk itu."
+      ],
+      "kode_sumber": "25BIGLANPTXI18SL-250156-0666"
+    },
+    {
+      "id": "BINGP25-023",
+      "passage": "P06",
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Membuat kerangka: Mampu menyusun poin-poin utama dalam teks ke dalam bentuk peta konsep/diagram/diagram alir atau daftar untuk memahami struktur penyajian informasi.",
+      "indikator": "Menyusun poin-poin utama dalam teks ke dalam bentuk diagram alir pada teks exposition/discussion dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (23)",
+      "soal": "The text discusses the phenomenon of fast fashion. Which of the following flowcharts best reflects the structure of the text?",
+      "opsi": [
+        "Introduction to fast fashion and its appeal → Benefits for accessibility and early steps toward sustainability → Environmental consequences and overconsumption → Call for consumer awareness and systemic change",
+        "Rise of fast fashion as a form of self-expression → Positive influence of online trends → Government bans on cheap clothing → Shift to secondhand as one of the solutions",
+        "Economic growth driven by fast fashion → Brands' investment in recycling systems → Uncontrolled textile waste → Eco-fashion supported by government regulations",
+        "Fast fashion's impact on small retailer → Fast fashion's impact on the economy → Fast fashion's impact on the environment → Fast fashion's impact on society",
+        "Influencers' role in fashion trends → Emergence of the \"circular economy\" → Environmental impact of clothing production → Importance of educating consumers"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Urutan paragraf: pengenalan dan daya tarik fast fashion, manfaat aksesibilitas dan circular economy, dampak lingkungan dan konsumsi berlebih, lalu ajakan pada kesadaran konsumen dan aturan pemerintah.",
+      "halaman": [
+        28,
+        29
+      ],
+      "catatan_transkripsi": [
+        "Pilihan jawaban berupa gambar diagram alir empat kotak berpanah; isi kotak ditranskripsikan dan dihubungkan dengan tanda →.",
+        "Pilihan A ada di halaman 28, sedangkan pilihan B–E berlanjut di halaman 29."
+      ],
+      "kode_sumber": "25BIGLANPTXI20SL-250156-0656"
+    },
+    {
+      "id": "BINGP25-024",
+      "passage": "P06",
+      "nomor": "24",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menyimpulkan pesan yang implisit dinyatakan pada teks exposition/discussion dengan struktur kalimat kompleks dengan konteks akademik/vokasi/kehidupan sehari-hari. (24)",
+      "soal": "What important values about fast fashion does the writer want readers to understand from the text?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Fast fashion allows people to access popular clothing from everywhere with fast delivery.",
+        "The fashion industry causes major environmental problems such as pollution and waste.",
+        "Buying better quality and fewer clothing items is one solution to fast fashion's problem.",
+        "Instead of buying, people should donate and reuse their old clothes to avoid fast fashion.",
+        "A circular economy by clothing producers helps make the fashion industry more sustainable."
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Paragraf 3 menegaskan masalah lingkungan yang \"still severe\"; paragraf 4 menyarankan memilih barang bermutu dan membeli lebih sedikit. D bertentangan dengan teks (\"not all donated clothes are reused\").",
+      "halaman": [
+        30
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E juga dapat dipertahankan karena teks menyebut circular economy \"could help reduce the negative impact\" bila didukung teknologi dan sistem yang lebih baik."
+      ],
+      "kode_sumber": "25BIGLANPINI24SL-250156-0683"
+    },
+    {
+      "id": "BINGP25-025",
+      "passage": "P06",
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Mengevaluasi fakta atau opini dalam teks berdasarkan bukti-bukti pendukung yang disajikan penulis",
+      "indikator": "Mengevaluasi fakta atau opini pada teks exposition/discussion struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (25)",
+      "soal": "Which fact in the text best supports this opinion?",
+      "opsi": [
+        "Some businesses now reuse materials and promote secondhand clothing to reduce waste.",
+        "Many people enjoy following online trends and buying new clothes at low prices.",
+        "Clothing consumption has risen while the average use of each item has gone down.",
+        "Producing cotton shirts consumes large amounts of water and affects global resources.",
+        "Governments are beginning to make fashion companies more responsible for waste."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Jika opini yang dimaksud adalah \"the problems linked to fast fashion are still severe\" (paragraf 3), fakta peningkatan konsumsi dan turunnya pemakaian tiap pakaian paling langsung mendukungnya.",
+      "halaman": [
+        31
+      ],
+      "catatan_transkripsi": [
+        "Soal merujuk pada \"this opinion\", tetapi opini tersebut tidak dicantumkan dalam soal maupun ditandai dalam teks.",
+        "Pilihan D (air untuk produksi kaus katun) juga dapat menjadi kunci, tergantung opini yang dimaksud."
+      ],
+      "kode_sumber": "25BIGLANEVAI29SL-250156-0665"
+    },
+    {
+      "id": "BINGP25-026A",
+      "passage": "P01",
+      "nomor": "26 (versi A)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan/mengidentifikasi informasi: Mampu menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan informasi eksplisit pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (26)",
+      "soal": "What are the negative effects of online life on a person's mental health?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "It may distance friends or family.",
+        "It can lower self-confidence.",
+        "It can reduce honesty.",
+        "It may cause anxiety.",
+        "It can lead to stress."
+      ],
+      "kunci": [
+        1,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Paragraf kedua: tekanan citra daring \"can cause stress, anxiety, and low self-esteem\"; low self-esteem disamakan dengan menurunnya rasa percaya diri. Jarak dengan keluarga dan berkurangnya kejujuran disebut sebagai dampak pada hubungan, bukan kesehatan mental.",
+      "halaman": [
+        32
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-001A: kode soal 25BIGLANPTXI18SL-250079-0690, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 26."
+      ],
+      "kode_sumber": "25BIGLANPTXI18SL-250079-0690"
+    },
+    {
+      "id": "BINGP25-026B",
+      "passage": "P02",
+      "nomor": "26 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang secara eksplisit disebutkan dalam teks, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi secara sistematis.",
+      "subkompetensi": "Menemukan/mengidentifikasi informasi: Mampu menemukan atau mengidentifikasi informasi penting yang secara eksplisit disebutkan dalam teks.",
+      "indikator": "Menemukan informasi eksplisit pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (26)",
+      "soal": "Which statement supports the study result about BNPL impact on consumerism?",
+      "opsi": [
+        "Simplified payments via BNPL can prompt impulsive purchases.",
+        "Adults who manage spending well are the main BNPL users.",
+        "BNPL drives customers to seek unnecessary promotions.",
+        "Payment preferences such as BNPL affects global economic conditions.",
+        "BNPL offers a convenient lifestyle for young adults aged 18-21 years old."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf kedua: kemudahan menunda pembayaran \"inadvertently encourages users to make more impulsive purchases\".",
+      "halaman": [
+        33
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-001B: kode soal 25BIGLANPTXI22SL-250115-0418, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 26."
+      ],
+      "kode_sumber": "25BIGLANPTXI22SL-250115-0418"
+    },
+    {
+      "id": "BINGP25-027A",
+      "passage": "P02",
+      "nomor": "27 (versi A)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Memperkirakan fakta tambahan yang mungkin dapat memperkuat atau memperjelas argumen dalam teks.",
+      "indikator": "Menilai cakupan perspektif pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (27)",
+      "soal": "Which of the following ideas could be effectively added before the conclusion to strengthen the writer's argument?",
+      "opsi": [
+        "BNPL is also influenced by seasonal changes such as end-of-year sales or the holiday season.",
+        "Many BNPL companies have experienced rapid growth and have expanded into international markets.",
+        "BNPL allows consumers to purchase goods and services and defer payment over time.",
+        "The growing use of BNPL reflects broader shifts in consumer culture and financial habits.",
+        "The concept of BNPL offers consumers an alternative to traditional credit."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Kesimpulan teks menekankan dampak BNPL pada perilaku konsumtif; gagasan bahwa penggunaan BNPL mencerminkan pergeseran budaya konsumen dan kebiasaan finansial paling langsung memperkuatnya. Pilihan C dan E hanya mengulang definisi BNPL.",
+      "halaman": [
+        34
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-002A: kode soal 25BIGLANPINI23SL-250115-0436, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 27."
+      ],
+      "kode_sumber": "25BIGLANPINI23SL-250115-0436"
+    },
+    {
+      "id": "BINGP25-027B",
+      "passage": "P01",
+      "nomor": "27 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Memperkirakan fakta tambahan yang mungkin dapat memperkuat atau memperjelas argumen dalam teks.",
+      "indikator": "Menilai cakupan perspektif pada exposition/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (27)",
+      "soal": "Which option indicates that the text represents only a single viewpoint?",
+      "opsi": [
+        "The text discusses only the negative effects of social media.",
+        "The text only discusses the history of digital dissonance.",
+        "The text only emphasizes the solution for mental illness.",
+        "The text presents problems without solutions.",
+        "The text provide less factual evidence."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks hanya membahas dampak negatif digital dissonance (stres, kecemasan, berkurangnya kejujuran) tanpa menyajikan sisi positif media sosial; pilihan D salah karena teks memberi solusi (mindfulness).",
+      "halaman": [
+        35
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-002B: kode soal 25BIGLANPINI26SL-250079-0687, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 27."
+      ],
+      "kode_sumber": "25BIGLANPINI26SL-250079-0687"
+    },
+    {
+      "id": "BINGP25-028A",
+      "passage": "P01",
+      "nomor": "28 (versi A)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menilai kredibilitas informasi pada exposition text/discussion textt dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (28)",
+      "soal": "The text presents certain facts about the issue. Mrs Laurent claims these facts are not entirely accurate.\nWhich statement below most strongly supports her claim?\nThere is more than one correct answers. Please choose more than one correct answers!",
+      "opsi": [
+        "Certain information in the text cannot be verified.",
+        "The facts presented happened only in the past.",
+        "Some information in the text lacks verifiable evidence.",
+        "The text presents problems without providing solutions.",
+        "The text highlights issues that are irrelevant to modern times"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks tidak mencantumkan data, penelitian, atau sumber untuk klaim seperti dampak stres dan kecemasan, sehingga informasinya tidak dapat diverifikasi; pilihan lain tidak sesuai isi teks (teks memberi solusi dan membahas masa kini).",
+      "halaman": [
+        36
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-003A: kode soal 25BIGLANEVAI30SL-250079-0695, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 28.",
+        "Tokoh \"Mrs Laurent\" disebut dalam soal tanpa pengenalan di teks maupun di bagian lain soal.",
+        "Pilihan A dan C hampir sama maknanya (informasi tidak dapat diverifikasi / tidak memiliki bukti yang dapat diverifikasi)."
+      ],
+      "kode_sumber": "25BIGLANEVAI30SL-250079-0695"
+    },
+    {
+      "id": "BINGP25-028B",
+      "passage": "P02",
+      "nomor": "28 (versi B)",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "Menilai kredibilitas informasi pada exposition text/discussion textt dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (28)",
+      "soal": "Why did the writer choose to present both the benefits and drawbacks of the Buy Now Pay Later system?",
+      "opsi": [
+        "To analyze and inform readers about the dual impact of the BNPL system, especially in the context of e-commerce in Indonesia.",
+        "To expose the downside of BNPL, where the ease and convenience of deferred payment can lead to impulsive buying behavior.",
+        "To generalize the concept of the Buy Now Pay Later (BNPL) system and its tremendous effect on Indonesian e-commerce.",
+        "To evaluate the effectiveness of the Buy Now Pay Later (BNPL) system on the economic growth in Indonesia.",
+        "To convince the readers to use the Buy Now Pay Later (BNPL) system as the ultimate payment system in Indonesia."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Penutup teks: \"the BNPL system has two sides\" (positif dan negatif) dalam konteks pengguna e-commerce di Indonesia; penulis menginformasikan dampak ganda itu, bukan hanya sisi negatif.",
+      "halaman": [
+        37
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-003B: kode soal 25BIGLANPINI24SL-250115-0427, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 28."
+      ],
+      "kode_sumber": "25BIGLANPINI24SL-250115-0427"
+    },
+    {
+      "id": "BINGP25-029A",
+      "passage": "P01",
+      "nomor": "29 (versi A)",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan antar-ide: Mampu menghubungkan berbagai argumen, alasan, dan bukti dalam teks untuk memahami logika penyajian informasi.",
+      "indikator": "Mengevaluasi fakta/opini pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (29)",
+      "soal": "Which of the following statements reflect digital dissonance or mindful digital behavior? For each statement, select DIGITAL DISSONANCE or DIGITAL BEHAVIOUR!",
+      "opsi": [
+        "Thinking carefully before posting to reflect personal values.",
+        "Using social media as a tool to build authentic relationships.",
+        "Acting differently online to hide true feelings and impress others."
+      ],
+      "kunci": [
+        false,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Digital Dissonance, Salah = Mindful Digital Behavior.) Berpikir sebelum mengunggah dan membangun hubungan autentik termasuk perilaku mindful (paragraf 4-5); bertindak berbeda secara daring untuk mendapat pengakuan termasuk digital dissonance (paragraf 3).",
+      "halaman": [
+        38
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-004A: kode soal 25BIGLANEVAI29SL-250079-0762, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 29.",
+        "Perintah soal menyebut pilihan \"DIGITAL BEHAVIOUR\", sedangkan judul kolom tabel \"Mindful Digital Behavior\"."
+      ],
+      "kolom": [
+        "Digital Dissonance",
+        "Mindful Digital Behavior"
+      ],
+      "kode_sumber": "25BIGLANEVAI29SL-250079-0762"
+    },
+    {
+      "id": "BINGP25-029B",
+      "passage": "P02",
+      "nomor": "29 (versi B)",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: Mampu mengidentifikasi/menyimpulkan informasi tersirat dalam teks, serta menghubungkannya dengan pengetahuan dan pengalaman yang relevan",
+      "subkompetensi": "Menyimpulkan hubungan antar-ide: Mampu menghubungkan berbagai argumen, alasan, dan bukti dalam teks untuk memahami logika penyajian informasi.",
+      "indikator": "Mengevaluasi fakta/opini pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (29)",
+      "soal": "How does BNPL affect shopping behaviour of certain gender?\nThere is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "Both men and women have a similar shopping behavior that leads to consumerism.",
+        "BNPL leads women to be more impulsive in their buying behavior as it is easier and more comfortable.",
+        "Factors like age, gender, marketing strategies, and technology are related to the shift of BNPL.",
+        "The BNPL, as the latest payment system, enables men to purchase items they previously could not afford.",
+        "BNPL prevents men from aggressive shopping behaviour as it is mostly used by women."
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Paragraf 3-4: perempuan lebih sering berbelanja dan BNPL membuat belanja lebih mudah dan mulus (B); teks juga mengaitkan usia 18-21, gender, iklan bertarget, dan kemajuan teknologi (C).",
+      "halaman": [
+        39
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-004B: kode soal 25BIGLANPINI25SL-250115-0428, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 29.",
+        "Hanya pilihan B yang jelas didukung teks; C dipilih sebagai jawaban kedua karena soal meminta lebih dari satu jawaban, tetapi rumusannya (\"the shift of BNPL\") kabur."
+      ],
+      "kode_sumber": "25BIGLANPINI25SL-250115-0428"
+    },
+    {
+      "id": "BINGP25-030A",
+      "passage": "P02",
+      "nomor": "30 (versi A)",
+      "format": "benar-salah",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Mengevaluasi seberapa logis dan meyakinkan argumen yang disajikan dalam teks.",
+      "indikator": "Memperkirakan dampak dari suatu gagasan pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (30)",
+      "soal": "Please decide whether you agree or disagree with the writer's arguments below.",
+      "opsi": [
+        "The arguments presented in the text are not only logical but also persuasive as they are supported by data from a study.",
+        "The text presents reasonable arguments and may possibly convince readers aged 18–21 to use BNPL.",
+        "The text has strong points about BNPL because the data are based on research."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "(Benar = Agree, Salah = Disagree.) Argumen teks bersandar pada temuan sebuah studi (paragraf 2-3), tetapi teks tidak bermaksud meyakinkan pembaca usia 18-21 untuk memakai BNPL; justru usia itu disebut sulit mengendalikan diri.",
+      "halaman": [
+        40
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-005A: kode soal 25BIGLANEVAI32SL-250115-0432, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 30.",
+        "Soal meminta pendapat (setuju/tidak setuju) sehingga kunci bergantung pada penilaian; pernyataan 1 juga bisa dinilai Disagree karena teks tidak menyajikan data angka dari studi tersebut."
+      ],
+      "kolom": [
+        "Agree",
+        "Disagree"
+      ],
+      "kode_sumber": "25BIGLANEVAI32SL-250115-0432"
+    },
+    {
+      "id": "BINGP25-030B",
+      "passage": "P01",
+      "nomor": "30 (versi B)",
+      "format": "benar-salah",
+      "kompetensi": "Evaluasi dan Apresiasi: Mampu menilai kualitas argumen, keakuratan informasi, serta menanggapi teks secara kritis berdasarkan sudut pandang logis dan objektif.",
+      "subkompetensi": "Mengevaluasi seberapa logis dan meyakinkan argumen yang disajikan dalam teks.",
+      "indikator": "Memperkirakan dampak dari suatu gagasan pada exposition text/discussion text dengan struktur kalimat kompleks menggunakan konteks vokasional/akademik/kehidupan sehari-hari. (30)",
+      "soal": "Which of the following situations may lead to increased stress or a loss of authenticity?\nPlease choose Increased Stress or Loss of Authencity based on the information presented in the text!",
+      "opsi": [
+        "Creating an idealized online persona that differs from one's real self.",
+        "Constantly comparing oneself to others' seemingly perfect social media posts.",
+        "Hiding one's true feelings on social media to avoid judgment."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(Benar = Increased Stress, Salah = Loss of Authenticity.) Paragraf 2: membandingkan diri dengan unggahan orang lain menimbulkan stres; persona ideal dan menyembunyikan perasaan asli berkaitan dengan hilangnya keaslian (paragraf 1, 3, 5).",
+      "halaman": [
+        41
+      ],
+      "catatan_transkripsi": [
+        "Duplikat BINGP25-005B: kode soal 25BIGLANPINI28SL-250079-0769, teks, soal, dan pilihan jawaban sama persis, muncul lagi dengan nomor 30.",
+        "Pernyataan 1 juga dapat dikaitkan dengan stres (paragraf 2: tekanan menjaga citra sempurna), sehingga kunci baris pertama tidak mutlak."
+      ],
+      "kolom": [
+        "Increased Stress",
+        "Loss of Authenticity"
+      ],
+      "kode_sumber": "25BIGLANPINI28SL-250079-0769"
+    }
+  ]
+}
