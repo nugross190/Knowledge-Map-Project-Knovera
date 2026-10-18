@@ -1,0 +1,919 @@
+{
+  "id": "tka-ppkn-pilihan-2025",
+  "kode": "PPKN25",
+  "mapel": "Pendidikan Pancasila (PPKn)",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_PPKn_SMA_2025_Pilihan.pdf",
+    "halaman": 26,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; huruf miring (mis. role model) tidak dipertahankan.",
+    "Judul halaman 1 sumber: \"Soal TKA Pendidikan Pancasila (Pilihan) SMA/MA/SMK Tahun 2025\".",
+    "PDF memuat 28 soal (nomor 1–7, 9–20, dan 22–30) dalam 26 halaman. Nomor 8 dan 21 belum tersedia: di sumber hanya tercetak catatan \"SOAL NO.8 OTW\" (halaman 7) dan \"SOAL NO.21 OTW\" (halaman 17).",
+    "Hampir semua soal menilai sikap atau penalaran nilai, sehingga banyak kunci usulan bersifat tafsiran dan perlu dicek guru PPKn; pilihan yang sama-sama masuk akal dicatat di catatan_transkripsi.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "PPKN25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCHMPP04SA-000000-0666",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Hak asasi manusia dalam perspektif Pancasila",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis peran Pancasila dalam menyeimbangkan hak dan kewajiban warga negara (1)",
+      "soal": "Kepentingan pedagang dan pengguna jalan sangat berbeda; pedagang ingin meningkatkan pendapatan dan menjual produk, sementara pengguna jalan membutuhkan kelancaran dan keamanan pergerakan di jalan umum. Namun, berjualan di fasilitas jalan seperti trotoar atau badan jalan dapat mengganggu fungsi jalan, membahayakan keselamatan, dan melanggar hukum.\nPeran Pancasila dalam memastikan bahwa semua individu memiliki akses yang sama terhadap keadilan berdasarkan ilustrasi tersebut adalah ....",
+      "opsi": [
+        "memberi panduan kepada pedagang cara berjualan yang dapat menjamin hak mendapatkan penghidupan yang layak",
+        "mengarahkan pedagang dan pengguna jalan agar mengutamakan kepentingan bersama setelah kepentingan pribadi terlaksana",
+        "mengingatkan pentingnya kebersamaan dalam menjamin rasa keadilan dan keseimbangan antara hak dan kewajiban",
+        "mengupayakan agar kegiatan pedagang mengutamakan kepentingan pengguna jalan untuk kenyamanan dan ketertiban",
+        "menyelaraskan dua kepentingan untuk menciptakan harmoni sosial yang mengedepankan keseimbangan hak dan kewajiban"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Ilustrasi berupa dua kepentingan yang bertentangan; peran Pancasila adalah menyelaraskan keduanya dengan menyeimbangkan hak dan kewajiban (E). A dan D hanya memihak satu kelompok, B menempatkan kepentingan pribadi lebih dulu; C juga menyebut keseimbangan hak dan kewajiban tetapi tidak menjawab penyelarasan dua kepentingan.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Opsi C dan E mirip; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "PPKN25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU46KUUP08SA-000000-0119",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Ketentuan UUD NRI Tahun 1945 dalam kehidupan berbangsa dan bernegara",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Memberikan contoh hak/kewajiban warga negara yang mencerminkan salah satu pasal UUD NRI Tahun 1945 (2)",
+      "soal": "Pasal 27 ayat (3) UUD NRI Tahun 1945 menyatakan bahwa \"Setiap warga negara berhak dan wajib ikut serta dalam upaya pembelaan negara.\"\nBerdasarkan ilustrasi, hak warga negara yang mencerminkan pasal tersebut yaitu warga negara berhak ....",
+      "opsi": [
+        "mengikuti kegiatan sosial dan wajib mematuhi peraturan yang ditetapkan oleh pemerintah dalam lingkungannya",
+        "memperoleh pendidikan dan wajib menerapkan nilai-nilai kebangsaan dalam kehidupan sehari-hari",
+        "menyampaikan aspirasi kepada pemerintah dan wajib menaati aturan hukum yang berlaku di masyarakat",
+        "terlibat dalam kegiatan kemasyarakatan dan wajib ikut menjaga ketertiban serta ketentraman lingkungan sekitarnya",
+        "memperoleh perlindungan negara dan wajib ikut berpartisipasi menjaga keamanan serta kedaulatan bangsa"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pasal 27 ayat (3) mengatur hak dan kewajiban bela negara; hanya opsi E yang berkaitan dengan pertahanan, keamanan, dan kedaulatan bangsa.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25PKNBTIMKSP15SA-000000-0192",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Mengelola kebinekaan sebagai modal sosial pembangunan nasional",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menentukan sikap positif yang dapat dijadikan modal sosial untuk pembangunan nasional (3)",
+      "soal": "Pemerintah terus mendorong harmoni dalam keberagaman melalui berbagai program. Salah satunya adalah Festival Toleransi dan Budaya Pelajar yang melibatkan siswa SMA dari berbagai daerah. Kegiatan ini meliputi pertukaran budaya, pameran kearifan lokal, dan diskusi lintas suku, agama, serta bahasa.\nBerdasarkan informasi tersebut, pernyataan mana saja yang menunjukkan sikap positif sebagai modal sosial untuk pembangunan nasional?\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "terlibat secara aktif dalam pertukaran budaya dan belajar mengenali keunikan budaya yang lain",
+        "menjalin komunikasi secara wajar dengan tetap menjaga kenyamanan dalam keberagaman budaya",
+        "menghormati simbol-simbol dari berbagai adat dan agama saat berkunjung ke daerah-daerah lain",
+        "membagikan pengalaman kegiatan lintas budaya di media sosial sebagai inspirasi untuk masyarakat",
+        "menyampaikan pendapat dengan hati-hati saat melakukan diskusi agar keputusan segera terwujud"
+      ],
+      "kunci": [
+        0,
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Modal sosial dibangun dari jaringan, kepercayaan, dan norma bersama: keterlibatan aktif dalam pertukaran budaya (A), komunikasi yang menjaga kenyamanan dalam keberagaman (B), dan menghormati simbol adat dan agama (C). E menekankan keputusan cepat, bukan sikap toleran.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Opsi D (membagikan pengalaman lintas budaya sebagai inspirasi) juga dapat dianggap benar; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "PPKN25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNNKRKWNP19SA-000000-0526",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Menjaga keutuhan NKRI dalam konteks Wawasan Nusantara",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis upaya untuk melindungi keutuhan NKRI dari dampak negatif ideologi tersebut (4)",
+      "soal": "Penyebaran paham radikalisme di media sosial untuk merubah ideologi negara semakin marak terjadi. Hal ini memengaruhi generasi muda dan menciptakan konflik horizontal di masyarakat.\nUpaya terbaik untuk melindungi keutuhan NKRI dari dampak tersebut adalah...",
+      "opsi": [
+        "mengadakan dialog terbuka dengan kelompok radikal untuk mencari titik temu dan mengurangi konflik ideologi",
+        "memperkuat pendidikan Pancasila dan literasi digital di sekolah serta melibatkan tokoh agama dalam edukasi masyarakat",
+        "meningkatkan pengawasan ketat terhadap aktivitas media sosial dan memberikan teguran bagi penyebar konten radikal",
+        "mengorganisir kampanye nasional anti radikalisme melalui berbagai platform media untuk membentuk opini publik",
+        "membentuk forum diskusi antargenerasi untuk membahas perbedaan pandangan ideologi secara demokratis"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Upaya yang menyasar akar masalah (pemahaman ideologi dan kecakapan bermedia sosial generasi muda) sekaligus melibatkan masyarakat adalah penguatan pendidikan Pancasila dan literasi digital bersama tokoh agama (B). Opsi lain bersifat reaktif, sepihak, atau berisiko (dialog mencari titik temu dengan kelompok radikal).",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": [
+        "Indikator merujuk \"ideologi tersebut\" tanpa anteseden; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "PPKN25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNNKRANKP20SA-000000-0551",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Mewaspadai ancaman terhadap kedudukan NKRI",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis cara warga negara dalam mengatasi tantangan indonesia dalam menjaga keutuhan NKRI (5)",
+      "soal": "Indonesia sebagai negara kepulauan yang multietnis menghadapi tantangan disintegrasi yang sering dipicu oleh isu ketidakadilan, diskriminasi, dan penyebaran hoaks.\nCara warga negara dalam mengatasi tantangan tersebut dapat dilakukan dengan ....",
+      "opsi": [
+        "mengajak masyarakat menjaga budaya lokal dengan membatasi pengaruh budaya luar yang masuk",
+        "menyebarkan informasi yang benar dan membangun dialog antarkelompok untuk mencegah konflik",
+        "mendorong pembentukan kelompok sosial yang terdiri dari warga dengan latar belakang yang sama",
+        "berpartisipasi dalam diskusi di media sosial dengan menyuarakan pandangan kelompok minoritas",
+        "meminimalkan pernyataan atau aktivitas yang dapat menimbulkan gesekan antarkelompok di masyarakat"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Opsi B menjawab ketiga pemicu: informasi benar melawan hoaks dan dialog antarkelompok mencegah konflik akibat ketidakadilan dan diskriminasi. Opsi lain tidak menyentuh pemicunya atau justru memperkuat sekat kelompok.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCPDNP02SA-000000-0323",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Pancasila sebagai Dasar Negara",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis pentingnya Pancasila sebagai dasar negara dalam memecahkan masalah pada peristiwa ketatanegaraan di Indonesia (6)",
+      "soal": "Terjadi perdebatan sengit di masyarakat dan parlemen terkait wacana amandemen UUD 1945 di mana sebagian pihak mengusulkan agar pemilihan presiden dikembalikan ke MPR, sedangkan sebagian lain ingin mempertahankan sistem pemilihan langsung oleh rakyat. Ketegangan ini menimbulkan kekhawatiran akan mundurnya demokrasi di Indonesia.\nBerdasarkan ilustrasi, pentingnya Pancasila untuk memecahkan masalah tersebut karena ....",
+      "opsi": [
+        "menjadi dasar mempertimbangkan setiap perubahan agar tetap menjamin kedaulatan rakyat dan keadilan sosial secara seimbang",
+        "digunakan sebagai alat hukum tertinggi Indonesia agar perubahan aturan tidak menyalahi sistem pemerintahan yang sudah berlaku",
+        "menjadi acuan teknis lembaga legislatif di Indonesia dalam menentukan batasan perubahan agar tidak melewati kewenangan politik",
+        "digunakan oleh lembaga eksekutif agar pelaksanaan pemerintahan di Indonesia tetap stabil di tengah konflik politik yang terjadi",
+        "dijadikan dasar keputusan oleh lembaga yudikatif untuk menilai apakah usulan perubahan tersebut sesuai kepentingan negara"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Sebagai dasar negara, Pancasila menjadi pedoman nilai dalam menimbang perubahan konstitusi (kedaulatan rakyat sila ke-4, keadilan sosial sila ke-5). Opsi lain keliru menyebut Pancasila sebagai alat hukum atau acuan teknis satu lembaga.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU48SPDP10SA-000000-0091",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Hubungan struktural pemerintah pusat dan daerah",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menentukan alasan kerja sama antara pemerintah pusat dengan pemerintah daerah dilakukan (7)",
+      "soal": "Salah satu bentuk kerja sama antara pemerintah pusat dan pemerintah daerah adalah dalam hal Penanggulangan Kemiskinan. Kerja sama dalam penanggulangan kemiskinan melibatkan pemerintah pusat yang memberikan kebijakan dan program, sementara pemerintah daerah melaksanakan program tersebut di tingkat daerah termasuk bantuan sosial, pelatihan, dan pengembangan usaha mikro.\nBentuk kerja sama ini dilakukan karena ...",
+      "opsi": [
+        "Pemerintah pusat mengembangkan program-program yang dapat diimplementasikan oleh pemerintah daerah, seperti program pelatihan kerja, bantuan sosial, dan pengembangan ekonomi lokal",
+        "Pemerintah daerah dapat mengembangkan ekonomi lokal dengan menciptakan lapangan kerja, mendukung usaha kecil dan menengah, serta meningkatkan infrastruktur",
+        "Pemerintah daerah dapat menyediakan program bantuan sosial seperti bantuan pangan, bantuan biaya pendidikan, dan bantuan kesehatan untuk masyarakat miskin.",
+        "Pemerintah daerah dapat mengidentifikasi dan memetakan kemiskinan di daerahnya, sehingga dapat mengajukan permohonan bantuan kepada pemerintah pusat untuk mengatasinya",
+        "Pemerintah daerah dapat meningkatkan kapasitas masyarakat melalui pelatihan dan pendidikan, sehingga masyarakat dapat meningkatkan keterampilan dan kemampuan mereka"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Stimulus menggambarkan pembagian peran: pusat menyusun kebijakan dan program, daerah melaksanakannya. Opsi A menyatakan hubungan itu; B, C, dan E hanya menyebut peran daerah, dan D menyebut alur permohonan bantuan.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [
+        "Semua opsi berupa pernyataan yang benar secara umum; kunci perlu dicek.",
+        "Di bawah soal ini tercetak catatan \"SOAL NO.8 OTW\"; soal nomor 8 tidak ada di PDF."
+      ]
+    },
+    {
+      "id": "PPKN25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNNKRKWNP19SA-000000-0594",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Menjaga keutuhan NKRI dalam konteks Wawasan Nusantara",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis pentingnya salah satu nilai gatra pada wawasan nusantara dalam menjaga keutuhan NKRI (9)",
+      "soal": "Panca gatra adalah aspek sosial kemasyarakatan dalam wawasan nusantara yang bersifat dinamis meliputi ideologi, politik, ekonomi, sosial budaya dan pertahanan keamanan. Gatra ekonomi sebagai salah satu aspek dalam wawasan nusantara merujuk pada aspek ekonomi yang menjadi bagian integral dari cara pandang bangsa Indonesia terhadap wilayah dan potensi negaranya. Wawasan nusantara dalam bidang ekonomi juga mengamanatkan pelaksanaan demokrasi ekonomi.\nPentingnya hal tersebut dalam menjaga keutuhan NKRI adalah ....",
+      "opsi": [
+        "mewujudkan pembangunan yang menjamin terwujudnya pemerataan pendapatan",
+        "mendorong untuk terus mengembangkan kehidupan ekonomi yang kuat dan mandiri",
+        "menekankan pentingnya eksplorasi dan eksploitasi potensi ekonomi antardaerah di Indonesia",
+        "melibatkan potensi dan partisipasi dari seluruh masyarakat, bukan hanya pihak tertentu",
+        "mengeksplorasi seluruh kekayaan alam dan potensi ekonomi strategis Indonesia"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Keutuhan NKRI terancam oleh kesenjangan antardaerah; wawasan nusantara bidang ekonomi menuntut pemerataan hasil pembangunan (A). D juga mencerminkan demokrasi ekonomi tetapi tidak langsung dikaitkan dengan keutuhan wilayah.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Opsi A dan D sama-sama sejalan dengan demokrasi ekonomi; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "PPKN25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCHMPP04SA-000000-0198",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Hak asasi manusia dalam perspektif Pancasila",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menentukan respons perilaku yang mencerminkan hak asasi manusia sesuai dengan sila Pancasila (10)",
+      "soal": "Dalam negara demokrasi, pemilihan umum merupakan sarana utama mewujudkan kedaulatan rakyat. Pemilu merupakan proses penting dalam sistem demokrasi yang memungkinkan rakyat untuk memilih wakil-wakil mereka dalam pemerintahan.\nPerilaku yang mencerminkan hak asasi manusia sesuai dengan sila keempat Pancasila berdasarkan ilustrasi tersebut adalah ....",
+      "opsi": [
+        "menggunakan hak pilih sesuai dengan arah kebijakan dari partai politik",
+        "menghormati perbedaan pendapat dan pilihan politik dalam masyarakat",
+        "berpartisipasi aktif dengan cara mengikuti kampanye seluruh partai politik",
+        "mengikuti debat dalam pemilu untuk menilai strategi pemenangan para kandidat",
+        "menerima hasil dari setiap tahapan pemilu karena pelaksanaannya di awasi negara"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Sila keempat menekankan kedaulatan rakyat dan musyawarah, yang menuntut penghormatan terhadap perbedaan pendapat dan pilihan politik (B). Opsi lain menyerahkan pilihan kepada partai, berlebihan, atau menerima hasil tanpa sikap kritis.",
+      "halaman": [
+        8,
+        9
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU47KLNP09SA-000000-0606",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Kewenangan lembaga-lembaga negara menurut UUD NRI Tahun 1945",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menganalisis cara menyelesaikan permasalahan dalam sistem ketatanegaraan dikaitkan dengan kewenangan lembaga negara Indonesia (11)",
+      "soal": "Dalam pelaksanaan Pilkada Serentak tahun 2024 lalu, terjadi perselisihan hasil penghitungan suara salah satu daerah. Dua pasangan calon saling mengklaim kemenangan, sementara rekapitulasi suara oleh KPU daerah dituding tidak transparan. Salah satu pasangan calon kemudian menggugat hasil Pilkada tersebut karena diduga terjadi kecurangan yang bersifat terstruktur, sistematis, dan masif (TSM) yang dapat memengaruhi hasil akhir pemilihan.\nBerdasarkan sistem ketatanegaraan Indonesia, cara menyelesaikan permasalahan tersebut sesuai kewenangan lembaga negara adalah ...",
+      "opsi": [
+        "Presiden menetapkan peraturan pemerintah untuk mengatur ketentuan penyelesaian perbedaan penghitungan suara",
+        "Mahkamah Konstitusi melaksanakan kewenangannya dengan memutus perselisihan tentang hasil pemilukada",
+        "Komisi Pemilihan Umum membuat aturan internal tentang penyelesaian perselisihan hasil perhitungan suara pemilukada",
+        "Badan Pengawas Pemilihan Umum memerintahkan dilakukannya pemungutan suara ulang untuk kepastian hasil",
+        "DPRD bersama Pemerintah Daerah membuat peraturan daerah yang mengatur pemilukada yang lebih lengkap"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Perselisihan hasil pemilihan kepala daerah diperiksa dan diputus oleh Mahkamah Konstitusi (B).",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNBTIANTP17SA-000000-0549",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Ancaman terhadap negara dalam Bhinneka Tunggal Ika",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis upaya untuk mencegah/menghadapi ancaman terhadap integrasi nasional (12)",
+      "soal": "Diskriminasi adalah perlakuan yang tidak adil terhadap seseorang atau kelompok berdasarkan perbedaan suku, agama, ras, jenis kelamin, atau status sosial. Apabila dibiarkan, diskriminasi dapat memicu konflik dan menjadi ancaman serius bagi integrasi nasional Indonesia.\nBerdasarkan ilustrasi, upaya yang perlu dilakukan untuk menghadapi ancaman tersebut agar integrasi nasional tetap terjaga adalah....",
+      "opsi": [
+        "mendorong tumbuhnya semangat memperjuangkan kebebasan individu dalam kehidupan bernegara",
+        "mengajak setiap individu untuk saling mengakui sebagai makhluk yang memiliki kebebasan dan merdeka",
+        "mengutamakan dialog antarwarga untuk memperkuat rasa saling pengertian dan mencegah prasangka",
+        "menempatkan orang lain sesuai posisi sosialnya sebagai bagian dari tatanan masyarakat yang teratur",
+        "menumbuhkan sikap saling menghormati karena setiap manusia memiliki harkat dan martabat yang sama"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Diskriminasi berakar pada sikap tidak mengakui kesamaan harkat dan martabat manusia, sehingga upaya yang langsung menjawabnya adalah menumbuhkan sikap saling menghormati atas dasar kesamaan martabat (E). D justru membenarkan perbedaan perlakuan; A dan B menekankan kebebasan individu.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Opsi C (dialog antarwarga untuk mencegah prasangka) juga masuk akal; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "PPKN25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "benar-salah",
+      "kode_sumber": "25PKNNKRPWKP18SA-000000-0230",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Peran serta warga negara dalam menjaga keutuhan NKRI",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan peran warga negara dalam menjaga keutuhan NKRI berdasarkan dinamika IPOLEKSOSBUDHANKAM (13)",
+      "soal": "Globalisasi ekonomi mendorong masuknya berbagai produk luar negeri ke pasar Indonesia. Apabila tidak disikapi dengan bijak, hal ini dapat menurunkan daya saing produk lokal dan mengancam perekonomian nasional.\nBerdasarkan ilustrasi, klik pada pilihan Benar atau Salah dari setiap pernyataan berikut yang menunjukkan peran warga negara dalam menjaga keutuhan NKRI berdasarkan dinamika tersebut!",
+      "opsi": [
+        "berperan sebagai konsumen yang mendukung produk dalam negeri untuk memperkuat perekonomian nasional",
+        "berpartisipasi dalam kegiatan ekonomi yang mendorong daya saing bangsa di tengah arus globalisasi",
+        "berpatisipasi dengan membeli produk-produk dalam negeri karena memiliki harga lebih murah"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pernyataan 1 dan 2 menunjukkan peran ekonomi untuk memperkuat ketahanan nasional. Pernyataan 3 membeli produk dalam negeri karena harganya lebih murah, bukan karena kesadaran mendukung perekonomian nasional.",
+      "halaman": [
+        10,
+        11
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"berpatisipasi\" pada pernyataan 3 disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "PPKN25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCMSPP01SA-000000-0126",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Makna dan hubungan sila-sila dalam Pancasila",
+      "kompetensi": "kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi perilaku yang berkaitan dengan antarSila dalam Pancasila (14)",
+      "soal": "Bunyi sila kedua dan keempat Pancasila yaitu \"Kemanusiaan yang Adil dan Beradab\" dan \"Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan Perwakilan\".\nPerilaku yang berhubungan dengan kedua sila Pancasila tersebut adalah ...",
+      "opsi": [
+        "menghormati perbedaan pendapat teman dan bekerja sama untuk menyelesaikan tugas kelompok dengan baik",
+        "memberikan perlakuan yang sama kepada semua orang tanpa membeda-bedakan latar belakang suku dan agama",
+        "bekerja sama dengan warga lain untuk membangun fasilitas umum yang dapat dinikmati oleh seluruh masyarakat",
+        "memberikan bantuan kepada korban banjir suatu daerah berdasarkan hasil musyawarah seluruh warga kampung",
+        "menghormati hak asasi manusia dengan bersikap adil dan beradab kepada sesama antarumat beragama"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Opsi D memuat unsur kemanusiaan (menolong korban banjir, sila ke-2) sekaligus musyawarah (sila ke-4). Opsi lain hanya mencerminkan satu sila atau sila lain.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "benar-salah",
+      "kode_sumber": "25PKNU47KLNP09SA-000000-0173",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Kewenangan lembaga-lembaga negara menurut UUD NRI Tahun 1945",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan kewenangan lembaga negara (15)",
+      "soal": "Mahkamah Konstitusi (MK) adalah lembaga negara yang mempunyai wewenang sebagaimana di atur dalam Undang-Undang Dasar Negara RI Tahun 1945 .\nKlik pada pilihan Benar atau Salah dari setiap pernyataan berikut berkaitan dengan Wewenang Mahkamah Konstitusi!",
+      "opsi": [
+        "memutuskan pendapat DPR mengenai dugaan pelanggaran oleh Presiden dan Wakil Presiden",
+        "menguji peraturan perundang-undangan di bawah undang-undang terhadap undang-undang",
+        "mengganti dan sekaligus melantik Presiden dan/atau Wakil Presiden dalam masa jabatannya"
+      ],
+      "kunci": [
+        true,
+        false,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pasal 24C UUD NRI 1945: MK wajib memberi putusan atas pendapat DPR mengenai dugaan pelanggaran Presiden dan/atau Wakil Presiden (Benar). Menguji peraturan di bawah undang-undang terhadap undang-undang adalah wewenang Mahkamah Agung (Pasal 24A). Memberhentikan dan melantik Presiden/Wakil Presiden adalah wewenang MPR (Pasal 3 dan 8).",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "PPKN25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "benar-salah",
+      "kode_sumber": "25PKNBTIINIP14SA-000000-0226",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Integrasi nasional dalam bingkai Bhinneka Tunggal Ika",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan upaya menjaga integrasi nasional dalam bingkai kebhinekaan (16)",
+      "soal": "Bangsa Indonesia adalah bangsa yang memiliki keberagaman suku, agama, bahasa, adat istiadat, dan budaya yang hidup berdampingan. Kebinekaan dapat menjadi fondasi kokoh yang menopang persatuan dan kesatuan bangsa. Namun adanya perbedaan juga dapat menjadi ancaman persatuan dan kesatuan.\nKlik Benar atau Salah dari setiap pernyataan berikut yang menunjukkan upaya menjaga integrasi nasional dalam bingkai kebinekaan!",
+      "opsi": [
+        "menghormati dan melindungi hak asasi manusia untuk semua warga negara, tanpa membedakan latar belakang budaya, agama, atau suku bangsa",
+        "mengawasi dan menangani konflik yang berpotensi mengancam integrasi nasional, serta meningkatkan kerja sama antarlembaga dan masyarakat",
+        "meningkatkan dialog dan komunikasi antarkelompok masyarakat untuk memperkuat persatuan bangsa dengan menyesuaikan perkembangan budaya lain"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pernyataan 1 dan 2 adalah upaya menjaga integrasi. Pernyataan 3 dimulai dengan dialog antarkelompok tetapi diakhiri \"dengan menyesuaikan perkembangan budaya lain\", yang mengarah pada penyesuaian diri dengan budaya luar, bukan menjaga kebinekaan.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 3 bisa juga dianggap Benar bila frasa penutupnya tidak dipersoalkan; kunci perlu dicek."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "PPKN25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "benar-salah",
+      "kode_sumber": "25PKNNKRPWKP18SA-000000-0191",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Peran serta warga negara dalam menjaga keutuhan NKRI",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menunjukkan bukti bahwa Bhinneka Tunggal Ika dapat mengatasi ancaman dalam perkembangan kehidupan global. (17)",
+      "soal": "Perubahan iklim dan lingkungan merupakan salah satu bagian dalam perkembangan masyarakat global yang dapat mengancam keberlangsungan hidup manusia dan ekosistem serta menciptakan ketidakstabilan sosial, ekonomi dan politik yang kerap memunculkan terjadinya konflik dalam masyarakat.\nKlik pada pilihan Benar atau Salah dari setiap pernyataan berikut yang menunjukkan bukti bahwa Bhinneka Tunggal Ika dapat mengatasi ancaman sebagaimana ilustrasi diatas!",
+      "opsi": [
+        "Bhinneka Tunggal Ika merupakan semboyan persatuan dan kesatuan yang mengakui persamaan suku, agama, bahasa, dan budaya serta identitas nasional dengan menghilangkan segala bentuk perbedaan",
+        "Bhinneka Tunggal Ika meningkatkan penghormatan dan penghargaan terhadap perbedaan, sehingga dapat mengurangi konflik dan meningkatkan kesatuan dan persatuan sebagai bagian masyarakat global",
+        "Bhinneka Tunggal Ika meningkatkan kesadaran terhadap keberagaman dan kesatuan, sehingga dapat meningkatkan partisipasi dan kontribusi masyarakat dalam membangun masyarakat global yang dinamis"
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Bhinneka Tunggal Ika mengakui perbedaan, bukan menghilangkannya, jadi pernyataan 1 Salah. Pernyataan 2 dan 3 menunjukkan cara semboyan itu mengurangi konflik dan menggerakkan partisipasi.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "PPKN25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCHMPP04SA-000000-0302",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Hak asasi manusia dalam perspektif Pancasila",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menentukan nilai Pancasila yang diterapkan/dilanggar pada peristiwa pelaksanaan/pelanggaran hak asasi manusia. (18)",
+      "soal": "Warga di sebuah lingkungan perumahan hidup berdampingan dalam keberagaman agama, budaya, dan latar belakang sosial. Mereka saling menghargai, aktif dalam kegiatan sosial bersama, dan menjaga ketertiban dengan mematuhi aturan yang berlaku.\nBerdasarkan ilustrasi, nilai Pancasila yang paling tepat telah diterapkan pada kondisi tersebut adalah ....",
+      "opsi": [
+        "Nilai Ketuhanan, karena setiap warga dapat menjalankan ibadah sesuai agama dan keyakinannya",
+        "Nilai Kemanusiaan, karena masyarakat saling membantu tanpa memandang latar belakangnya",
+        "Nilai Persatuan, karena perbedaan yang ada tidak menjadi penghalang untuk hidup rukun dan harmonis",
+        "Nilai Persatuan, karena warga berpartisipasi dalam kegiatan sosial sesuai peran kelompok budayanya",
+        "Nilai Keadilan Sosial, karena semua warga mendapatkan hak dan fasilitas secara merata tanpa kecuali"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Inti ilustrasi adalah hidup rukun di tengah keberagaman, yaitu nilai persatuan (C). Opsi D juga menyebut persatuan tetapi alasannya membagi warga menurut kelompok budaya; A, B, dan E tidak disebut dalam ilustrasi.",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU51GSPP13SA-000000-0371",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Generasi solutif mengatasi pelanggaran hak dan pengingkaran kewajiban",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menentukan solusi dalam mengatasi pelanggaran hak/pengingkaran kewajiban warga negara. (19)",
+      "soal": "Sekelompok pedagang kecil mengalami masalah karena tempat mereka mencari nafkah tiba-tiba dilarang digunakan. Hal ini terjadi tanpa kesepakatan ganti rugi, sehingga mereka merasa telah terjadi pelanggaran hak dan pengingkaran kewajiban untuk saling menghormati kepentingan masing-masing.\nBerdasarkan ilustrasi, solusi untuk mengatasi pelanggaran tersebut yaitu ....",
+      "opsi": [
+        "mengirim perwakilan pedagang untuk menyampaikan usulan agar memperoleh tempat pengganti untuk berjualan",
+        "mengumpulkan dukungan dari elemen masyarakat sebagai upaya mempertahankan haknya untuk berjualan",
+        "melakukan mediasi sehingga para pihak memahami hak dan kewajibannya yang melandasi kepentingannya",
+        "mengajukan advokasi kepada lembaga bantuan hukum untuk memastikan para pedagang berada di pihak yang benar",
+        "mewakilkan kepada lembaga swadaya masyarakat untuk membantu memperjuangkan hak-hak sebagai pengguna lahan"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Masalahnya adalah pelanggaran hak dan pengingkaran kewajiban kedua pihak; mediasi mempertemukan para pihak agar memahami hak dan kewajiban masing-masing (C). Opsi lain hanya memperjuangkan kepentingan pedagang.",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNBTIINIP14SA-000000-0620",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Integrasi nasional dalam bingkai Bhinneka Tunggal Ika",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis tantangan/hambatan yang dihadapi dalam menjaga integrasi nasional dalam bingkai \"Bhinneka Tunggal Ika\". (20)",
+      "soal": "Kehidupan suku bangsa di Indonesia sangat kaya akan keberagaman, dipengaruhi oleh faktor geografis dan sejarah. Indonesia memiliki lebih dari 1.340 suku bangsa yang tersebar di berbagai pulau, masing-masing dengan bahasa, tradisi, dan adat istiadat yang unik.\nBerdasarkan ilustrasi, tantangan yang dihadapi dalam menjaga integrasi nasional dalam bingkai \"Bhinneka Tunggal Ika\" adalah ....",
+      "opsi": [
+        "adanya ketimpangan kehidupan yang terjadi dalam masyarakat",
+        "munculnya sikap sukuisme dalam kehidupan bermasyarakat",
+        "hadirnya perasaan rendah diri suku tertentu dalam masyarakat",
+        "terjadinya kepunahan suku tertentu akibat kesenjangan sosial",
+        "munculnya perilaku modernisme suku tertentu yang berlebihan"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Ilustrasi menekankan banyaknya suku bangsa; tantangan yang langsung muncul dari keragaman suku adalah sukuisme (primordialisme kesukuan) (B).",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Di bawah soal ini tercetak catatan \"SOAL NO.21 OTW\"; soal nomor 21 tidak ada di PDF.",
+        "Angka \"lebih dari 1.340 suku bangsa\" berasal dari sumber dan tidak diperiksa."
+      ]
+    },
+    {
+      "id": "PPKN25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "benar-salah",
+      "kode_sumber": "25PKNPNCBPGP06SA-000000-0164",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Pancasila",
+      "subelemen": "Berpancasila dalam keseharian di masyarakat dan dalam kehidupan global",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menentukan fungsi diterapkannya Pancasila dalam pergaulan kehidupan global tersebut (22)",
+      "soal": "Perkembangan global menyebabkan Pancasila menjadi representasi dari keberagaman masyarakat dunia. Pancasila dengan nilai-nilai toleransi, persatuan, dan keadilan, menjadi solusi universal dalam mengatasi tantangan perbedaan budaya dan agama di dunia. Kondisi tersebut berpotensi menjadikan bangsa Indonesia sebagai role model dalam mempromosikan kerukunan dan harmoni dari keberagaman masyarakat dunia.\nKlik pada pilihan benar atau salah dari setiap pernyataan berikut terkait fungsi dari diterapkannya Pancasila dalam pergaulan kehidupan global berdasarkan ilustrasi tersebut !",
+      "opsi": [
+        "Pancasila dapat menjadi landasan untuk meningkatkan hubungan internasional yang harmonis dan berkeadilan",
+        "Pancasila dapat menjadi landasan untuk membangun kerja sama internasional yang efektif dan berkeadilan",
+        "Implementasi Pancasila di era global dapat meningkatkan derajat Indonesia sebagai bangsa yang unggul di dunia"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Ilustrasi menekankan kerukunan dan harmoni; pernyataan 1 dan 2 sesuai. Pernyataan 3 menekankan keunggulan bangsa sendiri, bukan fungsi Pancasila dalam pergaulan global yang harmonis.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": [
+        "Ketiga pernyataan bernada positif; pernyataan 3 bisa juga dianggap Benar. Kunci perlu dicek."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "PPKN25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU46KUUP08SA-000000-0213",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Ketentuan UUD NRI Tahun 1945 dalam kehidupan berbangsa dan bernegara",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan tantangan yang dihadapi dalam mengimplementasikan salah satu Pasal UUD NRI Tahun 1945 (23)",
+      "soal": "Pasal 27 ayat (2) UUD NRI Tahun 1945 menyatakan bahwa tiap-tiap warga negara berhak atas pekerjaan dan penghidupan yang layak bagi kemanusiaan.\nTantangan yang dihadapi dalam mengimplementasikan pasal tersebut adalah ....",
+      "opsi": [
+        "penyusunan regulasi di bidang ketenagakerjaan yang membutuhkan waktu yang lama",
+        "adanya keterbatasan akses terhadap pekerjaan akibat ketidaksetaraan dan infrastruktur",
+        "tingkat keterampilan dan pendidikan di kalangan pencari kerja yang merata dan setara",
+        "adanya perbedaan standar kualitas pekerja yang berbeda-beda dari pemberi kerja",
+        "lemahnya perlindungan hukum yang diberikan oleh negara kepada pekerja anak"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hak atas pekerjaan terhambat oleh keterbatasan akses kerja akibat ketidaksetaraan dan infrastruktur (B). C justru kondisi ideal, E menyangkut pekerja anak yang seharusnya tidak bekerja.",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNBTIMKSP15SA-000000-0359",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Mengelola kebinekaan sebagai modal sosial pembangunan nasional",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menentukan latar belakang suatu peristiwa/aktivitas dapat menjadi modal sosial pembangunan Indonesia (24)",
+      "soal": "Reog Ponorogo merupakan bagian tak terpisahkan dari kehidupan budaya masyarakat Ponorogo, Jawa Timur. Seiring perkembangannya, Reog tidak hanya menjadi simbol budaya masyarakat Ponorogo, tetapi juga bagian dari identitas budaya nasional Indonesia. Pada tahun 2024, Reog Ponorogo resmi diakui sebagai warisan budaya takbenda oleh UNESCO, sebagai langkah penting dalam pelestarian warisan budaya bangsa dan menjadi modal sosial pembangunan Indonesia.\nAlasan pelestarian Reog Ponorogo menjadi modal sosial pembangunan Indonesia adalah ....",
+      "opsi": [
+        "tradisi lokal memperkuat promosi pariwisata untuk peningkatan ekonomi nasional",
+        "identitas budaya daerah yang diakui secara internasional mendatangkan modal pembangunan",
+        "kebudayaan menjadi identitas pembangunan bangsa di tengah maraknya gempuran budaya asing",
+        "pembangunan nasional membutuhkan identitas budaya lokal dalam menentukan prioritas pembangunan",
+        "pengakuan warisan budaya oleh UNESCO dapat menjadi modal pembangunan yang diakui dunia internasional"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Modal sosial berupa identitas dan kebersamaan, bukan modal finansial; pelestarian Reog memperkuat identitas bangsa di tengah pengaruh budaya asing (C). A, B, dan E menekankan keuntungan ekonomi atau pengakuan.",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Opsi E juga dekat dengan isi stimulus; kunci perlu dicek.",
+        "Bagian atas kotak indikator (judul \"Hierarki Indikator\") terpotong di sumber."
+      ]
+    },
+    {
+      "id": "PPKN25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNNKRPPNP21SA-000000-0426",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Memperkukuh persatuan dan kesatuan bangsa dalam konteks NKRI",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menentukan alasan suatu aktivitas/peristiwa dapat memperkukuh persatuan dan kesatuan bangsa (25)",
+      "soal": "Pemerintah Indonesia mengadakan kegiatan Festival Budaya Nusantara yang melibatkan berbagai komunitas dari seluruh provinsi. Kegiatan ini mencakup pameran seni, pertunjukan tradisional, serta diskusi tentang keberagaman budaya Indonesia.\nAlasan kegiatan tersebut dapat memperkukuh persatuan dan kesatuan bangsa adalah ....",
+      "opsi": [
+        "memperkenalkan produk lokal untuk meningkatkan perekonomian setiap daerah",
+        "mengedepankan keberagaman budaya Indonesia yang mempererat hubungan antarwarga negara",
+        "menciptakan peluang kerja baru untuk masyarakat yang terlibat dalam pameran dan pertunjukan",
+        "memberi kesempatan kepada wisatawan lokal dan asing untuk menikmati budaya Indonesia",
+        "promosi pariwisata lokal di setiap daerah untuk menarik lebih banyak wisatawan domestik"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hanya opsi B yang mengaitkan kegiatan dengan eratnya hubungan antarwarga negara; opsi lain bersifat ekonomi atau pariwisata.",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "PPKN25-026",
+      "passage": null,
+      "nomor": "26",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCPINP03SA-000000-0591",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Pancasila sebagai Ideologi Negara",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis peran Pancasila sebagai ideologi negara yang menjadi pemersatu bangsa (26)",
+      "soal": "Dinamika masyarakat multikultural di Indonesia merupakan interaksi kompleks antarberbagai kelompok etnis, budaya, agama, dan sistem nilai, yang menghasilkan berbagai tantangan. Salah satu permasalahan yang dihadapi masyarakat multikultural di Indonesia adalah konflik antaragama.\nPeran Pancasila sebagai ideologi negara yang menjadi pemersatu dalam kehidupan berbangsa berdasarkan ilustrasi di atas adalah ...",
+      "opsi": [
+        "sebagai perekat hubungan umat beragama mayoritas dan minoritas serta pemerintah dalam kehidupan bernegara",
+        "menjadi pendorong adanya dialog sesama agama untuk meningkatkan kebersamaan umat dan mengurangi rasa curiga",
+        "menjadi dasar dalam melihat adanya perbedaan paham dari berbagai agama dan aliran kepercayaan dalam masyarakat",
+        "merupakan sarana untuk menguji kepekaan sosial dan rasa solidaritas kelompok dari umat beragama dalam masyarakat",
+        "sebagai dasar untuk menghargai dan menghormati perayaan hari-hari besar berbagai agama dalam masyarakat"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Peran pemersatu berarti Pancasila menjadi perekat antarkelompok agama dan negara (A). B menyebut dialog \"sesama agama\" (intern umat), padahal masalahnya konflik antaragama; E hanya satu wujud sikap toleran.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": [
+        "Bila \"dialog sesama agama\" dimaksudkan sebagai dialog antarumat beragama, opsi B juga kuat; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "PPKN25-027",
+      "passage": null,
+      "nomor": "27",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNU45PPHP07SA-000000-0033",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Undang-Undang Dasar Negara Republik Indonesia Tahun 1945",
+      "subelemen": "Perlindungan dan penegakkan hukum di Indonesia",
+      "kompetensi": "Kemampuan murid Menjelaskan, menerapkan dan menganalisis tentang penegakan hukum, perlindungan HAM, ketentuan UUD NRI Tahun 1945, demokrasi, hubungan pemerintah pusat dan daerah",
+      "subkompetensi": null,
+      "indikator": "Menentukan tantangan dalam penegakan hukum pada suatu peristiwa (27)",
+      "soal": "Seorang pengusaha membuang limbah pabrik ke sungai yang mengalir di dekat pemukiman warga. Akibatnya, air menjadi tercemar dan banyak warga mengalami gangguan kesehatan. Meskipun masyarakat sudah melaporkan hal ini kepada pihak berwenang, proses hukum berjalan sangat lambat. Bahkan, muncul kabar bahwa perusahaan tersebut memberikan \"uang pelican\" agar kasusnya tidak diproses lebih lanjut. Warga menjadi kecewa dan kehilangan kepercayaan terhadap lembaga penegak hukum.\nBerdasarkan ilustrasi tersebut, tantangan utama dalam penegakan hukum yang ditunjukkan adalah....",
+      "opsi": [
+        "kurangnya partisipasi masyarakat dalam kegiatan pemeliharaan lingkungan hidup",
+        "lemahnya perlindungan hukum kepada terduga pelaku pencemaran lingkungan",
+        "maraknya pengaruh kekuasaan dan praktik suap dalam menjalankan proses hukum",
+        "maraknya pelanggaran hukum yang diselesaikan secara kekeluargaan",
+        "rendahnya kesadaran pengusaha dalam menjaga kelestarian lingkungan alam"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Proses hukum lambat dan ada \"uang pelican\": tantangannya pengaruh kekuasaan dan suap (C).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": [
+        "Bagian atas kotak indikator terpotong di sumber; salah ketik \"penegakkan\" disalin apa adanya."
+      ]
+    },
+    {
+      "id": "PPKN25-028",
+      "passage": null,
+      "nomor": "28",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25PKNBTIMKSP15SA-000000-0185",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Bhinneka Tunggal Ika",
+      "subelemen": "Mengelola kebinekaan sebagai modal sosial pembangunan nasional",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang integrasi nasional, mengelola kebinekaan sebagai modal sosial, harmoni dalam keberagaman, dan ancaman terhadap kebinekaan.",
+      "subkompetensi": null,
+      "indikator": "Menunjukkan cara/upaya menjaga kebhinekaan yang dapat menjadi modal sosial pembangunan nasional (28)",
+      "soal": "Dalam rangka menjaga kebinekaan, kerja sama dan toleransi merupakan konsep yang sangat penting dalam membangun hubungan yang harmonis dan damai antara individu, kelompok, dan masyarakat. Kerjasama dapat dilakukan dalam berbagai bidang, seperti ekonomi, politik, sosial, dan budaya untuk meningkatkan efisiensi, efektivitas, dan kualitas hasil kerja. Sedangkan toleransi dilakukan dalam rangka membangun hubungan yang harmonis dan damai antara individu dan kelompok yang berbeda.\nBerdasarkan ilustrasi tersebut, mana saja pernyataan berikut yang menunjukkan upaya menjaga kebinekaan untuk menjadi modal sosial pembangunan nasional?\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Meningkatkan kualitas hidup masyarakat melalui pembangunan yang berbasis pada kebutuhan dan aspirasi masyarakat, sehingga masyarakat dapat merasa sejahtera dan bahagia.",
+        "Meningkatkan kreativitas dan inovasi melalui pertukaran ide dan pengalaman antar kelompok masyarakat, sehingga dapat mempromosikan pembangunan yang inovatif dan efektif.",
+        "Membantu meningkatkan interaksi dan pemahaman antara budaya yang berbeda serta kerja sama seni dan budaya dalam rangka meningkatkan penghargaan terhadap budaya lain.",
+        "Meningkatkan kesadaran dan rasa tanggung jawab masyarakat terhadap pembangunan nasional, sehingga masyarakat dapat merasa memiliki dan bertanggung jawab terhadap masa depan bangsa.",
+        "Menjalin kerja sama seni dan budaya dapat membantu meningkatkan penghargaan terhadap budaya serta penggunaan teknologi yang dapat meningkatkan komunikasi dan interaksi antara budaya yang berbeda."
+      ],
+      "kunci": [
+        1,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Ilustrasi menekankan kerja sama dan toleransi antarkelompok yang berbeda. B (pertukaran ide antarkelompok), C (interaksi dan pemahaman antarbudaya), dan E (kerja sama seni-budaya antarbudaya) memuat unsur itu; A dan D tentang pembangunan secara umum tanpa unsur keberagaman.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Bagian atas kotak indikator terpotong di sumber."
+      ]
+    },
+    {
+      "id": "PPKN25-029",
+      "passage": null,
+      "nomor": "29",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25PKNNKRPPPP26SA-000000-0014",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Negara Kesatuan Republik Indonesia",
+      "subelemen": "Menjadi pelopor pemilih pemula dalam demokrasi Indonesia",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang perilaku warga negara yang baik, menjaga keutuhan NKRI, sistem pertahanan Indonesia, peran Indonesia dalam perdamaian dunia, dan demokrasi Indonesia.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan tujuan partisipasi pemilih pemula dalam kehidupan demokrasi (29)",
+      "soal": "Menjelang pemilu serentak, pemerintah dan berbagai organisasi mengadakan sosialisasi untuk pemilih pemula di tingkat SMA. Reza seorang siswa kelas XII mengikuti kegiatan sosialisasi tersebut. Ia belajar pentingnya mengenali visi misi calon wakil rakyat, menghindari politik uang, dan menggunakan hak pilih dengan bijak. Reza juga mengajak teman-temannya untuk ikut serta dalam pemilu sebagai wujud tanggung jawab warga negara.\nBerdasarkan ilustrasi tersebut, pernyataan manakaah yang menunjukkan tujuan partisipasi pemilih pemula seperti Reza dalam pesta demokrasi?.\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Memberikan suara untuk menentukan pemimpin yang membawa perubahan positif.",
+        "Menunjukkan jati diri sebagai pelajar yang bertanggung jawab terhadap masa depan.",
+        "Membangun kesadaran para pemilih pemula untuk terlibat dalam proses pemilihan.",
+        "Menolak segala bentuk politik uang dan memilih berdasarkan kepentingan kelompok.",
+        "Menggunakan hak pilih seseuai hati nurani dengan mempertimbangkan kompetensi pemimpin."
+      ],
+      "kunci": [
+        0,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Ilustrasi menyebut mengenali visi misi, menghindari politik uang, memilih dengan bijak, dan mengajak teman: sesuai A, C, dan E. D salah karena memilih berdasarkan kepentingan kelompok; B tidak menyangkut tujuan partisipasi dalam pemilu.",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": [
+        "Opsi B bisa juga dianggap benar; kunci perlu dicek.",
+        "Salah ketik \"manakaah\", \"demokrasi?.\", dan \"seseuai\" disalin apa adanya."
+      ]
+    },
+    {
+      "id": "PPKN25-030",
+      "passage": null,
+      "nomor": "30",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25PKNPNCBPGP06SA-000000-0377",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pancasila",
+      "subelemen": "Berpancasila dalam keseharian di masyarakat dan dalam kehidupan global",
+      "kompetensi": "Kemampuan murid menjelaskan, menerapkan dan menganalisis tentang Pancasila sebagai dasar negara, ideologi negara, identitas nasional, hak asasi manusia dan demokrasi Pancasila.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis keunggulan nilai-nilai Pancasila dalam aktivitas internasional (30)",
+      "soal": "Sejak 1957, Indonesia telah mengirim lebih dari 30.000 personel TNI ke berbagai negara konflik sebagai bagian dari misi perdamaian dunia. Peran serta Indonesia ini merupakan perwujudan nilai Pancasila dan amanat Pembukaan UUD NRI Tahun 1945 untuk mewujudkan perdamaian berdasarkan kemerdekaan, perdamaian abadi, dan keadilan sosial.\nKeunggulan nilai Pancasila dalam peran tersebut adalah....",
+      "opsi": [
+        "mewujudkan solidaritas kemanusiaan melalui politik luar negeri bebas aktif",
+        "menunjukkan komitmen terhadap nilai persatuan dalam kerja sama internasional",
+        "menerapkan keadilan sosial dengan mewujudkan perdamaian di kancah global",
+        "memperkuat posisi Indonesia dalam persaingan geopolitik khususnya kawasan asia",
+        "mewujudkan tujuan nasional dengan berupaya menjaga kepentingan strategis global"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pengiriman pasukan perdamaian mencerminkan nilai kemanusiaan (sila ke-2) yang dijalankan melalui politik luar negeri bebas aktif (A). D dan E menekankan kepentingan strategis, B kurang tepat karena persatuan (sila ke-3) menyangkut bangsa sendiri.",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [
+        "Opsi C mengulang frasa stimulus (perdamaian dan keadilan sosial) dan bisa jadi kunci yang dimaksud; perlu dicek.",
+        "Angka \"sejak 1957\" dan \"lebih dari 30.000 personel\" berasal dari sumber dan tidak diperiksa."
+      ]
+    }
+  ]
+}

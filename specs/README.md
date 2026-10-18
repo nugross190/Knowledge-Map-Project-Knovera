@@ -6,6 +6,7 @@ Rules for building and extending this project. They are written for both people 
 |---|---|---|
 | [`map-spec.md`](map-spec.md) | What a subject knowledge map is: structure, every field, writing rules, size targets | Creating or editing anything in `data/maps/` |
 | [`question-spec.md`](question-spec.md) | What a question is: fields, ids, difficulty, writing rules | Adding or editing questions |
+| [`tka-spec.md`](tka-spec.md) | What a TKA bank is: transcribed exam items, proposed keys, figure descriptions | Adding or editing `data/tka/` |
 | [`agent-workflow.md`](agent-workflow.md) | The step-by-step pipeline for adding a subject, from research to publishing | Starting any content task |
 | [`quality-checklist.md`](quality-checklist.md) | The pass/fail checks a change must meet before it is committed | Before every commit |
 

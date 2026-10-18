@@ -1,0 +1,884 @@
+{
+  "id": "tka-matematika-umum-2025",
+  "kode": "MATW25",
+  "mapel": "Matematika Umum",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran wajib (Matematika)",
+  "sumber": {
+    "berkas": "SOAL_TKA_Matematika_SMA_2025_Umum.pdf",
+    "halaman": 29,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; rumus ditulis ulang dalam teks biasa dengan superskrip/subskrip Unicode, pangkat pecahan sebagai 3^(2/3), sistem pertidaksamaan dalam kurung kurawal dengan baris dipisah titik koma.",
+    "Judul halaman 1 sumber: \"Soal TKA Matematika (Wajib) SMA/MA/SMK Tahun 2025\"; nama berkas menyebut Umum.",
+    "PDF memuat 25 soal lengkap (nomor 1–25) dalam 29 halaman; beberapa soal menyambung ke halaman berikutnya (nomor 14, 16, 19). Tidak ada catatan soal yang belum tersedia.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong; penanda [Gambar] dan [Tabel] menunjukkan letak gambar (diuraikan di kolom gambar) dan tabel (di kolom tabel).",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "MATW25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATBLGBRLM01SU-000000-2437",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Bilangan",
+      "subelemen": "Bilangan Real",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait jenis dan sifat bilangan",
+      "subkompetensi": null,
+      "indikator": "Menentukan gabungan atau irisan dari beberapa himpunan bilangan. (1)",
+      "soal": "Diberikan tiga himpunan bilangan sebagai berikut:\nA = {x|x < 6, x ∈ Bilangan Asli}\nB = {x|x bilangan genap, x ∈ Bilangan Cacah}\nC = {x|x ≤ 10, x ∈ Bilangan Prima}\nBerdasarkan himpunan-himpunan tersebut, hasil dari (A ∩ B) ∪ C adalah ....",
+      "opsi": [
+        "{2, 3, 5, 7}",
+        "{0, 2, 3, 5, 7}",
+        "{2, 3, 4, 5, 7}",
+        "{0, 2, 3, 4, 5, 7}",
+        "{2, 3, 4, 5, 7, 10}"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "A = {1, 2, 3, 4, 5}; A ∩ B = {2, 4}; C = {2, 3, 5, 7}; gabungannya {2, 3, 4, 5, 7}.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATBLGBRLM01SU-000000-0246",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Bilangan",
+      "subelemen": "Bilangan Real",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait jenis dan sifat bilangan",
+      "subkompetensi": null,
+      "indikator": "Menyederhanakan bentuk bilangan berpangkat bulat atau pecahan dengan menggunakan sifat-sifat operasi bilangan berpangkat. (2)",
+      "soal": "Bentuk sederhana dari (3^(2/3) × 8^(3/2))/(2^(5/2) × 9^(5/6)) adalah ....",
+      "opsi": [
+        "1/42",
+        "2/3",
+        "4/3",
+        "6",
+        "12"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "8^(3/2) = 2^(9/2) dan 9^(5/6) = 3^(5/3), jadi hasilnya 2^(9/2 − 5/2) · 3^(2/3 − 5/3) = 2² · 3⁻¹ = 4/3.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "benar-salah",
+      "kode_sumber": "25MATBLGBRLM02SU-000000-0176",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Bilangan",
+      "subelemen": "Bilangan Real",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait jenis dan sifat bilangan",
+      "subkompetensi": null,
+      "indikator": "Menerapkan sifat operasi hitung bilangan asli (penjumlahan, pengurangan, perkalian, dan pembagian) pada konteks permasalahan matematika yang kompleks. (3)",
+      "soal": "Operasi biner ⊙ didefinisikan sebagai a ⊙ b = ((a−b)² + 2ab)/(a+b) untuk setiap bilangan real tidak negatif a dan b .\nJika a ⊙ 2 = 5 , tentukan Benar atau Salah pada setiap pernyataan berikut!",
+      "opsi": [
+        "a merupakan kelipatan dari 3.",
+        "a merupakan bilangan prima.",
+        "a ⊙ 0 = 6."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "(a − 2)² + 4a = a² + 4, jadi (a² + 4)/(a + 2) = 5 ⇔ a² − 5a − 6 = 0 ⇔ a = 6 (a = −1 ditolak karena a tidak negatif). 6 kelipatan 3 (Benar), bukan prima (Salah), 6 ⊙ 0 = 36/6 = 6 (Benar).",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "MATW25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJFNGM07SU-000000-2527",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Fungsi",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait invers fungsi dan representasinya",
+      "subkompetensi": null,
+      "indikator": "Menentukan nilai invers suatu fungsi dan penerapannya dalam permasalahan kontekstual sehari-hari. (4)",
+      "soal": "Seorang peneliti memodelkan peningkatan suhu akibat pemanasan global yang terjadi dengan fungsi linear berikut:\ny = 0,02x − 39,9\ndengan x mewakili tahun dan y mewakili peningkatan suhu dalam derajat Celsius.\nPada tahun berapakah peningkatan suhu diperkirakan mencapai 0,7°C?",
+      "opsi": [
+        "Tahun 2000.",
+        "Tahun 2003.",
+        "Tahun 2025.",
+        "Tahun 2030.",
+        "Tahun 2345."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "x = (y + 39,9)/0,02 = 40,6/0,02 = 2030.",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJFNGM08SU-000000-2406",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Fungsi",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait fungsi komposisi dan representasinya",
+      "subkompetensi": null,
+      "indikator": "Megidentifikasi syarat komposisi dua fungsi serta penerapannya dalam permasalahan kontekstual sehari-hari. (5)",
+      "soal": "Tempat Les Pintarku memberikan potongan biaya kursus kepada 50 pendaftar pertama, sedangkan harga normal berlaku untuk pendaftar lainnya. Biaya kursus setelah mendapatkan potongan harga dapat dihitung dengan fungsi berikut:\ny = 0,9x\ndengan x adalah biaya kursus mula-mula dan y adalah biaya setelah potongan harga.\nSelain itu, bagi siswa yang berprestasi akan mendapat tambahan potongan harga yang besarnya disesuaikan dengan nilai rapor mereka. Setelah mendapatkan tambahan potongan harga maka biaya akhir kursus menjadi sebagai berikut:\ng(y) = {0,7y , jika nilai rapor di atas 90; 0,8y , jika nilai rapor 85−90}\ndengan g(y) adalah biaya akhir setelah tambahan diskon.\nSalah satu siswa bernama Fira, merupakan pendaftar ke-50 dan membayar biaya kursus sebesar Rp180.000,00. Setelah itu, datang empat siswa lainnya yang juga ingin mengikuti kursus dengan informasi berikut:\n[Tabel]\nDengan uang yang dimiliki, siapakah siswa yang pasti dapat mengikuti kursus?",
+      "tabel": [
+        [
+          "Nama",
+          "Nilai Rapor",
+          "Uang yang dimiliki (Rp)"
+        ],
+        [
+          "Andi",
+          "90",
+          "285.000"
+        ],
+        [
+          "Budi",
+          "92",
+          "286.000"
+        ],
+        [
+          "Cici",
+          "89",
+          "280.000"
+        ],
+        [
+          "Dini",
+          "95",
+          "287.000"
+        ]
+      ],
+      "opsi": [
+        "Dini.",
+        "Dini dan Budi.",
+        "Dini, Budi dan Andi.",
+        "Dini, Cici, Budi dan Andi.",
+        "Cici dan Andi."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Nilai rapor Fira tidak diketahui, jadi harga awal x antara 200.000 (180.000 = 0,9x) dan 285.714 (180.000 = 0,7 · 0,9x). Keempat siswa berikutnya tidak mendapat potongan 0,9 tetapi semuanya mendapat potongan rapor (0,8 untuk Andi dan Cici, 0,7 untuk Budi dan Dini). Biaya terbesar 0,8 × 285.714 ≈ 228.571, masih di bawah uang setiap siswa, jadi keempatnya pasti dapat mengikuti kursus.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"Megidentifikasi\" pada indikator disalin apa adanya.",
+        "Fungsi g(y) tercetak sebagai kurung kurawal dua baris; ditulis ulang dalam satu baris."
+      ]
+    },
+    {
+      "id": "MATW25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJBDRM09SU-000000-0007",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Barisan dan Deret",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait barisan dan deret aritmetika",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang berkaitan dengan barisan dan deret bilangan aritmatika. (6)",
+      "soal": "Pada saat pertandingan sepak bola Indonesia melawan Jepang, kelompok pendukung tim Indonesia akan duduk membentuk koreo dengan beberapa orang memegang kertas berwarna yang dibentangkan. Total kertas berwarna yang dipegang oleh pendukung di barisan kursi paling bawah adalah sebanyak 400 lembar, kemudian di baris kedua sebanyak 550 lembar, dan semakin bertambah pada barisan kursi berikutnya dengan pola penambahan yang sama.\nJika pola penambahan tersebut berlaku sampai pada baris kursi ketujuh, maka berapa banyak penonton yang memegang kertas koreo di baris ke-5?",
+      "opsi": [
+        "700 orang.",
+        "850 orang.",
+        "1.000 orang.",
+        "1.150 orang.",
+        "1.300 orang."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Barisan aritmetika a = 400, b = 150: U₅ = 400 + 4 · 150 = 1.000.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Soal memberi jumlah kertas tetapi menanyakan jumlah orang; kunci menganggap satu orang memegang satu lembar."
+      ]
+    },
+    {
+      "id": "MATW25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATALJBDRM10SU-000000-0321",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Aljabar",
+      "subelemen": "Barisan dan Deret",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait barisan dan deret geometri",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang berkaitan dengan konsep barisan dan deret bilangan geometri (7)",
+      "soal": "Seorang pasien dengan kadar asam urat tinggi menjalani terapi menggunakan obat penurun kadar asam urat. Pada hari pertama, kadar asam urat dalam darah tercatat 13 mg/dL. Obat bekerja menurunkan kadar asam urat sebesar 20% setiap hari secara konsisten. Beberapa hal yang perlu diperhatikan dalam mengonsumsi obat penurun asam urat:\n- Pasien mulai merasa lebih nyaman saat kadar asam urat ada di bawah 7 mg/dL.\n- Pasien dianggap sembuh secara klinis jika kadar asam urat telah mencapai kurang dari 5 mg/dL.\nPada hari keberapa berapa pasien merasa nyaman namun belum dianggap sembuh secara klinis?\nKlik pada setiap jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Hari ke-2",
+        "Hari ke-3",
+        "Hari ke-4",
+        "Hari ke-5",
+        "Hari ke-6"
+      ],
+      "kunci": [
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Uₙ = 13 · 0,8ⁿ⁻¹: hari ke-2 10,4; ke-3 8,32; ke-4 6,66; ke-5 5,32; ke-6 4,26 mg/dL. Di bawah 7 tetapi belum di bawah 5: hari ke-4 dan ke-5.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [
+        "Kunci menganggap 13 mg/dL adalah kadar hari ke-1 (sebelum penurunan pertama); bila penurunan 20% sudah terjadi pada hari pertama, jawabannya bergeser menjadi hari ke-3 dan ke-4."
+      ]
+    },
+    {
+      "id": "MATW25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "—",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Persamaan dan Pertidaksamaan Linear",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait sistem pertidaksamaan linear multivariabel",
+      "subkompetensi": null,
+      "indikator": "Memodelkan permasalahan kontekstual sehari-hari atau grafik suatu daerah penyelesaian ke dalam bentuk sistem pertidaksamaan linear dua variabel (8)",
+      "soal": "[Gambar]\nDaerah yang diarsir pada gambar tersebut merupakan himpunan penyelesaian dari sistem pertidaksamaan ....",
+      "gambar": "Bidang koordinat dengan daerah segitiga diarsir bertitik sudut A(−4, 0), B(0, 2), dan C(2, 0). Garis c melalui A dan B (diperpanjang ke kanan atas), garis a/g melalui B dan C (diperpanjang ke kiri atas, berlabel g), dan label f di kiri bawah.",
+      "opsi": [
+        "{x − 2y ≥ −4; x + y ≤ 2; x ≥ 0; y ≥ 0}",
+        "{x − 2y ≥ −4; x + y ≤ 2; y ≥ 0}",
+        "{x − 2y ≥ −4; x + y ≥ 2; y ≥ 0}",
+        "{2x − y ≤ 4; x + y ≤ 2; y ≥ 0}",
+        "{2x − y ≥ 4; x + y ≤ 2; x ≥ 0; y ≥ 0}"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Garis AB: x − 2y = −4, daerah di bawahnya (memuat (0, 1)) memenuhi x − 2y ≥ −4. Garis BC: x + y = 2, daerah di bawahnya x + y ≤ 2. Daerah di atas sumbu x: y ≥ 0. Syarat x ≥ 0 salah karena daerah meluas sampai x = −4.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Kode soal sumber tidak terlihat (kotak kode terpotong di tangkapan layar); kode_sumber diisi \"—\".",
+        "Opsi tersusun dalam dua kolom yang tidak rata; urutan A–E diambil kolom kiri (dua opsi) lalu kolom kanan (tiga opsi), sehingga huruf kunci bisa berbeda dengan versi resmi. Isi opsi yang benar: {x − 2y ≥ −4; x + y ≤ 2; y ≥ 0}.",
+        "Sistem pertidaksamaan tercetak dengan kurung kurawal bertumpuk; ditulis ulang dalam satu baris."
+      ]
+    },
+    {
+      "id": "MATW25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJPSLM03SU-000000-2458",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Persamaan dan Pertidaksamaan Linear",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait program linear",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang dapat dimodelkan ke dalam bentuk sistem persamaan atau sistem pertidaksamaan linear multivariabel (maksimal 3 variabel). (9)",
+      "soal": "Bu Silma adalah seorang perangkai bunga yang disusun dalam buket bunga. Di tokonya, ia memiliki bunga mawar, lili, dan anyelir. Harga buket ditentukan dari total harga bunga yang digunakan dalam buket tersebut. Adapun tiga jenis buket yang biasa ia siapkan dengan komposisi ketiga bunga beserta harga per buketnya diberikan pada gambar berikut.\n[Gambar]\nBila seorang pembeli ingin membeli buket bunga tipe C namun ingin menambah 2 tangkai lili dan 1 tangkai anyelir dengan harga satuan, maka total harga yang harus dibayar pembeli tersebut adalah ....",
+      "gambar": "Keterangan gambar: Bunga Mawar (merah), Bunga Lili (putih), Bunga Anyelir (merah muda). Buket Tipe A Rp85.000,00, Buket Tipe B Rp70.000,00, Buket Tipe C Rp75.000,00. Isi buket terbaca kira-kira: A = 2 mawar, 3 lili, 1 anyelir; B = 1 mawar, 2 lili, 2 anyelir; C = 3 mawar, 1 lili, 1 anyelir (gambar kecil, hitungan perlu dicek).",
+      "opsi": [
+        "Rp75.000,00",
+        "Rp102.000,00",
+        "Rp110.000,00",
+        "Rp115.000,00",
+        "Rp116.000,00"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Dengan komposisi yang terbaca: 2m + 3l + a = 85, m + 2l + 2a = 70, 3m + l + a = 75 → m = 16, l = 13, a = 14 (ribu). Harga = 75 + 2(13) + 14 = 115 ribu. Pembacaan lain (A = 3 mawar, 2 lili, 1 anyelir; B = 2, 2, 1) memberi m = 15, l = 10, a = 20 dan juga Rp115.000,00.",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Jumlah tiap bunga dalam buket dihitung dari gambar kecil; dua pembacaan yang paling mungkin memberi kunci yang sama."
+      ]
+    },
+    {
+      "id": "MATW25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPGEOM11SU-000000-0150",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Objek Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait hubungan dua sudut, dua garis, dan dua bidang",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi hubungan antar dua garis atau antar dua sudut. (10)",
+      "soal": "Perhatikan gambar berikut!\n[Gambar]\nBerdasarkan gambar tersebut, pasangan sudut manakah yang membentuk sudut 180°?\nKlik pada setiap jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Segitiga siku-siku: sisi tegak di kiri, alas mendatar bertanda panah (sejajar), dan sisi miring dari puncak kiri atas ke kanan bawah. Garis mendatar kedua bertanda panah (sejajar alas) memotong sisi miring. Sudut A di puncak atas (antara sisi tegak dan sisi miring), sudut C di sudut kanan bawah (antara alas dan sisi miring). Di titik potong: F kiri atas, E kanan atas, B kiri bawah, D kanan bawah.",
+      "opsi": [
+        "∠A dan ∠B",
+        "∠A dan ∠E",
+        "∠B dan ∠C",
+        "∠B dan ∠D",
+        "∠E dan ∠C"
+      ],
+      "kunci": [
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "F sehadap dengan C (F = C) dan bertolak belakang dengan D (D = F). B dan E berpelurus dengan F, jadi B + D = 180° (berpelurus), B + C = 180°, dan E + C = 180°. A = 90° − C, sehingga A + B dan A + E tidak 180°.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPGEOM12SU-000000-0040",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Objek Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait hubungan objek geometri pada bangun datar dan bangun ruang",
+      "subkompetensi": null,
+      "indikator": "Menentukan hubungan antar bidang atau antar garis pada suatu bangun ruang. (11)",
+      "soal": "Zara ingin menata kembali kamarnya dengan menambahkan papan jadwal di dinding. Papan jadwal tidak diletakkan pada dinding yang sejajar dengan rak buku gantung. Posisi rak buku gantung dapat dilihat pada gambar berikut.\n[Gambar]\nBerdasarkan posisi yang diinginkan, pada dinding manakah papan jadwal akan diletakkan?\nKlik pada setiap jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Kamar berbentuk kubus ABCD.EFGH dalam gambar isometrik: H di puncak atas, E kiri atas, G kanan atas, A kiri, C kanan, B bawah depan, D titik sudut lantai belakang, F titik sudut langit-langit depan. Dinding kiri belakang ADHE berjendela; dinding kanan belakang CDHG memuat rak buku gantung (ditunjuk panah \"Rak Buku Gantung\") dan lemari; ada kasur, meja belajar, dan TV.",
+      "opsi": [
+        "CDHG",
+        "BCGF",
+        "ABFE",
+        "BCFA",
+        "ADHE"
+      ],
+      "kunci": [
+        0,
+        1,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Rak buku menempel pada dinding CDHG; dinding yang sejajar dengannya adalah ABFE, jadi ABFE dikecualikan. BCGF dan ADHE tegak lurus CDHG; CDHG sendiri tidak sejajar dengan dirinya (berimpit). BCFA bukan dinding kubus (bidang diagonal).",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Apakah dinding CDHG (tempat rak) termasuk jawaban bergantung pada tafsiran \"dinding yang sejajar dengan rak buku\"; bila dinding rak dianggap ikut dikecualikan, kuncinya hanya BCGF dan ADHE.",
+        "Letak D dan F dibaca dari gambar isometrik; perlu dicek."
+      ]
+    },
+    {
+      "id": "MATW25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPGEOM13SU-000000-0250",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Objek Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait kesebangunan atau kekongruenan bangun datar",
+      "subkompetensi": null,
+      "indikator": "Menentukan panjang sisi yang tidak diketahui pada suatu bangun datar dengan menerapkan konsep kesebangunan. (12)",
+      "soal": "[Gambar]\nDiketahui trapesium KLMN dan NMPO sebangun.\nBerdasarkan informasi tersebut, berapakah panjang sisi LM?",
+      "gambar": "Trapesium siku-siku KLPO: K kiri bawah (siku-siku), L kanan bawah, P kanan atas, O kiri atas. OP = 18 cm, KL = 32 cm, KN = 16 cm. Garis NM sejajar KL (N pada KO, M pada PL); ruas tegak PR memotong NM di Q dan KL di R. OP, NM, dan KL bertanda panah (sejajar).",
+      "opsi": [
+        "6√5 cm",
+        "8√5 cm",
+        "9√5 cm",
+        "10√5 cm",
+        "14√5 cm"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "KLMN ~ NMPO: KL/NM = NM/OP → NM² = 32 · 18 = 576 → NM = 24. LM = √(KN² + (KL − NM)²) = √(256 + 64) = √320 = 8√5 cm (cek: MP = 3/4 · LM = 6√5).",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "benar-salah",
+      "kode_sumber": "25MATGMPGEOM14SU-000000-0073",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Objek Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait Teorema Pythagoras",
+      "subkompetensi": null,
+      "indikator": "Menerapkan teorema Pythagoras dalam menyelesaikan permasalahan kontekstual sehari-hari. (13)",
+      "soal": "Tim adiwiyata SMA Gemilang sedang menata sayuran di kebun sekolah. Mereka menanam beberapa tanaman obat keluarga (toga) seperti jahe, kunyit dan lengkuas. Setiap tanaman ditempatkan di pot yang berbeda-beda ukurannya. Pot tersebut akan diletakkan di salah satu sisi kebun seperti pada ilustrasi berikut.\n[Gambar]\nUkuran diameter pot yang digunakan untuk jahe berukuran 15 cm, kunyit berukuran 26 cm dan lengkuas berukuran 30 cm.\nBerdasarkan ilustrasi, tentukan benar atau salah pernyataan berkaitan dengan ukuran sisi kebun yang ditanami tanaman toga tersebut!",
+      "gambar": "Kebun berbentuk trapesium siku-siku: sisi kiri 500 cm, sisi kanan 350 cm, alas 360 cm; deretan pot tanaman diletakkan sepanjang sisi miring di atas (panah berlabel \"Pot tanaman\").",
+      "opsi": [
+        "Ada 25 tanaman jahe yang bisa ditanam.",
+        "Ada 15 tanaman kunyit yang bisa ditanam.",
+        "Ada 10 tanaman lengkuas yang bisa ditanam."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Sisi miring = √(360² + 150²) = 390 cm. Banyak pot: jahe 390/15 = 26, kunyit 390/26 = 15, lengkuas 390/30 = 13.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Kunci menganggap pernyataan menyebut banyak maksimum pot; bila \"bisa ditanam\" diartikan \"muat\", 25 jahe dan 10 lengkuas juga muat.",
+        "Paragraf diameter pot dan kalimat perintah tercetak dua kali di sumber; disalin sekali."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "MATW25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPTRGM15SU-000000-0126",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Transformasi Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait transformasi geometri (translasi, refleksi, rotasi, dan dilatasi, serta komposisinya) dari titik",
+      "subkompetensi": null,
+      "indikator": "Menentukan bayangan atau titik asal dari suatu koordinat titik ketika diterapkan komposisi dua jenis transformasi geometri. (14)",
+      "soal": "Perhatikan gambar berikut.\n[Gambar]\nTitik B direfleksikan oleh garis y=1, kemudian dirotasi dengan pusat di O(0,0) sebesar 180º searah jarum jam. Titik B' pada gambar merupakan bayangan titik B hasil komposisi kedua transformasi tersebut. Gambar titik B yang sesuai adalah ....",
+      "gambar": "Bidang koordinat dengan titik B' di (−4, 1). Setiap opsi berupa bidang koordinat dengan satu titik B.",
+      "opsi": [
+        "Grafik dengan titik B di (4, −1)",
+        "Grafik dengan titik B di (4, 3)",
+        "Grafik dengan titik B di (−6, −1)",
+        "Grafik dengan titik B di (−2, −1)",
+        "Grafik dengan titik B di (2, 4)"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Balik transformasinya: rotasi 180° dari B'(−4, 1) memberi (4, −1); pencerminan terhadap y = 1 memberi (4, 2 − (−1)) = (4, 3).",
+      "halaman": [
+        14,
+        15,
+        16
+      ],
+      "catatan_transkripsi": [
+        "Opsi berupa gambar bidang koordinat (halaman 15–16); ditulis ulang sebagai koordinat titik B."
+      ]
+    },
+    {
+      "id": "MATW25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPUKRM18SU-000000-2440",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait jarak dua objek geometri",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang melibatkan jarak dua titik dalam suatu bangun ruang. (15)",
+      "soal": "SD Jaya Makmur baru saja mendapat ruangan kelas baru. Murid-murid ingin menghias kelasnya dengan memasang tali hiasan pada bagian langit-langit kelas. Tali hiasan dipasang dari pojok dinding pintu masuk ke bagian tengah langit-langit dinding papan tulis seperti pada gambar berikut.\n[Gambar]\nMereka akan membuat tali kedua yang sama seperti tali hiasan pertama untuk dipasang ke pojok yang lain pada dinding pintu.\nApabila mereka membeli gulungan tali yang panjangnya 20 meter, berapakah sisa tali yang tidak terpakai?",
+      "gambar": "Ruang kelas: lebar dinding belakang 4 m, tinggi 5 m, panjang lantai ke depan 6 m. Papan tulis di dinding kiri, pintu di dinding kanan. Tali hiasan berbintang terpasang di langit-langit dari titik pada dinding papan tulis ke pojok atas dinding pintu; garis putus-putus menunjukkan tali kedua ke pojok atas yang lain.",
+      "opsi": [
+        "6 m.",
+        "10 m.",
+        "11 m.",
+        "13 m."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Titik tengah sisi atas dinding papan tulis berjarak 3 m (setengah dari 6 m) dari kedua pojok, dan lebar kelas 4 m, jadi setiap tali √(4² + 3²) = 5 m. Dua tali 10 m; sisa dari 20 m adalah 10 m.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Opsi kelima terpotong di tangkapan layar (hanya bingkainya terlihat).",
+        "Bila gulungan 20 m hanya untuk tali kedua (tali pertama sudah terpasang), sisanya 15 m, yang mungkin opsi kelima yang terpotong. Perlu dicek."
+      ]
+    },
+    {
+      "id": "MATW25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPUKRM16SU-000000-2432",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait keliling dan luas bangun datar",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang melibatkan perhitungan keliling gabungan bangun datar. (16)",
+      "soal": "Arif, seorang desain interior akan membuat suatu desain ornamen jam dinding baru. Ornamen tersebut memiliki bentuk dasar gabungan segitiga dan lingkaran. Adapun bentuk ornamen jam dan ukuran yang akan dibuat diberikan pada gambar berikut.\n[Gambar]\nDi sekeliling ornamen jam tersebut akan ditempel kayu tipis untuk menambah efek tiga dimensi.\nApabila Arif akan membuat dua buah ornamen jam dinding untuk dijadikan model contoh, berapa panjang kayu tipis yang ia perlukan?",
+      "gambar": "Ornamen berbentuk segitiga sama kaki (alas 50 cm) dengan lingkaran (diameter 20 cm, berisi jam) yang menonjol di bawah alas segitiga; tinggi keseluruhan 70 cm. Di dalam segitiga ada jendela segitiga dengan gambar burung.",
+      "opsi": [
+        "322,8 cm.",
+        "352,8 cm.",
+        "362,8 cm.",
+        "382,8 cm.",
+        "445,6 cm."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pusat lingkaran pada alas segitiga: tinggi segitiga 70 − 10 = 60 cm, sisi miring √(25² + 60²) = 65 cm. Keliling satu ornamen = 2(65) + (50 − 20) + ½(2 · 3,14 · 10) = 130 + 30 + 31,4 = 191,4 cm; dua ornamen 382,8 cm.",
+      "halaman": [
+        18,
+        19
+      ],
+      "catatan_transkripsi": [
+        "Kunci menganggap pusat lingkaran tepat pada alas segitiga dan π = 3,14 (tidak disebut di soal)."
+      ]
+    },
+    {
+      "id": "MATW25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPUKRM16SU-000000-2240",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait keliling dan luas bangun datar",
+      "subkompetensi": null,
+      "indikator": "Menggunakan keterkaitan antara konsep keliling dan luas dari suatu bangun datar dalam menyelesaikan suatu permasalahan matematika atau permasalahan kontekstual sehari-hari. (17)",
+      "soal": "Perhatikan permasalahan dalam kotak berikut!\nPanjang salah satu diagonal suatu layang-layang adalah 20 cm.\n[Gambar]\nBerapakah keliling layang-layang tersebut?\nPutuskan apakah pernyataan (1) dan pernyataan (2) berikut cukup untuk menjawab permasalahan dalam kotak tersebut!\n(1) Luas layang-layang adalah 160 cm².\n(2) Panjang salah satu sisi layang-layang adalah 10 cm.",
+      "gambar": "Layang-layang dengan kedua diagonalnya (diagonal tegak dan diagonal mendatar yang lebih panjang ke kanan).",
+      "opsi": [
+        "Pernyataan (1) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (2) SAJA tidak cukup.",
+        "Pernyataan (2) SAJA cukup untuk menjawab pertanyaan, tetapi pernyataan (1) SAJA tidak cukup.",
+        "DUA pernyataan BERSAMA-SAMA cukup untuk menjawab pertanyaan, tetapi SATU pernyataan SAJA tidak cukup",
+        "Pernyataan (1) SAJA cukup untuk menjawab pertanyaan dan pernyataan (2) SAJA cukup.",
+        "Pernyataan (1) dan pernyataan (2) tidak cukup untuk menjawab pertanyaan."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "(1) memberi diagonal lain 16 cm, tetapi letak titik potong pada diagonal sumbu belum diketahui. (2) saja tidak cukup. Bersama: diagonal 16 dibagi dua (8, 8) dan sisi 10 memberi bagian 6 cm pada diagonal 20, sehingga sisi lain √(8² + 14²) = 2√65 dan keliling 2(10 + 2√65); kemungkinan diagonal 20 yang dibagi dua menghasilkan layang-layang degenerasi. Jadi keduanya bersama cukup.",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPUKRM17SU-000000-0281",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait volume dan luas permukaan bangun ruang",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari dengan menerapkan konsep volume bangun ruang dan gabungannya. (18)",
+      "soal": "Pak Omar adalah seorang distributor helm. Hari ini, ia mendapat pesanan untuk mengirimkan helm yang sama dalam jumlah besar menggunakan truk. Agar kualitas terjaga, helm dikemas dalam wadah kardus helm. Adapun ukuran kardus helm dan bak truk diberikan pada gambar berikut.\n[Gambar]\nPak Omar memberikan arahan pada kurir untuk mengatur posisi atas kardus helm tidak boleh dibalik (tempat masuk kepala harus menghadap ke bawah). Semua kardus helm disusun menghadap depan (seperti pada gambar) atau menghadap samping (apabila gambar diputar 90°). Namun, apabila masih terdapat ruang kosong yang mungkin, maka penyusunan kardus helm dengan posisi berbeda untuk mengisi ruang kosong tersebut dapat dilakukan.\nBerdasarkan posisi susunan tersebut, berapa paling banyak kardus helm yang dapat dimuat di truk tersebut?",
+      "gambar": "Kardus helm berukuran tinggi 20 cm, lebar 20 cm, dan panjang 30 cm. Bak truk berukuran panjang 240 cm, lebar 150 cm, dan tinggi 120 cm.",
+      "opsi": [
+        "336 kardus.",
+        "360 kardus.",
+        "384 kardus.",
+        "432 kardus.",
+        "504 kardus."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Tinggi kardus tetap 20 cm: 120/20 = 6 lapis. Alas 20 × 30 pada lantai 240 × 150: sisi 20 sepanjang 240 (12) dan sisi 30 sepanjang 150 (5) mengisi penuh, 60 kardus per lapis. Total 6 × 60 = 360.",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPUKRM17SU-000000-2434",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Pengukuran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait volume dan luas permukaan bangun ruang",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari yang melibatkan perhitungan luas permukaan bangun ruang sisi lengkung. (19)",
+      "soal": "Bu Sita, seorang desainer interior, sedang mengerjakan proyek pribadi untuk mempercantik kamar tidurnya. Ia berencana membuat beberapa hiasan lampu tidur dari bahan akrilik. Setiap hiasan akan berbentuk tabung berongga (tanpa alas dan tutup) dengan diameter 14 cm dan tinggi 25 cm. Bagian luar hiasan tabung ini akan dilapisi dengan stiker vinil motif bunga seperti pada gambar berikut.\n[Gambar]\nStiker vinil dijual dalam lembaran, dan harga satu lembarnya adalah Rp9.000,00. Setiap lembar stiker vinil mampu menutupi area seluas 300 cm². Jika Bu Sita berencana membuat 8 buah hiasan lampu tidur, berapakah biaya minimal yang harus dikeluarkan Bu Sita untuk membeli stiker vinil tersebut?",
+      "gambar": "Foto lampu tidur berkap tabung bermotif bunga.",
+      "opsi": [
+        "Rp72.000,00.",
+        "Rp108.000,00.",
+        "Rp252.000,00.",
+        "Rp270.000,00.",
+        "Rp288.000,00."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Luas selimut = π · 14 · 25 = 1.100 cm² (π = 22/7). Delapan hiasan 8.800 cm² → 8.800/300 = 29,3 → 30 lembar → Rp270.000,00. Bila setiap lampu memakai lembar sendiri: 4 lembar × 8 = 32 lembar = Rp288.000,00 (opsi E).",
+      "halaman": [
+        22,
+        23
+      ],
+      "catatan_transkripsi": [
+        "Kunci menganggap sisa lembar boleh dipakai untuk lampu lain (\"biaya minimal\"); nilai π tidak disebut."
+      ]
+    },
+    {
+      "id": "MATW25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "benar-salah",
+      "kode_sumber": "25MATGMPTRIM19SU-000000-0278",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Perbandingan Trigonometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait perbandingan trigonometri (sinus, kosinus, tangen, kotangen, sekan, kosekan).",
+      "subkompetensi": null,
+      "indikator": "Menentukan suatu nilai perbandingan trigonometri apabila diketahui nilai perbandingan trigonometri lainnya. (20)",
+      "soal": "Perhatikan gambar berikut.\n[Gambar]\nJika diketahui nilai cos(a) = 3/5 tentukan Benar atau Salah terkait perbandingan trigonometri berikut!",
+      "gambar": "Segitiga ABC dengan garis tinggi AD tegak lurus BC (D pada BC, siku-siku di D). AB = 4 cm dan DC bertanda sama dengan AB. Sudut α di A (antara AD dan AC), sudut β di B.",
+      "opsi": [
+        "sin(β) = √7/4",
+        "cos(β) = √7/5",
+        "tan(β) = 3√7/7"
+      ],
+      "kunci": [
+        false,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "DC = AB = 4. Di segitiga ADC: cos α = AD/AC = 3/5 dan DC = 4, jadi AC = 5, AD = 3. Di segitiga ABD: BD = √(16 − 9) = √7. sin β = 3/4, cos β = √7/4, tan β = 3/√7 = 3√7/7.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Soal menulis cos(a) sedangkan gambar memakai α; dianggap sama."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "MATW25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATDPLDATM20SU-000000-2342",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Data dan Peluang",
+      "subelemen": "Data",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait penyajian data dalam bentuk diagram batang, diagram garis, diagram lingkaran, grafik, tabel, dan bentuk visual",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasi penyajian data dalam bentuk diagram garis. (21)",
+      "soal": "Banyak siswa yang lulus di sekolah Yayasan Cahaya beragam setiap tahunnya. Berikut adalah data banyak lulusan di tiga sekolah menengah swasta milik Yayasan Cahaya.\n[Gambar]\nBerdasarkan grafik tersebut, berikut ini pernyataan mana saja yang tepat mendeskripsikan banyak lulusan di ketiga sekolah milik Yayasan Cahaya?\nPilih setiap jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Diagram garis \"Data Banyak Lulusan Tahun 2017-2025\" (sumbu y 200–400). Nilai terbaca kira-kira: SMA 1 Bintang (hijau) 300, 310, 310, 300, 308, 310, 315, 350, 360; SMA 2 Bintang (merah) 255, 260, 290, 310, 315, 320, 300, 300, 300; SMK Kejora (biru) 250, 285, 300, 320, 320, 325, 320, 350, 400 (tahun 2017–2025).",
+      "opsi": [
+        "Banyak siswa SMA 1 Bintang yang lulus selalu bertambah mulai tahun 2020.",
+        "Pada tahun 2017-2020, banyak lulusan dari ketiga sekolah di yayasan Cahaya selalu bertambah.",
+        "Banyak lulusan SMK Kejora konsisten naik selama lima tahun terakhir.",
+        "Banyak lulusan SMA 2 Bintang tetap sama selama tiga tahun terakhir.",
+        "Banyak lulusan ketiga sekolah di tahun 2023 menurun dibanding tahun sebelumnya."
+      ],
+      "kunci": [
+        0,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "SMA 1 naik setiap tahun sejak 2020 (A benar) tetapi turun 2019→2020 (B salah). SMK Kejora tetap 2020→2021 dan turun 2022→2023 (C salah). SMA 2 tetap 300 pada 2023–2025 (D benar). SMA 1 naik pada 2023 (E salah).",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATDPLDATM22SU-000000-0181",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Data dan Peluang",
+      "subelemen": "Data",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait aturan pencacahan (aturan penjumlahan, aturan perkalian, permutasi, dan kombinasi)",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual sehari-hari dengan menerapkan aturan pencacahan (aturan penjumlahan atau aturan perkalian) (22)",
+      "soal": "Di sebuah acara bazar yang diadakan oleh suatu sekolah, terdapat 5 stan yang masing-masing dikelola oleh pedagang yang berbeda.\n[Gambar]\nDalam bazar tersebut, stan pedagang C ingin berada di antara pedagang A dan pedagang D. Banyak kemungkinan susunan atau penataan stan sesuai keinginan pedagang C tersebut adalah ....",
+      "gambar": "Ilustrasi lima stan berjajar di bawah spanduk \"BAZAR SEKOLAH\".",
+      "opsi": [
+        "6 susunan",
+        "12 susunan",
+        "120 susunan",
+        "240 susunan",
+        "720 susunan"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "A-C-D atau D-C-A dianggap satu blok: 3! susunan blok dan dua stan lain × 2 urutan blok = 12.",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [
+        "Kunci mengartikan \"di antara\" sebagai tepat bersebelahan dengan A dan D; bila C cukup berada di antara keduanya (tidak harus bersebelahan), hasilnya 40, yang tidak ada di opsi."
+      ]
+    },
+    {
+      "id": "MATW25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "benar-salah",
+      "kode_sumber": "25MATDPLDATM21SU-000000-2474",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Data dan Peluang",
+      "subelemen": "Data",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait ukuran pemusatan dan penyebaran data tunggal dan data kelompok",
+      "subkompetensi": null,
+      "indikator": "Menggunakan informasi ukuran pemusatan atau sebaran data untuk melengkapi kumpulan data yang diberikan. (23)",
+      "soal": "Perhatikan tabel distribusi data jumlah pengunjung perpustakaan Desa Sukamaju pada minggu ke-1 bulan Januari!\n[Tabel]\nPada minggu ke-1 bulan Januari tersebut, diketahui informasi sebagai berikut:\n1) rata-rata pengunjung perpustakaan setiap hari adalah 6 orang,\n2) selalu ada minimal dua pengunjung perpustakaan namun tidak pernah melebihi 10 pengunjung pada setiap hari buka (Senin-Jumat), dan\n3) median dari data pada tabel adalah 6.\nTentukan Benar atau Salah pada setiap pernyataan berikut terkait jumlah pengunjung perpustakaan pada minggu ke-1 bulan Januari tersebut!",
+      "tabel": [
+        [
+          "Minggu ke-1",
+          "Senin",
+          "Selasa",
+          "Rabu",
+          "Kamis",
+          "Jumat"
+        ],
+        [
+          "Jumlah Pengunjung",
+          "4",
+          "p",
+          "5",
+          "r",
+          "6"
+        ]
+      ],
+      "opsi": [
+        "Banyak pengunjung pada hari Selasa pasti selalu lebih banyak dibandingkan hari lain.",
+        "Banyak pengunjung pada hari Kamis pasti lebih dari 5 orang.",
+        "Banyak pengunjung pada hari Jumat dan Kamis mungkin saja sama."
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "p + r = 30 − 15 = 15 dengan 2 ≤ p, r ≤ 10 dan median 6: (p, r) = (6, 9), (7, 8), (8, 7), (9, 6). Selasa tidak selalu terbanyak (mis. p = 6, r = 9); Kamis selalu 6–9 (> 5); Kamis = Jumat = 6 mungkin (p = 9).",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "MATW25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATDPLPLGM23SU-000000-2356",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Data dan Peluang",
+      "subelemen": "Peluang",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait peluang suatu kejadian tunggal",
+      "subkompetensi": null,
+      "indikator": "Menggunakan berbagai informasi untuk menentukan kondisi yang mungkin atau peluang kejadian dalam permasalahan kontekstual sehari-hari. (24)",
+      "soal": "Dalam rangka memperingati Tahun Baru Imlek, sebuah supermarket membuat kotak undian yang berisi hadiah untuk para pelanggannya. Terdapat 60 angpao yang dimasukkan ke dalam kotak tersebut. Hadiahnya terbagi dalam dua kategori, yaitu kupon belanja dan peralatan rumah tangga. Untuk hadiah kupon belanja, terdapat 15 angpao berisi kupon senilai Rp25.000,00 dan 12 angpao berisi kupon senilai Rp50.000,00. Untuk hadiah peralatan rumah tangga, terdapat 10 angpao berisi set sendok-garpu, 8 angpao berisi pemanas air, dan sisanya angpao kosong.\nRini menjadi orang pertama yang berkesempatan mengambil satu angpao secara acak dari kotak tersebut\nBerapakah peluang Rini mengambil angpao yang kosong?",
+      "opsi": [
+        "1/15",
+        "1/5",
+        "1/4",
+        "1/3",
+        "5/11"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Angpao kosong = 60 − (15 + 12 + 10 + 8) = 15; peluang 15/60 = 1/4.",
+      "halaman": [
+        28
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATW25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATDPLPLGM24SU-000000-2386",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Data dan Peluang",
+      "subelemen": "Peluang",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait peluang suatu kejadian majemuk",
+      "subkompetensi": null,
+      "indikator": "Menerapkan konsep peluang kejadian majemuk dalam permasalahan kontekstual sehari-hari. (25)",
+      "soal": "Sebuah kantin sekolah mengadakan undian berhadiah.\n[Gambar]\nHanya kertas yang kosong yang akan selalu dikembalikan lagi ke dalam kotak meskipun terambil berkali-kali . Ani akan mengambil satu buah kertas dari kotak undian. Ani adalah orang kelima yang mengambil kertas undian.\nKertas apa sajakah yang mungkin sudah terambil oleh orang-orang sebelumnya sehingga peluang Ani memperoleh minuman atau makanan adalah 2/3 ?",
+      "gambar": "\"Jumlah Kertas di dalam Kotak Undian\": 6 kertas \"Minuman Gratis\", 4 kertas \"Makanan Gratis\" (salah satunya tertulis \"Makanan Grati\"), dan 5 kertas kosong.",
+      "opsi": [
+        "1 minuman gratis, 1 makanan gratis, dan 2 kertas kosong.",
+        "2 makanan gratis dan 2 minuman gratis.",
+        "2 minuman gratis dan 2 kertas kosong.",
+        "4 kertas kosong.",
+        "4 minuman gratis."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kertas kosong selalu kembali, jadi tetap 5. Peluang R/(R + 5) = 2/3 ⇔ R = 10: belum ada kertas hadiah yang terambil, jadi keempat orang sebelumnya mengambil kertas kosong. Opsi lain memberi 8/13 atau 6/11.",
+      "halaman": [
+        29
+      ],
+      "catatan_transkripsi": []
+    }
+  ]
+}

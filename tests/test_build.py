@@ -119,6 +119,56 @@ class MapsTest(unittest.TestCase):
             self.assertIn(f"<title>{m['title']}</title>", body)
 
 
+class TkaTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.banks = build.load_tka()
+
+    def test_banks_are_valid(self):
+        self.assertTrue(self.banks, "data/tka/ has no banks")
+        for name, b in self.banks.items():
+            self.assertEqual(build.validate_tka(name, b), [], name)
+
+    def test_validator_catches_problems(self):
+        name, b = next(iter(self.banks.items()))
+        b = json.loads(json.dumps(b))
+        items = {it["format"]: it for it in b["soal"]}
+        b["id"] = "lain"                                          # id differs from file name
+        b["soal"].append(dict(b["soal"][0]))                      # duplicate id
+        items["pilihan-ganda"]["kunci"] = 9                       # key outside the options
+        items["pilihan-ganda"]["passage"] = "NOPE"                # unknown passage
+        items["pilihan-ganda"]["soal"] += " [Gambar]"
+        items["pilihan-ganda"].pop("gambar", None)                # marker without a description
+        items["benar-salah"]["kunci"] = [True]                    # wrong length
+        items["benar-salah"].pop("kolom")
+        items["pilihan-ganda-kompleks"]["kunci"] = [3, 1]         # not sorted
+        items["pilihan-ganda-kompleks"]["keyakinan_kunci"] = "pasti"
+        errors = " | ".join(build.validate_tka(name, b))
+        for needle in ("must match the file name", "duplicate id", "index of one option", "unknown teks",
+                       "no 'gambar'", "one true/false", "needs 'kolom'", "sorted list", "keyakinan_kunci"):
+            self.assertIn(needle, errors)
+
+    def test_missing_key_needs_tidak_ada(self):
+        name, b = next(iter(self.banks.items()))
+        b = json.loads(json.dumps(b))
+        b["soal"][0]["kunci"] = None
+        b["soal"][0]["keyakinan_kunci"] = "tinggi"
+        self.assertTrue(any("tidak ada" in e for e in build.validate_tka(name, b)))
+        b["soal"][0]["keyakinan_kunci"] = "tidak ada"
+        self.assertEqual(build.validate_tka(name, b), [])
+
+    def test_tka_page_renders(self):
+        topics, rows = build.load()
+        built = build.pages(topics, [], {}, build.load_maps(), self.banks)
+        page = built["tka.html"]
+        self.assertNotIn("/*__TKA__*/", page)
+        self.assertIn('class="home-link" href="index.html"', page)
+        for b in self.banks.values():
+            self.assertIn(b["id"], page)
+        self.assertNotIn("</script><", page.split("const BANKS")[1].split(";\n")[0])
+        self.assertIn('href="tka.html"', built["index.html"])
+
+
 class SiteTest(unittest.TestCase):
     def test_build_writes_site_files(self):
         topics, rows = build.load()

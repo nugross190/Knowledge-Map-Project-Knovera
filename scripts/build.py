@@ -2,9 +2,9 @@
 
 Usage:  python scripts/build.py              # build docs/ for GitHub Pages
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
-Reads:  data/topics.json, data/questions.csv, data/maps/*.json, templates/*.html
-Writes: docs/questions.json, one docs/<name>.html per template, and
-        one docs/peta-<id>.html per subject map (rendered through templates/_map.html)
+Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/tka/*.json, templates/*.html
+Writes: docs/questions.json, one docs/<name>.html per template (docs/tka.html carries the TKA banks),
+        and one docs/peta-<id>.html per subject map (rendered through templates/_map.html)
 Exits with status 1 (and writes nothing) if the data has errors.
 """
 import csv
@@ -123,6 +123,87 @@ def validate_map(name, m):
     return errors
 
 
+def load_tka():
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/tka").glob("*.json"))}
+
+
+TKA_FORMATS = {"pilihan-ganda", "pilihan-ganda-kompleks", "benar-salah"}
+TKA_CONFIDENCE = {"tinggi", "sedang", "rendah", "tidak ada"}
+TKA_ITEM_FIELDS = ("id", "nomor", "format", "kompetensi", "indikator", "soal", "opsi", "status_kunci",
+                   "keyakinan_kunci", "alasan", "halaman")
+
+
+def validate_tka(name, bank):
+    """Return a list of problems in one TKA item bank (format: specs/tka-spec.md)."""
+    errors = []
+    where = f"data/tka/{name}.json"
+    for key in ("id", "kode", "mapel", "ujian", "sumber", "soal"):
+        if not bank.get(key):
+            errors.append(f"{where}: missing '{key}'")
+    if bank.get("id") and bank["id"] != name:
+        errors.append(f"{where}: id '{bank['id']}' must match the file name")
+    kode = bank.get("kode", "")
+    if kode and not re.fullmatch(r"[A-Z]+[0-9]*", kode):
+        errors.append(f"{where}: kode '{kode}' must be uppercase letters, then digits")
+    for key in ("catatan", "teks"):
+        if not isinstance(bank.get(key, []), list):
+            errors.append(f"{where}: '{key}' must be a list")
+    passages = set()
+    for t in bank.get("teks", []):
+        if not t.get("id") or t["id"] in passages:
+            errors.append(f"{where}: teks entry with an empty or duplicate id ({t.get('id')})")
+        passages.add(t.get("id"))
+    seen = set()
+    for it in bank.get("soal", []):
+        sid = it.get("id", "?")
+        for key in TKA_ITEM_FIELDS:
+            if key not in it:
+                errors.append(f"{where}: {sid} missing '{key}'")
+        if not re.fullmatch(re.escape(kode) + r"-\d{3}[A-C]?", sid):
+            errors.append(f"{where}: {sid} must look like {kode}-NNN (optional A/B/C suffix)")
+        if sid in seen:
+            errors.append(f"{where}: duplicate id {sid}")
+        seen.add(sid)
+        if it.get("passage") is not None and it["passage"] not in passages:
+            errors.append(f"{where}: {sid} refers to unknown teks '{it['passage']}'")
+        fmt, opsi, kunci = it.get("format"), it.get("opsi", []), it.get("kunci")
+        if fmt not in TKA_FORMATS:
+            errors.append(f"{where}: {sid} format must be one of {', '.join(sorted(TKA_FORMATS))}")
+        if it.get("keyakinan_kunci") not in TKA_CONFIDENCE:
+            errors.append(f"{where}: {sid} keyakinan_kunci must be one of {', '.join(sorted(TKA_CONFIDENCE))}")
+        if not isinstance(opsi, list) or len(opsi) < 2 or not all(isinstance(o, str) and o.strip() for o in opsi):
+            errors.append(f"{where}: {sid} needs at least two non-empty options")
+            continue
+        n = len(opsi)
+        if kunci is None:
+            if it.get("keyakinan_kunci") != "tidak ada":
+                errors.append(f"{where}: {sid} has no kunci, so keyakinan_kunci must be 'tidak ada'")
+        elif fmt == "pilihan-ganda":
+            if type(kunci) is not int or not 0 <= kunci < n:
+                errors.append(f"{where}: {sid} kunci must be the index of one option")
+        elif fmt == "pilihan-ganda-kompleks":
+            if (not isinstance(kunci, list) or not kunci or kunci != sorted(set(kunci))
+                    or not all(type(k) is int and 0 <= k < n for k in kunci)):
+                errors.append(f"{where}: {sid} kunci must be a sorted list of option indexes")
+        elif fmt == "benar-salah":
+            if not isinstance(kunci, list) or len(kunci) != n or not all(isinstance(k, bool) for k in kunci):
+                errors.append(f"{where}: {sid} kunci must be one true/false per statement")
+        if fmt == "benar-salah" and not (isinstance(it.get("kolom"), list) and len(it["kolom"]) == 2):
+            errors.append(f"{where}: {sid} benar-salah needs 'kolom' with two headings")
+        text = it.get("soal", "") + " ".join(opsi)
+        if "[Gambar]" in text and not it.get("gambar"):
+            errors.append(f"{where}: {sid} has a [Gambar] marker but no 'gambar' description")
+        table = it.get("tabel")
+        if "[Tabel]" in it.get("soal", "") and not table:
+            errors.append(f"{where}: {sid} has a [Tabel] marker but no 'tabel'")
+        if table is not None and not (isinstance(table, list) and table
+                                      and all(isinstance(r, list) and all(isinstance(c, str) for c in r) for r in table)):
+            errors.append(f"{where}: {sid} tabel must be a list of rows of strings")
+        if not (isinstance(it.get("halaman"), list) and it["halaman"] and all(type(h) is int for h in it["halaman"])):
+            errors.append(f"{where}: {sid} halaman must be a non-empty list of page numbers")
+    return errors
+
+
 def words(html):
     return len(re.sub(r"<[^>]+>", " ", html).split())
 
@@ -181,8 +262,8 @@ def map_pages(maps, links):
     return out
 
 
-def subject_cards(maps, topics, n_questions):
-    """HTML cards for the home page: the history kit, then one card per subject map."""
+def subject_cards(maps, topics, n_questions, tka=None):
+    """HTML cards for the home page: the history kit, one card per subject map, then the TKA banks."""
     e = html.escape
     sni = topics["domains"]
     n_topics = sum(len(d["topics"]) for d in sni)
@@ -211,26 +292,42 @@ def subject_cards(maps, topics, n_questions):
             f'<a class="primary" href="peta-{e(m["id"])}.html">Peta materi <span>{n} simpul</span></a>'
             '</nav></article>'
         )
+    if tka:
+        n_items = sum(len(b["soal"]) for b in tka.values())
+        cards.append(
+            '<article class="subject" style="--c:var(--c-tka, var(--c-default))">'
+            f'<span class="kind">TKA 2025 · {len(tka)} mapel · {n_items} soal</span>'
+            '<h2>Latihan TKA</h2>'
+            '<p>Soal Tes Kemampuan Akademik SMA 2025 yang ditranskripsi dari berkas soal, dengan kunci usulan yang belum resmi.</p>'
+            '<div class="chips">' + "".join(f'<span>{e(b["mapel"])}</span>' for b in tka.values()) + '</div>'
+            '<nav class="links" aria-label="Latihan TKA">'
+            '<a class="primary" href="tka.html">Latihan soal <span>pilih mapel</span></a>'
+            '</nav></article>'
+        )
     return "\n    ".join(cards)
 
 
-def pages(topics, questions, links, maps=None):
+def pages(topics, questions, links, maps=None, tka=None):
     """Return {file name: page body} for every template, with cross-page links resolved through `links`.
 
-    A template that contains /*__DATA__*/ gets the topics and questions injected there.
+    A template that contains /*__DATA__*/ gets the topics and questions injected there,
+    and one that contains /*__TKA__*/ gets the TKA banks.
     Every href="<page>.html" that names a page in `links` is rewritten to its target.
     """
     data = dict(topics, map_url=links.get("peta.html", "peta.html"))
     payload = json.dumps({"topics": data, "questions": questions}, ensure_ascii=False).replace("</", "<\\/")
+    tka = tka if tka is not None else load_tka()
+    tka_payload = json.dumps(list(tka.values()), ensure_ascii=False).replace("</", "<\\/")
     out = {}
     for path in sorted((ROOT / "templates").glob("*.html")):
         if path.name.startswith("_"):  # shared templates, rendered by other steps
             continue
         body = path.read_text(encoding="utf-8")
         body = body.replace("/*__DATA__*/", "const DATA = " + payload + ";")
+        body = body.replace("/*__TKA__*/", "const BANKS = " + tka_payload + ";")
         body = body.replace("__SITE_BASE__", SITE_BASE)
         if "<!--__SUBJECT_CARDS__-->" in body:
-            cards = subject_cards(maps if maps is not None else load_maps(), topics, len(questions))
+            cards = subject_cards(maps if maps is not None else load_maps(), topics, len(questions), tka)
             body = body.replace("<!--__SUBJECT_CARDS__-->", cards)
         for name, target in links.items():
             body = body.replace('href="' + name, 'href="' + target)
@@ -238,7 +335,7 @@ def pages(topics, questions, links, maps=None):
     return out
 
 
-def build(topics, rows, maps, artifact):
+def build(topics, rows, maps, artifact, tka=None):
     questions = [
         {"id": r["id"], "t": r["simpul"], "lv": int(r["tingkat"]), "q": r["soal"], "a": r["jawaban"], "x": r["catatan"]}
         for r in rows
@@ -246,7 +343,7 @@ def build(topics, rows, maps, artifact):
     docs = ROOT / "docs"
     docs.mkdir(exist_ok=True)
     (docs / "questions.json").write_text(json.dumps(questions, ensure_ascii=False, indent=1), encoding="utf-8")
-    built = {**pages(topics, questions, {}, maps), **map_pages(maps, {})}
+    built = {**pages(topics, questions, {}, maps, tka), **map_pages(maps, {})}
     for name, body in built.items():
         (docs / name).write_text(HEAD + body, encoding="utf-8")
     # Tell GitHub Pages to publish docs/ as-is instead of running it through Jekyll.
@@ -255,7 +352,7 @@ def build(topics, rows, maps, artifact):
     if artifact:
         out = ROOT / "build"
         out.mkdir(exist_ok=True)
-        hosted = {**pages(topics, questions, HOSTED_LINKS, maps), **map_pages(maps, HOSTED_LINKS)}
+        hosted = {**pages(topics, questions, HOSTED_LINKS, maps, tka), **map_pages(maps, HOSTED_LINKS)}
         for name, body in hosted.items():
             if name in ARTIFACT_URLS:
                 (out / name.replace(".html", ".fragment.html")).write_text(body, encoding="utf-8")
@@ -265,7 +362,9 @@ def build(topics, rows, maps, artifact):
 def main():
     topics, rows = load()
     maps = load_maps()
-    errors = validate(topics, rows) + [e for name, m in maps.items() for e in validate_map(name, m)]
+    tka = load_tka()
+    errors = (validate(topics, rows) + [e for name, m in maps.items() for e in validate_map(name, m)]
+              + [e for name, b in tka.items() for e in validate_tka(name, b)])
     if errors:
         print(f"{len(errors)} error(s) in data/:")
         print("\n".join("  " + e for e in errors))
@@ -275,7 +374,10 @@ def main():
         print(f"Peta {m['subject']}: {sum(len(d['topics']) for d in m['domains'])} simpul")
         for w in lint_map(name, m):
             print("  warning: " + w)
-    build(topics, rows, maps, "--artifact" in sys.argv[1:])
+    for b in tka.values():
+        low = sum(it["keyakinan_kunci"] in ("rendah", "tidak ada") for it in b["soal"])
+        print(f"TKA {b['mapel']}: {len(b['soal'])} soal, {low} dengan kunci berkeyakinan rendah atau tanpa kunci")
+    build(topics, rows, maps, "--artifact" in sys.argv[1:], tka)
 
 
 if __name__ == "__main__":

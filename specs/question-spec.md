@@ -2,7 +2,9 @@
 
 Questions practise the facts in a map. Today there is one bank, for the history competition: `data/questions.csv`, with topic codes defined in `data/topics.json`. It feeds `docs/bank.html` and `docs/simulasi.html`.
 
-Question banks for other subjects do not exist yet. When the first one is added, it MUST follow this spec, and the build MUST be generalised (one CSV per subject, topic codes taken from that subject's map) instead of copying the history pipeline. Record that decision in the pull request.
+Transcribed TKA exam papers are a different kind of bank (multiple choice, verbatim official wording) and follow [`tka-spec.md`](tka-spec.md) instead.
+
+Short-answer question banks for other subjects do not exist yet. When the first one is added, it MUST follow this spec, and the build MUST be generalised (one CSV per subject, topic codes taken from that subject's map) instead of copying the history pipeline. Record that decision in the pull request.
 
 ## 1. Fields
 

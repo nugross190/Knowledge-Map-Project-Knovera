@@ -1,0 +1,1109 @@
+{
+  "id": "tka-sejarah-pilihan-2025",
+  "kode": "SEJ25",
+  "mapel": "Sejarah",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Sejarah_SMA_2025_Pilihan.pdf",
+    "halaman": 28,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; huruf miring istilah asing tidak dipertahankan.",
+    "Judul halaman 1 sumber: \"Soal TKA Sejarah (Pilihan) SMA/MA/SMK Tahun 2025\".",
+    "PDF memuat 30 soal unik (nomor 1–30) dalam 28 halaman, tanpa catatan soal yang belum tersedia. Dua soal tercetak dua kali: soal Demak (nomor 7) juga muncul di halaman 2 di bawah soal nomor 2, dan soal Aceh (nomor 9) juga muncul di halaman 4 di bawah kotak indikator nomor 4. Setiap soal dicatat sekali dengan kedua halaman di kolom halaman.",
+    "Banyak kotak indikator terpotong di bagian atas atau kalimat kompetensinya terpotong; disalin sejauh terlihat.",
+    "Fakta sejarah di stimulus dan opsi berasal dari sumber dan tidak diperiksa satu per satu; yang meragukan dicatat di catatan_transkripsi.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "SEJ25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPISKDSS01SA-000000-0027",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pengantar Ilmu Sejarah",
+      "subelemen": "Konsep Dasar Ilmu Sejarah",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk mengkritisi konsep dasar ilmu sejarah mencakup pemahaman tentang pengertian sejarah, kedudukan manusia dalam sejarah, cara berpikir sejarah secara diakronik (berurutan dalam waktu) dan sinkronik (melihat keterkaitan dal",
+      "subkompetensi": null,
+      "indikator": "Menentukan contoh peristiwa sejarah berdasarkan cara berpikir sejarah diakronik/sinkronik (1)",
+      "soal": "Pada tahun 1942, Jepang menduduki wilayah Indonesia. Pemerintah militer Jepang melakukan sejumlah kebijakan di berbagai bidang, di antaranya membubarkan organisasi politik yang ada. Untuk menarik simpati masyarakat, Jepang melakukan propaganda dan membentuk organisasi seperti PUTERA (Pusat Tenaga Rakyat), dan PETA (Pembela Tanah Air). Di sisi lain, ekonomi dan sosial masyarakat Indonesia saat itu mengalami tekanan berat akibat kerja paksa dan kekurangan pangan dalam rangka persiapan perang Jepang di Pasifik.\nBerdasarkan informasi di atas, manakah pernyataan yang sesuai dengan cara berpikir sejarah sinkronik?",
+      "opsi": [
+        "Dampak kebijakan Jepang terhadap perlawanan rakyat",
+        "Perubahan organisasi dari masa Belanda ke masa Jepang",
+        "Peristiwa dari masa pra-kemerdekaan hingga masa kemerdekaan",
+        "Perkembangan politik dari zaman penjajahan hingga kemerdekaan",
+        "Kondisi sosial, politik, dan ekonomi dalam satu masa pemerintahan"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Berpikir sinkronik meluas dalam ruang tetapi terbatas dalam waktu: melihat berbagai aspek dalam satu masa (E). B, C, dan D bersifat diakronik (memanjang dalam waktu).",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"keterkaitan dal\"); disalin apa adanya.",
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0009",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Islam",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Islam ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Islam di Nusantara; serta mengklasifikasikan berbagai peninggalan kebudayaa",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan faktor-faktor yang mempengaruhi perkembangan ekonomi di kerajaan islam nusantara, berdasarkan fakta perkembangan kerajaan islam tersebut. (2)",
+      "soal": "Banten pada awalnya merupakan daerah kekuasaan Kerajaan Pajajaran, namun berhasil ditaklukkan Demak di bawah pimpinan Fatahillah. Peristiwa ini menjadi jalan bagi cepatnya perkembangan Islam di wilayah tersebut. Banten segera tumbuh menjadi pelabuhan penting di Selat Sunda setelah Malaka jatuh ke tangan Portugis pada tahun 1511.\nApa saja faktor yang mempengaruhi perkembangan ekonomi Kerajaan Banten sehingga menjadi pelabuhan penting pada periode tersebut?\nKlik jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Pedagang India dan Arab tidak berlabuh lagi di Malaka setelah dikuasai Portugis",
+        "Banten menjadi tujuan pedagang karena menghasilkan lada dan pala yang banyak",
+        "Pedagang dari wilayah bagian Timur Nusantara banyak yang datang ke Banten",
+        "Situasi Majapahit memburuk, sehingga Banten menjadi pusat baru",
+        "Banten merupakan pelabuhan khusus bagi para pedagang dari Eropa"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Setelah Malaka jatuh ke Portugis (1511), pedagang Islam dari India dan Arab mengalihkan jalur ke Selat Sunda, dan pedagang dari timur Nusantara ikut singgah di Banten (A, C). Banten terkenal sebagai penghasil lada, tetapi pala berasal dari Maluku/Banda, sehingga B dianggap tidak tepat; D salah konteks (Majapahit), E salah.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": [
+        "Opsi B (lada) bisa juga dimaksudkan benar bila penyebutan pala tidak dipersoalkan; kunci perlu dicek.",
+        "Di halaman 2, di bawah soal ini tercetak juga soal Demak (kode 25SEJHBIKISS05SA-000000-0041) yang sama persis dengan soal nomor 7; dicatat sekali sebagai SEJ25-007."
+      ]
+    },
+    {
+      "id": "SEJ25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPBEKBES06SA-000000-0377",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Proses kedatangan Bangsa Eropa ke Nusantara",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menganalisis alasan masuknya Bangsa Eropa ke Nusantara; serta mendeskripsikan proses kedatangan Bangsa Eropa ke Nusantara.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis tujuan kedatangan bangsa eropa ke nusantara, berdasarkan fakta sejarah yang terjadi pada masa awal kedatangan bangsa Eropa. (3)",
+      "soal": "[Gambar]\nPada bulan April 1595, Belanda memulai pelayaran menuju Nusantara di bawah pimpinan Cornelis de Houtman. Belanda menempuh rute Pantai Barat Afrika – Tanjung Harapan–Samudra Hindia–Selat Sunda–Banten. Belanda akhirnya sampai di Nusantara melalui Selat Sunda dan merapat di Banten pada tahun 1596.\nApa tujuan utama Bangsa Belanda datang ke Nusantara ?",
+      "gambar": "Lukisan kapal-kapal layar Eropa berbendera di lepas pantai dan rombongan orang Eropa berpakaian abad ke-16 turun di pantai berpohon kelapa, disambut penduduk setempat dengan payung kebesaran.",
+      "opsi": [
+        "Membuktikan kegemilangan dunia Timur",
+        "Menunjukkan kehebatan Eropa di mata Asia",
+        "Menguasai bandar perdagangan di Malaka",
+        "Mencari sumber penghasil rempah-rempah",
+        "Melakukan eksplorasi untuk kepentingan Belanda"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pelayaran Belanda ke Nusantara bertujuan mencari langsung daerah penghasil rempah-rempah (D).",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SEJ25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJPNPRPNS09SA-000000-0187",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Relevansi semangat Pergerakan Nasional dengan masa kini",
+      "kompetensi": "Kemampuan murid untuk dapat menghubungkan semangat tokoh pergerakan nasional dengan kehidupan di masa kini.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan hubungan ide perjuangan salah satu tokoh pergerakan nasional dengan kehidupan masa kini. (4)",
+      "soal": "Ki Hajar Dewantara dikenal sebagai tokoh pergerakan nasional yang gigih memperjuangkan kemerdekaan melalui jalur pendidikan, pers, dan diplomasi. Ia mendirikan Taman Siswa sebagai bentuk perlawanan terhadap diskriminasi pendidikan kolonial dan aktif menyuarakan pentingnya pendidikan nasional melalui tulisan-tulisan kritis di media. Gagasan dan nilai perjuangannya tetap relevan hingga masa kini.\nManakah pernyataan berikut yang mencerminkan ide Ki Hajar Dewantara dan masih relevan untuk kehidupan masa kini?\nKlik jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Pentingnya pendidikan sebagai alat membangun bangsa.",
+        "Menggunakan segala cara untuk mencapai tujuan yang diinginkan.",
+        "Mempertahankan semua tradisi yang diturunkan oleh generasi sebelumnya.",
+        "Mendorong penggunaan media sosial untuk menyebarkan informasi yang benar.",
+        "Menjaga persatuan dan semangat nasionalisme di tengah keberagaman Indonesia."
+      ],
+      "kunci": [
+        0,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pendidikan sebagai alat membangun bangsa (A), penggunaan media untuk menyuarakan gagasan yang benar (D, padanan pers pada masanya), dan nasionalisme (E) sesuai perjuangan Ki Hajar Dewantara. B dan C bertentangan dengan gagasannya.",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": [
+        "Di halaman 4 kotak indikator (4) diikuti dua soal: soal Aceh (kode 25SEJPNPJPPS10SA-000000-0422) yang sama persis dengan soal nomor 9, lalu soal ini. Soal ini yang sesuai dengan indikator (4); soal Aceh dicatat sekali sebagai SEJ25-009."
+      ]
+    },
+    {
+      "id": "SEJ25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJOBRODBS15SA-000000-0156",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Orde Baru sampai Reformasi",
+      "subelemen": "Kehidupan masyarakat pada masa Orde Baru",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menjelaskan proses lahirnya Orde Baru, serta mengkritisi berbagai kebijakan politik dan ekonomi beserta dampaknya pada masa Orde Baru.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis peristiwa penting terkait kebijakan/ekonomi/politik berdasar fakta sejarah lahirnya orde baru. (5)",
+      "soal": "Tritura merupakan respons mahasiswa terhadap situasi politik dan ekonomi Indonesia pasca peristiwa G30S 1965. Tergambar pada tabel berikut:\n[Tabel]\nSumber: Hapsari & Adil, 2023:169\nManakah yang termasuk dalam peristiwa penting terkait titik awal lahirnya Orde Baru?\nKlik pilihan Benar atau Salah untuk setiap pernyataan di bawah ini!",
+      "tabel": [
+        [
+          "Isi Tritura",
+          "Makna Tuntutan"
+        ],
+        [
+          "1. Bubarkan PKI",
+          "Menghapus pengaruh komunisme dari kehidupan politik nasional"
+        ],
+        [
+          "2. Turunkan harga-harga",
+          "Menanggapi krisis ekonomi dan inflasi tinggi"
+        ],
+        [
+          "3. Perombakan kabinet",
+          "Mengganti tokoh-tokoh yang dianggap bertanggungjawab"
+        ]
+      ],
+      "opsi": [
+        "Dikeluarkannya Surat Perintah Sebelas Maret oleh Presiden Soekarno.",
+        "Letjen Soeharto membubarkan Partai Komunis Indonesia (PKI).",
+        "Penetapan Dewan Jenderal oleh Presiden Soekarno."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Supersemar (11 Maret 1966) dikeluarkan Presiden Soekarno dan menjadi dasar Letjen Soeharto membubarkan PKI; keduanya titik awal Orde Baru. \"Dewan Jenderal\" adalah isu yang dihembuskan menjelang G30S, bukan penetapan Presiden Soekarno.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "SEJ25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPISKDSS01SA-000000-0016",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pengantar Ilmu Sejarah",
+      "subelemen": "Konsep Dasar Ilmu Sejarah",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk mengkritisi konsep dasar ilmu sejarah mencakup pemahaman tentang pengertian sejarah, kedudukan manusia dalam sejarah, cara berpikir sejarah secara diakronik (berurutan dalam waktu) dan sinkronik (melihat keterkaitan dal",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan pengertian sejarah berdasarkan definisi sejarah yang disampaikan oleh para ahli. (6)",
+      "soal": "Menurut pendapat Herodotus bahwa sejarah tidak berkembang ke arah depan dengan tujuan yang pasti, tetapi bergerak seperti garis lingkaran yang tinggi rendahnya diakibatkan oleh keadaan manusia.\nApakah fokus pengertian sejarah menurut pendapat tersebut?",
+      "opsi": [
+        "Hasil penafsiran subjektif dari para penulis masa lalu.",
+        "Kumpulan fakta masa lampau yang dikaji secara sistematis.",
+        "Bentuk ekspresi imajinatif dalam bentuk tulisan atau sastra.",
+        "Cerita turun-temurun yang dituturkan melalui narasi rakyat.",
+        "Peristiwa yang berlangsung dan berulang dalam kehidupan manusia."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pendapat Herodotus menggambarkan sejarah sebagai gerak siklus (berulang) yang dipengaruhi keadaan manusia (E).",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"keterkaitan dal\"); disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SEJ25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0041",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Islam",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Islam ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Islam di Nusantara; serta mengklasifikasikan berbagai peninggalan kebudayaa",
+      "subkompetensi": null,
+      "indikator": "Menentukan faktor perkembangan ekonomi pada masa kerajaan Islam nusantara berdasarkan informasi kehidupan ekonomi pada masa tersebut. (7)",
+      "soal": "Demak awalnya merupakan bagian dari wilayah kerajaan Majapahit. Setelah keruntuhan Majapahit, Raden Fatah mendirikan kerajaan Islam Demak. Perkembangan politik ini membuat Demak berperan penting dalam ekonomi.\nApa saja faktor yang membuat Demak memiliki peran penting dalam bidang ekonomi?\nKlik jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Demak terkenal sebagai penghasil beras yang mempunyai daerah pertanian luas.",
+        "Situasi politik dan ekonomi Banten sangat kacau sehingga Demak menjadi pusat baru.",
+        "Demak memiliki komoditas ekspor seperti beras, kain tenun, lilin, kayu jati, dan garam.",
+        "Demak tidak menerapkan pajak masuk bagi kapal-kapal yang singgah dan berdagang.",
+        "Demak menjadi pelabuhan penghubung antara wilayah timur dan barat Nusantara."
+      ],
+      "kunci": [
+        0,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Demak didukung daerah pertanian penghasil beras (A) dan menjadi pelabuhan transit antara daerah rempah di timur dan Malaka di barat (E). B salah konteks; D tidak didukung sumber.",
+      "halaman": [
+        2,
+        7
+      ],
+      "catatan_transkripsi": [
+        "Opsi C (komoditas ekspor) bisa jadi juga dimaksudkan benar; daftar komoditasnya tidak diperiksa. Kunci perlu dicek.",
+        "Soal ini tercetak dua kali: di halaman 2 (di bawah soal nomor 2, tanpa kotak indikator sendiri) dan di halaman 7 dengan indikator (7). Isinya sama; dicatat sekali."
+      ]
+    },
+    {
+      "id": "SEJ25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPISSSSS03SA-000000-0026",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pengantar Ilmu Sejarah",
+      "subelemen": "Sumber-sumber sejarah",
+      "kompetensi": "Kemampuan murid untuk mengidentifikasi berbagai jenis sumber sejarah, membedakan antara sumber-sumber sejarah primer dan sekunder, mengkritisi sumber-sumber sejarah primer dan sekunder, serta menginterpretasikan isi sumber sejarah.",
+      "subkompetensi": null,
+      "indikator": "Menyimpulkan berbagai sumber sejarah berdasarkan deskripsi fakta sejarah pada periode tertentu (8)",
+      "soal": "Dalam meneliti peristiwa Konferensi Asia Afrika 1955, seorang siswa membaca naskah pidato asli Presiden Soekarno dan buku sejarah kontemporer yang membahas dampak konferensi tersebut. Naskah pidato ditulis pada saat acara berlangsung, sedangkan buku ditulis oleh sejarawan pada tahun 2015. Siswa tersebut membandingkan kedua sumber tersebut untuk memahami isi peristiwa dan sudut pandang masa kini.\nBagaimana perbedaan karakteristik antara dua bahan yang digunakan siswa tersebut?",
+      "opsi": [
+        "Keduanya memiliki bobot yang sama karena membahas topik yang identik dan ditulis oleh narasumber yang kompeten.",
+        "Buku memiliki kelebihan karena ditulis dengan jarak waktu yang cukup untuk menilai secara objektif peristiwa masa lalu.",
+        "Naskah pidato lebih akurat karena ditulis oleh tokoh penting, sedangkan buku hanya hasil telaah dari generasi selanjutnya.",
+        "Buku lebih mendalam karena menggabungkan banyak sudut pandang, sedangkan naskah hanya mewakili satu pendapat tokoh.",
+        "Naskah pidato pandangan langsung pelaku sejarah, sedangkan buku berisi retrospektif (interpretasi akurat peristiwa masa lalu) dari penulis."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Perbedaan karakteristik sumber primer (naskah pidato, pandangan langsung pelaku) dan sumber sekunder (buku, tafsiran kemudian) dinyatakan di opsi E; opsi lain menilai keunggulan satu sumber, bukan karakteristiknya.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPNPJPPS10SA-000000-0422",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Kehidupan Bangsa Indonesia di bawah penjajahan Jepang dan perlawanan Bangsa Indonesia",
+      "kompetensi": "Kemampuan murid untuk menjelaskan keterkaitan antara runtuhnya kekuasaan kolonial Belanda dan masuknya Jepang ke Indonesia; mengidentifikasi berbagai dampak penjajahan Jepang dalam bidang politik, ekonomi, sosial, dan budaya; serta menganalisis strategi p",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi latar belakang perlawanan tokoh pergerakan nasional berdasarkan informasi mengenai salah satu perlawanan Bangsa Indonesia terhadap Jepang (9)",
+      "soal": "Perlawanan Aceh yang dipimpin oleh Teuku Abdul Jalil adalah salah satu bentuk perlawanan menghadapi pendudukan Jepang. Pasukan Jepang dikerahkan dari Bireun, Lhok Sukon, Lhokseumawe. Blang Kampong Teungah juga diserbu Jepang pada 13 November 1942. Teuku Abdul Djalil dan 19 orang pengikutnya meninggal.\nApakah yang menjadi alasan perlawanan Teuku Abdul Jalil terhadap Jepang di Aceh?",
+      "opsi": [
+        "Didirikannya guseikanbu (pusat militer).",
+        "Penerapan Seikerei (membungkuk kearah timur matahari).",
+        "Praktik Jugun Ianfu (perbudakan perempuan).",
+        "Dibentuknya Kumiai (Lembaga ekonomi).",
+        "Kewajiban Tencosetsu (hari raya ulang tahun kaisar)."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Perlawanan Teuku Abdul Jalil (Cot Plieng) dipicu penolakan terhadap seikerei, yang dianggap bertentangan dengan ajaran Islam (B).",
+      "halaman": [
+        4,
+        9
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"strategi p\"); disalin apa adanya.",
+        "Soal ini tercetak dua kali: di halaman 4 (di bawah kotak indikator nomor 4) dan di halaman 9 dengan indikator (9). Isinya sama; dicatat sekali.",
+        "Ejaan nama berganti-ganti (Abdul Jalil / Abdul Djalil) dan istilah \"Tencosetsu\" disalin apa adanya; huruf miring istilah Jepang tidak dipertahankan."
+      ]
+    },
+    {
+      "id": "SEJ25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJHBIKHBS04SA-000000-0285",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Hindu-Budha",
+      "kompetensi": "Kemampuan murid untuk mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Hindu-Budha ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Hindu-Budha di Nusantara; serta mengklasifikasikan peninggalan budaya kerajaan Hindu-Budh",
+      "subkompetensi": null,
+      "indikator": "Mengintepretasikan kehidupan sosial/budaya masyarakat pada masa kerajaan Hindu-Budha berdasarkan gambar relief. (10)",
+      "soal": "[Gambar]\nCandi Borobudur dihiasi ribuan panel relief yang mengisahkan ajaran Buddha dan kehidupan sehari-hari masyarakat Jawa kuno. Gambar ini memperlihatkan Relief Karmawibhangga Panel nomor 65 di Candi Borobudur yang menggambarkan aktivitas masyarakat Jawa Kuno.\nSumber gambar: https://kebudayaan.kemdikbud.go.id/bkborobudur/wp-content/uploads/sites/12/2019/04/IMG_20190411_093937-e1554951877688.jpg\nApa penggambaran yang tepat dari Relief Karmawibhangga Panel nomor 65 tentang kehidupan sosial masyarakat?",
+      "gambar": "Foto hitam-putih relief batu: di kiri sosok-sosok dan seekor hewan berkaki empat di bawah bangunan; di tengah rumpun tanaman padi dengan hewan-hewan kecil di sela batangnya; di kanan sekelompok orang duduk di bangunan panggung dengan peti/lumbung di bawahnya.",
+      "opsi": [
+        "Masyarakat menjadikan anjing sebagai penjaga sawah dari serangan hama yang memakan padi.",
+        "Masyarakat belum mengenal metode penyimpanan padi, sehingga padi langsung dikonsumsi.",
+        "Padi menjadi satu-satunya tanaman yang sudah bisa dibudidayakan oleh masyarakat Mataram kuno.",
+        "Masyarakat menjadikan padi sebagai persembahan kepada Dewa, sehingga ditemukan pada relief candi.",
+        "Masyarakat Jawa Kuno sudah menghadapi hama tikus ketika membudidayakan padi di sawah."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Relief memperlihatkan tanaman padi dengan hewan-hewan kecil (tikus) di sela batangnya: masyarakat Jawa Kuno sudah bercocok tanam padi dan menghadapi hama tikus (E). B bertentangan dengan adanya tempat penyimpanan di relief; C dan D tidak tergambar.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Hewan pada relief diidentifikasi dari gambar yang kecil; perlu dicek dengan foto resolusi lebih tinggi.",
+        "Salah ketik \"Mengintepretasikan\" dan \"Hindu-Budh\" (terpotong) disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SEJ25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0182",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Islam",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Islam ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Islam di Nusantara; serta mengklasifikasikan berbagai peninggalan kebudayaa",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi bukti dari teori masuk dan berkembangnya agama islam ke Nusantara (11)",
+      "soal": "Agama Islam masuk ke Nusantara melalui berbagai cara, salah satunya adalah melalui jalur perdagangan. Beberapa ahli berpendapat bahwa Islam dibawa oleh para pedagang dari Gujarat.\nApa bukti yang mendukung teori Gujarat tersebut?",
+      "opsi": [
+        "Makam Sunan Ampel di Surabaya.",
+        "Nisan Syekh Rukunuddin di Barus.",
+        "Nisan Syekh Jumadil Kubro di Troloyo.",
+        "Makam Fatimah Binti Maimun di Gresik.",
+        "Nisan Sultan Malik Al-Saleh di Samura Pasai."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Bukti utama teori Gujarat adalah nisan Sultan Malik as-Saleh di Samudra Pasai yang bercorak sama dengan nisan dari Cambay, Gujarat (E).",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Ejaan \"Samura Pasai\" (Samudra Pasai) pada opsi E disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SEJ25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPISFSHS02SA-000000-0166",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pengantar Ilmu Sejarah",
+      "subelemen": "Fenomena sejarah dalam kehidupan sehari-hari",
+      "kompetensi": "Kemampuan murid untuk mengenali dan menjelaskan pengaruh peristiwa sejarah terhadap kehidupan sehari-hari di masa kini, seperti dalam kebiasaan, bangunan, tradisi, atau sistem yang ada di sekitar mereka.",
+      "subkompetensi": null,
+      "indikator": "Membandingkan kehidupan masyarakat sebelum dan sesudah peristiwa sejarah berdasarkan kutipan peristiwa sejarah. (12)",
+      "soal": "Sumpah Pemuda terjadi pada tanggal 28 Oktober 1928, merupakan momen yang penting dalam sejarah perjuangan kemerdekaan Indonesia. Peristiwa ini merupakan hasil dari Kongres Pemuda II yang diselenggarakan di Jakarta. Hal ini menjadi tonggak penting dalam menyatukan para pemuda dari berbagai latar belakang suku, dan bahasa sebagai satu identitas, bangsa Indonesia. Persatuan ini yang menjadi modal dalam berjuang menggapai kemerdekaan Indonesia.\nBerdasarkan informasi diatas, bagaimana perbandingan persatuan dan nasionalisme di masyarakat sebelum dan sesudah Sumpah Pemuda?",
+      "opsi": [
+        "Sebelum adanya Sumpah Pemuda, masyarakat berjuang untuk daerahnya masing-masing, sedangkan sesudahnya muncul perasaan sebagai sebuah bangsa yang satu",
+        "Sebelum adanya Sumpah Pemuda, masyarakat berjuang untuk kolonialisme, sedangkan sesudahnya masyarakat berjuang untuk kelompoknya masing-masing",
+        "Sebelum adanya Sumpah Pemuda, masyarakat berjuang untuk daerahnya masing-masing, sedangkan sesudahnya tidak ada perubahan dalam tujuan berjuang",
+        "Sebelum adanya Sumpah Pemuda, masyarakat telah berjuang bersama-sama sebagai sebuah bangsa, sedangkan sesudahnya tidak ada perbedaan yang signifikan",
+        "Sebelum adanya Sumpah Pemuda, muncul perasaan sebagai sebuah bangsa yang satu, sedangkan sesudahnya perasaan itu semakin kuat dan kokoh"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Sebelum Sumpah Pemuda perjuangan bersifat kedaerahan; sesudahnya tumbuh kesadaran sebagai satu bangsa (A).",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0321",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Pengantar Ilmu Sejarah",
+      "subelemen": "Sumber-sumber sejarah",
+      "kompetensi": "Kemampuan murid untuk mengidentifikasi berbagai jenis sumber sejarah, membedakan antara sumber-sumber sejarah primer dan sekunder, mengkritisi sumber-sumber sejarah primer dan sekunder, serta menginterpretasikan isi sumber sejarah.",
+      "subkompetensi": null,
+      "indikator": "Membandingkan dua jenis sumber sejarah, berdasarkan narasi tentang fakta sejarah yang terjadi pada masa lalu (13)",
+      "soal": "Pada awal abad ke-17, Surabaya adalah kota pelabuhan yang makmur dengan jaringan perdagangan kuat. Namun, kota ini ditaklukkan oleh Kesultanan Mataram di bawah kepemimpinan Sultan Agung setelah pengepungan panjang dari tahun 1620 hingga 1625.\nBagaimanakah pengaruh konflik antara Mataram dengan Surabaya terhadap kehidupan ekonomi di Nusantara?\nKlik jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Mataram menjadi pusat baru perekonomian melalui perdangan dan pelayaran rempah dari Indonesia Timur.",
+        "Surabaya yang tidak lagi menjadi pelabuhan penting dan telah kehilangan dominasinya atas Jawa Timur.",
+        "Terjadi kemunduran perekonomian di pesisir akibat penghancuran kota-kota sekutu dari Surabaya oleh Mataram.",
+        "Menguatnya Kesultanan Makassar sebagai pusat perdagangan rempah-rempah di Nusantara dari Indonesia Timur.",
+        "Mataram menjadi pusat pelayaran dan perdagangan antarregional menggantikan Surabaya yang telah berhasil ditaklukkan."
+      ],
+      "kunci": [
+        1,
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Penaklukan Surabaya mengakhiri dominasinya (B) dan menghancurkan kota-kota pesisir sekutunya sehingga perdagangan pesisir mundur (C); perdagangan rempah kemudian beralih ke Makassar (D). Mataram adalah kerajaan agraris, bukan pusat pelayaran (A dan E salah).",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Indikator (membandingkan dua jenis sumber sejarah) tidak sesuai dengan isi soal; kode soal memakai kode subelemen kerajaan Islam. Disalin apa adanya.",
+        "Salah ketik \"perdangan\" pada opsi A disalin apa adanya; judul kotak indikator terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJPISSSSS03SA-000000-0236",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Pengantar Ilmu Sejarah",
+      "kompetensi": "Kemampuan murid untuk mengidentifikasi berbagai jenis sumber sejarah, membedakan antara sumber-sumber sejarah primer dan sekunder, mengkritisi sumber-sumber sejarah primer dan sekunder, serta menginterpretasikan isi sumber sejarah.",
+      "subkompetensi": null,
+      "indikator": "Ketepatan dalam menginterpretasi dari sebuah penafsiran sumber sejarah (14)",
+      "soal": "Gajah Mada, Mahapatih Majapahit, mengucapkan Sumpah Palapa untuk menyatukan Nusantara. Sumpah ini membawa Majapahit mencapai puncak kejayaannya sebagai kekuatan yang disegani. Sejarawan George Coedes menuliskan bahwa Gajah Mada merupakan tokoh penting dalam perluasan supremasi/kekuasaan tertinggi Majapahit pada masa Hayam Wuruk.\nBerdasarkan informasi di atas, manakah penafsiran yang paling tepat mengenai Sumpah Palapa bagi Majapahit?\nPilih tepat atau tidak tepat mengenai pentingnya Sumpah Palapa bagi Majapahit!",
+      "opsi": [
+        "Sumpah Palapa tujuan menyatukan nusantara.",
+        "Sumpah Palapa berfokus perluasan wilayah daratan.",
+        "Sumpah Palapa mencerminkan luhur cita-cita Majapahit."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Sumpah Palapa bertujuan menyatukan Nusantara (Tepat) dan mencerminkan cita-cita luhur Majapahit (Tepat). Penyatuan Nusantara meliputi wilayah kepulauan dan laut, bukan hanya daratan (Tidak Tepat).",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator memadukan Elemen \"Perlawanan terhadap Bangsa Eropa\" dengan Subelemen \"Pengantar Ilmu Sejarah\", padahal soal tentang Majapahit dan sumber sejarah; disalin apa adanya. Kompetensi sama dengan soal nomor 8."
+      ],
+      "kolom": [
+        "Tepat",
+        "Tidak Tepat"
+      ]
+    },
+    {
+      "id": "SEJ25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPBEKBES06SA-000000-0367",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Proses kedatangan Bangsa Eropa ke Nusantara",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menganalisis alasan masuknya Bangsa Eropa ke Nusantara; serta mendeskripsikan proses kedatangan Bangsa Eropa ke Nusantara.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan proses perjalanan bangsa Eropa ke Nusantara berdasarkan deskripsi proses kedatangan salah satu bangsa tersebut. (15)",
+      "soal": "Bangsa Spanyol sebagai salah satu bangsa Eropa yang melakukan penjelajahan Samudera. Beberapa tokoh penjelajahan samudera dari negara ini di antaranya adalah Christophorus Columbus, Francisco Pizarro dan Magellan.\nManakah jalur pelayaran Bangsa Spanyol sehingga sampai di Nusantara?",
+      "opsi": [
+        "Eropa-Samudra Atlantik-Benua Amerika-Samudra Pasifik-Filipina-Malaka",
+        "Eropa-Samudra Atlantik-Benua Amerika-Samudera Pasifik-Filipina-Maluku",
+        "Eropa-Samudera Atlantik-Benua Amerika-Samudera Pasifik-Goa India-Malaka",
+        "Eropa-Pantai Barat Afrika-Tanjung Harapan- Pantai Timur Afrika-Kalikut India-Malaka",
+        "Eropa-Pantai Barat Afrika-Tanjung Harapan- Pantai Timur Afrika-Kalikut India-Maluku-Malaka"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Ekspedisi Spanyol (Magellan) berlayar ke barat melintasi Atlantik, mengitari Amerika Selatan, menyeberangi Pasifik ke Filipina, lalu ke Maluku (B). Jalur lewat Tanjung Harapan adalah jalur Portugis.",
+      "halaman": [
+        14,
+        15
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SEJ25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0185",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Islam",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Islam ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Islam di Nusantara; serta mengklasifikasikan berbagai peninggalan kebudayaa",
+      "subkompetensi": null,
+      "indikator": "Menentukan kategori jejak budaya peninggalan kerajaan islam berdasarkan contoh-contoh tradisi budaya yang masih ada saat ini. (16)",
+      "soal": "Walisongo, sebutan bagi kelompok yang berperan penting dalam penyebaran Islam di Pulau Jawa. Wali Songo memperkenalkan agama Islam melalui berbagai pendekatan kepada masyarakat. Wali Songo menggunakan berbagai pendekatan budaya untuk menyebarkan Islam di Jawa, seperti cerita pewayangan dengan tokoh Islam dan pertunjukan seni.\nManakah dari pernyataan berikut yang menunjukkan fakta yang tepat dan tidak tepat tentang jejak budaya Islam di Jawa?\nKlik pilihan Tepat atau Tidak Tepat untuk setiap pernyataan di bawah ini!",
+      "opsi": [
+        "Pembaharuan bentuk wayang yang sebelumnya berbentuk gambar manusia menjadi gambar dekoratif",
+        "Menggunakan tembang-tembang Jawa dalam menyampaikan tuntunan-tuntunan hidup",
+        "Pertunjukan tari Sanghyang saat melakukan upacara keagamaan tradisional"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Wali Songo mengubah bentuk wayang yang menyerupai manusia menjadi bentuk dekoratif/stilisasi dan memakai tembang Jawa untuk dakwah (Tepat). Tari Sanghyang adalah tradisi Hindu-Bali, bukan jejak budaya Islam (Tidak Tepat).",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ],
+      "kolom": [
+        "Tepat",
+        "Tidak Tepat"
+      ]
+    },
+    {
+      "id": "SEJ25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPBEPBAS07SA-000000-0361",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Perlawanan terhadap Bangsa Eropa sebelum Abad ke-20",
+      "kompetensi": "Kemampuan murid untuk mengkritisi kebijakan bangsa Eropa di Nusantara dalam berbagai bidang seperti politik, ekonomi, sosial, dan budaya; mengidentifikasi dampak dari kolonialisme dan imperialisme yang terjadi di berbagai wilayah Nusantara, serta menganal",
+      "subkompetensi": null,
+      "indikator": "Menganalisis dampak kolonialisme bangsa eropa pada kehidupan sosial/ekonomi masyarakat nusantara (17)",
+      "soal": "[Gambar]\nGambar ini menunjukkan ilustrasi pelaksanaan hukuman yang dikenal sebagai poenale sanctie yang banyak dilakukan pada perkebunan kolonial di Sumatera Timur pada akhir abad ke-19. Praktik seperti ini diterapkan kepada pekerja perkebunan yang dianggap melanggar peraturan.\nSumber: Raden Roro Mei/Pusmendik, 2025\nBerdasarkan ilustrasi tersebut, manakah di antara pernyataan berikut yang paling tepat menunjukkan pengaruh praktik poenale sanctie terhadap kehidupan pekerja pada masa kolonial?",
+      "gambar": "Ilustrasi seorang pekerja bertelanjang dada berlutut dengan tangan terikat di kebun, dipukul dengan rotan oleh dua mandor berbaju gelap, sementara dua orang Eropa berpakaian putih berdiri menyaksikan.",
+      "opsi": [
+        "Membuat para pekerja kehilangan kemerdekaannya",
+        "Menurunkan produktivitas dan kesejahteraan para kuli perkebunan",
+        "Menciptakan kesenjangan baru antara para kuli dengan pegawai Eropa",
+        "Menjadi bentuk eksploitasi pekerja karena mereka tidak bisa istirahat atau libur",
+        "Menjadi bentuk penindasan yang menimbulkan ketakutan di kalangan pekerja perkebunan"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Poenale sanctie adalah hukuman fisik bagi kuli yang dianggap melanggar kontrak; ilustrasi hukuman di depan orang lain menunjukkan penindasan yang menimbulkan ketakutan (E).",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"menganal\"); disalin apa adanya.",
+        "Opsi A (kehilangan kemerdekaan) juga masuk akal; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "SEJ25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJHBIKISS05SA-000000-0352",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Periode Kerajaan Hindu-Budha dan Islam",
+      "subelemen": "Kehidupan religi, budaya, politik dan ekonomi masyarakat di Nusantara pada masa kerajaan Islam",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengevaluasi berbagai teori tentang masuknya agama dan kebudayaan Islam ke Nusantara; menganalisis kehidupan politik dan ekonomi Kerajaan Islam di Nusantara; serta mengklasifikasikan berbagai peninggalan kebudayaa",
+      "subkompetensi": null,
+      "indikator": "Mengkritisi pengaruh kehidupan ekonomi/politik di nusantara berdasarkan fakta sejarah pada masa kerajaan islam (18)",
+      "soal": "Perang Tellumpoccoe terjadi pada 1582–1611 di Sulawesi Selatan sebagai konflik antara Kesultanan Gowa-Tallo dan aliansi kerajaan-kerajaan Bugis (Bone, Wajo, Soppeng).\nBagaimana dampak perang tersebut dalam kehidupan ekonomi di Nusantara?\nKlik jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Kemenangan Gowa-Tallo memperkuat kontrol atas jalur perdagangan rempah di Indonesia Timur",
+        "Perang tersebut memperkuat posisi kerajaan-kerajaan Bugis dalam perdagangan internasional",
+        "Gowa-Tallo menjadi penguasa perekonomian di jalur pelayaran sekitar Sulawesi Selatan",
+        "Perdagangan lokal di kawasan Sulawesi bagian selatan menjadi lebih bebas dan tidak terpusat",
+        "Pengaruh Bone di bidang ekonomi melemah setelah kekalahannya dengan kerajaan Gowa-Tallo"
+      ],
+      "kunci": [
+        0,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Kemenangan Gowa-Tallo atas aliansi Tellumpoccoe menjadikan Makassar penguasa jalur pelayaran Sulawesi Selatan dan perdagangan rempah Indonesia Timur (A, C), sedangkan pengaruh Bone melemah (E). B dan D berlawanan.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Kurun \"1582–1611\" dan hasil perang berasal dari stimulus; ringkasan sejarahnya tidak diperiksa terhadap sumber primer. Kunci perlu dicek guru sejarah."
+      ]
+    },
+    {
+      "id": "SEJ25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPBEKBES06SA-000000-0687",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Proses kedatangan Bangsa Eropa ke Nusantara",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menganalisis alasan masuknya Bangsa Eropa ke Nusantara; serta mendeskripsikan proses kedatangan Bangsa Eropa ke Nusantara.",
+      "subkompetensi": null,
+      "indikator": "Menentukan alasan yang mendorong kedatangan Bangsa Eropa ke Nusantara, berdasarkan fakta sejarah pada masa tersebut. (19)",
+      "soal": "Kehidupan global semakin berkembang dengan maraknya penjelajahan samudra orang-orang Eropa ke dunia Timur. Begitu juga peristiwa di kawasan Laut Tengah pada tahun 1453 turut meramaikan kedatangan bangsa Eropa ke Nusantara.\nPeristiwa apa yang terjadi di Laut Tengah sehingga melatarbelakangi kedatangan bangsa Eropa ke Nusantara?",
+      "opsi": [
+        "Terjadi persaingan dagang sesama bangsa Eropa",
+        "Mencari sumber daya alam lain seperti logam mulia",
+        "Bangsa Eropa ingin memperluas wilayah kekuasaannya",
+        "Semangat dan dorongan untuk melanjutkan Perang Salib",
+        "Jatuhnya kekuasaan Konstantinopel ke tangan Turki Usmani"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Konstantinopel jatuh ke Turki Usmani pada 1453, sehingga jalur dagang rempah ke Eropa terganggu (E).",
+      "halaman": [
+        17,
+        18
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SEJ25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJPNPRPNS09SA-000000-0107",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Relevansi semangat Pergerakan Nasional dengan masa kini",
+      "kompetensi": "Kemampuan murid untuk dapat menghubungkan semangat tokoh pergerakan nasional dengan kehidupan di masa kini.",
+      "subkompetensi": null,
+      "indikator": "Menentukan hubungan semangat para tokoh perjuangan pada masa pergerakan nasional kemerdekaan dengan perkembangan kehidupan di masa kini. (20)",
+      "soal": "Mohammad Hatta dikenal sebagai tokoh nasionalis yang memperjuangkan kemerdekaan Indonesia melalui jalur diplomasi dan pendidikan. Ia juga menekankan pentingnya koperasi sebagai pilar ekonomi kerakyatan.\nJika Anda adalah seorang pemuda yang ingin menghidupkan semangat Mohammad Hatta di masa kini, manakah tindakan yang tepat yang mencerminkan semangat tersebut?\nklik jawaban benar! Jawaban benar lebih dari satu",
+      "opsi": [
+        "Mendirikan koperasi digital untuk memberdayakan UMKM lokal",
+        "Aktif berdiplomasi dan berdialog dalam organisasi internasional pemuda",
+        "Menggalang dana dari investor asing untuk dominasi pasar lokal",
+        "Menyebarkan nilai-nilai ekonomi kerakyatan dengan memahami literasi keuangan",
+        "Mendorong penguasaan pasar oleh korporasi besar agar efisien"
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Koperasi (A), diplomasi (B), dan ekonomi kerakyatan (D) sesuai semangat Hatta; C dan E bertentangan dengan ekonomi kerakyatan.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SEJ25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJPBEPBAS07SA-000000-0619",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Perlawanan terhadap Bangsa Eropa",
+      "subelemen": "Perlawanan terhadap Bangsa Eropa sebelum Abad ke-20",
+      "kompetensi": "Kemampuan murid untuk mengkritisi kebijakan bangsa Eropa di Nusantara dalam berbagai bidang seperti politik, ekonomi, sosial, dan budaya; mengidentifikasi dampak dari kolonialisme dan imperialisme yang terjadi di berbagai wilayah Nusantara, serta menganal",
+      "subkompetensi": null,
+      "indikator": "Menentukan strategi perlawanan rakyat nusantara terhadap bangsa Eropa sebelum abad ke-20 berdasarkan fakta sejarah pada masa tersebut. (21)",
+      "soal": "Persaingan Portugis dan Spanyol di Maluku diakhiri dengan perjanjian Saragosa 1529. Portugis tetap di Maluku, sementara Spanyol harus bergerak ke Filipina. Portugis semakin berkuasa dengan melakukan monopoli perdagangan di Maluku. Hal ini mengancam kedudukan raja-raja di Maluku.\nStrategi apa yang digunakan rakyat Maluku untuk melawan Portugis?\nPilihlah benar atau salah dari pernyataan tentang strategi perlawanan yang dilakukan rakyat Maluku dalam menghadapi Portugis!",
+      "opsi": [
+        "Menyeimbangkan pengaruh asing melalui kerjasama dengan penguasa wilayah Papua, Jawa, dan Sumatra",
+        "Melakukan perlawanan terbuka melalui serangan militer baik darat maupun laut pada Portugis",
+        "Melakukan hubungan diplomasi melalui perjanjian monopoli dengan Portugis"
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Rakyat Maluku di bawah Sultan Hairun dan Sultan Baabullah melawan Portugis secara terbuka hingga Portugis terusir dari Ternate (pernyataan 2 Benar). Perjanjian monopoli justru alat Portugis, bukan strategi perlawanan (Salah); kerja sama dengan penguasa Papua, Jawa, dan Sumatra tidak dikenal sebagai strategi utama (Salah).",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"menganal\"); disalin apa adanya.",
+        "Pernyataan 1 bisa dianggap Benar bila yang dimaksud jaringan aliansi Ternate; kunci perlu dicek.",
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "SEJ25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJPNPJPPS10SA-000000-0432",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Kehidupan Bangsa Indonesia di bawah penjajahan Jepang dan perlawanan Bangsa Indonesia",
+      "kompetensi": "Kemampuan murid untuk menjelaskan keterkaitan antara runtuhnya kekuasaan kolonial Belanda dan masuknya Jepang ke Indonesia; mengidentifikasi berbagai dampak penjajahan Jepang dalam bidang politik, ekonomi, sosial, dan budaya; serta menganalisis strategi p",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi latar belakang perlawanan bangsa Indonesia kepada Jepang berdasarkan salah satu perlawanan pada masa tersebut. (22)",
+      "soal": "Perlawanan yang dipimpin oleh Kiai Zainal Mustafa meletus pada bulan Februari 1944. Dia seorang tokoh dari Singaparna, Tasik Malaya, Jawa Barat. Ia sangat menentang kebijakan-kebijakan Jepang.\nApakah yang mendorong perlawanan Kiai Zainal Mustafa kepada Jepang di Singaparna?",
+      "opsi": [
+        "Perlakuan militer Jepang yang menyebabkan penderitaan rakyat",
+        "Kewajiban rakyat untuk menanam jenis tanaman pangan tertentu",
+        "Rakyat wajib membayar pajak kepada Jepang dalam bentuk uang",
+        "Sistem sewa tanah yang mengakibatkan rakyat terjerat banyak hutang",
+        "Kelaparan akibat adanya kebijakan tanam paksa atau disebut Cultuur stelsel"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Zainal Mustafa menentang kebijakan Jepang (seperti seikerei dan romusha) yang menyengsarakan rakyat (A). D dan E adalah kebijakan masa Inggris/Belanda; C tidak sesuai.",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"strategi p\"); disalin apa adanya.",
+        "Judul kotak \"Hierarki Indikator\" terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJRDTPMKS12SA-000000-0438",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Revolusi Kemerdekaan Indonesia sampai Demokrasi Terpimpin",
+      "subelemen": "Perjuangan mempertahankan kemerdekaan",
+      "kompetensi": "Kemampuan murid untuk mendeskripsikan proses pembentukan negara dan pemerintahan Republik Indonesia setelah Proklamasi Kemerdekaan, serta menganalisis upaya perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan melalui jalur diplomasi dan perjuanga",
+      "subkompetensi": null,
+      "indikator": "Menganalisis peran rakyat dalam mempertahankan kemerdekaan, berdasarkan fakta sejarah tentang perlawanan rakyat pada masa revolusi Indonesia sampai demokrasi terpimpin. (23)",
+      "soal": "Setelah berhasil memproklamsikan kemerdekaan Indonesia pada tanggal 17 Agustus 1945, Bangsa Indonesia harus berjuang mempertahankan kemerdekaan. Ancaman dari luar maupun dari dalam mengancam tegaknya kedaulatan Negara Republik Indonesia yang baru saja berdiri. Ancaman dari luar muncul dari Belanda yang tidak mau mengakui kedaulatan Indonesia.\nPerjuangan fisik apa saja yang dilakukan oleh rakyat Indonesia untuk mempertahankan kemerdekaan menghadapi Belanda yang ingin menguasai kembali Indonesia ?\nKlik pada semua jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Pertempuran 10 November 1945",
+        "Pertempuran 5 Hari di Semarang",
+        "Serangan Umum 1 Maret 1949",
+        "Pemberontakan Andi Azis",
+        "Pemberontakan Republik Maluku Selatan"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pertempuran 10 November 1945 (melawan Sekutu yang diboncengi NICA) dan Serangan Umum 1 Maret 1949 (melawan Belanda) adalah perjuangan fisik menghadapi upaya Belanda berkuasa kembali. Pertempuran 5 Hari di Semarang melawan Jepang; Andi Azis dan RMS adalah pemberontakan dalam negeri.",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": [
+        "Pertempuran 10 November 1945 terutama melawan pasukan Sekutu (Inggris); dimasukkan karena Sekutu membawa NICA. Bila hanya pertempuran langsung melawan Belanda yang dihitung, kuncinya hanya C, padahal soal menyebut jawaban benar lebih dari satu.",
+        "Salah ketik \"memproklamsikan\" disalin apa adanya; judul kotak indikator terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJPNPJPPS10SA-000000-0527",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Kehidupan Bangsa Indonesia di bawah penjajahan Jepang dan perlawanan Bangsa Indonesia",
+      "kompetensi": "Kemampuan murid untuk menjelaskan keterkaitan antara runtuhnya kekuasaan kolonial Belanda dan masuknya Jepang ke Indonesia; mengidentifikasi berbagai dampak penjajahan Jepang dalam bidang politik, ekonomi, sosial, dan budaya; serta menganalisis strategi p",
+      "subkompetensi": null,
+      "indikator": "Menetukan karakteristik penjajahan Jepang terhadap bangsa Indonesia berdasarkan kebijakan politik/ekonomi/sosial/ budaya pada masa tersebut. (24)",
+      "soal": "Jepang menjadi negara industri karena keberhasilan Restorasi Meiji/kebangkitan modernisasi. Kebutuhan akan modal pada kegiatan industri memicu Jepang melakukan ekspansi ke Indonesia.\nBagaimana karakteristik kebijakan Jepang pada masyarakat saat menjajah Indonesia?\nPilihlah Benar atau Salah pada pernyataan berikut !",
+      "opsi": [
+        "Mengutamakan kegiatan ekonomi untuk kepentingan militer",
+        "Jepang membagi wilayah Indonesia menjadi tiga pemerintahan militer",
+        "Lebih mementingkan peperangan dalam mengeksploitasi sumber daya alam"
+      ],
+      "kunci": [
+        true,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Ekonomi pendudukan Jepang diarahkan untuk perang (ekonomi perang); wilayah Indonesia dibagi tiga pemerintahan militer (Tentara ke-16 di Jawa-Madura, Tentara ke-25 di Sumatra, Angkatan Laut di Kalimantan dan Indonesia Timur); sumber daya alam dieksploitasi untuk kepentingan perang.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": [
+        "Ketiga pernyataan dinilai Benar; rumusan pernyataan 3 kabur, sehingga mungkin dimaksudkan Salah. Kunci perlu dicek.",
+        "Kalimat kompetensi terpotong di sumber (berakhir dengan \"strategi p\"); disalin apa adanya.",
+        "Salah ketik \"Menetukan\" pada indikator disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "SEJ25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJRDTDDLS13SA-000000-0423",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Revolusi Kemerdekaan Indonesia sampai Demokrasi Terpimpin",
+      "subelemen": "Kehidupan masyarakat Indonesia pada masa Demokrasi Liberal",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengidentifikasi perkembangan politik dan ekonomi pada masa Demokrasi Liberal, serta dapat mengkritisi berbagai dampak kebijakan pemerintah pada masa Demokrasi Liberal.",
+      "subkompetensi": null,
+      "indikator": "Menentukan efektifitas dari kebijakan pemerintah mengenai kondisi ekonomi/politik pada masa pemerintahan demokrasi terpimpin. (25)",
+      "soal": "Tabel: Kondisi Ekonomi Masa Demokrasi Liberal\n[Tabel]\nSumber Tabel: Kementerian Pendidikan dan Kebudayaan. 2015. Sejarah Indonesia Untuk SMA/MA Kelas XII. Jakarta: Kemendikbud, halaman 70-75\nBerdasarkan data tersebut, manakah dampak negatif akibat kebijakan pemerintah pada masa Demokrasi Parlementer?\nKlik sesuai atau tidak sesuai dari dari dampak negatif kebijakan pemerintah pada masa Demokrasi Parlementer!",
+      "tabel": [
+        [
+          "No",
+          "Nama Program",
+          "Kebijakan",
+          "Dampak"
+        ],
+        [
+          "1",
+          "Program Benteng",
+          "Memberikan lisensi impor untuk kaum pribumi",
+          "Pengusaha pribumi kurang memiliki jiwa wirausaha"
+        ],
+        [
+          "2",
+          "Rencana Sumitro",
+          "Melaksanakan industrialisasi dengan pembangunan industri dasar",
+          "Muncul perusahaan-perusahaan yang melayani kepentingan umum"
+        ],
+        [
+          "3",
+          "Biro Perancang Negara",
+          "Merancang RPLT (Rencana Program Lima Tahun )",
+          "Meningkatnya defisit anggaran pemerintah dari 20 persen tahun 1950 menjadi 100 persen tahun 1960"
+        ]
+      ],
+      "opsi": [
+        "Kondisi perekonomian yang semakin memburuk akibat defisit anggaran akibat munculnya berbagai macam konflik",
+        "Rencana Sumitro merupakan program yang berkontribusi bagi seluruh lapisan masyarakat",
+        "Pemberian lisensi impor dari Program Gerakan Benteng tidak efektif membangkitkan jiwa wirausaha kaum pribumi"
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Defisit anggaran yang membengkak (pernyataan 1) dan gagalnya Program Benteng menumbuhkan wirausaha pribumi (pernyataan 3) adalah dampak negatif sesuai tabel. Rencana Sumitro dalam tabel berdampak positif, sehingga bukan dampak negatif (Tidak Sesuai).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": [
+        "Indikator menyebut demokrasi terpimpin, sedangkan kompetensi dan tabel tentang Demokrasi Liberal/Parlementer; disalin apa adanya.",
+        "Pernyataan 1 menyebut defisit \"akibat munculnya berbagai macam konflik\", yang tidak ada di tabel.",
+        "Salah ketik \"dari dari\" disalin apa adanya."
+      ],
+      "kolom": [
+        "Sesuai",
+        "Tidak Sesuai"
+      ]
+    },
+    {
+      "id": "SEJ25-026",
+      "passage": null,
+      "nomor": "26",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJPNPRPNS09SA-000000-0191",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Pergerakan Nasional sampai Proklamasi Kemerdekaan",
+      "subelemen": "Relevansi semangat Pergerakan Nasional dengan masa kini",
+      "kompetensi": "Kemampuan murid untuk dapat menghubungkan semangat tokoh pergerakan nasional dengan kehidupan di masa kini.",
+      "subkompetensi": null,
+      "indikator": "Mengimplementasikan ide/kegiatan yang sesuai dengan nilai tokoh untuk mengatasi masalah saat ini, berdasarkan studi kasus yang mencerminkan semangat tokoh pergerakan nasional. (26)",
+      "soal": "Ekonomi Kerakyatan digagas oleh Mohammad Hatta, yang bertujuan untuk membangun perekonomian rakyat melalui koperasi, dengan prinsip kebersamaan, kekuasaan milik rakyat, dan lebih mementingkan kepentingan umum. Namun, fakta saat ini jurang sosial melebar antara buruh dan pemilik modal. Pemerintah membuat proyek sosial ekonomi untuk menjembatani kesenjangan tersebut.\nManakah yang mencerminkan nilai-nilai dari semangat ekonomi Bung Hatta?\nPilih jawaban benar? jawaban benar lebih dari satu",
+      "opsi": [
+        "Pemberian progam investasi gratis untuk kalangan pengusaha makro",
+        "Deregulasi total yang mengabaikan perlindungan usaha mikro",
+        "Pengembangan koperasi pekerja di sektor informal",
+        "Pelatihan kewirausahaan berbasis komunitas lokal",
+        "Kolaborasi antara UMKM dan koperasi digital"
+      ],
+      "kunci": [
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Koperasi pekerja (C), kewirausahaan berbasis komunitas (D), dan kolaborasi UMKM-koperasi (E) sejalan dengan ekonomi kerakyatan; A dan B menguntungkan pemodal besar.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"progam\" pada opsi A disalin apa adanya; judul kotak indikator terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-027",
+      "passage": null,
+      "nomor": "27",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJRDTPMKS12SA-000000-0450",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Revolusi Kemerdekaan Indonesia sampai Demokrasi Terpimpin",
+      "subelemen": "Perjuangan mempertahankan kemerdekaan",
+      "kompetensi": "Kemampuan murid untuk mendeskripsikan proses pembentukan negara dan pemerintahan Republik Indonesia setelah Proklamasi Kemerdekaan, serta menganalisis upaya perjuangan bangsa Indonesia dalam mempertahankan kemerdekaan melalui jalur diplomasi dan perjuanga",
+      "subkompetensi": null,
+      "indikator": "Menentukan upaya yang ditempuh dalam mempertahankan kemerdekaan, berdasarkan uraian tentang dinamika perjuangan bangsa Indonesia pasca-Proklamasi. (27)",
+      "soal": "Agresi Militer Belanda II dimulai pada tanggal 10 Desember 1948, ketika Belanda menyerbu Yogyakarta dan menawan Presiden serta Wakil Presiden. Sedangkan Syafruddin Prawiranegara membentuk Pemerintahan Darurat Republik Indonesia (PDRI) di Sumatera Barat saat situasi genting. Panglima Soedirman melanjutkan perjuangan melalui gerilya. Sementara itu, diplomasi Indonesia tetap berjalan di forum internasional.\nSumber: Buku Sejarah untuk SMA/MA Kelas XII (Kemdikbud, 2022)\nApa bentuk respons strategis bangsa Indonesia dalam mempertahankan kemerdekaan setelah Agresi Militer Belanda II?",
+      "opsi": [
+        "Mendirikan pemerintahan federal di luar Jawa untuk mendapatkan pengakuan Belanda.",
+        "Menawarkan pembentukan negara bersama di bawah pengawasan Dewan keamanan PBB.",
+        "Menyelamatkan struktur pemerintahan melalui PDRI, bergerilya, dan menekan Belanda dengan diplomasi.",
+        "Menjalin aliansi pertahanan dengan negara-negara boneka yang dibentuk oleh pemerintahan Belanda.",
+        "Mengalihkan pusat kekuasaan ke negara bagian yang belum diduduki dan menandatangani perjanjian lokal."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Stimulus menyebut tiga respons sekaligus: PDRI, gerilya, dan diplomasi (C).",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": [
+        "Tanggal terbaca \"10 Desember 1948\" pada tangkapan layar yang kecil; Agresi Militer Belanda II umumnya ditulis dimulai 19 Desember 1948, jadi bisa salah baca atau salah tulis di sumber. Perlu dicek; kunci tidak terpengaruh."
+      ]
+    },
+    {
+      "id": "SEJ25-028",
+      "passage": null,
+      "nomor": "28",
+      "format": "benar-salah",
+      "kode_sumber": "25SEJOBRODBS15SA-000000-0243",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Orde Baru sampai Reformasi",
+      "subelemen": "Kehidupan masyarakat pada masa Orde Baru",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menjelaskan proses lahirnya Orde Baru, serta mengkritisi berbagai kebijakan politik dan ekonomi beserta dampaknya pada masa Orde Baru.",
+      "subkompetensi": null,
+      "indikator": "Menentukan kondisi yang mendorong lahirnya orde baru, berdasarkan kebijakan politik pada masa tersebut. (28)",
+      "soal": "Supersemar atau Surat Perintah 11 Maret 1966 merupakan surat yang dikeluarkan oleh Presiden Sukarno dan memberikan wewenang luas kepada Letjen Soeharto untuk menjaga stabilitas negara dan menyelamatkan revolusi. Surat ini menjadi titik balik sejarah Indonesia karena memberi dasar legitimasi bagi Soeharto untuk mengambil langkah-langkah strategis selanjutnya.\nBagaimana akibat Supersemar sehingga mendorong lahirnya Orde Baru?\nPilih tepat atau tidak tepat setiap fakta kelahiran Orde Baru",
+      "opsi": [
+        "Soeharto leluasa menahan para menteri yang ada di kabinet karena dianggap terlibat dalam Gerakan 30 September1965",
+        "Supersemar secara langsung memberikan mandat kepada Soeharto sebagai Presiden Republik Indonesia",
+        "Soeharto menjadi leluasa untuk mengambil tidakan dalam melakukan pelarangan dan pembubaran terhadap PKI"
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Berbekal Supersemar, Soeharto membubarkan dan melarang PKI serta menahan sejumlah menteri yang dianggap terlibat G30S (Tepat). Supersemar bukan mandat sebagai Presiden; Soeharto baru menjadi Pejabat Presiden pada 1967 dan Presiden pada 1968 melalui MPRS (Tidak Tepat).",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"September1965\" dan \"tidakan\" disalin apa adanya; judul kotak indikator terpotong di sumber."
+      ],
+      "kolom": [
+        "Tepat",
+        "Tidak Tepat"
+      ]
+    },
+    {
+      "id": "SEJ25-029",
+      "passage": null,
+      "nomor": "29",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SEJRDTDTPS14SA-000000-0565",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Revolusi Kemerdekaan Indonesia sampai Demokrasi Terpimpin",
+      "subelemen": "Kehidupan masyarakat pada masa Demokrasi Terpimpin",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat mengidentifikasi perkembangan politik dan ekonomi pada masa Demokrasi Terpimpin, serta menganalisis berbagai dampak kebijakan pemerintah pada masa Demokrasi Terpimpin.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis dampak kebijakan pemerintah terhadap perkembangan politik Indonesia pada masa revolusi Kemerdekaan iIndonesia sampai demokrasi terpimpin. (29)",
+      "soal": "Perhatikan kutipan berikut!\n\"Pembangunan mercusuar dianggap sebagai cara menunjukkan keunggulan Indonesia di mata dunia, namun biaya besar yang dikeluarkan menyebabkan krisis ekonomi semakin parah.\"\nSumber: Kahin, Nationalism and Revolution in Indonesia, 2010.\nBerdasarkan kutipan tersebut, apa kelemahan utama dari kebijakan Politik Mercusuar yang dilaksanakan oleh Presiden Soekarno?",
+      "opsi": [
+        "Proyek besar gagal menarik dukungan negara-negara Blok Timur",
+        "Dana pembangunan dialihkan untuk subsidi pangan dan stabilisasi harga",
+        "Citra internasional Indonesia menguat, tetapi perekonomian rakyat memburuk",
+        "Proyek pembangunan skala nasional berhasil menurunkan laju inflasi secara cepat",
+        "Pemerintah berhasil mengintegrasikan petani dan buruh dalam proyek-proyek mercusuar"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kutipan menyebut keunggulan di mata dunia tetapi krisis ekonomi makin parah (C).",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [
+        "Atribusi kutipan dipertanyakan: Nationalism and Revolution in Indonesia karya George McT. Kahin (terbit pertama 1952) membahas revolusi sampai 1949, bukan Politik Mercusuar tahun 1960-an. Perlu dicek.",
+        "Salah ketik \"iIndonesia\" pada indikator disalin apa adanya; judul kotak indikator terpotong di sumber."
+      ]
+    },
+    {
+      "id": "SEJ25-030",
+      "passage": null,
+      "nomor": "30",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SEJOBRODBS15SA-000000-0053",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Orde Baru sampai Reformasi",
+      "subelemen": "Kehidupan masyarakat pada masa Orde Baru",
+      "kompetensi": "Kemampuan yang dimiliki murid untuk dapat menjelaskan proses lahirnya Orde Baru, serta mengkritisi berbagai kebijakan politik dan ekonomi beserta dampaknya pada masa Orde Baru.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis kebijakan politik/ekonomi yang mendorong lahirnya pemerintahan orde baru. (30)",
+      "soal": "Tabel: Terkait dualisme kepemimpinan nasional pada awal Orde Baru\n[Tabel]\nPresiden Soeharto diharapkan segera melakukan pemilu pada tahun 1968. Namun karena berbagai pertimbangan politik dan keamanan, pemilu baru dapat diselenggarakan pada tahun 1971. Setelah pemilu tahun 1971, pemerintah melemparkan gagasan penyederhanaan partai politik. Banyaknya partai politik dianggap tidak memudahkan pembangunan, justru menambah permasalahan.\nApa saja langkah-langkah pemerintah dalam mengatasi masalah partai politik?\nKlik pada jawaban yang benar! Jawaban benar lebih dari satu.",
+      "tabel": [
+        [
+          "Tahun",
+          "Peristiwa Politik",
+          "Dampak"
+        ],
+        [
+          "Maret 1967",
+          "MPRS mengangkat Soeharto sebagai Pejabat Presiden",
+          "Dualisme Kepeminpin Nasoinal"
+        ],
+        [
+          "Maret 1968",
+          "MPRS menetapkan Soeharto sebagai Presiden",
+          "Berakhirnya Dualisme Kepemimpinan Nasional"
+        ]
+      ],
+      "opsi": [
+        "Menciptakan kekuatan politik sipil baru yaitu Sekretariat Bersama (Sekber) Golongan Karya",
+        "Empat partai berhaluan Islam bergabung dalam Partai Persatuan Pembangunan (PPP)",
+        "Lima partai non Islam, bergabung dalam Partai Demokrasi Indonesia (PDI)",
+        "Mendorong dibentuknya Badan Pengawas Pemilu tingkat nasional dan daerah",
+        "Calon presiden dan wakil presiden dari usulan sepuluh partai politik"
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Penyederhanaan partai tahun 1973: empat partai Islam (NU, Parmusi, PSII, Perti) berfusi menjadi PPP dan lima partai nonIslam (PNI, Parkindo, Partai Katolik, IPKI, Murba) menjadi PDI (B, C). Sekber Golkar sudah dibentuk pada 1964, sebelum masalah ini (A); D dan E tidak sesuai.",
+      "halaman": [
+        28
+      ],
+      "catatan_transkripsi": [
+        "Opsi A mungkin dimaksudkan benar (Golkar sebagai kekuatan politik ketiga hasil penyederhanaan); kunci perlu dicek.",
+        "Baris judul tabel tercetak dua kali; salah ketik \"Kepeminpin Nasoinal\" pada tabel disalin apa adanya."
+      ]
+    }
+  ]
+}
