@@ -1,0 +1,910 @@
+{
+  "id": "tka-matematika-tingkat-lanjut-2025",
+  "kode": "MATL25",
+  "mapel": "Matematika Tingkat Lanjut",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan (Matematika Tingkat Lanjut)",
+  "sumber": {
+    "berkas": "SOAL_TKA_Matematika_SMA_2025_Tingkat_Lanjut.pdf",
+    "halaman": 25,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; rumus ditulis ulang dalam teks biasa dengan superskrip Unicode: matriks dan vektor kolom per baris dalam kurung siku dengan baris dipisah titik koma ([a b; c d], [x; y]), limit sebagai lim(x→a), pangkat pecahan sebagai 2^(t/4).",
+    "Judul halaman 1 sumber: \"Soal TKA Matematika (Pilihan) SMA/MA/SMK Tahun 2025\"; nama berkas menyebut Tingkat Lanjut.",
+    "PDF memuat 25 soal lengkap (nomor 1–25), satu soal per halaman, tetapi urutan halaman tidak sama dengan urutan nomor (halaman 2–8 memuat nomor 3, 4, 2, 5, 8, 6, 7). Tidak ada catatan soal yang belum tersedia.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong; penanda [Gambar] dan [Tabel] menunjukkan letak gambar (diuraikan di kolom gambar) dan tabel (di kolom tabel).",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "MATL25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJMTXM26SL-000000-2629",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Matriks",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait invers matriks",
+      "subkompetensi": null,
+      "indikator": "Menentukan invers matriks berordo 2×2 (1)",
+      "soal": "Perhatikan matriks berikut!\nF = [2 0; 0 1/2]\nInvers dari matrik F adalah ....",
+      "opsi": [
+        "[1 0; 0 2]",
+        "[−1 0; 0 −2]",
+        "[2 0; 0 1]",
+        "[−1/2 0; 0 −2]",
+        "[1/2 0; 0 2]"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "det F = 2 · 1/2 = 1, sehingga F⁻¹ = [1/2 0; 0 2] (kebalikan setiap unsur diagonal).",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Matriks ditulis per baris dalam kurung siku, baris dipisah titik koma: [a b; c d]. Opsi C tercetak dengan garis tegak (bentuk determinan) di sumber."
+      ]
+    },
+    {
+      "id": "MATL25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATALJMTXM27SL-000000-0718",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Aljabar",
+      "subelemen": "Matriks",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait operasi aljabar pada matriks",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasi solusi permasalahan kontekstual yang dihasilkan menggunakan operasi matriks (2)",
+      "soal": "Seorang pemilik Hotel mengelola 3 hotel yang berada pada kota yang berbeda. Hotel tersebut memiliki konsep dan tipe kamar yang sama yaitu Standard Room, Deluxe Room, dan Suite Room, dengan kapasitas dan harga per malam sebagai berikut.\n[Tabel]\nPemilik hotel akan melakukan perhitungan pendapatan yang diperoleh dari ketiga hotel tersebut. Bagaimana kondisi pendapatan ketiga hotel tersebut dalam 1 hari jika semua tipe kamar terisi penuh?\nPilih pada semua jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Infografik berjudul \"KAPASITAS KAMAR HOTEL\" dengan ilustrasi gedung hotel; isinya tabel di kolom tabel.",
+      "tabel": [
+        [
+          "Tipe Kamar",
+          "Hotel A",
+          "Hotel B",
+          "Hotel C",
+          "Harga (per malam)"
+        ],
+        [
+          "Standard Room",
+          "9",
+          "6",
+          "7",
+          "Rp 150.000"
+        ],
+        [
+          "Deluxe Room",
+          "6",
+          "7",
+          "5",
+          "Rp 500.000"
+        ],
+        [
+          "Suite Room",
+          "3",
+          "2",
+          "4",
+          "Rp 1.000.000"
+        ]
+      ],
+      "opsi": [
+        "Pendapatan Hotel A dan Hotel C sama besar.",
+        "Pendapatan Hotel B lebih besar daripada Hotel A.",
+        "Pendapatan paling besar diperoleh dari Hotel C.",
+        "Masing-masing hotel memiliki selisih pendapatan yang sama besar.",
+        "Pendapatan yang diperoleh dari ketiga hotel tersebut lebih dari Rp20.000.000."
+      ],
+      "kunci": [
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hotel A = 9(150.000) + 6(500.000) + 3(1.000.000) = Rp7.350.000; Hotel B = Rp6.400.000; Hotel C = Rp7.550.000. C terbesar; total Rp21.300.000 > Rp20.000.000. A ≠ C, B < A, dan selisihnya tidak sama (A−B = 950.000, C−A = 200.000).",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJMTXM26SL-000000-0694",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Matriks",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait invers matriks",
+      "subkompetensi": null,
+      "indikator": "Menentukan solusi dari persamaan linear dua variabel menggunakan konsep invers matriks (3)",
+      "soal": "Pak Andi memiliki beberapa sapi dan kambing. Semua hewan ternaknya selalu diberikan pakan berupa campuran rumput gajah dan rumput gamal. Setiap hari, dia selalu menyediakan 38 kg rumput gajah dan 34 kg rumput gamal untuk seluruh kambing dan sapi miliknya (tanpa sisa). Berikut adalah kebutuhan pakan untuk setiap ekor ternak milik Pak Andi per hari.\n[Gambar]\nJika banyaknya sapi dan kambing yang dipelihara oleh Pak Andi berturut-turut adalah x dan y, maka [x; y] = ...",
+      "gambar": "Ilustrasi peternakan: Sapi dengan keterangan \"Rumput Gajah 10 kg, Rumput Gamal 10 kg\" dan Kambing dengan keterangan \"Rumput Gajah 2 kg, Rumput Gamal 1 kg\".",
+      "opsi": [
+        "[−1 1; 10 −5] [19; 34] = [15; 20]",
+        "[10 −10; −1 2] [38; 34] = [4; 3]",
+        "[−1 2; 10 −10] [38; 34] = [3; 4]",
+        "[−1/10 2/10; 1 −1] [34; 38] = [4; 3]",
+        "[−1/5 1/5; 2 −1] [19; 34] = [3; 4]"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "10x + 2y = 38 (rumput gajah) dan 10x + y = 34 (rumput gamal), jadi y = 4 dan x = 3. Invers [10 2; 10 1] adalah [−1/10 2/10; 1 −1]; [−1/10 2/10; 1 −1][38; 34] = [3; 4] = [−1/5 1/5; 2 −1][19; 34]. Hanya opsi E yang perkaliannya benar (opsi C menghasilkan [30; 40], opsi D menghasilkan [21/5; −4]).",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": [
+        "Opsi tersusun dalam dua kolom (satu di baris pertama, dua di baris kedua dan ketiga); urutan A–E diambil baris demi baris dari kiri ke kanan, sehingga huruf kunci bisa berbeda dengan versi resmi.",
+        "Matriks dan vektor kolom ditulis per baris dalam kurung siku, baris dipisah titik koma."
+      ]
+    },
+    {
+      "id": "MATL25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJMTXM27SL-000000-2607",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Matriks",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait invers matriks",
+      "subkompetensi": null,
+      "indikator": "Menganalisis hasil operasi perkalian dua matriks (4)",
+      "soal": "Sebuah pabrik minuman tradisional memproduksi tiga jenis minuman yaitu wedang jahe (WJ), beras kencur (BK), dan kunir asem (KA).\nDalam proses produksinya, digunakan tiga bahan utama yaitu jahe (J) dalam gram, gula merah (GM) dalam gram, dan air ( A) dalam mililiter.\nSetiap botol minuman memerlukan bahan sebagai berikut:\n(kolom J, GM, A) [20 15 50; 10 25 40; 12 8 k]\nPada suatu hari pabrik tersebut menerima pesanan sebagai berikut:\nWJ, BK, KA: [100; 120; 80]\nJumlah bahan baku yang digunakan dalam proses pembuatan setiap minuman adalah:\nJ, GM, A: [4360; 4960; 13000]\nBanyak air yang dibutuhkan untuk memproduksi satu botol kunir asem adalah ....",
+      "opsi": [
+        "30 ml",
+        "35 ml",
+        "40 ml",
+        "45 ml",
+        "50 ml"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Air: 50(100) + 40(120) + k(80) = 13.000 → 9.800 + 80k = 13.000 → k = 40 ml.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Data tidak konsisten: dengan matriks dan pesanan yang tercetak, total jahe = 20(100) + 10(120) + 12(80) = 4.160 (tercetak 4.360) dan gula merah = 15(100) + 25(120) + 8(80) = 5.140 (tercetak 4.960). Hanya baris air yang dipakai untuk kunci.",
+        "Baris matriks tidak berlabel di sumber; urutan baris diasumsikan WJ, BK, KA sesuai pesanan."
+      ]
+    },
+    {
+      "id": "MATL25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATALJPOLM29SL-000000-0746",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Aljabar",
+      "subelemen": "Polinomial",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait pemfaktoran polinomial dan suku sisa",
+      "subkompetensi": null,
+      "indikator": "Menentukan nilai-nilai pembuat nol dari fungsi polinomial berorde tiga (5)",
+      "soal": "Di manakah koordinat titik perpotongan grafik fungsi f(x) = x³ + 3x² − 10x − 24 terhadap sumbu X?\nPilih pada semua jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "(-2,0)",
+        "(-1,0)",
+        "(3,0)",
+        "(4,0)",
+        "(5,0)"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "f(x) = (x + 2)(x − 3)(x + 4); akar −2, 3, −4. Yang ada di opsi: (−2, 0) dan (3, 0).",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Titik potong ketiga (−4, 0) tidak ada di opsi."
+      ]
+    },
+    {
+      "id": "MATL25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJPOLM28SL-000000-2861",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Polinomial",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait operasi hitung polinomial",
+      "subkompetensi": null,
+      "indikator": "Menentukan hasil perkalian skalar dengan polinomial yang tepat dalam konteks permasalahan sehari-hari (6)",
+      "soal": "Sebuah drum bahan bakar logam mengalami penambahan kapasitas volume saat terkena panas, yang dapat dinyatakan dalam fungsi berikut:\nV(T) = 0,05T³ + 0,4T² + 20T\ndengan T adalah suhu dalam derajat celsius dan V(T) adalah penambahan volume dalam liter.\nApabila terdapat 10 drum dengan jenis dan ukuran yang sama, total penambahan volume dari drum-drum tersebut ketika terkena panas dengan suhu yang sama dapat dinyatakan dengan ....",
+      "opsi": [
+        "50T³ + 40T² + 200T",
+        "50T³ + 4T² + 200T",
+        "5T³ + 4T² + 200T",
+        "0,5T³ + 4T² + 200T",
+        "0,5T³ + 0,4T² + 200T"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "10 · V(T) = 0,5T³ + 4T² + 200T.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "benar-salah",
+      "kode_sumber": "25MATALJPOLM29SL-000000-0707",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Aljabar",
+      "subelemen": "Polinomial",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait operasi hitung polinomial",
+      "subkompetensi": null,
+      "indikator": "Menentukan ukuran dimensi bangun ruang yang diketahui volumenya (7)",
+      "soal": "Sebuah perusahaan menawarkan saham kepada pembeli. Perusahaan menyiapkan modal saham yang akan dijual dan dapat dinyatakan sebagai fungsi f(x) = x³ − 70x² − 600x + 74.000 dimana nilai f(x) dalam jutaan rupiah dan x menyatakan banyak saham dalam satuan unit saham.\nApabila modal saham yang dimiliki perusahaan tersebut adalah 2 milyar (2.000 juta), tentukan Mungkin atau Tidak Mungkin perusahaan dapat menjual sejumlah unit saham berikut!",
+      "opsi": [
+        "30 unit",
+        "40 unit",
+        "60 unit"
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "x³ − 70x² − 600x + 74.000 = 2.000 ⇔ x³ − 70x² − 600x + 72.000 = 0 ⇔ (x − 40)(x − 60)(x + 30) = 0. x = 40 dan x = 60 memenuhi; x = 30 memberi f(30) = 20.000 ≠ 2.000.",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "Indikator (dimensi bangun ruang) tidak sesuai dengan isi soal (modal saham); disalin apa adanya."
+      ],
+      "kolom": [
+        "Mungkin",
+        "Tidak Mungkin"
+      ]
+    },
+    {
+      "id": "MATL25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJPOLM29SL-000000-2773",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Polinomial",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait pemfaktoran polinomial dan suku sisa",
+      "subkompetensi": null,
+      "indikator": "Menentukan hasil operasi aljabar dua parameter yang merupakan komponen dari bentuk polinomial dengan disertai informasi pembagi dan sisa hasil bagi (8)",
+      "soal": "Diketahui suku banyak f(x) = x⁴ + ax³ + bx² + x − 6 apabila dibagi oleh x² + x + 1 menghasilkan sisa 5x − 1, Nilai dari a + b = ...",
+      "opsi": [
+        "11",
+        "5",
+        "-1",
+        "-5",
+        "-7"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Modulo x² + x + 1 berlaku x³ ≡ 1 dan x² ≡ −x − 1, jadi f(x) ≡ x + a + b(−x − 1) + x − 6 = (2 − b)x + (a − b − 6). Disamakan dengan 5x − 1: b = −3 dan a = 2 (dicek dengan pembagian bersusun), jadi a + b = −1.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Bagian atas kotak indikator (judul \"Hierarki Indikator\") terpotong di sumber.",
+        "Potongan kalimat \"sisa 5x − 1, Nilai dari a + b = ...\" tercetak dua kali; disalin sekali."
+      ]
+    },
+    {
+      "id": "MATL25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "benar-salah",
+      "kode_sumber": "25MATALJFNGM30SL-000000-0398",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Aljabar",
+      "subelemen": "Fungsi",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasikan model pertumbuhan bentuk eksponensial dalam konteks kehidupan sehari-hari (9)",
+      "soal": "Populasi kelinci di suatu pulau dimodelkan dengan fungsi eksponensial, yaitu: K(t) = 4 · 2^(t/4)\ndengan t menyatakan waktu dalam satuan tahun dan K(t) menyatakan populasi dalam ribu ekor.\nBagaimana interpretasi yang tepat mengenai model eksponensial populasi kelinci tersebut?",
+      "opsi": [
+        "Setiap 4 tahun populasi bertambah menjadi 4 kalinya.",
+        "Pada saat awal populasi kelinci berjumlah 4 ribu ekor.",
+        "Populasi mencapai 1 juta sebelum 20 tahun dari awal pengamatan."
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Setiap 4 tahun populasi menjadi 2 kali (bukan 4 kali). K(0) = 4 ribu. 1 juta = 1.000 ribu → 2^(t/4) = 250 → t ≈ 31,9 tahun, jadi tidak sebelum 20 tahun (K(20) = 128 ribu).",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "MATL25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATALJFNGM30SL-000000-2955",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Aljabar",
+      "subelemen": "Fungsi",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri",
+      "subkompetensi": null,
+      "indikator": "Menentukan beberapa nilai yang memenuhi persyaratan tertentu dari grafik fungsi eksponensial dalam konteks permasalahan sehari-hari (10)",
+      "soal": "Seorang peneliti lingkungan melakukan pengamatan terhadap pertumbuhan tanaman eceng gondok di beberapa danau sekitar wilayah X. Pengamatan dilakukan selama 3 tahun dan hasil menunjukkan bahwa pertumbuhan eceng gondok dapat dimodelkan dengan fungsi berikut:\n[Gambar]\nSetelah 3 tahun pengamatan, peneliti mencatat banyak tanaman eceng gondok di beberapa wilayah perairan tersebut. Berikut data yang diperoleh:\n[Tabel]\nBerdasarkan data tersebut, wilayah perairan manakah dengan luas area yang tertutupi tanaman eceng gondok lebih dari 49 m² pada awal pengamatan dilakukan?\nPilihlah setiap jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Grafik fungsi eksponensial naik: sumbu y \"Luas Area yang Tertutup Tanaman Eceng Gondok (m²)\", sumbu x \"Tahun Ke-\"; titik (0, 10), (1, 70), dan (2, 490) ditandai dengan garis putus-putus. Di sampingnya foto perairan dengan panah berlabel \"Tanaman Eceng Gondok\".",
+      "tabel": [
+        [
+          "Wilayah Perairan",
+          "Luas Area yang Tertutupi Tanaman Eceng Gondok (m²)"
+        ],
+        [
+          "Danau A",
+          "15.000"
+        ],
+        [
+          "Danau B",
+          "16.500"
+        ],
+        [
+          "Danau C",
+          "17.000"
+        ],
+        [
+          "Danau D",
+          "17.500"
+        ],
+        [
+          "Danau E",
+          "18.000"
+        ]
+      ],
+      "opsi": [
+        "Danau A",
+        "Danau B",
+        "Danau C",
+        "Danau D",
+        "Danau E"
+      ],
+      "kunci": [
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Grafik: luas menjadi 7 kali tiap tahun (10, 70, 490), jadi setelah 3 tahun luas = 343 × luas awal. Luas awal: A 43,7; B 48,1; C 49,6; D 51,0; E 52,5 m². Lebih dari 49 m²: C, D, E.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Kalimat \"dapat dimodelkan dengan fungsi berikut:\" terpotong sebagian di tangkapan layar.",
+        "Opsi tersusun dua kolom (A–C kiri, D–E kanan); urutan diambil kolom kiri lalu kanan."
+      ]
+    },
+    {
+      "id": "MATL25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATALJFNGM30SL-000000-2856",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Aljabar",
+      "subelemen": "Fungsi",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait domain, kodomain, daerah hasil (range), dan grafik fungsi polinom, rasional, akar, eksponensial, logaritma, mutlak, trigonometri",
+      "subkompetensi": null,
+      "indikator": "Menyimpulkan karakteristik dari suatu model fungsi trigonometri dalam konteks permasalahan sehari-hari (11)",
+      "soal": "Grafik berikut menyatakan perubahan kedalaman air laut di sebuah teluk.\n[Gambar]\nPada grafik tersebut, y menyatakan kedalaman air laut dalam meter, t dalam jam, serta a dan b adalah konstanta. Berkenaan dengan nilai t pada grafik, nilai t = 6 menyatakan 6 jam setelah pukul 00.00, aturan serupa untuk nilai t lainnya.\nWaktu saat kedalaman air laut mencapai 12,3 meter untuk ketiga kalinya setelah pukul 00.00 adalah ....",
+      "gambar": "Grafik y = a + b cos((1/6)πt): kurva mulai di 14,3 meter pada t = 0, turun ke minimum 10,3 meter pada t = 6, lalu naik kembali ke 14,3 meter pada t = 12.",
+      "opsi": [
+        "3 jam",
+        "9 jam",
+        "10 jam",
+        "12 jam",
+        "15 jam"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "a = (14,3 + 10,3)/2 = 12,3 dan b = 2. y = 12,3 ⇔ cos(πt/6) = 0 ⇔ t = 3, 9, 15, ... Ketiga kalinya t = 15 jam.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPVKTM32SL-000000-0557",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Vektor",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait vektor pada bidang dan ruang",
+      "subkompetensi": null,
+      "indikator": "Menentukan vektor-vektor diagonal yang terdapat pada suatu ruang berbentuk balok (12)",
+      "soal": "Diketahui vektor AB = [2m; m + 3; m]\nJika nilai vektor AB = 9 satuan panjang, maka nilai m yang memenuhi vektor AB adalah ...",
+      "opsi": [
+        "-4 atau -3",
+        "-4 atau 3",
+        "-3 atau 4",
+        "3 atau 4"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "|AB|² = 4m² + (m + 3)² + m² = 81 ⇔ 6m² + 6m − 72 = 0 ⇔ m² + m − 12 = 0 ⇔ m = 3 atau m = −4.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Soal hanya memiliki 4 opsi.",
+        "\"nilai vektor AB = 9\" maksudnya panjang vektor |AB| = 9.",
+        "Indikator (diagonal balok) tidak sesuai dengan isi soal; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "MATL25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPVKTM32SL-000000-2576",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Vektor",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait panjang dan operasi vektor",
+      "subkompetensi": null,
+      "indikator": "Menentukan hasil operasi nilai-nilai parameter pembentuk vektor-vektor yang berelasi dalam bangun segiempat (13)",
+      "soal": "Diketahui trapesium sama kaki ABCD dengan AD = BC dan titik A(0,0).\nVektor-vektor posisi dari pembentuk trapesium adalah AD = [1; 4], AB = [6; 0] dan BC = [a; b] Nilai dari\na² + 2b = ...",
+      "opsi": [
+        "5",
+        "7",
+        "9",
+        "10",
+        "13"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "D(1, 4), B(6, 0). Trapesium sama kaki simetris terhadap x = 3, jadi C(5, 4) dan BC = [−1; 4]. a² + 2b = 1 + 8 = 9.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPVKTM32SL-000000-2830",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Vektor",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait panjang dan operasi vektor",
+      "subkompetensi": null,
+      "indikator": "Menganalisis lintasan yang panjang vektornya memenuhi kriteria tertentu menggunakan konsep perbandingan vektor (14)",
+      "soal": "Sebuah kereta api sedang melaju dengan kecepatan konstan pada sebuah lintasan lurus dari stasiun A sampai stasiun E. Diketahui koordinat stasiun A dan E (dalam km) berturut-turut adalah (2, 3, 5) dan (11, 6, 8).\nPerhatikan gambar berikut yang menggambarkan waktu tempuh (dalam menit) kereta tersebut antar stasiun:\n[Gambar]\nManakah stasiun-stasiun yang jaraknya kurang dari 3,5 km?\nPilih semua jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Ilustrasi kereta pada rel dengan panah \"Arah laju kereta\" ke kanan; stasiun A, B, C, D, E berurutan dengan waktu tempuh A–B 5 menit, B–C 3 menit, C–D 2 menit, D–E 3 menit.",
+      "opsi": [
+        "AB",
+        "BC",
+        "CD",
+        "DE",
+        "CE"
+      ],
+      "kunci": [
+        1,
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "|AE| = √(9² + 3² + 3²) = √99 ≈ 9,95 km dalam 13 menit. Jarak sebanding waktu: AB ≈ 3,83; BC ≈ 2,30; CD ≈ 1,53; DE ≈ 2,30; CE ≈ 3,83 km. Kurang dari 3,5 km: BC, CD, DE.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPLKRM33SL-000000-2848",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Lingkaran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait persamaan lingkaran dan persamaan garis singgung lingkaran",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi persamaan-persamaan lingkaran yang sepusat (15)",
+      "soal": "Perhatikan gambar lingkaran berikut:\n[Gambar]\nDiameter lingkaran di atas adalah 4 satuan, persamaan lingkaran yang sepusat dengan lingkaran pada gambar di atas",
+      "gambar": "Bidang koordinat berpetak dengan \"Lingkaran A\" berpusat di titik P sekitar (−3, 4); sebuah diameter digambar dari sekitar (−4; 5,7) ke sekitar (−2; 2,3).",
+      "opsi": [
+        "x² + 6x + y² − 8y + 16 = 0",
+        "x² − 6x + y² − 8y + 21 = 0",
+        "x² + 6x + y² + 8y + 16 = 0",
+        "x² − 8x + y² − 6y + 16 = 0",
+        "x² + 8x + y² − 6y + 21 = 0"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pusat (−3, 4) memberi bentuk x² + 6x + y² − 8y + c = 0; hanya opsi A yang berpusat di (−3, 4) (jari-jari 3). Opsi lain berpusat di (3, 4), (−3, −4), (4, 3), (−4, 3).",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Kalimat pertanyaan terpotong di akhir (tanpa \"adalah ....\")."
+      ]
+    },
+    {
+      "id": "MATL25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPLKRM33SL-000000-2609",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Lingkaran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait persamaan lingkaran dan persamaan garis singgung lingkaran",
+      "subkompetensi": null,
+      "indikator": "Menentukan koordinat titik singgung dari garis-garis singgung lingkaran yang tegak lurus terhadap suatu garis tertentu (16)",
+      "soal": "Perhatikan gambar berikut!\n[Gambar]\nTentukan semua koordinat titik singgung lingkaran dari garis-garis singgung lingkaran yang tegak lurus terhadap garis f!.\nKlik pada setiap jawaban benar. Jawaban Benar lebih dari satu.",
+      "gambar": "Bidang koordinat: garis lurus melalui C = (−1, 0) dan D = (0, 2); lingkaran c berpusat di A = (2, −3) dan melalui B = (3, −1).",
+      "opsi": [
+        "(3, 1)",
+        "(1, -5)",
+        "(-1, 5)",
+        "(3, -1)",
+        "(-3, -1)"
+      ],
+      "kunci": [
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "r² = (3 − 2)² + (−1 + 3)² = 5. Garis f melalui C dan D bergradien 2; garis singgung tegak lurus f bergradien −1/2, jadi jari-jari ke titik singgung sejajar f, arah (1, 2) dengan panjang √5. Titik singgung: (2 ± 1, −3 ± 2) = (3, −1) dan (1, −5).",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "Garis f tidak diberi label di gambar; diasumsikan garis yang melalui C dan D."
+      ]
+    },
+    {
+      "id": "MATL25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPLKRM34SL-000000-2771",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Lingkaran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait luas dan keliling daerah lingkaran atau bagian daerah lingkaran",
+      "subkompetensi": null,
+      "indikator": "Menganalisis hubungan luas area dari suatu objek (gabungan beberapa bangun datar) untuk menyelesaikan masalah (17)",
+      "soal": "Suatu rumah makan terdapat gambar rambu lalu lintas. Gambarnya seperti gambar rambu lalu lintas balai pertolongan pertama namun tidak sama persis.\nBiasanya rambu lalu lintas itu berfungsi untuk memberikan informasi mengenai lokasi pelayanan kesehatan terdekat seperti balai kesehatan, puskesmas, atau tempat pertolongan pertama jika terjadi keadaan darurat atau kecelakaan. Rumah makan ini mempunyai tanda rambu lalu lintas tersebut tujuannya jika perut pelanggan sedang kelaparan segera merapat ke rumah makan tersebut supaya mendapatkan pertolongan pertama.\nBerikut gambar rambu lalu lintas balai pertolongan pertama di rumah makan tersebut.\n[Gambar]\npemilik rumah makan ingin membuat rambu tersebut dalam jumlah banyak untuk cabang yang baru dan cat yang dibeli dalam ukuran yang sama.\nCat warna apakah yang lebih banyak digunakan dibanding cat warna hitam?\nKlik pada semua jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Persegi biru 40 cm × 40 cm berisi cincin hitam (lingkaran luar menyinggung sisi persegi) dan lingkaran putih di dalamnya dengan tanda tambah merah. Garis putus dari pusat ke ujung lengan kanan tanda tambah berlabel 14 cm (jari-jari lingkaran putih); dua label \"10 cm\" di tepi atas lengan kiri dan kanan tanda tambah.",
+      "opsi": [
+        "Setengah hitam dan biru.",
+        "Setengah hitam dan merah.",
+        "Setengah hitam dan putih.",
+        "Biru dan putih.",
+        "Biru dan merah."
+      ],
+      "kunci": [
+        0,
+        1,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Biru = 1600 − 400π ≈ 343,4; hitam = 400π − 196π ≈ 640,9 (setengahnya ≈ 320,4). Lebar lengan tanda tambah diperkirakan dari label 10 cm (setengah lebar ≈ 3,5–4 cm): merah ≈ 342–378, putih ≈ 238–273 cm². Biru dan merah masing-masing lebih dari setengah hitam; biru + merah > hitam; putih < setengah hitam; biru + putih < hitam. Kesimpulan sama untuk kedua perkiraan lebar lengan.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Maksud opsi \"Setengah hitam dan X\" tidak jelas; diartikan \"cat X lebih banyak daripada setengah cat hitam\", dan \"X dan Y\" diartikan \"cat X ditambah cat Y lebih banyak daripada cat hitam\".",
+        "Ukuran lengan tanda tambah tidak lengkap di gambar (hanya label 10 cm dan 14 cm)."
+      ]
+    },
+    {
+      "id": "MATL25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "benar-salah",
+      "kode_sumber": "25MATGMPLKRM34SL-000000-0588",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Lingkaran",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait luas dan keliling daerah lingkaran atau bagian daerah lingkaran",
+      "subkompetensi": null,
+      "indikator": "Menentukan kesesuaian ukuran-ukuran objek berdasarkan konsep lingkaran dalam konteks permasalahan sehari-hari (18)",
+      "soal": "Pak Baskara akan membuat daun pintu dengan ornamen kaca patri berbentuk bulat di tengahnya. Berikut ini adalah detail dari daun pintu yang akan dibuat.\n[Gambar]\nKerangka ornamen terbuat dari logam. Berfungsi untuk menempelkan potongan-potongan kaca patri. Pak Baskara sedang memilih logam yang dapat digunakan untuk membuat kerangka ornamen kaca patri. Beliau ingin memilih yang pas. Maksud pas di sini adalah: cukup untuk membuat kerangka dan sisanya tidak lebih dari 1 m.\nBerikut ini adalah jenis logam dan panjangnya yang dapat dipilih Pak Baskara untuk membuat kerangka ornamen.\n[Tabel]\nTentukan apakah pilihan logam yang akan dibeli Pak Baskara berikut ini Pas atau Tidak Pas!\nKlik pada kolom yang sesuai!\n√2 ≈ 1,4",
+      "gambar": "\"Detail Ornamen Kaca Patri\": daun pintu dengan ornamen lingkaran; lingkaran berisi persegi (belah ketupat) yang titik sudutnya pada lingkaran, dibagi dua diagonal menjadi empat segitiga (Hijau, Kuning, Kuning, Hijau); empat tembereng di luar persegi berwarna Merah. Keterangan: \"Luas 1 potong kaca merah = 456 cm²\", \"Gunakan pendekatan π = 3,14\". Gambar kedua: \"Kerangka ornamen terbuat dari logam\" berupa lingkaran, persegi di dalamnya, dan dua diagonal persegi.",
+      "tabel": [
+        [
+          "Jenis Logam",
+          "Logam A",
+          "Logam B",
+          "Logam C"
+        ],
+        [
+          "Panjang satuan",
+          "4 m",
+          "5 m",
+          "6,5 m"
+        ]
+      ],
+      "opsi": [
+        "Membeli 2 buah logam A",
+        "Membeli 1 buah logam B",
+        "Membeli 1 buah logam C"
+      ],
+      "kunci": [
+        false,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Satu tembereng = (πr² − 2r²)/4 = 456 → r² = 1600 → r = 40 cm. Kerangka: keliling lingkaran 2(3,14)(40) = 251,2 cm; empat sisi persegi 4 × 40√2 ≈ 4 × 56 = 224 cm; dua diagonal 2 × 80 = 160 cm; total 635,2 cm. 2 logam A = 8 m (sisa 1,65 m > 1 m): Tidak Pas. Logam B 5 m: kurang: Tidak Pas. Logam C 6,5 m (sisa 0,15 m): Pas.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": [
+        "Kunci menganggap kerangka memuat dua diagonal persegi seperti pada gambar; tanpa diagonal panjangnya 475,2 cm dan jawabannya menjadi B Pas, A dan C Tidak Pas."
+      ],
+      "kolom": [
+        "Pas",
+        "Tidak Pas"
+      ]
+    },
+    {
+      "id": "MATL25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPTRGM35SL-000000-2697",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Transformasi Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan transformasi geometri (translasi, refleksi, rotasi, dilatasi, serta komposisinya) dari bentuk geometris dan matriks transformasinya",
+      "subkompetensi": null,
+      "indikator": "Menentukan hasil operasi dari dua parameter yang merupakan komponen pembentuk dua garis lurus disertai dengan informasi bayangan hasil dua kali transformasi geometri. (19)",
+      "soal": "Apabila garis ax + y − 9 = 0 dan x + by + 6 = 0 dicerminkan terhadap garis y = x kemudian dilanjutkan translasi T[1; −1], menghasilkan bayangan dengan persamaan berturut-turut x + 2y − 8 = 0 dan 2x − y − 9 = 0 .\nNilai dari 2a − b = ...",
+      "opsi": [
+        "-6",
+        "-2",
+        "0",
+        "2",
+        "6"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pencerminan y = x lalu translasi (1, −1): titik (x, y) → (y + 1, x − 1). Garis ax + y − 9 = 0 menjadi x + ay + a − 10 = 0 = x + 2y − 8 → a = 2. Garis x + by + 6 = 0 menjadi bx + y + 7 − b = 0, sebanding dengan 2x − y − 9 = 0 → b = −2 (7 − b = 9 cocok). 2a − b = 6.",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATGMPTRGM35SL-000000-2767",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Transformasi Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan transformasi geometri (translasi, refleksi, rotasi, dilatasi, serta komposisinya) dari bentuk geometris dan matriks transformasinya",
+      "subkompetensi": null,
+      "indikator": "Menentukan transformasi geometri yang terjadi pada sebuah lingkaran dengan disertakan informasi bayangan hasil transformasi (20)",
+      "soal": "Lingkaran L memiliki pusat di (-5, 3) dan jari-jari 2. Lingkaran L' adalah bayangan dari L setelah dilakukan translasi . T Lingkaran L'' dengan persamaan (x + 4)² + (y − 4)² = 16 adalah bayangan dari L' setelah dilakukan dilatasi dengan pusat o(0,0) dengan faktor skala tertentu. Pernyataan yang benar mengenai translasi T dan faktor skala dilatasi yang dilakukan adalah ....",
+      "opsi": [
+        "T = [3; −1] dan skala dilatasi 8",
+        "T = [3; −1] dan skala dilatasi 4",
+        "T = [3; −1] dan skala dilatasi 2",
+        "T = [1; 1] dan skala dilatasi 2",
+        "T = [1; 1] dan skala dilatasi 8"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Jari-jari 2 → 4, jadi faktor skala 2 (atau −2). Pusat L'' (−4, 4) = 2 × pusat L', jadi pusat L' (−2, 2) dan T = (−2 + 5, 2 − 3) = (3, −1). (Faktor −2 memberi T = (7, −5), tidak ada di opsi.)",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Nama lingkaran di sumber ditulis dengan huruf L bergaya (aksen tidak terbaca jelas); di sini ditulis L, L', dan L'' sesuai urutan transformasi. Penempatan \". T\" di kalimat pertama disalin apa adanya."
+      ]
+    },
+    {
+      "id": "MATL25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATGMPTRGM35SL-000000-2601",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Geometri dan Pengukuran",
+      "subelemen": "Transformasi Geometri",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan transformasi geometri (translasi, refleksi, rotasi, dilatasi, serta komposisinya) dari bentuk geometris dan matriks transformasinya",
+      "subkompetensi": null,
+      "indikator": "Menentukan titik-titik yang terletak pada suatu garis dengan disertakan informasi bayangan garis tersebut hasil transformasi rotasi (21)",
+      "soal": "Garis l merupakan bayangan garis 3x + 2y = 6 dirotasikan sejauh 90º berlawanan arah jarum jam dengan pusat rotasi (2,0).\nManakah koordinat titik yang terletak pada garis l?\nPilihlah semua jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "(-3, -2)",
+        "(-2, -1)",
+        "(1, 2)",
+        "(2, 0)",
+        "(5, 2)"
+      ],
+      "kunci": [
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Rotasi 90° berlawanan jarum jam pusat (2, 0): (x, y) → (2 − y, x − 2). (2, 0) ada pada garis asal sehingga tetap; (0, 3) → (−1, −2). Bayangan: 2x − 3y = 4. Memenuhi: (2, 0) dan (5, 2).",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATKLKLMTM36SL-000000-2835",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalkulus",
+      "subelemen": "Limit",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait limit fungsi aljabar",
+      "subkompetensi": null,
+      "indikator": "Menghitung nilai limit tentu fungsi aljabar dalam bentuk pecahan rasional (pangkat dua dan tiga) (22)",
+      "soal": "Nilai dari lim(x→3) (x³ − 3x² + 2x + 1)/(5 + 3x − 9x²) = ....",
+      "opsi": [
+        "−7/67",
+        "−6/67",
+        "6/76",
+        "7/67",
+        "7/76"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Substitusi langsung: pembilang 27 − 27 + 6 + 1 = 7, penyebut 5 + 9 − 81 = −67; hasil −7/67.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATKLKLMTM36SL-000000-2710",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalkulus",
+      "subelemen": "Limit",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait limit fungsi aljabar",
+      "subkompetensi": null,
+      "indikator": "Menentukan kecenderungan nilai tertentu menggunakan konsep limit tak tentu di ketakhinggaan dalam konteks kehidupan sehari-hari. (23)",
+      "soal": "Roni, penjual nasi goreng, menjual dagangannya sebanyak P porsi dan akan memperoleh keuntungan (dalam jutaan rupiah) yang dapat dinyatakan dengan fungsi\nK(p) = (9p² + 2p + 10)/(3p² + 3p + 2)\nKeuntungan yang akan diperoleh Roni, apabila dia menjual nasi goreng dengan porsi sangat banyak adalah ....",
+      "opsi": [
+        "Rp2.000.000,00",
+        "Rp3.000.000,00",
+        "Rp5.000.000,00",
+        "Rp9.000.000,00",
+        "Rp10.000.000,00"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "lim(p→∞) K(p) = 9/3 = 3 juta rupiah.",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "MATL25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25MATKLKLMTM37SL-000000-0509",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Kalkulus",
+      "subelemen": "Limit",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait limit fungsi trigonometri",
+      "subkompetensi": null,
+      "indikator": "Menentukan nilai limit dari rasio luas segitiga dengan luas setengah lingkaran untuk nilai parameter mendekati suatu sudut dalam pi. (24)",
+      "soal": "Sebuah setengah lingkaran dengan diameter AB terletak pada segitiga sama kaki ABC dan memiliki panjang 2π , sehingga membentuk daerah berbentuk kerucut es krim seperti pada gambar berikut.\n[Gambar]\nJika luas segitiga ABC dinyatakan dengan X dan luas setengah lingkaran dinyatakan dengan Y , berikut ini manakah pernyataan yang benar tentang nilai lim(θ→a) X/Y ?\nPilihlah semua jawaban benar! Jawaban benar lebih dari satu.",
+      "gambar": "Bentuk \"kerucut es krim\": setengah lingkaran di atas ruas AB, dan segitiga sama kaki ABC di bawahnya dengan AC = BC (ditandai) dan sudut puncak θ di C.",
+      "opsi": [
+        "Besar jari-jari mempengaruhi nilai limit.",
+        "Besar sudut tidak mempengaruhi nilai limit.",
+        "Nilai X/Y selalu sama untuk berapapun θ.",
+        "lim(θ→π/6) X/Y = 2/π",
+        "Jika θ = π maka X/Y = 0"
+      ],
+      "kunci": [
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Dengan jari-jari r: X = r² cot(θ/2), Y = πr²/2, jadi X/Y = 2cot(θ/2)/π, tidak bergantung r tetapi bergantung θ (A, B, C salah). θ = π → cot(π/2) = 0 → X/Y = 0 (E benar). X/Y = 2/π hanya bila θ = π/2; untuk θ → π/6 hasilnya 2(2 + √3)/π ≈ 2,38. D dimasukkan karena soal menyebut lebih dari satu jawaban benar, dengan dugaan batas limit seharusnya π/2.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Batas limit pada opsi D terbaca π/6; dengan π/6 opsi D salah dan hanya E yang benar, padahal soal menyebut jawaban benar lebih dari satu. Kemungkinan salah cetak (π/2). Perlu dicek.",
+        "\"memiliki panjang 2π\" tidak jelas mengacu ke busur atau diameter; tidak memengaruhi kunci."
+      ]
+    },
+    {
+      "id": "MATL25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25MATKLKLMTM37SL-000000-2914",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kalkulus",
+      "subelemen": "Limit",
+      "kompetensi": "Kemampuan memahami, mengaplikasikan, dan bernalar yang lebih tinggi untuk menyelesaikan permasalahan terkait limit fungsi trigonometri",
+      "subkompetensi": null,
+      "indikator": "Menentukan pasangan parameter pembentuk fungsi trigonometri yang memenuhi persamaan limit fungsi trigonometri tertentu (25)",
+      "soal": "Nilai lim(x→3) (1 − cos(6x − 18))/((x − 9/x) sin(6x − 18)) = ....",
+      "opsi": [
+        "−3/2",
+        "−2/3",
+        "0",
+        "2/3",
+        "3/2"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Misal u = 6(x − 3). 1 − cos u ≈ u²/2 dan sin u ≈ u, jadi bentuknya ≈ (u/2)/(x − 9/x) = 3(x − 3) · x/((x − 3)(x + 3)) = 3x/(x + 3) → 9/6 = 3/2 (dicek numerik).",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": []
+    }
+  ]
+}

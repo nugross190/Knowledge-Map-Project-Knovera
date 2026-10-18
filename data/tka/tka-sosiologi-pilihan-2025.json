@@ -1,0 +1,1018 @@
+{
+  "id": "tka-sosiologi-pilihan-2025",
+  "kode": "SOS25",
+  "mapel": "Sosiologi",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Sosiologi_SMA_2025_Pilihan.pdf",
+    "halaman": 34,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; huruf miring istilah asing tidak dipertahankan.",
+    "Judul halaman 1 sumber: \"Soal TKA Sosiologi SMA/MA/SMK Tahun 2025\" (tanpa kata Pilihan).",
+    "PDF memuat 30 soal lengkap (nomor 1–30) dalam 34 halaman; beberapa soal menyambung ke halaman berikutnya. Tidak ada catatan soal yang belum tersedia.",
+    "Soal nomor 7 dan 8 memakai infografis yang sama; isinya disimpan sekali sebagai teks bersama SOS25-T01. Soal lain memuat stimulusnya sendiri di kolom soal; penanda [Gambar] dan [Tabel] menunjukkan letak gambar dan tabel.",
+    "Banyak soal menilai penalaran konsep sosiologi dengan opsi yang mirip; kunci yang bersifat tafsiran ditandai keyakinan rendah atau sedang dan dicatat di catatan_transkripsi.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [
+    {
+      "id": "SOS25-T01",
+      "jenis": "infografis",
+      "halaman": [
+        8,
+        10
+      ],
+      "judul": "Pentingnya Keterlibatan Perempuan Dalam Politik",
+      "teks": "Infografis Kementerian Pemberdayaan Perempuan dan Perlindungan Anak Republik Indonesia berjudul \"PENTINGNYA KETERLIBATAN PEREMPUAN DALAM POLITIK\".\nPARTAI POLITIK: Perempuan yang berada di partai politik mampu menyuarakan isu kebijakan yang berpihak kepada perempuan melalui wakilnya yang duduk di parlemen. Mendorong perempuan menduduki jabatan penting di partai dan terpenuhinya minimal 30% kepengurusan perempuan.\nPARLEMEN: Kehadiran perempuan dalam Parlemen dapat memperjuangkan kebijakan yang berpihak pada perempuan karena perempuanlah yang tahu akan kebutuhannya. Selain itu juga dapat menentukan kebijakan dalam peningkatan kesetaraan dan keadilan gender.\nYUDIKATIF: Perempuan dalam Lembaga Yudikatif sebagai pelaksana kebijakan harus terus mendukung terlaksananya semua peraturan yang berpihak kepada perempuan. Selain itu juga dapat mengusulkan kebijakan-kebijakan perlindungan terhadap perempuan.\nKaki infografis: KPPDANPA, @KPP_PA, @KEMENPPPA, KEMENPPPA RI, WWW.KEMENPPPA.GO.ID.",
+      "catatan": [
+        "Infografis yang sama ditampilkan untuk soal nomor 7 (halaman 8) dan nomor 8 (halaman 10). Ilustrasi perempuan berpidato di podium dan sekelompok orang membawa poster."
+      ]
+    }
+  ],
+  "soal": [
+    {
+      "id": "SOS25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSSSIPOSS01SA-000000-0057",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Sosiologi sebagai Ilmu",
+      "subelemen": "Pengertian dan perkembangan sosiologi dan manfaat sosiologi dalam kehidupan masyarakat.",
+      "kompetensi": "Mendeskripsikan dan menganalisis pengertian dan perkembangan serta manfaat sosiologi sebagai ilmu pengetahuan.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi fenomena sosial ke dalam ruang lingkup kajian sosiologi. (1)",
+      "soal": "Dahulu, masyarakat desa hidup rukun dan saling membantu melalui kegiatan gotong royong, seperti membersihkan lingkungan bersama-sama. Namun, belakangan ini kegiatan tersebut mulai ditinggalkan. Banyak warga lebih memilih menyewa jasa kebersihan karena kesibukan pekerjaan masing-masing. Perubahan ini menimbulkan kekhawatiran di kalangan tokoh masyarakat karena dinilai dapat mengikis nilai kebersamaan yang menjadi ciri khas desa.\nApa makna perubahan perilaku masyarakat desa jika ditinjau dari sudut pandang sosiologi?",
+      "opsi": [
+        "Perubahan gaya hidup karena meningkatnya pendapatan masyarakat desa.",
+        "Pergeseran sistem ekonomi dari komunal menuju individualisme.",
+        "Perubahan nilai sosial yang memengaruhi interaksi antarwarga.",
+        "Penurunan semangat kerja kolektif karena pengaruh globalisasi.",
+        "Kecenderungan masyarakat dalam menyesuaikan diri dengan tren modern."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Sosiologi mengkaji hubungan dan interaksi sosial; ditinggalkannya gotong royong adalah perubahan nilai sosial yang memengaruhi interaksi antarwarga (C). A, B, dan D memasukkan sebab (pendapatan, sistem ekonomi, globalisasi) yang tidak disebut di stimulus.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSHGSKGSS09SA-000000-0095",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Konsep dan bentuk hubungan sosial",
+      "kompetensi": "Mengidentifikasi dan menganalisis konsep dan bentuk hubungan sosial yang terjadi di masyarakat",
+      "subkompetensi": null,
+      "indikator": "Menentukan syarat interaksi sosial berdasarkan kasus yang diberikan. (2)",
+      "soal": "Pandemi COVID-19 yang melanda dunia sejak awal tahun 2020 telah membawa perubahan dalam berbagai aspek kehidupan, termasuk cara kita berinteraksi dan menjaga hubungan sosial. Kebijakan jaga jarak atau physical distancing menjadi norma baru yang wajib dipatuhi, sementara aktivitas tatap muka, termasuk pembelajaran, beralih secara drastis menjadi daring.\nApa yang memungkinkan interaksi sosial tetap terjadi pada masa pandemi meskipun terdapat pembatasan tatap muka secara langsung?",
+      "opsi": [
+        "Individu memahami teknologi informasi.",
+        "Komunikasi tetap terjalin melalui media daring.",
+        "Semua pihak mengikuti aturan dengan taat.",
+        "Lingkungan sekitar menyediakan jaringan internet.",
+        "Siswa dan guru menggunakan handphone."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Syarat interaksi sosial adalah kontak sosial dan komunikasi; kontak tidak harus langsung dan komunikasi dapat melalui media daring (B). Opsi lain sarana atau kondisi, bukan syarat interaksi.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSHGSMMKS12SA-000000-0202",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Masyarakat multikultural.",
+      "kompetensi": "Menganalisis dinamika masyarakat multikultural",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi ciri-ciri masyarakat multikultural. (3)",
+      "soal": "Nasionalisme sebagai masyarakat yang lahir di Indonesia muncul pertama kali setelah Indische Partij terbentuk pada 1912. Partai ini melibatkan segala etnis, termasuk Eropa dan peranakan Indo. Kemudian peranakan Indo melebur dengan momentum nasionalisme berikutnya, Sumpah Pemuda 1928. Sumpah Pemuda menjadi ajang persatuan antara peranakan Tionghoa, Arab, dan Indo untuk jati dirinya sebagai orang Indonesia. Peristiwa ini mempertemukan kalangan tersebut untuk mengkampanyekan persatuan. Berangsur-angsur setelah Sumpah Pemuda, berdirilah partai berbasis etnis yang mendukung nasionalisme. Kemudian pergerakan secara etnik perlahan pun melebur dengan kelompok nasionalisme lainnya. Tanpa sekat, dan bermuara pada kemerdekaan Indonesia.\nSumber diadaptasi dari: https://nationalgeographic.grid.id/\nMengapa sumpah pemuda pada kasus tersebut bisa dikategorikan sebagai simbol multikulturalisme?",
+      "opsi": [
+        "Mencerminkan proses asimilasi nilai dan tujuan budaya-budaya yang berbeda demi menjaga identitas asli setiap etnik.",
+        "Mengakomodasi berbagai etnik dari latar belakang berbeda untuk mendukung penghapusan identitasnya menjadi Indonesia.",
+        "Tedapat dorongan untuk membangun partikularisme melalui partai-partai bernuansa etnik dalam meraih kemerdekaan.",
+        "Bersifat tidak eksklusif untuk satu kelompok etnik melainkan inklusif dan terbuka bagi semua etnik yang hidup di Indonesia.",
+        "Adanya bentuk tuntutan agar etnik yang bergabung turut serta menjadi bagian dari kelompok mayoritas."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Multikulturalisme berarti keterbukaan dan pengakuan semua kelompok etnis tanpa menghapus identitasnya; Sumpah Pemuda mempertemukan berbagai etnis secara inklusif (D). A dan B menyiratkan asimilasi/penghapusan identitas, C partikularisme, E dominasi mayoritas.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"Tedapat\" pada opsi C disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSHGSPGSS10SA-000000-0030",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Pembentukan kepribadian, kelompok dan lembaga sosial.",
+      "kompetensi": "Mengidentifikasi pembentukan kepribadian, kelompok dan lembaga sosial serta perannya di masyarakat.",
+      "subkompetensi": null,
+      "indikator": "Menentukan bentuk hubungan sosial berdasarkan kasus yang diberikan. (4)",
+      "soal": "Di sebuah desa yang sedang berkembang, hidup dua kelompok masyarakat dengan latar belakang budaya dan kebiasaan yang berbeda, yaitu satu kelompok berasal dari penduduk asli desa dan kelompok lainnya berasal dari warga pendatang. Pada awalnya, hubungan antara kedua kelompok kerap diwarnai kesalahpahaman saat rapat desa, karena perbedaan cara pandang dan nilai-nilai budaya yang dianut. Kondisi ini menimbulkan ketegangan sosial yang menghambat pembangunan desa. Melihat hal ini, tokoh masyarakat menginisiasi kegiatan bersama seperti gotong royong, pelatihan kewirausahaan, dan dialog antarbudaya. Melalui proses ini, kedua kelompok mulai saling memahami, menghargai perbedaan, dan bekerja sama dalam pembangunan desa. Mereka juga sepakat untuk tetap mempertahankan budaya masing-masing, sambil merancang kegiatan budaya bersama yang melibatkan semua warga tanpa membedakan asal-usul.\nBerdasarkan ilustrasi tersebut, bentuk hubungan sosial apakah yang akhirnya terwujud di antara kedua kelompok masyarakat di atas?",
+      "opsi": [
+        "Asimilasi, karena kedua kelompok membentuk budaya baru dengan menghilangkan perbedaan.",
+        "Kontravensi, karena terjadi perbedaan pandangan meskipun belum sampai pada konflik terbuka.",
+        "Koersi, karena kedua kelompok menyelesaikan konflik dengan dominasi kelompok yang lebih kuat.",
+        "Persaingan, karena masing-masing kelompok tetap mempertahankan identitas budaya secara tertutup.",
+        "Akomodasi, karena terdapat upaya meredakan ketegangan dengan kesepakatan bersama dan saling membantu."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Ketegangan diredakan melalui kegiatan bersama dan kesepakatan, sementara budaya masing-masing tetap dipertahankan: akomodasi (E), bukan asimilasi.",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "benar-salah",
+      "kode_sumber": "25SOSHGSPGSS10SA-000000-0047",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Pembentukan kepribadian, kelompok dan lembaga sosial.",
+      "kompetensi": "Mengidentifikasi pembentukan kepribadian, kelompok dan lembaga sosial serta perannya di masyarakat.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis proses terbentuknya kelompok sosial. (5)",
+      "soal": "Di salah satu kota besar, warga merasa resah karena sering terjadi penyerangan oleh sekelompok remaja bermotor. Para pelaku membawa senjata tajam. Aksi kekerasan ini umumnya berlangsung pada malam hari, terutama di kawasan Simpang Tiga, jalur utama yang sering dilalui warga ketika malam. Pihak kepolisian menyatakan bahwa insiden ini bukan yang pertama kali terjadi. Dalam dua bulan terakhir, telah terjadi lima kasus serupa dengan pola yang sama yaitu dilakukan oleh remaja dan menyasar warga yang sedang sendirian.\nMengapa peristiwa yang terjadi dalam ilustrasi tersebut dianggap sebagai gejala sosial?\nKlik pilihan Benar atau Salah pada setiap pernyataan berdasarkan isi teks!",
+      "opsi": [
+        "Kasus tersebut merupakan gejala sosial dengan dampak keresahan dan menimbulkan ketakutan di masyarakat.",
+        "Kasus ini termasuk gejala sosial akibat adanya penyimpangan perilaku dari norma sosial yang berlaku di masyarakat.",
+        "Aksi kekerasan dalam kasus ini terjadi secara individu dan tidak berulang sama sekali sehingga bukan gejala sosial."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Peristiwa berulang (lima kasus dalam dua bulan), dilakukan berkelompok, menyimpang dari norma, dan meresahkan masyarakat, jadi pernyataan 1 dan 2 Benar dan pernyataan 3 Salah.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Indikator (proses terbentuknya kelompok sosial) tidak sesuai dengan isi soal (gejala sosial); disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "SOS25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSHGSRGSS11SA-000000-0262",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Ragam gejala sosial",
+      "kompetensi": "Menjelaskan ragam gejala sosial di lingkungan sekitar.",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi dampak gejala sosial terhadap masyarakat. (6)",
+      "soal": "[Gambar]\nPemerintah desa membiarkan para penduduk melakukan urbanisasi. Jika hal tersebut terus terjadi, apa dampak negatif gejala sosial yang relevan berdasarkan kasus pada infografis?",
+      "gambar": "Infografis \"URBANISASI\": \"Perpindahan dari wilayah jarang penduduk ke wilayah padat penduduk (urbanisasi) dapat diartikan sebagai suatu gejala suatu wilayah bertransformasi menjadi perkotaan\". \"Sayangnya, wilayah jarang penduduk tersebut biasanya adalah perdesaan yang sebenarnya memiliki potensi berikut:\" PUSAT PEMELIHARAAN KEANEKARAGAMAN HAYATI (\"Masyarakat lokal melindungi tanah, air, dan kehidupan hewan serta tumbuhan dengan cara tidak merusak ekosistem melalui pelestarian kearifan lokal.\"); PENGHASIL UTAMA PASOKAN PANGAN (\"Banyak sumber daya alam yang berperan sebagai pemasok sumber pangan dan kebutuhan pokok dihasilkan di wilayah-wilayah perdesaan.\"); PENGURANGAN DAMPAK LINGKUNGAN (\"Lingkungan yang hijau menghasilkan banyak oksigen dan mengurangi risiko polusi udara global.\"). Penutup: \"Mari kita dukung pertanian berkelanjutan dan menjaga lingkungan untuk masa depan yang lebih baik.\" Ilustrasi petani di sawah.",
+      "opsi": [
+        "Pengangguran di wilayah pedesaan akan terus meningkat karena lapangan kerja semakin sempit.",
+        "Sumber-sumber hayati akan rusak karena pencemaran lingkungan akibat pembangunan yang masif.",
+        "Kerusakan lingkungan di perdesaan akibat alih fungsi lahan terjadi karena industrialisasi semakin pesat.",
+        "Kenaikan harga terjadi seiring penurunan pasokan pangan karena banyak lahan yang tidak tergarap.",
+        "Pemanasan global terus meningkat karena polusi udara di perkotaan tidak diimbangi dengan penghijauan."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Urbanisasi mengurangi tenaga kerja di desa, padahal infografis menyebut desa sebagai penghasil utama pasokan pangan; lahan tidak tergarap menurunkan pasokan dan menaikkan harga (D). B dan C menyebut pembangunan atau industrialisasi di desa, yang tidak berasal dari perpindahan penduduk ke kota; A justru berlawanan karena penduduk desa berkurang.",
+      "halaman": [
+        6,
+        7
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-007",
+      "passage": "SOS25-T01",
+      "nomor": "7",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SOSPNSLPSS13SA-250020-0246",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi tujuan/simpulan penelitian sosial. (7)",
+      "soal": "Penelitian ini bertujuan untuk memahami bagaimana keterlibatan perempuan dalam partai politik. Peneliti ingin melihat apakah perempuan benar-benar memiliki kesempatan dan mampu mengambil peran penting di dalamnya. Fokus peneliti adalah mengamati sejauh mana perempuan terlibat sebagai anggota biasa, pengurus partai, atau sebagai calon wakil rakyat dalam pemilihan umum. Dengan ini, peneliti berharap bisa mengetahui posisi perempuan dalam struktur partai dan kontribusi mereka terhadap aktivitas politik. Penelitian ini penting untuk melihat kesetaraan gender dalam dunia politik.\nManakah pernyataan yang menunjukkan tujuan penelitian kualitatif studi kasus dari permasalahan sosial tersebut?\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Untuk mengidentifikasi kesempatan dan peran yang dapat diambil perempuan dalam aktivitas politik di partai.",
+        "Untuk memahami kontribusi spesifik perempuan terhadap dinamika dan keputusan politik di dalam partai.",
+        "Untuk menganalisis korelasi antara tingkat keterlibatan perempuan dengan eksistensi partai politik.",
+        "Untuk mengetahui sejauh mana kesetaraan gender terwujud dalam struktur dan praktik partai politik.",
+        "Untuk menentukan pengaruh keterlibatan perempuan terhadap pengambilan keputusan yang berpihak pada perempuan."
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Penelitian kualitatif studi kasus bertujuan mengidentifikasi, memahami, dan menggambarkan secara mendalam (A, B, D). \"Korelasi\" (C) dan \"pengaruh\" (E) adalah tujuan penelitian kuantitatif.",
+      "halaman": [
+        8,
+        9
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-008",
+      "passage": "SOS25-T01",
+      "nomor": "8",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPNSLPSS13SA-250020-0135",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Menentukan struktur dan sistematika penelitian sosial. (8)",
+      "soal": "Berikut merupakan langkah-langkah penelitian sosial yang akan dilakukan peneliti:\nMengumpulkan data melalui wawancara, observasi, dan dokumentasi.\nMenentukan landasan teori dan konsep yang relevan.\nMengolah dan menganalisis data hasil penelitian.\nMenyusun latar belakang penelitian berdasarkan data resmi.\nMenarik kesimpulan dan memberikan rekomendasi kebijakan\nManakah urutan langkah-langkah penelitian yang termasuk tahapan pelaksanaan penelitian sosial?",
+      "opsi": [
+        "Mengumpulkan data melalui wawancara, observasi, dan dokumentasi dan Menentukan landasan teori dan konsep yang relevan.",
+        "Mengumpulkan data melalui wawancara, observasi, dan dokumentasi dan Mengolah dan menganalisis data hasil penelitian.",
+        "Mengumpulkan data melalui wawancara, observasi, dan dokumentasi dan Menarik kesimpulan dan memberikan rekomendasi kebijakan.",
+        "Menentukan landasan teori dan konsep yang relevan dan Menyusun latar belakang penelitian berdasarkan data resmi.",
+        "Menyusun latar belakang penelitian berdasarkan data resmi dan Menarik kesimpulan dan memberikan rekomendasi kebijakan."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Tahap persiapan memuat latar belakang dan landasan teori; tahap pelaksanaan memuat pengumpulan data serta pengolahan dan analisis data (B); kesimpulan dan rekomendasi termasuk tahap pelaporan.",
+      "halaman": [
+        10,
+        11
+      ],
+      "catatan_transkripsi": [
+        "Infografis yang sama dengan soal nomor 7 diulang di halaman 10 sebelum stimulus soal ini; disimpan sebagai teks bersama SOS25-T01.",
+        "Kode soal sumber memakai pola \"-250020-\", berbeda dari soal lain (\"-000000-\"); disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPNSMTPS15SA-000000-0161",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi metode penelitian sosial berdasarkan kasus yang diberikan. (9)",
+      "soal": "Penggunaan media sosial yang sangat banyak digemari oleh remaja menimbulkan kekhawatiran dapat mempengaruhi perilaku dan moral mereka. Kenakalan remaja yang makin rumit sering dihubungkan dengan interaksi mereka dengan konten online tertentu. Sehingga seorang peneliti melakukan penelitian pada remaja usia 13-18 tahun yang sering memakai media sosial. Peneliti tersebut mengumpulkan data dengan menyebarkan kuesioner online kepada 150 remaja. Kuesioner ini mempunyai dua bagian utama yaitu satu untuk mengukur seberapa sering dan bagaimana mereka menggunakan media sosial, dan bagian lainnya untuk mengukur tingkat kenakalan remaja berdasarkan pengalaman dan pandangan mereka sendiri.\nManakah pernyataan yang menunjukkan metode penelitian yang sesuai dengan teknik pengumpulan data yang dilakukan?",
+      "opsi": [
+        "Penelitian eksperimen dengan teknik penentuan sampel stratified sampling karena penelitian ini membandingkan pada kelompok pengguna media sosial maupun yang tidak dari berbagai kalangan yang berbeda tingkatan.",
+        "Penelitian eksploratif dengan teknik penentuan samplel cluster samping berdasarkan wilayah untuk mengeksplorasi fenomena penggunaan media sosial dapat mempengaruhi moral remaja.",
+        "Penelitian kuantitatif dengan teknik penentuan sampel simple random sampling berdasarkan rentang usia yang diambil secara acak untuk menganalisis pengaruh penggunaan media sosial terhadap tingkat kenakalan remaja.",
+        "Penelitian lapangan dengan teknik penentuan sampel area sampling berdasarkan area tertentu untuk mengobservasi fenomena penggunaan media sosial terhadap tingkat kenakalan remaja.",
+        "Penelitian kualitatif dengan teknik penentuan sampel purposive sampling dengan menentukan kriteria tertentu untuk memahami dampak yang ditimbulkan dari fenomena penggunaan media sosial pada remaja."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Kuesioner kepada 150 responden yang mengukur dua variabel (frekuensi penggunaan media sosial dan tingkat kenakalan) adalah ciri penelitian kuantitatif untuk menganalisis pengaruh (C).",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Cara pemilihan 150 remaja tidak disebut; opsi C menyebut simple random sampling, sedangkan kriteria usia 13–18 tahun yang sering memakai media sosial lebih dekat ke purposive sampling. Kunci tetap C karena metodenya kuantitatif.",
+        "Salah ketik \"samplel cluster samping\" pada opsi B disalin apa adanya; huruf miring istilah asing tidak dipertahankan."
+      ]
+    },
+    {
+      "id": "SOS25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25SOSPNSMNPS14SA-000000-0117",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi manfaat hasil penelitian sosial. (10)",
+      "soal": "Penelitian ini bertujuan untuk menelaah secara komprehensif fenomena meningkatnya jumlah pengemis anak di ruang publik. Fokus utama diarahkan pada identifikasi faktor-faktor penyebab anak-anak berada di jalanan, seperti kondisi kemiskinan, keterbatasan akses terhadap pendidikan, serta eksploitasi oleh pihak tertentu. Penelitian ini juga mengeksplorasi dampak sosial dan psikologis yang dialami anak-anak tersebut, termasuk hilangnya masa kanak-kanak, kerentanan terhadap tindak kekerasan, dan munculnya stigma sosial. Teknik pengumpulan data yang digunakan meliputi observasi partisipatif, wawancara mendalam, dan kajian pustaka. Temuan dari penelitian ini diharapkan dapat memberikan kontribusi dalam pengembangan ilmu sosial, menjadi dasar pemecahan permasalahan sosial, serta meningkatkan kapasitas dan kompetensi peneliti.\nPernyataan manakah yang paling tepat menggambarkan kontribusi penelitian sosial dalam menyelesaikan permasalahan berdasarkan ilustrasi tersebut?\nKlik pada setiap pilihan jawaban benar! Jawaban benar lebih dari satu.",
+      "opsi": [
+        "Menambah wawasan tentang dampak fisik, psikologis maupun sosial yang dialami oleh pengemis di bawah umur.",
+        "Memberikan solusi atau saran kepada pemerintah untuk dapat dijadikan sebagai dasar pengambilan kebijakan.",
+        "Menjadi referensi utama bagi penelitian selanjutnya dan memberikan manfaat bagi para pembaca.",
+        "Meningkatkan kesadaran masyarakat tentang kompleksitas dan bahaya pengemis di bawah umur.",
+        "Mengurangi tingkat kekerasan dan eksploitasi di jalanan pada anak di bawah umur."
+      ],
+      "kunci": [
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Manfaat praktis (menyelesaikan masalah) adalah memberi dasar kebijakan (B) dan menumbuhkan kesadaran masyarakat (D). A dan C manfaat teoretis/akademis; E adalah hasil kebijakan, bukan hasil langsung penelitian.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": [
+        "Opsi A dapat juga dianggap benar bila manfaat teoretis ikut dihitung; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "SOS25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPNSPGDS18SA-000000-0238",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Menginterpretasi hasil penelitian sosial. (11)",
+      "soal": "Perhatikan grafik di bawah ini!\n[Gambar]\nBerdasarkan grafik hasil penelitian di atas, penjelasan manakah yang paling tepat mengenai pola partisipasi komunitas dalam kegiatan lingkungan?",
+      "gambar": "Diagram batang mendatar \"Tingkat Partisipasi Komunitas dalam Kegiatan Lingkungan per Jenis Kegiatan\" (legenda: Jumlah; sumbu 0–140): Daur Ulang Sampah 50, Penanaman Pohon 80, Bersih Sungai 120.",
+      "opsi": [
+        "Semua jenis kegiatan lingkungan memiliki tingkat partisipasi yang seragam dan tinggi.",
+        "Kegiatan bersih sungai adalah yang paling populer dan menarik partisipasi komunitas terbanyak.",
+        "Masyarakat cenderung tidak tertarik pada kegiatan lingkungan yang bersifat fisik seperti penanaman pohon.",
+        "Daur ulang sampah merupakan kegiatan yang paling sukses dalam menarik jumlah peserta terbanyak.",
+        "Tidak ada perbedaan yang signifikan antara partisipasi dalam penanaman pohon dan daur ulang sampah."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Bersih sungai 120 peserta, tertinggi; daur ulang 50 terendah; penanaman pohon 80.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSHGSPKLS07SA-000000-0252",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Hubungan dan Gejala Sosial",
+      "subelemen": "Pembentukan kepribadian, kelompok dan lembaga sosial.",
+      "kompetensi": "Mengidentifikasi pembentukan kepribadian, kelompok dan lembaga sosial serta perannya di masyarakat.",
+      "subkompetensi": null,
+      "indikator": "Soal No.12 (Elemen Soal No.5)",
+      "soal": "Di sebuah sekolah, sekelompok siswa membentuk komunitas bernama \"Green Youth Club\" yang fokus pada isu lingkungan. Mereka memulai dengan saling berbagi informasi tentang daur ulang dan pengelolaan sampah organik, lalu rutin melakukan kegiatan seperti membersihkan taman sekolah, membuat kompos, dan menyosialisasikan gaya hidup ramah lingkungan. Anggota komunitas ini berasal dari berbagai kelas dan latar belakang, namun mereka merasa memiliki tujuan bersama dan saling mendukung dalam kegiatan yang dijalankan.\nJika dikaji dari konsep kelompok sosial, bagaimana proses terbentuknya komunitas Green Youth Club tersebut?",
+      "opsi": [
+        "Komunitas terbentuk secara spontan tanpa adanya kesamaan visi dan nilai.",
+        "\"Green Youth Club\" termasuk kelompok semu karena hanya berkumpul sesekali.",
+        "Kelompok tersebut terbentuk karena interaksi sosial yang berkelanjutan dan tujuan bersama.",
+        "Komunitas itu dibentuk secara paksa oleh sekolah sehingga tidak mencerminkan kelompok sosial.",
+        "Kelompok ini bukan kelompok sosial karena anggotanya berasal dari kelas yang berbeda."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kelompok sosial terbentuk dari interaksi yang berulang, kesadaran sebagai anggota, dan tujuan bersama (C).",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Soal ini tidak memiliki kotak indikator; sumber hanya menulis judul \"Soal No.12 (Elemen Soal No.5)\". Elemen, subelemen, dan kompetensi disalin dari soal nomor 5, dan judul itu disimpan di kolom indikator."
+      ]
+    },
+    {
+      "id": "SOS25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPNSRCPS19SA-000000-0150",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Penelitian Sosial",
+      "subelemen": "Langkah penelitian sosial dan metode penelitian.",
+      "kompetensi": "Menjelaskan dan menganalisis berbagai langkah dan metode penelitian sosial.",
+      "subkompetensi": null,
+      "indikator": "Menentukan rancangan penelitian berdasarkan kasus yang diberikan. (13)",
+      "soal": "Perhatikan hasil penelitian berikut!\nTabel Perspesi, hambatan, dan harapan publik mengenai pelayanan pemerintah\n[Tabel]\nBagaimana langkah-langkah penelitian yang tepat agar peneliti bisa menghasilkan sajian data tersebut?",
+      "tabel": [
+        [
+          "Tema Utama",
+          "Subtema",
+          "Kutipan Informan"
+        ],
+        [
+          "Persepsi Pelayanan Publik",
+          "Ketepatan waktu",
+          "\"Saya sudah datang pagi-pagi, tapi tetap saja harus menunggu lama.\" – Informan 1"
+        ],
+        [
+          "",
+          "Keramahan petugas",
+          "\"Petugasnya sebenarnya ramah, tapi kadang terkesan terburu-buru.\" – Informan 3"
+        ],
+        [
+          "Hambatan dalam Pelayanan",
+          "Sistem antrean manual",
+          "\"Kalau antrean masih tulis tangan begini, gampang diserobot.\" – Informan 4"
+        ],
+        [
+          "",
+          "Kurangnya petunjuk informasi",
+          "\"Saya bingung harus ke loket mana dulu. Tidak ada papan petunjuk.\" – Informan 9"
+        ],
+        [
+          "Harapan Masyarakat",
+          "Digitalisasi pelayanan",
+          "\"Kalau bisa, dibuat sistem online biar enggak perlu antre lama di sini.\" – Informan 10"
+        ],
+        [
+          "",
+          "Pelatihan SDM",
+          "\"Petugasnya perlu pelatihan biar lebih cepat dan akurat saat melayani.\" – Informan 7"
+        ]
+      ],
+      "opsi": [
+        "Peneliti membuat panduan wawancara yang diturunkan dari rumusan masalah penelitian, lalu melakukan pengumpulan data, mengecek kelengkapan jawaban, mengidentifikasi hasil jawaban, lalu mengelompokkannya dalam kategori yang sama.",
+        "Peneliti membuat daftar pertanyaan tertutup, mengujicobakannya dalam kelompok kecil, mengecek kelengkapan jawaban, mengelompokkan jawaban dalam tema tertentu, lalu menyimpulkan jawaban setiap responden.",
+        "Peneliti membuat kuesioner dengan jenis pertanyaan campuran, lalu melakukan pengumpulan data, mengecek kelengkapan jawaban, mengklasifikasi jawaban setiap responden, lalu melakukan penyajian data.",
+        "Peneliti merumuskan pertanyaan-pertanyaan pokok dari judul penelitian, lalu membuat panduan wawancara, melakukan uji coba terbatas, melakukan pengumpulan data, mengecek kelengkapan data, lalu penyajian data.",
+        "Peneliti merumuskan indikator dari variabel, lalu menurunkan indikator menjadi butir pertanyaan, melakukan uji coba terbatas, melakukan pengumpulan data, mengecek kelengkapan data, lalu penyajian data."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Tabel berisi kutipan informan yang dikelompokkan per tema dan subtema: hasil wawancara kualitatif yang dikategorikan. Opsi A memuat panduan wawancara dari rumusan masalah sampai pengelompokan kategori. B, C, dan E memakai kuesioner/variabel (kuantitatif); D tidak memuat langkah pengelompokan tema.",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik judul tabel \"Perspesi\" disalin apa adanya; sel kosong di kolom Tema Utama berarti sel gabungan dengan baris di atasnya."
+      ]
+    },
+    {
+      "id": "SOS25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKKKSS26SA-000000-0409",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Konflik sosial dan penanganan konflik.",
+      "kompetensi": "Mendeskripsikan berbagai konsep konflik sosial dan menganalisis berbagai upaya penanganan konflik.",
+      "subkompetensi": null,
+      "indikator": "Menentukan bentuk konflik sosial berdasarkan kasus yang diberikan. (14)",
+      "soal": "Di beberapa kota di Indonesia mulai banyak terjadi konflik antara kelompok pedagang pasar tradisional dan pengelola pusat perbelanjaan modern/mal yang baru dibangun. Para pedagang pasar tradisional merasa dirugikan karena kehadiran mal tersebut mengakibatkan menurunnya jumlah pembeli di pasar tradisional. Mereka menganggap bahwa pembangunan pusat perbelanjaan tidak memperhatikan keberlangsungan ekonomi masyarakat kecil. Sementara itu, pihak pengelola mal merasa bahwa pembangunan tersebut sah dan merupakan bentuk kemajuan ekonomi kota. Ketegangan makin meningkat setelah terjadi aksi demonstrasi yang diwarnai kericuhan. Pemerintah kota mencoba meredam konflik dengan memediasi kedua belah pihak namun hingga kini belum tercapai kesepakatan yang memuaskan semua pihak. Konflik ini menjadi sorotan media dan memunculkan berbagai reaksi dari masyarakat luas.\nApa bentuk konflik sosial yang terjadi berdasarkan ilustrasi tersebut?",
+      "opsi": [
+        "Konflik antar kelas sosial karena terjadi benturan antara pedagang tradisional dan pedagang di mal.",
+        "Konflik antarkelompok kepentingan karena adanya perbedaan kepentingan ekonomi yang berbeda.",
+        "Konflik politik antar institusi dalam hal ini kelompok pedagang di mal ingin mengalahkan pedagang pasar tradisional.",
+        "Konflik budaya akibat perubahan nilai dimana pedagang pasar tradisional kehilangan pelanggan sejak adanya mal.",
+        "Konflik antarpribadi karena perbedaan individu yang terjadi diantara para pedang tradisional kepada pedagang di mal."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Dua kelompok (pedagang pasar tradisional dan pengelola mal) bertentangan karena kepentingan ekonomi yang berbeda: konflik antarkelompok kepentingan (B).",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"pedang tradisional\" pada opsi E disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKPNKS29SA-000000-0345",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Konflik sosial dan penanganan konflik.",
+      "kompetensi": "Mendeskripsikan berbagai konsep konflik sosial dan menganalisis berbagai upaya penanganan konflik.",
+      "subkompetensi": null,
+      "indikator": "Menentukan rekomendasi penanganan konflik pada kasus sosial. (15)",
+      "soal": "Pada suatu daerah terjadi ketegangan antara komunitas adat dengan perusahaan perkebunan sawit. Konflik ini bermulai dari klaim terhadap hak kepemilikan lahan. Perusahaan berpegang pada izin yang mereka miliki, sementara komunitas adat merasa terabaikan. Konflik ini mengakibatkan terjadinya bentrokan fisik dan pemblokiran jalan oleh warga yang mengakibatkan aktivitas distribusi hasil perkebunan sawit menjadi terhambat. Mediasi awal dalam rangka penyelesaian konflik yang terjadi sudah dilakukan tetapi gagal total dan bahkan memperparah ketegangan dan ketidakpercayaan antara kedua belah pihak (komunitas adat dan pihak perusahaan perkebunan sawit). Situasi yang terjadi ini berada pada titik kritis dan memerlukan intervensi yang lebih kuat.\nBagaimana strategi yang tepat untuk mencapai kedamaian yang berkelanjutan antara komunitas adat dan perusahaan perkebunan?",
+      "opsi": [
+        "Memulai kembali negosiasi antara manajemen perusahaan dan perwakilan komunitas adat tanpa melibatkan campur tangan pihak ketiga yang netral.",
+        "Melakukan dialog multi-pihak yang melibatkan pemerintah, akademisi, dan organisasi non pemerintah untuk membangun pemahaman bersama.",
+        "Melakukan arbitrase dengan menunjuk pihak ketiga yang independen dan memiliki kewenangan untuk membuat keputusan mengikat secara hukum.",
+        "Mengembangkan program kemitraan usaha bersama antara kedua belah pihak dengan sistem pembagian keuntungan yang di bagi secara adil.",
+        "Membentuk forum musyawarah desa yang difasilitasi oleh tokoh masyarakat setempat untuk mencari solusi terbaik yang berbasis kearifan lokal."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Mediasi sudah gagal dan situasi \"memerlukan intervensi yang lebih kuat\": tahap berikutnya adalah arbitrase oleh pihak ketiga yang keputusannya mengikat (C). Negosiasi ulang, dialog, atau musyawarah adalah bentuk yang lebih lemah dari mediasi.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": [
+        "Opsi B (dialog multi-pihak) juga bisa dipilih bila \"kedamaian berkelanjutan\" lebih ditekankan; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "SOS25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKPKSS27SA-000000-0593",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Konflik sosial dan penanganan konflik.",
+      "kompetensi": "Mendeskripsikan berbagai konsep konflik sosial dan menganalisis berbagai upaya penanganan konflik.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi penyebab konflik sosial. (16)",
+      "soal": "[Gambar]\nDi Desa Tanjung Harapan, sebuah perusahaan tambang mulai beroperasi setelah mendapatkan izin dari pemerintah daerah. Perusahaan tersebut membuka lahan secara besar-besaran, termasuk wilayah hutan adat yang selama ini dikelola secara turun-temurun oleh masyarakat lokal. Masyarakat adat menolak keberadaan tambang karena merasa tidak dilibatkan dalam proses perizinan dan khawatir kehilangan sumber penghidupan. Dalam beberapa bulan terakhir, terjadi aksi protes yang berujung pada bentrokan antara warga dan aparat keamanan.\nBerdasarkan ilustrasi tersebut, apa penyebab utama terjadinya konflik sosial di Desa Tanjung Harapan?",
+      "gambar": "Ilustrasi warga berdemonstrasi membawa poster \"TOLAK TAMBANG\" di belakang barisan polisi, dengan alat berat (loader) dan tanah galian di depan.",
+      "opsi": [
+        "Pemerintah daerah tidak mampu mengelola hasil tambang dengan baik.",
+        "Perusahaan tidak memberikan pelatihan kerja kepada masyarakat sekitar.",
+        "Masyarakat adat tidak memiliki pengetahuan tentang kegiatan pertambangan modern.",
+        "Kurangnya komunikasi dan partisipasi masyarakat dalam proses pengambilan keputusan.",
+        "Terjadi benturan kepentingan antara perusahaan dan hak masyarakat adat atas lahan."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Inti konflik adalah pembukaan hutan adat oleh perusahaan, sehingga kepentingan perusahaan berbenturan dengan hak masyarakat adat atas lahan dan sumber penghidupan (E).",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Opsi D (tidak dilibatkan dalam perizinan) juga disebut di stimulus; kunci memilih E sebagai penyebab utama. Perlu dicek."
+      ]
+    },
+    {
+      "id": "SOS25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKPNKS29SA-000000-0511",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Ketidaksetaraan sosial dan upaya mewujudkan kesetaraan sosial.",
+      "kompetensi": "Memahami faktor yang memengaruhi ketidaksetaraan sosial dan menganalisis upaya mewujudkan kesetaraan sosial",
+      "subkompetensi": null,
+      "indikator": "Menganalisis upaya membangun perdamaian pada kasus konflik sosial. (17)",
+      "soal": "Konflik mulai terjadi ketika proyek pabrik yang didukung pemerintah lokal mulai dibangun di tanah yang secara tradisional menghidupi petani lokal. Petani mengatakan bahwa mereka tidak diberi informasi dan mengkhawatirkan nasib mereka akibat hilangnya mata pencaharian. Protes petani akhirnya viral di media sosial dan akhinya mendapatkan perhatian dari pemerintah. Pemerintah lokal mengundang pihak petani dan pabrik untuk duduk bersama berdialog dengan fasilitasi tim perdamaian. Kesepakatan akhirnya terwujud dalam bentuk kompensasi, dibangunnya zona penyangga pertanian dan dilibatkannya warga (petani) dalam pengawasan proyek.\nBerdasarkan ilustrasi tersebut, apa cara yang paling efektif untuk meredakan konflik dan menciptakan harmoni sosial?",
+      "opsi": [
+        "Memindahkan lahan pertanian ke lokasi lain tanpa perundingan.",
+        "Melakukan dialog untuk menciptakan kesepakatan yang inklusif.",
+        "Menawarkan bagi hasil saham kepada petani tanpa jaminan tanah.",
+        "Menekan protes dengan melakukan mobilisasi aparat keamanan.",
+        "Melanjutkan konstruksi tanpa mempertimbangkan keberatan warga."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Stimulus menunjukkan konflik reda melalui dialog yang difasilitasi hingga tercapai kesepakatan yang melibatkan petani (B).",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"akhinya\" disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKRKSS21SA-000000-0585",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Konsep Kelompok Sosial dan dinamika Kelompok Sosial.",
+      "kompetensi": "Mengidentifikasi, menjelaskan, dan menganalisis berbagai kelompok sosial dengan dinamikanya.",
+      "subkompetensi": null,
+      "indikator": "Mengkategorikan perbedaan kelompok sosial. (18)",
+      "soal": "[Gambar]\nManakah pernyataan yang paling tepat menunjukkan perbedaan kelompok sosial pada infografis tersebut?",
+      "gambar": "Infografis \"JENIS-JENIS KELOMPOK SOSIAL DI SEKITAR KITA\": KELOMPOK PRIMER (\"Hubungan dekat dan bersifat personal. seper ti keluarga atau sahabat\"; gambar keluarga makan bersama); KELOMPOK SEKUNDER (\"Interaksi lebih formal dan berorientasi pada tujuan tertentu, seperti organisasi sekolan\"; gambar rapat); KELOMPOK FORMAL (\"Memiliki struktur, aturan, dan keanggotaan resmi\"; gambar anggota pramuka); KELOMPOK INFORMAL (\"Terbentuk secara spontan tanpa aturan resmi. seperti teman bermain\"; gambar teman-teman duduk bersama).",
+      "opsi": [
+        "Keluarga menunjukkan kelompok informal yang terbentuk secara spontan dan alami dari interaksi sosial yang terjadi karena adanya kesamaan minat, hobi, atau tujuan.",
+        "Kelompok belajar menunjukkan kelompok primer yang ditandai oleh adanya hubungan yang sangat erat, personal, intim, dan interaksi tatap muka yang sering.",
+        "Organisasi pramuka menunjukkan kelompok primer yang ditandai dengan adanya hubungan yang sangat erat, personal, intim, dan interaksi tatap muka yang sering.",
+        "Teman bermain menunjukkan kelompok formal yang dibentuk secara sengaja dan terencana dengan tujuan serta struktur yang jelas dan memiliki aturan yang tertulis.",
+        "Organisasi OSIS menunjukkan kelompok sekunder yang dicirikan oleh hubungan yang lebih formal, impersonal, dan berdasarkan tujuan atau kepentingan tertentu."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Sesuai infografis, organisasi sekolah (OSIS) adalah kelompok sekunder (E). Keluarga primer, pramuka formal, teman bermain informal.",
+      "halaman": [
+        21,
+        22
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik pada infografis (\"seper ti\", \"sekolan\") disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKRKTS24SA-000000-0554",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Ketidaksetaraan sosial dan upaya mewujudkan kesetaraan sosial.",
+      "kompetensi": "Memahami faktor yang memengaruhi ketidaksetaraan sosial dan menganalisis upaya mewujudkan kesetaraan sosial",
+      "subkompetensi": null,
+      "indikator": "Menganalisis faktor penyebab ketidaksetaraan. (19)",
+      "soal": "Di Kelurahan Maju Jaya, warga terdiri dari beragam kelompok sosial seperti penduduk asli, pendatang dari kota, serta etnis minoritas. Dalam kegiatan pembangunan balai warga, kelompok penduduk asli selalu diundang dalam rapat musyawarah, sementara kelompok lain jarang dilibatkan. Kelompok pendatang dan etnis minoritas juga kesulitan memperoleh informasi tentang kegiatan warga karena akses informasi hanya beredar di lingkaran tertentu. Akibatnya, kelompok yang tidak terlibat merasa tersisih dan mulai muncul perasaan tidak dihargai. Ketegangan mulai terlihat ketika beberapa warga menyuarakan ketidakpuasan dalam forum daring lokal. Situasi ini menimbulkan saling curiga, bahkan muncul komentar negatif antar kelompok. Dalam masyarakat majemuk seperti ini, praktik ketidaksetaraan sosial dalam partisipasi dapat menjadi awal dari konflik yang lebih besar.\nManakah pernyataan yang menjadi pemicu awal terjadinya ketegangan antara kelompok pendatang dan etnis minoritas?",
+      "opsi": [
+        "Ketidakadilan dalam pengambilan keputusan musyawarah membentuk jarak sosial antar kelompok dan menurunkan rasa dihargai.",
+        "Kesenjangan dalam akses informasi memperkuat stigma sosial dan mendorong eksklusi kelompok minoritas.",
+        "Dominasi kelompok mayoritas memperlemah solidaritas sosial dan merenggangkan relasi antar kelompok masyarakat.",
+        "Ketimpangan dalam hak partisipasi membentuk jurang sosial, menurunkan rasa saling percaya antar kelompok.",
+        "Ketidaksetaraan dalam pembagian peran memperkuat stratifikasi sosial dan menghambat mobilitas kelompok."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Rangkaian di stimulus: hanya penduduk asli yang diundang musyawarah → kelompok lain tersisih dan merasa tidak dihargai → ketegangan. Opsi A menyebut pemicu (musyawarah yang tidak adil) dan akibatnya (rasa dihargai turun).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": [
+        "Opsi D (ketimpangan hak partisipasi, menurunkan rasa saling percaya) sangat mirip dan cocok dengan kalimat penutup stimulus; kunci perlu dicek.",
+        "Pertanyaan menyebut ketegangan \"antara kelompok pendatang dan etnis minoritas\", padahal stimulus menggambarkan ketegangan antara kedua kelompok itu dan penduduk asli; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKRKTS24SA-000000-0473",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Ketidaksetaraan sosial dan upaya mewujudkan kesetaraan sosial.",
+      "kompetensi": "Memahami faktor yang memengaruhi ketidaksetaraan sosial dan menganalisis upaya mewujudkan kesetaraan sosial",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi dampak ketidaksetaraan sosial terhadap masyarakat. (20)",
+      "soal": "Sebuah studi di Kota Bahari menunjukkan bahwa ketimpangan pendapatan antara kelompok kaya dan miskin semakin lebar dalam 10 tahun terakhir. Akses terhadap fasilitas pendidikan, kesehatan, dan pekerjaan berkualitas lebih mudah diperoleh oleh kelompok masyarakat atas. Sementara itu, masyarakat miskin harus bergantung pada layanan publik yang terbatas dan sering kali berkualitas rendah. Ketidakpuasan mulai muncul di media sosial dan ruang publik. Beberapa kelompok masyarakat melakukan aksi protes untuk menuntut keadilan sosial.\nApakah dampak sosial yang mungkin terjadi akibat adanya ketidakpuasan masyarakat miskin terhadap layanan publik?",
+      "opsi": [
+        "Menimbulkan aksi protes masyarakat miskin untuk menyuarakan pendapat.",
+        "Menimbulkan kerentanan kelompok miskin akibat terbatasnya akses terhadap fasilitas publik.",
+        "Menimbulkan ketidaksetaraan yeng membuat kelompok miskin semakin terhambat dan merasa tidak adil.",
+        "Menimbulkan rendahnya partisipasi masyarakat miskin dalam proses pengambilan keputusan publik.",
+        "Menimbulkan kebijakan pemerintah yang diarahkan untuk memperbaiki layanan publik di wilayah miskin."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Yang ditanya adalah dampak dari ketidakpuasan; stimulus menyebut aksi protes untuk menuntut keadilan (A). B dan C adalah dampak ketimpangan (sebab ketidakpuasan), bukan dampak ketidakpuasan; E belum tentu terjadi.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"yeng\" pada opsi C disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKRKTS24SA-000000-0584",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Ketidaksetaraan sosial dan upaya mewujudkan kesetaraan sosial.",
+      "kompetensi": "Memahami faktor yang memengaruhi ketidaksetaraan sosial dan menganalisis upaya mewujudkan kesetaraan sosial",
+      "subkompetensi": null,
+      "indikator": "Menentukan prinsip kesetaraan yang diterapkan pada kasus yang diberikan. (21)",
+      "soal": "Pemerintah Kota Madani membuka program beasiswa bagi pelajar SMA yang berasal dari keluarga kurang mampu. Program ini tidak hanya berdasarkan nilai akademik, tetapi juga mempertimbangkan latar belakang ekonomi dan akses pendidikan siswa. Selain itu, fasilitas transportasi gratis diberikan khusus bagi siswa dari daerah terpencil untuk memudahkan mereka bersekolah.\nBerdasarkan ilustrasi di atas, bagaimana prinsip kesetaraan sosial diterapkan dalam pelayanan publik?",
+      "opsi": [
+        "Kesetaraan kesempatan, karena siswa diberi peluang yang setara untuk maju.",
+        "Kesetaraan budaya, karena pemerintah menghormati adat dan kebiasaan lokal.",
+        "Kesetaraan ekonomi, karena pemerintah memberikan bantuan kepada semua warga.",
+        "Kesetaraan hukum, karena semua siswa diperlakukan sama tanpa melihat latar belakang.",
+        "Kesetaraan politik, karena semua siswa mendapat hak suara dalam menentukan program."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Beasiswa dan transportasi gratis untuk siswa kurang mampu dan dari daerah terpencil membuka peluang yang setara untuk bersekolah: kesetaraan kesempatan (A).",
+      "halaman": [
+        25
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSKSKRPSS23SA-000000-0501",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kelompok Sosial, Kesetaraan, dan Konflik Sosial",
+      "subelemen": "Konsep Kelompok Sosial dan dinamika Kelompok Sosial.",
+      "kompetensi": "Mengidentifikasi, menjelaskan, dan menganalisis berbagai kelompok sosial dengan dinamikanya.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis dinamika permasalahan sosial yang terjadi. (22)",
+      "soal": "Di sebuah kawasan pinggiran perkotaan yang padat penduduk, banyak keluarga hidup tanpa memiliki akses ke air bersih, sanitasi dan jaringan listrik yang stabil. Di kawasan ini banyak orang tua yang berkerja di sektor informal dengan pendapatan tidak teratur. Anak-anak di daerah ini sering putus sekolah karena mendukung ekonomi orang tuanya. Penduduknya merasa terasing dari perkembangan kota dan tidak banyak menerima dukungan dari program pemerintah. Hal ini menunjukkan adanya ketimpangan sosial dan hal tersebut pada akhirnya berkontribusi pada meningkatnya kemiskinan, layanan publik yang terbatas dan rendahnya literasi.\nMengapa ketimpangan sosial dapat meningkatkan angka kemiskinan pada masyarakat perkotaan pada kasus tersebut?",
+      "opsi": [
+        "Tradisi budaya yang memprioritaskan pendidikan formal daripada informal, sehingga mengabaikan keterampilan hidup yang relevan dengan kondisi masyarakat.",
+        "Penolakan kelompok marginal untuk direlokasi ke lingkungan yang lebih sehat, yang menyebabkan mereka tetap tinggal di wilayah tanpa akses layanan dasar.",
+        "Kurangnya motivasi warga untuk memperbaiki kehidupan mereka sendiri karena tidak adanya bentuk pengangguran yang nyata di wilayah masyarakat berada.",
+        "Akses yang tidak merata terhadap layanan dasar dan ketidakberpihakan kebijakan yang menyebabkan warga terpinggirkan dan tidak mendapat layanan memadai.",
+        "Perencanaan keuangan buruk dan tingkat konsumsi yang tidak berimbang menyebabkan pendapatan dari sektor informal sulit mencukupi kebutuhan dasar."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Stimulus menyebut tidak ada akses layanan dasar dan minim dukungan program pemerintah; ketimpangan akses dan kebijakan itulah yang meminggirkan warga (D).",
+      "halaman": [
+        26
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"berkerja\" disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGDPGS35SA-000000-0652",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Globalisasi dan dampak globalisasi.",
+      "kompetensi": "Menjelaskan dan menganalisis pengaruh globalisasi dan dampaknya",
+      "subkompetensi": null,
+      "indikator": "Mengevaluasi dampak globalisasi terhadap ketimpangan sosial. (23)",
+      "soal": "Globalisasi mendorong pertumbuhan ekonomi di negara-negara berkembang terutama di sektor industri dan jasa. Namun, pembangunan seringkali tidak merata dan terpusat di kota-kota besar. Padahal, akses terhadap pendidikan dan teknologi sebelumnya memang sudah banyak terpusat di wilayah kota. Meskipun hal ini tampak menguntungkan, perusahaan multinasional yang masuk ke negara berkembang sebenarnya diuntungkan karena bisa membayar upah rendah kepada pekerja lokal. Sebagian bahkan tidak memberikan hak-hak yang adil seperti pekerja dari negara asal mereka. Sayangnya, hal ini sering dianggap lazim demi mendorong perekonomian negara dan menyerap tanaga kerja tinggi.\nMengapa globalisasi pada kasus tersebut dapat menimbulkan kesenjangan sosial?",
+      "opsi": [
+        "Kesenjangan sosial pada kasus muncul karena pertumbuhan ekonomi Indonesia yang lambat dibandingkan negara lain.",
+        "Kesenjangan sosial pada kasus terjadi karena adanya alienasi/keterasingan pekerja dari produk yang dihasilkannya.",
+        "Kesenjangan sosial pada kasus terjadi karena kurangnya perencanaan dan peran pemerintah dalam pembangunan ekonomi.",
+        "Kesenjangan sosial pada kasus terjadi karena industrialisasi merupakan perubahan sosial dampaknya tidak bisa diprediksi.",
+        "Kesenjangan sosial pada kasus terjadi karena tidak adanya kesadaran dari pekerja untuk memperjuangkan keadilan sosial."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Stimulus menyebut pembangunan tidak merata dan terpusat di kota, serta upah rendah dan hak tidak adil yang \"dianggap lazim demi mendorong perekonomian negara\": kesenjangan dibiarkan karena lemahnya perencanaan dan peran pemerintah (C).",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [
+        "Opsi B (alienasi pekerja) bisa juga dimaksudkan sebagai kunci karena stimulus menyoroti eksploitasi pekerja; kunci perlu dicek.",
+        "Salah ketik \"tanaga kerja\" disalin apa adanya."
+      ]
+    },
+    {
+      "id": "SOS25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGDPGS35SA-000000-0550",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Globalisasi dan dampak globalisasi.",
+      "kompetensi": "Menjelaskan dan menganalisis pengaruh globalisasi dan dampaknya",
+      "subkompetensi": null,
+      "indikator": "Menentukan pengaruh globalisasi pada perubahan sosial di masyarakat. (24)",
+      "soal": "Desa Wirausaha yang dahulu mengandalkan pertanian tradisional kini mulai berubah. Sejak adanya akses internet dan media sosial, banyak pemuda desa membuka toko daring untuk menjual produk kerajinan tangan ke luar negeri. Selain itu, beberapa keluarga mengadopsi gaya hidup konsumtif dan mulai meninggalkan tradisi gotong royong. Bahasa asing juga mulai sering digunakan dalam pergaulan anak muda.\nApa bentuk dampak globalisasi yang paling menonjol terhadap kehidupan ekonomi masyarakat?",
+      "opsi": [
+        "Globalisasi menyebabkan desa kembali pada ekonomi subsisten dan lokal.",
+        "Globalisasi menyebabkan masyarakat menolak transaksi dengan pihak luar.",
+        "Globalisasi menyebabkan peningkatan aktivitas jual beli melalui platform digital.",
+        "Globalisasi menyebabkan seluruh hasil kerajinan digunakan untuk kebutuhan pribadi.",
+        "Globalisasi menyebabkan masyarakat berhenti memproduksi barang tradisional."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Dampak ekonomi yang disebut adalah toko daring untuk menjual kerajinan ke luar negeri (C).",
+      "halaman": [
+        28
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGDPSS32SA-000000-0617",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Bentuk-bentuk perubahan sosial dan dampaknya.",
+      "kompetensi": "Mengidentifikasi bentuk-bentuk perubahan sosial dan menganalisis dampak perubahan sosial.",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi bentuk perubahan sosial pada kasus yang diberikan. (25)",
+      "soal": "Di sebuah sekolah menengah, para murid mengikuti program pembelajaran berbasis teknologi digital. Setiap siswa dibekali gawai untuk mengakses materi pembelajaran dari rumah maupun di sekolah. Guru memanfaatkan platform pembelajaran daring yang memungkinkan diskusi kelas berlangsung secara virtual. Selain itu, siswa juga diperkenalkan pada tren budaya global melalui media sosial, seperti gaya hidup sehat, komunitas kreatif, hingga diskusi lintas negara tentang isu sosial. Seiring waktu, cara siswa berinteraksi, belajar, dan memandang dunia mengalami perubahan yang nyata, termasuk dalam cara mereka menanggapi keberagaman dan beradaptasi dengan perkembangan zaman\nBagaimana keterlibatan masyarakat dalam aktivitas berbasis digital merefleksikan konsekuensi sosial yang diakibatkan oleh arus globalisasi?",
+      "opsi": [
+        "Teknologi memperluas akses ruang belajar karena siswa belajar dari jejaring global, mencerminkan pendidikan yang kolaboratif.",
+        "Teknologi memudahkan akses nilai baru karena siswa terbiasa informasi global, mencerminkan pola pikir masyarakat yang terbuka.",
+        "Teknologi meningkatkan refleksi terhadap perbedaan karena siswa berdiskusi lintas latar, mencerminkan tumbuhnya toleransi sosial.",
+        "Teknologi mendorong partisipasi budaya digital karena siswa aktif di media sosial, mencerminkan pergeseran ekspresi masyarakat.",
+        "Teknologi memperkuat interaksi lintas budaya karena berinteraksi dengan komunitas global, mencerminkan luasnya wawasan global."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Stimulus menekankan perubahan cara siswa memandang dunia dan menanggapi keberagaman setelah terpapar informasi global; konsekuensi sosial yang paling umum adalah pola pikir yang lebih terbuka terhadap nilai baru (B).",
+      "halaman": [
+        29
+      ],
+      "catatan_transkripsi": [
+        "Kelima opsi bernada positif dan saling mirip (terutama B, C, dan E); kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "SOS25-026",
+      "passage": null,
+      "nomor": "26",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGDPSS32SA-000000-0607",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Bentuk-bentuk perubahan sosial dan dampaknya.",
+      "kompetensi": "Mengidentifikasi bentuk-bentuk perubahan sosial dan menganalisis dampak perubahan sosial.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis dampak perubahan sosial berdasarkan kasus yang diberikan. (26)",
+      "soal": "Kampung Cempaka dulunya merupakan permukiman padat dengan kegiatan sosial yang tinggi. Warga sering mengadakan kerja bakti, arisan RT, dan kegiatan keagamaan bersama. Namun, sejak banyak rumah dijual dan dibeli oleh pendatang dari luar daerah, suasana sosial berubah. Warga baru lebih tertutup, tidak aktif dalam kegiatan warga, dan lebih memilih berinteraksi melalui media sosial. Meskipun kawasan menjadi lebih bersih dan tertata, namun hubungan antarwarga melemah.\nApa dampak jangka panjang dari pola interaksi sosial yang mulai berubah di Kampung Cempaka?",
+      "opsi": [
+        "Kesadaran kolektif dalam menjaga lingkungan mulai melemah secara bertahap.",
+        "Partisipasi warga dalam kegiatan rutin mengalami penurunan yang tidak disadari.",
+        "Rasa memiliki terhadap komunitas perlahan terkikis karena kurangnya keterlibatan.",
+        "Kegiatan sosial berubah bentuk tanpa memperkuat hubungan antarwarga.",
+        "Norma sosial tetap bertahan meskipun jumlah interaksi warga semakin terbatas."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Dampak jangka panjang dari melemahnya hubungan antarwarga adalah terkikisnya rasa memiliki terhadap komunitas (C). A bertentangan dengan stimulus (kawasan justru lebih bersih); B dan D adalah gejala yang sudah terjadi, bukan dampak jangka panjang.",
+      "halaman": [
+        30
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "SOS25-027",
+      "passage": null,
+      "nomor": "27",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGMSGS36SA-000000-0357",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Globalisasi dan dampak globalisasi.",
+      "kompetensi": "Menjelaskan dan menganalisis pengaruh globalisasi dan dampaknya",
+      "subkompetensi": null,
+      "indikator": "Mengidentifikasi masalah sosial akibat globalisasi. (27)",
+      "soal": "[Gambar]\nDi era digital saat ini, media sosial menjadi salah satu sumber utama informasi bagi masyarakat. Namun, tidak semua informasi yang tersebar dapat dipertanggungjawabkan. Baru-baru ini, di sebuah kota kecil, beredar pesan berantai di aplikasi pengirim pesan yang menyebutkan akan terjadi gempa besar dan mengimbau warga untuk segera mengungsi. Informasi tersebut ternyata tidak berasal dari lembaga resmi dan terbukti hoaks. Akibatnya, banyak warga panik, meninggalkan rumah, bahkan terjadi penjarahan di beberapa toko. Situasi ini menunjukkan bagaimana penyebaran informasi yang tidak benar bisa menimbulkan kepanikan massal dan merusak tatanan sosial masyarakat.\nMengapa masalah sosial dalam ilustrasi tersebut merupakan dampak dari globalisasi?",
+      "gambar": "Ilustrasi tangan memegang ponsel bertuliskan \"HOAX\" dengan tombol \"SHARE\", dikelilingi gelembung percakapan.",
+      "opsi": [
+        "Globalisasi memfasilitasi peningkatan interaksi dan relasi sosial secara tatap muka yang intens antarwarga.",
+        "Globalisasi mendorong kembalinya nilai-nilai tradisional dan kearifan lokal yang mampu menyaring informasi.",
+        "Globalisasi menyebabkan homogenitas budaya sehingga masyarakat lebih mudah percaya pada satu jenis informasi.",
+        "Globalisasi memungkinkan penyebaran informasi, termasuk hoaks, secara cepat dan masif melintasi batas geografis.",
+        "Globalisasi menekankan pentingnya peran lembaga formal dalam mengontrol setiap bentuk komunikasi masyarakat."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Globalisasi teknologi informasi memungkinkan informasi, termasuk hoaks, menyebar cepat dan masif (D).",
+      "halaman": [
+        30,
+        31
+      ],
+      "catatan_transkripsi": [
+        "Di halaman 30 di bawah kode soal hanya tercetak tanda \"=\"; ilustrasi dan stimulus ada di halaman 31."
+      ]
+    },
+    {
+      "id": "SOS25-028",
+      "passage": null,
+      "nomor": "28",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGSKGS37SA-000000-0461",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Sikap kritis globalisasi.",
+      "kompetensi": "Menganalisis fenomena sosial yang dipengaruhi globalisasi secara kritis.",
+      "subkompetensi": null,
+      "indikator": "Menentukan solusi kritis terhadap perubahan sosial di masyarakat. (28)",
+      "soal": "Dalam dua tahun terakhir, banyak siswa di sebuah SMA mulai meninggalkan kebiasaan menggunakan bahasa daerah dalam percakapan sehari-hari. Mereka lebih sering menggunakan istilah dalam bahasa Inggris yang dipopulerkan melalui media sosial, film, dan budaya pop barat. Selain itu, pakaian adat mulai jarang dipakai, bahkan saat acara sekolah. Sebagian siswa merasa budaya lokal sudah ketinggalan zaman dan tidak menarik untuk ditampilkan\nSikap manakah yang paling sesuai untuk membangun kesadaran siswa agar tetap menghargai budaya daerah tanpa menolak budaya luar?",
+      "opsi": [
+        "Mendorong siswa untuk lebih sering menampilkan budaya lokal dalam kegiatan sekolah yang bersifat terbuka.",
+        "Mengarahkan siswa untuk menekankan unsur-unsur lokal dalam proyek yang menampilkan identitas global.",
+        "Menanamkan rasa bangga terhadap budaya lokal sambil tetap membuka ruang eksplorasi budaya luar.",
+        "Menyediakan platform yang memfasilitasi siswa dalam menggabungkan nilai-nilai lokal dan global secara kreatif.",
+        "Mengutamakan nilai-nilai budaya daerah dalam seluruh bentuk kegiatan tanpa menghilangkan pengaruh luar sepenuhnya."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pertanyaan meminta sikap yang membangun kesadaran menghargai budaya daerah tanpa menolak budaya luar; opsi C memuat kedua unsur itu sebagai sikap. A, B, dan D berupa kegiatan; E mengutamakan budaya daerah di semua kegiatan.",
+      "halaman": [
+        32
+      ],
+      "catatan_transkripsi": [
+        "Opsi D juga memadukan lokal dan global; kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "SOS25-029",
+      "passage": null,
+      "nomor": "29",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGSKGS37SA-000000-0635",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Sikap kritis globalisasi.",
+      "kompetensi": "Menganalisis fenomena sosial yang dipengaruhi globalisasi secara kritis.",
+      "subkompetensi": null,
+      "indikator": "Menentukan rekomendasi sikap kritis dalam menghadapi globalisasi. (29)",
+      "soal": "Indonesia, China, India, Pakistan, Bangladesh, dan Nigeria menyumbang 75% dari total beban polusi udara global karena tingkat polusi udara yang tinggi dan jumlah populasi yang besar. Udara yang berisi partikel halus (PM 2.5) berpotensi mengurangi usia hidup rata-rata warga Indonesia hingga 1,4 tahun dibandingkan jika kualitas udara di Indonesia memenuhi standar WHO, yakni 5 μg/m. Pencemaran udara oleh pelaku industri menjadi sorotan karena berkontribusi tinggi terhadap polusi udara. Selain itu, beberapa pihak juga berencana menggugat pemerintah karena dinilai belum optimal dalam mengatasi masalah polusi udara. Hal ini tidak mengherankan karena beberapa negara juga masih belum memiliki data yang lengkap berupa hasil riset maupun alat untuk memonitor dan mengukur kualitas udara.\nDiolah dari: https://www.bbc.com/indonesia/articles/c72enp76622o\nApa rekomendasi yang paling tepat diberikan kepada institusi pendidikan tinggi agar bisa berkontribusi dalam mengatasi masalah tersebut?",
+      "opsi": [
+        "Mendampingi masyarakat menuntut pemerintah menggratiskan pengobatan untuk penyakit gangguan pernafasan.",
+        "Menjalin kerja sama dengan nagara-negara maju agar berinvestasi di sektor industri dengan konsep energi terbaharukan.",
+        "Membangun pusat riset yang berkonsentrasi pada lingkungan agar menghasilkan strategi dan pembangunan berkelanjutan.",
+        "Menjalin kerja sama dengan berbagai pihak untuk membuat program penanaman sejuta pohon di wilayah hutan gundul.",
+        "Mengembangkan program pengabdian kepada masyarakat untuk memberikan edukasi cara mengelola limbah rumah tangga."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Stimulus menyebut kurangnya data riset dan alat pemantau kualitas udara; peran khas perguruan tinggi adalah riset (C). Opsi lain tidak menyasar polusi udara industri atau bukan peran utama perguruan tinggi.",
+      "halaman": [
+        33
+      ],
+      "catatan_transkripsi": [
+        "Satuan standar WHO tercetak \"5 μg/m\" (seharusnya μg/m³); disalin apa adanya.",
+        "Kotak kode soal tercetak dua kali di tangkapan layar.",
+        "Salah ketik \"nagara-negara\" pada opsi B disalin apa adanya; angka-angka stimulus berasal dari sumber (BBC) dan tidak diperiksa."
+      ]
+    },
+    {
+      "id": "SOS25-030",
+      "passage": null,
+      "nomor": "30",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25SOSPSGSKGS37SA-000000-0447",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Perubahan Sosial dan Globalisasi",
+      "subelemen": "Sikap kritis globalisasi.",
+      "kompetensi": "Menganalisis fenomena sosial yang dipengaruhi globalisasi secara kritis.",
+      "subkompetensi": null,
+      "indikator": "Menentukan langkah penguatan budaya lokal dalam menghadapi globalisasi. (30)",
+      "soal": "Masuknya budaya asing ke Indonesia yang dipercepat oleh arus globalisasi dan teknologi membawa pengaruh besar, baik secara positif maupun negatif. Di satu sisi, budaya asing memperluas wawasan, memperkenalkan inovasi, dan memperkaya kebudayaan lokal. Namun, di sisi lain, pengaruh ini juga dapat mengikis nilai-nilai tradisional, memicu perubahan gaya hidup yang bertentangan dengan norma masyarakat, serta menimbulkan ketimpangan sosial. Desa Trunyan di Bali memiliki tradisi pemakaman unik: jenazah tidak dikubur atau dibakar, melainkan diletakkan di atas tanah dan dibiarkan membusuk secara alami. Tradisi ini menarik minat wisatawan, baik domestik maupun mancanegara. Namun, meningkatnya kunjungan wisatawan memunculkan tantangan baru seperti meningkatnya volume sampah, degradasi lingkungan, dan komersialisasi budaya yang berisiko mengubah makna spiritual dari tradisi tersebut.\nApa rekomendasi paling strategis yang bisa dilakukan pemuda Desa Trunyan untuk menjaga nilai budaya di tengah arus globalisasi?",
+      "opsi": [
+        "Mengampanyekan gaya hidup lokal melalui media sosial dengan pendekatan visual modern.",
+        "Meningkatkan daya tarik ekonomi dari tradisi dengan memperluas pasar souvenir khas pemakaman.",
+        "Menjadi pemandu wisata profesional agar bisa menjelaskan budaya secara sistematis dan netral.",
+        "Meningkatkan penggunaan bahasa asing dalam promosi budaya agar lebih diterima wisatawan asing.",
+        "Membuat festival tahunan dengan atraksi budaya yang diatur oleh sponsor dan pihak swasta."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Ancaman utama adalah komersialisasi yang mengubah makna spiritual tradisi; pemuda yang menjadi pemandu profesional dapat menyampaikan makna tradisi dengan benar dan mengendalikan perilaku wisatawan (C). B, D, dan E memperkuat komersialisasi; A tidak menyentuh masalah wisata.",
+      "halaman": [
+        34
+      ],
+      "catatan_transkripsi": [
+        "Opsi A juga mungkin dimaksudkan sebagai kunci (penguatan budaya lokal lewat media sosial); kunci perlu dicek."
+      ]
+    }
+  ]
+}

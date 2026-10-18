@@ -1,0 +1,334 @@
+<title>Latihan Soal TKA 2025</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: same catalogue look as the question bank. Header with a warning that the keys are unofficial, subject and format filters, a number grid, then one item card: passage, stimulus, figure description, table, options, and the proposed key after checking. Data comes from data/tka/*.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --c:#2C6B63; --soft:#DFEFEC;
+  --ok:#2C6B3F; --ok-soft:#E1F0E5; --bad:#A3361C; --bad-soft:#F8E6DF; --warn:#8A5526; --warn-soft:#F3E9DF;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --c:#76C7B9; --soft:#1C3330;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; --warn:#E0A974; --warn-soft:#33271C; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --c:#76C7B9; --soft:#1C3330;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; --warn:#E0A974; --warn-soft:#33271C; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+p{margin:0}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.lead{max-width:64ch;color:var(--muted);font-size:1.05rem;margin-top:10px}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lbl{font-family:var(--f-label);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+.warning{margin-top:16px;background:var(--warn-soft);border-left:4px solid var(--warn);border-radius:6px;padding:12px 16px;font-size:.95rem;max-width:80ch}
+.warning b{color:var(--warn)}
+
+.filters{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;padding-block:16px;border-bottom:1px solid var(--line);margin-top:18px;border-top:2px solid var(--ink)}
+.fgroup{display:flex;flex-direction:column;gap:6px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font-family:var(--f-label);font-weight:600;font-size:.9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:5px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--c);background:var(--c);color:var(--bg)}
+.seg button:focus-visible,.btn:focus-visible,.num:focus-visible,.opt:focus-within,summary:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#poolInfo{font-family:var(--f-label);font-size:.92rem;color:var(--muted);margin-left:auto}
+
+.grid{display:flex;flex-wrap:wrap;gap:5px;padding-top:14px}
+.num{font-family:var(--f-mono);font-size:.78rem;min-width:2.6em;padding:4px 6px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);border-radius:4px;cursor:pointer}
+.num[aria-current="true"]{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+.num.ok{border-color:var(--ok);background:var(--ok-soft);color:var(--ok)}
+.num.bad{border-color:var(--bad);background:var(--bad-soft);color:var(--bad)}
+.num.ok[aria-current="true"],.num.bad[aria-current="true"]{outline:2px solid var(--ink);outline-offset:1px}
+
+.panel{padding-top:18px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 10px 10px;padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:.82rem;color:var(--c);border:1px solid var(--c);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.tag{font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;border:1.3px solid var(--muted)}
+.indikator{font-size:.88rem;color:var(--muted);max-width:80ch}
+.passage{background:var(--sunk);border-radius:8px;padding:14px 16px;font-size:.98rem;white-space:pre-line;max-height:28em;overflow:auto}
+.passage h3{font-size:1rem;margin-bottom:6px;white-space:normal}
+.stem{font-size:1.06rem;white-space:pre-line;max-width:80ch;overflow-wrap:anywhere}
+.fig{border:1.5px dashed var(--line);border-radius:8px;padding:10px 14px;font-size:.92rem;color:var(--muted);white-space:normal;margin:8px 0}
+.fig b{font-family:var(--f-label);color:var(--ink);letter-spacing:.04em}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface);margin:8px 0;white-space:normal}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{font-family:var(--f-label);text-align:left;padding:7px 10px;background:var(--sunk);vertical-align:bottom}
+td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:top}
+
+.opts{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;border:0}
+.opt{display:grid;grid-template-columns:auto auto 1fr;gap:10px;align-items:start;border:1.5px solid var(--line);border-radius:8px;padding:10px 12px;cursor:pointer;background:var(--surface)}
+.opt input{width:18px;height:18px;margin:3px 0 0;accent-color:var(--ink)}
+.opt .l{font-family:var(--f-mono);font-size:.85rem;color:var(--muted);padding-top:2px}
+.opt.key{border-color:var(--ok);background:var(--ok-soft)}
+.opt.miss{border-color:var(--bad);background:var(--bad-soft)}
+.bs td:not(:first-child),.bs th:not(:first-child){text-align:center;width:6.5em}
+.bs input{width:18px;height:18px;accent-color:var(--ink)}
+.bs td.key{background:var(--ok-soft)}
+.bs td.miss{background:var(--bad-soft)}
+
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{font-family:var(--f-label);font-weight:700;font-size:1rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 16px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn:disabled{opacity:.5;cursor:default}
+.result{border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;background:var(--soft)}
+.result.ok{background:var(--ok-soft)}
+.result.bad{background:var(--bad-soft)}
+.result .verdict{font-family:var(--f-label);font-weight:700;font-size:1.1rem}
+.result .key{font-weight:600}
+.conf{font-family:var(--f-label);font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;border-radius:3px;padding:1px 7px;margin-left:6px;border:1.3px solid currentColor}
+.conf-rendah,.conf-tidak{color:var(--bad)}
+.conf-sedang{color:var(--warn)}
+.conf-tinggi{color:var(--ok)}
+.result ul{margin:0;padding-left:1.2em;font-size:.92rem;color:var(--muted)}
+.empty{padding:28px;background:var(--surface);border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+details.notes{margin-top:22px;font-size:.92rem;color:var(--muted)}
+details.notes summary{cursor:pointer;font-family:var(--f-label);font-weight:700;color:var(--ink)}
+details.notes ul{padding-left:1.2em}
+.score{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-family:var(--f-label);color:var(--muted);font-size:.95rem}
+.score b{color:var(--ink);font-variant-numeric:tabular-nums}
+.linkbtn{all:unset;cursor:pointer;text-decoration:underline;color:var(--muted)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:640px){#poolInfo{margin-left:0;flex-basis:100%}.qcard{padding:18px 16px 20px}
+  .bs td:not(:first-child),.bs th:not(:first-child){width:auto;padding-inline:6px}.bs th{font-size:.8rem}}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow">Latihan TKA 2025</div>
+    <h1 style="margin-top:8px">Latihan Soal TKA 2025</h1>
+    <p class="lead">Soal Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025 yang disalin dari berkas soal. Pilih mata pelajaran, jawab, lalu periksa dengan kunci.</p>
+    <p class="warning"><b>Kunci di halaman ini adalah kunci usulan, bukan kunci resmi.</b> Setiap kunci diberi tingkat keyakinan dan alasan. Soal yang kuncinya berkeyakinan rendah atau yang sumbernya bermasalah perlu dicek guru. Gambar dan peta dari berkas asli diganti dengan uraian teks.</p>
+  </header>
+
+  <div class="filters" aria-label="Saring soal">
+    <div class="fgroup"><span class="lbl">Mata pelajaran</span><div class="seg" id="fBank"></div></div>
+    <div class="fgroup"><span class="lbl">Bentuk soal</span><div class="seg" id="fFormat"></div></div>
+    <span id="poolInfo" aria-live="polite"></span>
+  </div>
+  <nav class="grid" id="grid" aria-label="Nomor soal"></nav>
+
+  <section class="panel" id="panel" aria-live="polite"></section>
+  <div class="score" id="score"></div>
+  <details class="notes" id="notes"><summary>Tentang berkas soal ini</summary><ul id="notesList"></ul></details>
+
+  <footer>Data dari <span class="mono">data/tka/</span> di repositori proyek. Jawaban yang sudah diperiksa tersimpan di peramban masing-masing.</footer>
+</div>
+
+<script>
+/*__TKA__*/
+const FORMATS = {"pilihan-ganda": "Pilihan ganda", "pilihan-ganda-kompleks": "PG kompleks", "benar-salah": "Kategori"};
+const LETTERS = "ABCDEFGH";
+const KEY = "tka-latihan-v1";
+const $ = id => document.getElementById(id);
+
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+// Bank text is plain text: escape it, then add sub/superscripts.
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const txt = s => scripts(esc(s));
+
+let saved = {};
+try { saved = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch(e) {}
+const state = Object.assign({bank: BANKS[0] && BANKS[0].id, format: "", pos: {}, results: {}}, saved);
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+
+const bank = () => BANKS.find(b => b.id === state.bank) || BANKS[0];
+const pool = () => bank().soal.filter(it => !state.format || it.format === state.format);
+
+function seg(el, items, current, onPick){
+  el.innerHTML = "";
+  for (const [value, label] of items){
+    const b = document.createElement("button");
+    b.type = "button"; b.textContent = label; b.setAttribute("aria-pressed", String(value === current));
+    b.onclick = () => onPick(value);
+    el.append(b);
+  }
+}
+
+function figure(it){ return `<div class="fig"><b>GAMBAR (uraian):</b> ${txt(it.gambar)}</div>`; }
+function table(rows){
+  const [head, ...body] = rows;
+  return `<div class="tbl"><table><thead><tr>${head.map(c => `<th>${txt(c)}</th>`).join("")}</tr></thead>` +
+         `<tbody>${body.map(r => `<tr>${r.map(c => `<td>${txt(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+function stem(it){
+  let html = txt(it.soal), figDone = false;
+  // Markers sit on their own line; drop the line breaks around them so the box does not add blank lines.
+  if (it.gambar && html.includes("[Gambar]")) { html = html.replace(/\n?\[Gambar\]\n?/, figure(it)); figDone = true; }
+  if (it.tabel) html = html.includes("[Tabel]") ? html.replace(/\n?\[Tabel\]\n?/, table(it.tabel)) : html + table(it.tabel);
+  if (it.gambar && !figDone) html += figure(it);
+  return html.replace(/\[Gambar\]/g, "").replace(/\[Tabel\]/g, "");
+}
+const optText = s => txt(s).replace(/\[Gambar\]/g, "(lihat uraian gambar)");
+
+function keyText(it){
+  if (it.kunci === null || it.kunci === undefined) return "Belum ada kunci usulan.";
+  if (it.format === "benar-salah") return it.kunci.map((v, i) => `${i + 1}: ${esc(v ? it.kolom[0] : it.kolom[1])}`).join(" · ");
+  if (Array.isArray(it.kunci)) return it.kunci.map(i => LETTERS[i]).join(", ");
+  return LETTERS[it.kunci];
+}
+
+function render(){
+  const b = bank();
+  const total = BANKS.reduce((n, x) => n + x.soal.length, 0);
+  $("eyebrow").textContent = `Latihan TKA 2025 · ${BANKS.length} mapel · ${total} soal`;
+  seg($("fBank"), BANKS.map(x => [x.id, x.mapel]), b.id, v => { state.bank = v; save(); render(); });
+  const formats = [...new Set(b.soal.map(it => it.format))];
+  if (state.format && !formats.includes(state.format)) state.format = "";
+  seg($("fFormat"), [["", "Semua"], ...formats.map(f => [f, FORMATS[f] || f])], state.format, v => { state.format = v; save(); render(); });
+
+  const items = pool();
+  $("poolInfo").textContent = `${b.mapel}: ${items.length} soal`;
+  $("notesList").innerHTML = (b.catatan || []).map(c => `<li>${txt(c)}</li>`).join("") +
+    `<li>Sumber: ${txt(b.sumber.berkas || "")}${b.sumber.halaman ? `, ${b.sumber.halaman} halaman` : ""}. ${txt(b.ujian)}.</li>`;
+  const pos = Math.min(state.pos[b.id] || 0, Math.max(items.length - 1, 0));
+  state.pos[b.id] = pos;
+  chrome(b, items, pos);
+  if (!items.length) { $("panel").innerHTML = `<div class="empty">Tidak ada soal untuk saringan ini.</div>`; return; }
+  card(b, items, pos);
+}
+
+// Number grid and score; refreshed after every check without rebuilding the card.
+function chrome(b, items, pos){
+  const grid = $("grid");
+  grid.innerHTML = "";
+  items.forEach((it, i) => {
+    const n = document.createElement("button");
+    n.type = "button"; n.className = "num"; n.textContent = it.nomor + (it.id.match(/[A-C]$/) || [""])[0];
+    const r = state.results[it.id];
+    if (r === true) n.classList.add("ok"); else if (r === false) n.classList.add("bad");
+    n.setAttribute("aria-current", String(i === pos));
+    n.setAttribute("aria-label", `Soal ${n.textContent}`);
+    n.onclick = () => { state.pos[b.id] = i; save(); render(); };
+    grid.append(n);
+  });
+
+  const done = items.filter(it => it.id in state.results), right = done.filter(it => state.results[it.id]);
+  $("score").innerHTML = `<span>Diperiksa <b>${done.length}</b> dari <b>${items.length}</b></span>` +
+    `<span>Sesuai kunci usulan <b>${right.length}</b></span>` +
+    (done.length ? `<button type="button" class="linkbtn" id="reset">Hapus hasil ${esc(b.mapel)}</button>` : "");
+  if ($("reset")) $("reset").onclick = () => { b.soal.forEach(it => delete state.results[it.id]); save(); render(); };
+}
+
+function card(b, items, pos){
+  const it = items[pos];
+  const passage = it.passage ? (b.teks || []).find(t => t.id === it.passage) : null;
+  const name = "opt-" + it.id;
+  let opts;
+  if (it.format === "benar-salah") {
+    opts = `<div class="tbl bs"><table><thead><tr><th>Pernyataan</th><th>${txt(it.kolom[0])}</th><th>${txt(it.kolom[1])}</th></tr></thead><tbody>` +
+      it.opsi.map((o, i) => `<tr><td>${i + 1}. ${optText(o)}</td>` +
+        [true, false].map(v => `<td data-row="${i}" data-v="${v}"><input type="radio" name="${name}-${i}" value="${v}" aria-label="Pernyataan ${i + 1}: ${esc(v ? it.kolom[0] : it.kolom[1])}"></td>`).join("") +
+        `</tr>`).join("") + `</tbody></table></div>`;
+  } else {
+    const multi = it.format === "pilihan-ganda-kompleks";
+    opts = `<fieldset class="opts"><legend class="lbl" style="margin-bottom:6px">${multi ? "Pilih semua jawaban yang benar" : "Pilih satu jawaban"}</legend>` +
+      it.opsi.map((o, i) => `<label class="opt" data-i="${i}"><input type="${multi ? "checkbox" : "radio"}" name="${name}" value="${i}"><span class="l">${LETTERS[i]}</span><span>${optText(o)}</span></label>`).join("") +
+      `</fieldset>`;
+  }
+  const meta = [`<span class="code">${esc(it.id)}</span>`, `<span class="tag">${esc(FORMATS[it.format] || it.format)}</span>`,
+    `<span>Nomor ${esc(it.nomor)}</span>`, `<span>Hlm. ${it.halaman.join(", ")}</span>`].join("");
+  $("panel").innerHTML = `<article class="qcard">
+    <div class="qmeta">${meta}</div>
+    <p class="indikator">${txt(it.indikator)}</p>
+    ${passage ? `<div class="passage">${passage.judul ? `<h3>${txt(passage.judul)}</h3>` : ""}${txt(passage.teks || passage.isi || "")}</div>` : ""}
+    <div class="stem">${stem(it)}</div>
+    ${opts}
+    <div class="actions">
+      <button type="button" class="btn primary" id="check">Periksa jawaban</button>
+      <button type="button" class="btn" id="show">Lihat kunci</button>
+      <button type="button" class="btn" id="prev" ${pos ? "" : "disabled"}>← Sebelumnya</button>
+      <button type="button" class="btn" id="next" ${pos < items.length - 1 ? "" : "disabled"}>Berikutnya →</button>
+    </div>
+    <div id="result" hidden></div>
+  </article>`;
+  $("prev").onclick = () => { state.pos[b.id] = pos - 1; save(); render(); };
+  $("next").onclick = () => { state.pos[b.id] = pos + 1; save(); render(); };
+  $("show").onclick = () => reveal(it, null);
+  $("check").onclick = () => {
+    const answer = read(it);
+    if (answer === null) {
+      $("result").className = "result"; $("result").hidden = false;
+      $("result").textContent = it.format === "benar-salah" ? "Isi setiap baris dulu." : "Pilih jawaban dulu.";
+      return;
+    }
+    reveal(it, answer);
+  };
+}
+
+function read(it){
+  const name = "opt-" + it.id;
+  if (it.format === "benar-salah") {
+    const rows = it.opsi.map((_, i) => document.querySelector(`input[name="${name}-${i}"]:checked`));
+    return rows.every(Boolean) ? rows.map(r => r.value === "true") : null;
+  }
+  const picked = [...document.querySelectorAll(`input[name="${name}"]:checked`)].map(x => Number(x.value));
+  if (!picked.length) return null;
+  return it.format === "pilihan-ganda" ? picked[0] : picked.sort((a, b) => a - b);
+}
+
+function reveal(it, answer){
+  const hasKey = it.kunci !== null && it.kunci !== undefined;
+  let verdict = "";
+  if (answer !== null && hasKey) {
+    const ok = JSON.stringify(answer) === JSON.stringify(it.kunci);
+    state.results[it.id] = ok; save();
+    verdict = ok ? "Sesuai kunci usulan." : "Belum sesuai kunci usulan.";
+    $("result").className = "result " + (ok ? "ok" : "bad");
+  } else {
+    $("result").className = "result";
+  }
+  if (hasKey) mark(it, answer);
+  const conf = it.keyakinan_kunci, notes = it.catatan_transkripsi || [];
+  $("result").innerHTML = (verdict ? `<div class="verdict">${verdict}</div>` : "") +
+    `<div class="key">Kunci usulan: ${keyText(it)}<span class="conf conf-${esc(conf.split(" ")[0])}">keyakinan ${esc(conf)}</span></div>` +
+    `<div>${txt(it.alasan)}</div>` +
+    (notes.length ? `<div class="lbl">Catatan transkripsi</div><ul>${notes.map(n => `<li>${txt(n)}</li>`).join("")}</ul>` : "");
+  $("result").hidden = false;
+  document.querySelectorAll("#panel input").forEach(x => x.disabled = true);
+  $("check").disabled = true; $("show").disabled = true;
+  if (answer !== null) chrome(bank(), pool(), state.pos[bank().id]);
+}
+
+function mark(it, answer){
+  if (it.format === "benar-salah") {
+    it.kunci.forEach((v, i) => {
+      const cell = document.querySelector(`td[data-row="${i}"][data-v="${v}"]`);
+      cell.classList.add("key");
+      if (answer && answer[i] !== v) document.querySelector(`td[data-row="${i}"][data-v="${answer[i]}"]`).classList.add("miss");
+    });
+    return;
+  }
+  const keys = Array.isArray(it.kunci) ? it.kunci : [it.kunci];
+  const picked = answer === null ? [] : Array.isArray(answer) ? answer : [answer];
+  document.querySelectorAll(".opt").forEach(el => {
+    const i = Number(el.dataset.i);
+    if (keys.includes(i)) el.classList.add("key");
+    else if (picked.includes(i)) el.classList.add("miss");
+  });
+}
+
+if (BANKS.length) render();
+else $("panel").innerHTML = `<div class="empty">Belum ada bank soal TKA.</div>`;
+</script>

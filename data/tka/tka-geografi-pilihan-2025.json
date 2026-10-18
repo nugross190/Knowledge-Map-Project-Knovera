@@ -1,0 +1,1467 @@
+{
+  "id": "tka-geografi-pilihan-2025",
+  "kode": "GEO25",
+  "mapel": "Geografi",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Geografi_SMA_2025_Pilihan.pdf",
+    "halaman": 49,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber; huruf miring tidak dipertahankan.",
+    "Judul halaman 1 sumber: \"Soal TKA Geografi (Pilihan) SMA/MA/SMK Tahun 2025\".",
+    "PDF memuat 30 soal lengkap (nomor 1–30) dalam 49 halaman, tanpa catatan soal yang belum tersedia. Soal Gunung Arjuno (nomor 12) tercetak dua kali (halaman 19 dan 45–46); dicatat sekali dengan semua halamannya.",
+    "Hampir setiap soal bertumpu pada peta, citra satelit, grafik, atau infografis; isinya diuraikan di kolom gambar sejauh terbaca dari tangkapan layar. Kunci yang bergantung pada pembacaan gambar kecil ditandai di catatan_transkripsi.",
+    "Peta Tata Ruang Kota Binjai dipakai oleh soal nomor 7 dan 8; uraiannya disimpan di kolom gambar masing-masing soal (tidak sebagai teks bersama) agar setiap soal dapat dibaca sendiri.",
+    "Angka dan fakta dalam stimulus berasal dari sumber yang disebut di soal dan tidak diperiksa satu per satu; yang meragukan dicatat di catatan_transkripsi.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "GEO25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOPLSSDHG09SA-250158-0549",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Menganalisis faktor yang berpengaruh terhadap keberagaman sumberdaya hayati",
+      "kompetensi": "Menganalisis persebaran bioma di dunia dan pengaruhnya terhadap manusia",
+      "subkompetensi": null,
+      "indikator": "Menganalisis perbedaan pengelolaan flora antar wilayah di Indonesia menggunakan peta wallace dan weber (1)",
+      "soal": "PETA BIOGEOGRAFI INDONESIA\nPerhatikan peta berikut!\n[Gambar]\nPeta diatas menunjukkan batas persebaran flora dan fauna di Indonesia, yang dipengaruhi oleh sejarah geologi kawasan. Garis Wallace dan Weber memisahkan wilayah dengan karakteristik flora dan fauna Asia, kawasan transisi, dan Australia.\nGaris Wallace dan Weber menunjukkan batas persebaran flora dan fauna di Indonesia. Pengelolaan flora lokal yang tepat sesuai karakter wilayah dapat meningkatkan kesejahteraan masyarakat setempat. Tentukan penyataan Benar dan Salah mengenai pengelolaan flora lokal berikut!",
+      "gambar": "Peta \"Peta Garis Wallace dan Garis Weber\" (Sumber: Ina-Geoportal; Tahun Pembuatan: Juli 2025; skala batang 0–750 km; arah utara). Garis Wallace (merah) melintas dari utara Sulawesi ke selatan di antara Kalimantan dan Sulawesi serta antara Bali dan Lombok; Garis Weber (biru) melintas di antara Sulawesi dan Maluku lalu ke selatan di sebelah barat Kepulauan Aru/Papua dan timur Timor Leste. Wilayah Indonesia diarsir abu-abu.",
+      "opsi": [
+        "Pengembangan perkebunan matoa secara besar-besaran di Pulau Bangka sesuai potensi flora lokal di wilayah tersebut.",
+        "Pohon sagu sebaiknya dibudidayakan di Kepulauan Aru untuk ketahanan pangan masyarakat setempat.",
+        "Budidaya tanaman rotan di Jambi sesuai dengan karakteristik flora lokalnya."
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Matoa adalah flora khas wilayah timur (Papua), bukan flora lokal Bangka di wilayah Asiatis (Salah). Sagu adalah pangan pokok khas Maluku–Papua, termasuk Kepulauan Aru di timur Garis Weber (Benar). Rotan adalah flora hutan hujan tropis Sumatra, termasuk Jambi (Benar).",
+      "halaman": [
+        1,
+        2
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"penyataan\" disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-002",
+      "passage": null,
+      "nomor": "2",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOIGASDAG14SA-250118-0479",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami interaksi antar gejala fisik alam dan manusia dan pengaruhnya terhadap kehidupan",
+      "subelemen": "Mengalisis pengaruh potensi Sumber Daya Alam Indonesia terhadap dinamika kehidupan",
+      "kompetensi": "Menganalisis pengelolan SDA secara berkelanjutan",
+      "subkompetensi": null,
+      "indikator": "Menentukan bentuk pengelolaan energi terbarukan yang berkelanjutan pada wilayah tertentu. (2)",
+      "soal": "PLTS Terapung Cirata\nPerhatikan narasi berikut ini!\nPembangkit Listrik Tenaga Surya (PLTS) Terapung Cirata yang dibangun di atas Waduk Cirata, Jawa Barat, merupakan proyek energi terbarukan strategis nasional dan terbesar di Asia Tenggara. PLTS ini dibangun di atas area seluas sekitar 200 hektar dari total permukaan waduk 6.200 hektar atau sekitar 3,2% dari luas waduk. Dengan kapasitas daya mencapai 192 megawatt peak (MWp), PLTS ini mampu menghasilkan listrik sekitar 300 GWh per tahun, cukup untuk memenuhi kebutuhan energi lebih dari 50.000 rumah tangga.\nSelain menghasilkan listrik bersih, PLTS terapung memberikan manfaat tambahan berupa pengurangan penguapan air waduk hingga 30% di area tertutup panel surya. Suhu air di bawah modul terapung cenderung lebih stabil, yang terbukti menurunkan risiko blooming alga dan meningkatkan kualitas oksigen terlarut (DO) pada pagi hari. Hal ini menguntungkan bagi biota perairan, khususnya ikan nila dan patin yang menjadi komoditas utama budidaya masyarakat sekitar.\nNamun demikian, pembangunan sistem terapung ini menimbulkan tantangan teknis seperti biaya pemasangan yang lebih tinggi dibanding PLTS darat, potensi pelapukan material karena kelembaban tinggi, serta kekhawatiran akan terganggunya jalur perahu nelayan. Oleh karena itu, keterlibatan masyarakat lokal dan evaluasi berkala terhadap dampak lingkungan menjadi bagian penting dalam manajemen proyek ini.\nBerdasarkan data dan informasi pada stimulus tentang PLTS Terapung Cirata, manakah dari pernyataan berikut yang merupakan manfaat atau implikasi langsung dari pembangunan pembangkit tersebut?",
+      "opsi": [
+        "PLTS Cirata dapat mengurangi emisi karbon dari sektor transportasi sebesar 300 ribu ton CO₂ per tahun",
+        "Rendahnya fluktuasi suhu air di bawah panel surya berpotensi mengurangi laju pertumbuhan alga",
+        "Selain menghasilkan energi terbarukan, panel surya menahan panas yang diterima permukaan air",
+        "Nelayan lokal berpeluang berkolaborasi untuk pemeliharaan PLTS yang bermanfaat membangun kesadaran bersama",
+        "Instalasi PLTS terapung memungkinkan peningkatan debit air masuk ke waduk saat musim hujan"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Stimulus menyatakan suhu air di bawah modul lebih stabil dan terbukti menurunkan risiko blooming alga (B). A menyebut sektor transportasi dan angka yang tidak ada di stimulus; C dan D tidak dinyatakan langsung; E salah.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Opsi C (panel menahan panas sehingga penguapan berkurang) juga dapat disimpulkan dari stimulus; kunci memilih B karena dinyatakan langsung.",
+        "Angka-angka PLTS Cirata berasal dari sumber dan tidak diperiksa; salah ketik \"Mengalisis\" dan \"pengelolan\" pada kotak indikator disalin apa adanya."
+      ]
+    },
+    {
+      "id": "GEO25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOPLSPLFG08SA-250155-0429",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Memahami proses/fenomena yang memengaruhi lingkungan fisik",
+      "kompetensi": "Menganalisis peranan manusia dalam mengubah lingkungan fisik",
+      "subkompetensi": null,
+      "indikator": "mengidentifikasi alih fungsi lahan yang terjadi dari dua citra multitemporal (3)",
+      "soal": "Fenomena Sebelum dan Sesudah Alih Fungsi Lahan di Ceper Kabupaten Klaten\nBerikut disajikan gambar citra satelit dari Wilayah Ceper, Kabupaten Klaten dan Sekitarnya pada tahun 2007 dan 2024. Pada gambar tersebut terlihat perubahan penggunaan lahan.\n[Gambar]\nBerdasarkan perbandingan citra satelit tahun 2007 dan 2024 wilayah Ceper, Kabupaten Klaten, perubahan penggunaan lahan yang paling dominan adalah...",
+      "gambar": "Dua citra Google Earth \"Wilayah Ceper Tahun 2007\" dan \"Wilayah Ceper Tahun 2024\" dengan batas area bergaris merah. Tahun 2007 area itu didominasi petak-petak sawah; tahun 2024 di dalam area yang sama muncul banyak bangunan beratap putih (gudang/pabrik) dan permukiman bertambah.",
+      "opsi": [
+        "Hutan lindung menjadi lahan perkebunan",
+        "Sawah menjadi bangunan",
+        "Lahan tandus menjadi kawasan resapan air",
+        "Sawah menjadi kawasan konservasi alam",
+        "Permukiman menjadi kawasan pertanian organik"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Petak sawah pada citra 2007 berganti dengan bangunan besar beratap putih dan permukiman pada citra 2024 (B).",
+      "halaman": [
+        4,
+        5
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "GEO25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOPLSPLFG08SA-250208-0416",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Memahami proses/fenomena yang memengaruhi lingkungan fisik",
+      "kompetensi": "Menganalisis peranan manusia dalam mengubah lingkungan fisik",
+      "subkompetensi": null,
+      "indikator": "menganalisis dampak/ penyebab alih fungsi lahan yang terjadi. (4)",
+      "soal": "Fenomena Alih Fungsi Lahan Banjarmasin\nBerikut disajikan gambar citra satelit dari Kota Banjarmasin dan Sekitarnya pada tahun 2002 dan 2024. Pada gambar terlihat perbedaan penggunaan lahan.\n[Gambar]\nBerdasarkan perubahan penggunaan lahan yang tampak pada citra satelit Banjarmasin tahun 2002 dan 2024, konsep alih fungsi lahan dapat diterapkan untuk menjelaskan bahwa ... .",
+      "gambar": "Citra satelit Banjarmasin dengan sungai berkelok dan penanda \"Area Alih Fungsi Lahan\" (legenda). Citra pertama (2002) didominasi lahan bervegetasi/rawa dengan sedikit bangunan; citra kedua dan ketiga (\"Banjarmasin Bagian Utara\", 2024) menunjukkan permukiman yang jauh lebih padat di area yang sama.",
+      "opsi": [
+        "Perubahan dari kawasan terbuka menjadi kawasan terbangun merupakan bentuk dari alih fungsi lahan yang alami",
+        "Alih fungsi lahan hanya terjadi pada daerah pegunungan dan lereng curam",
+        "Peningkatan jumlah bangunan pada kawasan vegetatif mencerminkan tekanan penduduk terhadap lingkungan",
+        "Semua kawasan kota seharusnya dialihfungsikan agar memenuhi kebutuhan ekonomi",
+        "Perubahan tersebut tidak berdampak pada lingkungan karena berada di wilayah datar"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Bertambahnya bangunan di kawasan yang semula bervegetasi menunjukkan tekanan penduduk terhadap lahan (C). Alih fungsi menjadi kawasan terbangun bukan proses alami (A); opsi lain keliru.",
+      "halaman": [
+        6,
+        7
+      ],
+      "catatan_transkripsi": [
+        "Label tahun pada citra pertama tidak terbaca; urutan 2002 lalu 2024 mengikuti teks soal."
+      ]
+    },
+    {
+      "id": "GEO25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOIGAPSIG11SA-250209-0620",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami interaksi antar gejala fisik alam dan manusia dan pengaruhnya terhadap kehidupan",
+      "subelemen": "Menganalisis posisi strategis Indonesia dan pengaruhnya bagi kehidupan ekonomi, sosial, budaya secara nasional maupun internasional",
+      "kompetensi": "Menjelaskan posisi geografis Indonesia",
+      "subkompetensi": null,
+      "indikator": "menginterpretasi distribusi variasi iklim dari peta tematik. (5)",
+      "soal": "Peta SPI (Standardized Precipitation Index) bulan Februari 2025\nPerhatikan peta berikut yang menunjukkan kondisi SPI 1 bulan (Februari 2025) berdasarkan data BMKG!\n[Gambar]\nSumber:bmkg.go.id\nIndonesia secara geografis terletak di antara dua benua dan dua samudra, serta memiliki wilayah yang membentang dari barat ke timur sepanjang sekitar 5.200 km. Kondisi ini menyebabkan adanya perbedaan pola curah hujan dan iklim antar daerah. Salah satu bentuk analisis iklim adalah melalui peta Standardized Precipitation Index (SPI) yang digunakan untuk mengetahui kondisi kekeringan atau kebasahan suatu wilayah dalam jangka waktu tertentu.\nBerdasarkan peta SPI dan pemahaman tentang variasi iklim di Indonesia, manakah wilayah berikut yang kemungkinan besar mengalami risiko gagal panen akibat kekeringan ekstrem pada Februari 2025?",
+      "gambar": "Peta BMKG \"1-Month Standardized Precipitation Index (SPI) / Indeks Presipitasi Terstandarisasi (SPI) 1 Bulanan Februari 2025 Indonesia\" dengan kelas Sangat Kering (merah tua), Kering, Agak Kering, Normal (kuning muda), Agak Basah, Basah, dan Sangat Basah. Sebagian besar wilayah Normal; bercak merah tua (Sangat Kering) tampak luas di Papua bagian selatan-timur dan di Kalimantan bagian tengah, serta bercak kecil di Sumatra dan Sulawesi. Sumber data: data curah hujan bulanan BMKG; Peta Rupabumi BIG skala 1:250.000.",
+      "opsi": [
+        "Kalimantan Utara",
+        "Papua selatan",
+        "Jawa Barat",
+        "Sulawesi Tengah",
+        "Sumatera Selatan"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Area Sangat Kering terluas pada peta ada di Papua bagian selatan (B); Kalimantan Utara, Jawa Barat, dan Sumatera Selatan sebagian besar Normal.",
+      "halaman": [
+        8,
+        9
+      ],
+      "catatan_transkripsi": [
+        "Kunci dibaca dari warna peta pada tangkapan layar yang kecil; perlu dicek dengan peta asli BMKG."
+      ]
+    },
+    {
+      "id": "GEO25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOIGAPSIG12SA-250139-0409",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami interaksi antar gejala fisik alam dan manusia dan pengaruhnya terhadap kehidupan",
+      "subelemen": "Menganalisis posisi strategis Indonesia dan pengaruhnya bagi kehidupan ekonomi, sosial, budaya secara nasional maupun internasional",
+      "kompetensi": "Menganalisis Pengaruh Pembangunan terhadap kualitas lingkungan",
+      "subkompetensi": null,
+      "indikator": "menganalisis posisi geografis Indonesia terhadap perkembangan sektor pariwisata (6)",
+      "soal": "POSISI STRATEGIS INDONESIA\nPerhatikan informasi berikut ini!\nIndonesia memiliki lima Destinasi Super Prioritas (DSP) yang tersebar di berbagai wilayah, yakni Danau Toba di Sumatera Utara, Borobudur di Jawa Tengah–DIY, Mandalika di Nusa Tenggara Barat, Labuan Bajo di Nusa Tenggara Timur, dan Likupang di Sulawesi Utara. Masing-masing destinasi memiliki karakter geografis yang berbeda, baik dari sisi kedekatannya dengan jalur pelayaran internasional, keberadaan bandara internasional, maupun potensi alam dan budaya yang dimiliki. Pemerintah mengembangkan kawasan ini sebagai bagian dari upaya meningkatkan peran sektor pariwisata dan memperkuat keterhubungan Indonesia dengan kawasan regional maupun internasional.\n[Gambar]\nSumber: https://paltv.disway.id/read/18478/ini-5-destinasi-super-prioritas-di-indonesia\n[Tabel]\nBerdasarkan data dalam tabel, mengapa pengembangan destinasi wisata super prioritas di wilayah seperti Labuan Bajo dan Likupang berpotensi menarik wisatawan internasional?",
+      "gambar": "Peta \"5 DSP di 6 provinsi — Lima destinasi wisata super prioritas (DSP) terletak di 6 provinsi yang berbeda\": Danau Toba (Sumatera Utara), Borobudur (Jawa Tengah-DIY), Mandalika (Nusa Tenggara Barat, label terpotong), Labuan Bajo (Nusa Tenggara Timur), Likupang (Sulawesi Utara).",
+      "tabel": [
+        [
+          "Nama Destinasi Wisata",
+          "Provinsi",
+          "Letak Geografis",
+          "Aksesibilitas Internasional",
+          "Potensi Ekonomi/Pariwisata",
+          "Kaitan Regional/Global"
+        ],
+        [
+          "Danau Toba",
+          "Sumatera Utara",
+          "Dekat Selat Malaka, jalur pelayaran utama",
+          "Bandara Internasional Silangit",
+          "Wisata alam dan budaya, mendorong sektor UMKM dan hotel",
+          "Potensi koneksi ke ASEAN dan jalur maritim global"
+        ],
+        [
+          "Borobudur",
+          "Jawa Tengah–DIY",
+          "Tengah Pulau Jawa, pusat budaya",
+          "Bandara YIA (Yogyakarta Int'l Airport)",
+          "Wisata budaya dunia (UNESCO), menarik wisatawan mancanegara",
+          "Situs warisan dunia, menarik wisatawan global"
+        ],
+        [
+          "Mandalika",
+          "NTB (Nusa Tenggara Barat)",
+          "Selatan Indonesia, berbatasan Samudra Hindia",
+          "Bandara Internasional Lombok",
+          "Wisata pantai, sirkuit MotoGP, mendorong investasi asing",
+          "Event olahraga internasional (MotoGP, F1H2O)"
+        ],
+        [
+          "Labuan Bajo",
+          "NTT (Nusa Tenggara Timur)",
+          "Dekat Laut Sawu dan ALKI",
+          "Bandara Internasional Komodo",
+          "Wisata bahari dan ekowisata, masuk paket cruise internasional",
+          "Kawasan segitiga terumbu karang (Coral Triangle)"
+        ],
+        [
+          "Likupang",
+          "Sulawesi Utara",
+          "Dekat Laut Sulawesi dan Pasifik Barat",
+          "Dekat Bandara Internasional Sam Ratulangi",
+          "Wisata pantai, resort, diving, dekat negara Asia Timur",
+          "Koneksi ke Asia Timur (Jepang, Korea, China)"
+        ]
+      ],
+      "opsi": [
+        "Karena berada di tengah-tengah pulau utama Indonesia yang mudah dijangkau dengan jalur darat",
+        "Karena letaknya di dataran tinggi yang bebas dari bencana alam dan polusi udara",
+        "Karena memiliki karakter geografis khas dan dekat dengan jalur internasional laut atau udara",
+        "Karena letaknya terpencil sehingga menawarkan eksklusivitas penuh bagi wisatawan asing",
+        "Karena menjadi pusat administrasi dan pemerintahan di wilayah timur Indonesia"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Tabel menyebut Labuan Bajo dekat ALKI dan Bandara Internasional Komodo, Likupang dekat Pasifik Barat dan Bandara Sam Ratulangi, keduanya dengan karakter bahari khas (C).",
+      "halaman": [
+        10,
+        11
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "GEO25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOWLSKWLG01SA-250019-0187",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis karakteristik wilayah tempat tinggal dan lingkungan",
+      "kompetensi": "Menentukan karakteristik wilayah berdasarkan informasi spasial",
+      "subkompetensi": null,
+      "indikator": "Menentukan arah perkembangan kota dari peta Rencana Tata Ruang (7)",
+      "soal": "[Gambar]\nSumber: Pemerintahan Kota Binjai\nManakah pernyataan berikut yang menunjukkan arah perkembangan kota di Kota Binjai berdasarkan Peta Tata Ruang Wilayah tersebut?\nKlik pilihan yang Sesuai dan Tidak Sesuai untuk setiap pernyataan!",
+      "gambar": "Peta Rencana Pola Ruang Kota Binjai (Sumber: Pemerintah Kota Binjai). Legenda: Kawasan Perdagangan dan Jasa (merah muda, memanjang di sepanjang jalan utama), Kawasan Botanical Garden, Kawasan Pusat Pemerintahan (merah, di bagian tengah-barat daya dan satu blok di timur), Kawasan Wisata, TPA Regional, Kawasan Industri Regional (abu-abu, di bagian utara), Kawasan Pertahanan, Kawasan Pertanian, Terminal Penumpang, R1 Kepadatan Penduduk Tinggi (jingga tua, bagian barat dan utara), R2 Kepadatan Penduduk Sedang (jingga muda, bagian timur), R3 Kepadatan Penduduk Rendah (kuning, bagian selatan), Sempadan Sungai, dan Ruang Terbuka Hijau (hijau, tepi barat daya). Huruf X berada di Kel. Limau Mungkur/Limau Sundai, di kawasan R1 dekat pusat kota. Batas: Kabupaten Langkat di barat, Kabupaten Deli Serdang di timur.",
+      "opsi": [
+        "Perkembangan kota ke arah selatan secara siginifikan yang didukung adanya kawasan botani dan pertanian, serta kawasan wisata",
+        "Perkembangan kota ke arah barat secara signifikan yang didukung selaras dengan kawasan perdagangan/ jasa, pusat pemerintahan, dan jalur trasnportasi",
+        "Perkembangan kota ke arah utara secara signifikan karena adanya dukungan kawasan industri serta kawasan perdagangan/ jasa"
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Bagian selatan direncanakan sebagai permukiman kepadatan rendah (R3) dengan RTH dan botanical garden, bukan arah perkembangan utama (Tidak Sesuai). Bagian barat memuat R1, pusat pemerintahan, dan koridor perdagangan/jasa di jalan utama (Sesuai); bagian utara memuat kawasan industri regional, R1, dan koridor perdagangan/jasa (Sesuai).",
+      "halaman": [
+        12,
+        13
+      ],
+      "catatan_transkripsi": [
+        "Penilaian arah perkembangan dibaca dari warna peta pada tangkapan layar; perlu dicek dengan peta asli.",
+        "Salah ketik \"siginifikan\" dan \"trasnportasi\" disalin apa adanya."
+      ],
+      "kolom": [
+        "Sesuai",
+        "Tidak Sesuai"
+      ]
+    },
+    {
+      "id": "GEO25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOWLSKWLG02SA-250019-0178",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis karakteristik wilayah tempat tinggal dan lingkungan",
+      "kompetensi": "Memahami konsep dan teori dasar mengenai dinamika kependudukan pada suatu wilayah tempat tinggal",
+      "subkompetensi": null,
+      "indikator": "Menentukan peruntukan kawasan yang sesuai dengan Rencana Tata Ruang (8)",
+      "soal": "[Gambar]\nSumber: Pemerintahan Kota Binjai\nSeorang pengusaha akan membangun sebuah bisnis properti komersial pada lokasi X, jenis usaha yang sesuai oleh pengusaha tersebut adalah...\nKlik pilihan yang Sesuai dan Tidak Sesuai!",
+      "gambar": "Peta Rencana Pola Ruang Kota Binjai (Sumber: Pemerintah Kota Binjai). Legenda: Kawasan Perdagangan dan Jasa (merah muda, memanjang di sepanjang jalan utama), Kawasan Botanical Garden, Kawasan Pusat Pemerintahan (merah, di bagian tengah-barat daya dan satu blok di timur), Kawasan Wisata, TPA Regional, Kawasan Industri Regional (abu-abu, di bagian utara), Kawasan Pertahanan, Kawasan Pertanian, Terminal Penumpang, R1 Kepadatan Penduduk Tinggi (jingga tua, bagian barat dan utara), R2 Kepadatan Penduduk Sedang (jingga muda, bagian timur), R3 Kepadatan Penduduk Rendah (kuning, bagian selatan), Sempadan Sungai, dan Ruang Terbuka Hijau (hijau, tepi barat daya). Huruf X berada di Kel. Limau Mungkur/Limau Sundai, di kawasan R1 dekat pusat kota. Batas: Kabupaten Langkat di barat, Kabupaten Deli Serdang di timur. Peta yang sama dengan soal nomor 7.",
+      "opsi": [
+        "Pembangunan Apartemen",
+        "Budidaya Peternakan",
+        "Pusat Bisnis dan perekonomian (Mall)"
+      ],
+      "kunci": [
+        true,
+        false,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Lokasi X berada di kawasan R1 (permukiman kepadatan tinggi), sehingga hunian vertikal seperti apartemen sesuai. Peternakan tidak sesuai dengan kawasan permukiman padat; mal memerlukan kawasan perdagangan dan jasa (koridor merah muda), sedangkan X tidak berada di koridor itu.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Letak X terhadap koridor perdagangan dan jasa dibaca dari tangkapan layar kecil; bila X dianggap di kawasan perdagangan/jasa, pernyataan 3 menjadi Sesuai. Perlu dicek.",
+        "Kompetensi (dinamika kependudukan) tidak sesuai dengan isi soal (tata ruang); disalin apa adanya."
+      ],
+      "kolom": [
+        "Sesuai",
+        "Tidak Sesuai"
+      ]
+    },
+    {
+      "id": "GEO25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25GEOWLSMWPG03SA-250047-0097",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis masalah wilayah dan pembangunan",
+      "kompetensi": "Menganalisis masalah struktur kependudukan",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan kegunaan data kependudukan dalam perencanaan wilayah (9)",
+      "soal": "Data Proyeksi Penduduk ex Provinsi Papua Berdasarkan Kelompok Umur\nPerhatikan tabel Proyeksi Penduduk ex Provinsi Papua (Provinsi Papua, Papua Tengah, Papua Pegunungan, dan Papua Selatan) berikut!\n[Tabel]\nBerdasarkan proyeksi penduduk tahun 2025, strategi pembangunan yang PALING TEPAT untuk 10 tahun mendatang adalah ... .\n(Jawaban benar lebih dari satu)",
+      "tabel": [
+        [
+          "Kelompok Umur",
+          "Laki-laki 2025",
+          "Laki-laki 2026",
+          "Laki-laki 2027",
+          "Perempuan 2025",
+          "Perempuan 2026",
+          "Perempuan 2027",
+          "Jumlah 2025",
+          "Jumlah 2026",
+          "Jumlah 2027"
+        ],
+        [
+          "0-4",
+          "170,8",
+          "170,2",
+          "169,7",
+          "165,8",
+          "165,4",
+          "165,2",
+          "336,6",
+          "335,6",
+          "334,9"
+        ],
+        [
+          "5-9",
+          "167,5",
+          "167,9",
+          "168,2",
+          "164",
+          "164,3",
+          "164,4",
+          "331,5",
+          "332,2",
+          "332,6"
+        ],
+        [
+          "9-14",
+          "162,9",
+          "163,8",
+          "164,5",
+          "160",
+          "160,8",
+          "161,4",
+          "322,9",
+          "324,6",
+          "325,9"
+        ],
+        [
+          "15-19",
+          "162,6",
+          "162,1",
+          "161,9",
+          "155,5",
+          "156,5",
+          "157,3",
+          "318,1",
+          "318,6",
+          "319,2"
+        ],
+        [
+          "20-24",
+          "168,6",
+          "167,4",
+          "165,9",
+          "149,7",
+          "150,9",
+          "152,3",
+          "318,3",
+          "318,3",
+          "318,2"
+        ],
+        [
+          "25-29",
+          "172,6",
+          "173,4",
+          "173,9",
+          "149,1",
+          "149,3",
+          "149,8",
+          "321,7",
+          "322,7",
+          "323,7"
+        ],
+        [
+          "30-34",
+          "167,3",
+          "169,4",
+          "171,6",
+          "148,6",
+          "148,9",
+          "148,8",
+          "315,9",
+          "318,3",
+          "320,4"
+        ],
+        [
+          "35-39",
+          "151,8",
+          "154,8",
+          "157,9",
+          "141,2",
+          "143,2",
+          "145",
+          "293",
+          "298",
+          "302,9"
+        ],
+        [
+          "40-44",
+          "139,4",
+          "141,1",
+          "142,8",
+          "131,6",
+          "132,8",
+          "134",
+          "271",
+          "273,9",
+          "276,8"
+        ],
+        [
+          "45-49",
+          "133",
+          "133,3",
+          "133,9",
+          "125,8",
+          "126,2",
+          "126,8",
+          "258,8",
+          "259,5",
+          "260,7"
+        ],
+        [
+          "50-54",
+          "119,9",
+          "122,6",
+          "124,7",
+          "108,9",
+          "113,3",
+          "116,7",
+          "228,8",
+          "235,9",
+          "241,4"
+        ],
+        [
+          "55-59",
+          "94,1",
+          "98,2",
+          "102",
+          "77,4",
+          "82,9",
+          "88,5",
+          "171,5",
+          "181,1",
+          "190,5"
+        ],
+        [
+          "60-64",
+          "63",
+          "67,4",
+          "71,8",
+          "48,2",
+          "52,5",
+          "57",
+          "111,2",
+          "119,9",
+          "128,8"
+        ],
+        [
+          "65-69",
+          "34,1",
+          "37,6",
+          "41,2",
+          "25,9",
+          "28,8",
+          "31,9",
+          "60",
+          "66,4",
+          "73,1"
+        ],
+        [
+          "70-74",
+          "15,4",
+          "17,1",
+          "18,9",
+          "11,9",
+          "13,2",
+          "14,8",
+          "27,3",
+          "30,3",
+          "33,7"
+        ],
+        [
+          "75+",
+          "8,4",
+          "9",
+          "9,7",
+          "6,7",
+          "7,2",
+          "7,8",
+          "15,1",
+          "16,2",
+          "17,5"
+        ],
+        [
+          "Jumlah",
+          "1931,4",
+          "1995,3",
+          "1978,6",
+          "1770,3",
+          "1796,2",
+          "1821,7",
+          "3701,7",
+          "3791,5",
+          "3800,3"
+        ]
+      ],
+      "opsi": [
+        "Mengembangkan pusat-pusat vokasi serta program magang industri yang relevan bagi lulusan SMA/sederajat.",
+        "Memperluas akses pendidikan tinggi dan beasiswa untuk jenjang sarjana dan pascasarjana.",
+        "Mendorong program transmigrasi ke wilayah luar Papua untuk mengurangi tekanan demografi di kota besar.",
+        "Menambah anggaran subsidi energi dan pangan untuk semua kelompok usia sebagai bentuk pemerataan pembangunan.",
+        "Menganalisis potensi investasi dan membuka lapangan kerja baru di sektor unggulan lokal seperti pertanian, perikanan, dan ekonomi digital."
+      ],
+      "kunci": [
+        0,
+        1,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Struktur penduduk muda (0–24 tahun sekitar 44% pada 2025, usia produktif 15–64 sekitar 70%) menuntut penyiapan dan penyerapan tenaga kerja: pendidikan vokasi (A), pendidikan tinggi (B), dan lapangan kerja di sektor unggulan lokal (E). Transmigrasi keluar Papua (C) dan subsidi untuk semua kelompok (D) tidak menjawab struktur umur.",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Opsi B mungkin tidak termasuk kunci yang dimaksud (soal menekankan \"PALING TEPAT\"); perlu dicek.",
+        "Jumlah tahun 2026 tercetak 1995,3 (laki-laki) dan 3791,5 (total), sedangkan penjumlahan kolomnya 1955,3 dan 3751,5; kolom lain cocok. Kemungkinan salah ketik di sumber (atau salah baca angka 5/9 dari tangkapan layar).",
+        "Kelompok umur \"9-14\" (seharusnya 10-14) disalin apa adanya; tabel asli memakai judul kolom bertingkat (Laki-laki/Perempuan/Jumlah × 2025–2027), di sini digabung."
+      ]
+    },
+    {
+      "id": "GEO25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25GEOWLSMWPG03SA-250033-0026",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis masalah wilayah dan pembangunan",
+      "kompetensi": "Menganalisis masalah struktur kependudukan",
+      "subkompetensi": null,
+      "indikator": "Menentukan karakteristik kependudukan yang sesuai dengan piramida penduduk (10)",
+      "soal": "Piramida Penduduk Kota Banjar\nPerhatikan piramida penduduk kota Banjar, Provinsi Jawa Barat berikut!\n[Gambar]\nBerdasarkan data jumlah penduduk Kota Banjar, tercatat sebanyak 210.000 jiwa. Dari jumlah tersebut, sebanyak 105.300 jiwa merupakan penduduk laki-laki, dan 104.600 jiwa merupakan penduduk perempuan.\nJika dilihat dari rasio jenis kelamin, terdapat sekitar 99,34 perempuan untuk setiap 100 laki-laki. Rasio ini menunjukkan bahwa jumlah laki-laki dan perempuan hampir seimbang, dengan selisih yang sangat kecil.\nBerdasarkan struktur penduduk tersebut, simpulan yang tepat untuk menggambarkan kondisi demografi wilayah tersebut adalah?\n(Pilih semua jawaban yang benar! Jawaban benar lebih dari satu.)",
+      "gambar": "Piramida penduduk berbentuk batang mendatar (Perempuan di kiri, Laki-Laki di kanan; sumbu 0–10.000 jiwa) untuk kelompok umur 0-4 sampai 75+. Batang terlebar pada 0-4 dan 20-34 (sekitar 8.000–8.800 jiwa per jenis kelamin), sedikit menyempit pada 5-14, lalu mengecil berangsur mulai 40-44 hingga 75+ (sekitar 2.200–2.900 jiwa). Bentuk piramida stasioner/mulai menua dengan dominasi usia produktif.",
+      "opsi": [
+        "Kota Banjar sedang menikmati bonus demografi karena dominasi penduduk usia produktif.",
+        "Rasio ketergantungan tinggi karena sebagian besar penduduk berada pada usia tua.",
+        "Perencanaan pembangunan perlu fokus pada peningkatan kualitas tenaga kerja dan pendidikan.",
+        "Rasio ketergantungan tinggi karena sebagian besar penduduk masih remaja non produktif.",
+        "Mobilitas antar wilayah yang menyumbang pertumbuhan penduduk masih rendah."
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Batang usia 15–64 mendominasi piramida, sehingga terjadi bonus demografi (A) dan perencanaan perlu menyiapkan kualitas tenaga kerja dan pendidikan (C). Penduduk usia tua dan usia muda tidak dominan (B, D salah); mobilitas tidak dapat disimpulkan dari piramida (E).",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "105.300 + 104.600 = 209.900 (dibulatkan menjadi 210.000 di stimulus). Angka 99,34 perempuan per 100 laki-laki benar (104.600/105.300), tetapi rasio jenis kelamin lazimnya dinyatakan sebagai laki-laki per 100 perempuan (≈ 100,67).",
+        "Nilai batang piramida dibaca kira-kira dari gambar."
+      ]
+    },
+    {
+      "id": "GEO25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25GEOWLSMWPG04SA-250077-0330",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis masalah wilayah dan pembangunan",
+      "kompetensi": "Menerapkan penelitian geografi (data statistik) untuk memecahkan permasalahan kewilayahan",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan kontekstual yang tepat dari penelitian geografi sosial (11)",
+      "soal": "Fenomena Penuaan Penduduk di Indonesia\n[Gambar]\nIndonesia dan negara-negara ASEAN sedang menghadapi tantangan penuaan penduduk, yaitu bertambahnya jumlah lansia dan berkurangnya penduduk usia produktif. Akibatnya, beban ekonomi negara meningkat karena pengeluaran untuk pensiun dan kesehatan bertambah, sementara tenaga kerja menurun. Jika tidak dipersiapkan sejak sekarang, kondisi ini bisa menghambat pertumbuhan ekonomi. Untuk itu, pemerintah perlu menyiapkan strategi agar lansia tetap sehat, mandiri, dan produktif, seperti melalui program perlindungan sosial dan lingkungan yang ramah lansia.\nApa saja upaya yang dapat dilakukan pemerintah untuk mengurangi dampak negatif dari penuaan penduduk di masa depan?\n(Pilih semua jawaban benar! Jawaban benar lebih dari satu!)",
+      "gambar": "Infografis \"Tren Meningkatnya Jumlah Lansia 2015-2045 (juta jiwa)\", diagram batang Perempuan >60 tahun / Laki-laki >60 tahun dan total: 2015 12,1/10,9 (total 23); 2020 15/13,7 (28,7); 2025 18,6/16,9 (35,4); 2030 22,5/20,3 (42,8); 2035 26,6/23,8 (50,4); 2040 30,3/27 (57,3); 2045 33,6/29,7 (63,3); catatan \"Jumlah lansia perempuan di atas jumlah lansia laki-laki\". Grafik garis \"Meningkatkan jumlah lansia tetapi menurunnya rasio dukungan potensial 2015-2045\": porsi lansia terhadap total populasi 9%, 10,7%, 12,5%, 14,6%, 16,6%, 18,3%, 19,9%; jumlah potensial penduduk produktif yang dapat mendukung satu orang tua 12, 10, 8, 7, 6, 5, 5.",
+      "opsi": [
+        "Menyediakan program perlindungan sosial bagi penduduk tua agar tetap sejahtera",
+        "Meningkatkan belanja negara untuk peningkatan kualitas hidup masyarakat",
+        "Menciptakan lingkungan yang ramah lansia agar mereka tetap mandiri dan produktif",
+        "Mengkampanyekan budaya hidup sehat di lingkungan masyarakat",
+        "Kebijakan penambahan usia pensiun untuk aparatur sipil negara"
+      ],
+      "kunci": [
+        0,
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Stimulus menyebut strategi agar lansia sehat, mandiri, dan produktif melalui perlindungan sosial dan lingkungan ramah lansia (A, C) serta hidup sehat (D). B terlalu umum; E memperpanjang masa kerja hanya untuk ASN.",
+      "halaman": [
+        17,
+        18
+      ],
+      "catatan_transkripsi": [
+        "Opsi E (menaikkan usia pensiun) juga kebijakan lazim untuk menghadapi penuaan penduduk; kunci perlu dicek.",
+        "Total 2025 tercetak 35,4, sedangkan 18,6 + 16,9 = 35,5 (pembulatan); total tahun lain cocok."
+      ]
+    },
+    {
+      "id": "GEO25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOFSGPIJG20SA-250249-0328",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menginterpretasi fenomena pada peta/ citra penginderaan jauh (membaca peta/menggunakan unsur interpretasi)",
+      "subkompetensi": null,
+      "indikator": "Menyimpulkan permasalahan kontekstual dari penelitian geografi sosial (12)",
+      "soal": "Citra dan Elevasi Hutan di Gunung Arjuno, Kota Batu\nPerhatikan Citra dan Elevasi Berikut!\n[Gambar]\nManakah pernyataan berikut yang menunjukkan perencanaan infrastruktur yang sesuai dengan karakteristik wilayah pada citra dan elevasi tersebut?\nPilih Sesuai atau Tidak Sesuai untuk setiap pernyataan!",
+      "gambar": "Citra Google Earth berskala 1:7500 (A4) dengan garis kontur 1000–1350 m dan arah utara. Lokasi A (kiri bawah, sekitar 1100–1150 m) berupa petak-petak lahan pertanian; lokasi B (tengah atas, sekitar 1200–1250 m) berupa hutan lebat; lokasi C (kanan bawah, sekitar 1050 m) berupa hutan dekat kontur 1000–1100 m.",
+      "opsi": [
+        "Pembangunan peternakan Sapi, mendekatkan dengan sumberpakan di Lokasi C",
+        "Pembangunan sistem irigasi tetes di lokasi A, guna penghematan energi",
+        "Pembuatan terasering pada semua wilayah sebagai upaya pencegahan laju erosi di lokasi A"
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Lokasi C adalah kawasan hutan, sehingga membangun peternakan di sana tidak sesuai. Lokasi A adalah lahan pertanian berlereng, sehingga irigasi tetes dan terasering sesuai.",
+      "halaman": [
+        19,
+        45,
+        46
+      ],
+      "catatan_transkripsi": [
+        "Setiap pernyataan mengandung unsur yang dapat diperdebatkan: irigasi tetes terutama untuk menghemat air, bukan energi; terasering \"pada semua wilayah\" termasuk hutan B dan C. Kunci perlu dicek guru.",
+        "Indikator (penelitian geografi sosial) tidak sesuai dengan isi soal (citra dan kontur).",
+        "Soal ini tercetak dua kali: halaman 19 (dengan indikator 12) dan halaman 45–46 (di bawah soal nomor 28, tanpa kotak indikator). Isinya sama; dicatat sekali."
+      ],
+      "kolom": [
+        "Sesuai",
+        "Tidak Sesuai"
+      ]
+    },
+    {
+      "id": "GEO25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOIGASDAG14SA-250224-0585",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami interaksi antar gejala fisik alam dan manusia dan pengaruhnya terhadap kehidupan",
+      "subelemen": "Mengalisis pengaruh potensi Sumber Daya Alam Indonesia terhadap dinamika kehidupan",
+      "kompetensi": "Menganalisis pengelolan SDA secara berkelanjutan",
+      "subkompetensi": null,
+      "indikator": "menganalisis pengelolaan SDA yang berkelanjutan berkaitan dengan kasus Lingkungan hidup (13)",
+      "soal": "Studi Kasus: Penambangan Nikel di Halmahera Timur\nPerhatikan informasi berikut!\n[Gambar]\nSejak 2019, Halmahera Timur, Maluku Utara, menjadi lokasi ekspansi besar-besaran industri pertambangan nikel untuk mendukung kebutuhan baterai kendaraan listrik global. Aktivitas ini membuka lapangan kerja dan meningkatkan pendapatan daerah, namun juga menimbulkan masalah lingkungan serius seperti kerusakan hutan mangrove, pencemaran sungai akibat limbah tailing, dan gangguan ekosistem pesisir.\nSebuah laporan (2023) menyebutkan bahwa hanya sebagian kecil perusahaan tambang yang menjalankan reklamasi dan revegetasi pasca tambang. Pemerintah daerah menghadapi dilema antara mendorong investasi atau melindungi keberlanjutan ekologi. Sementara itu, masyarakat adat mulai kehilangan akses terhadap hutan dan sumber daya alam yang sebelumnya menjadi tumpuan hidup.\nUpaya konservasi seperti audit lingkungan, zonasi wilayah adat, dan restorasi mangrove telah diusulkan, namun implementasinya berjalan lambat.\nSumber:Mongabay Indonesia, 2023.\nBerdasarkan informasi diatas, bagaimana keberlanjutan pengelolaan sumber daya alam berdasarkan prinsip konservasi dan restorasi lingkungan?\nPillih pada pernyataan yang benar dan salah!",
+      "gambar": "Foto tambang terbuka dengan truk-truk tambang dan ekskavator, dengan panah ke diagram bijih nikel dan produk turunannya: Stainless, Baterai Kendaraan Listrik, Koin.",
+      "opsi": [
+        "Revegetasi yang dilakukan sebagian kecil perusahaan merupakan bentuk pengelolaan SDA berbasis restorasi.",
+        "Audit lingkungan tidak berkaitan dengan konservasi karena hanya berupa kegiatan administratif yang tidak berdampak pada ekosistem.",
+        "Zonasi wilayah adat merupakan bentuk konservasi karena menjaga wilayah hidup masyarakat sekaligus melindungi lingkungan."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Revegetasi pascatambang adalah bentuk restorasi (Benar). Audit lingkungan adalah alat konservasi untuk menilai dan mengendalikan dampak (pernyataan 2 Salah). Zonasi wilayah adat melindungi ruang hidup dan lingkungan (Benar).",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"Pillih\" disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOIGASDAG14SA-250227-0491",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami interaksi antar gejala fisik alam dan manusia dan pengaruhnya terhadap kehidupan",
+      "subelemen": "Mengalisis pengaruh potensi Sumber Daya Alam Indonesia terhadap dinamika kehidupan",
+      "kompetensi": "Menganalisis pengelolan SDA secara berkelanjutan",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan permasalahan ketimpangan pemanfaatan ekonomi dengan pelestarian SDA berkaitan dengan kasus Lingkungan hidup (14)",
+      "soal": "Kebakaran Hutan dan Lahan Gambut di Kalimantan Tengah\nPerhatikan informasi berikut!\n[Gambar]\nsumber:https://desyyusnita.com/ngobrol-tempo-lahan-gambut.html\nSetiap musim kemarau, wilayah Kabupaten Pulang Pisau dan Kabupaten Kapuas, Kalimantan Tengah mengalami kebakaran hutan dan lahan gambut yang meluas. Data kejadian Karhutla mulai Januari hingga September 2023 sebanyak 358 kejadian di Pulang Pisau, dan 352 kejadian di Kapas. Pembukaan lahan dengan cara dibakar oleh oknum yang tidak bertanggung jawab menjadi salah satu penyebab kebakaran.\nKebakaran ini tidak hanya menyebabkan kerusakan ekosistem, tetapi juga mengganggu kesehatan masyarakat akibat kabut asap, serta menurunkan produktivitas pertanian dan perikanan lokal. Sejak 2020, pemerintah dan organisasi masyarakat sipil bekerja sama melalui program restorasi gambut dengan pendekatan 3R: Rewetting (pembasahan), Revegetation (penanaman ulang), dan Revitalization (pemberdayaan ekonomi lokal). Sebelum musim kemarau tiba, sebuah kelompok juga sudah melakukan perawatan sumur bor yang sebelumnya dibangun oleh BRGM (Badan Restorasi Gambut dan Mangrove). Tujuannya agar sumur tetap berfungsi optimal saat dibutuhkan.\nSumber: MMC Kalteng (2023); Antara Kalteng (2023)\nBerdasarkan narasi tersebut, bagaimana langkah yang tepat untuk menjaga keseimbangan antara pemanfaatan ekonomi dan pelestarian lahan gambut di Kalimantan Tengah?",
+      "gambar": "Ilustrasi penampang lahan gambut dengan api di permukaan dan di lapisan dalam, dengan empat keterangan: (1) Ketika lahan gambut kering, api kecil atau bahkan rokok bisa memicu kebakaran. (2) Api bisa menyebar hingga lapisan gambut dalam yang kedalamannya bisa 4 meter. (3) Walaupun api di permukaan sudah padam, bukan berarti api di lapisan dalam juga padam. (4) Api bisa bertahan berbulan-bulan bahkan menjalar ke tempat lain.",
+      "opsi": [
+        "Meningkatkan produktivitas lahan gambut dengan memperluas pembukaan lahan secara efisien.",
+        "Menetapkan larangan total aktivitas masyarakat di seluruh kawasan gambut untuk mencegah kerusakan.",
+        "Melanjutkan pembukaan lahan gambut dengan sistem tebang pilih agar tetap lestari dan menjaga rotasi tanaman.",
+        "Mendorong program pertanian ramah gambut dan mengembangkan produk hasil hutan bukan kayu.",
+        "Mengganti lahan gambut dengan tambak agar menghasilkan keuntungan ekonomi yang lebih tinggi."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pertanian ramah gambut dan hasil hutan bukan kayu menjaga gambut tetap basah sekaligus memberi manfaat ekonomi, sejalan dengan revitalisasi dalam pendekatan 3R (D). Opsi lain merusak gambut atau mematikan ekonomi warga.",
+      "halaman": [
+        21,
+        22
+      ],
+      "catatan_transkripsi": [
+        "\"Kapas\" (seharusnya Kapuas) disalin apa adanya; jumlah kejadian karhutla berasal dari sumber dan tidak diperiksa."
+      ]
+    },
+    {
+      "id": "GEO25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOMBABNCG15SA-000000-0335",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Mengenal cara mitigasi dan adaptasi terhadap bencana alam di lingkungan tempat tinggal dan negaranya.",
+      "subelemen": "Menganalisis penyebab bencana geologis/hidroklimatologis",
+      "kompetensi": "Menggunakan konsep dasar geografi untuk menjelaskan kejadian dan dampak bencana",
+      "subkompetensi": null,
+      "indikator": "menerapkan konsep dasar geografi dalam menjelaskan kejadian bencana (15)",
+      "soal": "Perhatikan informasi berikut ini!\nSaat musim kemarau, wilayah Kalimantan Selatan sering mengalami kebakaran lahan gambut, seperti di Kota Banjarbaru pada Juli 2024. Sementara itu saat musim hujan, wilayah ini sering dilanda banjir karena daya serap air yang rendah seperti di Kabupaten Banjar dan Kabupaten Barito Kuala pada Desember 2024\nWilayah Nusa Tenggara Timur (NTT) rentan mengalami bencana kekeringan saat musim kemarau. Kabupaten Kupang menjadi salah satu daerah yang mengalami kekeringan ekstrem pada November 2023, dan menyebabkan kelangkaan air bersih. Sementara itu, NTT juga rentan dilanda banjir saat musim hujan. Pada bulan Maret 2023, desa di Kabupaten Kupang mengalami banjir akibat curah hujan sedang hingga lebat yang terjadi selama beberapa hari.\nFenomena bencana di Kalimantan Selatan maupun NTT cenderung berulang setiap tahunnya. Konsep geografi yang tepat untuk menjelaskan keteraturan terjadinya bencana tersebut adalah...",
+      "opsi": [
+        "diferensiasi area",
+        "keterjangkauan",
+        "interaksi",
+        "pola",
+        "aglomerasi"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Konsep pola menjelaskan keteraturan (persebaran dan pengulangan) fenomena geografi, seperti bencana yang berulang setiap musim (D).",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "GEO25-016",
+      "passage": null,
+      "nomor": "16",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOMBABNCG15SA-000000-0336",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Mengenal cara mitigasi dan adaptasi terhadap bencana alam di lingkungan tempat tinggal dan negaranya.",
+      "subelemen": "Menganalisis penyebab bencana geologis/hidroklimatologis",
+      "kompetensi": "Menggunakan konsep dasar geografi untuk menjelaskan kejadian dan dampak bencana",
+      "subkompetensi": null,
+      "indikator": "menerapkan konsep dasar geografi dalam menjelaskan pengaruh bencana Gunung Apo terhadap kondisi lahan (16)",
+      "soal": "[Gambar]\nPertanian di Gunung Marapi Sumatera Barat\nPilih Fakta atau Opini tetang pernyataan yang berhubungan antara aktivitas Gunung Marapi dan kondisi lahan pertanian subur di sekitarnya !",
+      "gambar": "Foto petani merawat tanaman di lahan bermulsa plastik dengan ajir bambu, dengan Gunung Marapi mengeluarkan asap di latar belakang.",
+      "opsi": [
+        "Keberadaan lahan subur di sekitar Gunung Marapi sepenuhnya bergantung pada intensitas letusan yang terjadi setiap tahun.",
+        "Material hasil letusan gunung api dapat memperbaiki struktur tanah dan memperkaya unsur hara setelah mengalami pelapukan.",
+        "Tanah vulkanik dari Gunung Marapi cenderung memiliki kandungan mineral yang tinggi sehingga cocok untuk pertanian sayur dan buah."
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pernyataan 1 berupa klaim berlebihan (\"sepenuhnya\") yang tidak dapat dibuktikan: Opini. Pernyataan 2 dan 3 sesuai pengetahuan ilmiah tentang tanah vulkanik: Fakta.",
+      "halaman": [
+        24
+      ],
+      "catatan_transkripsi": [
+        "Indikator menyebut \"Gunung Apo\" padahal soal tentang Gunung Marapi; salah ketik \"tetang\" disalin apa adanya.",
+        "Pernyataan 3 memakai kata \"cenderung\" dan bisa dianggap opini; kunci perlu dicek."
+      ],
+      "kolom": [
+        "Fakta",
+        "Opini"
+      ]
+    },
+    {
+      "id": "GEO25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOMBAPRBG17SA-000000-0369",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Mengenal cara mitigasi dan adaptasi terhadap bencana alam di lingkungan tempat tinggal dan negaranya.",
+      "subelemen": "Mengevaluasi upaya pengurangan risiko bencana dan adaptasi manusia terhadap bencana geologis/hidroklimatologis",
+      "kompetensi": "Mengidentifikasi bentuk adaptasi masyarakat terhadap bencana geologis/hidroklimatologis",
+      "subkompetensi": null,
+      "indikator": "menjelaskan bentuk adaptasi penduduk dalam menghadapi bencana alam (17)",
+      "soal": "Perhatikan informasi wilayah berikut!\n[Gambar]\n[Tabel]\nSumber: BMKG\nGempa bumi bermagnitudo 4,1 mengguncang Bogor, Jawa Barat, pada Kamis malam, 10 April 2025. Akibatnya, 35 unit rumah rusak. Gempa tersebut dipicu oleh aktivitas Sesar Citarik, yang merupakan salah satu sesar aktif di bagian barat Pulau Jawa.\nBerdasarkan informasi tersebut, salah satu bentuk adaptasi struktural yang paling tepat dilakukan untuk mengurangi risiko korban jiwa dan kerusakan adalah....",
+      "gambar": "BMKG ShakeMap: \"3 km Selatan KOTA-BOGOR-JABAR, APR 10, 2025 22:16:13 WIB, M:4.1, 6.62LS 106.80BT, Kedlmn:5km\". Peta Jawa bagian barat (106°–108° BT, 5,5°–8° LS) dengan bintang episenter di selatan Bogor dan sebaran intensitas biru di sekitarnya; skala 0–50 km; \"Map Version 1\".",
+      "tabel": [
+        [
+          "PERCEIVED SHAKING",
+          "Not felt",
+          "Weak",
+          "Light",
+          "Moderate",
+          "Strong",
+          "Very strong",
+          "Severe",
+          "Violent",
+          "Extreme"
+        ],
+        [
+          "POTENTIAL DAMAGE",
+          "none",
+          "none",
+          "none",
+          "Very light",
+          "Light",
+          "Moderate",
+          "Mod./Heavy",
+          "Heavy",
+          "Very Heavy"
+        ],
+        [
+          "PEAK ACC.(%g)",
+          "<0.05",
+          "0.3",
+          "2.8",
+          "6.2",
+          "12",
+          "22",
+          "40",
+          "75",
+          ">139"
+        ],
+        [
+          "PEAK VEL.(cm/s)",
+          "<0.02",
+          "0.1",
+          "1.4",
+          "4.7",
+          "9.6",
+          "20",
+          "41",
+          "86",
+          ">178"
+        ],
+        [
+          "INSTRUMENTAL INTENSITY",
+          "I",
+          "II-III",
+          "IV",
+          "V",
+          "VI",
+          "VII",
+          "VIII",
+          "IX",
+          "X+"
+        ]
+      ],
+      "opsi": [
+        "membangun rumah berpondasi beton berat agar tidak mudah roboh saat gempa",
+        "melakukan simulasi evakuasi gempa secara rutin kepada seluruh masyarakat",
+        "merancang pemukiman baru dengan peta mikrozonasi gempa sebagai acuan",
+        "membangun pemukiman padat di dataran rendah agar jauh dari pusat gempa",
+        "menunda pembangunan infrastruktur hingga sesar dinyatakan tidak aktif"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Adaptasi struktural berupa penataan ruang dan bangunan berbasis risiko, yaitu merancang permukiman dengan peta mikrozonasi gempa (C). Simulasi evakuasi (B) adalah upaya nonstruktural; bangunan berat justru menambah beban gempa (A); D dan E tidak tepat.",
+      "halaman": [
+        25,
+        26
+      ],
+      "catatan_transkripsi": [
+        "Tabel skala intensitas di bawah peta (\"Scale based upon Worden et al. (2011)\") disalin ke kolom tabel.",
+        "10 April 2025 memang hari Kamis."
+      ]
+    },
+    {
+      "id": "GEO25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOPLSDKPG05SA-250078-0445",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Menentukan faktor yang berpengaruh dalam dinamika kependudukan",
+      "kompetensi": "Menjelaskan indikator-indikator keberhasilan Pembangunan",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan capaian pembangunan antar kawasan berdasarkan data statistik (18)",
+      "soal": "Data Statistik Capaian Pembangunan Tahun 2023\nTabel Indikator Pembangunan Sosial Kota Makassar dan Kota Medan Tahun 2023\n[Tabel]\nSumber: Badan Pusat Statistik 2023. Indikator Kesejahteraan Rakyat Kota Makassar & Kota Medan. https://bps.go.id\nPemerintah Indonesia terus memantau perkembangan pembangunan manusia di berbagai kota. Berdasarkan data tahun 2023, Kota Makassar menunjukkan capaian yang lebih tinggi dibanding Kota Medan dalam beberapa indikator sosial.\nRata-rata lama sekolah di Makassar mencapai 11,47 tahun, sedangkan di Medan 10,69 tahun.\nAngka melek huruf Makassar berada pada 99,23%, sedikit lebih tinggi dari Medan (98,94%).\nAkses air minum layak hampir merata di Makassar (99,92%), namun masih cukup rendah di Medan (87,39%).\nAngka pengangguran terbuka justru lebih tinggi di Makassar (9,53%) dibanding Medan (8,86%).\nRasio tenaga kesehatan per 100.000 penduduk di Makassar mencapai 989, sedangkan Medan hanya 732.\nPerbedaan capaian ini menunjukkan adanya dinamika dalam pembangunan sosial antara dua kota besar di Indonesia yang memiliki kondisi geografis dan karakter penduduk yang berbeda.\nBerdasarkan Tabel Indikator Pembangunan Sosial Kota Makassar dan Kota Medan Tahun 2023, tentukan simpulan yang paling tepat dan logis dari pernyataan berikut!",
+      "tabel": [
+        [
+          "Indikator",
+          "Kota Makassar",
+          "Kota Medan"
+        ],
+        [
+          "Rata-rata Lama Sekolah (tahun)",
+          "11,47",
+          "10,69"
+        ],
+        [
+          "Angka Melek Huruf (%)",
+          "99,23",
+          "98,94"
+        ],
+        [
+          "Akses Air Minum Layak (%)",
+          "99,92",
+          "87,39"
+        ],
+        [
+          "Angka Pengangguran Terbuka (%)",
+          "9,53",
+          "8,86"
+        ],
+        [
+          "Rasio Tenaga Kesehatan per 100.000",
+          "989",
+          "732"
+        ]
+      ],
+      "opsi": [
+        "Kota Medan secara umum menunjukkan kualitas sosial lebih tinggi karena angka penganggurannya lebih rendah.",
+        "Kota Makassar menunjukkan keunggulan pelayanan dasar dan kualitas pendidikan, meskipun menghadapi tantangan lapangan kerja.",
+        "Kota Medan memiliki rasio tenaga kesehatan yang lebih baik, tetapi tertinggal dalam pendidikan dasar.",
+        "Kota Makassar memiliki tantangan serius dalam akses air minum dan layanan kesehatan dibandingkan Kota Medan.",
+        "Kedua kota menunjukkan capaian pembangunan yang seimbang, karena perbedaan data masing-masing hanya terjadi dalam selisih kecil."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Makassar unggul dalam lama sekolah, melek huruf, air minum layak, dan tenaga kesehatan, tetapi pengangguran terbukanya lebih tinggi (B).",
+      "halaman": [
+        27
+      ],
+      "catatan_transkripsi": [
+        "Angka-angka indikator berasal dari sumber (BPS) dan tidak diperiksa."
+      ]
+    },
+    {
+      "id": "GEO25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOPLSPLFG07SA-250073-0365",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Memahami proses/fenomena yang memengaruhi lingkungan fisik",
+      "kompetensi": "Menjelaskan proses alam yang memengaruhi lingkungan fisik",
+      "subkompetensi": null,
+      "indikator": "mengidentifikasi episentrum gempabumi untuk mengetahui dampaknya (19)",
+      "soal": "Peta Isoseismal Tapanuli Utara\nPerhatikan peta dan narasi berikut!\n[Gambar]\nPada 1 Oktober 2022 pukul 02:28:41 WIB, wilayah Kabupaten Pasaman Barat diguncang gempa bumi berkekuatan magnitudo 5,8 dengan kedalaman 10 km. Episenter gempa berada di darat pada koordinat 2,11° LU dan 98,83° BT. Getaran kuat dirasakan di beberapa kecamatan seperti Talamau, Kinali, dan Pasaman, menyebabkan kerusakan pada rumah tidak tahan gempa serta memicu longsor di kawasan perbukitan. Peta isoseismal menunjukkan bahwa wilayah dengan intensitas getaran tertinggi berada di sekitar zona patahan aktif Sumatera. Aktivitas manusia seperti pembangunan permukiman di kaki bukit tanpa perkuatan struktur turut memperbesar kerusakan akibat getaran tanah dan pergerakan lereng.\nBerdasarkan peta dan narasi di atas, bagaimana dampak yang kemungkinan terjadi akibat gempa Tapanuli Utara di lokasi titik episenter?",
+      "gambar": "Peta BMKG \"Peta Isoseismal Gempabumi Tapanuli Utara 01 Oktober 2022\" (Bidang Seismologi Teknik, Pusat Seismologi Teknik Geofisika Potensial dan Tanda Waktu), 98°–99° BT, 1°30'–3° LU. Bintang episenter relokasi berada di zona kuning (6 MMI) di sepanjang garis Sesar Aktif (merah, barat laut–tenggara), dikelilingi zona 5 MMI (hijau), 4 MMI, 3 MMI, dan 2 MMI. Segitiga hijau = stasiun akselerograf. Legenda intensitas 1–6 MMI.",
+      "opsi": [
+        "Lokasi titik episenter dapat mengalami beberapa kerusakan struktur ringan pada bangunan permukiman",
+        "Lokasi titik episenter tidak mengalami kerusakan bangunan dan hanya dapat menjatuhkan benda kecil di atas meja",
+        "Lokasi titik episenter menglami kerusakan besar seperti robohnya seluruh bangunan",
+        "Lokasi titik episenter mengalami kerusakan sedang seperti robohnya sebagian bangunan",
+        "Lokasi titik episenter tidak mengalami kerusakan apapun"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Episenter berada di zona intensitas VI MMI: getaran dirasakan semua orang dan dapat menimbulkan kerusakan ringan pada bangunan (A). Kerusakan sedang hingga roboh sebagian (D) sesuai VII–VIII MMI.",
+      "halaman": [
+        28,
+        29
+      ],
+      "catatan_transkripsi": [
+        "Narasi menyebut Kabupaten Pasaman Barat (Sumatera Barat) dengan kecamatan Talamau, Kinali, dan Pasaman, padahal peta dan koordinat (2,11° LU, 98,83° BT) menunjukkan gempa Tapanuli Utara (Sumatera Utara). Pasaman Barat kemungkinan tertukar dengan gempa lain; perlu dicek.",
+        "Batang skala peta tertulis \"0 350 700 1.400 2.100 2.800 Kilometers\", yang tidak mungkin untuk peta seluas itu; disalin apa adanya.",
+        "Salah ketik \"menglami\" pada opsi C disalin apa adanya."
+      ]
+    },
+    {
+      "id": "GEO25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOPLSPLFG08SA-250085-0481",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami proses yang memengaruhi lingkungan fisik dan sosial",
+      "subelemen": "Memahami proses/fenomena yang memengaruhi lingkungan fisik",
+      "kompetensi": "Menganalisis peranan manusia dalam mengubah lingkungan fisik",
+      "subkompetensi": null,
+      "indikator": "mengidentifikasi episentrum gempabumi gempabumi untuk memahami penyebab perubahan bentuk muka bumi (20)",
+      "soal": "Gempa Sigi\nPerhatikan peta dan narasi berikut!\n[Gambar]\nGempa Sigi – Sulawesi Tengah 2023\nPada 27 Februari 2023 pukul 08:26:02 WIB, wilayah Kabupaten Sigi, Sulawesi Tengah diguncang gempa tektonik berkekuatan magnitudo 5,5 dengan kedalaman 10 km. Episenter gempa terletak di darat pada koordinat 1,59° LS dan 120,21° BT. Berdasarkan peta isoseismal, intensitas getaran tertinggi tercatat di wilayah Kulawi dan Dolo Selatan, yang terletak dekat dengan Sesar Palu-Koro—salah satu sesar aktif utama di Sulawesi. Getaran dirasakan cukup kuat di permukiman padat yang berada di lereng dan bantaran sungai, menyebabkan beberapa kerusakan ringan pada bangunan tidak tahan gempa. Aktivitas manusia yang membangun tanpa mempertimbangkan aspek geologi semakin meningkatkan risiko kerusakan saat terjadi gempabumi.\nMerujuk pada narasi dan data Gempa Sigi, tentukan Fakta atau Opini yang sesuai dari pernyataan berikut!",
+      "gambar": "Peta BMKG \"Peta Isoseismal Gempabumi Sigi, Sulawesi Tengah 27 Februari 2023\" (119°10'–121°10' BT, 0°40'–2°40' LS) dengan kotak keterangan \"OT = 08:26:02 WIB, Depth = 10 Km, M = 5,5, Epic = 1.59 LS - 120.21 BT\". Bintang episenter di zona kuning (6 MMI) yang dikelilingi zona 5 MMI hingga 2 MMI; garis merah = sesar aktif; segitiga hijau = stasiun akselerograf; huruf X di sebelah barat laut episenter. Legenda intensitas 1–7 MMI.",
+      "opsi": [
+        "Pusat gempa Sigi 2023 berada di darat dengan kedalaman 10 km",
+        "Guncangan gempa lebih terasa di wilayah dengan batuan sedimen dan lembek",
+        "Gempa bumi hanya berdampak jika terjadi dengan magnitudo di atas 6,0"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pernyataan 1 sesuai data gempa (Fakta). Pernyataan 2 sesuai pengetahuan ilmiah tentang amplifikasi getaran pada tanah lunak (Fakta). Pernyataan 3 adalah generalisasi yang dibantah narasi sendiri (M5,5 menimbulkan kerusakan): Opini.",
+      "halaman": [
+        30,
+        31
+      ],
+      "catatan_transkripsi": [
+        "Pernyataan 2 tidak disebut di narasi sehingga bisa dianggap Opini bila \"fakta\" dibatasi pada data soal; kunci perlu dicek.",
+        "Huruf X pada peta tidak dirujuk oleh soal.",
+        "Kata \"gempabumi gempabumi\" pada indikator disalin apa adanya."
+      ],
+      "kolom": [
+        "Fakta",
+        "Opini"
+      ]
+    },
+    {
+      "id": "GEO25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOMBABNCG15SA-250230-0411",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Mengenal cara mitigasi dan adaptasi terhadap bencana alam di lingkungan tempat tinggal dan negaranya.",
+      "subelemen": "Menganalisis penyebab bencana geologis/hidroklimatologis",
+      "kompetensi": "Menggunakan konsep dasar geografi untuk menjelaskan kejadian dan dampak bencana",
+      "subkompetensi": null,
+      "indikator": "menganalisis hubungan antara peristiwa bencana dengan peta tematik kebencanaan (21)",
+      "soal": "PERTEMUAN LEMPENG TEKTONIK INDONESIA\nPerhatikan gambar berikut!\n[Gambar]\nSumber: Eric Gaba (Sting - fr:Sting)derivative work: Mikenorton (talk) - Tectonic_plates_boundaries_detailed-en.svg, CC BY 2.5, https://commons.wikimedia.org/w/index.php?curid=8357551\nBerdasarkan gambar di atas, manakah pernyataan yang benar dan salah berdasarkan analisis subduksi lempeng yang terjadi di Indonesia?",
+      "gambar": "Peta batas lempeng Asia Tenggara: lempeng India (IN), Burma (BU), Sunda (SU), Philippine Sea (PS), Australia (AU), Molucca Sea (MS), Banda Sea (BS), Timor (TI), Birds Head (BH). Garis subduksi bergerigi biru \"Sunda megathrust\" melengkung di barat Sumatra hingga selatan Jawa dan Nusa Tenggara; zona \"Ninety East - Sumatra\"; angka-angka kecepatan gerak lempeng (mis. 59, 46, 14, 11, 15, 44, 57, 92, 84, 17). Kalimantan berada di tengah lempeng Sunda, jauh dari batas lempeng.",
+      "opsi": [
+        "Gempa tektonik di wilayah Aceh, Sumatera Barat, dan selatan Jawa terjadi akibat tumbukan Lempeng Indo-Australia dan Eurasia.",
+        "Zona subduksi di selatan Pulau Jawa dan Nusa Tenggara menunjukkan potensi tsunami tinggi.",
+        "Wilayah Kalimantan relatif tidak aman dari aktivitas tektonik karena dekat dari batas lempeng aktif."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Sunda megathrust di barat Sumatra dan selatan Jawa adalah subduksi Lempeng Indo-Australia di bawah Eurasia (Benar); subduksi di selatan Jawa dan Nusa Tenggara berpotensi tsunami (Benar). Kalimantan berada di tengah Lempeng Sunda, jauh dari batas lempeng aktif (Salah).",
+      "halaman": [
+        32
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOFSGPIJG21SA-000000-0014",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menganalisis fenomena geosfer dari peta/citra penginderaan jauh",
+      "subkompetensi": null,
+      "indikator": "Menganalisis peran teknologi geospasial pada bidang tertentu (22)",
+      "soal": "Perhatikan informasi berikut!\n[Gambar]\nWindy.com adalah sebuah aplikasi berbasis peta yang sangat populer, dirancang untuk memvisualisasikan data cuaca dan angin secara global. Pengguna dapat melihat pola angin, suhu, curah hujan, tekanan atmosfer, gelombang laut, dan berbagai parameter meteorologi lainnya dalam bentuk animasi yang menarik. Data untuk Windy dikumpulkan dari berbagai model prakiraan cuaca global (seperti GFS, ECMWF) dan observasi satelit cuaca. Dengan Windy, pengguna dapat memprediksi kondisi cuaca di lokasi tertentu, merencanakan aktivitas yang bergantung pada cuaca (misalnya pelayaran, penerbangan, atau pendakian), serta memahami fenomena atmosfer secara visual dan intuitif.\nAplikasi tersebut dapat berperan untuk ... .",
+      "gambar": "Tangkapan layar situs windy.com yang menampilkan peta angin dan suhu Asia Tenggara–Indonesia (warna biru–hijau–merah dengan garis aliran angin, label suhu kota-kota), menu lapisan (Weather radar, Satellite, Wind, Rain, Temperature, Clouds, Waves, dll.) dan linimasa tanggal di bawah.",
+      "opsi": [
+        "Mengelola basis data historis tentang peristiwa bencana alam dan dampaknya.",
+        "Menyediakan informasi spasial dan temporal tentang kondisi atmosfer secara visual.",
+        "Mengembangkan instrumen pengukuran cuaca baru yang lebih akurat dan canggih.",
+        "Menganalisis perilaku sosial manusia dalam menghadapi perubahan iklim global.",
+        "Memfasilitasi komunikasi langsung antara ahli meteorologi dan masyarakat umum."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Windy menampilkan kondisi atmosfer menurut tempat (peta) dan waktu (animasi/linimasa) secara visual (B).",
+      "halaman": [
+        33
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "GEO25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOFSGPIJG20SA-000000-0007",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menginterpretasi fenomena pada peta/ citra penginderaan jauh (membaca peta/menggunakan unsur interpretasi)",
+      "subkompetensi": null,
+      "indikator": "menginterpretasi citra penginderaan jauh untuk menentukan tematik peta yang dihasilkan (23)",
+      "soal": "Perhatikan gambar Citra Satelit wilayah demak dan sekitarnya berikut ini!\n[Gambar]\nSumber: Citra satelit Copernicus Sentinel-2B\nPerhatikan dengan saksama citra satelit wilayah pesisir Semarang, Indonesia, yang disajikan di bawah ini. Citra ini diambil oleh satelit Copernicus Sentinel-2B dan menampilkan interaksi kompleks antara daratan dan lautan, menunjukkan area perkotaan, lahan pertanian, serta berbagai bentuk pemanfaatan wilayah pesisir. Amati perbedaan warna dan pola yang mengindikasikan jenis tutupan lahan, kondisi perairan, dan aktivitas manusia di sepanjang garis pantai.\nUntuk tujuan perencanaan tata ruang dan pengelolaan lingkungan wilayah pesisir Semarang, informasi spasial esensial apa yang dapat diekstraksi dan divisualisasikan menjadi peta tematik yang paling tepat dari pengolahan citra satelit sumber daya seperti yang disajikan di atas?",
+      "gambar": "Citra satelit warna alami: laut biru tua di barat laut dengan perairan pesisir kehijauan-keruh, garis pantai berlekuk dengan tambak, kawasan perkotaan berwarna kemerahan di kiri bawah (kota Semarang), dan lahan pertanian hijau berpetak dengan jalan dan permukiman linear di timur.",
+      "opsi": [
+        "Peta kepadatan penduduk serta persebaran fasilitas umum perkotaan.",
+        "Peta jalur migrasi hewan laut dan identifikasi vegetasi alami ekosistem pesisir.",
+        "Peta tutupan lahan, indeks kekeruhan perairan, serta perubahan garis pantai.",
+        "Peta persebaran jenis batuan dan potensi kandungan mineral di bawah permukaan laut.",
+        "Peta jaringan transportasi darat dan laut serta analisis aksesibilitas pusat-pusat ekonomi."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Citra Sentinel-2 warna alami langsung memperlihatkan tutupan lahan, kekeruhan perairan, dan garis pantai (C); kepadatan penduduk, migrasi hewan, dan mineral bawah laut tidak dapat diekstraksi langsung dari citra ini.",
+      "halaman": [
+        34,
+        35
+      ],
+      "catatan_transkripsi": [
+        "Judul gambar menyebut \"wilayah demak dan sekitarnya\" sedangkan narasi menyebut pesisir Semarang; disalin apa adanya.",
+        "Kalimat pertanyaan tercetak dua kali (di akhir halaman 35 dan di bawahnya); disalin sekali."
+      ]
+    },
+    {
+      "id": "GEO25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOFSGPIJG21SA-250161-0294",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis karakteristik wilayah tempat tinggal dan lingkungan",
+      "kompetensi": "Menentukan karakteristik wilayah berdasarkan informasi spasial",
+      "subkompetensi": null,
+      "indikator": "menginterpretasi citra penginderaan jauh untuk menganalisis dampak lingkungan (24)",
+      "soal": "Citra Satelit Pencemaran Lingkungan\n[Gambar]\nSumber gambar: https://www.greenpeace.org/indonesia/siaran-pers-2/45007/setahun-setelah-periode-awal-penguncian-dan-pembatasan-sosial-covid-19-gambar-satelit-mengungkapkan-peningkatan-polusi-udara-global/\nGambar di atas merupakan citra satelit yang menunjukkan tingkat polusi udara di wilayah Jakarta dan sekitarnya selama periode April 2018 hingga April 2021. Warna-warna pada peta menunjukkan konsentrasi Nitrogen Dioksida (NO₂), dengan legenda sebagai berikut:\nMerah: Konsentrasi NO₂ Tinggi\nKuning: Konsentrasi NO₂ Sedang\nHijau: Konsentrasi NO₂ Rendah\nPeta ini dapat digunakan untuk menganalisis dampak pencemaran udara terhadap lingkungan dan kesehatan masyarakat, serta mengidentifikasi sumber-sumber polusi berdasarkan ciri visual pada citra satelit.\nBerdasarkan pola distribusi konsentrasi NO₂ dalam citra satelit, pilih benar atau salah pernyataan dampak lingkungan dan sosial yang dapat terjadi di wilayah yang menunjukkan konsentrasi tinggi!",
+      "gambar": "Empat peta NO₂ (DU, skala 0,05–0,45) wilayah Jakarta dan sekitarnya: Apr 2018 (Covid restrictions in IDN: 0/100) dengan konsentrasi sangat tinggi (hitam-merah) di Tangerang–Jakarta; Apr 2019 (0/100) tinggi (merah) di Jakarta; Apr 2020 (68/100) jauh lebih rendah (kuning); Apr 2021 (69/100) kembali tinggi (merah) di Tangerang–Jakarta. Kota yang ditandai: Kresek, Tangerang, Curug, South Tangerang, Jakarta, Bekasi, Cikarang, Rengasdengklok, Depok, Cileungsir, Citeureup, Bogor, Caringin.",
+      "opsi": [
+        "Penurunan kualitas vegetasi akibat paparan polusi udara jangka panjang",
+        "Terjadinya hujan asam yang berdampak pada kualitas tanah dan air",
+        "Polusi udara menurunkan curah hujan dan mengakibatkan kekeringan total"
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "NO₂ dalam jangka panjang merusak jaringan tumbuhan (Benar) dan membentuk asam nitrat penyebab hujan asam (Benar). Polusi NO₂ tidak menyebabkan kekeringan total (Salah).",
+      "halaman": [
+        36,
+        37
+      ],
+      "catatan_transkripsi": [
+        "Legenda di teks (Merah/Kuning/Hijau) tidak sama dengan peta, yang memakai skala putih–kuning–merah–hitam tanpa hijau; disalin apa adanya.",
+        "Ejaan \"Cileungsir\" pada peta disalin apa adanya."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25GEOFSGPIJG21SA-250206-0307",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Memahami wilayah tempat tinggal dan lingkungan sekitar (karakteristik, keunikan, persamaan–perbedaan wilayah)",
+      "subelemen": "Menganalisis karakteristik wilayah tempat tinggal dan lingkungan",
+      "kompetensi": "Memahami konsep dan teori dasar mengenai dinamika kependudukan pada suatu wilayah tempat tinggal",
+      "subkompetensi": null,
+      "indikator": "mengidentifikasi objek yang nampak dari citra penginderaan jauh menggunakan unsur-unsur interpretasi (25)",
+      "soal": "Citra Satelit Pencemaran Sungai di Pekalongan\nGambar berikut menunjukkan citra satelit yang menampilkan kondisi pencemaran air sungai di Pekalongan, Jawa Tengah. Warna gelap pada aliran sungai menunjukkan tingkat pencemaran yang tinggi akibat limbah industri dan domestik.\n[Gambar]\nSumber gambar: Google Earth\nBerdasarkan citra satelit, pernyataan manakah yang benar mengenai interpretasi visual dari citra? (Pilih semua jawaban yang benar, Jawaban Benar lebih dari satu)",
+      "gambar": "Citra Google Earth (Imagery Date: 6/24/2025) pesisir Pekalongan: sungai berwarna sangat gelap berkelok dari kiri bawah ke muara di tengah atas yang dipenuhi perahu, diapit permukiman dan petak-petak tambak/sawah berwarna gelap; di kanan, saluran lurus berwarna cokelat keruh bermuara ke laut dengan sedimen menyebar di laut.",
+      "opsi": [
+        "Warna gelap pada aliran sungai menunjukkan tingkat pencemaran yang tinggi",
+        "Pola aliran sungai yang berkelok-kelok menunjukkan wilayah cenderung landai.",
+        "Tekstur kasar pada citra menunjukkan area dengan vegetasi lebat.",
+        "Bentuk persegi dengan rona gelap menunjukkan area persawahan.",
+        "Bayangan pada citra satelit tidak memberikan informasi penting dalam interpretasi pencemaran air."
+      ],
+      "kunci": [
+        0,
+        1
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Stimulus menyatakan warna gelap sungai menunjukkan pencemaran tinggi (A); sungai berkelok (meander) terbentuk di daerah landai (B). Petak persegi gelap di pesisir adalah tambak, bukan sawah (D salah); bayangan tetap merupakan unsur interpretasi (E salah).",
+      "halaman": [
+        38
+      ],
+      "catatan_transkripsi": [
+        "Opsi C (tekstur kasar = vegetasi lebat) adalah kaidah umum interpretasi citra dan mungkin juga dimaksudkan benar, walaupun area pada citra sebagian besar permukiman dan tambak. Kunci perlu dicek."
+      ]
+    },
+    {
+      "id": "GEO25-026",
+      "passage": null,
+      "nomor": "26",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOFSGGISG19SA-250243-0191",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menganalisis fenomena geosfer dari peta/citra penginderaan jauh",
+      "subkompetensi": null,
+      "indikator": "menginterpretasikan informasi geospasial untuk dampak pencapaian pembangunan (26)",
+      "soal": "Pembangunan PLTS Terapung Cirata di Waduk Cirata, Jawa Barat\n[Gambar]\nSumber gambar: https://www.antaranews.com/infografik/3800178/potensi-plts-terapung-di-indonesia\nGambar menunjukkan informasi geospasial tentang potensi pemanfaatan Pembangkit Listrik Tenaga Surya (PLTS) terapung di berbagai wilayah perairan Indonesia, baik di danau, waduk, hingga area pengelolaan air buangan. Menurut data BRIN (2023), wilayah Maluku dan Papua memiliki potensi terbesar dengan pemanfaatan mencapai 99,7%, sementara PLTS terapung aktif saat ini baru terdapat di Waduk Cirata, Jawa Barat, seluas 200 ha dengan kapasitas 192 MWp dan investasi Rp1,7 triliun.\nManakah dampak dari pembangunan PLTS terapung berikut yang benar?",
+      "gambar": "Infografis ANTARA \"Potensi PLTS Terapung di Indonesia\" (data BRIN, 27 Oktober 2023). Potensi energi surya (TWh/tahun) dan potensi pemanfaatan untuk PLTS terapung: Sumatra 48.000 dan 94,7%; Kalimantan 29.400 dan 97,3%; Sulawesi 50.200 dan 96,9%; Maluku dan Papua 51.200 dan 99,7%; Jawa dan Kep. Sunda Kecil 11.500 dan 53,8%. Wilayah perairan PLTS terapung: danau, dam (bendungan), waduk, area pengelolaan air buangan, danau irigasi, lepas pantai. Keunggulan: tidak membutuhkan lahan (daratan) yang umumnya lebih mahal; mengurangi terjadinya penguapan air; menghambat pertumbuhan gulma seperti eceng gondok. PLTS terapung di Indonesia: jumlah 1, Waduk Cirata Jawa Barat, luas 200 ha, kapasitas 192 MegaWatt peak (MWp), nilai investasi Rp1,7 triliun. Upaya pemerintah: mengidentifikasi wilayah perairan berpotensi; mekanisme lelang proyek yang transparan; skema investasi yang menarik; regulasi pendukung termasuk skema pembiayaan dan kemudahan perizinan. Kutipan Aga Ridhova (Periset Metalurgi BRIN) tentang besarnya potensi sel surya di daratan maupun perairan.",
+      "opsi": [
+        "PLTS terapung mengoptimalkan ruang perairan buatan tanpa mengurangi lahan pertanian atau permukiman.",
+        "PLTS terapung secara langsung mengendalikan banjir dan berfungsi sebagai tanggul air.",
+        "PLTS terapung berkontribusi pada pengurangan emisi karbon dan mendukung transisi energi bersih."
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Infografis menyebut PLTS terapung tidak membutuhkan lahan daratan (Benar) dan menghasilkan energi surya yang bersih (Benar). PLTS terapung tidak berfungsi sebagai pengendali banjir atau tanggul (Salah).",
+      "halaman": [
+        39,
+        40,
+        41
+      ],
+      "catatan_transkripsi": [
+        "Halaman 39 hanya memuat kotak indikator dan kode soal; infografis di halaman 40 dan pertanyaan di halaman 41.",
+        "27 Oktober 2023 memang hari Jumat, sesuai \"Jumat (27/10)\" pada infografis."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-027",
+      "passage": null,
+      "nomor": "27",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25GEOFSGGISG19SA-250244-0106",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menganalisis fenomena geosfer dari peta/citra penginderaan jauh",
+      "subkompetensi": null,
+      "indikator": "menganalisis kelayakan objek pembangunan yang direncanakan (27)",
+      "soal": "PETA JARINGAN JALAN PULAU KALIMANTAN\n[Gambar]\nSumber: Satker PJN Provinsi Kalimantan Barat Tahun 2018\nPilih pernyataan yang paling tepat yang menunjukkan kelayakan pembangunan jalan nasional berdasarkan pertimbangan spasial dan keberlanjutan! (jawaban benar lebih dari satu)",
+      "gambar": "\"Peta Jalan Nasional per Lintas di Pulau Kalimantan\": jalan nasional lintas selatan (biru), lintas tengah (hijau), penghubung lintas (jingga), jalan nasional Kalimantan Selatan, missing link (garis putus merah), jalan daerah, batas provinsi dan kabupaten, ibu kota provinsi/kabupaten/kecamatan, bandar udara, pelabuhan. Jaringan rapat di pesisir selatan dan timur (Pontianak, Palangkaraya, Banjarmasin, Balikpapan, Samarinda); bagian pedalaman tengah dan perbatasan Serawak-Malaysia di utara masih jarang jalan.",
+      "opsi": [
+        "Pembangunan jalan nasional baru di wilayah pedalaman Kalimantan Tengah yang saat ini minim akses layak dilakukan karena dapat membuka isolasi daerah dan mendukung pemerataan wilayah, meskipun menghadapi tantangan morfologis dan pembiayaan.",
+        "Pengembangan jaringan jalan di sekitar wilayah konsentrasi penduduk dan pusat-pusat kegiatan ekonomi seperti Balikpapan dan Samarinda memiliki kelayakan tinggi karena dapat langsung meningkatkan efisiensi logistik dan mendukung pertumbuhan ekonomi.",
+        "Pembangunan jalan nasional di pesisir utara Kalimantan Timur menuju perbatasan Serawak belum dapat dinilai sepenuhnya layak karena masih memerlukan kajian potensi wilayah dan fungsi strategis lintas batas.",
+        "Perpanjangan jalan nasional menuju daerah terpencil di Kalimantan Utara menunjukkan tantangan kelayakan, terutama dari aspek biaya pembangunan dan aksesibilitas, namun tetap memerlukan studi potensi sumber daya wilayah.",
+        "Peningkatan kapasitas jalan nasional yang sudah menghubungkan pelabuhan utama di Kalimantan dianggap lebih layak daripada membuka jalur baru, karena memaksimalkan infrastruktur yang telah ada dan menurunkan biaya distribusi."
+      ],
+      "kunci": [
+        0,
+        1,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "A (pemerataan dan membuka isolasi), B (efisiensi di pusat penduduk dan ekonomi), dan E (memaksimalkan jalan yang menghubungkan pelabuhan) menyatakan kelayakan berdasarkan pertimbangan spasial dan keberlanjutan. C dan D justru menyatakan kelayakan belum dapat dipastikan.",
+      "halaman": [
+        42,
+        43
+      ],
+      "catatan_transkripsi": [
+        "Kelima pernyataan masuk akal dan saling tumpang tindih; kunci sangat bergantung pada maksud penyusun. Perlu dicek guru.",
+        "Isi legenda peta dibaca dari tangkapan layar kecil."
+      ]
+    },
+    {
+      "id": "GEO25-028",
+      "passage": null,
+      "nomor": "28",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOFSGPIJG20SA-250171-0291",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menginterpretasi fenomena pada peta/ citra penginderaan jauh (membaca peta/menggunakan unsur interpretasi)",
+      "subkompetensi": null,
+      "indikator": "Merencanakan pembangunan infrastruktur berdasarkan peta citra berkontur (28)",
+      "soal": "Penutup Lahan Hutan dan Kontur\nPerhatikan gambar berikut!\n[Gambar]\nsumber gambar: https://kphropang.wordpress.com/2017/01/20/peta-kawasan-hutan/\nGambar di atas merupakan peta kawasan hutan dan kontur di Kabupaten Sumbawa, Nusa Tenggara Barat. Kawasan hutan tersebut diklasifikasikan menjadi hutan lindung, hutan produksi, dan hutan produksi terbatas. Informasi ini penting untuk perencanaan infrastruktur, konservasi lingkungan, dan pengelolaan sumber daya alam di wilayah tersebut.\nBerdasarkan distribusi kawasan hutan dan kontur wilayah pada peta, pilih benar atau salah infrastruktur pendukung yang paling tepat direncanakan untuk menunjang keberlanjutan wilayah pada wilayah tersebut!",
+      "gambar": "\"Peta Kawasan Hutan KPH Ropang Kabupaten Sumbawa Provinsi Nusa Tenggara Barat\" skala 1:200.000: hutan lindung (hijau tua) mendominasi, hutan produksi (kuning) di bagian utara-tengah, hutan produksi terbatas (hijau muda) di barat dan selatan; jalan (merah) terpusat di area non-hutan, garis kontur, dan sungai (biru). Sumber peta: Peta RBI Kabupaten Sumbawa 1:200.000, Peta Tata Batas Kawasan Hutan 1:25.000, Peta DAS BPDAS Dodokan Moyosari Mataram 1:250.000; inset lokasi di Pulau Sumbawa.",
+      "opsi": [
+        "Pembangunan jalan konservasi yang mengikuti kontur untuk meminimalisir erosi tanah",
+        "Pembukaan jalur tambang terbuka di dalam kawasan hutan lindung",
+        "Pembangunan menara pemantau kebakaran hutan di wilayah hutan produksi terbatas"
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Jalan yang mengikuti kontur mengurangi erosi (Benar); tambang terbuka dilarang di hutan lindung (Salah); menara pemantau kebakaran mendukung pengelolaan hutan produksi terbatas (Benar).",
+      "halaman": [
+        44,
+        45
+      ],
+      "catatan_transkripsi": [
+        "Di halaman 45–46, di bawah soal ini, tercetak ulang soal Gunung Arjuno (nomor 12); dicatat sekali sebagai GEO25-012."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "GEO25-029",
+      "passage": null,
+      "nomor": "29",
+      "format": "benar-salah",
+      "kode_sumber": "25GEOFSGPIJG20SA-250262-0199",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Menganalisis secara spasial fenomena geografi dalam kehidupan sehari-hari dan manfaatnya",
+      "subelemen": "Menganalisis peta/citra penginderaan jauh",
+      "kompetensi": "Menginterpretasi fenomena pada peta/ citra penginderaan jauh (membaca peta/menggunakan unsur interpretasi)",
+      "subkompetensi": null,
+      "indikator": "menginterpretasi fenomena/program yang sesuai, berdasarkan peta citra berkontur. (29)",
+      "soal": "Citra dan Elevasi Kawasan Hutan Kota Bogor\nPerhatikan Citra dan Elevasi Berikut!\n[Gambar]\nManakah pernyataan berikut yang menunjukkan interpretasi citra yang sesuai dengan karakteristik wilayah pada citra dan elevasi tersebut?\nentukan Sesuai atau Tidak Sesuai untuk setiap pernyataan!",
+      "gambar": "Citra Google Earth dan DEMNAS skala 1:5500 (A4) dengan kontur 150–200 m. Lokasi A di tengah berupa tutupan pohon lebat (sekitar 200 m); lokasi C di kiri berupa perairan gelap (danau/situ); lokasi B di kanan bawah berupa atap-atap rumah rapat; lokasi D di atas berupa sungai berwarna cokelat yang berkelok di dekat perumahan.",
+      "opsi": [
+        "Lokasi A menunjukkan kawasan hutan kota",
+        "Lokasi C menunjukkan kawasan hutan",
+        "Lokasi B menunjukkan kawasan permukiman"
+      ],
+      "kunci": [
+        true,
+        false,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "A bertutupan pohon lebat di tengah kota (hutan kota); C adalah badan air (situ/danau), bukan hutan; B adalah permukiman padat.",
+      "halaman": [
+        47,
+        48
+      ],
+      "catatan_transkripsi": [
+        "Salah ketik \"entukan\" (Tentukan) disalin apa adanya; lokasi D tidak dirujuk oleh pernyataan."
+      ],
+      "kolom": [
+        "Sesuai",
+        "Tidak Sesuai"
+      ]
+    },
+    {
+      "id": "GEO25-030",
+      "passage": null,
+      "nomor": "30",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25GEOFSGPIJG21SA-000000-0012",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Menganalisis peta/citra penginderaan jauh",
+      "subelemen": "0",
+      "kompetensi": "Menganalisis fenomena geosfer dari peta/citra penginderaan jauh",
+      "subkompetensi": null,
+      "indikator": "menginterpretasi citra satelit untuk menentukan dampak lingkungan dari alih fungsi lahan (30)",
+      "soal": "Perhatikan citra satelit berikut!\n[Gambar]\nSumber: Mongabay (2024)\nCitra satelit dari kawasan hutan Taman Nasional Tesso Nilo pada Oktober 2020 dan Oktober 2024 memperlihatkan adanya deforestasi yang signifikan di kawasan tersebut. Data menunjukkan bahwa antara tahun 2009 hingga 2023, Taman Nasional Tesso Nilo telah kehilangan sekitar 78% tutupan hutan primer akibat aktivitas pembukaan lahan. Pada tahun 2024, deforestasi masih terus berlangsung di sisa hutan yang ada, dengan penyebab utama adalah ekspansi perkebunan kelapa sawit. Selain itu, pembangunan jalan di kawasan ini juga meningkatkan aktivitas perburuan liar terhadap satwa di wilayah tersebut.\nBagaimana dampak fenomena tersebut terhadap lingkungannya?",
+      "gambar": "Dua citra satelit berdampingan, \"October 2020\" dan \"October 2024\": hutan hijau tua yang pada 2024 semakin banyak diselingi petak-petak terbuka berwarna cokelat terang (pembukaan lahan).",
+      "opsi": [
+        "Hilangnya tutupan hutan primer di kawasan taman nasional akibat deforestasi membuat hutan ini tidak memiliki umur yang panjang.",
+        "Deforestasi hutan primer berakibat penurunan suhu lokal di kawasan karena perkebunan kelapa sawit lebih efektif menaungi tanah.",
+        "Proses penyerapan karbon dioksida pada hutan primer di kawasan Taman Nasional Tesso Nilo kini tidak terjadi lagi secara signifikan.",
+        "Deforestasi di hutan primer menyebabkan percepatan peningkatan emisi karbon, sehingga berkontribusi pada pemanasan global.",
+        "Kawasan hutan primer Taman Nasional Tesso Nilo yang di alih fungsikan tidak dapat dipulihkan dalam jangka waktu yang cepat."
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Hilangnya hutan primer melepaskan karbon tersimpan dan mengurangi serapan, sehingga mempercepat peningkatan emisi dan pemanasan global (D). B keliru; A dan C berlebihan.",
+      "halaman": [
+        48,
+        49
+      ],
+      "catatan_transkripsi": [
+        "Opsi E (hutan primer tidak dapat pulih dalam waktu cepat) juga benar secara ekologis; kunci perlu dicek.",
+        "Kotak indikator memuat Elemen \"Menganalisis peta/citra penginderaan jauh\" (yang lazimnya subelemen) dan Subelemen \"0\"; disalin apa adanya.",
+        "Teks stimulus tercetak miring; angka 78% berasal dari sumber (Mongabay) dan tidak diperiksa."
+      ]
+    }
+  ]
+}

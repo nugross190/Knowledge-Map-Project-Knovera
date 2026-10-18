@@ -1,0 +1,917 @@
+{
+  "id": "tka-kimia-pilihan-2025",
+  "kode": "KIM25",
+  "mapel": "Kimia",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran pilihan",
+  "sumber": {
+    "berkas": "SOAL_TKA_Kimia_SMA_2025_Pilihan.pdf",
+    "halaman": 23,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber (mis. \"dangat rendah\", \"makroskpis\", \"Tak berwana\"); rumus kimia ditulis dengan subskrip dan superskrip Unicode, huruf miring tidak dipertahankan.",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai; semua perhitungan diperiksa ulang dengan Python.",
+    "PDF memuat 23 soal (nomor 1, 3–15, dan 17–25), satu soal per halaman. Nomor 2 dan 16 belum tersedia: di sumber hanya tercetak catatan \"SOAL NO.2 OTW\" (halaman 1) dan \"SOAL NO.16 OTW\" (halaman 14).",
+    "Nomor soal diambil dari angka dalam kurung di akhir indikator, karena soal tidak diberi nomor tersendiri.",
+    "Tidak ada stimulus yang dipakai bersama oleh beberapa soal, sehingga daftar teks kosong dan setiap soal memuat stimulusnya sendiri di kolom soal; penanda [Gambar] dan [Tabel] menunjukkan letak gambar (diuraikan di kolom gambar) dan tabel (di kolom tabel).",
+    "Kotak indikator sumber berisi Elemen, Subelemen, Kompetensi, dan Indikator; Elemen dan Subelemen disimpan di kolom elemen dan subelemen, sedangkan subkompetensi bernilai null karena tidak ada di sumber.",
+    "Kode soal sumber (mis. 25KIMKDSSTKK05SA-000000-0643) disimpan di kolom kode_sumber dan label bentuk soal asli di kolom bentuk_sumber.",
+    "Bentuk \"Pilihan Ganda Kompleks - MCMA\" dicatat sebagai pilihan-ganda-kompleks dan \"Pilihan Ganda Kompleks - Kategori\" sebagai benar-salah; judul kolom (Benar/Salah) ada di medan 'kolom', dan kunci true berarti kolom pertama."
+  ],
+  "teks": [],
+  "soal": [
+    {
+      "id": "KIM25-001",
+      "passage": null,
+      "nomor": "1",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKDSSTKK05SA-000000-0643",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Dasar",
+      "subelemen": "Stoikiometri",
+      "kompetensi": "Menerapkan perhitungan kimia untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan senyawa yang mengandung suatu unsur tertentu dengan kadar tertinggi. (1)",
+      "soal": "Fosfor merupakan salah satu unsur penting yang banyak digunakan dalam berbagai produk kimia, baik di bidang pertanian, industri, maupun laboratorium. Senyawa-senyawa fosfor memiliki peranan yang beragam, misalnya sebagai bahan pupuk, bahan tambahan makanan, hingga bahan baku pembuatan zat kimia lainnya.\nBeberapa contoh senyawa yang mengandung fosfor beserta massa molekul relatifnya (Mr) dapat dilihat pada tabel berikut.\n[Tabel]\nSenyawa yang memiliki kandungan fosfor tertinggi adalah .... (diketahui Ar P = 31)",
+      "tabel": [
+        [
+          "Nama Senyawa",
+          "Rumus Kimia",
+          "Mr"
+        ],
+        [
+          "Natrium dihidrogen fosfat",
+          "NaH₂PO₄",
+          "120"
+        ],
+        [
+          "Natrium hidrogen fosfat",
+          "Na₂HPO₄",
+          "142"
+        ],
+        [
+          "Natrium fosfat",
+          "Na₃PO₄",
+          "164"
+        ],
+        [
+          "Fosfor triklorida",
+          "PCl₃",
+          "137,5"
+        ],
+        [
+          "Fosfor pentaklorida",
+          "PCl₅",
+          "208,5"
+        ]
+      ],
+      "opsi": [
+        "Natrium dihidrogen fosfat",
+        "Natrium hidrogen fosfat",
+        "Natrium fosfat",
+        "Fosfor triklorida",
+        "Fosfor pentaklorida"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Setiap senyawa memuat satu atom P, jadi kadar P = 31/Mr: NaH₂PO₄ 25,8%; Na₂HPO₄ 21,8%; Na₃PO₄ 18,9%; PCl₃ 22,5%; PCl₅ 14,9%. Kadar tertinggi pada natrium dihidrogen fosfat (Mr terkecil). Nilai Mr di tabel cocok dengan Ar Na 23, H 1, P 31, O 16, Cl 35,5.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": [
+        "Di bawah soal ini tercetak catatan \"SOAL NO.2 OTW\"; soal nomor 2 tidak ada di PDF."
+      ]
+    },
+    {
+      "id": "KIM25-003",
+      "passage": null,
+      "nomor": "3",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKDSSTKK05SA-000000-0629",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Dasar",
+      "subelemen": "Stoikiometri",
+      "kompetensi": "Menerapkan perhitungan kimia untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan volume reaktan atau produk dari reaksi pembakaran hidrokarbon. (3)",
+      "soal": "Penggunaan gas etana dan propana sebagai bahan bakar alternatif semakin meningkat di kawasan industri. Meski pembakarannya berlangsung sempurna, gas rumah kaca berupa CO₂ tetap dihasilkan yang berkontribusi terhadap pemanasan global.\nDalam suatu percobaan, campuran 10 liter etana (C₂H₆) dan propana (C₃H₈) dibakar sempurna menghasilkan gas karbon dioksida dan 36 L air. Reaksi pembakaran masing-masing gas sebagai berikut:\nC₂H₆ (g) + O₂ (g) → CO₂ (g) + H₂O (g) (belum setara)\nC₃H₈ (g) + O₂ (g) → CO₂ (g) + H₂O (g) (belum setara)\nBerapakah volume total gas CO₂ yang dihasilkan dari pembakaran campuran tersebut jika semua gas diukur pada suhu dan tekanan yang sama?",
+      "opsi": [
+        "8 L",
+        "18 L",
+        "20 L",
+        "26 L",
+        "44 L"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Setara: C₂H₆ + 7/2 O₂ → 2CO₂ + 3H₂O dan C₃H₈ + 5O₂ → 3CO₂ + 4H₂O. Misal x L etana dan y L propana: x + y = 10 dan 3x + 4y = 36, sehingga x = 4 L dan y = 6 L. CO₂ = 2(4) + 3(6) = 26 L.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "KIM25-004",
+      "passage": null,
+      "nomor": "4",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKDSSTKK05SA-000000-0630",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Dasar",
+      "subelemen": "Stoikiometri",
+      "kompetensi": "Menerapkan perhitungan kimia untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan jumlah molekul suatu gas pada kondisi tertentu sesuai parameter yang diberikan. (4)",
+      "soal": "Sulfur dioksida (SO₂) merupakan polutan udara berbahaya yang dihasilkan dari pembakaran bahan bakar fosil dan aktivitas industri. Gas SO₂ dapat menyebabkan hujan asam dan masalah pernapasan. Sebuah stasiun pemantau kualitas udara mengambil sampel udara di area industri sebanyak 6 liter pada suhu 25°C dan tekanan 1 atm. Hasil pengukuran menunjukkan konsentrasi sulfur dioksida di area industri sebanyak 0,0002% volume. Berapakah jumlah molekul SO₂ yang terdeteksi dalam sampel?\n(Diketahui: Bilangan Avogadro: 6,02×10²³ molekul/mol)",
+      "opsi": [
+        "2,95 × 10¹⁷ molekul",
+        "12,02 × 10¹⁷ molekul",
+        "3,23 ×10¹⁸ molekul",
+        "1,51 × 10²³ molekul",
+        "2,41 × 10²⁴ molekul"
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "V SO₂ = 0,0002% × 6 L = 1,2 × 10⁻⁵ L. n = PV/RT = (1 × 1,2 × 10⁻⁵)/(0,082 × 298) = 4,91 × 10⁻⁷ mol. Jumlah molekul = 4,91 × 10⁻⁷ × 6,02 × 10²³ = 2,956 × 10¹⁷ (dibulatkan ke bawah menjadi 2,95 × 10¹⁷ di opsi). Opsi C (3,23 × 10¹⁸) sepuluh kali hasil memakai volume molar STP 22,4 L (3,23 × 10¹⁷).",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Nilai R tidak diberikan di soal; perhitungan memakai R = 0,082 L atm mol⁻¹ K⁻¹."
+      ]
+    },
+    {
+      "id": "KIM25-005",
+      "passage": null,
+      "nomor": "5",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKDSSTKK05SA-000000-0638",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Dasar",
+      "subelemen": "Stoikiometri",
+      "kompetensi": "Menerapkan perhitungan kimia untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan massa produk yang dihasilkan dari suatu reaksi kimia berdasarkan prinsip pereaksi pembatas. (5)",
+      "soal": "Tembaga (Cu) banyak dimanfaatkan dalam industri kelistrikan seperti pembuatan kabel, kumparan motor, dan komponen elektronik, karena memiliki konduktivitas listrik yang sangat tinggi. Salah satu cara mendapatkan tembaga murni adalah dengan mereduksi CuO menggunakan karbon. Reaksi berlangsung sebagai berikut:\n2CuO(s) + C(s) → 2Cu(s) + CO₂(g)\nDi laboratorium sekolah seorang murid mereaksikan 39,75 gram CuO dan 3,0 gram karbon, berapa gram tembaga murni (Cu) maksimum yang dapat diperoleh?\n(Diketahui: Ar: Cu = 63,5; O = 16; C = 12)",
+      "opsi": [
+        "16 gram",
+        "23,8 gram",
+        "25,4 gram",
+        "31,75 gram",
+        "47,62 gram"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "n CuO = 39,75/79,5 = 0,5 mol; n C = 3,0/12 = 0,25 mol. Perbandingan 2 : 1 tepat habis bereaksi, jadi Cu = 0,5 mol × 63,5 = 31,75 g.",
+      "halaman": [
+        4
+      ],
+      "catatan_transkripsi": [
+        "Kedua pereaksi tepat habis (perbandingan mol tepat 2 : 1), sehingga tidak ada pereaksi pembatas yang sebenarnya walaupun indikator menyebut pereaksi pembatas; kunci tidak berubah."
+      ]
+    },
+    {
+      "id": "KIM25-006",
+      "passage": null,
+      "nomor": "6",
+      "format": "benar-salah",
+      "kode_sumber": "25KIMKDSSTKK05SA-000000-0328",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Kimia Dasar",
+      "subelemen": "Stoikiometri",
+      "kompetensi": "Menerapkan perhitungan kimia untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan komposisi campuran larutan untuk menghasilkan senyawa dengan jumlah tertentu sesuai parameter yang diberikan. (6)",
+      "soal": "Kristal kalium klorida (KCl) merupakan garam penting yang memiliki banyak kegunaan, misalnya sebagai sumber suplemen kalium untuk mengatasi hipokalemia dan hipertensi, atau di bidang pertanian sebagai pupuk tanaman. Seorang peneliti bidang pertanian ingin membuat kristal kalium klorida (KCl) dari kalium hidroksida dan asam klorida. Persamaan reaksi yang terjadi:\nKOH(aq) + HCl(aq) → KCl(aq) + H₂O(l)\nTahapan reaksi mencakup reaksi netralisasi diikuti dengan pemisahan dan pemurnian produk dengan cara rekristalisasi. Larutan yang tersedia di laboratorium adalah sebagai berikut\n[Gambar]\n(Diketahui Ar K = 39, Cl = 35,5)\nSecara teori, manakah komposisi berikut yang jika direaksikan akan menghasilkan tepat 29,8 gram kristal KCl?\nTentukan Benar atau Salah pada setiap pernyataan!",
+      "gambar": "Empat botol berlabel: Botol A berisi HCl (aq) 1M, Botol B berisi HCl (aq) 2M, Botol C berisi KOH (aq) 1M, Botol D berisi KOH (aq) 2M.",
+      "opsi": [
+        "300 mL larutan dari botol B + 200 mL larutan dari botol C.",
+        "200 mL larutan dari botol B + 300 mL larutan dari botol D.",
+        "400 mL larutan dari botol A + 500 mL larutan dari botol C."
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "29,8 g KCl = 29,8/74,5 = 0,4 mol. (1) HCl 0,6 mol + KOH 0,2 mol → KCl 0,2 mol = 14,9 g: Salah. (2) HCl 0,4 mol + KOH 0,6 mol → KCl 0,4 mol = 29,8 g: Benar. (3) HCl 0,4 mol + KOH 0,5 mol → KCl 0,4 mol = 29,8 g: Benar.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Pada pernyataan 2 dan 3 tersisa KOH berlebih; kunci menganggap \"secara teori\" berarti massa KCl yang terbentuk, bukan kemurnian kristal."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "KIM25-007",
+      "passage": null,
+      "nomor": "7",
+      "format": "pilihan-ganda-kompleks",
+      "kode_sumber": "25KIMKORSHKK06SA-000000-0097",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - MCMA",
+      "elemen": "Kimia Organik",
+      "subelemen": "Struktur dan Sifat Hidrokarbon",
+      "kompetensi": "Menganalisis sifat fisik dan kimia senyawa organik berdasarkan strukturnya serta mampu mendeskripsikan manfaatnya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menentukan kegunaan senyawa hidrokarbon berdasarkan titik didih dan berat molekul. (7)",
+      "soal": "Minyak bumi merupakan campuran berbagai macam zat organik dengan komponen pokok senyawa hidrokarbon. Pemisahan minyak mentah dilakukan dalam kilang minyak melalui proses destilasi bertingkat berdasarkan perbedaan titik didih. Beberapa fraksi minyak bumi antara lain: senyawa P, senyawa Q , senyawa R , dan senyawa S memiliki kegunaan yang berbeda.\nBerikut disajikan grafik hubungan bobot molekul senyawa hidrokarbon P, Q, R, dan S dengan titik didihnya:\n[Gambar]\nBerdasarkan grafik, tentukan pasangan senyawa hidrokarbon dengan potensi pemanfaatannya yang benar! Pilih semua jawaban benar. Jawaban benar lebih dari satu.",
+      "gambar": "Grafik garis berjudul \"Grafik Hubungan Bobot Molekul dengan Titik Didih Senyawa Hidrokarbon\"; sumbu x Bobot Molekul (skala 50–350), sumbu y Titik Didih (°C) (skala −100 sampai 400). Empat titik yang dihubungkan garis, terbaca kira-kira: P (bobot ≈45; titik didih ≈−40 °C), Q (≈130; ≈150 °C), R (≈270; ≈330 °C), S (≈295; ≈355 °C). Angka titik hanya perkiraan dari gambar.",
+      "opsi": [
+        "Senyawa Q dimanfaatkan sebagai bahan bakar kendaraan bermotor.",
+        "Senyawa R dapat digunakan sebagai minyak pelumas.",
+        "Senyawa P bermanfaat sebagai bahan bakar pesawat terbang.",
+        "Senyawa S dapat digunakan sebagai bahan pembuatan lilin.",
+        "Senyawa P dapat dimanfaatkan sebagai pelarut."
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "P (bobot ≈45, td ≈−40 °C) setara propana, fraksi gas untuk LPG; bukan avtur (fraksi kerosin) dan bukan pelarut (nafta/petroleum eter berwujud cair), jadi C dan E salah. Q (td ≈150 °C) termasuk fraksi bensin, jadi A benar. R (td ≈330 °C) dan S (td ≈355 °C) berada di sekitar batas fraksi solar, minyak pelumas, dan parafin; B dan D dipilih karena urutan fraksinya (pelumas lalu lilin/parafin), tetapi batas suhu fraksi berbeda antarbuku.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Kunci bergantung pada tabel fraksi minyak bumi yang dipakai penyusun soal; R dan S bisa juga dianggap fraksi solar/pelumas. Perlu dicek guru."
+      ]
+    },
+    {
+      "id": "KIM25-008",
+      "passage": null,
+      "nomor": "8",
+      "format": "benar-salah",
+      "kode_sumber": "25KIMKORSHKK06SA-000000-0225",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Kimia Organik",
+      "subelemen": "Struktur dan Sifat Hidrokarbon",
+      "kompetensi": "Menganalisis sifat fisik dan kimia senyawa organik berdasarkan strukturnya serta mampu mendeskripsikan manfaatnya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis suatu senyawa organik berdasarkan data/informasi yang diberikan. (8)",
+      "soal": "Suatu hidrokarbon pada suhu kamar berbentuk gas dan tidak berwarna, digunakan sebagai komponen utama LPG dan kompor portabel. Hasil pembakaran sempurna terhadap 2 mol hidrokarbon tersebut menghasilkan 8 mol CO₂ dan 10 mol H₂O.\nSenyawa hidrokarbon tersebut memiliki:\n2 atom C primer\n2 atom C sekunder\nBagaimana hasil analisis terhadap senyawa hidrokarbon tersebut? Tentukan Benar atau Salah untuk setiap pernyataan berikut ini terkait senyawa hidrokarbon tersebut!",
+      "gambar": "Pernyataan 2 memuat rumus struktur garis zig-zag: H₃C di kiri, dua sudut rantai (CH₂), dan CH₃ di kanan, yaitu CH₃–CH₂–CH₂–CH₃ (n-butana).",
+      "opsi": [
+        "Rumus kimia hidrokarbon tersebut adalah C₄H₁₀.",
+        "Struktur hidrokarbon tersebut adalah: [Gambar]",
+        "Hidrokarbon tersebut diperkirakan memiliki titik didih lebih rendah dibandingkan pasangan isomernya."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "2 mol CₓHᵧ → 8 mol CO₂ + 10 mol H₂O, jadi x = 4 dan y = 10: C₄H₁₀ (Benar). Dua C primer dan dua C sekunder berarti rantai lurus n-butana, sesuai struktur yang digambar (Benar). Rantai lurus n-butana mendidih pada suhu lebih tinggi daripada isomernya isobutana (2-metilpropana) yang bercabang, jadi pernyataan 3 Salah.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": [],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "KIM25-009",
+      "passage": null,
+      "nomor": "9",
+      "format": "benar-salah",
+      "kode_sumber": "25KIMKORSHKK06SA-000000-0088",
+      "bentuk_sumber": "Pilihan Ganda Kompleks - Kategori",
+      "elemen": "Kimia Organik",
+      "subelemen": "Struktur dan Sifat Hidrokarbon",
+      "kompetensi": "Menganalisis sifat fisik dan kimia senyawa organik berdasarkan strukturnya serta mampu mendeskripsikan manfaatnya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis senyawa isomer berdasarkan data entalpi pembakaran standar dan reaksi pembakaran. (9)",
+      "soal": "Suatu perusahaan energi sedang meneliti dua senyawa hidrokarbon, yaitu 1-butena dan 2-metil 1-propena, untuk digunakan sebagai bahan bakar tambahan dalam campuran bensin ramah lingkungan.\n[Gambar]\nTim peneliti ingin mengetahui senyawa mana yang memberikan energi pembakaran lebih besar per mol untuk meningkatkan efisiensi bahan bakar dengan cara membandingkan struktur kedua senyawa dan menganalisis reaksi pembakaran dari masing-masing isomer.\nSaat keduanya dibakar sempurna diperoleh data perubahan entalpi pembakaran (ΔHc) masing-masing sebagai berikut.\n[Tabel]\nBagaimana hasil analisis terhadap kedua isomer tersebut? Tentukan Benar atau Salah pada setiap pernyataan berikut ini mengenai kedua isomer!",
+      "gambar": "Rumus struktur garis 2-metil-1-propena (karbon pusat bercabang metil dengan ikatan rangkap ke CH₂ ujung) dan 1-butena (rantai lurus empat karbon dengan ikatan rangkap di ujung), dengan label di bawah masing-masing.",
+      "tabel": [
+        [
+          "Senyawa C₄H₈",
+          "ΔHc (kJ/mol)"
+        ],
+        [
+          "2-metil 1-propena",
+          "−2.715"
+        ],
+        [
+          "1-butena",
+          "−2.721"
+        ]
+      ],
+      "opsi": [
+        "1-butena memberikan efisiensi pembakaran yang lebih baik dibandingkan 2-metil 1-propena.",
+        "Secara termodinamika 2-metil 1-propena lebih stabil dan memiliki tingkat energi lebih rendah dibandingkan 1-butena.",
+        "Hibridisasi senyawa karbon hasil pembakaran adalah sp³."
+      ],
+      "kunci": [
+        true,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "1-butena melepas kalor lebih besar per mol (2.721 > 2.715 kJ/mol), sesuai definisi efisiensi di stimulus (Benar). Kedua isomer menghasilkan produk yang sama, jadi isomer yang melepas kalor lebih kecil (2-metil-1-propena) berenergi lebih rendah dan lebih stabil (Benar). Karbon hasil pembakaran ada di CO₂, yang berhibridisasi sp, bukan sp³ (Salah).",
+      "halaman": [
+        8
+      ],
+      "catatan_transkripsi": [
+        "\"Efisiensi pembakaran\" pada pernyataan 1 diartikan sebagai energi per mol sesuai stimulus; bila diartikan lain, pernyataan 1 dapat diperdebatkan."
+      ],
+      "kolom": [
+        "Benar",
+        "Salah"
+      ]
+    },
+    {
+      "id": "KIM25-010",
+      "passage": null,
+      "nomor": "10",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK08SA-000000-0355",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis sifat larutan berdasarkan teori dan konsep asam basa.",
+      "subkompetensi": null,
+      "indikator": "Menentukan spesi asam basa berdasarkan teori tertentu. (10)",
+      "soal": "Dalam sebuah artikel ilmiah, dinyatakan bahwa \"Penggunaan pupuk amonium berlebih dalam pertanian dapat meningkatkan keasaman tanah. Ion amonium (NH₄⁺) yang terhidrolisis akan menghasilkan ion hidronium (H₃O⁺), yang dapat menurunkan pH tanah dan memengaruhi ketersediaan unsur hara bagi tanaman.\"\nTertarik dengan fenomena ini, Hayyan dan temannya mempelajari lebih lanjut. Dari hasil studi pustaka, mereka menemukan bahwa salah satu reaksi yang terjadi dalam tanah adalah:\nNH₄⁺ + H₂O ⇌ NH₃ + H₃O⁺\nBerdasarkan reaksi dan teori Bronsted-Lowry, manakah yang merupakan pasangan asam-basa konjugasi yang tepat?",
+      "opsi": [
+        "NH₄⁺ dan H₂O",
+        "NH₃ dan H₃O⁺",
+        "₃O⁺ dan NH₄⁺",
+        "NH₃ dan H₂O",
+        "NH₄⁺ dan NH₃"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "NH₄⁺ melepas H⁺ menjadi NH₃, jadi NH₄⁺/NH₃ adalah pasangan asam-basa konjugasi (pasangan lain: H₃O⁺/H₂O).",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Opsi C tercetak \"₃O⁺ dan NH₄⁺\" (huruf H hilang, kemungkinan maksudnya H₃O⁺); disalin apa adanya."
+      ]
+    },
+    {
+      "id": "KIM25-011",
+      "passage": null,
+      "nomor": "11",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANKSLK10SA-000000-0542",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Kesetimbangan Dalam Larutan Berair",
+      "kompetensi": "Menganalisis pH larutan berdasarkan sifat asam dan basa.",
+      "subkompetensi": null,
+      "indikator": "Memprediksi perubahan warna larutan asam basa menggunakan indikator tertentu. (11)",
+      "soal": "Seorang peneliti lingkungan mengambil 5 sampel air limbah cair dari industri peternakan yang diduga mengandung spesi asam/basa. Peneliti melakukan analisis pada 5 sampel tersebut untuk membuktikan apakah benar pada masing-masing sampel mengandung spesi asam/basa sesuai dengan yang digunakan industri tersebut. Penelitian dilakukan dengan menggunakan indikator fenolftalein yang memiliki trayek pH 8,0-10,0 dengan perubahan warna dari tidak berwarna menjadi merah muda (merah) pada rentang pH tersebut.\nBerikut adalah tabel data kandungan senyawa pada sampel limbah berdasarkan dugaan peneliti:\n[Tabel]\nBerdasarkan data tersebut, dugaan peneliti kemungkinan benar jika sampel tersebut ditetesi indikator fenolftalein menunjukkan warna ....",
+      "tabel": [
+        [
+          "Sampel limbah",
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        [
+          "Kandungan",
+          "HI",
+          "H₂SO₃",
+          "Sr(OH)₂",
+          "Ca(OH)₂",
+          "HClO₃"
+        ]
+      ],
+      "opsi": [
+        "A: Tak berwarna; B: Merah muda; C: Merah muda; D: Merah muda; E: Tak berwarna",
+        "A: Merah muda; B: Tak berwarna; C: Tak berwana; D: Merah muda; E: Tak berwarna",
+        "A: Tak berwarna; B: Merah muda; C: Merah muda; D: Tak berwana; E: Merah muda",
+        "A: Merah muda; B: Tak berwarna; C: Tak berwana; D: Tak berwana; E: Merah muda",
+        "A: Tak berwana; B: Tak berwana; C: Merah muda; D: Merah muda; E: Tak berwana"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "HI, H₂SO₃, dan HClO₃ bersifat asam (pH < 8), sehingga fenolftalein tetap tidak berwarna; Sr(OH)₂ dan Ca(OH)₂ bersifat basa, sehingga berwarna merah muda. Pola A, B, E tak berwarna dan C, D merah muda ada di opsi E.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Setiap opsi berupa tabel kecil (baris Sampel limbah A–E dan baris Warna); ditulis ulang sebagai daftar \"sampel: warna\".",
+        "Salah ketik \"Tak berwana\" di beberapa sel opsi disalin apa adanya."
+      ]
+    },
+    {
+      "id": "KIM25-012",
+      "passage": null,
+      "nomor": "12",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANKSLK13SA-000000-0610",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Kesetimbangan Dalam Larutan Berair",
+      "kompetensi": "Menerapkan konsep titrasi asam basa untuk menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Menentukan kualitas suatu produk menggunakan konsep titrasi asam basa. (12)",
+      "soal": "Deterjen cair memiliki beberapa keunggulan dibandingkan deterjen bubuk, terutama dalam hal kelarutan, kemudahan penggunaan, dan potensi residu pada pakaian dan mesin cuci. Deterjen cair juga relatif lebih aman bagi kulit sensitif. Annisa memeriksa komposisi deterjen cair di rumahnya dan menemukan senyawa basa Natrium hidroksida (NaOH) dengan kadar 0,1%, sesuai kadar alkali bebas maksimal yang ditentukan BSN. Annisa ingin menguji deterjen tersebut di laboratorium kimia sekolah. Ia mengambil 10 mL sampel deterjen lalu diencerkan dengan akuades sampai 100 mL. Kemudian 20 mL larutan encer dititrasi dengan larutan asam klorida HCl 0,1 M. Titrasi dilakukan tiga kali dan diperoleh data sebagai berikut:\n[Tabel]\nBerdasarkan hasil titrasi yang dilakukan, manakah pernyataan yang tepat mengenai kadar NaOH dalam deterjen cair tersebut?\n(Ar Na= 23, O= 16, H=1)",
+      "tabel": [
+        [
+          "Titrasi ke-",
+          "Volume NaOH (mL)",
+          "Volume HCl 0,1 M hasil titrasi (mL)"
+        ],
+        [
+          "1",
+          "20",
+          "8,2"
+        ],
+        [
+          "2",
+          "20",
+          "8,0"
+        ],
+        [
+          "3",
+          "20",
+          "7,8"
+        ]
+      ],
+      "opsi": [
+        "Kadar NaOH di bawah yang tercantum pada label, yaitu mengandung 0,04% NaOH.",
+        "Kadar NaOH sesuai dengan yang tercantum pada label, yaitu mengandung 0,1% NaOH.",
+        "Kadar NaOH melebihi yang tercantum pada label, yaitu mengandung 0,4% NaOH.",
+        "Kadar NaOH melebihi yang tercantum pada label, yaitu mengandung 0,16% NaOH.",
+        "Kadar NaOH melebihi yang tercantum pada label, yaitu mengandung 1,6% NaOH."
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "V HCl rata-rata = (8,2 + 8,0 + 7,8)/3 = 8,0 mL → n HCl = 0,8 mmol = n NaOH dalam 20 mL larutan encer, jadi M encer = 0,04 M. Faktor pengenceran 100/10 = 10, sehingga M deterjen = 0,4 M = 16 g/L = 1,6 g per 100 mL (1,6%). Opsi D (0,16%) adalah hasil bila faktor pengenceran dilupakan.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Soal tidak menyebut jenis persen kadar maupun massa jenis deterjen; kunci memakai % massa/volume (setara % massa bila massa jenis 1 g/mL)."
+      ]
+    },
+    {
+      "id": "KIM25-013",
+      "passage": null,
+      "nomor": "13",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK07SA-000000-0018",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis penerapan konsep konsentrasi dan daya hantar listrik larutan.",
+      "subkompetensi": null,
+      "indikator": "Memprediksi senyawa berdasarkan percobaan daya hantar listrik pada fase lelehan dan larutan. (13)",
+      "soal": "Sekelompok siswa sedang melakukan praktikum untuk menguji daya hantar listrik larutan yang belum diketahui. Tiga senyawa yang belum diketahui (X, Y, dan Z) diuji daya hantar listriknya menggunakan indikator lampu. Hasil yang diperoleh dapat dilihat pada tabel pengamatan berikut.\n[Tabel]\nBerdasarkan data hasil percobaan, manakah kemungkinan pasangan zat/senyawa yang sesuai dengan hasil percobaan?",
+      "tabel": [
+        [
+          "Zat",
+          "Hasil Pengamatan terhadap Bola Lampu dan Elektroda: Lelehan",
+          "Hasil Pengamatan terhadap Bola Lampu dan Elektroda: Larutan"
+        ],
+        [
+          "X",
+          "Redup; Ada gelembung",
+          "Terang; Banyak gelembung"
+        ],
+        [
+          "Y",
+          "Tidak menyala; Tidak ada gelembung",
+          "Redup; Sedikit gelembung"
+        ],
+        [
+          "Z",
+          "Tidak menyala; Tidak ada gelembung",
+          "Terang; Banyak gelembung"
+        ]
+      ],
+      "opsi": [
+        "Senyawa X adalah Na₂S₂O₃ dan senyawa Y adalah KI.",
+        "Senyawa X adalah Na₂S₂O₃ dan senyawa Y adalah CH₃COOH.",
+        "Senyawa X adalah KI dan senyawa Z adalah CH₃COOH.",
+        "Senyawa Y adalah CH₃COOH dan senyawa Z adalah Na₂S₂O₃.",
+        "Senyawa Y adalah HCl dan senyawa Z adalah Na₂S₂O₃."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "X menghantar listrik dalam lelehan dan larutan → senyawa ion (Na₂S₂O₃ atau KI). Y tidak menghantar dalam lelehan dan lemah dalam larutan → kovalen polar elektrolit lemah (CH₃COOH). Z tidak menghantar dalam lelehan tetapi kuat dalam larutan → kovalen polar elektrolit kuat (HCl). Hanya opsi B yang cocok.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": [
+        "Judul tabel \"Hasil Pengamatan terhadap Bola Lampu dan Elektroda\" membawahi dua kolom (Lelehan, Larutan); digabung ke judul tiap kolom."
+      ]
+    },
+    {
+      "id": "KIM25-014",
+      "passage": null,
+      "nomor": "14",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK07SA-000000-0079",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis penerapan konsep konsentrasi dan daya hantar listrik larutan.",
+      "subkompetensi": null,
+      "indikator": "Menyimpulkan kelayakan suatu produk berdasarkan perbandingan komposisinya dengan standar keamanan produk. (14)",
+      "soal": "Sebuah pabrik farmasi memproduksi sirup obat batuk untuk anak-anak. Berdasarkan formulasi, kandungan zat aktif dan bahan tambahan per botol (isi 50 ml) adalah sebagai berikut:\n[Tabel]\nMenurut pedoman keamanan obat untuk anak-anak, standar mutu aman (dalam persen massa per 100 mL) adalah:\n- Dekstrometorfan HBr maksimal 1% (untuk mencegah overdosis)\n- Gula (sukrosa) maksimal 15% (untuk mencegah kadar gula berlebih)\n- Perisa buah sintetis maksimal 0,3% (agar rasa tidak berlebihan)\nPernyataan manakah yang paling tepat mengenai komposisi sirup tersebut? (Diketahui massa jenis sirup adalah 1 g/ml).",
+      "tabel": [
+        [
+          "Bahan Aktif / Tambahan",
+          "Jumlah (g)"
+        ],
+        [
+          "Dekstrometorfan HBr",
+          "0,6"
+        ],
+        [
+          "Gula (sukrosa)",
+          "10,0"
+        ],
+        [
+          "Perisa buah sintetis",
+          "0,2"
+        ],
+        [
+          "Air dan bahan lain",
+          "sampai 50 mL"
+        ]
+      ],
+      "opsi": [
+        "Mengandung dekstrometorfan HBr sebesar 2%, sudah tidak aman untuk digunakan.",
+        "Mengandung gula sebesar 20%, sudah melebihi batas aman untuk anak-anak.",
+        "Mengandung perisa buah sintetis sebesar 0,2% masih pada batas aman.",
+        "Semua kandungan zat aktif dan bahan tambahan berada pada batas aman sesuai standar mutu.",
+        "Kandungan dekstrometorfan HBr dan perisa buah masih berada pada batas aman untuk anak-anak."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Massa sirup 50 g. Dekstrometorfan 0,6/50 = 1,2% (> 1%), gula 10/50 = 20% (> 15%), perisa 0,2/50 = 0,4% (> 0,3%). Ketiganya melebihi batas; hanya opsi B yang angkanya dan kesimpulannya benar (opsi A menyebut 2%, seharusnya 1,2%).",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "KIM25-015",
+      "passage": null,
+      "nomor": "15",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANKSLK14SA-000000-0252",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Kesetimbangan Dalam Larutan Berair",
+      "kompetensi": "Menganalisis reaksi kesetimbangan senyawa yang sukar larut dalam air serta penerapannya dalam menyelesaikan masalah.",
+      "subkompetensi": null,
+      "indikator": "Memprediksi kelarutan garam dengan membandingkan nilai Ksp dan Q. (15)",
+      "soal": "Dalam upaya mempelajari proses pengolahan limbah rumah tangga, Anisa dan Kristin melakukan simulasi sederhana di laboratorium. Anisa dan Kristin melakukan percobaan dengan mencampurkan 100 mL CaBr₂ 0,01 M dengan 100 mL Na₂SO₄ 0,02 M.\nIon Ca²⁺ dan SO₄²⁻ dapat membentuk endapan CaSO₄ yang sukar larut, sehingga dimanfaatkan untuk mengisolasi ion sulfat pada air limbah rumah tangga.\nBerdasarkan informasi tersebut, manakah pernyataan yang tepat mengenai kemungkinan terbentuknya endapan CaSO₄ pada percobaan yang dilakukan? (Diketahui Ksp CaSO₄ = 2,4 × 10⁻⁶)",
+      "opsi": [
+        "Terbentuk endapan CaSO₄ karena Ksp lebih kecil dari harga Q.",
+        "Garam CaSO₄ akan terus larut karena Ksp lebih besar dari harga Q.",
+        "Larutan CaSO₄ tepat jenuh karena Ksp sama dengan harga Q.",
+        "Terbentuk endapan CaSO₄ karena Ksp lebih besar dari harga Q.",
+        "Garam CaSO₄ akan larut karena harga Q lebih besar dari Ksp."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Setelah dicampur (volume 200 mL): [Ca²⁺] = 0,005 M dan [SO₄²⁻] = 0,01 M, sehingga Q = 5 × 10⁻⁵ > Ksp = 2,4 × 10⁻⁶. Q > Ksp berarti terbentuk endapan.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Kalimat pertanyaan (\"Berdasarkan informasi tersebut, ... (Diketahui Ksp CaSO₄ = 2,4 × 10⁻⁶)\") tercetak dua kali di sumber; disalin sekali.",
+        "Di bawah soal ini tercetak catatan \"SOAL NO.16 OTW\"; soal nomor 16 tidak ada di PDF."
+      ]
+    },
+    {
+      "id": "KIM25-017",
+      "passage": null,
+      "nomor": "17",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK09SA-000000-0099",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis parameter sifat koligatif larutan serta penerapannya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menjelaskan fenomena menggunakan konsep sifat koligatif larutan. (17)",
+      "soal": "Natrium klorida (NaCl), sukrosa (C₁₂H₂₂O₁₁), dan metanol (CH₃OH) memiliki peran yang berbeda dalam industri. Natrium klorida digunakan dalam proses produksi klorin dan soda kaustik. Metanol sebagai pelarut dan bahan baku untuk berbagai produk kimia dan industri, sedangkan sukrosa digunakan dalam industri makanan dan minuman. Natrium klorida (NaCl), sukrosa (C₁₂H₂₂O₁₁), dan metanol (CH₃OH) dalam jumlah sama dilarutkan dalam air dengan volume sama. Berikut disajikan ilustrasi ketiga larutan dengan komposisi dan nilai tekanan uapnya.\n[Gambar]\nBerdasarkan wacana, pernyataan berikut yang benar terkait tekanan uap dari ketiga larutan adalah ....",
+      "gambar": "Tiga labu Erlenmeyer berlabel A (NaCl (aq)), B (C₁₂H₂₂O₁₁(aq)), dan C (CH₃OH (aq)), masing-masing dengan manometer jarum (skala 0–340) di atasnya. Jarum A menunjuk paling rendah (sekitar 20–30), jarum B sedikit lebih tinggi (sekitar 30), dan jarum C paling tinggi (sekitar 50); angka hanya perkiraan dari gambar.",
+      "opsi": [
+        "Tekanan uap larutan A < Larutan C < Larutan B karena jumlah partikel NaCl> CH₃OH >C₁₂H₂₂O₁₁",
+        "Larutan C memiliki tekanan uap tinggi karena metanol memperbesar kecenderungan molekul meninggalkan fase cair.",
+        "Larutan A memiliki tekanan uap lebih rendah karena penambahan NaCl menyebabkan lebih banyak air yang diubah menjadi uap air.",
+        "Tekanan uap larutan C lebih tinggi dari larutan B karena jumlah partikel metanol lebih banyak meskipun jumlah molnya sama.",
+        "Penambahan sukrosa pada larutan B menyebabkan tekanan uap turun karena sukrosa merupakan partikel ionik."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Manometer menunjukkan A < B < C. NaCl (i = 2) paling menurunkan tekanan uap; sukrosa nonelektrolit dan nonvolatil; metanol mudah menguap sehingga ikut menyumbang tekanan uap. Opsi A salah urutan, C salah alasan, D salah alasan (partikel lebih banyak justru menurunkan tekanan uap), E salah (sukrosa bukan ion).",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "\"Dalam jumlah sama\" tidak menyebut mol atau massa; pembacaan jarum manometer dari gambar hanya perkiraan."
+      ]
+    },
+    {
+      "id": "KIM25-018",
+      "passage": null,
+      "nomor": "18",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK09SA-000000-0471",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis parameter sifat koligatif larutan serta penerapannya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menentukan tekanan osmotik berdasarkan parameter yang diberikan. (18)",
+      "soal": "Tekanan osmotik memiliki beberapa aplikasi penting dalam bidang kesehatan, salah satu diantaranya adalah pembatas cairan infus dan proses dialisis. Kalium klorida adalah obat yang digunakan dalam pada pasien dengan gangguan elektrolit yang berat (kadar kalium darah dangat rendah) yang sering digunakan dokter ketika memberikan obat lain yang dapat menurunkan kadar kalium dalam darah. Ani, seorang peneliti di laboratorium farmasi membuat cairan infus yang diukur pada suhu 27°C. Ia mengambil sebanyak 14,9 g KCl (Mr = 74,5) dan melarutkannya ke dalam 1000 mL air. Berapakah tekanan osmotik larutan KCl tersebut?\n(Diketahui: R = 0,082 L atm mol⁻ K⁻)",
+      "opsi": [
+        "10,16 atm.",
+        "9,84 atm.",
+        "4,92 atm.",
+        "0,88 atm.",
+        "0,44 atm."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "M = (14,9/74,5)/1 L = 0,2 M; KCl elektrolit kuat, i = 2; T = 300 K. π = MRTi = 0,2 × 0,082 × 300 × 2 = 9,84 atm. Opsi C (4,92 atm) adalah hasil tanpa faktor van't Hoff.",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": [
+        "Satuan R tercetak \"mol⁻ K⁻\" (angka 1 pada pangkat hilang); disalin apa adanya.",
+        "Salah ketik sumber disalin apa adanya: \"digunakan dalam pada\", \"dangat rendah\"."
+      ]
+    },
+    {
+      "id": "KIM25-019",
+      "passage": null,
+      "nomor": "19",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKANLRTK09SA-000000-0772",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Analitik",
+      "subelemen": "Larutan dan Sifatnya",
+      "kompetensi": "Menganalisis parameter sifat koligatif larutan serta penerapannya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis kelayakan/kesesuaian suatu formulasi dengan kondisi yang diinginkan. (19)",
+      "soal": "Larutan antibeku yang mengandung propilen glikol (C₃H₈O₂) digunakan dalam pencairan es untuk menghilangkan salju, es, atau embun beku yang menempel pada permukaan pesawat seperti sayap dan ekor sebelum lepas landas yang dapat membahayakan penerbangan. Larutan antibeku ini juga digunakan untuk mencegah pembentukan es pada permukaan pesawat selama kondisi cuaca dingin yang disebut anti-icing. Sebelum pesawat lepas landas disemprotkan larutan antibeku yang mengandung 1140 g propilen glikol dalam 1 liter air.\nBerdasarkan wacana, apakah larutan antibeku tersebut dapat mencegah pembentukan es ketika pesawat terbang di daerah dengan suhu −22,3°C?\n(Diketahui Ar C = 12, H = 1, O =16, Kf air = 1,86°C/molal)",
+      "opsi": [
+        "Ya, karena titik beku larutan tersebut mencapai −18,6°C.",
+        "Ya, karena titik beku larutan tersebut mencapai −22,3°C.",
+        "Ya, karena titik beku larutan tersebut mencapai −27,9°C.",
+        "Tidak, karena titik beku larutan tersebut hanya 18,6°C.",
+        "Tidak, karena titik beku larutan tersebut hanya 27,9°C"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Mr C₃H₈O₂ = 76; n = 1140/76 = 15 mol dalam 1 kg air → m = 15 molal. ΔTf = 15 × 1,86 = 27,9 °C, jadi titik beku −27,9 °C, di bawah −22,3 °C, sehingga es tidak terbentuk.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Larutan 15 molal jauh di luar rentang larutan encer tempat rumus ΔTf = Kf·m berlaku; kunci tetap mengikuti rumus sesuai maksud soal."
+      ]
+    },
+    {
+      "id": "KIM25-020",
+      "passage": null,
+      "nomor": "20",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSDNMK18SA-000000-0114",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Dinamika",
+      "kompetensi": "Menganalisis konsep laju dalam suatu reaksi serta faktor-faktor yang dapat mempengaruhinya.",
+      "subkompetensi": null,
+      "indikator": "Menentukan produk atau reaktan suatu reaksi berdasarkan grafik laju reaksi. (20)",
+      "soal": "Perhatikan grafik yang menggambarkan konsep laju reaksi dari suatu reaksi berikut.\n[Gambar]\nBerdasarkan grafik tersebut, reaktan dari reaksi tersebut adalah ....",
+      "gambar": "Grafik Konsentrasi (M) terhadap Waktu (detik). Kurva biru mulai tinggi lalu turun dan melandai, berlabel 4NH₃(g), 5O₂(g); kurva ungu mulai dari nol lalu naik dan melandai, berlabel 4NO(g), 6H₂O(g).",
+      "opsi": [
+        "NO dan H₂O",
+        "NH₃ dan NO",
+        "NH₃ dan O₂",
+        "NH₃ dan H₂O",
+        "H₂O dan O₂"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Konsentrasi reaktan berkurang seiring waktu; kurva yang turun berlabel NH₃ dan O₂.",
+      "halaman": [
+        18
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "KIM25-021",
+      "passage": null,
+      "nomor": "21",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSELKK16SA-000000-0387",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Elektrokimia",
+      "kompetensi": "Menganalisis sel elektrokimia serta penerapannya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menentukan hidrokarbon yang memenuhi spesifikasi tertentu berdasarkan parameter yang diberikan. (21)",
+      "soal": "Rania mencari informasi mengenai senyawa hidrokarbon yang memiliki 5 atom karbon. Hidrokarbon dengan atom karbon rendah banyak digunakan sebagai sumber bahan bakar. Berikut ini data entalpi pembakaran standar (ΔHc°) yang diperoleh Rania dari berbagai sumber:\n[Tabel]\nBerdasarkan data yang diperoleh, senyawa yang dapat dijadikan sebagai bahan bakar yang paling ramah lingkungan adalah ...",
+      "tabel": [
+        [
+          "No",
+          "Hidrokarbon dengan 5 atom C",
+          "Entalpi pembakaran standar (ΔHc°)"
+        ],
+        [
+          "1",
+          "n-pentana (C₅H₁₂)",
+          "−3509 kJ/mol"
+        ],
+        [
+          "2",
+          "1-pentena (C₅H₁₀)",
+          "−3349 kJ/mol"
+        ],
+        [
+          "3",
+          "siklopentana (C₅H₁₀)",
+          "−3291 kJ/mol"
+        ]
+      ],
+      "opsi": [
+        "n-pentana karena menghasilkan CO₂ paling sedikit per energi yang sama.",
+        "1-pentena karena memiliki ikatan rangkap sehingga pembakaran lebih mudah.",
+        "Siklopentana karena menghasilkan energi paling besar untuk setiap mol pembakaran.",
+        "Semua sama karena masing-masing menghasilkan 5 mol CO₂ per mol.",
+        "1-pentena karena menghasilkan H₂O lebih banyak dibandingkan n pentana dan siklopentana."
+      ],
+      "kunci": 0,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Ketiganya menghasilkan 5 mol CO₂ per mol, tetapi n-pentana melepas energi terbesar (3509 kJ/mol). CO₂ per energi: n-pentana 1,42; 1-pentena 1,49; siklopentana 1,52 mol CO₂ per MJ, jadi n-pentana paling sedikit menghasilkan CO₂ untuk energi yang sama. Opsi C salah karena siklopentana justru berenergi paling kecil.",
+      "halaman": [
+        19
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator memakai Subelemen Elektrokimia dan kompetensi sel elektrokimia, padahal soal tentang entalpi pembakaran hidrokarbon; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "KIM25-022",
+      "passage": null,
+      "nomor": "22",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSDNMK20SA-000000-0068",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Dinamika",
+      "kompetensi": "Menganalisis konsep/proses kimia yang berkaitan dengan reaksi kesetimbangan.",
+      "subkompetensi": null,
+      "indikator": "Menyelesaikan masalah menggunakan konsep kesetimbangan kimia pada kondisi tertentu sesuai grafik dan informasi yang diberikan. (22)",
+      "soal": "Dalam industri bahan bakar ramah lingkungan, salah satu proses penting yaitu pengubahan etena (C₂H₄) menjadi etanol (C₂H₅OH) melalui reaksi kesetimbangan berikut:\nC₂H₄(g) + H₂O (g) ⇌ C₂H₅OH (g)\nReaksi tersebut dilakukan pada kondisi suhu dan tekanan tinggi dalam suatu reaktor. Operator ingin menentukan suhu optimal untuk memaksimalkan produksi etanol. Hasil pengamatan terhadap konsentrasi C₂H₄ selama reaksi pada dua suhu (T) berbeda disajikan dalam grafik berikut:\n[Gambar]\nOperator tersebut menggunakan reaktor yang sama pada suhu = 400°C, ia memperoleh nilai Kc pada suhu tersebut = 0,9. Agar gas etanol yang dihasilkan meningkat, upaya terbaik yang dapat dilakukan selain menambah lebih banyak C₂H₄ (reaktan) ke dalam reaktor adalah ...",
+      "gambar": "Grafik Konsentrasi C₂H₄ (mol/L) terhadap Waktu. Dua kurva mulai dari titik yang sama, turun, lalu mendatar: kurva T = 500°C (biru) mendatar pada konsentrasi lebih tinggi dan kurva T = 300°C (merah) mendatar pada konsentrasi lebih rendah.",
+      "opsi": [
+        "Menurunkan suhu hingga mendekati suhu kamar ±25°C karena reaksinya bersifat eksoterm, sehingga nilai Kc akan berkurang (Kc < 0,9).",
+        "Menurunkan suhu dengan kisaran: 400°C > T > 300°C karena reaksinya bersifat eksoterm, sehingga nilai Kc meningkat (Kc > 0,9).",
+        "Menurunkan suhu dengan kisaran: 400°C > T > 25°C karena reaksinya bersifat eksoterm, sehingga nilai Kc meningkat (Kc > 0,9).",
+        "Meningkatkan suhu dengan kisaran 500°C > T > 400°C karena reaksinya bersifat endoterm, sehingga nilai Kc meningkat (Kc > 0,9).",
+        "Meningkatkan suhu dengan kisaran: 500°C > T > 400°C karena reaksinya bersifat eksoterm, sehingga nilai Kc berkurang (Kc < 0,9)."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pada 300 °C konsentrasi C₂H₄ sisa lebih kecil daripada pada 500 °C, jadi suhu rendah menggeser kesetimbangan ke kanan: reaksi eksoterm, dan menurunkan suhu menaikkan Kc. A salah (Kc justru naik), D dan E salah arah. B dipilih atas C karena kisaran 300–400 °C didukung data grafik dan laju reaksi masih memadai, sedangkan C mencakup suhu yang sangat rendah.",
+      "halaman": [
+        20
+      ],
+      "catatan_transkripsi": [
+        "Opsi B dan C sama-sama benar secara termodinamika; kunci B mengandaikan \"upaya terbaik\" juga mempertimbangkan laju reaksi. Perlu dicek guru.",
+        "Opsi A tercetak \"+25\" dengan garis bawah (tanda ±); ditulis \"±25°C\"."
+      ]
+    },
+    {
+      "id": "KIM25-023",
+      "passage": null,
+      "nomor": "23",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSDNMK20SA-000000-0310",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Dinamika",
+      "kompetensi": "Menganalisis konsep/proses kimia yang berkaitan dengan reaksi kesetimbangan.",
+      "subkompetensi": null,
+      "indikator": "Menentukan arah pergeseran kesetimbangan suatu reaksi pada grafik jika diberikan perlakuan eksternal. (23)",
+      "soal": "Seorang peneliti sedang melakukan studi reaksi kesetimbangan gas buang kendaraan di atmosfer. Reaksi kesetimbangan tersebut disajikan pada grafik berikut:\n[Gambar]\nBerdasarkan grafik reaksi kesetimbangan tersebut, apakah yang terjadi jika tekanan wadah dinaikkan dua kali lipat?",
+      "gambar": "Grafik Konsentrasi reaktan/produk (mol) terhadap Waktu (menit) dengan garis putus vertikal di menit 10. Bagian kiri berjudul \"Reaktan mulai bereaksi, Produk mulai terbentuk\", bagian kanan \"Reaktan dan produk dalam keadaan setimbang\". Reaktan [A] (biru) turun dari 6 ke 2, Reaktan [B] (hitam) turun dari 5 ke 3, dan Produk [A₂B] (merah) naik dari 0 ke 2; setelah menit 10 ketiganya mendatar (garis putus horizontal di 3 dan 2).",
+      "opsi": [
+        "Kesetimbangan reaksi bergeser ke kiri karena jumlah mol produk lebih kecil.",
+        "Kesetimbangan reaksi bergeser ke kiri karena jumlah mol reaktan lebih besar.",
+        "Kesetimbangan reaksi bergeser ke kanan karena jumlah mol produk lebih kecil.",
+        "Kesetimbangan tidak akan bergeser, karena semua zat berwujud gas.",
+        "Kesetimbangan akan bergeser ke kanan, karena konsentrasi semua zat meningkat."
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Perubahan: A berkurang 4, B berkurang 2, A₂B bertambah 2, jadi 2A + B ⇌ A₂B (3 mol gas → 1 mol gas). Tekanan dinaikkan → bergeser ke jumlah mol gas lebih kecil, yaitu ke kanan (produk).",
+      "halaman": [
+        21
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "KIM25-024",
+      "passage": null,
+      "nomor": "24",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSELKK15SA-000000-0115",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Elektrokimia",
+      "kompetensi": "Menganalisis komponen redoks dalam suatu reaksi kimia.",
+      "subkompetensi": null,
+      "indikator": "Menentukan senyawa yang berperan sebagai reduktor atau oksidator dari suatu reaksi kimia. (24)",
+      "soal": "Sel Volta atau sel galvanik adalah dasar dari konsep baterai. Baterai disebut juga sel kering atau sel Leclanche. Salah satu jenis sel baterai adalah baterai alkalin yang menghasilkan energi yang lebih besar sehingga lebih kuat dan tahan lama. Baterai ini umum digunakan dalam berbagai perangkat elektronik seperti remot kontrol, kamera digital, dan jam tangan.\nBerikut reaksi pada baterai alkalin:\nZn(s) + 2MnO₂(s) + H₂O(l) → ZnO(s) + Mn₂O₃(s) + 2H₂O(l)\nBerdasarkan informasi, zat apakah yang bertindak sebagai oksidator dalam reaksi pada baterai alkalin?",
+      "opsi": [
+        "Mn₂O₃",
+        "ZnO",
+        "H2O",
+        "MnO₂",
+        "Zn"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Biloks Mn turun dari +4 (MnO₂) ke +3 (Mn₂O₃), jadi MnO₂ tereduksi dan bertindak sebagai oksidator; Zn (0 → +2) adalah reduktor.",
+      "halaman": [
+        22
+      ],
+      "catatan_transkripsi": [
+        "Persamaan reaksi di sumber tidak setara: ruas kiri H 2 dan O 5, ruas kanan H 4 dan O 6 (seharusnya Zn + 2MnO₂ → ZnO + Mn₂O₃, atau dengan H₂O hanya di satu ruas). Kunci tidak terpengaruh.",
+        "Opsi C tercetak \"H2O\" tanpa subskrip; disalin apa adanya."
+      ]
+    },
+    {
+      "id": "KIM25-025",
+      "passage": null,
+      "nomor": "25",
+      "format": "pilihan-ganda",
+      "kode_sumber": "25KIMKFSELKK16SA-000000-0022",
+      "bentuk_sumber": "Pilihan Ganda",
+      "elemen": "Kimia Fisik",
+      "subelemen": "Elektrokimia",
+      "kompetensi": "Menganalisis sel elektrokimia serta penerapannya dalam kehidupan sehari-hari.",
+      "subkompetensi": null,
+      "indikator": "Menganalisis fenomena makroskpis suatu skema reaksi elektrolisis larutan senyawa logam. (25)",
+      "soal": "Sebuah sel volta disusun menggunakan dua logam, X dan Y, yang dicelupkan ke dalam larutan berisi ion dari masing-masing logam. Rangkaian lengkapnya dapat dilihat pada gambar di bawah ini.\n[Gambar]\nDari informasi dan skema yang diberikan, manakah pernyataan berikut yang tepat mengenai reaksi reduksi dan oksidasi pada sel volta tersebut?",
+      "gambar": "Sel volta: elektroda X dalam gelas kimia kiri berisi X²⁺(aq) 1,0 M dan elektroda Y dalam gelas kimia kanan berisi Y²⁺(aq) 1,0 M, dihubungkan jembatan garam dan voltmeter di atasnya. Panah berlabel e⁻ menunjukkan elektron mengalir naik dari elektroda Y, melewati voltmeter, lalu turun ke elektroda X.",
+      "opsi": [
+        "Elektroda X mengalami oksidasi, X(s) → X₂⁺(aq) + 2e.",
+        "Massa logam Y berkurang seiring waktu disebabkan Y mengalami oksidasi.",
+        "Konsentrasi ion Y²⁺ berkurang seiring waktu sebab ion ini mengalami reduksi.",
+        "Elektroda Y berperan sebagai katoda, tempat terjadinya reaksi reduksi.",
+        "Konsentrasi ion X²⁺ bertambah seiring waktu karena oksidasi logam X."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Elektron keluar dari Y menuju X, jadi Y anode (teroksidasi: Y → Y²⁺ + 2e⁻, massa Y berkurang, [Y²⁺] naik) dan X katode (X²⁺ tereduksi, [X²⁺] turun). Hanya opsi B yang sesuai.",
+      "halaman": [
+        23
+      ],
+      "catatan_transkripsi": [
+        "Kunci bergantung pada arah panah elektron di gambar (dibaca dari Y ke X).",
+        "Indikator menyebut \"elektrolisis\" padahal skemanya sel volta; salah ketik \"makroskpis\" disalin apa adanya.",
+        "Opsi A tercetak \"X₂⁺(aq)\" (kemungkinan maksudnya X²⁺); disalin apa adanya."
+      ]
+    }
+  ]
+}

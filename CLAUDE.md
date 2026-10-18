@@ -8,6 +8,7 @@ A growing set of study tools for Indonesian high-school (SMA) subjects, publishe
 
 - **Subject knowledge maps**: one per subject, each a set of coded topics with key facts, formulas, and commonly confused points. Physics is the first (`data/maps/fisika.json`).
 - **The LCCM history kit**: a history map, a 457-question bank, and a quiz-round simulator, built for a history competition.
+- **TKA practice**: transcribed TKA 2025 exam papers (`data/tka/`) with proposed, unofficial answer keys, on one practice page.
 
 Content is in Indonesian. Code, specs, commits and pull requests are in English.
 
@@ -18,6 +19,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 | Any content work | `specs/agent-workflow.md`, then `specs/quality-checklist.md` |
 | Maps (`data/maps/`) | `specs/map-spec.md` |
 | Questions (`data/questions.csv`) | `specs/question-spec.md` |
+| TKA banks (`data/tka/`) | `specs/tka-spec.md` |
 
 For a new subject map, the `new-subject` skill (`.claude/skills/new-subject/SKILL.md`) runs the whole pipeline.
 
@@ -47,6 +49,7 @@ Python 3 standard library only; no dependencies to install.
 data/maps/<id>.json      subject maps (source of truth)
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
+data/tka/<id>.json       TKA exam banks (transcribed papers, proposed keys)
 templates/_map.html      shared page for all subject maps
 templates/*.html         other pages (history map, bank, simulator, start page)
 scripts/build.py         validation, lint, build
