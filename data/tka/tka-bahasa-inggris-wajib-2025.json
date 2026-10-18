@@ -1,0 +1,815 @@
+{
+  "id": "tka-bahasa-inggris-wajib-2025",
+  "mapel": "Bahasa Inggris",
+  "ujian": "Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025, mata pelajaran wajib",
+  "sumber": {
+    "berkas": "SOAL_TKA_Bahasa_Inggris_SMA_2025_Wajib.pdf",
+    "halaman": 17,
+    "bentuk": "tangkapan layar soal dalam PDF"
+  },
+  "catatan": [
+    "Teks dan soal disalin apa adanya, termasuk salah ketik dari sumber (misalnya \"quite\", \"felling\", \"kindnes\", \"would happened\", \"anaitical\", \"vokasion\").",
+    "Sumber tidak memuat kunci jawaban. Semua kunci berstatus 'usulan' dan harus dicocokkan dengan kunci resmi sebelum dipakai.",
+    "Nomor soal tidak tercetak di samping soal; nomor diambil dari angka dalam kurung di akhir indikator.",
+    "Nomor 6–10 muncul dalam dua versi dengan teks berbeda: versi A (infografik Effective Study Techniques) dan versi B (cerita The False Lion King). Kotak indikator versi B sama dengan versi A, dan kode soal 6, 8, 9, 10 kedua versi identik.",
+    "Soal berbentuk \"Pilihan Ganda Kompleks - Kategori\" (7A dan 16) disimpan sebagai benar-salah; arti true/false dicatat pada soal.",
+    "Kode soal hanya tercetak pada soal; kode_sumber teks diisi dengan kode soal pertama yang memakai teks itu.",
+    "kompetensi dan subkompetensi disalin lengkap dari kotak Hierarki Indikator, termasuk uraiannya.",
+    "Tanda kutip lengkung pada sumber ditulis sebagai tanda kutip lurus; baris-baris dalam satu pilihan (soal 1 dan 6B) dipisah dengan baris baru.",
+    "Infografik versi A tidak mencantumkan sumber."
+  ],
+  "kode": "BINGW25",
+  "teks": [
+    {
+      "id": "P01",
+      "judul": "The Lion and the Mouse",
+      "teks": "Once upon a time, in a thick jungle in Africa, there lived a strong and fierce lion. Every afternoon, the lion would rest under the cool shade of a big tree after walking through the forest.\n\nOne day, while he was sleeping, a playful little mouse passed by. The mouse saw the lion's thick mane and was curious. He climbed up and began to jump around on the lion's head, playing in his mane.\n\nThe lion woke up suddenly and was not happy at all. He quickly caught the mouse in his big paw and roared, \"Who dares to wake me up?\" He was very angry and almost killed the mouse.\n\nScared and shaking, the mouse begged the lion, \"Please don't kill me! I didn't mean to bother you. If you let me go, I promise I'll help you one day.\"\n\nThe lion laughed loudly. \"You? Help me? That's funny.\" But the lion was feeling kind, so he let the mouse go free.\n\nA few days later, the lion was walking through the jungle again when he fell into a trap. A net set by hunters caught him, and he couldn't escape. He tried to bite and tear the ropes, but they were too strong. The lion roared loudly, hoping someone would come.\n\nThe mouse heard the roar and ran to help. He saw the lion trapped and quickly started to chew the ropes with his sharp teeth. After some time, the net broke, and the lion was free.\n\nThe lion looked at the mouse with surprise and said, \"Thank you! You really saved my life.\"\n\nThe mouse smiled and said, \"I told you I would help you one day.\"\n\nFrom that moment on, the lion and the mouse became close friends. The lion learned that even small creatures can do great things, and we all need help sometimes.\n\nSumber: https://www.vedantu.com/stories/the-lion-and-the-mouse",
+      "jenis": "narrative text (fabel)",
+      "halaman": [
+        1
+      ],
+      "kode_sumber": "25BIGUTAPTXI03SU-250027-0083"
+    },
+    {
+      "id": "P02",
+      "judul": "Effective Study Technique",
+      "teks": "1. Know Your Learning Style: Understand whether you learn best by reading, listening, or watching.\n\n2. Set a Consistent Study Schedule: Study at the same time every day. Regularity helps build strong habits.\n\n3. Create a Comfortable Study Space: Find a quite, well-lit, and distraction-free area. Have all your materials ready.\n\n4. Use the Pomodoro Technique: Study for 25 minutes, then take a 5-minute break. This keeps your mind fresh and focused.\n\n5. Take Effective Notes: Write key points using methods like mind maps or tables to help remember important information.\n\n6. Practice and Repeat: Regularly review your material and do practice-questions to deepen understanding and improve retention.\n\n7. Join a Study Group: Discuss topics with friends to gain new insights and solve problems together.\n\n8. Leverage Technology: Use apps and websites for flashcards, video lessons, and online quizzes to support your study routine.\n\n9. Get Enough Sleep: Aim for 7-8 hours.\n\n10. Be Patient and Persistent: Learning takes time.\n\n[Gambar] Infografik berjudul \"Effective Study Techniques\" (judul di atas gambar pada halaman: \"Effective Study Technique\") berisi sepuluh kotak bernomor dalam dua kolom, masing-masing dengan ikon, judul tebal, dan keterangan singkat. Ikon: kepala dengan simbol media (1), kalender dengan jam (2), meja dengan lampu belajar dan buku (3), tomat bertuliskan 25 (4), lembar catatan (5), papan klip dengan tanda centang (6), sekelompok orang dengan balon percakapan (7), ponsel dengan topi wisuda (8), orang tidur dengan tulisan \"zz\" (9), jam pasir (10). Teks setiap kotak disalin pada paragraf dengan format \"nomor. judul: keterangan\"; format itu dibuat transkriptor.",
+      "jenis": "procedure text (infografik)",
+      "halaman": [
+        4
+      ],
+      "kode_sumber": "25BIGUTAPTXI01SU-250043-0005"
+    },
+    {
+      "id": "P03",
+      "judul": "The False Lion King",
+      "teks": "Once upon a time, in Africa, there lived two lion kings. One was named Hera and the other was Shero. Hera was very strong and handsome. All the animals loved and respected him. He was a great leader. Shero was not like Hera. He had a small mane and a funny, squeaky voice. Shero liked to pretend he was as powerful as Hera. He often copied Hera's roar, but it made the other animals laugh.\n\nOne day, the animals heard that some hyenas were causing trouble near the river. Hera quickly gathered his followers to stop the hyenas. Shero also wanted to come. He wanted to show everyone that he was strong too.\n\nWhen they reached the river, Hera roared loudly. His roar was so powerful that the hyenas got scared. Shero also tried to roar, but his voice was high and silly. The hyenas laughed at him. Their leader, Hank the Hyena, made jokes about Shero.\n\nHera stayed calm and smiled. Shero did not give up. He said, \"I am just as strong as Hera!\" The hyenas laughed even louder. Shero tried to show his power by jumping on a small dirt hill. But he tripped and fell into the ground. The hyenas laughed so much they cried. Even Hera laughed a little.\n\nAt the end of the day, the hyenas left, still laughing about Shero. Hera told Shero, \"You are not like me, but you make everyone happy with your jokes.\" Shero smiled and understood that he had his own special gift.\n\nFrom that day, Shero became the kingdom's jester. He and Hera ruled together — one with strength, and one with laughter. The animals learned that both power and fun are important in life.\n\n[Gambar] Ilustrasi kartun di sabana dengan pohon akasia: seekor singa besar bersurai lebat (Hera) duduk tenang dan tersenyum, di sampingnya singa kecil bersurai pendek dan jabrik (Shero) melompat sambil tertawa dengan kedua tangan terangkat; dua hyena tertawa di latar belakang.\n\nSumber: Adapted from: https://wikibedtimestories.com/bedtime-short-stories-for-kids/The%20False%20Lion%20King",
+      "jenis": "narrative text (fabel bergambar)",
+      "halaman": [
+        8
+      ],
+      "kode_sumber": "25BIGUTAPTXI01SU-250043-0005"
+    },
+    {
+      "id": "P04",
+      "judul": "The Great Barrier Reef",
+      "teks": "The Great Barrier Reef is one of the most beautiful places in the world. It is located in the Pacific Ocean, near the northeast coast of Australia. The reef is very big. It stretches over 2,000 kilometers and can even be seen from space. There are many small coral islands and clear, warm waters around the reef.\n\nThis reef is full of life. There are many kinds of colorful fish, sea turtles, dolphins, and even sharks. Coral of different shapes and colors grows under the water. Sea birds fly over the reef and nest on small islands. People can see this beauty by swimming, diving, or joining a boat tour.\n\nThe colors under the water are amazing. Coral comes in red, yellow, green, and blue. Some coral looks like trees, and some looks like big round stones. Small fish swim in and out of the coral like they are playing a game. In some places, soft coral moves with the water like grass in the wind. When the sun shines, the reef looks bright and full of light. It feels like a different world under the sea.\n\nThe reef is not only beautiful, but also very important. It helps protect the coast from big waves and storms. It is a home for sea animals and a place where plants can grow. Many people also get food and jobs from the sea near the reef. Without the reef, the ocean would not be the same.\n\nSumber: Adapted from: https://www.britannica.com/place/Great-Barrier-Reef",
+      "jenis": "descriptive text",
+      "halaman": [
+        12
+      ],
+      "kode_sumber": "25BIGUTAPTXI01SU-250045-0100"
+    },
+    {
+      "id": "P05",
+      "judul": "Why Teenagers Should Learn to Manage Their Money",
+      "teks": "Many young people today often spend money on things they like, such as snacks, clothes, or fun activities. But learning to handle money from a young age is very important. Good money habits can help students make a better future.\n\nHaving a clear plan for the future can show teenagers how to use their money. Students should think about short-term goals, like getting a new phone, and long-term goals, like saving for college or starting a business. Writing these goals down can help students stay motivated and focused.\n\nA budget helps students see where their money goes every month. It's important to list basic needs like food and travel, and also other costs like clothes or presents. A budget makes it easier to decide how much money to save, spend, or keep for unexpected problems.\n\nSometimes, students don't know how much they spend on small things. Keeping track of spending with notes or apps can help students understand their habits. This helps them stay within their budget and make changes if needed.\n\nTeenagers should also learn the difference between saving money and investing money. Saving is safer but slower, while investing has more risk but can earn more money. Knowing both can help students choose the best way for their money goals.\n\nTo sum up, students who learn to plan, budget, track, and understand saving choices are more ready for the future. That is why learning about money should start early and be done often.\n\nTable 1. How do students manage their money?\n\nCategory | Percentage | Notes\n\nStudents who save regularly | 45% | Save at least 10% of allowance\n\nStudents who track expenses | 35% | Use apps or notes\n\nStudents with financial education | 25% | Have learned budgeting in class\n\nStudents who often borrow from friends | 30% | Due to running out of money\n\nStudents who spend most on food & drinks | 50% | Largest category of spending\n\nStudents who plan monthly budgets | 28% | Usually better savers\n\nSumber: (Adapted from https://www.onefamily.com/savings/money-management-tips-for-teens/)",
+      "jenis": "analytical exposition text (dengan tabel)",
+      "halaman": [
+        15
+      ],
+      "kode_sumber": "25BIGUTAPTXI02SU-250098-0260"
+    }
+  ],
+  "soal": [
+    {
+      "id": "BINGW25-001",
+      "passage": "P01",
+      "nomor": "1",
+      "kode_sumber": "25BIGUTAPTXI03SU-250027-0083",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Menemukan/mengidentifikasi Informasi: mampu menemukan atau mengidentifikasi informasi penting yang disebutkan secara eksplisit dalam teks.",
+      "indikator": "menyusun poin-poin utama dari narrative text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari atau vokasional atau akademik dasar. (1)",
+      "soal": "Which option best summarizes the story?",
+      "opsi": [
+        "Beginning: A lion was walking through the jungle.\nProblem: The mouse got lost and couldn't find food.\nSolution: The lion gave food to the mouse.\nLesson: Always be generous to those in need.",
+        "Beginning: A mouse accidentally disturbed a sleeping lion.\nProblem: The lion was caught in a hunter's net.\nSolution: The mouse chewed through the net and set the lion free.\nLesson: Even the smallest creature can be a great help.",
+        "Beginning: The lion and mouse were best friends.\nProblem: The lion got hurt in a fight.\nSolution: The mouse helped him find water.\nLesson: Friendship is built on adventure.",
+        "Beginning: A mouse was building a home near a tree.\nProblem: A storm destroyed the tree and trapped the lion.\nSolution: The mouse called for help from the jungle.\nLesson: Teamwork solves big problems.",
+        "Beginning: A lion was hungry and searching for food.\nProblem: He couldn't catch any prey.\nSolution: The mouse helped him find food.\nLesson: Hunger teaches humility."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Hanya pilihan B yang sesuai alur cerita: tikus mengganggu singa tidur, singa terjerat jaring pemburu, tikus menggigit tali hingga singa bebas.",
+      "halaman": [
+        1
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-002",
+      "passage": "P01",
+      "nomor": "2",
+      "kode_sumber": "25BIGUTAPINI07SU-250027-0056",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Membuat kerangka: mampu menyusun poin-poin utama dari teks dalam bentuk kerangka atau daftar.",
+      "indikator": "menyimpulkan pesan moral narrative text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar. (2)",
+      "soal": "Which of the following statements best conveys the message of the story? There is more than one answer. Click on every correct answer!",
+      "opsi": [
+        "We should never wake up a sleeping animal",
+        "Even the small and weak can help the strong",
+        "It's always good to ask for help when we need it",
+        "Lions are dangerous animals and should be avoided",
+        "Never trust anyone who plays with your hair"
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Kalimat penutup: \"even small creatures can do great things, and we all need help sometimes\" mendukung B dan C (singa mengaum berharap ada yang datang menolong).",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-003",
+      "passage": "P01",
+      "nomor": "3",
+      "kode_sumber": "25BIGUTAPINI10SU-250027-0098",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menafsirkan hubungan/kaitan antara tindakan satu dan lainnya dalam narrative text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar. (3)",
+      "soal": "Why did the lion trust the mouse and decide to let him go instead of eating him?",
+      "opsi": [
+        "The lion was too tired to eat the mouse",
+        "The mouse told the lion he might help him one day",
+        "The lion was felling happy to see the mouse",
+        "The lion heard someone coming and got scared",
+        "The mouse promised to bring food for the lion"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Tikus berjanji \"If you let me go, I promise I'll help you one day\" lalu singa melepaskannya; teks sebenarnya menyebut singa sedang \"feeling kind\", bukan percaya atau senang.",
+      "halaman": [
+        2
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-004",
+      "passage": "P01",
+      "nomor": "4",
+      "kode_sumber": "25BIGUTAPINI12SU-250027-0079",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan hubungan sebab-akibat: mampu menafsirkan hubungan/kaitan antara gagasan/tindakan satu dan lainnya yang dinyatakan dalam teks.",
+      "indikator": "memprediksi akhir cerita setelah membaca bagian awal teks naratif yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar. (4)",
+      "soal": "As you read the part where the lion let the mouse go, which of the following endings do you anticipate? There is more than one answer, click on every correct answer!",
+      "opsi": [
+        "The mouse forgets about the lion and never helps him",
+        "The lion gets into trouble and no one helps him",
+        "The lion becomes angry at all small animals",
+        "The mouse spreads the lion's kindnes to other animals",
+        "The mouse becomes the lion's loyal assistant"
+      ],
+      "kunci": [
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "A, B, dan C bertentangan dengan janji tikus untuk membalas budi; D dan E adalah kelanjutan yang paling sejalan dengan kebaikan singa dan janji tikus.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Tidak ada pilihan yang memuat akhir cerita sebenarnya (tikus menolong singa dari jaring); D dan E sama-sama spekulatif, sehingga kunci perlu dicocokkan dengan kunci resmi."
+      ]
+    },
+    {
+      "id": "BINGW25-005",
+      "passage": "P01",
+      "nomor": "5",
+      "kode_sumber": "25BIGUTAEVAI16SU-250027-0103",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: mampu membuat penilaian terhadap ide, menanggapi teks secara emosional dan estetis dengan mempertimbangkan dampaknya terhadap perasaan, imajinasi, serta penggunaan bahasa oleh penulis",
+      "subkompetensi": "Menilai kesesuaian: mampu menentukan bagian teks yang paling sesuai untuk menggambarkan karakter utama atau aspek lain dari bacaan.",
+      "indikator": "menentukan bagian teks yang menggambarkan karakter utama dalam narrative text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar. (5)",
+      "soal": "Which of the following sentences from the story help you understand the lion's character? There is more than one answer. Click on every correct answer!",
+      "opsi": [
+        "\"The lion always took his afternoon nap under the shade of a big tree in the bushes.\"",
+        "\"He caught the mouse and questioned him for interrupting his nap.\"",
+        "\"The lion was amused at the mouse's words and decided to spare his life.\"",
+        "\"With his sharp teeth, the mouse nibbled through the net.\"",
+        "\"The lion thanked the mouse immensely for his help.\""
+      ],
+      "kunci": [
+        1,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "B menunjukkan singa galak/marah, C menunjukkan singa baik hati, E menunjukkan singa tahu berterima kasih; A hanya kebiasaan dan D tentang tikus.",
+      "halaman": [
+        3
+      ],
+      "catatan_transkripsi": [
+        "Kalimat yang dikutip sebagai \"sentences from the story\" tidak ada secara harfiah dalam teks (misalnya \"in the bushes\", \"amused\", \"nibbled\", \"immensely\"); tampaknya diambil dari versi lain cerita."
+      ]
+    },
+    {
+      "id": "BINGW25-006A",
+      "passage": "P02",
+      "nomor": "6 (versi A)",
+      "kode_sumber": "25BIGUTAPTXI01SU-250043-0005",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Menemukan/mengidentifikasi Informasi: mampu menemukan atau mengidentifikasi informasi penting yang disebutkan secara eksplisit dalam teks.",
+      "indikator": "mengidentifikasi informasi penting procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (6)",
+      "soal": "Based on the information given, we can keep our mind focused and fresh by ....",
+      "opsi": [
+        "knowing your learning style",
+        "using Pomodoro Technique",
+        "using online quizzes apps",
+        "by reviewing materials",
+        "by creating mind maps"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Kotak 4 (Use the Pomodoro Technique): \"This keeps your mind fresh and focused.\"",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-007A",
+      "passage": "P02",
+      "nomor": "7 (versi A)",
+      "kode_sumber": "25BIGUTAPTXI02SU-250043-0077",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Mengklasifikasi: mampu mengelompokkan orang, benda, tempat, atau peristiwa dalam teks berdasarkan kategori tertentu.",
+      "indikator": "mengelompokkan orang/benda/tempat/peristiwa berdasarkan kategori tertentu dalam procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (7)",
+      "soal": "Based on the infographic, determine whether each study technique listed on the left is categorized as Time Management or Self Management.",
+      "opsi": [
+        "Be patient and persistent",
+        "Use the Pomodoro technique",
+        "Set a consistent study schedule"
+      ],
+      "kunci": [
+        false,
+        true,
+        true
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Pomodoro (belajar 25 menit, istirahat 5 menit) dan jadwal belajar tetap mengatur waktu; sabar dan gigih adalah pengelolaan diri.",
+      "halaman": [
+        5
+      ],
+      "catatan_transkripsi": [
+        "Soal berbentuk \"Pilihan Ganda Kompleks - Kategori\" dengan kolom Time Management dan Self Management; di sini true = Time Management, false = Self Management."
+      ],
+      "kolom": [
+        "Time Management",
+        "Self Management"
+      ]
+    },
+    {
+      "id": "BINGW25-008A",
+      "passage": "P02",
+      "nomor": "8 (versi A)",
+      "kode_sumber": "25BIGUTAPINI10SU-250102-0253",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Membuat kerangka: mampu menyusun poin-poin utama dari teks dalam bentuk kerangka atau daftar.",
+      "indikator": "menyusun poin utama menjadi kerangka/daftar untuk procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (8)",
+      "soal": "From the options provided, choose the sequence that best reflects the information in the infographic \"Effective Study Techniques\".",
+      "opsi": [
+        "Set your goal → Watch lessons videos → Sleep well → Have group chat with friends → Eat nutritious meal",
+        "Plan study time → Join a study group → Take long breaks → Write a to do list → Write important points",
+        "Know your learning style → Find a quiet area → Set a timetable → Use less gadgets → Be patient and persistent",
+        "Know your study style → Plan your study time → Practice and repeat → Take a break → Watch lessons videos",
+        "Take notes → Join a study groups → Use different medias → Play music you like → Have good meal while studying"
+      ],
+      "kunci": 3,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Semua langkah pada D ada di infografik (gaya belajar, jadwal, latihan berulang, istirahat Pomodoro, video pelajaran); C memuat \"Use less gadgets\" yang tidak ada dan bertentangan dengan \"Leverage Technology\".",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Pilihan C juga dapat dibela karena urutannya lebih dekat dengan nomor di infografik (1, 3, 2, ..., 10); tidak ada pilihan yang mengikuti urutan infografik secara persis.",
+        "Kode soal 8A (25BIGUTAPINI10SU-250102-0253) sama dengan 8B dan satu seri (250102) dengan soal 7B teks Hera; kode mungkin tertukar."
+      ]
+    },
+    {
+      "id": "BINGW25-009A",
+      "passage": "P02",
+      "nomor": "9 (versi A)",
+      "kode_sumber": "25BIGUTAPINI07SU-250043-0058",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menyimpulkan tujuan penulisan procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (9)",
+      "soal": "Which of the following statements best reflect the author's purpose in writing the text? There is more than one correct answer. Click on every correct answer!",
+      "opsi": [
+        "To help students find fun strategies to play after studying",
+        "To offer students guidance on how to learn more efficiently",
+        "To encourage students to use simple habits to improve their learning",
+        "To explain why studying tips is difficult for most students",
+        "To show students that they can manage their time and focus better"
+      ],
+      "kunci": [
+        1,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Infografik berisi sepuluh kebiasaan belajar sederhana sebagai panduan belajar efektif (B, C); A dan D tidak sesuai isi.",
+      "halaman": [
+        6
+      ],
+      "catatan_transkripsi": [
+        "Pilihan E juga dapat dibela karena beberapa kiat (jadwal tetap, Pomodoro) menyangkut pengelolaan waktu dan fokus."
+      ]
+    },
+    {
+      "id": "BINGW25-010A",
+      "passage": "P02",
+      "nomor": "10 (versi A)",
+      "kode_sumber": "25BIGUTAEVAI13SU-250043-0040",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: mampu membuat penilaian terhadap ide, menanggapi teks secara emosional dan estetis dengan mempertimbangkan dampaknya terhadap perasaan, imajinasi, serta penggunaan bahasa oleh penulis",
+      "subkompetensi": "Menilai realitas atau fantasi: mampu menganalisis peristiwa dalam teks dapat terjadi dalam kehidupan nyata berdasarkan pengalaman dan pengetahuan pribadi.",
+      "indikator": "menentukan bagian teks yang dapat diaplikasikan dalam kehidupan nyata berdasarkan pengalaman/pengetahuan pribadi merujuk pada procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasion (10)",
+      "soal": "If you are preparing for an important exam and want to improve your study routine, which of the following techniques do you think can be implemented effectively in your personal study time? There is more than one correct answer. Click on every correct answer!",
+      "opsi": [
+        "Only study when you are in a group discussion with others",
+        "Use technology during all study sessions in or outside class",
+        "Use the Pomodoro Technique to structure your study and break time",
+        "Practice and repeat study material regularly to retain information",
+        "Create a quiet and comfortable study space to improve focus"
+      ],
+      "kunci": [
+        2,
+        3,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "C, D, dan E sesuai kotak 4, 6, dan 3 infografik; A dan B berlebihan (\"only\", \"all study sessions\") dan tidak sesuai waktu belajar pribadi.",
+      "halaman": [
+        7
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-006B",
+      "passage": "P03",
+      "nomor": "6 (versi B)",
+      "kode_sumber": "25BIGUTAPTXI01SU-250043-0005",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Menemukan/mengidentifikasi Informasi: mampu menemukan atau mengidentifikasi informasi penting yang disebutkan secara eksplisit dalam teks.",
+      "indikator": "mengidentifikasi informasi penting procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (6)",
+      "soal": "Which statement provides the most accurate chronological summary of the story's main events?",
+      "opsi": [
+        "Shero falls into the dirt.\nThe hyenas cause trouble at the river.\nHera tells Shero that he is funny.\nShero copies Hera's roar.\nShero becomes the kingdom's funny helper.",
+        "Hera is a strong lion king.\nShero likes to pretend to be strong.\nThe hyenas cause trouble near the river.\nHera scares the hyenas, but Shero makes them laugh.\nShero learns that making others happy is special.",
+        "Hera and Shero are both strong leaders.\nThe hyenas come to help the lions.\nShero tells funny stories to the hyenas.\nHera is angry with Shero.\nThe lions and hyenas become friends.",
+        "Shero is a strong lion king.\nHera is jealous of Shero.\nThe hyenas attack the lions.\nShero defeats the hyenas.\nShero becomes the new king.",
+        "Shero wants to be king and fights Hera.\nThe hyenas help Shero.\nHera leaves the kingdom.\nShero becomes king.\nHera returns to forgive Shero."
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Pilihan B mengikuti urutan cerita; A urutannya acak, sedangkan C, D, E memuat peristiwa yang tidak ada dalam teks.",
+      "halaman": [
+        9
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator sama persis dengan versi A (menyebut procedure text), padahal teks versi B adalah narrative text; kemungkinan tersalin dari versi A. Kode soal juga sama dengan soal 6A (25BIGUTAPTXI01SU-250043-0005)."
+      ]
+    },
+    {
+      "id": "BINGW25-007B",
+      "passage": "P03",
+      "nomor": "7 (versi B)",
+      "kode_sumber": "25BIGUTAPINI07SU-250102-0136",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Mengklasifikasi: mampu mengelompokkan orang, benda, tempat, atau peristiwa dalam teks berdasarkan kategori tertentu.",
+      "indikator": "mengelompokkan orang/benda/tempat/peristiwa berdasarkan kategori tertentu dalam procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (7)",
+      "soal": "What can we learn from the story of Hera and Shero? There is more than one correct answer. Click for every correct answer!",
+      "opsi": [
+        "Everyone has something special to give, even if they are not the leader",
+        "Being funny and making others smile is just as important as being strong",
+        "Good friends will support you and help you see your real strengths",
+        "Working together is better when people use their different talents",
+        "Trying your best to help others is more important than always being perfect"
+      ],
+      "kunci": [
+        0,
+        1,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Teks: Shero \"had his own special gift\", \"both power and fun are important in life\", dan keduanya memerintah bersama \"one with strength, and one with laughter\".",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator sama persis dengan versi A (menyebut procedure text), padahal teks versi B adalah narrative text; kemungkinan tersalin dari versi A.",
+        "Pilihan C juga dapat dibela karena Hera membantu Shero menyadari bakatnya (\"you make everyone happy with your jokes\")."
+      ]
+    },
+    {
+      "id": "BINGW25-008B",
+      "passage": "P03",
+      "nomor": "8 (versi B)",
+      "kode_sumber": "25BIGUTAPINI10SU-250102-0253",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Membuat kerangka: mampu menyusun poin-poin utama dari teks dalam bentuk kerangka atau daftar.",
+      "indikator": "menyusun poin utama menjadi kerangka/daftar untuk procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (8)",
+      "soal": "The hyenas laugh so much when Shero tries to roar like Hera because ....",
+      "opsi": [
+        "Shero tries to roar in a serious way and surprises the hyenas",
+        "Shero's roar is funny, which the hyenas think he is joking",
+        "Hera tells a joke about Shero to make the hyenas laugh",
+        "Shero is acting like Hera, and it's absolutely brilliant",
+        "Shero trips and falls when trying to show his strength"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Teks: \"Shero also tried to roar, but his voice was high and silly. The hyenas laughed at him.\" Pilihan E terjadi pada peristiwa lain (melompat ke bukit tanah), bukan saat mengaum.",
+      "halaman": [
+        10
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator sama persis dengan versi A (menyebut procedure text), padahal teks versi B adalah narrative text; kemungkinan tersalin dari versi A. Kode soal juga sama dengan soal 8A (25BIGUTAPINI10SU-250102-0253)."
+      ]
+    },
+    {
+      "id": "BINGW25-009B",
+      "passage": "P03",
+      "nomor": "9 (versi B)",
+      "kode_sumber": "25BIGUTAPINI07SU-250043-0058",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menyimpulkan tujuan penulisan procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (9)",
+      "soal": "If in the beginning of the story, Shero is a strong lion with a loud roar, just like Hera. What would happened in the end of the story? There is more than one correct answer. Click for every correct answer!",
+      "opsi": [
+        "Shero and Hera would both scare the hyenas away together",
+        "Shero would become the king, and Hera would leave the savannah",
+        "Shero would get respect from the other animals for his strength",
+        "The hyenas would still laugh at Shero because he is funny",
+        "Shero would try to take Hera's place as the only lion king"
+      ],
+      "kunci": [
+        0,
+        2
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Jika Shero sekuat Hera, aumannya juga akan menakuti hyena dan ia dihormati seperti Hera yang \"loved and respected\" karena kekuatannya; B dan E tidak didukung cerita, D bertentangan dengan pengandaian.",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator sama persis dengan versi A (menyebut procedure text), padahal teks versi B adalah narrative text; kemungkinan tersalin dari versi A. Kode soal juga sama dengan soal 9A (25BIGUTAPINI07SU-250043-0058)."
+      ]
+    },
+    {
+      "id": "BINGW25-010B",
+      "passage": "P03",
+      "nomor": "10 (versi B)",
+      "kode_sumber": "25BIGUTAEVAI13SU-250043-0040",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: mampu membuat penilaian terhadap ide, menanggapi teks secara emosional dan estetis dengan mempertimbangkan dampaknya terhadap perasaan, imajinasi, serta penggunaan bahasa oleh penulis",
+      "subkompetensi": "Menilai realitas atau fantasi: mampu menganalisis peristiwa dalam teks dapat terjadi dalam kehidupan nyata berdasarkan pengalaman dan pengetahuan pribadi.",
+      "indikator": "menentukan bagian teks yang dapat diaplikasikan dalam kehidupan nyata berdasarkan pengalaman/pengetahuan pribadi merujuk pada procedure text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasion (10)",
+      "soal": "Shero is clumsy and funny, this is shown when he .... There is more than one correct answer. Click for every correct answer!",
+      "opsi": [
+        "scares the hyenas away with his loud and powerful roar",
+        "makes the other animals smile by pretending to be a great king",
+        "tries to roar like Hera, but his voice is small and makes the hyenas laugh",
+        "walks with Hera to confront the hyenas, acting as if he is an important king too",
+        "tells the hyenas that he is as mighty as King Hera, even though no one believes him"
+      ],
+      "kunci": [
+        1,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "C dan E langsung ada di teks (auman tinggi dan konyol; \"I am just as strong as Hera!\" ditertawakan); B sesuai paragraf pertama (Shero berpura-pura sekuat Hera dan membuat hewan lain tertawa).",
+      "halaman": [
+        11
+      ],
+      "catatan_transkripsi": [
+        "Kotak indikator sama persis dengan versi A (menyebut procedure text), padahal teks versi B adalah narrative text; kemungkinan tersalin dari versi A. Kode soal juga sama dengan soal 10A (25BIGUTAEVAI13SU-250043-0040).",
+        "Pilihan B bisa dianggap salah karena teks menyebut \"laugh\", bukan \"smile\"; tidak ada pilihan yang memuat adegan Shero tersandung, padahal soal menyebut \"clumsy\"."
+      ]
+    },
+    {
+      "id": "BINGW25-011",
+      "passage": "P04",
+      "nomor": "11",
+      "kode_sumber": "25BIGUTAPTXI01SU-250045-0100",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Menemukan/mengidentifikasi Informasi: mampu menemukan atau mengidentifikasi informasi penting yang disebutkan secara eksplisit dalam teks.",
+      "indikator": "mengidentifikasi informasi penting eksplisit dalam descriptive text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (11)",
+      "soal": "Which of the following descriptions are mentioned clearly in the text? There are more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "The reef was built by local communities over hundreds of years",
+        "The reef is located in the Pacific Ocean near Australia",
+        "The reef can help protect the coast from big waves",
+        "The reef is home to sea turtles and dolphins",
+        "The reef has more than 10,000 coral islands"
+      ],
+      "kunci": [
+        1,
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "B (paragraf 1), C (paragraf 4), dan D (paragraf 2) disebut langsung; teks hanya menyebut \"many small coral islands\" tanpa angka.",
+      "halaman": [
+        12
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-012",
+      "passage": "P04",
+      "nomor": "12",
+      "kode_sumber": "25BIGUTAPINI07SU-250045-0067",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menentukan makna frasa dalam descriptive text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (12)",
+      "soal": "The author mentioned \"It feels like a different world under the sea\". What does the phrase \"a different world under the sea\" most likely mean?",
+      "opsi": [
+        "A safe place that has bright reef",
+        "A peaceful place where people can live under water",
+        "A colorful place that looks the same as the land",
+        "A shining reef that is quiet",
+        "A calm place that looks beautiful and unique"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Frasa itu menggambarkan dunia bawah laut yang indah dan berbeda dari daratan (unik); C bertentangan dan B tidak masuk akal.",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-013",
+      "passage": "P04",
+      "nomor": "13",
+      "kode_sumber": "25BIGUTAPINI07SU-250045-0072",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menyimpulkan topik descriptive text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (13)",
+      "soal": "Which of the following best represents the main idea implied by the text?",
+      "opsi": [
+        "The reef is useful for fishing and shipping",
+        "The reef is large, but not important to people",
+        "The reef is a natural treasure that must be cared for",
+        "The reef is only for scientists and researchers to explore",
+        "The reef is a protected area that should be closed to visitors"
+      ],
+      "kunci": 2,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Teks menekankan keindahan dan pentingnya terumbu (\"not only beautiful, but also very important\"; \"Without the reef, the ocean would not be the same\").",
+      "halaman": [
+        13
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-014",
+      "passage": "P04",
+      "nomor": "14",
+      "kode_sumber": "25BIGUTAPINI06SU-250045-0060",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan detail pendukung: mampu menentukan fakta tambahan yang membuat teks lebih informatif, menarik, atau persuasif.",
+      "indikator": "menentukan fakta tambahan agar teks lebih informatif/menarik/persuasif pada descriptive text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (14)",
+      "soal": "Which detail would best encourage people to visit the Great Barrier Reef?",
+      "opsi": [
+        "Visitors can see an Australian national park",
+        "Visitors can stay in hotels around the reef",
+        "Visitors can get there by boat or short flights",
+        "Visitors can protect the coral and the animals",
+        "Visitors can see the coral by diving or swimming"
+      ],
+      "kunci": 4,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "Pengalaman melihat terumbu karang dengan menyelam atau berenang paling menarik minat wisatawan dan sejalan dengan paragraf 2.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": [
+        "Indikator meminta fakta tambahan, sedangkan E sudah tersebut dalam teks (\"swimming, diving, or joining a boat tour\"); pilihan C (akses kapal/penerbangan singkat) juga dapat dibela."
+      ]
+    },
+    {
+      "id": "BINGW25-015",
+      "passage": "P04",
+      "nomor": "15",
+      "kode_sumber": "25BIGUTAEVAI16SU-250045-0101",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: mampu membuat penilaian terhadap ide, menanggapi teks secara emosional dan estetis dengan mempertimbangkan dampaknya terhadap perasaan, imajinasi, serta penggunaan bahasa oleh penulis",
+      "subkompetensi": "Menilai kesesuaian: mampu menentukan bagian teks yang paling sesuai untuk menggambarkan karakter utama atau aspek lain dari bacaan.",
+      "indikator": "Mengevaluasi aspek utama/aspek lain dalam descriptive text yang menggunakan struktur kalimat sederhana dan beberapa kalimat majemuk dasar dengan konteks sehari-hari/vokasional (15)",
+      "soal": "Which parts of the text best support the idea that the Great Barrier Reef is both beautiful and important? There is more than one correct answer. Click on every correct answer!",
+      "opsi": [
+        "The reef helps protect the coast from big waves",
+        "It is home to sea turtles, dolphins, and colorful fish",
+        "The coral reefs grow best in cold, deep water",
+        "Some areas of the reef are damaged by starfish and warm water",
+        "The reef was discovered by sailors in the 1800s"
+      ],
+      "kunci": [
+        0,
+        1
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "A (pentingnya, paragraf 4) dan B (keindahan dan kehidupan, paragraf 2) ada di teks; C bertentangan (\"warm waters\"), D dan E tidak disebut.",
+      "halaman": [
+        14
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-016",
+      "passage": "P05",
+      "nomor": "16",
+      "kode_sumber": "25BIGUTAPTXI02SU-250098-0260",
+      "format": "benar-salah",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Mengklasifikasi: mampu mengelompokkan orang, benda, tempat, atau peristiwa dalam teks berdasarkan kategori tertentu.",
+      "indikator": "Mengelompokkan orang, benda/tempat/peristiwa dalam analytical exposition text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar (16)",
+      "soal": "Based on the text, choose the activity that best fits the description",
+      "opsi": [
+        "Saving money for university",
+        "Saving to buy a new phone",
+        "Starting a business"
+      ],
+      "kunci": [
+        false,
+        true,
+        false
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 2: tujuan jangka pendek \"getting a new phone\", jangka panjang \"saving for college or starting a business\".",
+      "halaman": [
+        15
+      ],
+      "catatan_transkripsi": [
+        "Soal berbentuk \"Pilihan Ganda Kompleks - Kategori\" dengan kolom Short-term financial goals dan Long-term financial goals; di sini true = Short-term, false = Long-term."
+      ],
+      "kolom": [
+        "Short-term financial goals",
+        "Long-term financial goals"
+      ]
+    },
+    {
+      "id": "BINGW25-017",
+      "passage": "P05",
+      "nomor": "17",
+      "kode_sumber": "25BIGUTAPTXI05SU-250098-0166",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Tekstual: mampu memahami informasi yang eksplisit, mengelompokkan, menyusun ulang, dan menyajikan kembali informasi eksplisit dari teks",
+      "subkompetensi": "Mensintesis: mampu menggabungkan informasi dari sumber lain untuk mendapatkan pemahaman yang lebih komprehensif tentang suatu isu atau topik.",
+      "indikator": "Menarik kesimpulan berdasarkan informasi dari sumber berbeda dalam analytical exposition text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar (17)",
+      "soal": "According to the text, which of the following actions support smart money management for students? There is more than one correct answer. Click on every correct answer!",
+      "opsi": [
+        "Tracking daily expenses using a notebook or app",
+        "Spending more money than the monthly budget allows",
+        "Setting financial goals for the short and long term",
+        "Borrowing money whenever there is not enough left",
+        "Dividing money into saving, spending, and emergency funds"
+      ],
+      "kunci": [
+        0,
+        2,
+        4
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "tinggi",
+      "alasan": "Paragraf 4 (mencatat pengeluaran), paragraf 2 (tujuan jangka pendek dan panjang), paragraf 3 (menentukan uang untuk ditabung, dibelanjakan, atau disimpan untuk masalah tak terduga).",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-018",
+      "passage": "P05",
+      "nomor": "18",
+      "kode_sumber": "25BIGUTAPINI07SU-250098-0251",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan topik, ide pokok/gagasan utama, makna, target pembaca, tujuan penulisan teks, atau pesan moral yang tidak secara eksplisit dinyatakan dalam teks.",
+      "indikator": "menarik kesimpulan berdasarkan informasi implisit dalam anaitical exposition text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar (18)",
+      "soal": "Who is most likely to be the target audience of this text? There is more than one correct answer. Click on every correct answer!",
+      "opsi": [
+        "Teenagers who are learning to manage their money",
+        "Parents looking for tips on how to control their children's spending",
+        "Students who want to plan for their financial future",
+        "High school readers who need to understand saving and budgeting",
+        "Bankers and financial experts"
+      ],
+      "kunci": [
+        0,
+        2,
+        3
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Judul dan isi teks ditujukan kepada remaja/pelajar (\"Why Teenagers Should Learn...\", \"students\"); teks tidak memberi kiat untuk orang tua atau ahli keuangan.",
+      "halaman": [
+        16
+      ],
+      "catatan_transkripsi": []
+    },
+    {
+      "id": "BINGW25-019",
+      "passage": "P05",
+      "nomor": "19",
+      "kode_sumber": "25BIGUTAPINI06SU-250098-0223",
+      "format": "pilihan-ganda",
+      "kompetensi": "Pemahaman Inferensial: mampu menarik kesimpulan berdasarkan informasi tersirat dalam teks, pengalaman pribadi, serta intuisi untuk memahami isi teks",
+      "subkompetensi": "Menyimpulkan perbandingan: mampu menyimpulkan persamaan atau perbedaan antara tokoh, waktu, tempat, benda, atau gagasan dalam teks.",
+      "indikator": "Menentukan fakta tambahan agar teks lebih informatif/menarik/persuasif dalam analytical exposition text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar (19)",
+      "soal": "Which information would make the text more informative about student spending habits?",
+      "opsi": [
+        "A paragraph about the history of financial education in schools",
+        "A table showing common monthly high school students expenses",
+        "A graph comparing saving habits between teenagers and adults",
+        "A chart listing popular entertainment choices among students",
+        "A paragraph about students' experiences in managing budget"
+      ],
+      "kunci": 1,
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "sedang",
+      "alasan": "Tabel pengeluaran bulanan pelajar langsung menambah informasi tentang kebiasaan belanja; A dan C tidak membahas belanja pelajar, D terlalu sempit.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Subkompetensi (menyimpulkan perbandingan) tidak sesuai dengan indikator (menentukan fakta tambahan) pada kotak yang sama."
+      ]
+    },
+    {
+      "id": "BINGW25-020",
+      "passage": "P05",
+      "nomor": "20",
+      "kode_sumber": "25BIGUTAEVAI14SU-250098-0175",
+      "format": "pilihan-ganda-kompleks",
+      "kompetensi": "Evaluasi dan Apresiasi: mampu membuat penilaian terhadap ide, menanggapi teks secara emosional dan estetis dengan mempertimbangkan dampaknya terhadap perasaan, imajinasi, serta penggunaan bahasa oleh penulis",
+      "subkompetensi": "Menilai fakta atau opini: mampu menilai fakta/opini yang diberikan penulis untuk mendukung pendapatnya berdasarkan bukti atau sekadar berusaha mempengaruhi pembaca.",
+      "indikator": "Menilai fakta/opini dalam analytical exposition text yang menggunakan struktur kalimat sederhana atau kompleks dengan konteks kehidupan sehari-hari/vokasional/akademik dasar (20)",
+      "soal": "Which of the following statements are supported by clear data or facts in the text and table? There is more than one correct answer. Click on every correct answer.",
+      "opsi": [
+        "45% of students save money regularly",
+        "Tracking expenses can help understand spending habits",
+        "Most students do not care about money at all",
+        "Saving 10% of allowance is a good practice",
+        "Spending on fun activities is always better than saving"
+      ],
+      "kunci": [
+        0,
+        1
+      ],
+      "status_kunci": "usulan",
+      "keyakinan_kunci": "rendah",
+      "alasan": "A tercantum di tabel (45%), B dinyatakan di paragraf 4 dan didukung baris tabel tentang pencatatan pengeluaran; C dan E tidak didukung.",
+      "halaman": [
+        17
+      ],
+      "catatan_transkripsi": [
+        "Pilihan D juga dapat dibela karena tabel mencatat \"Save at least 10% of allowance\" untuk pelajar yang rajin menabung, walaupun \"good practice\" adalah penilaian."
+      ]
+    }
+  ]
+}
