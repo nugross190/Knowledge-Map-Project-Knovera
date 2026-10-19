@@ -227,6 +227,14 @@ class TkaTypesTest(unittest.TestCase):
                     self.assertIn(items[i]["format"], t["format"], f"{t['kode']} {i}")
 
 
+    def test_every_bank_has_a_template(self):
+        types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
+        listed = {b for s in types.values() for b in s["banks"]}
+        self.assertEqual(listed, {p.stem for p in (ROOT / "data/tka").glob("*.json")})
+        for subject in types:
+            self.assertTrue((ROOT / f"specs/tka-templates/{subject}.md").exists(), subject)
+
+
 class GeneratedCheckTest(unittest.TestCase):
     """scripts/check_generated.py accepts a good batch and rejects a bad one."""
 
