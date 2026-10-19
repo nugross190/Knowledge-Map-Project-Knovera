@@ -20,6 +20,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 | Maps (`data/maps/`) | `specs/map-spec.md` |
 | Questions (`data/questions.csv`) | `specs/question-spec.md` |
 | TKA banks (`data/tka/`) | `specs/tka-spec.md` |
+| Generating TKA items (`data/tka-generated/`) | `specs/tka-generation.md`, `specs/tka-item-types.md`, `specs/tka-templates/<subject>.md` |
 
 For a new subject map, the `new-subject` skill (`.claude/skills/new-subject/SKILL.md`) runs the whole pipeline.
 
@@ -50,6 +51,8 @@ data/maps/<id>.json      subject maps (source of truth)
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
 data/tka/<id>.json       TKA exam banks (transcribed papers, proposed keys)
+data/tka-types.json      TKA item types; every transcribed item mapped to one
+data/tka-generated/      agent-generated TKA items (checked by scripts/check_generated.py, not built)
 templates/_map.html      shared page for all subject maps
 templates/*.html         other pages (history map, bank, simulator, start page)
 scripts/build.py         validation, lint, build

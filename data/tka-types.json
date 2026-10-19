@@ -1,0 +1,293 @@
+{
+  "bahasa-indonesia": {
+    "mapel": "Bahasa Indonesia",
+    "banks": [
+      "tka-bahasa-indonesia-wajib-2025",
+      "tka-bahasa-indonesia-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "BIN-KOS",
+        "nama": "Makna kata atau istilah dalam konteks",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-001",
+          "BINW25-015",
+          "BINW25-018A",
+          "BINW25-018B",
+          "BINW25-022"
+        ]
+      },
+      {
+        "kode": "BIN-IDE",
+        "nama": "Gagasan pokok, gagasan pendukung, dan informasi tersurat",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-002",
+          "BINW25-006",
+          "BINW25-019A",
+          "BINW25-019B",
+          "BINW25-023"
+        ]
+      },
+      {
+        "kode": "BIN-URUT",
+        "nama": "Urutan peristiwa atau kerangka teks",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-009",
+          "BINP25-005"
+        ]
+      },
+      {
+        "kode": "BIN-HUB",
+        "nama": "Hubungan makna antarkalimat atau antarparagraf",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-003",
+          "BINW25-012",
+          "BINW25-020A",
+          "BINW25-020B",
+          "BINW25-024"
+        ]
+      },
+      {
+        "kode": "BIN-UNS",
+        "nama": "Unsur intrinsik fiksi: latar, tokoh, konflik, suasana, respons emosional",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-005",
+          "BINW25-008",
+          "BINW25-016",
+          "BINW25-018C",
+          "BINW25-019C",
+          "BINP25-006",
+          "BINP25-025A",
+          "BINP25-025B",
+          "BINP25-026A",
+          "BINP25-026B"
+        ]
+      },
+      {
+        "kode": "BIN-PRED",
+        "nama": "Prediksi kelanjutan atau penutup teks",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-007",
+          "BINW25-017",
+          "BINW25-020C"
+        ]
+      },
+      {
+        "kode": "BIN-SIMP",
+        "nama": "Ketepatan kalimat atau paragraf sebagai simpulan atau penutup",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINW25-004",
+          "BINW25-021A",
+          "BINW25-021B",
+          "BINW25-025"
+        ]
+      },
+      {
+        "kode": "BIN-NILAI",
+        "nama": "Nilai dalam teks dan relevansinya dengan norma atau kehidupan sehari-hari",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINW25-010",
+          "BINW25-011",
+          "BINW25-021C",
+          "BINP25-007",
+          "BINP25-023A",
+          "BINP25-023B",
+          "BINP25-024A",
+          "BINP25-024B"
+        ]
+      },
+      {
+        "kode": "BIN-BHS",
+        "nama": "Kebahasaan: afiks, frasa, kalimat, majas, citraan, konotasi, idiom",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINW25-014",
+          "BINP25-008",
+          "BINP25-009",
+          "BINP25-010",
+          "BINP25-011",
+          "BINP25-012",
+          "BINP25-013",
+          "BINP25-014",
+          "BINP25-017",
+          "BINP25-018",
+          "BINP25-020"
+        ]
+      },
+      {
+        "kode": "BIN-DATA",
+        "nama": "Teks dan data visual: parafrasa, simpulan, dan kesesuaian dengan data",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINW25-013",
+          "BINP25-015",
+          "BINP25-016",
+          "BINP25-021",
+          "BINP25-023C",
+          "BINP25-024C",
+          "BINP25-025C",
+          "BINP25-026C"
+        ]
+      },
+      {
+        "kode": "BIN-LOGIKA",
+        "nama": "Kelogisan argumen, gagasan, atau pandangan",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINP25-019",
+          "BINP25-022"
+        ]
+      }
+    ]
+  },
+  "fisika": {
+    "mapel": "Fisika",
+    "banks": [
+      "tka-fisika-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "FIS-UKUR",
+        "nama": "Membaca alat ukur dan mengolah hasil pengukuran",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "FIS25-001"
+        ]
+      },
+      {
+        "kode": "FIS-GRAF",
+        "nama": "Membaca grafik atau tabel data untuk menentukan besaran",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "FIS25-003",
+          "FIS25-004",
+          "FIS25-015",
+          "FIS25-021"
+        ]
+      },
+      {
+        "kode": "FIS-HITUNG",
+        "nama": "Menghitung satu besaran dalam konteks sehari-hari",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "FIS25-005",
+          "FIS25-011",
+          "FIS25-012",
+          "FIS25-020",
+          "FIS25-023"
+        ]
+      },
+      {
+        "kode": "FIS-ANALISIS",
+        "nama": "Menganalisis keterkaitan besaran atau memprediksi keadaan gerak",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "FIS25-007",
+          "FIS25-009"
+        ]
+      },
+      {
+        "kode": "FIS-KONSEP",
+        "nama": "Menjelaskan fenomena dengan konsep fisika (tanpa hitungan utama)",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "FIS25-008",
+          "FIS25-010",
+          "FIS25-016",
+          "FIS25-022"
+        ]
+      },
+      {
+        "kode": "FIS-STRATEGI",
+        "nama": "Mengevaluasi strategi, rancangan, atau keputusan sehari-hari",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "FIS25-002",
+          "FIS25-017",
+          "FIS25-024",
+          "FIS25-025"
+        ]
+      },
+      {
+        "kode": "FIS-EKSP",
+        "nama": "Rancangan percobaan: variabel dan prosedur",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "FIS25-018",
+          "FIS25-019"
+        ]
+      }
+    ]
+  }
+}

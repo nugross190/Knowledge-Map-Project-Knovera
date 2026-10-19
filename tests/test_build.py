@@ -7,6 +7,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 import build  # noqa: E402
 
+ROOT = Path(__file__).resolve().parent.parent
+
 
 def row(**kw):
     base = {"id": "SNI-01-900", "simpul": "SNI-01", "tingkat": "1", "soal": "Soal uji?", "jawaban": "Jawaban", "catatan": ""}
@@ -203,3 +205,61 @@ class SiteTest(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TkaTypesTest(unittest.TestCase):
+    """data/tka-types.json covers its banks exactly (specs/tka-item-types.md)."""
+
+    def test_every_item_has_exactly_one_type(self):
+        types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
+        codes = [t["kode"] for s in types.values() for t in s["types"]]
+        self.assertEqual(len(codes), len(set(codes)))
+        for subject, s in types.items():
+            items = {}
+            for b in s["banks"]:
+                for it in json.loads((ROOT / f"data/tka/{b}.json").read_text(encoding="utf-8"))["soal"]:
+                    items[it["id"]] = it
+            mapped = [i for t in s["types"] for i in t["contoh"]]
+            self.assertEqual(sorted(mapped), sorted(items), subject)
+            for t in s["types"]:
+                self.assertIn(t["level"], (1, 2, 3))
+                for i in t["contoh"]:
+                    self.assertIn(items[i]["format"], t["format"], f"{t['kode']} {i}")
+
+
+class GeneratedCheckTest(unittest.TestCase):
+    """scripts/check_generated.py accepts a good batch and rejects a bad one."""
+
+    def item(self, **kw):
+        it = {"id": "FISG-G001", "passage": None, "nomor": "1", "format": "pilihan-ganda",
+              "kompetensi": "-", "subkompetensi": None, "indikator": "-",
+              "soal": "Sebuah benda bermassa 2 kg didorong gaya 10 N. Berapa percepatannya?",
+              "opsi": ["2 m.s⁻²", "5 m.s⁻²", "10 m.s⁻²", "20 m.s⁻²", "0,2 m.s⁻²"], "kunci": 1,
+              "status_kunci": "usulan", "keyakinan_kunci": "tinggi", "alasan": "a = F/m = 10/2 = 5 m.s⁻²",
+              "halaman": [], "catatan_transkripsi": [], "asal": "generated", "tipe": "FIS-HITUNG",
+              "acuan": ["FIS25-012"]}
+        it.update(kw)
+        return it
+
+    def run_check(self, items):
+        import tempfile
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import check_generated
+        bank = {"id": "fisika-test", "kode": "FISG", "mapel": "Fisika", "ujian": "uji",
+                "sumber": {"berkas": None, "halaman": 0, "bentuk": "dibuat agen"}, "catatan": [], "teks": [],
+                "soal": items}
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "fisika-test.json"
+            p.write_text(json.dumps(bank, ensure_ascii=False), encoding="utf-8")
+            return check_generated.check(p, check_generated.load_types())
+
+    def test_good_batch_passes(self):
+        self.assertEqual(self.run_check([self.item()]), [])
+
+    def test_bad_batch_fails(self):
+        problems = self.run_check([self.item(tipe="FIS-NOPE"), self.item(id="FISG-G002", acuan=["BINW25-001"]),
+                                   self.item(id="FISG-G003", status_kunci="resmi")])
+        text = "\n".join(problems)
+        self.assertIn("unknown tipe", text)
+        self.assertIn("acuan", text)
+        self.assertIn("status_kunci", text)
