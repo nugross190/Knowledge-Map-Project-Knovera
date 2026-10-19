@@ -492,5 +492,155 @@
         ]
       }
     ]
+  },
+  "matematika": {
+    "mapel": "Matematika",
+    "banks": [
+      "tka-matematika-umum-2025",
+      "tka-matematika-tingkat-lanjut-2025"
+    ],
+    "types": [
+      {
+        "kode": "MAT-KENAL",
+        "nama": "Mengenali hubungan atau data pada gambar, grafik, atau diagram",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "MATW25-010",
+          "MATW25-011",
+          "MATW25-021",
+          "MATL25-015"
+        ]
+      },
+      {
+        "kode": "MAT-HITUNG",
+        "nama": "Menghitung atau menyederhanakan bentuk matematis tanpa konteks",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "MATW25-001",
+          "MATW25-002",
+          "MATL25-001",
+          "MATL25-005",
+          "MATL25-016",
+          "MATL25-021",
+          "MATL25-022",
+          "MATL25-025"
+        ]
+      },
+      {
+        "kode": "MAT-PARAM",
+        "nama": "Menentukan unsur yang belum diketahui dari syarat atau bayangan (bekerja mundur)",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "MATW25-003",
+          "MATW25-014",
+          "MATL25-008",
+          "MATL25-012",
+          "MATL25-013",
+          "MATL25-019",
+          "MATL25-020"
+        ]
+      },
+      {
+        "kode": "MAT-MODEL",
+        "nama": "Memodelkan situasi, tabel, atau gambar ke bentuk matematis lalu menyelesaikannya",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "MATW25-006",
+          "MATW25-007",
+          "MATW25-008",
+          "MATW25-009",
+          "MATW25-022",
+          "MATW25-024",
+          "MATL25-002",
+          "MATL25-003",
+          "MATL25-004"
+        ]
+      },
+      {
+        "kode": "MAT-FUNGSI",
+        "nama": "Menafsirkan dan memakai model fungsi yang diberikan dalam konteks",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "MATW25-004",
+          "MATL25-006",
+          "MATL25-007",
+          "MATL25-009",
+          "MATL25-010",
+          "MATL25-011",
+          "MATL25-023"
+        ]
+      },
+      {
+        "kode": "MAT-UKUR",
+        "nama": "Menghitung panjang, sudut, luas, atau volume bangun",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "MATW25-012",
+          "MATW25-013",
+          "MATW25-015",
+          "MATW25-016",
+          "MATW25-020",
+          "MATL25-014",
+          "MATL25-017"
+        ]
+      },
+      {
+        "kode": "MAT-KEPUTUSAN",
+        "nama": "Memilih jumlah, ukuran, atau biaya terbaik dengan batasan",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "MATW25-018",
+          "MATW25-019",
+          "MATL25-018"
+        ]
+      },
+      {
+        "kode": "MAT-NALAR",
+        "nama": "Menalar dari syarat: pasti, mungkin, cukup, atau selalu benar",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "MATW25-005",
+          "MATW25-017",
+          "MATW25-023",
+          "MATW25-025",
+          "MATL25-024"
+        ]
+      }
+    ]
   }
 }
