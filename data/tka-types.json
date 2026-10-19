@@ -642,5 +642,218 @@
         ]
       }
     ]
+  },
+  "biologi": {
+    "mapel": "Biologi",
+    "banks": [
+      "tka-biologi-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "BIO-INFO",
+        "nama": "Menemukan informasi tersurat dalam teks kasus",
+        "level": 1,
+        "format": [
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BIO25-001"
+        ]
+      },
+      {
+        "kode": "BIO-IDENT",
+        "nama": "Mengenali struktur, tahap, atau jenis dari gambar atau kasus",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BIO25-003",
+          "BIO25-004",
+          "BIO25-008",
+          "BIO25-028",
+          "BIO25-029",
+          "BIO25-030"
+        ]
+      },
+      {
+        "kode": "BIO-MEKANISME",
+        "nama": "Menjelaskan gejala atau kasus dengan mekanisme biologis",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BIO25-002",
+          "BIO25-007",
+          "BIO25-011",
+          "BIO25-012",
+          "BIO25-013",
+          "BIO25-014",
+          "BIO25-016"
+        ]
+      },
+      {
+        "kode": "BIO-DATA",
+        "nama": "Menafsirkan data pemeriksaan atau hasil percobaan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BIO25-005",
+          "BIO25-006",
+          "BIO25-010"
+        ]
+      },
+      {
+        "kode": "BIO-DAMPAK",
+        "nama": "Memprediksi dampak gangguan pada proses tubuh atau ekosistem",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BIO25-009",
+          "BIO25-022",
+          "BIO25-023",
+          "BIO25-024"
+        ]
+      },
+      {
+        "kode": "BIO-EKSP",
+        "nama": "Merancang penyelidikan: pertanyaan ilmiah dan pengumpulan data",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BIO25-017",
+          "BIO25-018",
+          "BIO25-019"
+        ]
+      },
+      {
+        "kode": "BIO-EVAL",
+        "nama": "Mengevaluasi kualitas data dan kaitannya dengan hipotesis",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BIO25-020",
+          "BIO25-021"
+        ]
+      },
+      {
+        "kode": "BIO-SOLUSI",
+        "nama": "Menilai solusi atau tindakan untuk suatu masalah",
+        "level": 3,
+        "format": [
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BIO25-015"
+        ]
+      }
+    ]
+  },
+  "kimia": {
+    "mapel": "Kimia",
+    "banks": [
+      "tka-kimia-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "KIM-HITUNG",
+        "nama": "Menghitung besaran stoikiometri atau larutan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "KIM25-001",
+          "KIM25-003",
+          "KIM25-004",
+          "KIM25-005",
+          "KIM25-018"
+        ]
+      },
+      {
+        "kode": "KIM-DATA",
+        "nama": "Menafsirkan grafik atau tabel data percobaan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "KIM25-007",
+          "KIM25-013",
+          "KIM25-020"
+        ]
+      },
+      {
+        "kode": "KIM-KONSEP",
+        "nama": "Menerapkan konsep untuk menentukan spesi, sifat, atau penjelasan fenomena",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "KIM25-010",
+          "KIM25-011",
+          "KIM25-017",
+          "KIM25-024",
+          "KIM25-025"
+        ]
+      },
+      {
+        "kode": "KIM-ANALISIS",
+        "nama": "Menganalisis rumus, struktur, dan sifat senyawa dari data",
+        "level": 3,
+        "format": [
+          "benar-salah"
+        ],
+        "contoh": [
+          "KIM25-008",
+          "KIM25-009"
+        ]
+      },
+      {
+        "kode": "KIM-PREDIKSI",
+        "nama": "Memprediksi pergeseran kesetimbangan atau terbentuknya endapan",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "KIM25-015",
+          "KIM25-023"
+        ]
+      },
+      {
+        "kode": "KIM-KELAYAKAN",
+        "nama": "Menilai kelayakan produk, formulasi, atau keputusan terhadap standar atau tujuan",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "KIM25-006",
+          "KIM25-012",
+          "KIM25-014",
+          "KIM25-019",
+          "KIM25-021",
+          "KIM25-022"
+        ]
+      }
+    ]
   }
 }
