@@ -855,5 +855,237 @@
         ]
       }
     ]
+  },
+  "ekonomi": {
+    "mapel": "Ekonomi",
+    "banks": [
+      "tka-ekonomi-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "EKO-IDEN",
+        "nama": "Mengenali konsep, faktor, atau fungsi ekonomi",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "EKO25-009",
+          "EKO25-014",
+          "EKO25-017"
+        ]
+      },
+      {
+        "kode": "EKO-KLAS",
+        "nama": "Menggolongkan kasus ke jenis atau konsep ekonomi dan akuntansi",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "EKO25-012",
+          "EKO25-021",
+          "EKO25-025",
+          "EKO25-028"
+        ]
+      },
+      {
+        "kode": "EKO-HITUNG",
+        "nama": "Menghitung besaran ekonomi atau akuntansi dari data",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "EKO25-002",
+          "EKO25-005",
+          "EKO25-006",
+          "EKO25-008",
+          "EKO25-015",
+          "EKO25-024",
+          "EKO25-029",
+          "EKO25-030"
+        ]
+      },
+      {
+        "kode": "EKO-DATA",
+        "nama": "Menafsirkan tabel atau data statistik ekonomi",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "EKO25-010",
+          "EKO25-011",
+          "EKO25-016"
+        ]
+      },
+      {
+        "kode": "EKO-DAMPAK",
+        "nama": "Memprediksi dampak suatu perubahan atau kebijakan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "EKO25-004",
+          "EKO25-007",
+          "EKO25-020",
+          "EKO25-027"
+        ]
+      },
+      {
+        "kode": "EKO-SOLUSI",
+        "nama": "Memilih atau menilai solusi dan kebijakan atas masalah ekonomi",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "EKO25-001",
+          "EKO25-003",
+          "EKO25-013",
+          "EKO25-018",
+          "EKO25-019",
+          "EKO25-022",
+          "EKO25-023",
+          "EKO25-026"
+        ]
+      }
+    ]
+  },
+  "geografi": {
+    "mapel": "Geografi",
+    "banks": [
+      "tka-geografi-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "GEO-CITRA",
+        "nama": "Membaca peta atau citra untuk mengenali objek, wilayah, atau nilai",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-003",
+          "GEO25-005",
+          "GEO25-019",
+          "GEO25-025",
+          "GEO25-029"
+        ]
+      },
+      {
+        "kode": "GEO-DATA",
+        "nama": "Menarik simpulan dari teks, tabel, grafik, atau infografis",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-002",
+          "GEO25-006",
+          "GEO25-010",
+          "GEO25-018",
+          "GEO25-026"
+        ]
+      },
+      {
+        "kode": "GEO-TEKNO",
+        "nama": "Menentukan kegunaan teknologi geospasial dan citra penginderaan jauh",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "GEO25-022",
+          "GEO25-023"
+        ]
+      },
+      {
+        "kode": "GEO-KONSEP",
+        "nama": "Menerapkan konsep geografi pada kasus atau peta",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-001",
+          "GEO25-013",
+          "GEO25-015",
+          "GEO25-021"
+        ]
+      },
+      {
+        "kode": "GEO-DAMPAK",
+        "nama": "Menjelaskan sebab dan dampak fenomena geosfer",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-004",
+          "GEO25-024",
+          "GEO25-030"
+        ]
+      },
+      {
+        "kode": "GEO-FAKTA",
+        "nama": "Membedakan fakta dan opini tentang fenomena geosfer",
+        "level": 3,
+        "format": [
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-016",
+          "GEO25-020"
+        ]
+      },
+      {
+        "kode": "GEO-RUANG",
+        "nama": "Menilai kesesuaian rencana pemanfaatan ruang berdasarkan peta atau citra",
+        "level": 3,
+        "format": [
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "GEO25-007",
+          "GEO25-008",
+          "GEO25-012",
+          "GEO25-027",
+          "GEO25-028"
+        ]
+      },
+      {
+        "kode": "GEO-SOLUSI",
+        "nama": "Memilih upaya atau kebijakan untuk masalah wilayah, kependudukan, lingkungan, dan bencana",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "GEO25-009",
+          "GEO25-011",
+          "GEO25-014",
+          "GEO25-017"
+        ]
+      }
+    ]
   }
 }
