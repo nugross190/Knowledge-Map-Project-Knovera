@@ -4,7 +4,7 @@ Describes the TKA 2025 Pendidikan Pancasila paper (pilihan, 28 of 30 items; numb
 
 ## 1. The paper at a glance
 
-- **One short "ilustrasi" per item.** Every item opens with a case of 30–91 words: a conflict of interests, a news-like event, a programme, or a quoted article of the UUD NRI 1945. There are no figures, no tables, no source lines and no shared stimuli. Stems nearly always say "Berdasarkan ilustrasi, ...".
+- **One short "ilustrasi" per item.** Every item opens with a short case (case and stem together 30–91 words): a conflict of interests, a news-like event, a programme, or a quoted article of the UUD NRI 1945. There are no figures, no tables, no source lines and no shared stimuli. Stems nearly always say "Berdasarkan ilustrasi, ...".
 - **Formats.** 20 `pilihan-ganda`, 3 `pilihan-ganda-kompleks` ("Jawaban benar lebih dari satu"), 5 `benar-salah` (columns Benar / Salah).
 - **Missing items.** The PDF prints "SOAL NO.8 OTW" (page 7) and "SOAL NO.21 OTW" (page 17) in place of items 8 and 21.
 - **Content.** Each item names an *elemen* (Pancasila, UUD NRI Tahun 1945, Bhinneka Tunggal Ika, NKRI) and a *subelemen*. The item type is independent of the elemen: PPK-UPAYA appears under NKRI and Bhinneka Tunggal Ika alike.

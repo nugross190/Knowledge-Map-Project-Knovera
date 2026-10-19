@@ -8,7 +8,7 @@ Rules for building and extending this project. They are written for both people 
 | [`question-spec.md`](question-spec.md) | What a question is: fields, ids, difficulty, writing rules | Adding or editing questions |
 | [`tka-spec.md`](tka-spec.md) | What a TKA bank is: transcribed exam items, proposed keys, figure descriptions | Adding or editing `data/tka/` |
 | [`tka-item-types.md`](tka-item-types.md) | Item types and levels; how `data/tka-types.json` classifies every transcribed item | Classifying items, adding a subject template |
-| [`tka-templates/`](tka-templates/) | One template per subject: item types, stem patterns, key and distractor rules, real examples (Bahasa Indonesia, Fisika so far) | Writing or reviewing items of that subject |
+| [`tka-templates/`](tka-templates/) | One template per subject: item types, stem patterns, key and distractor rules, real examples (all 14 TKA papers, in 11 subject templates) | Writing or reviewing items of that subject |
 | [`tka-generation.md`](tka-generation.md) | How agents generate, review and answer TKA items; `data/tka-generated/` | Running or testing agents |
 | [`agent-workflow.md`](agent-workflow.md) | The step-by-step pipeline for adding a subject, from research to publishing | Starting any content task |
 | [`quality-checklist.md`](quality-checklist.md) | The pass/fail checks a change must meet before it is committed | Before every commit |

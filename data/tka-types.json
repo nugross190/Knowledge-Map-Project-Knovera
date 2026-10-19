@@ -1087,5 +1087,343 @@
         ]
       }
     ]
+  },
+  "ppkn": {
+    "mapel": "Pendidikan Pancasila (PPKn)",
+    "banks": [
+      "tka-ppkn-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "PPK-NILAI",
+        "nama": "Nilai atau sila Pancasila yang tercermin dalam kasus",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "PPKN25-018",
+          "PPKN25-030"
+        ]
+      },
+      {
+        "kode": "PPK-SIKAP",
+        "nama": "Perilaku atau sikap yang sesuai dengan sila, nilai, atau peran warga negara",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "PPKN25-003",
+          "PPKN25-010",
+          "PPKN25-013",
+          "PPKN25-014",
+          "PPKN25-029"
+        ]
+      },
+      {
+        "kode": "PPK-PASAL",
+        "nama": "Menerapkan pasal UUD NRI 1945 dan kewenangan lembaga negara",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "PPKN25-002",
+          "PPKN25-011",
+          "PPKN25-015"
+        ]
+      },
+      {
+        "kode": "PPK-PERAN",
+        "nama": "Peran atau fungsi Pancasila dan Bhinneka Tunggal Ika dalam suatu masalah",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "PPKN25-001",
+          "PPKN25-006",
+          "PPKN25-017",
+          "PPKN25-022",
+          "PPKN25-026"
+        ]
+      },
+      {
+        "kode": "PPK-ALASAN",
+        "nama": "Alasan atau arti penting suatu kegiatan atau kebijakan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "PPKN25-007",
+          "PPKN25-009",
+          "PPKN25-024",
+          "PPKN25-025"
+        ]
+      },
+      {
+        "kode": "PPK-TANTANGAN",
+        "nama": "Tantangan atau ancaman dalam suatu kasus",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "PPKN25-020",
+          "PPKN25-023",
+          "PPKN25-027"
+        ]
+      },
+      {
+        "kode": "PPK-UPAYA",
+        "nama": "Upaya atau solusi yang paling tepat untuk suatu masalah",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "PPKN25-004",
+          "PPKN25-005",
+          "PPKN25-012",
+          "PPKN25-016",
+          "PPKN25-019",
+          "PPKN25-028"
+        ]
+      }
+    ]
+  },
+  "sejarah": {
+    "mapel": "Sejarah",
+    "banks": [
+      "tka-sejarah-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "SEJ-FAKTA",
+        "nama": "Fakta, peristiwa, atau bukti yang termasuk suatu kategori",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "SEJ25-005",
+          "SEJ25-011",
+          "SEJ25-015",
+          "SEJ25-016",
+          "SEJ25-023",
+          "SEJ25-024"
+        ]
+      },
+      {
+        "kode": "SEJ-KONSEP",
+        "nama": "Konsep dasar ilmu sejarah: cara berpikir dan pengertian sejarah",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SEJ25-001",
+          "SEJ25-006"
+        ]
+      },
+      {
+        "kode": "SEJ-SEBAB",
+        "nama": "Latar belakang, faktor, dan tujuan suatu peristiwa",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "SEJ25-002",
+          "SEJ25-003",
+          "SEJ25-007",
+          "SEJ25-009",
+          "SEJ25-019",
+          "SEJ25-022"
+        ]
+      },
+      {
+        "kode": "SEJ-DAMPAK",
+        "nama": "Dampak atau akibat suatu peristiwa atau kebijakan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "SEJ25-013",
+          "SEJ25-017",
+          "SEJ25-018",
+          "SEJ25-028"
+        ]
+      },
+      {
+        "kode": "SEJ-STRATEGI",
+        "nama": "Strategi, respons, atau langkah menghadapi suatu keadaan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "SEJ25-021",
+          "SEJ25-027",
+          "SEJ25-030"
+        ]
+      },
+      {
+        "kode": "SEJ-BANDING",
+        "nama": "Membandingkan sumber sejarah atau keadaan sebelum dan sesudah peristiwa",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SEJ25-008",
+          "SEJ25-012"
+        ]
+      },
+      {
+        "kode": "SEJ-SUMBER",
+        "nama": "Menafsirkan sumber: relief, tabel, kutipan, atau pendapat sejarawan",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "SEJ25-010",
+          "SEJ25-014",
+          "SEJ25-025",
+          "SEJ25-029"
+        ]
+      },
+      {
+        "kode": "SEJ-RELEVAN",
+        "nama": "Relevansi gagasan tokoh dengan kehidupan masa kini",
+        "level": 3,
+        "format": [
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "SEJ25-004",
+          "SEJ25-020",
+          "SEJ25-026"
+        ]
+      }
+    ]
+  },
+  "sosiologi": {
+    "mapel": "Sosiologi",
+    "banks": [
+      "tka-sosiologi-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "SOS-DATA",
+        "nama": "Membaca data hasil penelitian sosial",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SOS25-011"
+        ]
+      },
+      {
+        "kode": "SOS-KONSEP",
+        "nama": "Konsep sosiologi dalam kasus: bentuk, jenis, syarat, dan ciri",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "SOS25-001",
+          "SOS25-002",
+          "SOS25-003",
+          "SOS25-004",
+          "SOS25-005",
+          "SOS25-012",
+          "SOS25-014",
+          "SOS25-018",
+          "SOS25-021"
+        ]
+      },
+      {
+        "kode": "SOS-METODE",
+        "nama": "Tujuan, metode, langkah, dan manfaat penelitian sosial",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "SOS25-007",
+          "SOS25-008",
+          "SOS25-009",
+          "SOS25-010",
+          "SOS25-013"
+        ]
+      },
+      {
+        "kode": "SOS-SEBAB",
+        "nama": "Penyebab atau pemicu masalah sosial",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SOS25-016",
+          "SOS25-019",
+          "SOS25-022",
+          "SOS25-023",
+          "SOS25-027"
+        ]
+      },
+      {
+        "kode": "SOS-DAMPAK",
+        "nama": "Dampak gejala sosial, ketimpangan, atau perubahan sosial",
+        "level": 2,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SOS25-006",
+          "SOS25-020",
+          "SOS25-024",
+          "SOS25-025",
+          "SOS25-026"
+        ]
+      },
+      {
+        "kode": "SOS-SOLUSI",
+        "nama": "Strategi, sikap, atau rekomendasi menghadapi masalah sosial",
+        "level": 3,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "SOS25-015",
+          "SOS25-017",
+          "SOS25-028",
+          "SOS25-029",
+          "SOS25-030"
+        ]
+      }
+    ]
   }
 }
