@@ -289,5 +289,208 @@
         ]
       }
     ]
+  },
+  "bahasa-inggris": {
+    "mapel": "Bahasa Inggris",
+    "banks": [
+      "tka-bahasa-inggris-wajib-2025",
+      "tka-bahasa-inggris-pilihan-2025"
+    ],
+    "types": [
+      {
+        "kode": "ING-INFO",
+        "nama": "Informasi tersurat dalam teks",
+        "level": 1,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINGW25-006A",
+          "BINGW25-011",
+          "BINGW25-017",
+          "BINGP25-001A",
+          "BINGP25-001B",
+          "BINGP25-006",
+          "BINGP25-011",
+          "BINGP25-016",
+          "BINGP25-021",
+          "BINGP25-022",
+          "BINGP25-026A",
+          "BINGP25-026B"
+        ]
+      },
+      {
+        "kode": "ING-MAKNA",
+        "nama": "Makna kata atau frasa dalam konteks",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINGW25-012"
+        ]
+      },
+      {
+        "kode": "ING-KERANGKA",
+        "nama": "Ringkasan, urutan peristiwa, atau kerangka teks",
+        "level": 1,
+        "format": [
+          "pilihan-ganda"
+        ],
+        "contoh": [
+          "BINGW25-001",
+          "BINGW25-008A",
+          "BINGW25-006B",
+          "BINGP25-023"
+        ]
+      },
+      {
+        "kode": "ING-KLAS",
+        "nama": "Mengelompokkan pernyataan ke dalam dua kategori",
+        "level": 2,
+        "format": [
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINGW25-007A",
+          "BINGW25-016",
+          "BINGP25-004A",
+          "BINGP25-005B",
+          "BINGP25-020",
+          "BINGP25-029A",
+          "BINGP25-030B"
+        ]
+      },
+      {
+        "kode": "ING-IDE",
+        "nama": "Topik atau gagasan utama teks",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINGW25-013",
+          "BINGP25-007",
+          "BINGP25-017"
+        ]
+      },
+      {
+        "kode": "ING-TUJUAN",
+        "nama": "Tujuan penulisan dan sasaran pembaca",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINGW25-009A",
+          "BINGW25-018",
+          "BINGP25-003B",
+          "BINGP25-009",
+          "BINGP25-013",
+          "BINGP25-019",
+          "BINGP25-028B"
+        ]
+      },
+      {
+        "kode": "ING-SEBAB",
+        "nama": "Hubungan sebab-akibat dan alasan tindakan",
+        "level": 2,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINGW25-003",
+          "BINGW25-008B",
+          "BINGP25-004B",
+          "BINGP25-010",
+          "BINGP25-029B"
+        ]
+      },
+      {
+        "kode": "ING-DUKUNG",
+        "nama": "Bagian teks yang mendukung watak tokoh, gagasan, atau pendapat penulis",
+        "level": 2,
+        "format": [
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINGW25-005",
+          "BINGW25-010B",
+          "BINGW25-015",
+          "BINGP25-014",
+          "BINGP25-015"
+        ]
+      },
+      {
+        "kode": "ING-PREDIKSI",
+        "nama": "Prediksi akhir cerita atau akibat pengandaian",
+        "level": 2,
+        "format": [
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINGW25-004",
+          "BINGW25-009B"
+        ]
+      },
+      {
+        "kode": "ING-PESAN",
+        "nama": "Pesan moral, nilai, dan penerapan isi teks",
+        "level": 2,
+        "format": [
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINGW25-002",
+          "BINGW25-007B",
+          "BINGW25-010A",
+          "BINGP25-024"
+        ]
+      },
+      {
+        "kode": "ING-TAMBAH",
+        "nama": "Fakta atau gagasan tambahan yang memperkuat teks",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks"
+        ],
+        "contoh": [
+          "BINGW25-014",
+          "BINGW25-019",
+          "BINGP25-002A",
+          "BINGP25-008",
+          "BINGP25-012",
+          "BINGP25-018",
+          "BINGP25-027A"
+        ]
+      },
+      {
+        "kode": "ING-EVAL",
+        "nama": "Menilai fakta, opini, kredibilitas, dan kekuatan argumen",
+        "level": 3,
+        "format": [
+          "pilihan-ganda",
+          "pilihan-ganda-kompleks",
+          "benar-salah"
+        ],
+        "contoh": [
+          "BINGW25-020",
+          "BINGP25-002B",
+          "BINGP25-003A",
+          "BINGP25-005A",
+          "BINGP25-025",
+          "BINGP25-027B",
+          "BINGP25-028A",
+          "BINGP25-030A"
+        ]
+      }
+    ]
   }
 }
