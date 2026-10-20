@@ -13,6 +13,7 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-kimia.html` | Knowledge map for high-school chemistry (26 topics), from atomic structure to macromolecules. |
 | `docs/peta-biologi.html` | Knowledge map for high-school biology (28 topics), from biodiversity to biotechnology. |
 | `docs/modul-vektor-gerak.html` | Learning module Vektor dan Gerak: 7 lessons linking vectors with displacement, speed, velocity and relative motion, then 42 exercises in 5 stages from easy to TKA level (14 TKA-style items), with answer checking, hints and worked solutions. |
+| `docs/modul-vektor-gerak.pdf` | Printable version of the Vektor dan Gerak module (39 pages A4): 5 sub-chapters, 105 exercises from easy to TKA level including 13 TKA-style items, Uji Kompetensi, and an answer key. Source in `print/`. |
 | `docs/tka.html` | TKA 2025 practice: transcribed exam items per subject, with figure descriptions, answer checking against proposed (unofficial) keys, and per-item notes. |
 | `docs/404.html` | Shown by GitHub Pages for any missing address, with links back to the start page. |
 
@@ -29,6 +30,7 @@ data/topics.json        domains, weights, topic codes and titles
 data/questions.csv      the question bank (source of truth; edit this)
 data/maps/<id>.json     one knowledge map per subject; becomes docs/peta-<id>.html
 data/modules/<id>.json  one learning module per file; becomes docs/modul-<id>.html (specs/module-spec.md)
+print/                  printable PDF modules and their sources; print/<id>.pdf becomes docs/modul-<id>.pdf (print/README.md)
 data/tka/<id>.json      one transcribed TKA exam paper per file; all feed docs/tka.html (specs/tka-spec.md)
 templates/*.html        page sources; each becomes docs/<same name>
 templates/_map.html     shared page for every subject map (files starting with _ are not built directly)
