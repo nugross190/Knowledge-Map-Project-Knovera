@@ -19,6 +19,10 @@ High-school study maps, starting with tools for a history competition in the Lom
 
 Every question carries the code of the topic it tests, so a weak result links straight back to the map. Pages are static HTML; practice progress is stored in the viewer's own browser.
 
+## Plan
+
+Where the project goes next, step by step: [`PLAN.md`](PLAN.md).
+
 ## Rules and specs
 
 The rules for content, questions, and the agent workflow are in [`specs/`](specs/README.md). AI agents start from [`CLAUDE.md`](CLAUDE.md). A Claude Code skill, `.claude/skills/new-subject/`, runs the full pipeline for adding a subject map.
