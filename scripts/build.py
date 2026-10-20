@@ -6,7 +6,8 @@ Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/tka/*.json,
         data/tka-types.json, templates/*.html
 Writes: docs/questions.json, one docs/<name>.html per template (docs/tka.html carries the TKA banks),
         one docs/peta-<id>.html per subject map (rendered through templates/_map.html),
-        and one docs/modul-<id>.html per learning module (rendered through templates/_modul.html)
+        one docs/modul-<id>.html per learning module (rendered through templates/_modul.html),
+        and docs/modul-<id>.pdf for every printable module in print/<id>.pdf
 Exits with status 1 (and writes nothing) if the data has errors.
 """
 import csv
@@ -405,12 +406,21 @@ def map_pages(maps, links):
     return out
 
 
+def module_pdf(mod_id):
+    """Path of a module's printable PDF (print/<id>.pdf, made by print/print.mjs), or None."""
+    path = ROOT / "print" / f"{mod_id}.pdf"
+    return path if path.exists() else None
+
+
 def module_pages(modules, maps, links):
     """Return {file name: page body} for every learning module."""
     template = (ROOT / "templates/_modul.html").read_text(encoding="utf-8")
     out = {}
     for mod in modules.values():
         data = dict(mod)
+        if module_pdf(mod["id"]):
+            # Hosted copies have no PDF next to them, so they link to the one on GitHub Pages.
+            data["pdf"] = (PAGES_URL if links else "") + f"modul-{mod['id']}.pdf"
         if mod.get("map") in maps:
             m = maps[mod["map"]]
             data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
@@ -513,6 +523,9 @@ def build(topics, rows, maps, artifact, tka=None, modules=None):
     built = {**pages(topics, questions, {}, maps, tka, modules), **map_pages(maps, {}), **module_pages(modules, maps, {})}
     for name, body in built.items():
         (docs / name).write_text(HEAD + body, encoding="utf-8")
+    for mod_id in modules:
+        if module_pdf(mod_id):
+            (docs / f"modul-{mod_id}.pdf").write_bytes(module_pdf(mod_id).read_bytes())
     # Tell GitHub Pages to publish docs/ as-is instead of running it through Jekyll.
     (docs / ".nojekyll").write_text("", encoding="utf-8")
     print("Wrote docs/questions.json, " + ", ".join("docs/" + n for n in built))

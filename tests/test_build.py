@@ -220,6 +220,25 @@ class ModulesTest(unittest.TestCase):
             self.assertNotIn("</script><", body.split("const MOD")[1].split(";\n")[0])
             self.assertIn(f'href="modul-{mod["id"]}.html"', home)
 
+    def test_printable_answers_recompute(self):
+        """Every numeric answer in the printable module is re-derived by its content.check()."""
+        import importlib.util
+        for src in (ROOT / "print").glob("*/content.py"):
+            spec = importlib.util.spec_from_file_location(f"print_{src.parent.name}", src)
+            content = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(content)
+            self.assertTrue(content.check(), src)
+
+    def test_printable_pdf_is_published_and_linked(self):
+        self.assertIsNotNone(build.module_pdf("vektor-gerak"), "print/vektor-gerak.pdf is missing")
+        local = build.module_pages(self.modules, self.maps, {})["modul-vektor-gerak.html"]
+        hosted = build.module_pages(self.modules, self.maps, build.HOSTED_LINKS)["modul-vektor-gerak.html"]
+        self.assertIn('"pdf": "modul-vektor-gerak.pdf"', local)
+        self.assertIn(f'"pdf": "{build.PAGES_URL}modul-vektor-gerak.pdf"', hosted)
+        topics, rows = build.load()
+        build.build(topics, rows, self.maps, artifact=False)
+        self.assertEqual((build.ROOT / "docs/modul-vektor-gerak.pdf").read_bytes(), build.module_pdf("vektor-gerak").read_bytes())
+
 
 class SiteTest(unittest.TestCase):
     def test_build_writes_site_files(self):

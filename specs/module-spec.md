@@ -50,6 +50,10 @@ module
 - TKA-style items follow the subject template's type rules and are original; they are never presented as official items.
 - Indonesian, decimal comma, Unicode formulas (converted to `<sup>`/`<sub>` on load, except inside `svg`).
 
-## 4. What the build checks
+## 4. Printable version
+
+A module MAY have a printable PDF, `print/<id>.pdf`, made from `print/<id>/content.py` (see `print/README.md`). The build copies it to `docs/modul-<id>.pdf` and the page shows a "Versi cetak (PDF)" button. Its items follow the same writing rules (§3); `content.check()` MUST re-derive every numeric answer, and the tests run it.
+
+## 5. What the build checks
 
 `validate_module` in `scripts/build.py` stops the build on structural errors (fields, ids, stage numbering, keys per format, unknown map topics, TKA type, format and `acuan`). `lint_module` warns on fewer than 3 stages, a stage with fewer than 4 items, no TKA-style items, or no `blurb`.
