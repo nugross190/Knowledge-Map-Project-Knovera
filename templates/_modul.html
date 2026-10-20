@@ -1,0 +1,418 @@
+<title>__TITLE__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: learning module. Goals and linked map topics → lessons (collapsible) → staged exercises, one stage at a time, with answer checking. Content comes from data/modules/<id>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --accent:#6E3466; --accent-soft:#F1E3EE; --tka:#8A5526; --tka-soft:#F3E9DF;
+  --s1:#2C6B63; --s2:#3D5A80; --s3:#2B3A78; --s4:#6E3466; --s5:#9A3B1F;
+  --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F; --ok-soft:#E1F0E5;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
+  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
+  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
+  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
+  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.6rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn[disabled]{opacity:.5;cursor:default}
+
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.panel ol,.panel ul{margin:8px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:5px;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{display:inline-flex;gap:8px;align-items:baseline;text-decoration:none;padding:5px 9px;border-radius:5px;background:var(--accent-soft);font-size:.9rem;line-height:1.3}
+.chip .mono{color:var(--accent)}
+.chip:hover,.chip:focus-visible{outline:1.5px solid var(--accent)}
+
+details.lesson{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+details.lesson + details.lesson{margin-top:10px}
+details.lesson > summary{cursor:pointer;list-style:none;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+details.lesson > summary::-webkit-details-marker{display:none}
+details.lesson > summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:8px}
+summary .no{font-family:var(--f-mono);font-size:.8rem;color:var(--accent);padding-top:4px;grid-row:span 2}
+summary .ttl{font-family:var(--f-label);font-size:1.2rem;font-weight:700;line-height:1.2;display:flex;gap:8px;align-items:center}
+summary .caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+details[open] > summary .caret{transform:rotate(90deg)}
+summary .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label)}
+.lesson-body{padding:4px 16px 18px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:14px}
+.lesson-body > p{max-width:72ch;margin-top:10px}
+.lesson-body ul{margin:10px 0 0;padding-left:1.15em;display:flex;flex-direction:column;gap:6px}
+.lesson-body li{font-size:.96rem}
+.lesson-body li::marker{color:var(--accent)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--sunk);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.example{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;padding:12px 14px}
+.example h4,.traps h4{font-family:var(--f-label);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;color:var(--accent)}
+.example ol{margin:6px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px;font-size:.95rem}
+.traps{background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn)}
+.traps ul{margin-top:0}
+.traps li::marker{color:var(--warn)}
+figure{margin:6px 0 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+figure svg{width:100%;max-width:340px;height:auto;color:var(--ink)}
+figcaption{font-size:.85rem;color:var(--muted);max-width:60ch;text-align:center}
+
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.stage-tab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1.5px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 8px 8px;background:var(--surface);min-width:0}
+.stage-tab:hover{border-color:var(--c)}
+.stage-tab:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.stage-tab[aria-selected="true"]{background:var(--sunk);border-color:var(--c)}
+.stage-tab .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--c)}
+.stage-tab .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.stage-tab .bar{height:8px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative;margin-top:2px}
+.stage-tab .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.stage-tab .ct{font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:14px;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.filters label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.filters input{accent-color:var(--accent)}
+.stage-head{margin-top:20px;border-left:5px solid var(--c);padding:4px 0 4px 14px}
+.stage-head h3{color:var(--c);font-size:1.35rem}
+.stage-head p{color:var(--muted);font-size:.95rem;margin-top:4px;max-width:70ch}
+
+.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;margin-top:12px;min-width:0;scroll-margin-top:16px}
+.item.ok{border-color:color-mix(in srgb,var(--ok) 60%,var(--line))}
+.item-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-bottom:8px}
+.item-top .num{font-family:var(--f-label);font-weight:700;font-size:1.05rem}
+.badge{font-family:var(--f-label);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;border:1.3px solid var(--line);color:var(--muted);white-space:nowrap}
+.badge.tka{border-color:var(--tka);color:var(--tka);background:var(--tka-soft)}
+.badge.done{border-color:var(--ok);color:var(--ok)}
+.item-top a.badge{text-decoration:none}
+.stem{max-width:75ch}
+.stem p + p{margin-top:8px}
+.item .tbl{margin:10px 0}
+.opts{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;font-size:.96rem}
+.opts label:hover{border-color:var(--muted)}
+.opts input{margin-top:5px;accent-color:var(--accent);flex:none}
+.opts .lt{font-family:var(--f-label);font-weight:700;flex:none;min-width:1.1em}
+.opts label.right{border-color:var(--ok);background:var(--ok-soft)}
+.opts label.wrong{border-color:var(--warn);background:var(--warn-soft)}
+.bs td:not(:first-child),.bs th:not(:first-child){text-align:center;width:6.5em}
+.bs td.right{background:var(--ok-soft)}
+.bs td.wrong{background:var(--warn-soft)}
+.bs input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.fill{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.fill input{font:inherit;width:9em;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.fill input:focus{border-color:var(--ink);outline:none}
+.fill .unit{font-family:var(--f-label);color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.feedback{margin-top:10px;font-family:var(--f-label);font-weight:600}
+.feedback.right{color:var(--ok)}
+.feedback.wrong{color:var(--warn)}
+.hint,.solution{margin-top:10px;border-radius:6px;padding:10px 14px;font-size:.95rem}
+.hint{background:var(--sunk)}
+.solution{background:var(--accent-soft)}
+.hint b.h,.solution b.h{font-family:var(--f-label);display:block;margin-bottom:2px}
+.solution ol{margin:4px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
+.stage-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:18px;padding:14px 16px;background:var(--surface);border:1px dashed var(--line);border-radius:8px}
+.stage-foot p{color:var(--muted);font-size:.93rem;max-width:60ch}
+.empty{margin-top:14px;color:var(--muted)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  details.lesson > summary{grid-template-columns:1fr}
+  summary .no{grid-row:auto;padding-top:0}
+  .bs td:not(:first-child),.bs th:not(:first-child){width:4.5em}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="jump" aria-label="Bagian modul">
+      <a class="btn" href="#materi">Materi</a>
+      <a class="btn primary" href="#latihan">Latihan bertahap</a>
+      <a class="btn" id="mapLink" hidden>Peta materi</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="h-tujuan">
+    <div class="sec-head"><h2 id="h-tujuan">Tujuan</h2><p>Setelah modul ini kamu dapat:</p></div>
+    <div class="goals">
+      <div class="panel"><ol id="goals"></ol></div>
+      <div class="panel" id="linked" hidden><h3>Simpul peta terkait</h3><p class="lead" style="margin-top:4px;font-size:.92rem">Ringkasan rumus dan jebakan soal di peta materi.</p><div class="chips" id="chips"></div></div>
+    </div>
+  </section>
+
+  <section id="materi" aria-labelledby="h-materi">
+    <div class="sec-head"><h2 id="h-materi">Materi</h2><p>Baca berurutan. Setiap bagian ditutup contoh soal dengan langkahnya.</p></div>
+    <div id="lessons"></div>
+  </section>
+
+  <section id="latihan" aria-labelledby="h-latihan">
+    <div class="sec-head"><h2 id="h-latihan">Latihan bertahap</h2><p>Mulai dari Tahap 1. Lanjutkan bila sudah benar sekitar 70%. Soal bertanda TKA mengikuti pola soal TKA Fisika 2025.</p></div>
+    <div class="stages" role="tablist" aria-label="Tahap latihan" id="stages"></div>
+    <div class="filters">
+      <label><input type="checkbox" id="onlyTka"> Hanya soal setara TKA</label>
+      <label><input type="checkbox" id="onlyOpen"> Sembunyikan soal yang sudah benar</label>
+      <span id="overall"></span>
+      <button class="btn" type="button" id="reset">Hapus kemajuan</button>
+    </div>
+    <div id="stage" role="tabpanel"></div>
+  </section>
+
+  <section aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua mata pelajaran</a>. Kemajuan latihan tersimpan di peramban ini saja.</footer>
+</div>
+
+<script>
+/*__MODULE__*/
+const KEY = "modul-" + MOD.id + "-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(k === "svg") continue; if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MOD);
+
+const LETTERS = "ABCDEFGH";
+const FORMAT = {"isian":"Isian angka","pilihan-ganda":"Pilihan ganda","pilihan-ganda-kompleks":"Pilihan ganda kompleks","benar-salah":"Benar–salah"};
+const TKA_LEVEL = {"FIS-UKUR":1,"FIS-GRAF":2,"FIS-HITUNG":2,"FIS-KONSEP":2,"FIS-ANALISIS":3,"FIS-STRATEGI":3,"FIS-EKSP":3};
+const items = {};
+MOD.tahap.forEach((s, i) => { s.c = "var(--s" + (i % 5 + 1) + ")"; s.soal.forEach((it, j) => { it.no = j + 1; it.stage = s; items[it.id] = it; }); });
+let current = MOD.tahap[0].tahap;
+try { current = +localStorage.getItem(KEY + "-stage") || current; } catch(e) {}
+if(!MOD.tahap.some(s => s.tahap === current)) current = MOD.tahap[0].tahap;
+
+function paras(text){ return text.split("\n").map(p => p.trim()).filter(Boolean).map(p => "<p>" + p + "</p>").join(""); }
+function table(rows, cols){
+  const head = cols || rows[0], body = cols ? rows : rows.slice(1);
+  return '<div class="tbl"><table><thead><tr>' + head.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+    body.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+}
+function topicChip(code){
+  if(!MOD.map_page) return "";
+  return '<a class="chip" href="' + MOD.map_page + "#t-" + code + '"><span class="mono">' + code + "</span><span>" + ((MOD.topics || {})[code] || "") + "</span></a>";
+}
+
+function renderTop(){
+  const n = MOD.tahap.reduce((k, s) => k + s.soal.length, 0);
+  const tka = MOD.tahap.reduce((k, s) => k + s.soal.filter(it => it.tka).length, 0);
+  document.title = MOD.title;
+  $("eyebrow").textContent = "Modul belajar · " + MOD.subject + (MOD.src ? " · " + MOD.src : "") + " · " + MOD.tahap.length + " tahap · " + n + " soal (" + tka + " setara TKA)";
+  $("title").textContent = MOD.title;
+  $("lead").innerHTML = MOD.lead;
+  $("goals").innerHTML = (MOD.tujuan || []).map(g => "<li>" + g + "</li>").join("");
+  const codes = [...new Set(MOD.materi.flatMap(l => l.simpul || []))];
+  if(MOD.map_page && codes.length){
+    $("linked").hidden = false;
+    $("chips").innerHTML = codes.map(topicChip).join("");
+    $("mapLink").hidden = false; $("mapLink").href = MOD.map_page; $("mapLink").textContent = MOD.map_title || "Peta materi";
+  }
+  $("lessons").innerHTML = MOD.materi.map((l, i) => {
+    const body = l.isi.map(b => {
+      if(b.p) return "<p>" + b.p + "</p>";
+      if(b.li) return "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+      if(b.tabel) return table(b.tabel.rows, b.tabel.cols);
+      if(b.svg) return "<figure>" + b.svg + (b.cap ? "<figcaption>" + b.cap + "</figcaption>" : "") + "</figure>";
+      if(b.contoh) return '<div class="example"><h4>Contoh</h4><p>' + b.contoh.soal + "</p><ol>" + b.contoh.langkah.map(x => "<li>" + x + "</li>").join("") + "</ol></div>";
+      if(b.jebakan) return '<div class="traps"><h4>Jebakan soal</h4><ul>' + b.jebakan.map(x => "<li>" + x + "</li>").join("") + "</ul></div>";
+      return "";
+    }).join("");
+    const links = (l.simpul || []).length && MOD.map_page ? '<div class="chips">' + l.simpul.map(topicChip).join("") + "</div>" : "";
+    return '<details class="lesson" id="' + l.id + '"' + (i === 0 ? " open" : "") + '><summary><span class="no">' + l.id + '</span>' +
+      '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + l.judul + '</span>' +
+      '<span class="meta">' + ((l.simpul || []).join(" · ") || "Persiapan ujian") + '</span></summary><div class="lesson-body">' + body + links + "</div></details>";
+  }).join("");
+  $("notes").innerHTML = (MOD.catatan || []).map(n => '<div class="panel"><h3>' + n.judul + "</h3><ul>" + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+
+function stageScore(s){ return s.soal.filter(it => state[it.id] && state[it.id].ok).length; }
+function renderTabs(){
+  $("stages").innerHTML = MOD.tahap.map(s => {
+    const k = stageScore(s), n = s.soal.length;
+    return '<button class="stage-tab" role="tab" type="button" style="--c:' + s.c + '" data-stage="' + s.tahap + '" aria-selected="' + (s.tahap === current) + '">' +
+      '<span class="lb">Tahap ' + s.tahap + '</span><span class="nm">' + s.nama + '</span>' +
+      '<span class="bar"><i style="width:' + (k / n * 100) + '%"></i></span><span class="ct">' + k + " dari " + n + " benar</span></button>";
+  }).join("");
+  const all = Object.values(items), ok = all.filter(it => state[it.id] && state[it.id].ok).length;
+  $("overall").textContent = "Total benar: " + ok + " dari " + all.length;
+}
+
+function controls(it){
+  const name = "a-" + it.id;
+  if(it.format === "isian")
+    return '<div class="fill"><input id="' + name + '" aria-label="Jawaban soal ' + it.id + '" inputmode="decimal" autocomplete="off" placeholder="Jawaban"><span class="unit">' + it.satuan + "</span></div>";
+  if(it.format === "benar-salah")
+    return '<div class="tbl bs"><table><thead><tr><th>Pernyataan</th><th>' + it.kolom[0] + "</th><th>" + it.kolom[1] + "</th></tr></thead><tbody>" +
+      it.opsi.map((o, i) => "<tr><td>" + (i + 1) + ". " + o + "</td>" +
+        [true, false].map(v => '<td><input type="radio" name="' + name + "-" + i + '" value="' + v + '" aria-label="' + (i + 1) + ": " + (v ? it.kolom[0] : it.kolom[1]) + '"></td>').join("") + "</tr>").join("") +
+      "</tbody></table></div>";
+  const type = it.format === "pilihan-ganda" ? "radio" : "checkbox";
+  return '<ul class="opts">' + it.opsi.map((o, i) => '<li><label><input type="' + type + '" name="' + name + '" value="' + i + '"><span class="lt">' + LETTERS[i] + '.</span><span>' + o + "</span></label></li>").join("") + "</ul>";
+}
+function itemHTML(it){
+  const done = state[it.id] && state[it.id].ok;
+  let badges = '<span class="badge">' + FORMAT[it.format] + "</span>";
+  if(it.tka) badges += '<a class="badge tka" href="tka.html" title="Pola soal: ' + it.tka.acuan.join(", ") + '">Setara TKA · ' + it.tka.tipe + (TKA_LEVEL[it.tka.tipe] ? " · level " + TKA_LEVEL[it.tka.tipe] : "") + "</a>";
+  if(done) badges += '<span class="badge done">Sudah benar</span>';
+  const stem = it.soal.split("[Tabel]");
+  const stemHTML = paras(stem[0]) + (it.tabel ? table(it.tabel) : "") + (stem[1] ? paras(stem[1]) : "");
+  return '<article class="item' + (done ? " ok" : "") + '" id="' + it.id + '" data-id="' + it.id + '">' +
+    '<div class="item-top"><span class="num">Soal ' + it.stage.tahap + "." + it.no + '</span><span class="mono" style="color:var(--muted)">' + it.id + "</span>" + badges + "</div>" +
+    '<div class="stem">' + (it.format === "pilihan-ganda-kompleks" ? stemHTML.replace(/<p>Jawaban benar lebih dari satu\.<\/p>/, "<p><i>Jawaban benar lebih dari satu.</i></p>") : stemHTML) + "</div>" +
+    controls(it) +
+    '<div class="actions"><button class="btn primary" type="button" data-act="check">Periksa</button><button class="btn" type="button" data-act="hint">Petunjuk</button><button class="btn" type="button" data-act="solve">Pembahasan</button></div>' +
+    '<p class="feedback" aria-live="polite"></p>' +
+    '<div class="hint" hidden><b class="h">Petunjuk</b>' + it.petunjuk + "</div>" +
+    '<div class="solution" hidden><b class="h">Pembahasan</b><ol>' + it.pembahasan.map(x => "<li>" + x + "</li>").join("") + "</ol></div></article>";
+}
+function renderStage(){
+  const s = MOD.tahap.find(x => x.tahap === current);
+  const onlyTka = $("onlyTka").checked, onlyOpen = $("onlyOpen").checked;
+  const list = s.soal.filter(it => (!onlyTka || it.tka) && (!onlyOpen || !(state[it.id] && state[it.id].ok)));
+  const idx = MOD.tahap.indexOf(s), next = MOD.tahap[idx + 1], k = stageScore(s);
+  const ready = k / s.soal.length >= 0.7;
+  $("stage").style.setProperty("--c", s.c);
+  $("stage").innerHTML = '<div class="stage-head"><h3>Tahap ' + s.tahap + ": " + s.nama + "</h3><p>" + s.tujuan + "</p></div>" +
+    (list.length ? list.map(itemHTML).join("") : '<p class="empty">Tidak ada soal yang cocok dengan saringan di tahap ini.</p>') +
+    '<div class="stage-foot"><p>' + (next ? (ready ? "Bagus, " + k + " dari " + s.soal.length + " benar. Kamu siap ke Tahap " + next.tahap + "." : "Benar " + k + " dari " + s.soal.length + ". Disarankan lanjut setelah sekitar 70% benar; baca petunjuk dan pembahasan soal yang salah.") : "Ini tahap terakhir. " + (ready ? "Kamu sudah siap untuk soal TKA asli di halaman Latihan TKA." : "Ulangi soal yang belum benar.")) + "</p>" +
+    (next ? '<button class="btn primary" type="button" data-go="' + next.tahap + '">Lanjut ke Tahap ' + next.tahap + " →</button>" : '<a class="btn primary" href="tka.html">Latihan TKA →</a>') + "</div>";
+  $("stage").setAttribute("aria-label", "Tahap " + s.tahap);
+  s.soal.forEach(it => restore(it));
+}
+function restore(it){
+  const card = document.getElementById(it.id), st = state[it.id];
+  if(!card || !st || st.ans === undefined) return;
+  setAnswer(card, it, st.ans);
+}
+function getAnswer(card, it){
+  const name = "a-" + it.id;
+  if(it.format === "isian"){ const v = card.querySelector("input").value.trim(); return v === "" ? null : v; }
+  if(it.format === "pilihan-ganda"){ const c = card.querySelector('input[name="' + name + '"]:checked'); return c ? +c.value : null; }
+  if(it.format === "pilihan-ganda-kompleks"){ const c = [...card.querySelectorAll('input[name="' + name + '"]:checked')].map(x => +x.value); return c.length ? c : null; }
+  const rows = it.opsi.map((_, i) => { const c = card.querySelector('input[name="' + name + "-" + i + '"]:checked'); return c ? c.value === "true" : null; });
+  return rows.every(v => v === null) ? null : rows;
+}
+function setAnswer(card, it, ans){
+  const name = "a-" + it.id;
+  if(it.format === "isian"){ card.querySelector("input").value = ans; return; }
+  if(it.format === "benar-salah"){ ans.forEach((v, i) => { if(v !== null){ const x = card.querySelector('input[name="' + name + "-" + i + '"][value="' + v + '"]'); if(x) x.checked = true; } }); return; }
+  [].concat(ans).forEach(v => { const x = card.querySelector('input[name="' + name + '"][value="' + v + '"]'); if(x) x.checked = true; });
+}
+function parseNum(s){
+  s = String(s).replace(/\s/g, "").replace(/[a-zA-Z/²°]+$/g, "");
+  s = s.replace(",", ".").replace("−", "-");
+  return /^-?\d*\.?\d+$/.test(s) ? parseFloat(s) : NaN;
+}
+function grade(it, ans){
+  if(it.format === "isian"){
+    const x = parseNum(ans), tol = it.toleransi || Math.max(0.01, Math.abs(it.kunci) * 0.01);
+    if(isNaN(x)) return {invalid:true};
+    return {ok: Math.abs(x - it.kunci) <= tol + 1e-9};
+  }
+  if(it.format === "pilihan-ganda") return {ok: ans === it.kunci};
+  if(it.format === "pilihan-ganda-kompleks") return {ok: JSON.stringify([...ans].sort((a, b) => a - b)) === JSON.stringify(it.kunci)};
+  const rows = ans.map((v, i) => v === it.kunci[i]);
+  return {ok: rows.every(Boolean), rows, missing: ans.some(v => v === null)};
+}
+function fmtNum(x){ return String(x).replace(".", ","); }
+function check(card, it){
+  const ans = getAnswer(card, it), fb = card.querySelector(".feedback");
+  card.querySelectorAll(".right,.wrong").forEach(el => { if(!el.classList.contains("feedback")) el.classList.remove("right", "wrong"); });
+  if(ans === null){ fb.className = "feedback wrong"; fb.textContent = "Isi jawabanmu dulu."; return; }
+  const g = grade(it, ans);
+  if(g.invalid){ fb.className = "feedback wrong"; fb.textContent = "Tulis jawaban berupa angka saja, misalnya 2,83."; return; }
+  if(g.missing){ fb.className = "feedback wrong"; fb.textContent = "Nilai setiap pernyataan dulu."; return; }
+  const prev = state[it.id] || {};
+  state[it.id] = {ok: g.ok || !!prev.ok, last: g.ok, tries: (prev.tries || 0) + 1, ans};
+  save();
+  fb.className = "feedback " + (g.ok ? "right" : "wrong");
+  if(it.format === "isian") fb.innerHTML = g.ok ? "Benar. Kunci: " + fmtNum(it.kunci) + " " + it.satuan + "." : "Belum tepat. Coba lagi atau buka petunjuk.";
+  else if(it.format === "benar-salah"){
+    const wrong = g.rows.filter(r => !r).length;
+    fb.textContent = g.ok ? "Benar, semua pernyataan tepat." : wrong + " pernyataan belum tepat (ditandai). Coba lagi atau buka pembahasan.";
+    if(!g.ok) g.rows.forEach((r, i) => { const td = card.querySelector('input[name="a-' + it.id + "-" + i + '"]:checked'); if(td) td.closest("td").classList.add(r ? "right" : "wrong"); });
+  } else {
+    fb.textContent = g.ok ? "Benar." : (it.format === "pilihan-ganda-kompleks" ? "Belum tepat. Periksa setiap pilihan sendiri-sendiri." : "Belum tepat. Coba lagi atau buka petunjuk.");
+    [].concat(ans).forEach(v => { const l = card.querySelector('input[value="' + v + '"]').closest("label"); l.classList.add(g.ok ? "right" : "wrong"); });
+  }
+  if(g.ok){ card.classList.add("ok"); card.querySelector(".solution").hidden = false; }
+  renderTabs();
+}
+function goStage(n, scroll){
+  current = n;
+  try { localStorage.setItem(KEY + "-stage", String(n)); } catch(e) {}
+  renderTabs(); renderStage();
+  if(scroll) $("latihan").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start"});
+}
+
+renderTop();
+goStage(current, false);
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".stage-tab");
+  if(tab){ goStage(+tab.dataset.stage, false); return; }
+  const go = e.target.closest("[data-go]");
+  if(go){ goStage(+go.dataset.go, true); return; }
+  const act = e.target.closest("[data-act]");
+  if(!act) return;
+  const card = act.closest(".item"), it = items[card.dataset.id];
+  if(act.dataset.act === "check") check(card, it);
+  if(act.dataset.act === "hint"){ const h = card.querySelector(".hint"); h.hidden = !h.hidden; }
+  if(act.dataset.act === "solve"){ const s = card.querySelector(".solution"); s.hidden = !s.hidden; }
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Enter" && e.target.matches(".fill input")){ const card = e.target.closest(".item"); check(card, items[card.dataset.id]); }
+  if((e.key === "ArrowRight" || e.key === "ArrowLeft") && e.target.matches(".stage-tab")){
+    const i = MOD.tahap.findIndex(s => s.tahap === current), j = i + (e.key === "ArrowRight" ? 1 : -1);
+    if(MOD.tahap[j]){ goStage(MOD.tahap[j].tahap, false); document.querySelector('.stage-tab[data-stage="' + MOD.tahap[j].tahap + '"]').focus(); }
+  }
+});
+$("onlyTka").addEventListener("change", renderStage);
+$("onlyOpen").addEventListener("change", renderStage);
+$("reset").addEventListener("click", () => {
+  if(!confirm("Hapus semua kemajuan latihan modul ini?")) return;
+  state = {}; save(); renderTabs(); renderStage();
+});
+</script>
