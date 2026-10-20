@@ -171,6 +171,56 @@ class TkaTest(unittest.TestCase):
         self.assertIn('href="tka.html"', built["index.html"])
 
 
+class ModulesTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.modules = build.load_modules()
+        cls.maps = build.load_maps()
+        cls.types = build.load_tka_types()
+
+    def test_modules_are_valid(self):
+        self.assertIn("vektor-gerak", self.modules)
+        for name, mod in self.modules.items():
+            self.assertEqual(build.validate_module(name, mod, self.maps, self.types), [], name)
+            self.assertEqual(build.lint_module(name, mod), [], name)
+
+    def test_validator_catches_problems(self):
+        mod = json.loads(json.dumps(self.modules["vektor-gerak"]))
+        items = mod["tahap"][0]["soal"]
+        by_format = {it["format"]: it for st in mod["tahap"] for it in st["soal"]}
+        items.append(dict(items[0]))                                   # duplicate id
+        mod["tahap"][1]["tahap"] = 7                                   # stages out of order
+        mod["materi"][0]["simpul"] = ["NOPE-01"]                       # unknown map topic
+        by_format["isian"]["kunci"] = "lima"                           # non-numeric key
+        by_format["pilihan-ganda"]["kunci"] = 9                        # key outside the options
+        by_format["benar-salah"]["kunci"] = [True]                     # wrong length
+        tka_item = next(it for st in mod["tahap"] for it in st["soal"] if "tka" in it and it["format"] == "pilihan-ganda")
+        tka_item["tka"] = {"tipe": "FIS-HITUNG", "acuan": ["FIS25-002"]}  # example of another type
+        errors = " | ".join(build.validate_module("vektor-gerak", mod, self.maps, self.types))
+        for needle in ("duplicate id", "numbered 1, 2, 3", "unknown topic", "numeric 'kunci'",
+                       "index of one option", "one true/false", "acuan must list"):
+            self.assertIn(needle, errors)
+
+    def test_tka_format_must_match_type(self):
+        mod = json.loads(json.dumps(self.modules["vektor-gerak"]))
+        it = next(i for st in mod["tahap"] for i in st["soal"] if i.get("tka", {}).get("tipe") == "FIS-ANALISIS")
+        it["format"], it["kunci"] = "pilihan-ganda-kompleks", [0]
+        errors = build.validate_module("vektor-gerak", mod, self.maps, self.types)
+        self.assertTrue(any("not allowed for FIS-ANALISIS" in e for e in errors))
+
+    def test_module_pages_render_and_link(self):
+        pages = build.module_pages(self.modules, self.maps, {})
+        topics, rows = build.load()
+        home = build.pages(topics, [], {}, self.maps, None, self.modules)["index.html"]
+        for mod in self.modules.values():
+            body = pages[f"modul-{mod['id']}.html"]
+            self.assertNotIn("/*__MODULE__*/", body)
+            self.assertIn(f"<title>{mod['title']}</title>", body)
+            self.assertIn('class="home-link" href="index.html"', body)
+            self.assertNotIn("</script><", body.split("const MOD")[1].split(";\n")[0])
+            self.assertIn(f'href="modul-{mod["id"]}.html"', home)
+
+
 class SiteTest(unittest.TestCase):
     def test_build_writes_site_files(self):
         topics, rows = build.load()

@@ -8,6 +8,7 @@ A growing set of study tools for Indonesian high-school (SMA) subjects, publishe
 
 - **Subject knowledge maps**: one per subject, each a set of coded topics with key facts, formulas, and commonly confused points. Physics is the first (`data/maps/fisika.json`).
 - **The LCCM history kit**: a history map, a 457-question bank, and a quiz-round simulator, built for a history competition.
+- **Learning modules**: one skill taught in lessons and drilled in staged exercises, from easy to TKA level (`data/modules/`). The first is Vektor dan Gerak.
 - **TKA practice**: transcribed TKA 2025 exam papers (`data/tka/`) with proposed, unofficial answer keys, on one practice page.
 
 Content is in Indonesian. Code, specs, commits and pull requests are in English.
@@ -18,6 +19,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 |---|---|
 | Any content work | `specs/agent-workflow.md`, then `specs/quality-checklist.md` |
 | Maps (`data/maps/`) | `specs/map-spec.md` |
+| Modules (`data/modules/`) | `specs/module-spec.md` |
 | Questions (`data/questions.csv`) | `specs/question-spec.md` |
 | TKA banks (`data/tka/`) | `specs/tka-spec.md` |
 | Generating TKA items (`data/tka-generated/`) | `specs/tka-generation.md`, `specs/tka-item-types.md`, `specs/tka-templates/<subject>.md` |
@@ -40,7 +42,7 @@ Python 3 standard library only; no dependencies to install.
 2. **Build and test before every commit.** `build.py` must exit cleanly, tests must pass, and the rebuilt `docs/` goes in the same commit. CI fails otherwise.
 3. **Fix lint warnings** from `build.py` in new or edited maps, or explain in the pull request why one stays.
 4. **No invented facts.** Every number, date and name must be checked; date-sensitive facts state their year; conflicting sources are marked, not silently resolved. A shorter correct map beats a longer one with errors.
-5. **Codes and ids are permanent.** Never renumber or reuse a topic code (`MEK-03`) or question id (`SNI-04-027`); saved progress depends on them.
+5. **Codes and ids are permanent.** Never renumber or reuse a topic code (`MEK-03`), question id (`SNI-04-027`) or module item id (`VKG-012`); saved progress depends on them.
 6. **Report honestly.** If a step was skipped, a check failed, or something is unverified, the pull request says so.
 7. **Stay in scope.** Do not touch files the task does not need. In particular, do not edit `docs/` by hand; it is generated.
 
@@ -50,10 +52,12 @@ Python 3 standard library only; no dependencies to install.
 data/maps/<id>.json      subject maps (source of truth)
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
+data/modules/<id>.json   learning modules: lessons and staged exercises
 data/tka/<id>.json       TKA exam banks (transcribed papers, proposed keys)
 data/tka-types.json      TKA item types; every transcribed item mapped to one
 data/tka-generated/      agent-generated TKA items (checked by scripts/check_generated.py, not built)
 templates/_map.html      shared page for all subject maps
+templates/_modul.html    shared page for all learning modules
 templates/*.html         other pages (history map, bank, simulator, start page)
 scripts/build.py         validation, lint, build
 tests/test_build.py      tests

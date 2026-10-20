@@ -98,6 +98,7 @@ A content change is done when all of these hold:
 | Task | Steps |
 |---|---|
 | Fix a fact | Edit the JSON (or CSV), cite the source in the commit message, build, test, commit. |
+| Add a learning module or items | Follow `module-spec.md`; compute every key and distractor in a script; new items take the next free id; build, test, browser check (answer every item through the page). |
 | Add questions | Follow `question-spec.md`; take the next free id per topic; build; check the per-topic counts it prints. |
 | Add a topic to a map | New code = next free number in its domain (map-spec §6); place it in teaching order in the array; build, test, browser check. |
 | Change a page design | Edit the template in `templates/`, rebuild all pages, browser-check every page that uses the template. |

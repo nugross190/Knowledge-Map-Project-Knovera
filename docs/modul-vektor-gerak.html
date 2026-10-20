@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Modul Vektor dan Gerak</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: learning module. Goals and linked map topics → lessons (collapsible) → staged exercises, one stage at a time, with answer checking. Content comes from data/modules/<id>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --accent:#6E3466; --accent-soft:#F1E3EE; --tka:#8A5526; --tka-soft:#F3E9DF;
+  --s1:#2C6B63; --s2:#3D5A80; --s3:#2B3A78; --s4:#6E3466; --s5:#9A3B1F;
+  --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F; --ok-soft:#E1F0E5;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
+  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
+  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
+  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
+  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:960px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.6rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+.jump{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn[disabled]{opacity:.5;cursor:default}
+
+.goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.panel ol,.panel ul{margin:8px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:5px;font-size:.95rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chip{display:inline-flex;gap:8px;align-items:baseline;text-decoration:none;padding:5px 9px;border-radius:5px;background:var(--accent-soft);font-size:.9rem;line-height:1.3}
+.chip .mono{color:var(--accent)}
+.chip:hover,.chip:focus-visible{outline:1.5px solid var(--accent)}
+
+details.lesson{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0}
+details.lesson + details.lesson{margin-top:10px}
+details.lesson > summary{cursor:pointer;list-style:none;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+details.lesson > summary::-webkit-details-marker{display:none}
+details.lesson > summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;border-radius:8px}
+summary .no{font-family:var(--f-mono);font-size:.8rem;color:var(--accent);padding-top:4px;grid-row:span 2}
+summary .ttl{font-family:var(--f-label);font-size:1.2rem;font-weight:700;line-height:1.2;display:flex;gap:8px;align-items:center}
+summary .caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+details[open] > summary .caret{transform:rotate(90deg)}
+summary .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label)}
+.lesson-body{padding:4px 16px 18px;border-top:1px dashed var(--line);display:flex;flex-direction:column;gap:14px}
+.lesson-body > p{max-width:72ch;margin-top:10px}
+.lesson-body ul{margin:10px 0 0;padding-left:1.15em;display:flex;flex-direction:column;gap:6px}
+.lesson-body li{font-size:.96rem}
+.lesson-body li::marker{color:var(--accent)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px;margin-top:4px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--sunk);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.example{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 6px 6px 0;padding:12px 14px}
+.example h4,.traps h4{font-family:var(--f-label);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 6px;color:var(--accent)}
+.example ol{margin:6px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px;font-size:.95rem}
+.traps{background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn)}
+.traps ul{margin-top:0}
+.traps li::marker{color:var(--warn)}
+figure{margin:6px 0 0;display:flex;flex-direction:column;align-items:center;gap:6px}
+figure svg{width:100%;max-width:340px;height:auto;color:var(--ink)}
+figcaption{font-size:.85rem;color:var(--muted);max-width:60ch;text-align:center}
+
+.stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:8px}
+.stage-tab{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding:10px 12px;border:1.5px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 8px 8px;background:var(--surface);min-width:0}
+.stage-tab:hover{border-color:var(--c)}
+.stage-tab:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.stage-tab[aria-selected="true"]{background:var(--sunk);border-color:var(--c)}
+.stage-tab .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--c)}
+.stage-tab .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.stage-tab .bar{height:8px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative;margin-top:2px}
+.stage-tab .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.stage-tab .ct{font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.filters{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin-top:14px;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.filters label{display:inline-flex;gap:6px;align-items:center;cursor:pointer}
+.filters input{accent-color:var(--accent)}
+.stage-head{margin-top:20px;border-left:5px solid var(--c);padding:4px 0 4px 14px}
+.stage-head h3{color:var(--c);font-size:1.35rem}
+.stage-head p{color:var(--muted);font-size:.95rem;margin-top:4px;max-width:70ch}
+
+.item{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;margin-top:12px;min-width:0;scroll-margin-top:16px}
+.item.ok{border-color:color-mix(in srgb,var(--ok) 60%,var(--line))}
+.item-top{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;margin-bottom:8px}
+.item-top .num{font-family:var(--f-label);font-weight:700;font-size:1.05rem}
+.badge{font-family:var(--f-label);font-size:.74rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 7px;border-radius:3px;border:1.3px solid var(--line);color:var(--muted);white-space:nowrap}
+.badge.tka{border-color:var(--tka);color:var(--tka);background:var(--tka-soft)}
+.badge.done{border-color:var(--ok);color:var(--ok)}
+.item-top a.badge{text-decoration:none}
+.stem{max-width:75ch}
+.stem p + p{margin-top:8px}
+.item .tbl{margin:10px 0}
+.opts{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;cursor:pointer;font-size:.96rem}
+.opts label:hover{border-color:var(--muted)}
+.opts input{margin-top:5px;accent-color:var(--accent);flex:none}
+.opts .lt{font-family:var(--f-label);font-weight:700;flex:none;min-width:1.1em}
+.opts label.right{border-color:var(--ok);background:var(--ok-soft)}
+.opts label.wrong{border-color:var(--warn);background:var(--warn-soft)}
+.bs td:not(:first-child),.bs th:not(:first-child){text-align:center;width:6.5em}
+.bs td.right{background:var(--ok-soft)}
+.bs td.wrong{background:var(--warn-soft)}
+.bs input{width:18px;height:18px;accent-color:var(--accent);cursor:pointer}
+.fill{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.fill input{font:inherit;width:9em;padding:8px 10px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink)}
+.fill input:focus{border-color:var(--ink);outline:none}
+.fill .unit{font-family:var(--f-label);color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.feedback{margin-top:10px;font-family:var(--f-label);font-weight:600}
+.feedback.right{color:var(--ok)}
+.feedback.wrong{color:var(--warn)}
+.hint,.solution{margin-top:10px;border-radius:6px;padding:10px 14px;font-size:.95rem}
+.hint{background:var(--sunk)}
+.solution{background:var(--accent-soft)}
+.hint b.h,.solution b.h{font-family:var(--f-label);display:block;margin-bottom:2px}
+.solution ol{margin:4px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:3px}
+.stage-foot{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-top:18px;padding:14px 16px;background:var(--surface);border:1px dashed var(--line);border-radius:8px}
+.stage-foot p{color:var(--muted);font-size:.93rem;max-width:60ch}
+.empty{margin-top:14px;color:var(--muted)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  details.lesson > summary{grid-template-columns:1fr}
+  summary .no{grid-row:auto;padding-top:0}
+  .bs td:not(:first-child),.bs th:not(:first-child){width:4.5em}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="jump" aria-label="Bagian modul">
+      <a class="btn" href="#materi">Materi</a>
+      <a class="btn primary" href="#latihan">Latihan bertahap</a>
+      <a class="btn" id="mapLink" hidden>Peta materi</a>
+    </nav>
+  </header>
+
+  <section aria-labelledby="h-tujuan">
+    <div class="sec-head"><h2 id="h-tujuan">Tujuan</h2><p>Setelah modul ini kamu dapat:</p></div>
+    <div class="goals">
+      <div class="panel"><ol id="goals"></ol></div>
+      <div class="panel" id="linked" hidden><h3>Simpul peta terkait</h3><p class="lead" style="margin-top:4px;font-size:.92rem">Ringkasan rumus dan jebakan soal di peta materi.</p><div class="chips" id="chips"></div></div>
+    </div>
+  </section>
+
+  <section id="materi" aria-labelledby="h-materi">
+    <div class="sec-head"><h2 id="h-materi">Materi</h2><p>Baca berurutan. Setiap bagian ditutup contoh soal dengan langkahnya.</p></div>
+    <div id="lessons"></div>
+  </section>
+
+  <section id="latihan" aria-labelledby="h-latihan">
+    <div class="sec-head"><h2 id="h-latihan">Latihan bertahap</h2><p>Mulai dari Tahap 1. Lanjutkan bila sudah benar sekitar 70%. Soal bertanda TKA mengikuti pola soal TKA Fisika 2025.</p></div>
+    <div class="stages" role="tablist" aria-label="Tahap latihan" id="stages"></div>
+    <div class="filters">
+      <label><input type="checkbox" id="onlyTka"> Hanya soal setara TKA</label>
+      <label><input type="checkbox" id="onlyOpen"> Sembunyikan soal yang sudah benar</label>
+      <span id="overall"></span>
+      <button class="btn" type="button" id="reset">Hapus kemajuan</button>
+    </div>
+    <div id="stage" role="tabpanel"></div>
+  </section>
+
+  <section aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua mata pelajaran</a>. Kemajuan latihan tersimpan di peramban ini saja.</footer>
+</div>
+
+<script>
+const MOD = {"id": "vektor-gerak", "kode": "VKG", "subject": "Fisika", "map": "fisika", "title": "Modul Vektor dan Gerak", "lead": "Vektor dipakai untuk menjawab soal gerak: perpindahan, kecepatan, dan besarnya. Baca materinya, lalu kerjakan latihan bertahap dari yang paling mudah sampai setara TKA.", "blurb": "Vektor untuk gerak: perpindahan, kelajuan, kecepatan, dan gerak relatif, dengan latihan lima tahap sampai setara TKA.", "src": "Kelas X–XI", "tujuan": ["Membedakan jarak dan perpindahan, kelajuan dan kecepatan, serta menyatakan vektor dengan besar dan arahnya.", "Menjumlahkan dan menguraikan vektor perpindahan dan kecepatan dengan cara komponen.", "Menghitung kelajuan rata-rata, kecepatan rata-rata, dan percepatan rata-rata dari data dua dimensi.", "Menyelesaikan soal kecepatan relatif (perahu, kapal, pesawat, hujan) dan gerak parabola dengan vektor.", "Menjawab soal analisis dan strategi berformat TKA."], "materi": [{"id": "M1", "judul": "Skalar dan vektor", "simpul": ["DAS-02", "MEK-01"], "isi": [{"p": "Besaran skalar cukup dinyatakan dengan nilai dan satuan: massa 2 kg, waktu 5 s. Besaran vektor memerlukan nilai, satuan, <b>dan arah<\/b>: perpindahan 5 m ke timur, kecepatan 20 m/s ke utara."}, {"tabel": {"cols": ["Skalar", "Pasangan vektornya", "Bedanya"], "rows": [["Jarak", "Perpindahan", "Jarak = panjang lintasan. Perpindahan = garis lurus dari posisi awal ke posisi akhir, lengkap dengan arah."], ["Kelajuan", "Kecepatan", "Kelajuan = jarak ÷ waktu. Kecepatan = perpindahan ÷ waktu, searah perpindahan."], ["Besar percepatan", "Percepatan", "Percepatan = perubahan kecepatan ÷ waktu. Arahnya mengikuti arah perubahan kecepatan, tidak selalu searah gerak."]]}}, {"li": ["Vektor ditulis tebal (<b>v<\/b>) atau dengan panah di atas huruf; besarnya ditulis |<b>v<\/b>| atau v saja.", "Vektor satuan <b>i<\/b> searah sumbu x dan <b>j<\/b> searah sumbu y. Contoh: <b>A<\/b> = (6<b>i<\/b> + 8<b>j<\/b>) m.", "Besar vektor dari komponennya: |A| = √(A<sub>x<\/sub>² + A<sub>y<\/sub>²). Arahnya: tan θ = A<sub>y<\/sub>/A<sub>x<\/sub>, θ diukur dari sumbu x positif.", "Konvensi modul ini: sumbu x positif = timur, sumbu y positif = utara. Pada gerak lurus, tanda + dan − menyatakan arah.", "\"53° dari timur ke utara\" berarti mulai dari arah timur, lalu putar 53° menuju utara."]}, {"contoh": {"soal": "Tentukan besar dan arah <b>A<\/b> = (6<b>i<\/b> + 8<b>j<\/b>) m.", "langkah": ["|A| = √(6² + 8²) = √100 = 10 m.", "tan θ = 8/6 = 4/3 → θ ≈ 53° dari sumbu x positif (dari timur ke utara)."]}}]}, {"id": "M2", "judul": "Menjumlahkan dan menguraikan vektor", "simpul": ["DAS-02"], "isi": [{"svg": "<svg viewBox=\"0 0 260 200\" role=\"img\" aria-label=\"Penjumlahan vektor ujung ke pangkal: 6 satuan ke timur, lalu 8 satuan ke utara, resultan 10 satuan\"><defs><marker id=\"ah\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto-start-reverse\"><path d=\"M0 0L10 5L0 10z\" fill=\"currentColor\"/><\/marker><\/defs><g fill=\"none\" stroke-width=\"3\" marker-end=\"url(#ah)\"><line x1=\"30\" y1=\"175\" x2=\"150\" y2=\"175\" stroke=\"currentColor\"/><line x1=\"150\" y1=\"175\" x2=\"150\" y2=\"22\" stroke=\"currentColor\"/><line x1=\"30\" y1=\"175\" x2=\"146\" y2=\"26\" stroke=\"var(--accent)\" stroke-dasharray=\"7 4\"/><\/g><g font-size=\"14\" fill=\"currentColor\" font-family=\"sans-serif\"><text x=\"70\" y=\"195\">A = 6 (timur)<\/text><text x=\"158\" y=\"105\">B = 8 (utara)<\/text><text x=\"40\" y=\"90\" fill=\"var(--accent)\">R = 10<\/text><text x=\"62\" y=\"168\">θ<\/text><\/g><\/svg>", "cap": "Cara ujung–pangkal: pangkal B diletakkan di ujung A. Resultan R ditarik dari pangkal A ke ujung B."}, {"li": ["<b>Cara komponen<\/b> (paling andal): uraikan setiap vektor, A<sub>x<\/sub> = A cos θ dan A<sub>y<\/sub> = A sin θ; jumlahkan per sumbu; lalu R = √(R<sub>x<\/sub>² + R<sub>y<\/sub>²).", "Dua vektor bersudut apit θ: R = √(A² + B² + 2AB cos θ). Selisihnya: |A − B| = √(A² + B² − 2AB cos θ).", "Searah: R = A + B (terbesar). Berlawanan: R = |A − B| (terkecil). Tegak lurus: R = √(A² + B²).", "Karena itu selalu berlaku |A − B| ≤ R ≤ A + B."]}, {"tabel": {"cols": ["θ", "sin θ", "cos θ"], "rows": [["0°", "0", "1"], ["30°", "0,5", "½√3 ≈ 0,87"], ["37°", "≈ 0,6", "≈ 0,8"], ["45°", "½√2 ≈ 0,71", "½√2 ≈ 0,71"], ["53°", "≈ 0,8", "≈ 0,6"], ["60°", "½√3 ≈ 0,87", "0,5"], ["90°", "1", "0"]]}}, {"p": "Nilai 37° dan 53° adalah pembulatan sudut segitiga 3-4-5 (sebenarnya 36,87° dan 53,13°). Soal biasanya menuliskan nilai sin dan cos yang dipakai; gunakan nilai dari soal."}, {"contoh": {"soal": "Dua kecepatan 3 m/s dan 5 m/s membentuk sudut 60°. Berapa besar resultannya?", "langkah": ["R = √(3² + 5² + 2·3·5·cos 60°) = √(9 + 25 + 15) = √49 = 7 m/s."]}}, {"jebakan": ["Vektor 3 dan 4 tidak selalu menghasilkan 5; itu hanya bila keduanya tegak lurus. Resultannya bisa berapa saja dari 1 sampai 7.", "Sudut di rumus resultan adalah sudut apit kedua vektor saat pangkalnya disatukan, bukan sudut terhadap sumbu x."]}]}, {"id": "M3", "judul": "Posisi, jarak, dan perpindahan", "simpul": ["MEK-01"], "isi": [{"li": ["Posisi adalah vektor dari titik acuan: <b>r<\/b> = x<b>i<\/b> + y<b>j<\/b>.", "Perpindahan Δ<b>r<\/b> = <b>r<\/b><sub>akhir<\/sub> − <b>r<\/b><sub>awal<\/sub>, dihitung per komponen. Hanya posisi awal dan akhir yang menentukan.", "Jarak adalah jumlah panjang setiap ruas lintasan; selalu berlaku |Δr| ≤ jarak.", "|Δr| = jarak hanya bila benda bergerak lurus tanpa berbalik arah."]}, {"contoh": {"soal": "Sebuah sepeda bergerak 8 km ke timur, 9 km ke utara, lalu 3 km ke selatan. Tentukan jarak dan besar perpindahannya.", "langkah": ["Jarak = 8 + 9 + 3 = 20 km.", "Komponen: timur 8 km; utara 9 − 3 = 6 km.", "Besar perpindahan = √(8² + 6²) = 10 km, separuh dari jaraknya."]}}, {"jebakan": ["Perpindahan dari beberapa ruas tidak didapat dengan menjumlahkan panjang ruas. Jumlahkan dulu per komponen, baru cari besarnya."]}]}, {"id": "M4", "judul": "Kelajuan dan kecepatan", "simpul": ["MEK-01", "MEK-02"], "isi": [{"li": ["Kelajuan rata-rata = jarak total ÷ waktu total (skalar).", "Kecepatan rata-rata <b>v<\/b> = Δ<b>r<\/b>/Δt (vektor, searah perpindahan). Besarnya tidak pernah melebihi kelajuan rata-rata.", "Kecepatan sesaat: kecepatan pada satu saat. Besarnya sama dengan kelajuan sesaat (yang dibaca spidometer); arahnya menyinggung lintasan.", "Dari komponen: <b>v<\/b> = v<sub>x<\/sub><b>i<\/b> + v<sub>y<\/sub><b>j<\/b>, kelajuan |v| = √(v<sub>x<\/sub>² + v<sub>y<\/sub>²).", "Kecepatan berubah bila besarnya berubah, arahnya berubah, atau keduanya. Mobil yang berbelok dengan spidometer tetap tetap mengalami perubahan kecepatan."]}, {"contoh": {"soal": "Seorang siswa berjalan 30 m ke timur lalu 40 m ke utara dalam 50 s. Bandingkan kelajuan rata-rata dan kecepatan rata-ratanya.", "langkah": ["Kelajuan rata-rata = (30 + 40) ÷ 50 = 1,4 m/s.", "Perpindahan = √(30² + 40²) = 50 m, jadi besar kecepatan rata-rata = 50 ÷ 50 = 1 m/s.", "Arahnya tan θ = 40/30 → θ ≈ 53° dari timur ke utara."]}}, {"jebakan": ["Kelajuan rata-rata bukan besar kecepatan rata-rata. Pada lintasan tertutup, kecepatan rata-rata nol tetapi kelajuan rata-ratanya tidak."]}]}, {"id": "M5", "judul": "Percepatan dan gerak per komponen", "simpul": ["MEK-01", "MEK-02"], "isi": [{"li": ["Percepatan rata-rata <b>a<\/b> = Δ<b>v<\/b>/Δt, dengan Δ<b>v<\/b> = <b>v<\/b><sub>akhir<\/sub> − <b>v<\/b><sub>awal<\/sub> dihitung secara vektor.", "Gerak pada sumbu x dan sumbu y saling bebas. Persamaan GLBB berlaku per sumbu: v<sub>x<\/sub> = v<sub>0x<\/sub> + a<sub>x<\/sub>t dan x = x₀ + v<sub>0x<\/sub>t + ½a<sub>x<\/sub>t².", "Gerak parabola: a<sub>x<\/sub> = 0 sehingga v<sub>x<\/sub> = v₀ cos α tetap; a<sub>y<\/sub> = −g sehingga v<sub>y<\/sub> = v₀ sin α − gt.", "Kelajuan sesaat pada lintasan parabola = √(v<sub>x<\/sub>² + v<sub>y<\/sub>²). Di titik tertinggi v<sub>y<\/sub> = 0, tetapi kelajuannya v<sub>x<\/sub>, bukan nol.", "Pada gerak lurus, percepatan berlawanan arah dengan kecepatan berarti benda diperlambat, lalu dapat berbalik arah."]}, {"contoh": {"soal": "Bola dilempar mendatar 10 m/s dari ketinggian 5 m (g = 10 m/s²). Berapa kelajuannya saat menyentuh tanah?", "langkah": ["Waktu jatuh dari gerak tegak: 5 = ½ × 10 × t² → t = 1 s.", "v<sub>x<\/sub> = 10 m/s, v<sub>y<\/sub> = 10 × 1 = 10 m/s.", "Kelajuan = √(10² + 10²) = 10√2 ≈ 14,1 m/s, arah 45° di bawah horizontal."]}}, {"jebakan": ["Bola yang menumbuk dinding 6 m/s dan memantul 6 m/s mengalami Δv = 12 m/s, bukan nol: arahnya berbalik.", "Waktu jatuh benda yang dilempar mendatar sama dengan waktu jatuh bebas dari ketinggian yang sama."]}]}, {"id": "M6", "judul": "Kecepatan relatif dan resultan kecepatan", "simpul": ["DAS-02", "MEK-01"], "isi": [{"li": ["Kecepatan A menurut B: <b>v<\/b><sub>AB<\/sub> = <b>v<\/b><sub>A<\/sub> − <b>v<\/b><sub>B<\/sub>.", "Kecepatan terhadap tanah = kecepatan terhadap air (atau udara) + kecepatan arus (atau angin), dijumlahkan sebagai vektor.", "Menyeberang dengan perahu diarahkan tegak lurus tepi: waktu tercepat t = d/v<sub>perahu<\/sub>, tetapi perahu terbawa sejauh v<sub>arus<\/sub> × t.", "Agar tiba tepat di seberang: arahkan ke hulu dengan sin θ = v<sub>arus<\/sub>/v<sub>perahu<\/sub> (θ dari garis tegak lurus tepi); laju menyeberang √(v<sub>perahu<\/sub>² − v<sub>arus<\/sub>²). Hanya mungkin bila v<sub>perahu<\/sub> &gt; v<sub>arus<\/sub>.", "Hujan yang turun tegak tampak miring dari depan bagi pengendara: <b>v<\/b><sub>hujan, relatif<\/sub> = <b>v<\/b><sub>hujan<\/sub> − <b>v<\/b><sub>pengendara<\/sub>."]}, {"svg": "<svg viewBox=\"0 0 300 210\" role=\"img\" aria-label=\"Perahu menyeberang sungai: diarahkan ke hulu dengan sudut theta dari garis tegak lurus tepi sehingga kecepatan resultan lurus menyeberang\"><defs><marker id=\"ah2\" viewBox=\"0 0 10 10\" refX=\"9\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto-start-reverse\"><path d=\"M0 0L10 5L0 10z\" fill=\"currentColor\"/><\/marker><\/defs><rect x=\"0\" y=\"40\" width=\"300\" height=\"130\" fill=\"var(--accent)\" opacity=\".12\"/><line x1=\"0\" y1=\"40\" x2=\"300\" y2=\"40\" stroke=\"currentColor\"/><line x1=\"0\" y1=\"170\" x2=\"300\" y2=\"170\" stroke=\"currentColor\"/><g fill=\"none\" stroke-width=\"3\" marker-end=\"url(#ah2)\"><line x1=\"150\" y1=\"165\" x2=\"96\" y2=\"68\" stroke=\"currentColor\"/><line x1=\"96\" y1=\"68\" x2=\"148\" y2=\"68\" stroke=\"currentColor\" stroke-dasharray=\"5 4\"/><line x1=\"150\" y1=\"165\" x2=\"150\" y2=\"72\" stroke=\"var(--accent)\"/><line x1=\"215\" y1=\"120\" x2=\"275\" y2=\"120\" stroke=\"currentColor\"/><\/g><g font-size=\"13\" fill=\"currentColor\" font-family=\"sans-serif\"><text x=\"40\" y=\"120\">v perahu<\/text><text x=\"95\" y=\"60\">v arus<\/text><text x=\"156\" y=\"120\" fill=\"var(--accent)\">v hasil<\/text><text x=\"215\" y=\"112\">arus →<\/text><text x=\"132\" y=\"150\">θ<\/text><text x=\"8\" y=\"30\">tepi seberang<\/text><text x=\"8\" y=\"196\">tepi berangkat (hulu di kiri)<\/text><\/g><\/svg>", "cap": "Perahu diarahkan ke hulu dengan sudut θ. Komponen ke hulu meniadakan arus, sehingga kecepatan hasilnya lurus menyeberang."}, {"contoh": {"soal": "Sungai selebar 80 m berarus 6 m/s; perahu melaju 10 m/s relatif terhadap air. Bandingkan dua cara menyeberang.", "langkah": ["Tegak lurus tepi: t = 80 ÷ 10 = 8 s, terbawa 6 × 8 = 48 m ke hilir.", "Tepat ke seberang: sin θ = 6/10 = 0,6 → θ = 37° ke hulu; laju menyeberang √(10² − 6²) = 8 m/s; t = 80 ÷ 8 = 10 s.", "Jadi tiba tepat di seberang lebih lambat, tetapi tidak perlu menyusuri tepi."]}}, {"jebakan": ["Arus sejajar tepi tidak mengubah waktu menyeberang bila perahu diarahkan tegak lurus tepi; arus hanya menggeser titik tiba."]}]}, {"id": "M7", "judul": "Strategi menjawab soal TKA", "simpul": [], "isi": [{"p": "Pada TKA Fisika 2025, materi ini muncul sebagai grafik kecepatan–waktu (nomor 3 dan 4), gerak vertikal (nomor 5), gerak relatif kapal (nomor 2), gerak parabola (nomor 7), dan resultan kecepatan perahu setelah didorong arus (nomor 9). Soal-soal itu bisa dicoba di halaman <a href=\"tka.html\">Latihan TKA<\/a>."}, {"tabel": {"cols": ["Tipe soal", "Yang diminta", "Di modul ini"], "rows": [["FIS-HITUNG (level 2)", "Satu hukum dalam konteks sehari-hari", "Tahap 3–4"], ["FIS-GRAF (level 2)", "Membaca grafik atau tabel data", "Tahap 3–4"], ["FIS-KONSEP (level 2)", "Memilih penjelasan yang tepat", "Tahap 3"], ["FIS-ANALISIS (level 3)", "Memprediksi keadaan gerak dari beberapa hubungan", "Tahap 5"], ["FIS-STRATEGI (level 3)", "Memilih strategi yang memenuhi tujuan dan batasan", "Tahap 4–5"]]}}, {"li": ["Tetapkan dulu arah positif dan arah mata angin, lalu uraikan setiap vektor per komponen.", "Pada pilihan ganda, cek besar <b>dan<\/b> arah. Pengecoh sering benar besarnya tetapi salah sudut atau arah (37° tertukar dengan 53°).", "Soal strategi: hitung hasil setiap pilihan, lalu buang pilihan yang memenuhi tujuan tetapi melanggar batasan (waktu, titik tiba).", "Pilihan ganda kompleks dan benar–salah: nilai setiap pernyataan sendiri-sendiri; satu kesalahan membuat jawaban salah.", "Pakai nilai g, sin, dan cos yang tertulis di soal."]}]}], "tahap": [{"tahap": 1, "nama": "Mengenal", "tujuan": "Bedakan skalar dan vektor, jarak dan perpindahan, kelajuan dan kecepatan. Hampir tanpa hitungan.", "soal": [{"id": "VKG-001", "format": "pilihan-ganda", "simpul": "DAS-02", "soal": "Kelompok besaran manakah yang <b>semuanya<\/b> besaran vektor?", "opsi": ["Jarak, kelajuan, waktu", "Perpindahan, kecepatan, percepatan", "Massa, kecepatan, gaya", "Perpindahan, kelajuan, percepatan", "Energi, gaya, waktu"], "kunci": 1, "petunjuk": "Besaran vektor punya arah. Tanyakan pada tiap besaran: apakah \"ke mana\" ikut menentukan nilainya?", "pembahasan": ["Perpindahan, kecepatan, dan percepatan selalu disertai arah, jadi ketiganya vektor.", "Jarak, kelajuan, waktu, massa, dan energi tidak punya arah (skalar). Pilihan D gagal karena kelajuan skalar."]}, {"id": "VKG-002", "format": "benar-salah", "simpul": "MEK-01", "kolom": ["Benar", "Salah"], "soal": "Tentukan benar atau salah setiap pernyataan berikut.", "opsi": ["Kelajuan tidak pernah bernilai negatif.", "Kecepatan 5 m/s dan −5 m/s pada lintasan lurus mempunyai besar yang sama tetapi arahnya berlawanan.", "Jarak tempuh sebuah benda bisa lebih kecil daripada besar perpindahannya.", "Benda yang kembali ke titik awalnya mempunyai perpindahan nol."], "kunci": [true, true, false, true], "petunjuk": "Jarak adalah panjang lintasan, perpindahan adalah garis lurus dari awal ke akhir. Mana yang lebih pendek?", "pembahasan": ["Kelajuan = jarak/waktu; keduanya tidak negatif, jadi kelajuan ≥ 0. Benar.", "Tanda minus pada gerak lurus hanya menyatakan arah. Benar.", "Garis lurus adalah lintasan terpendek, jadi besar perpindahan ≤ jarak. Pernyataan ketiga salah.", "Posisi akhir = posisi awal, sehingga Δr = 0. Benar."]}, {"id": "VKG-003", "format": "isian", "simpul": "MEK-01", "satuan": "m", "soal": "Andi berjalan 4 m ke timur, lalu berbalik dan berjalan 3 m ke barat. Berapa <b>jarak<\/b> yang ditempuh Andi?", "kunci": 7, "petunjuk": "Jarak menjumlahkan panjang setiap ruas lintasan, tanpa memedulikan arah.", "pembahasan": ["Jarak = 4 m + 3 m = 7 m."]}, {"id": "VKG-004", "format": "pilihan-ganda", "simpul": "MEK-01", "soal": "Andi berjalan 4 m ke timur, lalu berbalik dan berjalan 3 m ke barat. <b>Perpindahan<\/b> Andi adalah ....", "opsi": ["1 m ke timur", "1 m ke barat", "7 m ke timur", "5 m ke timur laut", "7 m ke barat"], "kunci": 0, "petunjuk": "Ambil timur sebagai arah positif. Barat bernilai negatif.", "pembahasan": ["Dengan timur positif: Δx = +4 m + (−3 m) = +1 m.", "Tanda positif berarti ke timur, jadi perpindahan 1 m ke timur.", "7 m adalah jaraknya; 5 m muncul bila kedua ruas dianggap tegak lurus, padahal keduanya segaris."]}, {"id": "VKG-005", "format": "pilihan-ganda", "simpul": "MEK-02", "soal": "Sebuah mobil mengitari bundaran. Selama di bundaran, spidometernya selalu menunjuk 40 km/jam. Pernyataan yang tepat adalah ....", "opsi": ["Kelajuan dan kecepatan mobil sama-sama tetap.", "Kelajuan mobil tetap, tetapi kecepatannya berubah karena arahnya berubah.", "Kelajuan mobil berubah, tetapi kecepatannya tetap.", "Mobil tidak mengalami percepatan karena spidometernya tidak berubah.", "Kecepatan mobil 40 km/jam menuju pusat bundaran."], "kunci": 1, "petunjuk": "Spidometer hanya membaca kelajuan (besar kecepatan), tidak membaca arah.", "pembahasan": ["Spidometer menunjukkan kelajuan, jadi kelajuan tetap 40 km/jam.", "Arah gerak di bundaran terus berbelok, sehingga vektor kecepatan berubah.", "Kecepatan yang berubah berarti ada percepatan (D salah). Arah kecepatan menyinggung lintasan, bukan menuju pusat (E salah)."]}, {"id": "VKG-006", "format": "isian", "simpul": "DAS-02", "satuan": "m", "soal": "Vektor perpindahan sebuah semut adalah <b>A<\/b> = (3<b>i<\/b> + 4<b>j<\/b>) m. Berapa besar perpindahan semut itu?", "kunci": 5, "petunjuk": "Besar vektor dari komponennya: |A| = √(A<sub>x<\/sub>² + A<sub>y<\/sub>²).", "pembahasan": ["|A| = √(3² + 4²) = √25 = 5 m."]}, {"id": "VKG-007", "format": "pilihan-ganda", "simpul": "DAS-02", "soal": "Dua kecepatan, 6 m/s dan 8 m/s, dijumlahkan dengan sudut apit yang belum diketahui. Besar resultan yang <b>tidak mungkin<\/b> adalah ....", "opsi": ["2 m/s", "7 m/s", "10 m/s", "14 m/s", "15 m/s"], "kunci": 4, "petunjuk": "Resultan terkecil bila berlawanan arah, terbesar bila searah.", "pembahasan": ["Berlawanan arah: R = 8 − 6 = 2 m/s (minimum). Searah: R = 8 + 6 = 14 m/s (maksimum).", "Semua nilai dari 2 sampai 14 m/s mungkin; 10 m/s terjadi bila keduanya tegak lurus.", "15 m/s melebihi 14 m/s, jadi tidak mungkin."]}]}, {"tahap": 2, "nama": "Satu langkah", "tujuan": "Satu rumus per soal: besar vektor, komponen, resultan, kelajuan dan kecepatan rata-rata.", "soal": [{"id": "VKG-008", "format": "isian", "simpul": "MEK-01", "satuan": "m/s", "soal": "Seorang pelari mengelilingi tepi lapangan berbentuk persegi bersisi 100 m tepat satu kali, kembali ke titik awal dalam 80 s. Berapa <b>kelajuan rata-rata<\/b> pelari?", "kunci": 5, "petunjuk": "Kelajuan rata-rata = jarak total ÷ waktu total. Berapa keliling persegi?", "pembahasan": ["Jarak = 4 × 100 m = 400 m.", "Kelajuan rata-rata = 400 m ÷ 80 s = 5 m/s."]}, {"id": "VKG-009", "format": "isian", "simpul": "MEK-01", "satuan": "m/s", "soal": "Pelari yang sama (satu putaran penuh tepi lapangan persegi bersisi 100 m dalam 80 s) memiliki <b>besar kecepatan rata-rata<\/b> sebesar ....", "kunci": 0, "toleransi": 0.001, "petunjuk": "Kecepatan rata-rata memakai perpindahan, bukan jarak. Di mana pelari berhenti?", "pembahasan": ["Pelari kembali ke titik awal, jadi perpindahannya nol.", "Kecepatan rata-rata = perpindahan ÷ waktu = 0 ÷ 80 s = 0 m/s, walaupun kelajuan rata-ratanya 5 m/s."]}, {"id": "VKG-010", "format": "isian", "simpul": "DAS-02", "satuan": "m/s", "soal": "Sebuah bola ditendang dengan kecepatan 20 m/s membentuk sudut 37° di atas tanah datar (sin 37° = 0,6; cos 37° = 0,8). Berapa komponen <b>mendatar<\/b> kecepatan awal bola?", "kunci": 16, "petunjuk": "Komponen yang bersebelahan dengan sudut memakai cos.", "pembahasan": ["v<sub>x<\/sub> = v cos 37° = 20 × 0,8 = 16 m/s.", "Komponen tegaknya v<sub>y<\/sub> = 20 × 0,6 = 12 m/s; cek: √(16² + 12²) = 20 m/s."]}, {"id": "VKG-011", "format": "isian", "simpul": "DAS-02", "satuan": "m/s", "soal": "Sebuah anak panah dilepas dengan kecepatan 25 m/s membentuk sudut 53° terhadap horizontal (sin 53° = 0,8; cos 53° = 0,6). Berapa komponen <b>tegak<\/b> kecepatan awalnya?", "kunci": 20, "petunjuk": "Komponen yang berhadapan dengan sudut memakai sin.", "pembahasan": ["v<sub>y<\/sub> = v sin 53° = 25 × 0,8 = 20 m/s."]}, {"id": "VKG-012", "format": "isian", "simpul": "DAS-02", "satuan": "m/s", "soal": "Sebuah perahu melaju 4 m/s ke utara relatif terhadap air, sedangkan air sungai mengalir 3 m/s ke timur. Berapa besar kecepatan perahu terhadap tepi sungai?", "kunci": 5, "petunjuk": "Kecepatan terhadap tepi = kecepatan perahu terhadap air + kecepatan arus (dijumlahkan secara vektor). Keduanya tegak lurus.", "pembahasan": ["Kedua kecepatan saling tegak lurus, jadi v = √(4² + 3²) = √25 = 5 m/s.", "Menjumlahkan biasa (7 m/s) hanya benar bila keduanya searah."]}, {"id": "VKG-013", "format": "isian", "simpul": "DAS-02", "satuan": "m/s", "soal": "Seekor burung terbang dengan kecepatan 5 m/s relatif terhadap udara, sementara angin bertiup 3 m/s. Arah angin membentuk sudut 60° dengan arah terbang burung. Berapa besar kecepatan burung terhadap tanah?", "kunci": 7, "petunjuk": "Dua vektor bersudut θ: R = √(A² + B² + 2AB cos θ), dengan cos 60° = 0,5.", "pembahasan": ["R = √(5² + 3² + 2·5·3·cos 60°) = √(25 + 9 + 15) = √49 = 7 m/s."]}, {"id": "VKG-014", "format": "pilihan-ganda", "simpul": "MEK-01", "soal": "Sebuah robot berpindah dari posisi <b>r<\/b><sub>1<\/sub> = (2<b>i<\/b> + <b>j<\/b>) m ke posisi <b>r<\/b><sub>2<\/sub> = (8<b>i<\/b> + 9<b>j<\/b>) m. Vektor perpindahan dan besarnya adalah ....", "opsi": ["(6<b>i<\/b> + 8<b>j<\/b>) m, besarnya 10 m", "(10<b>i<\/b> + 10<b>j<\/b>) m, besarnya 14,1 m", "(−6<b>i<\/b> − 8<b>j<\/b>) m, besarnya 10 m", "(6<b>i<\/b> + 8<b>j<\/b>) m, besarnya 14 m", "(8<b>i<\/b> + 6<b>j<\/b>) m, besarnya 10 m"], "kunci": 0, "petunjuk": "Perpindahan = posisi akhir − posisi awal, dikerjakan per komponen.", "pembahasan": ["Δr = r<sub>2<\/sub> − r<sub>1<\/sub> = (8 − 2)<b>i<\/b> + (9 − 1)<b>j<\/b> = (6<b>i<\/b> + 8<b>j<\/b>) m.", "|Δr| = √(6² + 8²) = 10 m.", "B menjumlahkan posisi; C mengurangkan terbalik (awal − akhir); D menjumlahkan komponen 6 + 8."]}, {"id": "VKG-015", "format": "pilihan-ganda", "simpul": "MEK-01", "soal": "Sebuah troli bergerak ke kanan dengan kecepatan 12 m/s. Troli mendapat percepatan tetap 3 m/s² <b>ke kiri<\/b>. Kecepatan troli setelah 6 s adalah ....", "opsi": ["6 m/s ke kiri", "6 m/s ke kanan", "30 m/s ke kanan", "0 m/s", "30 m/s ke kiri"], "kunci": 0, "petunjuk": "Ambil kanan positif, maka percepatan bernilai −3 m/s². Pakai v = v₀ + at, lalu baca tandanya.", "pembahasan": ["v = v₀ + at = 12 + (−3)(6) = −6 m/s.", "Tanda negatif berarti ke kiri: troli sempat berhenti pada t = 4 s, lalu bergerak balik.", "B lupa membaca tanda; C dan E memakai percepatan searah gerak."]}]}, {"tahap": 3, "nama": "Menggabungkan", "tujuan": "Vektor dipakai di dalam soal gerak: perpindahan beberapa ruas, kecepatan dari posisi, perubahan kecepatan.", "soal": [{"id": "VKG-016", "format": "isian", "simpul": "MEK-01", "satuan": "m/s", "soal": "Sebuah drone pengantar terbang 600 m ke timur, lalu 800 m ke utara. Seluruh perjalanan memakan waktu 200 s. Berapa <b>kelajuan rata-rata<\/b> drone?", "kunci": 7, "petunjuk": "Jarak total = jumlah kedua ruas.", "pembahasan": ["Jarak = 600 m + 800 m = 1.400 m.", "Kelajuan rata-rata = 1.400 m ÷ 200 s = 7 m/s."]}, {"id": "VKG-017", "format": "isian", "simpul": "MEK-01", "satuan": "m/s", "soal": "Drone yang sama (600 m ke timur, lalu 800 m ke utara, total 200 s) memiliki <b>besar kecepatan rata-rata<\/b> ....", "kunci": 5, "petunjuk": "Cari dulu besar perpindahan: kedua ruas saling tegak lurus.", "pembahasan": ["Perpindahan = √(600² + 800²) = 1.000 m.", "Besar kecepatan rata-rata = 1.000 m ÷ 200 s = 5 m/s.", "Bandingkan: kelajuan rata-ratanya 7 m/s. Besar kecepatan rata-rata tidak pernah melebihi kelajuan rata-rata."]}, {"id": "VKG-018", "format": "pilihan-ganda", "simpul": "DAS-02", "soal": "Drone yang sama terbang 600 m ke timur, lalu 800 m ke utara. Arah perpindahannya adalah ....", "opsi": ["53° dari arah timur ke arah utara", "37° dari arah timur ke arah utara", "53° dari arah utara ke arah timur", "45° dari arah timur ke arah utara", "tepat ke utara"], "kunci": 0, "petunjuk": "tan θ = komponen utara ÷ komponen timur, dengan θ diukur dari arah timur.", "pembahasan": ["tan θ = 800/600 = 4/3, sehingga θ ≈ 53° (segitiga 3-4-5).", "Sudut diukur dari timur menuju utara. Arah yang sama juga bisa ditulis 37° dari utara ke timur, tetapi pilihan C menyebut 53° dari utara, yang berbeda."]}, {"id": "VKG-019", "format": "pilihan-ganda", "simpul": "DAS-02", "tka": {"tipe": "FIS-HITUNG", "acuan": ["FIS25-005"]}, "soal": "Seorang pendaki mengikuti jalur: 7 km ke utara, kemudian 12 km ke timur, lalu 2 km ke selatan menuju pos terakhir. Petugas ingin menarik kabel radio lurus dari titik awal ke pos terakhir. Panjang kabel minimum yang diperlukan adalah ....", "opsi": ["5 km", "13 km", "15 km", "17 km", "21 km"], "kunci": 1, "petunjuk": "Panjang kabel lurus = besar perpindahan. Jumlahkan dulu komponen utara–selatan.", "pembahasan": ["Komponen utara: 7 − 2 = 5 km. Komponen timur: 12 km.", "Besar perpindahan = √(12² + 5²) = √169 = 13 km.", "15 km lupa mengurangkan 2 km ke selatan (√(12² + 9²)); 17 km menjumlahkan komponen; 21 km adalah jaraknya."]}, {"id": "VKG-020", "format": "isian", "simpul": "MEK-01", "satuan": "m/s", "soal": "Posisi sebuah bola di lapangan pada t = 0 adalah <b>r<\/b> = (2<b>i<\/b> + 3<b>j<\/b>) m dan pada t = 4 s adalah <b>r<\/b> = (14<b>i<\/b> + 19<b>j<\/b>) m. Berapa besar kecepatan rata-rata bola dalam selang itu?", "kunci": 5, "petunjuk": "v<sub>rata-rata<\/sub> = Δr/Δt. Hitung Δr per komponen, bagi 4 s, lalu cari besarnya.", "pembahasan": ["Δr = (12<b>i<\/b> + 16<b>j<\/b>) m.", "v<sub>rata-rata<\/sub> = Δr/Δt = (3<b>i<\/b> + 4<b>j<\/b>) m/s.", "Besarnya √(3² + 4²) = 5 m/s."]}, {"id": "VKG-021", "format": "pilihan-ganda", "simpul": "MEK-02", "tka": {"tipe": "FIS-GRAF", "acuan": ["FIS25-003", "FIS25-004"]}, "soal": "Sebuah robot pengintai bergerak di lantai datar. Sensornya mencatat komponen kecepatan seperti tabel berikut. Sumbu x dan sumbu y saling tegak lurus.\n[Tabel]\nBerdasarkan data tersebut, kondisi gerak robot pada t = 2 s adalah ....", "tabel": [["t (s)", "0", "1", "2", "3"], ["v<sub>x<\/sub> (m/s)", "6", "6", "6", "6"], ["v<sub>y<\/sub> (m/s)", "0", "4", "8", "12"]], "opsi": ["kelajuan 10 m/s dan percepatan 4 m/s² searah sumbu y", "kelajuan 14 m/s dan percepatan 4 m/s² searah sumbu y", "kelajuan 10 m/s dan percepatan nol karena v<sub>x<\/sub> tetap", "kelajuan 8 m/s dan percepatan 4 m/s² searah sumbu y", "kelajuan 10 m/s dan percepatan 5 m/s² searah gerak robot"], "kunci": 0, "petunjuk": "Kelajuan = besar vektor kecepatan. Percepatan tiap sumbu = perubahan v pada sumbu itu tiap sekon.", "pembahasan": ["Pada t = 2 s: v<sub>x<\/sub> = 6 m/s, v<sub>y<\/sub> = 8 m/s, jadi kelajuan = √(6² + 8²) = 10 m/s.", "a<sub>x<\/sub> = 0 (v<sub>x<\/sub> tetap), a<sub>y<\/sub> = 4 m/s² (v<sub>y<\/sub> naik 4 m/s tiap sekon). Percepatan total 4 m/s² searah sumbu y.", "B menjumlahkan komponen (6 + 8); C hanya melihat sumbu x; D hanya melihat sumbu y."]}, {"id": "VKG-022", "format": "isian", "simpul": "MEK-02", "satuan": "m/s²", "toleransi": 0.05, "soal": "Sebuah mobil melaju 10 m/s ke timur, lalu berbelok sehingga 5 s kemudian melaju 10 m/s ke utara. Berapa besar <b>percepatan rata-rata<\/b> mobil selama berbelok? (√2 ≈ 1,41; jawab dengan dua angka di belakang koma)", "kunci": 2.83, "petunjuk": "Percepatan rata-rata = Δv/Δt, dengan Δv = v<sub>akhir<\/sub> − v<sub>awal<\/sub> dihitung secara vektor, bukan selisih kelajuan.", "pembahasan": ["Δv = (10 m/s ke utara) − (10 m/s ke timur) = (−10<b>i<\/b> + 10<b>j<\/b>) m/s.", "|Δv| = √(10² + 10²) = 10√2 ≈ 14,1 m/s.", "a<sub>rata-rata<\/sub> = 14,1 ÷ 5 ≈ 2,83 m/s². Kelajuannya tidak berubah, tetapi percepatan tidak nol karena arahnya berubah."]}, {"id": "VKG-023", "format": "pilihan-ganda", "simpul": "MEK-01", "soal": "Bola tenis menumbuk dinding tegak lurus dengan kelajuan 10 m/s dan memantul lurus kembali dengan kelajuan 8 m/s. Besar perubahan kecepatan bola adalah ....", "opsi": ["2 m/s", "9 m/s", "12,8 m/s", "18 m/s", "0 m/s"], "kunci": 3, "petunjuk": "Ambil arah menuju dinding sebagai positif. Kecepatan pantul bernilai negatif.", "pembahasan": ["Δv = v<sub>akhir<\/sub> − v<sub>awal<\/sub> = (−8) − (+10) = −18 m/s, besarnya 18 m/s.", "2 m/s hanya mengurangkan kelajuan; 12,8 m/s memperlakukan keduanya seolah tegak lurus (√(10² + 8²))."]}, {"id": "VKG-024", "format": "pilihan-ganda-kompleks", "simpul": "MEK-02", "tka": {"tipe": "FIS-KONSEP", "acuan": ["FIS25-010"]}, "soal": "Seorang pembalap mengitari lintasan berbentuk lingkaran dengan kelajuan tetap 20 m/s dan kembali ke garis start setelah tepat satu putaran. Pernyataan yang benar adalah ....\nJawaban benar lebih dari satu.", "opsi": ["Kelajuan rata-rata satu putaran 20 m/s.", "Kecepatan rata-rata satu putaran nol.", "Percepatan pembalap nol karena kelajuannya tetap.", "Besar kecepatan sesaatnya selalu 20 m/s.", "Arah kecepatan sesaat selalu menuju pusat lingkaran."], "kunci": [0, 1, 3], "petunjuk": "Periksa setiap pernyataan sendiri-sendiri. Bedakan kelajuan dari kecepatan, dan arah kecepatan dari arah percepatan.", "pembahasan": ["Kelajuan tetap 20 m/s, jadi kelajuan rata-rata juga 20 m/s, dan besar kecepatan sesaat selalu 20 m/s (benar).", "Satu putaran penuh: perpindahan nol, jadi kecepatan rata-rata nol (benar).", "Arah kecepatan terus berubah, sehingga ada percepatan sentripetal menuju pusat; kecepatan sesaat menyinggung lingkaran, bukan menuju pusat (C dan E salah)."]}]}, {"tahap": 4, "nama": "Gerak relatif dan dua dimensi", "tujuan": "Perahu, kapal, pesawat, hujan, dan gerak parabola: kecepatan dijumlahkan atau dikurangkan sebagai vektor.", "soal": [{"id": "VKG-025", "format": "isian", "simpul": "MEK-01", "satuan": "s", "soal": "Sungai selebar 60 m mengalir 3 m/s. Sebuah perahu yang lajunya 5 m/s relatif terhadap air diarahkan <b>tegak lurus<\/b> tepi sungai. Berapa lama perahu sampai di seberang?", "kunci": 12, "petunjuk": "Arus sejajar tepi, jadi tidak membantu atau menghambat gerak menyeberang. Hanya komponen tegak lurus tepi yang menentukan waktu.", "pembahasan": ["Komponen kecepatan tegak lurus tepi = 5 m/s (seluruh kecepatan perahu).", "t = 60 m ÷ 5 m/s = 12 s."]}, {"id": "VKG-026", "format": "isian", "simpul": "MEK-01", "satuan": "m", "soal": "Perahu pada soal sebelumnya (sungai 60 m, arus 3 m/s, perahu 5 m/s diarahkan tegak lurus tepi) tiba di seberang. Seberapa jauh titik tibanya bergeser ke hilir dari titik tepat di seberang titik berangkat?", "kunci": 36, "petunjuk": "Selama waktu menyeberang, arus membawa perahu sejajar tepi dengan laju 3 m/s.", "pembahasan": ["Waktu menyeberang 12 s.", "Pergeseran = 3 m/s × 12 s = 36 m ke hilir."]}, {"id": "VKG-027", "format": "pilihan-ganda", "simpul": "MEK-01", "soal": "Pada sungai yang sama (lebar 60 m, arus 3 m/s, perahu 5 m/s relatif terhadap air), juru mudi ingin tiba <b>tepat<\/b> di seberang titik berangkat. Arah perahu dan waktu tempuhnya adalah .... (sin 37° = 0,6; sudut diukur dari garis tegak lurus tepi)", "opsi": ["37° ke arah hulu, 15 s", "37° ke arah hilir, 15 s", "53° ke arah hulu, 20 s", "tegak lurus tepi, 12 s", "37° ke arah hulu, 12 s"], "kunci": 0, "petunjuk": "Komponen kecepatan perahu yang melawan arus harus sama dengan laju arus: 5 sin θ = 3.", "pembahasan": ["5 sin θ = 3 → sin θ = 0,6 → θ = 37° ke arah hulu.", "Sisa kecepatan untuk menyeberang: 5 cos 37° = 5 × 0,8 = 4 m/s (atau √(5² − 3²) = 4 m/s).", "t = 60 m ÷ 4 m/s = 15 s.", "C: dengan 53°, komponen melawan arus 5 × 0,8 = 4 m/s > 3 m/s, jadi perahu justru terdorong ke hulu. E memakai laju 5 m/s untuk waktu."]}, {"id": "VKG-028", "format": "pilihan-ganda", "simpul": "MEK-01", "tka": {"tipe": "FIS-STRATEGI", "acuan": ["FIS25-002"]}, "soal": "Kapal penyeberangan berangkat dari Pulau A pukul 07.30 menuju Pulau B yang terletak 30 km tepat di sebelah timur Pulau A. Arus laut bergerak dari barat ke timur dengan kecepatan 2 km/jam. Kapal harus tiba tepat pukul 09.00. Strategi yang harus diterapkan nakhoda adalah ....", "opsi": ["bergerak ke timur dengan kecepatan 18 km/jam relatif terhadap air", "bergerak ke timur dengan kecepatan 20 km/jam relatif terhadap air", "bergerak ke timur dengan kecepatan 22 km/jam relatif terhadap air", "bergerak ke barat dengan kecepatan 18 km/jam relatif terhadap air", "bergerak ke tenggara dengan kecepatan 20 km/jam relatif terhadap air"], "kunci": 0, "petunjuk": "Hitung dulu kecepatan terhadap dasar laut yang diperlukan: jarak ÷ waktu. Lalu ingat v<sub>dasar laut<\/sub> = v<sub>kapal thd air<\/sub> + v<sub>arus<\/sub>.", "pembahasan": ["Waktu tempuh 07.30–09.00 = 1,5 jam, jadi kecepatan terhadap dasar laut = 30 km ÷ 1,5 jam = 20 km/jam ke timur.", "Arus searah (ke timur, 2 km/jam) ikut mendorong: v<sub>kapal thd air<\/sub> = 20 − 2 = 18 km/jam ke timur.", "B lupa arus (kapal tiba lebih awal, 22 km/jam terhadap dasar laut); C mengurangkan arus dengan arah terbalik; E membuat kapal menyimpang ke selatan.", "Soal ini versi lengkap dari soal TKA 2025 nomor 2, yang tidak mencantumkan jarak dan waktu berangkat."]}, {"id": "VKG-029", "format": "isian", "simpul": "DAS-02", "satuan": "km/jam", "soal": "Sebuah pesawat kecil diarahkan ke utara dengan kelajuan 240 km/jam relatif terhadap udara. Angin bertiup ke timur dengan kecepatan 70 km/jam. Berapa kelajuan pesawat terhadap tanah?", "kunci": 250, "petunjuk": "v<sub>tanah<\/sub> = v<sub>pesawat thd udara<\/sub> + v<sub>angin<\/sub>, dua vektor yang saling tegak lurus.", "pembahasan": ["v = √(240² + 70²) = √(57.600 + 4.900) = √62.500 = 250 km/jam.", "Arahnya sedikit ke timur dari utara: tan θ = 70/240, θ ≈ 16°."]}, {"id": "VKG-030", "format": "pilihan-ganda", "simpul": "DAS-02", "soal": "Hujan turun tegak lurus dengan kelajuan 6 m/s terhadap tanah, saat angin tidak bertiup. Seorang pesepeda melaju 8 m/s ke timur. Menurut pesepeda, tetes hujan datang dengan kelajuan ....", "opsi": ["10 m/s, miring 53° dari vertikal, datang dari arah depan", "10 m/s, miring 37° dari vertikal, datang dari arah depan", "10 m/s, miring 53° dari vertikal, datang dari arah belakang", "14 m/s, miring 53° dari vertikal, datang dari arah depan", "6 m/s, tegak lurus dari atas"], "kunci": 0, "petunjuk": "v<sub>hujan thd pesepeda<\/sub> = v<sub>hujan<\/sub> − v<sub>pesepeda<\/sub>. Mengurangkan 8 m/s ke timur sama dengan menambahkan 8 m/s ke barat.", "pembahasan": ["v<sub>relatif<\/sub> = (0, −6) − (8, 0) = (−8, −6) m/s: 8 m/s ke barat dan 6 m/s ke bawah.", "Besarnya √(8² + 6²) = 10 m/s.", "Sudut dari vertikal: tan θ = 8/6 → θ ≈ 53°. Karena tetes bergerak ke barat menuju pesepeda yang menghadap timur, hujan tampak datang dari depan."]}, {"id": "VKG-031", "format": "pilihan-ganda", "simpul": "DAS-02", "tka": {"tipe": "FIS-HITUNG", "acuan": ["FIS25-005"]}, "soal": "Pada pukul 10.00, kapal A dan kapal B melewati sebuah pelampung yang sama. Kapal A berlayar lurus ke timur dengan kecepatan 12 km/jam, sedangkan kapal B berlayar lurus ke utara dengan kecepatan 16 km/jam. Jarak kedua kapal pada pukul 10.30 adalah ....", "opsi": ["2 km", "10 km", "14 km", "20 km", "28 km"], "kunci": 1, "petunjuk": "Kecepatan A relatif terhadap B: v<sub>A<\/sub> − v<sub>B<\/sub>. Atau hitung posisi masing-masing kapal setelah 0,5 jam.", "pembahasan": ["Setelah 0,5 jam: A berada 6 km di timur pelampung, B 8 km di utara pelampung.", "Jarak = √(6² + 8²) = 10 km. Cara lain: |v<sub>A<\/sub> − v<sub>B<\/sub>| = √(12² + 16²) = 20 km/jam, dikali 0,5 jam = 10 km.", "20 km lupa mengalikan waktu; 14 km menjumlahkan 6 + 8; 2 km mengurangkan 8 − 6."]}, {"id": "VKG-032", "format": "isian", "simpul": "MEK-02", "satuan": "m/s", "toleransi": 0.05, "soal": "Bola ditendang dengan kecepatan awal 20 m/s pada sudut 53° di atas tanah datar (sin 53° = 0,8; cos 53° = 0,6; g = 10 m/s²; hambatan udara diabaikan). Berapa kelajuan bola tepat 1 s setelah ditendang? (√5 ≈ 2,236; jawab dengan dua angka di belakang koma)", "kunci": 13.42, "petunjuk": "Uraikan: v<sub>x<\/sub> tetap, v<sub>y<\/sub> = v₀ sin α − gt. Kelajuan = √(v<sub>x<\/sub>² + v<sub>y<\/sub>²).", "pembahasan": ["v<sub>x<\/sub> = 20 × 0,6 = 12 m/s (tetap).", "v<sub>y<\/sub> = 20 × 0,8 − 10 × 1 = 6 m/s (masih naik).", "Kelajuan = √(12² + 6²) = √180 = 6√5 ≈ 13,42 m/s."]}, {"id": "VKG-033", "format": "isian", "simpul": "MEK-02", "satuan": "m/s", "soal": "Bola pada soal sebelumnya (20 m/s, 53°, sin 53° = 0,8; cos 53° = 0,6) mencapai titik tertinggi lintasannya. Berapa kelajuan bola di titik tertinggi?", "kunci": 12, "petunjuk": "Di titik tertinggi hanya komponen tegak yang nol.", "pembahasan": ["Di titik tertinggi v<sub>y<\/sub> = 0, tetapi v<sub>x<\/sub> tetap 12 m/s.", "Kelajuan = 12 m/s, bukan nol."]}, {"id": "VKG-034", "format": "pilihan-ganda", "simpul": "MEK-02", "tka": {"tipe": "FIS-HITUNG", "acuan": ["FIS25-005"]}, "soal": "Sebuah bola dilempar mendatar dari tepi atap gedung setinggi 20 m dengan kecepatan 15 m/s (g = 10 m/s²; hambatan udara diabaikan). Kecepatan bola tepat sebelum menyentuh tanah adalah ....", "opsi": ["25 m/s, arah 53° di bawah horizontal", "25 m/s, arah 37° di bawah horizontal", "35 m/s, arah 53° di bawah horizontal", "20 m/s, arah tegak ke bawah", "15 m/s, arah mendatar"], "kunci": 0, "petunjuk": "Waktu jatuh hanya ditentukan oleh gerak tegak: h = ½gt². Setelah itu hitung v<sub>y<\/sub> = gt.", "pembahasan": ["20 = ½ × 10 × t² → t = 2 s.", "v<sub>x<\/sub> = 15 m/s, v<sub>y<\/sub> = 10 × 2 = 20 m/s.", "v = √(15² + 20²) = 25 m/s; tan θ = 20/15 → θ ≈ 53° di bawah horizontal.", "B tertukar sudut (tan θ = 15/20); C menjumlahkan komponen 15 + 20."]}, {"id": "VKG-035", "format": "pilihan-ganda", "simpul": "MEK-01", "tka": {"tipe": "FIS-GRAF", "acuan": ["FIS25-003"]}, "soal": "Catatan GPS seorang kurir motor ditunjukkan pada tabel berikut. Tiap ruas ditempuh lurus.\n[Tabel]\nBerdasarkan catatan tersebut, pernyataan yang tepat tentang gerak kurir selama 30 menit adalah ....", "tabel": [["Waktu", "Gerak"], ["menit 0–10", "3 km ke timur"], ["menit 10–20", "4 km ke utara"], ["menit 20–30", "berhenti mengantar paket"]], "opsi": ["Kelajuan rata-ratanya 14 km/jam, sedangkan besar kecepatan rata-ratanya 10 km/jam.", "Kelajuan rata-rata dan besar kecepatan rata-ratanya sama-sama 14 km/jam.", "Kelajuan rata-ratanya 21 km/jam, karena waktu berhenti tidak dihitung.", "Besar kecepatan rata-ratanya 15 km/jam, karena waktu berhenti tidak dihitung.", "Kelajuan rata-ratanya 10 km/jam, sedangkan besar kecepatan rata-ratanya 14 km/jam."], "kunci": 0, "petunjuk": "Ubah menit ke jam (30 menit = 0,5 jam). Waktu berhenti tetap bagian dari selang waktu. Kelajuan memakai jarak, kecepatan memakai perpindahan.", "pembahasan": ["Jarak = 3 + 4 = 7 km; kelajuan rata-rata = 7 km ÷ 0,5 jam = 14 km/jam.", "Perpindahan = √(3² + 4²) = 5 km; besar kecepatan rata-rata = 5 km ÷ 0,5 jam = 10 km/jam.", "C dan D hanya memakai 20 menit (⅓ jam): 7 ÷ ⅓ = 21 dan 5 ÷ ⅓ = 15. E menukar kelajuan dan kecepatan."]}, {"id": "VKG-036", "format": "pilihan-ganda", "simpul": "DAS-02", "tka": {"tipe": "FIS-HITUNG", "acuan": ["FIS25-005"]}, "soal": "Mobil P melaju 15 m/s ke timur dan mobil Q melaju 20 m/s ke utara menuju persimpangan yang sama. Menurut sopir mobil P, kecepatan mobil Q adalah ....", "opsi": ["25 m/s, arah 37° ke barat dari utara", "25 m/s, arah 37° ke timur dari utara", "35 m/s, arah 37° ke barat dari utara", "5 m/s ke utara", "25 m/s, arah 53° ke barat dari utara"], "kunci": 0, "petunjuk": "v<sub>Q menurut P<\/sub> = v<sub>Q<\/sub> − v<sub>P<\/sub>. Mengurangkan 15 m/s ke timur sama dengan menambahkan 15 m/s ke barat.", "pembahasan": ["v<sub>QP<\/sub> = (0<b>i<\/b> + 20<b>j<\/b>) − (15<b>i<\/b> + 0<b>j<\/b>) = (−15<b>i<\/b> + 20<b>j<\/b>) m/s: 15 m/s ke barat dan 20 m/s ke utara.", "Besarnya √(15² + 20²) = 25 m/s.", "Sudut dari utara ke barat: tan θ = 15/20 → θ ≈ 37°.", "B menjumlahkan v<sub>P<\/sub> alih-alih mengurangkannya; D mengurangkan kelajuan seolah segaris; E mengukur sudut dari arah yang salah."]}]}, {"tahap": 5, "nama": "Setara TKA", "tujuan": "Soal analisis dan strategi berlevel 3 seperti TKA: memprediksi keadaan gerak dan memilih strategi yang memenuhi tujuan dan batasan.", "soal": [{"id": "VKG-037", "format": "pilihan-ganda", "simpul": "MEK-02", "tka": {"tipe": "FIS-ANALISIS", "acuan": ["FIS25-009"]}, "soal": "Perahu motor bermassa total 100 kg melaju dengan kecepatan tetap 8 m/s ke utara. Ketika melewati muara, arus dari barat memberi gaya mendatar 200 N ke timur selama 3 s, lalu gaya arus itu hilang. Selama itu mesin menjaga kecepatan ke utara tetap 8 m/s, dan gaya lain pada arah timur–barat diabaikan.\nKondisi gerak perahu setelah gaya arus hilang adalah ....", "opsi": ["kelajuan 10 m/s dengan arah 37° ke timur dari utara, lalu bergerak lurus dengan kecepatan tetap", "kelajuan 10 m/s dengan arah 53° ke timur dari utara, lalu bergerak lurus dengan kecepatan tetap", "kelajuan 14 m/s dengan arah 37° ke timur dari utara, lalu bergerak lurus dengan kecepatan tetap", "kelajuan 10 m/s dengan arah 37° ke timur dari utara, lalu terus dipercepat ke timur", "kelajuan 8 m/s ke utara, karena mesin menjaga kecepatan perahu"], "kunci": 0, "petunjuk": "Selama 3 s ada percepatan ke timur a = F/m. Setelah gaya hilang, apakah masih ada resultan gaya?", "pembahasan": ["a<sub>timur<\/sub> = 200 N ÷ 100 kg = 2 m/s²; setelah 3 s, v<sub>timur<\/sub> = 2 × 3 = 6 m/s.", "v<sub>utara<\/sub> tetap 8 m/s, jadi kelajuan = √(8² + 6²) = 10 m/s.", "Arah dari utara: tan θ = 6/8 → θ ≈ 37° ke timur. (53° adalah sudut yang diukur dari timur.)", "Setelah gaya arus hilang, resultan gaya nol, sehingga perahu bergerak lurus dengan kecepatan tetap (hukum I Newton)."]}, {"id": "VKG-038", "format": "benar-salah", "simpul": "MEK-01", "kolom": ["Tepat", "Tidak Tepat"], "tka": {"tipe": "FIS-STRATEGI", "acuan": ["FIS25-024", "FIS25-002"]}, "soal": "Tim SAR harus membawa perahu karet ke titik yang tepat berada di seberang posko, menyeberangi sungai selebar 80 m yang arusnya 3 m/s. Perahu dapat melaju 5 m/s relatif terhadap air. Target: tiba di titik itu dalam waktu <b>tidak lebih dari 25 s<\/b>. (sin 37° = 0,6; cos 37° = 0,8; sudut diukur dari garis tegak lurus tepi.)\nTentukan apakah setiap strategi berikut tepat untuk mencapai target.", "opsi": ["Mengarahkan perahu tegak lurus tepi sepanjang penyeberangan.", "Mengarahkan perahu 37° ke arah hulu sepanjang penyeberangan.", "Mengarahkan perahu 53° ke arah hulu sepanjang penyeberangan.", "Mengarahkan perahu tegak lurus tepi, lalu setelah tiba menyusuri tepi ke arah hulu dengan laju 5 m/s relatif terhadap air."], "kunci": [false, true, false, false], "petunjuk": "Untuk setiap strategi, hitung dua hal: di mana perahu tiba, dan berapa lama. Strategi tepat hanya bila keduanya memenuhi target.", "pembahasan": ["1: waktu 80 ÷ 5 = 16 s, tetapi terbawa 3 × 16 = 48 m ke hilir. Tidak tepat.", "2: komponen melawan arus 5 × 0,6 = 3 m/s (meniadakan arus); laju menyeberang 5 × 0,8 = 4 m/s; waktu 80 ÷ 4 = 20 s ≤ 25 s. Tepat.", "3: komponen melawan arus 5 × 0,8 = 4 m/s > 3 m/s, sehingga perahu bergeser ke hulu; laju menyeberang 5 × 0,6 = 3 m/s, waktu ≈ 26,7 s. Tidak tepat.", "4: 16 s menyeberang, lalu 48 m melawan arus dengan laju 5 − 3 = 2 m/s terhadap tepi = 24 s; total 40 s > 25 s. Tidak tepat."]}, {"id": "VKG-039", "format": "pilihan-ganda", "simpul": "MEK-01", "tka": {"tipe": "FIS-ANALISIS", "acuan": ["FIS25-009"]}, "soal": "Dua perenang, Dini dan Eka, sama-sama mampu berenang 1,5 m/s relatif terhadap air. Mereka mulai bersamaan dari titik yang sama di tepi sungai selebar 30 m yang arusnya 0,9 m/s. Dini selalu menghadap tegak lurus tepi. Eka menghadap ke arah hulu sedemikian rupa sehingga lintasannya lurus menuju titik tepat di seberang. Kondisi yang akan terjadi adalah ....", "opsi": ["Dini tiba lebih dulu, setelah 20 s, di titik 18 m ke hilir; Eka tiba tepat di seberang setelah 25 s.", "Eka tiba lebih dulu karena lintasannya lebih pendek.", "Keduanya tiba bersamaan karena kelajuan berenangnya sama.", "Dini tiba lebih dulu, setelah 20 s, tepat di seberang titik awal.", "Dini tiba lebih dulu, setelah sekitar 17 s, karena arus menambah kelajuannya."], "kunci": 0, "petunjuk": "Waktu menyeberang hanya ditentukan oleh komponen kecepatan yang tegak lurus tepi. Bandingkan komponen itu untuk kedua perenang.", "pembahasan": ["Dini: komponen tegak lurus tepi 1,5 m/s → t = 30 ÷ 1,5 = 20 s; terbawa 0,9 × 20 = 18 m ke hilir.", "Eka: sebagian kecepatannya dipakai melawan arus; komponen menyeberang √(1,5² − 0,9²) = 1,2 m/s → t = 30 ÷ 1,2 = 25 s.", "B memakai panjang lintasan, padahal yang menentukan adalah komponen menyeberang. E membagi lebar sungai dengan kelajuan terhadap tanah (√(1,5² + 0,9²) ≈ 1,75 m/s), padahal kelajuan itu tidak seluruhnya tegak lurus tepi."]}, {"id": "VKG-040", "format": "pilihan-ganda", "simpul": "MEK-02", "tka": {"tipe": "FIS-ANALISIS", "acuan": ["FIS25-007"]}, "soal": "Dua siswa menendang bola dari tanah datar dengan kelajuan awal sama, 20 m/s. Bola P ditendang pada sudut 37° dan bola Q pada sudut 53° (sin 37° = 0,6; cos 37° = 0,8; g = 10 m/s²; hambatan udara diabaikan). Pernyataan yang tepat tentang kedua bola adalah ....", "opsi": ["Keduanya mendarat pada jarak mendatar yang sama, tetapi bola Q lebih lama berada di udara.", "Bola Q mendarat lebih jauh karena sudut tendangannya lebih besar.", "Kedua bola sama lama berada di udara karena kelajuan awalnya sama.", "Jarak mendatar kedua bola sama, dan kelajuan keduanya di titik tertinggi juga sama.", "Bola P mencapai titik lebih tinggi karena komponen mendatar kecepatannya lebih besar."], "kunci": 0, "petunjuk": "Hitung untuk tiap bola: jarak R = v₀² sin 2α / g, waktu T = 2v₀ sin α / g, tinggi H = (v₀ sin α)²/(2g), dan kelajuan di puncak v₀ cos α.", "pembahasan": ["R: sin 2α = 2 sin α cos α = 2 × 0,6 × 0,8 = 0,96 untuk kedua sudut, jadi R = 400 × 0,96 / 10 = 38,4 m untuk keduanya.", "T: P = 2 × 20 × 0,6 / 10 = 2,4 s; Q = 2 × 20 × 0,8 / 10 = 3,2 s. Bola Q lebih lama di udara.", "Kelajuan di puncak = v<sub>x<\/sub>: P = 16 m/s, Q = 12 m/s, jadi D salah. Tinggi maksimum: P = 7,2 m, Q = 12,8 m, jadi E salah.", "Dua sudut yang jumlahnya 90° memberi jarak mendatar sama, tetapi sudut yang lebih besar memberi lintasan lebih tinggi dan lebih lama."]}, {"id": "VKG-041", "format": "pilihan-ganda", "simpul": "DAS-02", "tka": {"tipe": "FIS-STRATEGI", "acuan": ["FIS25-002"]}, "soal": "Sebuah drone harus mengantar obat ke posko yang berada 1.600 m tepat di utara titik lepas landas, dalam waktu tidak lebih dari 4 menit. Laju drone 10 m/s relatif terhadap udara, dan angin bertiup ke timur dengan kecepatan 6 m/s. Strategi yang memenuhi tujuan dan batas waktu adalah .... (sin 37° = 0,6; cos 37° = 0,8)", "opsi": ["mengarahkan drone 37° ke barat dari utara; tiba setelah 200 s", "mengarahkan drone tepat ke utara; tiba setelah 160 s", "mengarahkan drone 37° ke timur dari utara; tiba setelah 200 s", "mengarahkan drone 53° ke barat dari utara; tiba setelah 160 s", "mengarahkan drone 37° ke barat dari utara; tiba setelah 160 s"], "kunci": 0, "petunjuk": "Agar lintasan terhadap tanah lurus ke utara, komponen kecepatan drone ke barat harus meniadakan angin: 10 sin θ = 6.", "pembahasan": ["10 sin θ = 6 → sin θ = 0,6 → θ = 37° ke barat dari utara.", "Komponen ke utara = 10 cos 37° = 8 m/s, jadi waktu = 1.600 ÷ 8 = 200 s = 3 menit 20 s ≤ 4 menit.", "B: drone terbawa angin 6 × 160 = 960 m ke timur, jadi tidak tiba di posko. C justru menambah hanyutan ke timur. D: komponen ke barat 8 m/s melebihi angin, dan komponen ke utara hanya 6 m/s (waktu ≈ 267 s). E memakai 10 m/s untuk waktu."]}, {"id": "VKG-042", "format": "pilihan-ganda", "simpul": "MEK-02", "tka": {"tipe": "FIS-ANALISIS", "acuan": ["FIS25-007"]}, "soal": "Dari jendela setinggi 45 m, bola X dijatuhkan bebas dan pada saat yang sama bola Y dilempar mendatar dengan kecepatan 10 m/s (g = 10 m/s²; hambatan udara diabaikan). Kondisi yang akan terjadi adalah ....", "opsi": ["Kedua bola menyentuh tanah bersamaan setelah 3 s; bola Y mendarat 30 m dari kaki gedung dengan kelajuan lebih besar.", "Bola X menyentuh tanah lebih dulu karena lintasannya lebih pendek.", "Bola Y menyentuh tanah lebih dulu karena kecepatan awalnya lebih besar.", "Kedua bola menyentuh tanah bersamaan setelah 3 s dengan kelajuan sama, 30 m/s.", "Kedua bola menyentuh tanah bersamaan setelah 4,5 s; bola Y mendarat 45 m dari kaki gedung."], "kunci": 0, "petunjuk": "Gerak tegak kedua bola identik (v₀<sub>y<\/sub> = 0, percepatan g). Gerak mendatar tidak memengaruhi waktu jatuh.", "pembahasan": ["Waktu jatuh: 45 = ½ × 10 × t² → t = 3 s untuk kedua bola.", "Jarak mendatar bola Y = 10 × 3 = 30 m.", "Saat mendarat v<sub>y<\/sub> = 30 m/s untuk keduanya; bola Y punya tambahan v<sub>x<\/sub> = 10 m/s, jadi kelajuannya √(30² + 10²) ≈ 31,6 m/s > 30 m/s.", "B dan C adalah dugaan intuitif yang salah; D lupa komponen mendatar; E salah menghitung waktu (45/10)."]}]}], "catatan": [{"judul": "Konvensi", "items": ["Sumbu x positif = timur, sumbu y positif = utara; sudut arah diukur dari sumbu x positif kecuali soal menyebut lain.", "g = 10 m/s², seperti pada TKA 2025. sin 37° ≈ 0,6 dan cos 37° ≈ 0,8 adalah pembulatan; nilainya selalu ditulis di soal.", "Jawaban isian dicek dengan toleransi kecil; tulis desimal dengan koma atau titik, tanpa satuan."]}, {"judul": "Tentang soal setara TKA", "items": ["Soal bertanda TKA dibuat untuk modul ini mengikuti pola tipe soal TKA Fisika 2025 (specs/tka-templates/fisika.md); bukan soal resmi.", "Setiap kunci dan pengecoh angka dihitung ulang dengan skrip; pembahasan menyebut kesalahan yang menghasilkan tiap pengecoh."]}], "map_page": "peta-fisika.html", "map_title": "Peta Materi Fisika SMA", "topics": {"DAS-01": "Besaran, satuan, dan pengukuran", "DAS-02": "Vektor", "DAS-03": "Konstanta dan nilai penting", "MEK-01": "Gerak lurus", "MEK-02": "Gerak parabola dan gerak melingkar", "MEK-03": "Hukum Newton tentang gerak", "MEK-04": "Gravitasi dan hukum Kepler", "MEK-05": "Usaha dan energi", "MEK-06": "Momentum, impuls, dan tumbukan", "MEK-07": "Rotasi dan kesetimbangan benda tegar", "MEK-08": "Elastisitas dan getaran harmonis", "FLT-01": "Fluida statis", "FLT-02": "Fluida dinamis", "FLT-03": "Suhu, kalor, dan perpindahan kalor", "FLT-04": "Teori kinetik gas", "FLT-05": "Termodinamika", "GEL-01": "Gelombang mekanik", "GEL-02": "Bunyi", "GEL-03": "Cahaya dan gelombang elektromagnetik", "GEL-04": "Optika geometri dan alat optik", "LIS-01": "Listrik statis dan kapasitor", "LIS-02": "Listrik arus searah", "LIS-03": "Medan magnet dan gaya Lorentz", "LIS-04": "Induksi elektromagnetik dan arus bolak-balik", "MOD-01": "Radiasi benda hitam dan dualisme gelombang–partikel", "MOD-02": "Perkembangan model atom", "MOD-03": "Relativitas khusus", "MOD-04": "Inti atom dan radioaktivitas", "TER-01": "Energi terbarukan dan perubahan iklim", "TER-02": "Teknologi digital"}};
+const KEY = "modul-" + MOD.id + "-v1";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(k === "svg") continue; if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MOD);
+
+const LETTERS = "ABCDEFGH";
+const FORMAT = {"isian":"Isian angka","pilihan-ganda":"Pilihan ganda","pilihan-ganda-kompleks":"Pilihan ganda kompleks","benar-salah":"Benar–salah"};
+const TKA_LEVEL = {"FIS-UKUR":1,"FIS-GRAF":2,"FIS-HITUNG":2,"FIS-KONSEP":2,"FIS-ANALISIS":3,"FIS-STRATEGI":3,"FIS-EKSP":3};
+const items = {};
+MOD.tahap.forEach((s, i) => { s.c = "var(--s" + (i % 5 + 1) + ")"; s.soal.forEach((it, j) => { it.no = j + 1; it.stage = s; items[it.id] = it; }); });
+let current = MOD.tahap[0].tahap;
+try { current = +localStorage.getItem(KEY + "-stage") || current; } catch(e) {}
+if(!MOD.tahap.some(s => s.tahap === current)) current = MOD.tahap[0].tahap;
+
+function paras(text){ return text.split("\n").map(p => p.trim()).filter(Boolean).map(p => "<p>" + p + "</p>").join(""); }
+function table(rows, cols){
+  const head = cols || rows[0], body = cols ? rows : rows.slice(1);
+  return '<div class="tbl"><table><thead><tr>' + head.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+    body.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+}
+function topicChip(code){
+  if(!MOD.map_page) return "";
+  return '<a class="chip" href="' + MOD.map_page + "#t-" + code + '"><span class="mono">' + code + "</span><span>" + ((MOD.topics || {})[code] || "") + "</span></a>";
+}
+
+function renderTop(){
+  const n = MOD.tahap.reduce((k, s) => k + s.soal.length, 0);
+  const tka = MOD.tahap.reduce((k, s) => k + s.soal.filter(it => it.tka).length, 0);
+  document.title = MOD.title;
+  $("eyebrow").textContent = "Modul belajar · " + MOD.subject + (MOD.src ? " · " + MOD.src : "") + " · " + MOD.tahap.length + " tahap · " + n + " soal (" + tka + " setara TKA)";
+  $("title").textContent = MOD.title;
+  $("lead").innerHTML = MOD.lead;
+  $("goals").innerHTML = (MOD.tujuan || []).map(g => "<li>" + g + "</li>").join("");
+  const codes = [...new Set(MOD.materi.flatMap(l => l.simpul || []))];
+  if(MOD.map_page && codes.length){
+    $("linked").hidden = false;
+    $("chips").innerHTML = codes.map(topicChip).join("");
+    $("mapLink").hidden = false; $("mapLink").href = MOD.map_page; $("mapLink").textContent = MOD.map_title || "Peta materi";
+  }
+  $("lessons").innerHTML = MOD.materi.map((l, i) => {
+    const body = l.isi.map(b => {
+      if(b.p) return "<p>" + b.p + "</p>";
+      if(b.li) return "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>";
+      if(b.tabel) return table(b.tabel.rows, b.tabel.cols);
+      if(b.svg) return "<figure>" + b.svg + (b.cap ? "<figcaption>" + b.cap + "</figcaption>" : "") + "</figure>";
+      if(b.contoh) return '<div class="example"><h4>Contoh</h4><p>' + b.contoh.soal + "</p><ol>" + b.contoh.langkah.map(x => "<li>" + x + "</li>").join("") + "</ol></div>";
+      if(b.jebakan) return '<div class="traps"><h4>Jebakan soal</h4><ul>' + b.jebakan.map(x => "<li>" + x + "</li>").join("") + "</ul></div>";
+      return "";
+    }).join("");
+    const links = (l.simpul || []).length && MOD.map_page ? '<div class="chips">' + l.simpul.map(topicChip).join("") + "</div>" : "";
+    return '<details class="lesson" id="' + l.id + '"' + (i === 0 ? " open" : "") + '><summary><span class="no">' + l.id + '</span>' +
+      '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + l.judul + '</span>' +
+      '<span class="meta">' + ((l.simpul || []).join(" · ") || "Persiapan ujian") + '</span></summary><div class="lesson-body">' + body + links + "</div></details>";
+  }).join("");
+  $("notes").innerHTML = (MOD.catatan || []).map(n => '<div class="panel"><h3>' + n.judul + "</h3><ul>" + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+
+function stageScore(s){ return s.soal.filter(it => state[it.id] && state[it.id].ok).length; }
+function renderTabs(){
+  $("stages").innerHTML = MOD.tahap.map(s => {
+    const k = stageScore(s), n = s.soal.length;
+    return '<button class="stage-tab" role="tab" type="button" style="--c:' + s.c + '" data-stage="' + s.tahap + '" aria-selected="' + (s.tahap === current) + '">' +
+      '<span class="lb">Tahap ' + s.tahap + '</span><span class="nm">' + s.nama + '</span>' +
+      '<span class="bar"><i style="width:' + (k / n * 100) + '%"></i></span><span class="ct">' + k + " dari " + n + " benar</span></button>";
+  }).join("");
+  const all = Object.values(items), ok = all.filter(it => state[it.id] && state[it.id].ok).length;
+  $("overall").textContent = "Total benar: " + ok + " dari " + all.length;
+}
+
+function controls(it){
+  const name = "a-" + it.id;
+  if(it.format === "isian")
+    return '<div class="fill"><input id="' + name + '" aria-label="Jawaban soal ' + it.id + '" inputmode="decimal" autocomplete="off" placeholder="Jawaban"><span class="unit">' + it.satuan + "</span></div>";
+  if(it.format === "benar-salah")
+    return '<div class="tbl bs"><table><thead><tr><th>Pernyataan</th><th>' + it.kolom[0] + "</th><th>" + it.kolom[1] + "</th></tr></thead><tbody>" +
+      it.opsi.map((o, i) => "<tr><td>" + (i + 1) + ". " + o + "</td>" +
+        [true, false].map(v => '<td><input type="radio" name="' + name + "-" + i + '" value="' + v + '" aria-label="' + (i + 1) + ": " + (v ? it.kolom[0] : it.kolom[1]) + '"></td>').join("") + "</tr>").join("") +
+      "</tbody></table></div>";
+  const type = it.format === "pilihan-ganda" ? "radio" : "checkbox";
+  return '<ul class="opts">' + it.opsi.map((o, i) => '<li><label><input type="' + type + '" name="' + name + '" value="' + i + '"><span class="lt">' + LETTERS[i] + '.</span><span>' + o + "</span></label></li>").join("") + "</ul>";
+}
+function itemHTML(it){
+  const done = state[it.id] && state[it.id].ok;
+  let badges = '<span class="badge">' + FORMAT[it.format] + "</span>";
+  if(it.tka) badges += '<a class="badge tka" href="tka.html" title="Pola soal: ' + it.tka.acuan.join(", ") + '">Setara TKA · ' + it.tka.tipe + (TKA_LEVEL[it.tka.tipe] ? " · level " + TKA_LEVEL[it.tka.tipe] : "") + "</a>";
+  if(done) badges += '<span class="badge done">Sudah benar</span>';
+  const stem = it.soal.split("[Tabel]");
+  const stemHTML = paras(stem[0]) + (it.tabel ? table(it.tabel) : "") + (stem[1] ? paras(stem[1]) : "");
+  return '<article class="item' + (done ? " ok" : "") + '" id="' + it.id + '" data-id="' + it.id + '">' +
+    '<div class="item-top"><span class="num">Soal ' + it.stage.tahap + "." + it.no + '</span><span class="mono" style="color:var(--muted)">' + it.id + "</span>" + badges + "</div>" +
+    '<div class="stem">' + (it.format === "pilihan-ganda-kompleks" ? stemHTML.replace(/<p>Jawaban benar lebih dari satu\.<\/p>/, "<p><i>Jawaban benar lebih dari satu.</i></p>") : stemHTML) + "</div>" +
+    controls(it) +
+    '<div class="actions"><button class="btn primary" type="button" data-act="check">Periksa</button><button class="btn" type="button" data-act="hint">Petunjuk</button><button class="btn" type="button" data-act="solve">Pembahasan</button></div>' +
+    '<p class="feedback" aria-live="polite"></p>' +
+    '<div class="hint" hidden><b class="h">Petunjuk</b>' + it.petunjuk + "</div>" +
+    '<div class="solution" hidden><b class="h">Pembahasan</b><ol>' + it.pembahasan.map(x => "<li>" + x + "</li>").join("") + "</ol></div></article>";
+}
+function renderStage(){
+  const s = MOD.tahap.find(x => x.tahap === current);
+  const onlyTka = $("onlyTka").checked, onlyOpen = $("onlyOpen").checked;
+  const list = s.soal.filter(it => (!onlyTka || it.tka) && (!onlyOpen || !(state[it.id] && state[it.id].ok)));
+  const idx = MOD.tahap.indexOf(s), next = MOD.tahap[idx + 1], k = stageScore(s);
+  const ready = k / s.soal.length >= 0.7;
+  $("stage").style.setProperty("--c", s.c);
+  $("stage").innerHTML = '<div class="stage-head"><h3>Tahap ' + s.tahap + ": " + s.nama + "</h3><p>" + s.tujuan + "</p></div>" +
+    (list.length ? list.map(itemHTML).join("") : '<p class="empty">Tidak ada soal yang cocok dengan saringan di tahap ini.</p>') +
+    '<div class="stage-foot"><p>' + (next ? (ready ? "Bagus, " + k + " dari " + s.soal.length + " benar. Kamu siap ke Tahap " + next.tahap + "." : "Benar " + k + " dari " + s.soal.length + ". Disarankan lanjut setelah sekitar 70% benar; baca petunjuk dan pembahasan soal yang salah.") : "Ini tahap terakhir. " + (ready ? "Kamu sudah siap untuk soal TKA asli di halaman Latihan TKA." : "Ulangi soal yang belum benar.")) + "</p>" +
+    (next ? '<button class="btn primary" type="button" data-go="' + next.tahap + '">Lanjut ke Tahap ' + next.tahap + " →</button>" : '<a class="btn primary" href="tka.html">Latihan TKA →</a>') + "</div>";
+  $("stage").setAttribute("aria-label", "Tahap " + s.tahap);
+  s.soal.forEach(it => restore(it));
+}
+function restore(it){
+  const card = document.getElementById(it.id), st = state[it.id];
+  if(!card || !st || st.ans === undefined) return;
+  setAnswer(card, it, st.ans);
+}
+function getAnswer(card, it){
+  const name = "a-" + it.id;
+  if(it.format === "isian"){ const v = card.querySelector("input").value.trim(); return v === "" ? null : v; }
+  if(it.format === "pilihan-ganda"){ const c = card.querySelector('input[name="' + name + '"]:checked'); return c ? +c.value : null; }
+  if(it.format === "pilihan-ganda-kompleks"){ const c = [...card.querySelectorAll('input[name="' + name + '"]:checked')].map(x => +x.value); return c.length ? c : null; }
+  const rows = it.opsi.map((_, i) => { const c = card.querySelector('input[name="' + name + "-" + i + '"]:checked'); return c ? c.value === "true" : null; });
+  return rows.every(v => v === null) ? null : rows;
+}
+function setAnswer(card, it, ans){
+  const name = "a-" + it.id;
+  if(it.format === "isian"){ card.querySelector("input").value = ans; return; }
+  if(it.format === "benar-salah"){ ans.forEach((v, i) => { if(v !== null){ const x = card.querySelector('input[name="' + name + "-" + i + '"][value="' + v + '"]'); if(x) x.checked = true; } }); return; }
+  [].concat(ans).forEach(v => { const x = card.querySelector('input[name="' + name + '"][value="' + v + '"]'); if(x) x.checked = true; });
+}
+function parseNum(s){
+  s = String(s).replace(/\s/g, "").replace(/[a-zA-Z/²°]+$/g, "");
+  s = s.replace(",", ".").replace("−", "-");
+  return /^-?\d*\.?\d+$/.test(s) ? parseFloat(s) : NaN;
+}
+function grade(it, ans){
+  if(it.format === "isian"){
+    const x = parseNum(ans), tol = it.toleransi || Math.max(0.01, Math.abs(it.kunci) * 0.01);
+    if(isNaN(x)) return {invalid:true};
+    return {ok: Math.abs(x - it.kunci) <= tol + 1e-9};
+  }
+  if(it.format === "pilihan-ganda") return {ok: ans === it.kunci};
+  if(it.format === "pilihan-ganda-kompleks") return {ok: JSON.stringify([...ans].sort((a, b) => a - b)) === JSON.stringify(it.kunci)};
+  const rows = ans.map((v, i) => v === it.kunci[i]);
+  return {ok: rows.every(Boolean), rows, missing: ans.some(v => v === null)};
+}
+function fmtNum(x){ return String(x).replace(".", ","); }
+function check(card, it){
+  const ans = getAnswer(card, it), fb = card.querySelector(".feedback");
+  card.querySelectorAll(".right,.wrong").forEach(el => { if(!el.classList.contains("feedback")) el.classList.remove("right", "wrong"); });
+  if(ans === null){ fb.className = "feedback wrong"; fb.textContent = "Isi jawabanmu dulu."; return; }
+  const g = grade(it, ans);
+  if(g.invalid){ fb.className = "feedback wrong"; fb.textContent = "Tulis jawaban berupa angka saja, misalnya 2,83."; return; }
+  if(g.missing){ fb.className = "feedback wrong"; fb.textContent = "Nilai setiap pernyataan dulu."; return; }
+  const prev = state[it.id] || {};
+  state[it.id] = {ok: g.ok || !!prev.ok, last: g.ok, tries: (prev.tries || 0) + 1, ans};
+  save();
+  fb.className = "feedback " + (g.ok ? "right" : "wrong");
+  if(it.format === "isian") fb.innerHTML = g.ok ? "Benar. Kunci: " + fmtNum(it.kunci) + " " + it.satuan + "." : "Belum tepat. Coba lagi atau buka petunjuk.";
+  else if(it.format === "benar-salah"){
+    const wrong = g.rows.filter(r => !r).length;
+    fb.textContent = g.ok ? "Benar, semua pernyataan tepat." : wrong + " pernyataan belum tepat (ditandai). Coba lagi atau buka pembahasan.";
+    if(!g.ok) g.rows.forEach((r, i) => { const td = card.querySelector('input[name="a-' + it.id + "-" + i + '"]:checked'); if(td) td.closest("td").classList.add(r ? "right" : "wrong"); });
+  } else {
+    fb.textContent = g.ok ? "Benar." : (it.format === "pilihan-ganda-kompleks" ? "Belum tepat. Periksa setiap pilihan sendiri-sendiri." : "Belum tepat. Coba lagi atau buka petunjuk.");
+    [].concat(ans).forEach(v => { const l = card.querySelector('input[value="' + v + '"]').closest("label"); l.classList.add(g.ok ? "right" : "wrong"); });
+  }
+  if(g.ok){ card.classList.add("ok"); card.querySelector(".solution").hidden = false; }
+  renderTabs();
+}
+function goStage(n, scroll){
+  current = n;
+  try { localStorage.setItem(KEY + "-stage", String(n)); } catch(e) {}
+  renderTabs(); renderStage();
+  if(scroll) $("latihan").scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start"});
+}
+
+renderTop();
+goStage(current, false);
+document.addEventListener("click", e => {
+  const tab = e.target.closest(".stage-tab");
+  if(tab){ goStage(+tab.dataset.stage, false); return; }
+  const go = e.target.closest("[data-go]");
+  if(go){ goStage(+go.dataset.go, true); return; }
+  const act = e.target.closest("[data-act]");
+  if(!act) return;
+  const card = act.closest(".item"), it = items[card.dataset.id];
+  if(act.dataset.act === "check") check(card, it);
+  if(act.dataset.act === "hint"){ const h = card.querySelector(".hint"); h.hidden = !h.hidden; }
+  if(act.dataset.act === "solve"){ const s = card.querySelector(".solution"); s.hidden = !s.hidden; }
+});
+document.addEventListener("keydown", e => {
+  if(e.key === "Enter" && e.target.matches(".fill input")){ const card = e.target.closest(".item"); check(card, items[card.dataset.id]); }
+  if((e.key === "ArrowRight" || e.key === "ArrowLeft") && e.target.matches(".stage-tab")){
+    const i = MOD.tahap.findIndex(s => s.tahap === current), j = i + (e.key === "ArrowRight" ? 1 : -1);
+    if(MOD.tahap[j]){ goStage(MOD.tahap[j].tahap, false); document.querySelector('.stage-tab[data-stage="' + MOD.tahap[j].tahap + '"]').focus(); }
+  }
+});
+$("onlyTka").addEventListener("change", renderStage);
+$("onlyOpen").addEventListener("change", renderStage);
+$("reset").addEventListener("click", () => {
+  if(!confirm("Hapus semua kemajuan latihan modul ini?")) return;
+  state = {}; save(); renderTabs(); renderStage();
+});
+</script>

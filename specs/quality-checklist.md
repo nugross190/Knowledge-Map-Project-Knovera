@@ -52,7 +52,14 @@ Writing
 - [ ] Formulas, superscripts and tables render correctly.
 - [ ] New subject maps appear on the home page (`docs/index.html`) and are listed in `README.md`; other new pages are linked from somewhere and listed in `README.md`.
 
-## E. Pull request
+## E. Learning modules
+
+- [ ] Every numeric key and numerical distractor was computed in a script; the story agrees with the numbers.
+- [ ] Every item has a hint and a worked solution; multiple-choice solutions name the mistake behind each distractor.
+- [ ] Stages rise in difficulty; TKA-style items follow their type in `specs/tka-templates/`.
+- [ ] Every item was answered through the built page (right and wrong) in a browser.
+
+## F. Pull request
 
 - [ ] Branch is not `main`.
 - [ ] Body follows the template in `agent-workflow.md` §5: summary, assumptions, verification, testing.

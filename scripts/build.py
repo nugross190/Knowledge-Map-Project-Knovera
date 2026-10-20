@@ -2,9 +2,11 @@
 
 Usage:  python scripts/build.py              # build docs/ for GitHub Pages
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
-Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/tka/*.json, templates/*.html
+Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/tka/*.json, data/modules/*.json,
+        data/tka-types.json, templates/*.html
 Writes: docs/questions.json, one docs/<name>.html per template (docs/tka.html carries the TKA banks),
-        and one docs/peta-<id>.html per subject map (rendered through templates/_map.html)
+        one docs/peta-<id>.html per subject map (rendered through templates/_map.html),
+        and one docs/modul-<id>.html per learning module (rendered through templates/_modul.html)
 Exits with status 1 (and writes nothing) if the data has errors.
 """
 import csv
@@ -206,6 +208,145 @@ def validate_tka(name, bank):
     return errors
 
 
+def load_modules():
+    folder = ROOT / "data/modules"
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))}
+
+
+def load_tka_types():
+    """{type code: type entry} from data/tka-types.json, across all subjects."""
+    types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
+    return {t["kode"]: t for s in types.values() for t in s["types"]}
+
+
+MODULE_FORMATS = TKA_FORMATS | {"isian"}
+MODULE_BLOCKS = ("p", "li", "tabel", "contoh", "svg", "jebakan")
+
+
+def validate_module(name, mod, maps, tka_types):
+    """Return a list of problems in one learning module (format: specs/module-spec.md)."""
+    errors = []
+    where = f"data/modules/{name}.json"
+    for key in ("id", "kode", "subject", "title", "lead", "materi", "tahap"):
+        if not mod.get(key):
+            errors.append(f"{where}: missing '{key}'")
+    if mod.get("id") and mod["id"] != name:
+        errors.append(f"{where}: id '{mod['id']}' must match the file name")
+    kode = mod.get("kode", "")
+    if kode and not re.fullmatch(r"[A-Z]{2,5}", kode):
+        errors.append(f"{where}: kode '{kode}' must be 2-5 uppercase letters")
+    codes = None
+    if mod.get("map"):
+        if mod["map"] not in maps:
+            errors.append(f"{where}: map '{mod['map']}' is not a file in data/maps/")
+        else:
+            codes = {t["code"] for d in maps[mod["map"]]["domains"] for t in d["topics"]}
+
+    def check_code(code, owner):
+        if codes is not None and code not in codes:
+            errors.append(f"{where}: {owner} refers to unknown topic {code} in map '{mod['map']}'")
+
+    lessons = set()
+    for les in mod.get("materi", []):
+        lid = les.get("id", "?")
+        if lid in lessons:
+            errors.append(f"{where}: duplicate materi id {lid}")
+        lessons.add(lid)
+        if not les.get("judul") or not les.get("isi"):
+            errors.append(f"{where}: materi {lid} needs 'judul' and 'isi'")
+        for code in les.get("simpul", []):
+            check_code(code, f"materi {lid}")
+        for blk in les.get("isi", []):
+            kinds = [k for k in MODULE_BLOCKS if k in blk]
+            if len(kinds) != 1:
+                errors.append(f"{where}: materi {lid} has a block that is not exactly one of {', '.join(MODULE_BLOCKS)}")
+                continue
+            kind, val = kinds[0], blk[kinds[0]]
+            if kind in ("li", "jebakan") and not (isinstance(val, list) and val):
+                errors.append(f"{where}: materi {lid} '{kind}' must be a non-empty list")
+            if kind == "tabel" and (not val.get("cols") or any(len(r) != len(val["cols"]) for r in val.get("rows", []))):
+                errors.append(f"{where}: materi {lid} table has rows of the wrong length")
+            if kind == "contoh" and not (val.get("soal") and val.get("langkah")):
+                errors.append(f"{where}: materi {lid} contoh needs 'soal' and 'langkah'")
+            if kind == "svg" and not (isinstance(val, str) and val.startswith("<svg") and val.endswith("</svg>")):
+                errors.append(f"{where}: materi {lid} svg must be one <svg>...</svg> element")
+
+    seen = set()
+    for n, stage in enumerate(mod.get("tahap", []), start=1):
+        if stage.get("tahap") != n:
+            errors.append(f"{where}: stages must be numbered 1, 2, 3, ... in order (found {stage.get('tahap')} at {n})")
+        if not stage.get("nama") or not stage.get("soal"):
+            errors.append(f"{where}: stage {n} needs 'nama' and 'soal'")
+        for it in stage.get("soal", []):
+            sid = it.get("id", "?")
+            if not re.fullmatch(re.escape(kode) + r"-\d{3}", sid):
+                errors.append(f"{where}: {sid} must look like {kode}-NNN")
+            if sid in seen:
+                errors.append(f"{where}: duplicate id {sid}")
+            seen.add(sid)
+            for key in ("soal", "petunjuk"):
+                if not it.get(key):
+                    errors.append(f"{where}: {sid} missing '{key}'")
+            if not (isinstance(it.get("pembahasan"), list) and it["pembahasan"]):
+                errors.append(f"{where}: {sid} needs 'pembahasan' as a non-empty list of steps")
+            if it.get("simpul"):
+                check_code(it["simpul"], sid)
+            if "[Tabel]" in it.get("soal", "") and not it.get("tabel"):
+                errors.append(f"{where}: {sid} has a [Tabel] marker but no 'tabel'")
+            fmt, kunci, opsi = it.get("format"), it.get("kunci"), it.get("opsi")
+            if fmt not in MODULE_FORMATS:
+                errors.append(f"{where}: {sid} format must be one of {', '.join(sorted(MODULE_FORMATS))}")
+                continue
+            if fmt == "isian":
+                if type(kunci) not in (int, float) or not it.get("satuan"):
+                    errors.append(f"{where}: {sid} isian needs a numeric 'kunci' and a 'satuan'")
+                if "toleransi" in it and not (type(it["toleransi"]) in (int, float) and it["toleransi"] > 0):
+                    errors.append(f"{where}: {sid} toleransi must be a positive number")
+            else:
+                if not isinstance(opsi, list) or len(opsi) < 2 or not all(isinstance(o, str) and o.strip() for o in opsi):
+                    errors.append(f"{where}: {sid} needs at least two non-empty options")
+                    continue
+                k = len(opsi)
+                if fmt == "pilihan-ganda" and not (type(kunci) is int and 0 <= kunci < k):
+                    errors.append(f"{where}: {sid} kunci must be the index of one option")
+                if fmt == "pilihan-ganda-kompleks" and not (
+                        isinstance(kunci, list) and kunci and kunci == sorted(set(kunci))
+                        and all(type(x) is int and 0 <= x < k for x in kunci)):
+                    errors.append(f"{where}: {sid} kunci must be a sorted list of option indexes")
+                if fmt == "benar-salah":
+                    if not (isinstance(kunci, list) and len(kunci) == k and all(isinstance(x, bool) for x in kunci)):
+                        errors.append(f"{where}: {sid} kunci must be one true/false per statement")
+                    if not (isinstance(it.get("kolom"), list) and len(it["kolom"]) == 2):
+                        errors.append(f"{where}: {sid} benar-salah needs 'kolom' with two headings")
+            if "tka" in it:
+                t = tka_types.get(it["tka"].get("tipe"))
+                if not t:
+                    errors.append(f"{where}: {sid} unknown TKA tipe '{it['tka'].get('tipe')}'")
+                    continue
+                if fmt not in t["format"]:
+                    errors.append(f"{where}: {sid} format {fmt} not allowed for {t['kode']}")
+                acuan = it["tka"].get("acuan", [])
+                if not acuan or not set(acuan) <= set(t["contoh"]):
+                    errors.append(f"{where}: {sid} acuan must list transcribed examples of {t['kode']}")
+    return errors
+
+
+def lint_module(name, mod):
+    """Return warnings for soft rules in specs/module-spec.md. They do not stop the build."""
+    warnings, where = [], f"data/modules/{name}.json"
+    stages = mod.get("tahap", [])
+    if len(stages) < 3:
+        warnings.append(f"{where}: {len(stages)} stages (spec: at least 3)")
+    for st in stages:
+        if len(st.get("soal", [])) < 4:
+            warnings.append(f"{where}: stage {st.get('tahap')} has {len(st.get('soal', []))} items (spec: at least 4)")
+    if not any("tka" in it for st in stages for it in st.get("soal", [])):
+        warnings.append(f"{where}: no TKA-style items")
+    if not mod.get("blurb"):
+        warnings.append(f"{where}: no 'blurb' for the home-page card")
+    return warnings
+
+
 def words(html):
     return len(re.sub(r"<[^>]+>", " ", html).split())
 
@@ -264,8 +405,27 @@ def map_pages(maps, links):
     return out
 
 
-def subject_cards(maps, topics, n_questions, tka=None):
-    """HTML cards for the home page: the history kit, one card per subject map, then the TKA banks."""
+def module_pages(modules, maps, links):
+    """Return {file name: page body} for every learning module."""
+    template = (ROOT / "templates/_modul.html").read_text(encoding="utf-8")
+    out = {}
+    for mod in modules.values():
+        data = dict(mod)
+        if mod.get("map") in maps:
+            m = maps[mod["map"]]
+            data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
+            data["map_title"] = m["title"]
+            data["topics"] = {t["code"]: t["title"] for d in m["domains"] for t in d["topics"]}
+        payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+        body = template.replace("__TITLE__", mod["title"]).replace("/*__MODULE__*/", "const MOD = " + payload + ";")
+        for name, target in links.items():
+            body = body.replace('href="' + name, 'href="' + target)
+        out[f"modul-{mod['id']}.html"] = body
+    return out
+
+
+def subject_cards(maps, topics, n_questions, tka=None, modules=None):
+    """HTML cards for the home page: the history kit, one card per subject map (with its modules), then the TKA banks."""
     e = html.escape
     sni = topics["domains"]
     n_topics = sum(len(d["topics"]) for d in sni)
@@ -292,7 +452,10 @@ def subject_cards(maps, topics, n_questions, tka=None):
             '<div class="chips">' + "".join(f'<span>{e(d["short"])}</span>' for d in m["domains"]) + '</div>'
             f'<nav class="links" aria-label="{e(m["subject"])}">'
             f'<a class="primary" href="peta-{e(m["id"])}.html">Peta materi <span>{n} simpul</span></a>'
-            '</nav></article>'
+            + "".join(f'<a href="modul-{e(mod["id"])}.html">{e(mod["title"])} '
+                      f'<span>{sum(len(st["soal"]) for st in mod["tahap"])} latihan</span></a>'
+                      for mod in (modules or {}).values() if mod.get("map") == m["id"])
+            + '</nav></article>'
         )
     if tka:
         n_items = sum(len(b["soal"]) for b in tka.values())
@@ -309,7 +472,7 @@ def subject_cards(maps, topics, n_questions, tka=None):
     return "\n    ".join(cards)
 
 
-def pages(topics, questions, links, maps=None, tka=None):
+def pages(topics, questions, links, maps=None, tka=None, modules=None):
     """Return {file name: page body} for every template, with cross-page links resolved through `links`.
 
     A template that contains /*__DATA__*/ gets the topics and questions injected there,
@@ -329,7 +492,8 @@ def pages(topics, questions, links, maps=None, tka=None):
         body = body.replace("/*__TKA__*/", "const BANKS = " + tka_payload + ";")
         body = body.replace("__SITE_BASE__", SITE_BASE)
         if "<!--__SUBJECT_CARDS__-->" in body:
-            cards = subject_cards(maps if maps is not None else load_maps(), topics, len(questions), tka)
+            cards = subject_cards(maps if maps is not None else load_maps(), topics, len(questions), tka,
+                                  modules if modules is not None else load_modules())
             body = body.replace("<!--__SUBJECT_CARDS__-->", cards)
         for name, target in links.items():
             body = body.replace('href="' + name, 'href="' + target)
@@ -337,15 +501,16 @@ def pages(topics, questions, links, maps=None, tka=None):
     return out
 
 
-def build(topics, rows, maps, artifact, tka=None):
+def build(topics, rows, maps, artifact, tka=None, modules=None):
     questions = [
         {"id": r["id"], "t": r["simpul"], "lv": int(r["tingkat"]), "q": r["soal"], "a": r["jawaban"], "x": r["catatan"]}
         for r in rows
     ]
+    modules = modules if modules is not None else load_modules()
     docs = ROOT / "docs"
     docs.mkdir(exist_ok=True)
     (docs / "questions.json").write_text(json.dumps(questions, ensure_ascii=False, indent=1), encoding="utf-8")
-    built = {**pages(topics, questions, {}, maps, tka), **map_pages(maps, {})}
+    built = {**pages(topics, questions, {}, maps, tka, modules), **map_pages(maps, {}), **module_pages(modules, maps, {})}
     for name, body in built.items():
         (docs / name).write_text(HEAD + body, encoding="utf-8")
     # Tell GitHub Pages to publish docs/ as-is instead of running it through Jekyll.
@@ -354,7 +519,8 @@ def build(topics, rows, maps, artifact, tka=None):
     if artifact:
         out = ROOT / "build"
         out.mkdir(exist_ok=True)
-        hosted = {**pages(topics, questions, HOSTED_LINKS, maps, tka), **map_pages(maps, HOSTED_LINKS)}
+        hosted = {**pages(topics, questions, HOSTED_LINKS, maps, tka, modules), **map_pages(maps, HOSTED_LINKS),
+                  **module_pages(modules, maps, HOSTED_LINKS)}
         for name, body in hosted.items():
             if name in ARTIFACT_URLS:
                 (out / name.replace(".html", ".fragment.html")).write_text(body, encoding="utf-8")
@@ -365,8 +531,11 @@ def main():
     topics, rows = load()
     maps = load_maps()
     tka = load_tka()
+    modules = load_modules()
+    tka_types = load_tka_types()
     errors = (validate(topics, rows) + [e for name, m in maps.items() for e in validate_map(name, m)]
-              + [e for name, b in tka.items() for e in validate_tka(name, b)])
+              + [e for name, b in tka.items() for e in validate_tka(name, b)]
+              + [e for name, mod in modules.items() for e in validate_module(name, mod, maps, tka_types)])
     if errors:
         print(f"{len(errors)} error(s) in data/:")
         print("\n".join("  " + e for e in errors))
@@ -379,7 +548,13 @@ def main():
     for b in tka.values():
         low = sum(it["keyakinan_kunci"] in ("rendah", "tidak ada") for it in b["soal"])
         print(f"TKA {b['mapel']}: {len(b['soal'])} soal, {low} dengan kunci berkeyakinan rendah atau tanpa kunci")
-    build(topics, rows, maps, "--artifact" in sys.argv[1:], tka)
+    for name, mod in modules.items():
+        items = [it for st in mod["tahap"] for it in st["soal"]]
+        print(f"{mod['title']}: {len(mod['materi'])} materi, {len(mod['tahap'])} tahap, {len(items)} soal "
+              f"({sum('tka' in it for it in items)} setara TKA)")
+        for w in lint_module(name, mod):
+            print("  warning: " + w)
+    build(topics, rows, maps, "--artifact" in sys.argv[1:], tka, modules)
 
 
 if __name__ == "__main__":
