@@ -7,7 +7,10 @@ Printable (A4 PDF) versions of the learning modules, for students who work on pa
 | `<id>/content.py` | The module's text and items. `check()` re-derives every numeric answer; the tests run it. |
 | `<id>/render.py` | Lays the content out as print HTML (`<id>/modul.html`, not committed). |
 | `print.mjs` | Prints that HTML to PDF with Chromium (Playwright). |
+| `graphs.py` | Shared motion model and the fixed graph templates (GLB, GLBB, combined motion, tracking data). An item adds a motion, data points or a line to a template; graphs and keys come from the same model, and every segment corner must sit on a gridline. |
 | `<id>.pdf` | The finished PDF. `scripts/build.py` copies it to `docs/modul-<id>.pdf`, and the module page links to it. |
+
+Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI) and `gerak-lurus` (Gerak Lurus, kelas X; not published to `docs/` because it has no interactive page in `data/modules/`).
 
 To rebuild after editing `content.py` (from the repository root):
 
