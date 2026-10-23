@@ -11,6 +11,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import content as C  # noqa: E402
 
 assert C.check()
+sys.path.insert(1, str(Path(__file__).resolve().parent.parent))
+from kit import balance_keys  # noqa: E402
+
+# Spread single-answer keys over A–E (content files are written with the key first).
+C.TKA, C.UJI_PG = balance_keys(C.TKA, C.UJI_PG, "Modul Vektor dan Gerak")
 OUT = Path(sys.argv[1]) if len(sys.argv) > 1 else Path(__file__).resolve().parent / "modul.html"
 LV = {1: ("mudah", "●○○ Mudah"), 2: ("sedang", "●●○ Sedang"), 3: ("sulit", "●●● Sulit")}
 LVNAME = {1: "Tingkat mudah", 2: "Tingkat sedang", 3: "Tingkat sulit"}
