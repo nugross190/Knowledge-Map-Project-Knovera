@@ -7,10 +7,12 @@ Printable (A4 PDF) versions of the learning modules, for students who work on pa
 | `<id>/content.py` | The module's text and items. `check()` re-derives every numeric answer; the tests run it. |
 | `<id>/render.py` | Lays the content out as print HTML (`<id>/modul.html`, not committed). |
 | `print.mjs` | Prints that HTML to PDF with Chromium (Playwright). |
+| `modlib.py` | Shared page builder: a module's `render.py` calls `modlib.build(content, path)`, and `content.META` holds the module-specific text (cover, study guide, summary page, teacher's note). Used by `gerak-vertikal` and later modules; older modules keep their own `render.py`. |
+| `kit.py` | Content helpers: Indonesian number format, item builder, seeded noisy data, least-squares slope. |
 | `graphs.py` | Shared motion model and the fixed graph templates (GLB, GLBB, combined motion, tracking data). An item adds a motion, data points or a line to a template; graphs and keys come from the same model, and every segment corner must sit on a gridline. |
 | `<id>.pdf` | The finished PDF. `scripts/build.py` copies it to `docs/modul-<id>.pdf`, and the module page links to it. |
 
-Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI) and `gerak-lurus` (Gerak Lurus, kelas X; not published to `docs/` because it has no interactive page in `data/modules/`).
+Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X) and `gerak-vertikal` (Gerak Vertikal, kelas X). Only modules with an interactive page in `data/modules/` are copied to `docs/`.
 
 To rebuild after editing `content.py` (from the repository root):
 
