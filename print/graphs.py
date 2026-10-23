@@ -70,16 +70,21 @@ class Motion:
 @dataclass
 class Template:
     name: str
-    kind: str           # "s", "v", "a"
+    kind: str           # "s", "v", "a"; "traj" for a y–x trajectory (t_* then means x)
     t_max: float
     t_step: float
     y_min: float
     y_max: float
     y_step: float
+    label: str = ""     # overrides the y-axis label, e.g. "y (m)" for vertical motion
 
     @property
     def ylabel(self):
-        return {"s": "s (m)", "v": "v (m/s)", "a": "a (m/s²)"}[self.kind]
+        return self.label or {"s": "s (m)", "v": "v (m/s)", "a": "a (m/s²)", "traj": "y (m)"}[self.kind]
+
+    @property
+    def xlabel(self):
+        return "x (m)" if self.kind == "traj" else "t (s)"
 
 
 TEMPLATES = {t.name: t for t in [
@@ -98,7 +103,61 @@ TEMPLATES = {t.name: t for t in [
     # motion-tracking data
     Template("data-st", "s", 4, 0.5, 0, 2, 0.25),
     Template("data-vt", "v", 4, 0.5, 0, 1.6, 0.2),
+    # vertical motion (y up, a = −g)
+    Template("vert-yt", "s", 6, 0.5, 0, 50, 5, "y (m)"),
+    Template("vert-yt2", "s", 8, 0.5, 0, 100, 10, "y (m)"),
+    Template("vert-vt", "v", 6, 0.5, -40, 30, 5),
+    Template("vert-at", "a", 6, 0.5, -12, 4, 2),
+    Template("data-yt", "s", 0.6, 0.05, 0, 2, 0.25, "y (m)"),
+    Template("data-vyt", "v", 0.6, 0.05, -6, 4, 1, "v (m/s)"),
+    # projectile motion: trajectories (y against x) and component graphs
+    Template("traj-a", "traj", 40, 5, 0, 20, 2.5),
+    Template("traj-b", "traj", 120, 10, 0, 60, 5),
+    Template("par-vt", "v", 4, 0.5, -25, 25, 5),
+    Template("par-xt", "s", 4, 0.5, 0, 80, 10, "x (m)"),
+    Template("data-xt", "s", 0.8, 0.1, 0, 3, 0.5, "x (m)"),
+    Template("data-vy", "v", 0.8, 0.1, -5, 5, 1, "v<tspan font-size=\"6.5\" dy=\"2\">y</tspan> (m/s)"),
 ]}
+
+
+@dataclass
+class Shot:
+    """A projectile (g = 10 m/s² down, no air resistance) launched from (x0, y0) with velocity (vx, vy)."""
+    vx: float
+    vy: float
+    y0: float = 0.0
+    x0: float = 0.0
+    g: float = 10.0
+    label: str = ""
+    color: str = "#1f3a68"
+    y_ground: float = 0.0
+
+    def x(self, t):
+        return self.x0 + self.vx * t
+
+    def y(self, t):
+        return self.y0 + self.vy * t - 0.5 * self.g * t * t
+
+    def vy_at(self, t):
+        return self.vy - self.g * t
+
+    @property
+    def t_top(self):
+        return self.vy / self.g
+
+    @property
+    def h_max(self):
+        return self.y0 + self.vy ** 2 / (2 * self.g)
+
+    @property
+    def t_land(self):
+        """Time when the shot comes back down to y_ground (the later root)."""
+        a, b, c = -0.5 * self.g, self.vy, self.y0 - self.y_ground
+        return (-b - (b * b - 4 * a * c) ** 0.5) / (2 * a)
+
+    @property
+    def x_land(self):
+        return self.x(self.t_land)
 
 
 def fmt(x):
@@ -127,7 +186,7 @@ def check_on_grid(m: Motion, tp: Template):
     return problems
 
 
-def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300, height=190, note=""):
+def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300, height=190, note="", shots=()):
     """Draw a template with motions on it.
 
     points: [(t, y)] data dots. lines: [(t1, y1, t2, y2, dashed)] straight lines (tangent, best fit).
@@ -157,7 +216,7 @@ def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300,
     for k in range(ny + 1):
         y = round(tp.y_min + k * tp.y_step, 6)
         s.append(f'<text x="{L-4}" y="{Y(y)+3:.1f}" font-size="7.5" text-anchor="end" fill="#4b5260">{fmt(y)}</text>')
-    s.append(f'<text x="{L+W+4}" y="{T+H+24}" font-size="8.5" text-anchor="end" fill="#1f2430">t (s)</text>')
+    s.append(f'<text x="{L+W+4}" y="{T+H+24}" font-size="8.5" text-anchor="end" fill="#1f2430">{tp.xlabel}</text>')
     s.append(f'<text x="6" y="{T-3}" font-size="8.5" fill="#1f2430">{tp.ylabel}</text>')
     if shade:
         mi, t1, t2 = shade
@@ -179,6 +238,14 @@ def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300,
             yl = f(m.t_end)
         if m.label:
             s.append(f'<text x="{X(m.t_end)+3:.1f}" y="{Y(yl)-4:.1f}" font-size="9" font-weight="700" fill="{m.color}">{m.label}</text>')
+    for sh in shots:
+        n = 80
+        T_end = sh.t_land
+        pts = [(sh.x(T_end * k / n), sh.y(T_end * k / n)) for k in range(n + 1)]
+        assert all(tp.t_max + 1e-6 >= px >= -1e-6 and tp.y_min - 1e-6 <= py <= tp.y_max + 1e-6 for px, py in pts), "shot leaves " + tp.name
+        s.append(f'<polyline fill="none" stroke="{sh.color}" stroke-width="2.2" stroke-linejoin="round" points="' + " ".join(f"{X(px):.1f},{Y(py):.1f}" for px, py in pts) + '"/>')
+        if sh.label:
+            s.append(f'<text x="{X(sh.x(sh.t_top if sh.t_top > 0 else 0))+3:.1f}" y="{Y(max(sh.h_max, sh.y0))-5:.1f}" font-size="9" font-weight="700" fill="{sh.color}">{sh.label}</text>')
     for t1, y1, t2, y2, dashed in lines:
         dash = ' stroke-dasharray="5 3"' if dashed else ""
         s.append(f'<line x1="{X(t1):.1f}" y1="{Y(y1):.1f}" x2="{X(t2):.1f}" y2="{Y(y2):.1f}" stroke="#c0502a" stroke-width="1.6"{dash}/>')
