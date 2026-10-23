@@ -8,11 +8,13 @@ Printable (A4 PDF) versions of the learning modules, for students who work on pa
 | `<id>/render.py` | Lays the content out as print HTML (`<id>/modul.html`, not committed). |
 | `print.mjs` | Prints that HTML to PDF with Chromium (Playwright). |
 | `modlib.py` | Shared page builder: a module's `render.py` calls `modlib.build(content, path)`, and `content.META` holds the module-specific text (cover, study guide, summary page, teacher's note). Used by `gerak-vertikal` and later modules; older modules keep their own `render.py`. |
-| `kit.py` | Content helpers: Indonesian number format, item builder, seeded noisy data, least-squares slope. |
+| `kit.py` | Content helpers: Indonesian number format, item builder, seeded noisy data, least-squares slope, and `balance_keys`. |
 | `graphs.py` | Shared motion model and the fixed graph templates (GLB, GLBB, combined motion, tracking data). An item adds a motion, data points or a line to a template; graphs and keys come from the same model, and every segment corner must sit on a gridline. |
 | `<id>.pdf` | The finished PDF. `scripts/build.py` copies it to `docs/modul-<id>.pdf`, and the module page links to it. |
 
-Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X) `gerak-vertikal` (Gerak Vertikal, kelas X) and `gerak-parabola` (Gerak Parabola, kelas X–XI). Only modules with an interactive page in `data/modules/` are copied to `docs/`.
+Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X) `gerak-vertikal` (Gerak Vertikal, kelas X), `gerak-parabola` (Gerak Parabola, kelas X–XI) and `eksponen-logaritma` (Eksponen dan Logaritma, Matematika kelas X).
+
+Content files list each multiple-choice item with its key first; at render time `kit.balance_keys` rotates the options so keys spread evenly over A–E and relabels the "pilihan salah" notes to match. Write those notes as letter groups followed by a colon ("B, C: …"); a letter used as a name (mobil A) is left alone. Only modules with an interactive page in `data/modules/` are copied to `docs/`.
 
 To rebuild after editing `content.py` (from the repository root):
 

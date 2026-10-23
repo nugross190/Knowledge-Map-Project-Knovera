@@ -257,3 +257,67 @@ def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300,
         s.append(f'<text x="{L+W}" y="{T+8}" font-size="8.5" text-anchor="end" fill="#1f3a68" font-weight="700">{note}</text>')
     s.append("</svg>")
     return "".join(s)
+
+
+def plane(xr, yr, curves=(), points=(), arrows=(), segs=(), labels=(), width=300, height=200, xlabel="x", ylabel="y", ticks_every=1):
+    """A general x–y plane for mathematics.
+
+    xr, yr: (min, max, grid step). curves: [(f, x0, x1, color, label)] drawn by sampling f.
+    points: [(x, y, label)]. arrows: [(x1, y1, x2, y2, color, label)] vectors with arrowheads.
+    segs: [(x1, y1, x2, y2, color, dashed)] plain segments. labels: [(x, y, text, color)].
+    """
+    (x0, x1, xs), (y0, y1, ys) = xr, yr
+    L, R, T, B = 34, 14, 14, 24
+    W, H = width - L - R, height - T - B
+    X = lambda x: L + W * (x - x0) / (x1 - x0)
+    Y = lambda y: T + H * (y1 - y) / (y1 - y0)
+    s = [f'<svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" font-family="Inter,DejaVu Sans,sans-serif">',
+         '<defs><marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>']
+    nx, ny = round((x1 - x0) / xs), round((y1 - y0) / ys)
+    for k in range(nx + 1):
+        x = x0 + k * xs
+        s.append(f'<line x1="{X(x):.1f}" y1="{T}" x2="{X(x):.1f}" y2="{T+H}" stroke="#d5dbe6" stroke-width="0.7"/>')
+    for k in range(ny + 1):
+        y = y0 + k * ys
+        s.append(f'<line x1="{L}" y1="{Y(y):.1f}" x2="{L+W}" y2="{Y(y):.1f}" stroke="#d5dbe6" stroke-width="0.7"/>')
+    ax_y = Y(0) if y0 <= 0 <= y1 else T + H
+    ax_x = X(0) if x0 <= 0 <= x1 else L
+    s.append(f'<line x1="{L}" y1="{ax_y:.1f}" x2="{L+W+6}" y2="{ax_y:.1f}" stroke="#1f2430" stroke-width="1.2"/>')
+    s.append(f'<line x1="{ax_x:.1f}" y1="{T+H}" x2="{ax_x:.1f}" y2="{T-6}" stroke="#1f2430" stroke-width="1.2"/>')
+    for k in range(0, nx + 1, ticks_every):
+        x = round(x0 + k * xs, 6)
+        if abs(x) > 1e-9:
+            s.append(f'<text x="{X(x):.1f}" y="{ax_y+10:.1f}" font-size="7" text-anchor="middle" fill="#4b5260">{fmt(x)}</text>')
+    for k in range(0, ny + 1, ticks_every):
+        y = round(y0 + k * ys, 6)
+        if abs(y) > 1e-9:
+            s.append(f'<text x="{ax_x-3:.1f}" y="{Y(y)+3:.1f}" font-size="7" text-anchor="end" fill="#4b5260">{fmt(y)}</text>')
+    s.append(f'<text x="{ax_x-3:.1f}" y="{ax_y+10:.1f}" font-size="7" text-anchor="end" fill="#4b5260">0</text>')
+    s.append(f'<text x="{L+W+4}" y="{ax_y-4:.1f}" font-size="9" text-anchor="end" fill="#1f2430">{xlabel}</text>')
+    s.append(f'<text x="{ax_x+4:.1f}" y="{T-3}" font-size="9" fill="#1f2430">{ylabel}</text>')
+    for f, a, b, color, label in curves:
+        pts, n = [], 160
+        for k in range(n + 1):
+            x = a + (b - a) * k / n
+            y = f(x)
+            if y0 - (y1 - y0) <= y <= y1 + (y1 - y0):
+                pts.append((x, max(min(y, y1 + 0.02 * (y1 - y0)), y0 - 0.02 * (y1 - y0))))
+        s.append(f'<polyline fill="none" stroke="{color}" stroke-width="2" points="' + " ".join(f"{X(x):.1f},{Y(y):.1f}" for x, y in pts) + '"/>')
+        if label:
+            lx, ly = pts[-1]
+            s.append(f'<text x="{X(lx)-2:.1f}" y="{Y(ly)-5:.1f}" font-size="9" font-weight="700" text-anchor="end" fill="{color}">{label}</text>')
+    for xa, ya, xb, yb, color, dashed in segs:
+        dash = ' stroke-dasharray="4 3"' if dashed else ""
+        s.append(f'<line x1="{X(xa):.1f}" y1="{Y(ya):.1f}" x2="{X(xb):.1f}" y2="{Y(yb):.1f}" stroke="{color}" stroke-width="1.5"{dash}/>')
+    for xa, ya, xb, yb, color, label in arrows:
+        s.append(f'<line x1="{X(xa):.1f}" y1="{Y(ya):.1f}" x2="{X(xb):.1f}" y2="{Y(yb):.1f}" stroke="{color}" stroke-width="2.2" marker-end="url(#pa)"/>')
+        if label:
+            s.append(f'<text x="{(X(xa)+X(xb))/2+4:.1f}" y="{(Y(ya)+Y(yb))/2-4:.1f}" font-size="9.5" font-weight="700" fill="{color}">{label}</text>')
+    for x, y, label in points:
+        s.append(f'<circle cx="{X(x):.1f}" cy="{Y(y):.1f}" r="2.6" fill="#1f2430"/>')
+        if label:
+            s.append(f'<text x="{X(x)+4:.1f}" y="{Y(y)-5:.1f}" font-size="8.5" fill="#1f2430">{label}</text>')
+    for x, y, text, color in labels:
+        s.append(f'<text x="{X(x):.1f}" y="{Y(y):.1f}" font-size="9" fill="{color}">{text}</text>')
+    s.append("</svg>")
+    return "".join(s)

@@ -145,6 +145,12 @@ def build(C, out):
         return f'<div class="item"><div class="no">T.{n}</div><div>{head}{body}{yakin()}</div></div>'
 
     M = C.META
+    # Spread single-answer keys over A–E (content files are written with the key first).
+    from types import SimpleNamespace
+    from kit import balance_keys
+    tka, uji = balance_keys(C.TKA, C.UJI_PG, M["title"])
+    C = SimpleNamespace(**{k: getattr(C, k) for k in dir(C) if not k.startswith("__")})
+    C.TKA, C.UJI_PG = tka, uji
     n_lat = sum(len(s["latihan"]) for s in C.SUB)
     n_total = n_lat + len(C.CAMPURAN) + len(C.TKA) + len(C.UJI_PG) + len(C.UJI_URAIAN)
     h = [f"<!doctype html><html lang='id'><head><meta charset='utf-8'><title>{M['title']}</title><style>{CSS}</style></head><body>"]
@@ -162,7 +168,7 @@ def build(C, out):
     h.append("<h2>Tujuan pembelajaran</h2><p>Setelah mempelajari modul ini, kamu dapat:</p>" + ol([s["tujuan"] for s in C.SUB]))
     h.append(M.get("intro_html", ""))
     h.append("<h2>Cara belajar dengan modul ini</h2>" + ol(M["cara"]))
-    h.append('<h2>Tanda tingkat soal</h2><p><span class="badge b-mudah">●○○ Mudah</span>langsung memakai satu rumus atau satu bacaan grafik. <span class="badge b-sedang">●●○ Sedang</span>perlu dua langkah atau lebih. <span class="badge b-sulit">●●● Sulit</span>memerlukan pemodelan atau penalaran. <span class="badge b-tka">TKA · tipe · level</span>soal yang meniru tipe soal TKA Fisika.</p>')
+    h.append(f'<h2>Tanda tingkat soal</h2><p><span class="badge b-mudah">●○○ Mudah</span>langsung memakai satu rumus atau satu bacaan grafik. <span class="badge b-sedang">●●○ Sedang</span>perlu dua langkah atau lebih. <span class="badge b-sulit">●●● Sulit</span>memerlukan pemodelan atau penalaran. <span class="badge b-tka">TKA · tipe · level</span>soal yang meniru tipe soal {M.get('tka_mapel', 'TKA Fisika')}.</p>')
     h.append(f"<p><b>Konvensi modul.</b> {M['konvensi']}</p></section>")
 
     h.append(f'<section class="page"><h1 class="sec">Cek Prasyarat</h1><p>Kerjakan {len(C.PRASYARAT)} soal berikut tanpa kalkulator.</p>')
