@@ -4,6 +4,8 @@ A module's render.py calls build(C, out_path), where C is its content module. C 
 PRASYARAT, INGAT, SUB, CAMPURAN, TKA, UJI_PG, UJI_URAIAN, GRAPH_OPTS (may be empty) and META,
 the module-specific text (cover, study guide, summary page, teacher's note).
 """
+import re
+
 LV = {1: ("mudah", "●○○ Mudah"), 2: ("sedang", "●●○ Sedang"), 3: ("sulit", "●●● Sulit")}
 LVNAME = {1: "Tingkat mudah", 2: "Tingkat sedang", 3: "Tingkat sulit"}
 L = "ABCDE"
@@ -125,7 +127,7 @@ def build(C, out):
         return '<div class="yakin">Keyakinan:<span class="chk"></span>Yakin<span class="chk"></span>Ragu<span class="chk"></span>Menebak</div>'
 
     def opts_html(opsi):
-        longest = max(len(o) for o in opsi)
+        longest = max(len(re.sub(r"<[^>]+>", "", o)) for o in opsi)
         cls = "long" if longest > 34 else ("mid" if longest > 14 else "")
         return f'<div class="opts {cls}">' + "".join(f"<div><b>{L[k]}.</b> {o}</div>" for k, o in enumerate(opsi)) + "</div>"
 
