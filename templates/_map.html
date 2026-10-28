@@ -86,6 +86,10 @@ section{margin-top:44px}
 .t1{background:var(--ink);color:var(--bg)}
 .t2{border:1.3px solid var(--ink)}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
 .domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
@@ -148,6 +152,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
       <span id="hits" aria-live="polite"></span>
     </div>
     <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
@@ -161,7 +166,8 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
-    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
   </section>
 
   <div id="domains"></div>
@@ -177,6 +183,8 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 <script>
 /*__MAP__*/
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -197,7 +205,7 @@ function hl(str, re){
   return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
 }
 function plain(t){
-  const parts = [t.code, t.title, t.scope, t.src, t.sum];
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
   t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
   (t.traps||[]).forEach(x => parts.push(x));
   return parts.join(" ").replace(/<[^>]+>/g, " ");
@@ -234,7 +242,7 @@ function render(){
     const col = document.createElement("div");
     col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
     col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
-      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span></a></li>').join("") + "</ul>";
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
@@ -244,7 +252,7 @@ function render(){
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
       a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
         '<span class="code">' + t.code + '</span>' +
-        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
         '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
         '<span class="sum">' + t.sum + '</span></button>' +
         '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
@@ -253,6 +261,10 @@ function render(){
     });
     host.appendChild(sec);
   });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
   $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
 }
 function setOpen(card, open){
@@ -283,11 +295,13 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    if(!re){ card.hidden = false; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
-    const match = new RegExp(re.source, "i").test(plain(t));
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
 }
 
@@ -309,6 +323,7 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
 if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
 </script>

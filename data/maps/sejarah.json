@@ -5,6 +5,7 @@
  "lead": "Seluruh materi Sejarah SMA, dari ilmu sejarah dan praaksara sampai Reformasi, disusun sebagai satu peta, ditambah ringkasan sejarah dunia. Setiap simpul memuat tokoh, tahun, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
  "blurb": "Ilmu sejarah, praaksara, kerajaan Hindu-Buddha dan Islam, kolonialisme, pergerakan nasional, revolusi, Demokrasi Liberal dan Terpimpin, Orde Baru, Reformasi, sejarah dunia.",
  "source_note": "Peta sekolah dan TKA, terpisah dari kit lomba LCCM (peta.html). Urutan mengikuti Sejarah Kurikulum Merdeka: kelas X (ilmu sejarah, praaksara, kerajaan Hindu-Buddha dan Islam), kelas XI (kolonialisme sampai proklamasi), kelas XII (mempertahankan kemerdekaan sampai Reformasi), dicocokkan dengan elemen TKA 2025. Sejarah dunia berasal dari Sejarah tingkat lanjut. Penempatan kelas berbeda antarsumber.",
+ "lanjut_note": "Tanda Lanjut menandai sejarah dunia, yang dipelajari di Sejarah Tingkat Lanjut (mapel pilihan kelas XI–XII), bukan di Sejarah wajib. TKA 2025 Sejarah mapel pilihan juga menguji ilmu sejarah dan sejarah Indonesia dari kerajaan sampai Reformasi, jadi peserta mapel pilihan tetap mempelajari seluruh peta.",
  "path_title": "Alur waktu",
  "path_note": "Urutan belajar mengikuti waktu: dari cara meneliti masa lalu, ke praaksara dan kerajaan, ke penjajahan dan perjuangan, lalu Indonesia merdeka.",
  "path": [
@@ -1196,6 +1197,7 @@
      "scope": "Amerika, Prancis, Industri, Rusia",
      "src": "Kelas XI–XII",
      "tier": 3,
+     "lanjut": true,
      "sum": "Revolusi besar dunia, sebab dan akibatnya, serta pengaruhnya terhadap pergerakan di Indonesia.",
      "blocks": [
       {
@@ -1238,6 +1240,7 @@
      "scope": "Sebab, blok, akibat",
      "src": "Kelas XII",
      "tier": 3,
+     "lanjut": true,
      "sum": "Sebab, pihak yang berperang, dan akibat Perang Dunia I dan II, termasuk pengaruhnya bagi Indonesia.",
      "blocks": [
       {
@@ -1256,6 +1259,7 @@
      "scope": "Blok Barat dan Timur, GNB",
      "src": "Kelas XII",
      "tier": 3,
+     "lanjut": true,
      "sum": "Persaingan Amerika Serikat dan Uni Soviet, aliansi kedua blok, dekolonisasi Asia-Afrika, dan sikap Indonesia.",
      "blocks": [
       {

@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Informatika SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "informatika", "subject": "Informatika", "title": "Peta Materi Informatika SMA", "lead": "Seluruh materi Informatika SMA, dari berpikir komputasional sampai dampak sosial teknologi, disusun sebagai satu peta. Setiap simpul memuat konsep kunci, contoh, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Berpikir komputasional, aplikasi perkantoran, sistem komputer, jaringan dan keamanan, analisis data, pemrograman, serta etika dan hukum digital.", "source_note": "Domain mengikuti elemen Capaian Pembelajaran Informatika Kurikulum Merdeka (berpikir komputasional, TIK, sistem komputer, jaringan komputer dan internet, analisis data, algoritma dan pemrograman, dampak sosial informatika, praktik lintas bidang) dan bab buku Informatika kelas X Kemendikbudristek. Informatika wajib di kelas X dan pilihan di kelas XI–XII; label kelas XI–XII hanya perkiraan karena urutan bab berbeda antara edisi 2021 dan edisi revisi.", "path_title": "Alur prasyarat", "path_note": "Urutan belajar yang disarankan: dari cara memecah masalah, ke cara kerja komputer dan jaringan, ke data dan program, lalu dampaknya bagi masyarakat.", "path": [{"label": "Pikir", "title": "Berpikir komputasional", "note": "Dekomposisi, pola, abstraksi", "to": "BK-01"}, {"label": "Biner", "title": "Representasi data", "note": "Bit, basis bilangan", "to": "SK-02"}, {"label": "Logika", "title": "Gerbang logika", "note": "AND, OR, NOT, XOR", "to": "SK-03"}, {"label": "Mesin", "title": "Komponen komputer", "note": "CPU, memori, I/O", "to": "SK-01"}, {"label": "Jaringan", "title": "Jaringan komputer", "note": "Topologi, perangkat", "to": "JKI-01"}, {"label": "Data", "title": "Data dan informasi", "note": "Kumpulkan, bersihkan, olah", "to": "AD-01"}, {"label": "Algoritma", "title": "Algoritma dan diagram alir", "note": "Langkah, simbol", "to": "AP-01"}, {"label": "Program", "title": "Percabangan dan perulangan", "note": "if, for, while", "to": "AP-03"}, {"label": "Etika", "title": "Etika dan hukum digital", "note": "UU ITE, PDP, hak cipta", "to": "DSI-02"}], "domains": [{"id": "BK", "name": "Berpikir komputasional", "short": "Komputasional", "note": "Cara memecah masalah agar dapat diselesaikan manusia atau komputer, serta strategi algoritmik dasar.", "topics": [{"code": "BK-01", "title": "Konsep berpikir komputasional", "scope": "Dekomposisi, pola, abstraksi, algoritma", "src": "Kelas X", "tier": 1, "sum": "Berpikir komputasional adalah cara menyelesaikan masalah dengan empat fondasi: dekomposisi, pengenalan pola, abstraksi, dan algoritma.", "blocks": [{"h": "Empat fondasi", "li": ["<b>Dekomposisi<\/b>: memecah masalah besar menjadi bagian-bagian kecil yang lebih mudah diselesaikan.", "<b>Pengenalan pola<\/b>: mencari kesamaan atau keteraturan antarbagian masalah agar solusi dapat dipakai ulang.", "<b>Abstraksi<\/b>: membuang detail yang tidak penting dan menyimpan hanya informasi yang diperlukan, misalnya peta jalur kereta yang tidak menggambar jarak sebenarnya.", "<b>Algoritma<\/b>: menyusun langkah-langkah penyelesaian yang runtut, jelas, dan berhingga."]}, {"h": "Penerapan", "li": ["Soal berpikir komputasional sering berbentuk tantangan Bebras: penjadwalan, rute terpendek, pengurutan, dan teka-teki logika.", "Langkah umum: pahami masalah, pecah, cari pola, buat model sederhana, susun langkah, lalu uji dengan contoh.", "Berpikir komputasional tidak harus memakai komputer; resep masakan dan petunjuk arah juga algoritma."]}], "traps": ["Abstraksi berarti menyaring detail yang tidak relevan, bukan membuat masalah menjadi lebih rumit atau lebih teoretis.", "Dekomposisi memecah masalah; pengenalan pola mencari kesamaan antarbagian. Keduanya sering tertukar di soal pilihan."]}, {"code": "BK-02", "title": "Pencarian dan pengurutan", "scope": "Sequential, binary, bubble, selection sort", "src": "Kelas X", "tier": 1, "sum": "Strategi algoritmik standar untuk mencari data (pencarian beruntun dan biner) dan mengurutkan data (bubble, selection, insertion sort).", "blocks": [{"h": "Pencarian", "li": ["<b>Pencarian beruntun<\/b> (sequential/linear search) memeriksa data satu per satu dari awal; bisa untuk data tidak terurut.", "<b>Pencarian biner<\/b> (binary search) membandingkan dengan elemen tengah lalu membuang separuh data; hanya untuk data yang sudah terurut.", "Pada 1.000 data, pencarian beruntun butuh sampai 1.000 perbandingan, pencarian biner paling banyak 10 (2¹⁰ = 1.024)."]}, {"h": "Pengurutan", "li": ["<b>Bubble sort<\/b>: membandingkan dua elemen bersebelahan dan menukarnya bila urutannya salah, diulang sampai tidak ada pertukaran.", "Selection sort: memilih elemen terkecil dari bagian yang belum terurut lalu menaruhnya di depan.", "Insertion sort: menyisipkan setiap elemen ke posisi yang tepat pada bagian yang sudah terurut, seperti menyusun kartu di tangan.", "Greedy: memilih pilihan terbaik saat itu pada setiap langkah, misalnya menukar uang kembalian dengan pecahan terbesar dulu."]}], "traps": ["Pencarian biner hanya benar bila data sudah terurut; pada data acak hasilnya bisa salah.", "Bubble sort membandingkan elemen yang bersebelahan; selection sort mencari elemen terkecil di seluruh sisa data."]}, {"code": "BK-03", "title": "Struktur data", "scope": "Larik, stack, queue, graf, pohon", "src": "Kelas XI–XII", "tier": 2, "sum": "Cara menyimpan dan mengatur data agar mudah diolah: larik, tumpukan, antrean, graf, dan pohon.", "blocks": [{"h": "Struktur data dasar", "table": {"cols": ["Struktur", "Prinsip", "Contoh"], "rows": [["Larik (array/list)", "Elemen berurutan dengan indeks", "Daftar nilai siswa"], ["Tumpukan (stack)", "LIFO: masuk terakhir keluar pertama (push, pop)", "Tombol undo, tumpukan piring"], ["Antrean (queue)", "FIFO: masuk pertama keluar pertama (enqueue, dequeue)", "Antrean loket, antrean cetak"], ["Graf", "Simpul (vertex) dihubungkan sisi (edge)", "Peta jalan, jaringan pertemanan"], ["Pohon (tree)", "Graf bercabang tanpa siklus, punya akar", "Struktur folder, silsilah"]]}}, {"h": "Catatan", "li": ["Indeks larik di Python dan banyak bahasa lain dimulai dari 0.", "Graf berbobot menyimpan nilai pada sisi, misalnya jarak; dipakai untuk mencari rute terpendek."]}], "traps": ["Stack bersifat LIFO dan queue FIFO; jangan tertukar."]}]}, {"id": "TIK", "name": "Teknologi informasi dan komunikasi", "short": "TIK", "note": "Aplikasi perkantoran dan pencarian informasi yang dipakai sehari-hari.", "topics": [{"code": "TIK-01", "title": "Aplikasi perkantoran", "scope": "Pengolah kata, lembar kerja, presentasi", "src": "Kelas X", "tier": 1, "sum": "Fitur lanjut pengolah kata, rumus dan fungsi lembar kerja (spreadsheet), serta penyusunan presentasi yang efektif.", "blocks": [{"h": "Pengolah kata", "li": ["Fitur lanjut: style dan heading, daftar isi otomatis, catatan kaki, daftar pustaka, mail merge, dan track changes.", "<b>Mail merge<\/b> menggabungkan satu dokumen utama dengan sumber data untuk membuat banyak surat bernama berbeda."]}, {"h": "Lembar kerja", "li": ["Rumus diawali tanda sama dengan: =SUM(A1:A5), =AVERAGE(B2:B10), =MAX, =MIN, =COUNT, =COUNTIF.", "=IF(C2>=75;\"Tuntas\";\"Remedial\") memberi hasil berbeda sesuai syarat.", "=VLOOKUP(nilai_cari; tabel; nomor_kolom; FALSE) mencari nilai pada kolom pertama tabel lalu mengambil kolom lain di baris yang sama.", "<b>Referensi absolut<\/b> $A$1 tidak berubah saat rumus disalin; referensi relatif A1 bergeser; $A1 dan A$1 disebut referensi campuran.", "Pemisah argumen titik koma (;) atau koma (,) tergantung pengaturan bahasa aplikasi."]}, {"h": "Presentasi", "li": ["Satu slide satu gagasan; teks singkat; huruf cukup besar; kontras warna jelas.", "Grafik dipilih sesuai data: garis untuk perubahan waktu, batang untuk perbandingan, lingkaran untuk bagian dari keseluruhan."]}], "traps": ["Referensi $A$1 tetap saat disalin; A1 berubah. Soal sering menanyakan hasil rumus setelah disalin ke sel lain.", "COUNT menghitung sel berisi angka; COUNTA menghitung sel yang tidak kosong; COUNTIF menghitung sel yang memenuhi syarat."]}, {"code": "TIK-02", "title": "Pencarian dan konten digital", "scope": "Mesin pencari, verifikasi, lisensi", "src": "Kelas X", "tier": 2, "sum": "Mencari informasi secara efektif dengan operator pencarian, menilai kredibilitasnya, dan memakai konten digital sesuai lisensi.", "blocks": [{"h": "Operator pencarian", "li": ["Tanda kutip \"...\" mencari frasa persis.", "site:go.id membatasi hasil pada satu domain; filetype:pdf membatasi jenis berkas.", "Tanda minus (-kata) membuang hasil yang memuat kata itu; OR mencari salah satu kata."]}, {"h": "Menilai informasi", "li": ["Periksa penulis atau lembaga, tanggal, sumber rujukan, dan bandingkan dengan sumber lain (lateral reading).", "Hoaks sering memakai judul provokatif, tidak mencantumkan sumber, dan meminta pembaca segera menyebarkan."]}, {"h": "Lisensi konten", "li": ["Creative Commons: BY (cantumkan nama pencipta), SA (bagikan dengan lisensi yang sama), NC (nonkomersial), ND (tanpa turunan).", "Domain publik boleh dipakai bebas; konten tanpa keterangan lisensi tetap dilindungi hak cipta."]}], "traps": ["Konten yang mudah diunduh di internet belum tentu bebas dipakai; tanpa lisensi terbuka, hak cipta tetap berlaku."]}]}, {"id": "SK", "name": "Sistem komputer", "short": "Sistem komputer", "note": "Cara kerja perangkat keras, representasi data, logika digital, dan sistem operasi.", "topics": [{"code": "SK-01", "title": "Komponen dan cara kerja komputer", "scope": "Von Neumann, CPU, memori, I/O", "src": "Kelas X", "tier": 1, "sum": "Komputer bekerja menurut arsitektur von Neumann: CPU mengolah data dan instruksi yang disimpan di memori, dengan perangkat masukan dan keluaran.", "blocks": [{"h": "Arsitektur von Neumann", "li": ["Program dan data disimpan bersama di memori utama; CPU mengambil (fetch), menerjemahkan (decode), lalu menjalankan (execute) instruksi.", "Komponen: unit pemroses pusat (CPU), memori, perangkat masukan dan keluaran (I/O), dihubungkan oleh bus."]}, {"h": "Komponen", "table": {"cols": ["Komponen", "Fungsi"], "rows": [["ALU (Arithmetic Logic Unit)", "Operasi aritmetika dan logika"], ["CU (Control Unit)", "Mengatur urutan dan aliran instruksi"], ["Register", "Memori paling cepat di dalam CPU"], ["Cache", "Memori cepat antara CPU dan RAM"], ["RAM", "Memori utama, volatil (hilang saat listrik padam)"], ["ROM", "Memori baca, tidak volatil, berisi firmware"], ["HDD/SSD", "Penyimpanan sekunder permanen; SSD tanpa bagian bergerak"]]}}, {"h": "Urutan kecepatan", "li": ["Register lebih cepat dari cache, cache lebih cepat dari RAM, RAM lebih cepat dari SSD, SSD lebih cepat dari HDD; kapasitasnya berurutan sebaliknya."]}], "traps": ["RAM bersifat volatil; data yang belum disimpan ke penyimpanan sekunder hilang saat komputer mati.", "ALU menghitung, CU mengatur; keduanya bagian dari CPU."]}, {"code": "SK-02", "title": "Representasi data dan sistem bilangan", "scope": "Bit, biner, oktal, heksadesimal", "src": "Kelas X", "tier": 1, "sum": "Komputer menyimpan semua data sebagai bit; bilangan ditulis dalam basis 2, 8, 10, atau 16, dan karakter dikodekan dengan ASCII atau Unicode.", "blocks": [{"h": "Satuan", "li": ["1 byte = 8 bit; n bit dapat menyatakan 2ⁿ nilai berbeda (8 bit: 256 nilai, 0–255).", "Kilobyte: 1 KB = 1.000 byte menurut SI, 1 KiB = 1.024 byte; banyak buku memakai 1 KB = 1.024 byte."]}, {"h": "Konversi contoh", "table": {"cols": ["Desimal", "Biner", "Oktal", "Heksadesimal"], "rows": [["13", "1101", "15", "D"], ["64", "1000000", "100", "40"], ["255", "11111111", "377", "FF"]]}}, {"h": "Cara konversi", "li": ["Desimal ke biner: bagi 2 berulang, baca sisa dari bawah ke atas.", "Biner ke desimal: jumlahkan bobot 2ⁿ pada posisi bernilai 1; 1101₂ = 8 + 4 + 0 + 1 = 13.", "Satu digit heksadesimal setara 4 bit; satu digit oktal setara 3 bit.", "<b>ASCII<\/b> standar memakai 7 bit (128 karakter), misalnya 'A' = 65; Unicode (UTF-8) memakai 1–4 byte per karakter."]}], "traps": ["Saat mengubah desimal ke biner, sisa pembagian dibaca dari bawah ke atas.", "Digit heksadesimal A–F bernilai 10–15."]}, {"code": "SK-03", "title": "Gerbang logika", "scope": "AND, OR, NOT, NAND, NOR, XOR", "src": "Kelas X", "tier": 1, "sum": "Gerbang logika mengolah masukan 0 dan 1 menjadi keluaran menurut aturan aljabar Boolean; rangkaiannya dianalisis dengan tabel kebenaran.", "blocks": [{"h": "Tabel kebenaran (A, B)", "table": {"cols": ["A B", "AND", "OR", "XOR", "NAND", "NOR"], "rows": [["0 0", "0", "0", "0", "1", "1"], ["0 1", "0", "1", "1", "1", "0"], ["1 0", "0", "1", "1", "1", "0"], ["1 1", "1", "1", "0", "0", "0"]]}}, {"h": "Aturan", "li": ["NOT membalik nilai: NOT 0 = 1, NOT 1 = 0.", "<b>XOR<\/b> bernilai 1 hanya bila kedua masukan berbeda.", "NAND dan NOR adalah kebalikan AND dan OR; keduanya disebut gerbang universal karena dapat menyusun gerbang lain.", "Rangkaian dengan n masukan punya 2ⁿ baris tabel kebenaran."]}], "traps": ["OR bernilai 1 bila salah satu atau kedua masukan 1; XOR bernilai 0 bila keduanya 1."]}, {"code": "SK-04", "title": "Sistem operasi dan perangkat lunak", "scope": "Fungsi, booting, jenis perangkat lunak", "src": "Kelas X", "tier": 2, "sum": "Sistem operasi menjembatani perangkat keras dan pengguna; perangkat lunak dibagi menjadi sistem operasi, utilitas, dan aplikasi.", "blocks": [{"h": "Sistem operasi", "li": ["Fungsi: manajemen proses, memori, berkas, perangkat masukan-keluaran, keamanan, dan antarmuka pengguna.", "Contoh: Windows, macOS, Linux; untuk ponsel Android (berbasis kernel Linux) dan iOS.", "<b>Booting<\/b>: menyalakan komputer; BIOS/UEFI menjalankan POST (Power On Self Test) lalu memuat sistem operasi.", "Cold boot dari keadaan mati; warm boot (restart) saat komputer sudah menyala."]}, {"h": "Jenis perangkat lunak", "li": ["Perangkat lunak sistem: sistem operasi, driver, utilitas (antivirus, pengompres berkas).", "Perangkat lunak aplikasi: pengolah kata, peramban, pengolah gambar.", "Penerjemah bahasa: compiler menerjemahkan seluruh program sekaligus; interpreter menjalankan baris demi baris (Python)."]}]}]}, {"id": "JKI", "name": "Jaringan komputer dan internet", "short": "Jaringan", "note": "Cara komputer saling terhubung, protokol internet, dan keamanan data di jaringan.", "topics": [{"code": "JKI-01", "title": "Jaringan komputer", "scope": "Jenis, topologi, perangkat, media", "src": "Kelas X", "tier": 1, "sum": "Jaringan menghubungkan perangkat untuk berbagi data dan sumber daya; dibedakan menurut jangkauan, topologi, perangkat, dan media transmisi.", "blocks": [{"h": "Jenis menurut jangkauan", "li": ["PAN (perorangan, mis. Bluetooth), LAN (satu gedung), MAN (satu kota), WAN (antarkota atau antarnegara; internet adalah WAN terbesar)."]}, {"h": "Topologi", "table": {"cols": ["Topologi", "Ciri", "Kelemahan"], "rows": [["Bus", "Semua perangkat pada satu kabel utama", "Kabel utama putus, jaringan mati"], ["Star", "Semua terhubung ke satu pusat (switch)", "Pusat rusak, jaringan mati"], ["Ring", "Membentuk lingkaran, data berputar", "Satu titik putus mengganggu"], ["Mesh", "Setiap perangkat terhubung ke banyak perangkat", "Kabel banyak dan mahal"], ["Tree", "Gabungan beberapa star bertingkat", "Bergantung pada simpul induk"]]}}, {"h": "Perangkat dan media", "li": ["<b>Switch<\/b> menghubungkan perangkat dalam satu LAN berdasarkan alamat MAC; router menghubungkan jaringan yang berbeda berdasarkan alamat IP.", "Access point memancarkan Wi-Fi; modem mengubah sinyal digital dan analog.", "Media kabel: twisted pair (UTP), koaksial, serat optik (paling cepat, berbasis cahaya); nirkabel: Wi-Fi, Bluetooth, seluler, satelit."]}], "traps": ["Switch bekerja di dalam satu jaringan lokal; router menghubungkan antarjaringan, misalnya LAN rumah ke internet."]}, {"code": "JKI-02", "title": "Protokol dan cara kerja internet", "scope": "OSI, TCP/IP, alamat IP, DNS", "src": "Kelas X", "tier": 1, "sum": "Internet bekerja dengan protokol berlapis (model OSI dan TCP/IP), alamat IP untuk setiap perangkat, dan DNS untuk menerjemahkan nama domain.", "blocks": [{"h": "Model berlapis", "table": {"cols": ["OSI (7 lapisan)", "TCP/IP (4 lapisan)"], "rows": [["7 Application, 6 Presentation, 5 Session", "Application (HTTP, DNS, SMTP)"], ["4 Transport", "Transport (TCP, UDP)"], ["3 Network", "Internet (IP)"], ["2 Data Link, 1 Physical", "Network Access (Ethernet, Wi-Fi)"]]}}, {"h": "Protokol penting", "li": ["<b>IPv4<\/b> 32 bit, ditulis empat angka 0–255 (192.168.1.10); IPv6 128 bit.", "DNS menerjemahkan nama domain menjadi alamat IP; DHCP memberi alamat IP secara otomatis.", "HTTP (port 80) mengirim halaman web; HTTPS (port 443) mengenkripsinya dengan TLS.", "TCP menjamin data sampai utuh dan berurutan; UDP lebih cepat tanpa jaminan (siaran langsung, gim daring).", "Alamat privat seperti 192.168.x.x dan 10.x.x.x hanya berlaku di jaringan lokal."]}], "traps": ["Urutan lapisan OSI dari bawah: Physical, Data Link, Network, Transport, Session, Presentation, Application.", "DNS tidak menyimpan halaman web; ia hanya memetakan nama domain ke alamat IP."]}, {"code": "JKI-03", "title": "Keamanan data dan jaringan", "scope": "Enkripsi, malware, phishing, autentikasi", "src": "Kelas X", "tier": 1, "sum": "Ancaman terhadap data dan jaringan serta cara melindunginya: enkripsi, autentikasi, firewall, dan kebiasaan aman.", "blocks": [{"h": "Ancaman", "table": {"cols": ["Ancaman", "Ciri"], "rows": [["Virus", "Menempel pada berkas lain, aktif saat berkas dijalankan"], ["Worm", "Menggandakan diri sendiri lewat jaringan"], ["Trojan", "Menyamar sebagai program berguna"], ["Ransomware", "Mengenkripsi data lalu meminta tebusan"], ["Phishing", "Pesan palsu untuk mencuri kata sandi atau kode OTP"]]}}, {"h": "Perlindungan", "li": ["<b>Enkripsi simetris<\/b> memakai satu kunci yang sama untuk mengenkripsi dan mendekripsi (AES); asimetris memakai pasangan kunci publik dan privat (RSA).", "Autentikasi dua faktor (2FA) menggabungkan sesuatu yang diketahui (kata sandi) dan yang dimiliki (kode di ponsel).", "Firewall menyaring lalu lintas jaringan menurut aturan.", "Kata sandi kuat: panjang, campuran huruf, angka, dan simbol, berbeda untuk tiap akun; jangan membagikan OTP."]}, {"h": "Cadangan", "li": ["Cadangkan data penting ke tempat terpisah (aturan 3-2-1: 3 salinan, 2 media berbeda, 1 di luar lokasi)."]}], "traps": ["Pada enkripsi asimetris, pesan dienkripsi dengan kunci publik penerima dan hanya dapat dibuka dengan kunci privat penerima.", "Virus butuh berkas inang; worm menyebar sendiri tanpa inang."]}]}, {"id": "AD", "name": "Analisis data", "short": "Analisis data", "note": "Mengumpulkan, mengolah, menyajikan, dan menyimpan data, sampai pengenalan big data dan pembelajaran mesin.", "topics": [{"code": "AD-01", "title": "Data dan pengolahannya", "scope": "Jenis data, pengumpulan, pembersihan", "src": "Kelas X", "tier": 1, "sum": "Data mentah dikumpulkan, dibersihkan, dan diolah menjadi informasi yang bermakna untuk mengambil keputusan.", "blocks": [{"h": "Konsep", "li": ["<b>Data<\/b> adalah fakta mentah; informasi adalah data yang sudah diolah dan bermakna.", "Data kuantitatif berupa angka (diskret atau kontinu); data kualitatif berupa kategori atau deskripsi.", "Data primer dikumpulkan sendiri (survei, observasi, sensor); data sekunder diambil dari pihak lain (BPS, laporan)."]}, {"h": "Pengolahan", "li": ["Alur: kumpulkan, bersihkan, olah, analisis, sajikan, simpulkan.", "Pembersihan data: membuang duplikat, mengisi atau menandai data kosong, menyeragamkan format (tanggal, satuan), memeriksa data yang tidak masuk akal.", "Lembar kerja dipakai untuk mengurutkan (sort), menyaring (filter), dan merangkum data (tabel pivot)."]}], "traps": ["Data dan informasi berbeda: angka suhu harian adalah data; kesimpulan bahwa minggu ini lebih panas adalah informasi."]}, {"code": "AD-02", "title": "Visualisasi dan interpretasi data", "scope": "Grafik, tabel pivot, kesimpulan", "src": "Kelas X", "tier": 2, "sum": "Memilih bentuk visualisasi yang sesuai dengan data dan menarik kesimpulan yang didukung data.", "blocks": [{"h": "Memilih grafik", "table": {"cols": ["Tujuan", "Grafik"], "rows": [["Perubahan dari waktu ke waktu", "Garis"], ["Membandingkan kategori", "Batang"], ["Bagian dari keseluruhan", "Lingkaran"], ["Hubungan dua variabel", "Diagram pencar"], ["Sebaran nilai", "Histogram"]]}}, {"h": "Interpretasi", "li": ["Perhatikan skala sumbu; sumbu yang tidak dimulai dari nol dapat membesar-besarkan perbedaan.", "Tabel pivot merangkum data besar menurut kategori, misalnya total penjualan per bulan per produk.", "Kesimpulan harus didukung data; korelasi tidak sama dengan sebab-akibat."]}]}, {"code": "AD-03", "title": "Basis data", "scope": "Tabel, kunci, SQL dasar", "src": "Kelas XI–XII", "tier": 2, "sum": "Basis data relasional menyimpan data dalam tabel yang saling terhubung melalui kunci, dan diolah dengan bahasa SQL.", "blocks": [{"h": "Istilah", "li": ["Tabel terdiri atas baris (record) dan kolom (field).", "<b>Primary key<\/b>: kolom yang nilainya unik dan tidak boleh kosong untuk setiap baris, misalnya NIS.", "Foreign key: kolom yang merujuk primary key tabel lain, membentuk relasi antartabel.", "DBMS (Database Management System): perangkat lunak pengelola basis data, misalnya MySQL dan PostgreSQL."]}, {"h": "SQL dasar", "li": ["SELECT nama, nilai FROM siswa WHERE nilai >= 75 ORDER BY nilai DESC;", "INSERT menambah baris, UPDATE mengubah, DELETE menghapus.", "Relasi: satu ke satu, satu ke banyak (satu kelas punya banyak siswa), banyak ke banyak."]}], "traps": ["Primary key harus unik; nama siswa bukan primary key yang baik karena bisa kembar."]}, {"code": "AD-04", "title": "Big data dan pembelajaran mesin", "scope": "Karakteristik big data, jenis pembelajaran mesin", "src": "Kelas XI–XII", "tier": 3, "sum": "Big data adalah data berukuran sangat besar dan beragam; pembelajaran mesin membuat komputer belajar pola dari data.", "blocks": [{"h": "Big data", "li": ["Karakteristik 3V: volume (sangat besar), velocity (cepat bertambah), variety (beragam bentuk); sebagian buku menambah veracity dan value.", "Contoh: data transaksi daring, unggahan media sosial, data sensor lalu lintas."]}, {"h": "Pembelajaran mesin", "li": ["<b>Supervised learning<\/b>: belajar dari data berlabel, misalnya membedakan surel spam dan bukan spam.", "Unsupervised learning: mengelompokkan data tanpa label (clustering), misalnya segmentasi pelanggan.", "Reinforcement learning: belajar dari hadiah dan hukuman, misalnya program bermain gim.", "Model hanya sebaik datanya; data yang bias menghasilkan keputusan yang bias."]}]}]}, {"id": "AP", "name": "Algoritma dan pemrograman", "short": "Pemrograman", "note": "Menyusun algoritma dan menuliskannya sebagai program, dengan contoh dalam bahasa Python.", "topics": [{"code": "AP-01", "title": "Algoritma dan diagram alir", "scope": "Ciri algoritma, pseudocode, flowchart", "src": "Kelas X", "tier": 1, "sum": "Algoritma dapat ditulis sebagai kalimat, pseudocode, atau diagram alir (flowchart) dengan simbol baku.", "blocks": [{"h": "Ciri algoritma", "li": ["Masukan nol atau lebih, keluaran satu atau lebih, langkah jelas (tidak ambigu), efektif, dan berhingga (pasti berhenti)."]}, {"h": "Simbol diagram alir", "table": {"cols": ["Simbol", "Arti"], "rows": [["Oval (terminator)", "Mulai atau selesai"], ["Persegi panjang", "Proses"], ["Jajaran genjang", "Masukan atau keluaran"], ["Belah ketupat", "Keputusan (ya/tidak)"], ["Panah", "Arah aliran"], ["Lingkaran kecil", "Penghubung di halaman yang sama"]]}}, {"h": "Pseudocode", "li": ["Tulisan mirip program tanpa aturan bahasa tertentu, misalnya: JIKA nilai >= 75 MAKA tulis \"Tuntas\"."]}], "traps": ["Keputusan memakai belah ketupat, bukan persegi panjang; masukan dan keluaran memakai jajaran genjang."]}, {"code": "AP-02", "title": "Dasar pemrograman", "scope": "Variabel, tipe data, operator", "src": "Kelas X", "tier": 1, "sum": "Program menyimpan nilai dalam variabel bertipe data tertentu dan mengolahnya dengan operator aritmetika, perbandingan, dan logika.", "blocks": [{"h": "Variabel dan tipe data (Python)", "li": ["int (bilangan bulat), float (desimal), str (teks dalam tanda kutip), bool (True/False).", "Masukan dengan input() selalu berupa teks; ubah dengan int() atau float() sebelum dihitung.", "Nama variabel tidak boleh diawali angka dan tidak boleh berspasi."]}, {"h": "Operator", "table": {"cols": ["Operator", "Arti", "Contoh"], "rows": [["/", "Pembagian", "7 / 2 = 3.5"], ["//", "Pembagian bulat", "7 // 2 = 3"], ["%", "Sisa bagi (modulo)", "7 % 2 = 1"], ["**", "Pangkat", "2 ** 3 = 8"], ["==, !=", "Sama dengan, tidak sama dengan", "3 == 3 bernilai True"], ["and, or, not", "Logika", "True and False bernilai False"]]}}, {"h": "Catatan", "li": ["Satu tanda = adalah penugasan (memberi nilai); == adalah perbandingan."]}], "traps": ["x = 5 memberi nilai 5 ke x; x == 5 bertanya apakah x bernilai 5.", "Bilangan genap dikenali dengan n % 2 == 0, bukan n / 2 == 0."]}, {"code": "AP-03", "title": "Percabangan dan perulangan", "scope": "if-elif-else, for, while", "src": "Kelas X", "tier": 1, "sum": "Struktur kontrol menentukan alur program: percabangan memilih langkah sesuai syarat, perulangan mengulang langkah.", "blocks": [{"h": "Percabangan", "li": ["if syarat: ... elif syarat lain: ... else: ...; hanya satu cabang yang dijalankan, yaitu syarat benar pertama.", "Blok di Python ditandai indentasi (spasi di awal baris)."]}, {"h": "Perulangan", "li": ["<b>for i in range(1, 5)<\/b> mengulang untuk i = 1, 2, 3, 4; batas akhir tidak ikut.", "range(5) menghasilkan 0 sampai 4; range(0, 10, 2) menghasilkan 0, 2, 4, 6, 8.", "while mengulang selama syarat benar; pastikan syarat suatu saat salah agar tidak terjadi perulangan tak hingga.", "break menghentikan perulangan; continue melompat ke putaran berikutnya."]}], "traps": ["range(1, 5) tidak memuat 5.", "Pada if-elif, urutan syarat penting: syarat nilai >= 60 yang diletakkan sebelum nilai >= 90 akan menangkap nilai 95 lebih dulu."]}, {"code": "AP-04", "title": "Fungsi, list, dan string", "scope": "def, return, indeks, slicing", "src": "Kelas X–XI", "tier": 2, "sum": "Fungsi membungkus langkah yang dipakai berulang; list dan string diolah dengan indeks, slicing, dan fungsi bawaan.", "blocks": [{"h": "Fungsi", "li": ["def luas(p, l): return p * l; dipanggil dengan luas(4, 3) yang menghasilkan 12.", "Parameter adalah nama di definisi fungsi; argumen adalah nilai yang dikirim saat memanggil.", "return mengembalikan nilai; print hanya menampilkan ke layar."]}, {"h": "List dan string", "li": ["data = [5, 8, 2]: data[0] = 5, data[-1] = 2, len(data) = 3.", "append() menambah elemen di akhir; sort() mengurutkan; sum() menjumlahkan.", "<b>Slicing<\/b> teks[1:4] mengambil indeks 1, 2, 3; indeks akhir tidak ikut.", "String tidak dapat diubah per karakter; buat string baru."]}], "traps": ["Indeks pertama adalah 0, sehingga elemen ketiga adalah data[2]."]}, {"code": "AP-05", "title": "Efisiensi algoritma", "scope": "Kompleksitas, notasi O besar", "src": "Kelas XI–XII", "tier": 3, "sum": "Efisiensi algoritma dibandingkan dari pertumbuhan banyaknya langkah terhadap ukuran data, ditulis dengan notasi O besar.", "blocks": [{"h": "Notasi O besar", "li": ["O(1): tetap, misalnya mengambil elemen larik dengan indeks.", "O(log n): pencarian biner; O(n): pencarian beruntun.", "<b>O(n²)<\/b>: bubble sort dan selection sort; dua perulangan bersarang.", "O(n log n): merge sort dan quick sort (rata-rata)."]}, {"h": "Membandingkan", "li": ["Jika data menjadi dua kali lipat, algoritma O(n) butuh sekitar dua kali langkah, sedangkan O(n²) sekitar empat kali."]}]}]}, {"id": "DSI", "name": "Dampak sosial dan praktik lintas bidang", "short": "Dampak sosial", "note": "Sejarah komputer, etika dan hukum digital, dampak teknologi, karier, dan kerja proyek.", "topics": [{"code": "DSI-01", "title": "Sejarah dan perkembangan komputer", "scope": "Tokoh, generasi komputer", "src": "Kelas X", "tier": 2, "sum": "Perkembangan komputer dari mesin hitung mekanis sampai mikroprosesor, beserta tokoh-tokoh penting.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Sumbangan"], "rows": [["Charles Babbage", "Merancang Analytical Engine (abad ke-19), cikal bakal komputer"], ["Ada Lovelace", "Menulis algoritma untuk Analytical Engine (1843); disebut pemrogram pertama"], ["Alan Turing", "Mesin Turing (1936), model teoretis komputasi"], ["John von Neumann", "Arsitektur program tersimpan (1945)"]]}}, {"h": "Generasi komputer", "table": {"cols": ["Generasi", "Teknologi utama"], "rows": [["I (1940-an–1950-an)", "Tabung vakum; ENIAC diperkenalkan 1946"], ["II (akhir 1950-an–1960-an)", "Transistor"], ["III (1960-an–1970-an)", "Sirkuit terpadu (IC)"], ["IV (1970-an–sekarang)", "Mikroprosesor; Intel 4004 (1971)"], ["V", "Kecerdasan artifisial dan komputasi paralel"]]}}]}, {"code": "DSI-02", "title": "Etika, hukum, dan hak kekayaan intelektual", "scope": "UU ITE, UU PDP, hak cipta, lisensi", "src": "Kelas X", "tier": 1, "sum": "Aturan hukum dan etika di ruang digital: UU ITE, pelindungan data pribadi, hak cipta, dan jenis lisensi perangkat lunak.", "blocks": [{"h": "Undang-undang", "li": ["<b>UU ITE<\/b>: UU No. 11 Tahun 2008, diubah dengan UU No. 19 Tahun 2016 dan UU No. 1 Tahun 2024.", "UU Pelindungan Data Pribadi (PDP): UU No. 27 Tahun 2022.", "UU Hak Cipta: UU No. 28 Tahun 2014; hak cipta muncul otomatis saat karya diwujudkan, tanpa harus didaftarkan.", "Hak cipta program komputer berlaku 50 tahun sejak pertama kali diumumkan (UU No. 28 Tahun 2014)."]}, {"h": "Lisensi perangkat lunak", "table": {"cols": ["Jenis", "Ciri", "Contoh"], "rows": [["Proprietary", "Berbayar, kode sumber tertutup", "Microsoft Windows"], ["Open source", "Kode sumber terbuka, boleh dipelajari dan diubah", "Linux, LibreOffice"], ["Freeware", "Gratis tetapi kode sumber tertutup", "Banyak aplikasi gratis"], ["Shareware", "Gratis untuk masa uji coba atau fitur terbatas", "Versi percobaan"]]}}, {"h": "Etika", "li": ["Plagiarisme adalah memakai karya orang lain tanpa menyebut sumber; cantumkan rujukan.", "Jejak digital sulit dihapus; pikirkan dulu sebelum mengunggah."]}], "traps": ["Open source tidak selalu berarti gratis, dan freeware tidak berarti kode sumbernya terbuka.", "Hak cipta tidak perlu didaftarkan agar berlaku; pencatatan hanya memperkuat bukti."]}, {"code": "DSI-03", "title": "Dampak sosial dan karier informatika", "scope": "Dampak positif-negatif, profesi", "src": "Kelas X", "tier": 2, "sum": "Teknologi informasi membawa manfaat dan risiko bagi masyarakat, serta membuka berbagai profesi di bidang informatika.", "blocks": [{"h": "Dampak", "li": ["Positif: akses informasi, layanan publik daring, pembelajaran jarak jauh, peluang usaha digital.", "Negatif: hoaks, perundungan siber, kecanduan gawai, pelanggaran privasi, kesenjangan digital antarwilayah.", "Kesenjangan digital (digital divide): perbedaan akses dan kemampuan memakai teknologi antarkelompok masyarakat."]}, {"h": "Profesi", "li": ["Pengembang perangkat lunak, analis data, ilmuwan data, administrator jaringan, ahli keamanan siber, desainer UI/UX, administrator basis data."]}]}, {"code": "DSI-04", "title": "Praktik lintas bidang", "scope": "Siklus proyek, kerja tim, dokumentasi", "src": "Kelas X–XII", "tier": 2, "sum": "Mengerjakan proyek informatika dalam tim: dari menganalisis kebutuhan pengguna sampai menguji dan mendokumentasikan produk.", "blocks": [{"h": "Siklus pengembangan", "li": ["Tahap umum: analisis kebutuhan, desain, implementasi (membuat), pengujian, dokumentasi, dan pemeliharaan.", "<b>Model waterfall<\/b>: tahap berurutan satu per satu; model agile: siklus pendek berulang dengan umpan balik pengguna.", "Prototipe adalah versi awal untuk diuji pengguna sebelum produk dibuat penuh."]}, {"h": "Kerja tim", "li": ["Bagi peran sesuai keahlian, buat jadwal, catat keputusan, dan dokumentasikan agar orang lain dapat melanjutkan."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Informatika kelas X edisi 2021 dan edisi revisi 2023 menyusun bab dengan urutan berbeda; label kelas di peta ini hanya perkiraan.", "Ukuran kilobyte: SI memakai 1 KB = 1.000 byte, sedangkan banyak buku sekolah memakai 1 KB = 1.024 byte (secara baku 1 KiB). Ikuti buku sekolah saat ujian.", "Pemisah argumen rumus lembar kerja (titik koma atau koma) bergantung pada pengaturan bahasa aplikasi.", "Contoh program memakai Python, bahasa yang dipakai buku Informatika Kurikulum Merdeka; konsepnya sama di bahasa lain.", "Nomor dan tahun undang-undang sesuai keadaan 2024: UU ITE sudah dua kali diubah; cek perubahan sesudahnya."]}, {"title": "Rujukan", "items": ["Buku Informatika SMA kelas X (Kemendikbudristek, 2021; edisi revisi 2023) dan kelas XI (edisi revisi): daftar bab.", "Capaian Pembelajaran Informatika Fase E–F (Keputusan Kepala BSKAP No. 032/H/KR/2024), dari ringkasan sekunder; teks resminya tidak dapat dibuka dari lingkungan kerja ini.", "UU No. 11 Tahun 2008, UU No. 19 Tahun 2016, UU No. 1 Tahun 2024 (ITE); UU No. 27 Tahun 2022 (PDP); UU No. 28 Tahun 2014 (Hak Cipta)."]}]};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>

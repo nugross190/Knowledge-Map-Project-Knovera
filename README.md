@@ -9,7 +9,7 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank.html` | Question bank: practice (weighted 40/30/30, optional timer), full list, and per-topic progress. |
 | `docs/simulasi.html` | Round simulator for a moderator: compulsory round (babak wajib) with passed-on questions, buzzer round (babak rebutan), 1–3 teams, scoreboard, and a list of missed questions. |
 | `docs/peta-fisika.html` | Knowledge map for high-school physics (30 topics), the first of the general subject maps. |
-| `docs/peta-matematika.html` | Knowledge map for high-school mathematics (28 topics), covering Matematika and Matematika Tingkat Lanjut. |
+| `docs/peta-matematika.html` | Knowledge map for high-school mathematics (28 topics), covering Matematika and Matematika Tingkat Lanjut (Tingkat Lanjut topics are tagged). |
 | `docs/peta-kimia.html` | Knowledge map for high-school chemistry (26 topics), from atomic structure to macromolecules. |
 | `docs/peta-biologi.html` | Knowledge map for high-school biology (28 topics), from biodiversity to biotechnology. |
 | `docs/peta-ekonomi.html` | Knowledge map for high-school economics (28 topics), from scarcity to accounting. |
@@ -19,6 +19,9 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-bahasa-indonesia.html` | Knowledge map for Bahasa Indonesia (22 topics): reading, nonfiction and literary texts, language rules. |
 | `docs/peta-bahasa-inggris.html` | Knowledge map for Bahasa Inggris (22 topics): reading skills, text types, grammar. |
 | `docs/peta-sejarah.html` | Knowledge map for school and TKA history (24 topics), from historical method to Reformasi, plus world history. Separate from the LCCM kit (`peta.html`). |
+| `docs/peta-informatika.html` | Knowledge map for Informatika (25 topics), organised by its curriculum elements, from computational thinking to digital law. |
+| `docs/peta-pkwu.html` | Knowledge map for Prakarya dan Kewirausahaan (21 topics): entrepreneurship core plus crafts, engineering, cultivation, and food processing. |
+| `docs/peta-pjok.html` | Knowledge map for PJOK (21 topics): ball games, athletics, gymnastics, swimming, fitness, and health. |
 | `docs/bank-fisika.html` | Short-answer question bank for Fisika (255 questions, about a fifth with everyday-context items). |
 | `docs/bank-kimia.html` | Short-answer question bank for Kimia (210 questions, about a fifth with everyday-context items). |
 | `docs/bank-biologi.html` | Short-answer question bank for Biologi (214 questions, about a fifth with everyday-context items). |

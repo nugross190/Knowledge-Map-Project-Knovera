@@ -32,6 +32,7 @@ map
 | `blurb` | SHOULD | One sentence, ≤ 25 words, shown on the subject's card on the home page. Without it the card lists the domain names. |
 | `source_note` | SHOULD | Which curriculum and textbooks the topic order follows, and what is uncertain about grade placement. |
 | `path_title`, `path_note`, `path` | MAY | A study-order strip. Use it when the subject has real prerequisites (physics, math, chemistry). Each step: `label` (one word), `title`, `note` (≤ 6 words), `to` (an existing topic code). 5–10 steps. |
+| `lanjut_note` | SHOULD when any topic has `lanjut` | One or two sentences, shown under the legend: what the Lanjut tag means in this subject and what it was based on (textbook split, TKA elective paper). |
 | `domains` | MUST | 3–8 domains. |
 | `notes` | SHOULD | 1–3 cards. One MUST list what readers should double-check (conventions that differ between books, uncertain facts). One SHOULD list sources. |
 
@@ -57,6 +58,7 @@ map
 | `sum` | MUST | One sentence, ≤ 30 words: what the topic covers. Shown when the card is closed. |
 | `blocks` | MUST | 1–5 blocks (see §3). |
 | `traps` | SHOULD | 1–3 commonly confused facts. Tier 1 topics MUST have at least one. |
+| `lanjut` | MAY | `true` marks a topic of the grade XI–XII elective *Tingkat Lanjut* subject (Matematika, Bahasa Indonesia, Bahasa Inggris, Sejarah Tingkat Lanjut). The page shows a "Lanjut" badge and a "Hanya Tingkat Lanjut" filter. Tag what is specific to or stressed by the elective, not everything it also covers; say which in `lanjut_note`. Omit the field otherwise. |
 
 ### Block
 
@@ -126,4 +128,4 @@ A map that needs more than 35 topics SHOULD be split by grade (`fisika-x.json`, 
 
 ## 7. Enforced by `build.py`
 
-Missing required fields, `id` not matching the file name, duplicate codes, codes not prefixed by their domain id, tiers outside 1–3, blocks without a heading or content, table rows of the wrong length, and path steps pointing at unknown codes. Everything else in this spec is checked through `quality-checklist.md`.
+Missing required fields, `id` not matching the file name, duplicate codes, codes not prefixed by their domain id, tiers outside 1–3, blocks without a heading or content, table rows of the wrong length, path steps pointing at unknown codes, and a `lanjut` value that is not true or false. A tagged map without `lanjut_note` is a lint warning. Everything else in this spec is checked through `quality-checklist.md`.

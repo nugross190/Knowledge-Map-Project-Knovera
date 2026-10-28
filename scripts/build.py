@@ -179,6 +179,8 @@ def validate_map(name, m):
                     errors.append(f"{where}: {code} missing '{key}'")
             if t.get("tier") not in (1, 2, 3):
                 errors.append(f"{where}: {code} tier must be 1, 2 or 3")
+            if "lanjut" in t and not isinstance(t["lanjut"], bool):
+                errors.append(f"{where}: {code} 'lanjut' must be true or false")
             for b in t.get("blocks", []):
                 if not b.get("h") or not (b.get("li") or b.get("table")):
                     errors.append(f"{where}: {code} has a block without a heading or content")
@@ -434,6 +436,8 @@ def lint_map(name, m):
         if not (0.5 <= share[1] <= 0.7 and 0.2 <= share[2] <= 0.4 and share[3] <= 0.15):
             mix = ", ".join(f"tier {k} {share[k]:.0%}" for k in (1, 2, 3))
             warnings.append(f"{where}: tier mix {mix} (spec: 50-70% / 20-40% / <=15%)")
+    if any(t.get("lanjut") for t in topics) and not m.get("lanjut_note"):
+        warnings.append(f"{where}: topics tagged 'lanjut' but no 'lanjut_note' saying what the tag means here")
     if not m.get("blurb"):
         warnings.append(f"{where}: no 'blurb' for the home-page card")
     elif words(m["blurb"]) > 25:
