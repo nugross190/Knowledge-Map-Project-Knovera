@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Bahasa Arab SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "bahasa-arab", "subject": "Bahasa dan Sastra Arab", "title": "Peta Materi Bahasa Arab SMA", "lead": "Seluruh materi Bahasa Arab SMA, dari huruf hijaiah dan harakat sampai qawaid (tata bahasa), tema percakapan sehari-hari, serta budaya dan sastra Arab, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Arab dan transliterasi. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Huruf hijaiah dan harakat, akar kata, isim-fi'il-harf, dhamir, isim isyarah, jumlah ismiyah dan fi'liyah, fi'il madhi-mudhari'-amr, tema sehari-hari, dan sastra Arab.", "source_note": "Bahasa dan Sastra Arab adalah mapel pilihan kelas XI–XII. Peta merangkum materi buku Bahasa Arab SMA dan MA tingkat dasar: huruf, qawaid, dan tema (maudhu'). Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Transliterasi disederhanakan seperti buku sekolah (dh, dz, sy, ts, kh).", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: huruf dan harakat, perkenalan, pembagian kata dan dhamir, kalimat nominal, lalu kata kerja dan kalimat verbal.", "path": [{"label": "Huruf", "title": "Huruf hijaiah dan harakat", "note": "28 huruf", "to": "HRF-01"}, {"label": "Kenalan", "title": "Ta'aruf", "note": "Salam, perkenalan", "to": "MWD-01"}, {"label": "Kata", "title": "Isim, fi'il, harf", "note": "Tiga jenis kata", "to": "NHW-01"}, {"label": "Dhamir", "title": "Kata ganti", "note": "Ana, anta, huwa", "to": "NHW-03"}, {"label": "Ismiyah", "title": "Mubtada' dan khabar", "note": "Kalimat nominal", "to": "NHW-05"}, {"label": "Fi'il", "title": "Madhi dan mudhari'", "note": "Perubahan kata kerja", "to": "NHW-06"}, {"label": "Fi'liyah", "title": "Fi'il, fa'il, maf'ul", "note": "Kalimat verbal", "to": "NHW-08"}], "domains": [{"id": "HRF", "name": "Huruf dan kata", "short": "Huruf", "note": "Huruf hijaiah, harakat, alif lam, bentuk huruf bersambung, dan akar kata.", "topics": [{"code": "HRF-01", "title": "Huruf hijaiah dan harakat", "scope": "Harakat, tanwin, syamsiyah-qamariyah", "src": "Kelas XI", "tier": 1, "sum": "Bahasa Arab ditulis dari kanan ke kiri dengan 28 huruf hijaiah; bunyi vokal ditandai harakat.", "blocks": [{"h": "Tanda baca", "table": {"cols": ["Tanda", "Bunyi"], "rows": [["Fathah (ـَ)", "a"], ["Kasrah (ـِ)", "i"], ["Dammah (ـُ)", "u"], ["Sukun (ـْ)", "Mati, tanpa vokal"], ["Tasydid (ـّ)", "Huruf dibaca dobel"], ["Tanwin (ـً ـٍ ـٌ)", "an, in, un"]]}}, {"h": "Alif lam", "li": ["<b>Alif lam qamariyah<\/b>: lam dibaca jelas, misalnya اَلْقَمَرُ al-qamaru (bulan).", "Alif lam syamsiyah: lam lebur ke huruf berikutnya yang bertasydid, misalnya اَلشَّمْسُ asy-syamsu (matahari).", "Huruf syamsiyah 14 dan huruf qamariyah 14."]}], "traps": ["Pada alif lam syamsiyah, huruf lam tidak dibaca; huruf sesudahnya dibaca dobel."]}, {"code": "HRF-02", "title": "Bentuk huruf bersambung", "scope": "Awal, tengah, akhir", "src": "Kelas XI", "tier": 2, "sum": "Huruf Arab berubah bentuk menurut letaknya dalam kata; enam huruf tidak bersambung dengan huruf sesudahnya.", "blocks": [{"h": "Aturan", "li": ["Sebagian besar huruf punya bentuk berdiri sendiri, awal, tengah, dan akhir.", "<b>Huruf yang tidak bersambung ke kiri<\/b>: ا د ذ ر ز و.", "Ta marbutah (ة) hanya muncul di akhir kata dan dibaca h bila waqaf (berhenti)."]}], "traps": ["Huruf ا د ذ ر ز و tetap disambung dari kanan, tetapi tidak menyambung ke huruf sesudahnya."]}, {"code": "HRF-03", "title": "Akar kata dan kamus", "scope": "Huruf asal tiga, wazan", "src": "Kelas XII", "tier": 2, "sum": "Sebagian besar kata Arab dibentuk dari akar tiga huruf; kamus Arab tradisional disusun menurut akar kata.", "blocks": [{"h": "Akar kata", "li": ["<b>Akar ك ت ب (k-t-b)<\/b> bermakna menulis: كَتَبَ kataba (menulis), كِتَابٌ kitab (buku), كَاتِبٌ katib (penulis), مَكْتَبٌ maktab (meja/kantor), مَكْتَبَةٌ maktabah (perpustakaan).", "Pola (wazan) dasar kata kerja adalah فَعَلَ fa'ala.", "Untuk mencari kata di kamus seperti Al-Munawwir, kembalikan dulu kata ke akar tiga hurufnya."]}]}]}, {"id": "NHW", "name": "Qawaid (tata bahasa)", "short": "Qawaid", "note": "Jenis kata, jenis dan jumlah isim, kata ganti, kata tunjuk, kalimat nominal dan verbal, kata kerja, dan huruf jar.", "topics": [{"code": "NHW-01", "title": "Isim, fi'il, dan harf", "scope": "Tiga jenis kata", "src": "Kelas XI", "tier": 1, "sum": "Kata dalam bahasa Arab dibagi tiga: isim (kata benda), fi'il (kata kerja), dan harf (kata tugas).", "blocks": [{"h": "Jenis kata", "table": {"cols": ["Jenis", "Pengertian", "Ciri atau contoh"], "rows": [["Isim", "Kata benda, sifat, atau kata ganti", "Bisa diberi alif lam atau tanwin: اَلْكِتَابُ، كِتَابٌ"], ["Fi'il", "Kata kerja yang terikat waktu", "كَتَبَ (telah menulis), يَكْتُبُ (sedang menulis)"], ["Harf", "Kata tugas yang baru bermakna bila bersambung", "فِيْ، مِنْ، إِلَى"]]}}], "traps": ["Kata yang dapat diberi alif lam atau tanwin adalah isim, bukan fi'il."]}, {"code": "NHW-02", "title": "Jenis dan jumlah isim", "scope": "Mudzakkar-muannats, mufrad-mutsanna-jamak", "src": "Kelas XI", "tier": 1, "sum": "Isim dibedakan menurut jenis (laki-laki atau perempuan) dan jumlah (tunggal, dua, atau banyak).", "blocks": [{"h": "Jenis", "li": ["Mudzakkar (maskulin): مُدَرِّسٌ mudarris (guru laki-laki).", "<b>Muannats<\/b> (feminin) umumnya ditandai ta marbutah: مُدَرِّسَةٌ mudarrisah (guru perempuan)."]}, {"h": "Jumlah", "table": {"cols": ["Bentuk", "Ciri", "Contoh"], "rows": [["Mufrad (tunggal)", "Satu", "طَالِبٌ thalib"], ["Mutsanna (dua)", "Akhiran -ani atau -aini", "طَالِبَانِ thaliban"], ["Jamak mudzakkar salim", "Akhiran -una atau -ina", "مُدَرِّسُوْنَ mudarrisun"], ["Jamak muannats salim", "Akhiran -at", "مُدَرِّسَاتٌ mudarrisat"], ["Jamak taksir", "Bentuk berubah tidak beraturan", "كِتَابٌ → كُتُبٌ kutub"]]}}], "traps": ["Jamak taksir tidak punya akhiran tetap; bentuknya harus dihafal (qalam → aqlam, walad → aulad)."]}, {"code": "NHW-03", "title": "Dhamir (kata ganti)", "scope": "Dhamir munfashil", "src": "Kelas XI", "tier": 1, "sum": "Kata ganti orang dalam bahasa Arab membedakan jumlah dan jenis kelamin.", "blocks": [{"h": "Dhamir", "table": {"cols": ["Orang", "Tunggal", "Dua", "Jamak"], "rows": [["Pertama", "أَنَا ana (saya)", "نَحْنُ nahnu (kami)", "نَحْنُ nahnu (kami)"], ["Kedua laki-laki", "أَنْتَ anta", "أَنْتُمَا antuma", "أَنْتُمْ antum"], ["Kedua perempuan", "أَنْتِ anti", "أَنْتُمَا antuma", "أَنْتُنَّ antunna"], ["Ketiga laki-laki", "هُوَ huwa", "هُمَا huma", "هُمْ hum"], ["Ketiga perempuan", "هِيَ hiya", "هُمَا huma", "هُنَّ hunna"]]}}], "traps": ["أَنْتَ (anta) untuk laki-laki, أَنْتِ (anti) untuk perempuan; bedanya hanya harakat akhir."]}, {"code": "NHW-04", "title": "Isim isyarah (kata tunjuk)", "scope": "Hadza, hadzihi, dzalika, tilka", "src": "Kelas XI", "tier": 1, "sum": "Kata tunjuk dibedakan menurut jarak (dekat atau jauh), jenis, dan jumlah benda yang ditunjuk.", "blocks": [{"h": "Isim isyarah", "table": {"cols": ["Untuk", "Dekat (ini)", "Jauh (itu)"], "rows": [["Mudzakkar tunggal", "هٰذَا hadza", "ذٰلِكَ dzalika"], ["Muannats tunggal", "هٰذِهِ hadzihi", "تِلْكَ tilka"], ["Jamak (manusia)", "هٰؤُلَاءِ ha'ula'i", "أُولٰئِكَ ula'ika"]]}}, {"h": "Contoh", "li": ["<b>هٰذَا كِتَابٌ<\/b> (ini buku); هٰذِهِ سَبُّوْرَةٌ (ini papan tulis); تِلْكَ مَدْرَسَةٌ (itu sekolah)."]}], "traps": ["Kata benda bertanda ta marbutah memakai هٰذِهِ atau تِلْكَ, bukan هٰذَا atau ذٰلِكَ."]}, {"code": "NHW-05", "title": "Jumlah ismiyah", "scope": "Mubtada' dan khabar", "src": "Kelas XI", "tier": 1, "sum": "Kalimat nominal (jumlah ismiyah) diawali isim dan terdiri atas mubtada' (subjek) dan khabar (predikat).", "blocks": [{"h": "Aturan", "li": ["<b>Mubtada' dan khabar sama-sama marfu'<\/b> (umumnya berharakat akhir dammah).", "Mubtada' biasanya ma'rifah (tertentu, misalnya beralif lam); khabar biasanya nakirah.", "Khabar menyesuaikan mubtada' dalam jenis dan jumlah: اَلطَّالِبُ مُجْتَهِدٌ، اَلطَّالِبَةُ مُجْتَهِدَةٌ."]}, {"h": "Contoh", "li": ["اَلْبَيْتُ كَبِيْرٌ (rumah itu besar); اَلْمُدَرِّسُ فِي الْفَصْلِ (guru ada di kelas)."]}], "traps": ["Bila mubtada' muannats, khabar sifatnya juga muannats."]}, {"code": "NHW-06", "title": "Fi'il madhi dan mudhari'", "scope": "Perubahan kata kerja (tashrif)", "src": "Kelas XI–XII", "tier": 1, "sum": "Fi'il madhi menyatakan perbuatan lampau; fi'il mudhari' menyatakan perbuatan sekarang atau akan datang; keduanya berubah menurut pelaku.", "blocks": [{"h": "Perubahan كَتَبَ", "table": {"cols": ["Pelaku", "Madhi (telah)", "Mudhari' (sedang/akan)"], "rows": [["هُوَ huwa", "كَتَبَ kataba", "يَكْتُبُ yaktubu"], ["هِيَ hiya", "كَتَبَتْ katabat", "تَكْتُبُ taktubu"], ["أَنْتَ anta", "كَتَبْتَ katabta", "تَكْتُبُ taktubu"], ["أَنَا ana", "كَتَبْتُ katabtu", "أَكْتُبُ aktubu"], ["نَحْنُ nahnu", "كَتَبْنَا katabna", "نَكْتُبُ naktubu"], ["هُمْ hum", "كَتَبُوْا katabu", "يَكْتُبُوْنَ yaktubuna"]]}}, {"h": "Ciri mudhari'", "li": ["<b>Fi'il mudhari'<\/b> diawali salah satu huruf أ ن ي ت (sering dihafal \"anaitu\")."]}], "traps": ["تَكْتُبُ bisa berarti \"kamu (laki-laki) menulis\" atau \"dia (perempuan) menulis\"; konteks menentukannya."]}, {"code": "NHW-07", "title": "Fi'il amr dan nahi", "scope": "Perintah dan larangan", "src": "Kelas XII", "tier": 2, "sum": "Fi'il amr menyatakan perintah; larangan dibentuk dengan لَا nahiyah ditambah fi'il mudhari' yang dijazmkan.", "blocks": [{"h": "Bentuk", "li": ["<b>Amr<\/b>: اُكْتُبْ uktub (tulislah!), اِقْرَأْ iqra' (bacalah!), اِجْلِسْ ijlis (duduklah!).", "Nahi: لَا تَكْتُبْ la taktub (jangan menulis!), لَا تَجْلِسْ la tajlis.", "Amr untuk perempuan: اُكْتُبِيْ uktubi; untuk jamak laki-laki: اُكْتُبُوْا uktubu."]}]}, {"code": "NHW-08", "title": "Jumlah fi'liyah", "scope": "Fi'il, fa'il, maf'ul bih", "src": "Kelas XII", "tier": 1, "sum": "Kalimat verbal (jumlah fi'liyah) diawali fi'il, diikuti fa'il (pelaku) dan bila perlu maf'ul bih (objek).", "blocks": [{"h": "Aturan", "li": ["<b>Fa'il marfu'<\/b> (umumnya dammah); maf'ul bih manshub (umumnya fathah).", "Contoh: قَرَأَ الطَّالِبُ الْكِتَابَ qara'a ath-thalibu al-kitaba (siswa itu membaca buku).", "Bila fa'il muannats, fi'il diberi ta: قَرَأَتِ الطَّالِبَةُ.", "Bila fa'il berupa isim zhahir jamak, fi'il tetap tunggal: كَتَبَ الطُّلَّابُ."]}], "traps": ["Pelaku (fa'il) berharakat dammah dan objek (maf'ul bih) berharakat fathah; jangan tertukar."]}, {"code": "NHW-09", "title": "Huruf jar", "scope": "Min, ila, 'an, 'ala, fi, bi, li", "src": "Kelas XI–XII", "tier": 2, "sum": "Huruf jar adalah kata depan yang membuat isim sesudahnya majrur (umumnya berharakat kasrah).", "blocks": [{"h": "Huruf jar", "table": {"cols": ["Huruf", "Arti"], "rows": [["مِنْ min", "Dari"], ["إِلَى ila", "Ke"], ["عَنْ 'an", "Tentang, dari"], ["عَلَى 'ala", "Di atas"], ["فِيْ fi", "Di dalam"], ["بِـ bi", "Dengan"], ["لِـ li", "Untuk, milik"]]}}, {"h": "Contoh", "li": ["<b>ذَهَبْتُ إِلَى الْمَدْرَسَةِ<\/b>: kata الْمَدْرَسَةِ berharakat kasrah karena didahului huruf jar."]}]}]}, {"id": "MWD", "name": "Maudhu' (tema sehari-hari)", "short": "Tema", "note": "Perkenalan, bilangan dan jam, keluarga dan rumah, sekolah, hari, serta letak benda.", "topics": [{"code": "MWD-01", "title": "Ta'aruf (perkenalan)", "scope": "Salam, perkenalan, sapaan", "src": "Kelas XI", "tier": 1, "sum": "Ungkapan salam, menanyakan kabar, dan memperkenalkan diri dalam bahasa Arab.", "blocks": [{"h": "Ungkapan", "table": {"cols": ["Ungkapan", "Jawaban", "Arti"], "rows": [["صَبَاحَ الْخَيْرِ shabahal khair", "صَبَاحَ النُّوْرِ shabahan nur", "Selamat pagi"], ["مَسَاءَ الْخَيْرِ masa'al khair", "مَسَاءَ النُّوْرِ masa'an nur", "Selamat sore/malam"], ["كَيْفَ حَالُكَ؟ kaifa haluka?", "بِخَيْرٍ، اَلْحَمْدُ لِلّٰهِ bikhair, alhamdulillah", "Apa kabar? Baik"], ["شُكْرًا syukran", "عَفْوًا 'afwan", "Terima kasih, sama-sama"], ["أَهْلًا وَسَهْلًا ahlan wa sahlan", "", "Selamat datang"]]}}, {"h": "Perkenalan", "li": ["<b>مَا اسْمُكَ؟<\/b> (siapa namamu?) dijawab اِسْمِيْ ... (nama saya ...).", "مِنْ أَيْنَ أَنْتَ؟ (dari mana kamu?) dijawab أَنَا مِنْ إِنْدُوْنِيْسِيَا."]}], "traps": ["Jawaban صَبَاحَ الْخَيْرِ adalah صَبَاحَ النُّوْرِ, bukan mengulang ucapan yang sama."]}, {"code": "MWD-02", "title": "Bilangan dan jam", "scope": "Al-'adad, as-sa'ah", "src": "Kelas XI", "tier": 1, "sum": "Bilangan 1–10 dan cara menyebut jam dalam bahasa Arab.", "blocks": [{"h": "Bilangan", "table": {"cols": ["Angka", "Bahasa Arab"], "rows": [["1", "وَاحِدٌ wahid"], ["2", "اِثْنَانِ itsnan"], ["3", "ثَلَاثَةٌ tsalatsah"], ["4", "أَرْبَعَةٌ arba'ah"], ["5", "خَمْسَةٌ khamsah"], ["6", "سِتَّةٌ sittah"], ["7", "سَبْعَةٌ sab'ah"], ["8", "ثَمَانِيَةٌ tsamaniyah"], ["9", "تِسْعَةٌ tis'ah"], ["10", "عَشَرَةٌ 'asyarah"]]}}, {"h": "Jam", "li": ["<b>كَمِ السَّاعَةُ؟<\/b> (jam berapa?) dijawab misalnya اَلسَّاعَةُ الثَّالِثَةُ (jam tiga).", "Setengah: وَالنِّصْفُ wan-nishfu; seperempat: وَالرُّبْعُ war-rub'u."]}], "traps": ["Untuk jam dipakai bilangan bertingkat (ats-tsalitsah), bukan bilangan biasa (tsalatsah)."]}, {"code": "MWD-03", "title": "Keluarga dan rumah", "scope": "Al-usrah, al-bait", "src": "Kelas XI", "tier": 2, "sum": "Kosakata anggota keluarga dan bagian rumah.", "blocks": [{"h": "Kosakata", "table": {"cols": ["Arab", "Arti", "Arab", "Arti"], "rows": [["أَبٌ ab", "Ayah", "غُرْفَةٌ ghurfah", "Kamar"], ["أُمٌّ umm", "Ibu", "مَطْبَخٌ mathbakh", "Dapur"], ["أَخٌ akh", "Saudara laki-laki", "حَمَّامٌ hammam", "Kamar mandi"], ["أُخْتٌ ukht", "Saudara perempuan", "حَدِيْقَةٌ hadiqah", "Taman, kebun"], ["جَدٌّ jadd", "Kakek", "بَيْتٌ bait", "Rumah"]]}}]}, {"code": "MWD-04", "title": "Sekolah dan kegiatan harian", "scope": "Al-madrasah, al-yaumiyyat", "src": "Kelas XI–XII", "tier": 2, "sum": "Kosakata sekolah dan kegiatan sehari-hari.", "blocks": [{"h": "Kosakata", "li": ["مَدْرَسَةٌ madrasah (sekolah), فَصْلٌ fashl (kelas), مُدَرِّسٌ mudarris (guru), طَالِبٌ thalib (siswa), مَكْتَبَةٌ maktabah (perpustakaan), سَبُّوْرَةٌ sabburah (papan tulis).", "Kegiatan: أَسْتَيْقِظُ (saya bangun), أَذْهَبُ إِلَى الْمَدْرَسَةِ (saya pergi ke sekolah), أَتَعَلَّمُ (saya belajar), أَنَامُ (saya tidur).", "<b>مَكْتَبَةٌ<\/b> berarti perpustakaan atau toko buku, bukan kantor (مَكْتَبٌ)."]}]}, {"code": "MWD-05", "title": "Hari dan waktu", "scope": "Al-ayyam", "src": "Kelas XI–XII", "tier": 2, "sum": "Nama hari dalam bahasa Arab dan keterangan waktu.", "blocks": [{"h": "Hari", "table": {"cols": ["Hari", "Bahasa Arab"], "rows": [["Minggu", "اَلْأَحَدُ al-ahad"], ["Senin", "اَلْاِثْنَيْنِ al-itsnain"], ["Selasa", "اَلثُّلَاثَاءُ ats-tsulatsa'"], ["Rabu", "اَلْأَرْبِعَاءُ al-arbi'a'"], ["Kamis", "اَلْخَمِيْسُ al-khamis"], ["Jumat", "اَلْجُمُعَةُ al-jumu'ah"], ["Sabtu", "اَلسَّبْتُ as-sabt"]]}}, {"h": "Waktu", "li": ["<b>أَمْسِ<\/b> (kemarin), اَلْيَوْمَ (hari ini), غَدًا (besok)."]}], "traps": ["Al-ahad (satu) adalah hari Minggu, karena hitungan hari dimulai dari Minggu."]}, {"code": "MWD-06", "title": "Letak dan arah", "scope": "Zharaf makan", "src": "Kelas XII", "tier": 2, "sum": "Kata keterangan tempat untuk menyebut letak benda.", "blocks": [{"h": "Letak", "table": {"cols": ["Arab", "Arti"], "rows": [["فَوْقَ fauqa", "Di atas"], ["تَحْتَ tahta", "Di bawah"], ["أَمَامَ amama", "Di depan"], ["خَلْفَ khalfa", "Di belakang"], ["بِجَانِبِ bijanibi", "Di samping"], ["بَيْنَ baina", "Di antara"]]}}, {"h": "Contoh", "li": ["اَلْكِتَابُ فَوْقَ الْمَكْتَبِ (buku itu di atas meja)."]}]}]}, {"id": "TSQ", "name": "Budaya dan sastra Arab", "short": "Budaya", "note": "Bahasa Arab di dunia dan karya sastra Arab.", "topics": [{"code": "TSQ-01", "title": "Bahasa Arab di dunia", "scope": "Liga Arab, bahasa resmi PBB", "src": "Kelas XI", "tier": 3, "sum": "Kedudukan bahasa Arab sebagai bahasa resmi banyak negara dan organisasi internasional.", "blocks": [{"h": "Fakta", "li": ["Liga Arab beranggotakan 22 negara dan wilayah.", "<b>Bahasa Arab menjadi bahasa resmi PBB<\/b> pada 1973; Hari Bahasa Arab Sedunia diperingati setiap 18 Desember.", "Bahasa Arab fusha (baku) dipakai dalam Al-Qur'an, buku, dan media resmi; bahasa amiyah (dialek) dipakai sehari-hari dan berbeda antarnegara."]}]}, {"code": "TSQ-02", "title": "Sastra Arab", "scope": "Syair, mu'allaqat, sastrawan modern", "src": "Kelas XII", "tier": 3, "sum": "Sastra Arab berkembang dari syair Arab pra-Islam sampai novel modern.", "blocks": [{"h": "Karya dan tokoh", "li": ["Mu'allaqat: kumpulan syair terbaik masa pra-Islam; salah satu penyairnya Imru' al-Qais.", "<b>Naguib Mahfouz<\/b> (Mesir) menerima Hadiah Nobel Sastra pada 1988.", "Kahlil Gibran (kelahiran Lebanon) dikenal lewat Sang Nabi (The Prophet, 1923).", "Unsur syair Arab: wazan (pola irama) dan qafiyah (rima akhir)."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Transliterasi disederhanakan seperti buku sekolah; sistem resmi (SKB Menteri Agama dan Menteri P dan K 1987) memakai tanda yang lebih rinci.", "Buku Bahasa Arab SMA dan MA berbeda dalam urutan tema dan qawaid; cocokkan dengan buku sekolah.", "Huruf Arab pada halaman ini memakai fon perangkat; harakat bisa tampil sedikit bergeser pada sebagian perangkat.", "Jumlah anggota Liga Arab (22) dihitung termasuk Palestina; status keanggotaan beberapa negara pernah ditangguhkan."]}, {"title": "Rujukan", "items": ["Buku Bahasa Arab SMA kelas XI–XII dan buku Bahasa Arab MA (Kementerian Agama): pembagian materi umum.", "Kaidah nahwu dan sharaf dasar: jumlah ismiyah, jumlah fi'liyah, tashrif fi'il.", "PBB: bahasa Arab sebagai bahasa resmi (1973) dan Hari Bahasa Arab Sedunia (18 Desember)."]}], "bank": "bank-bahasa-arab.html"};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>

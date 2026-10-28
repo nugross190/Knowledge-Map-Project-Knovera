@@ -1,0 +1,929 @@
+{
+ "id": "bahasa-arab",
+ "subject": "Bahasa dan Sastra Arab",
+ "title": "Peta Materi Bahasa Arab SMA",
+ "lead": "Seluruh materi Bahasa Arab SMA, dari huruf hijaiah dan harakat sampai qawaid (tata bahasa), tema percakapan sehari-hari, serta budaya dan sastra Arab, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Arab dan transliterasi. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
+ "blurb": "Huruf hijaiah dan harakat, akar kata, isim-fi'il-harf, dhamir, isim isyarah, jumlah ismiyah dan fi'liyah, fi'il madhi-mudhari'-amr, tema sehari-hari, dan sastra Arab.",
+ "source_note": "Bahasa dan Sastra Arab adalah mapel pilihan kelas XI–XII. Peta merangkum materi buku Bahasa Arab SMA dan MA tingkat dasar: huruf, qawaid, dan tema (maudhu'). Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Transliterasi disederhanakan seperti buku sekolah (dh, dz, sy, ts, kh).",
+ "path_title": "Alur belajar",
+ "path_note": "Urutan yang disarankan: huruf dan harakat, perkenalan, pembagian kata dan dhamir, kalimat nominal, lalu kata kerja dan kalimat verbal.",
+ "path": [
+  {
+   "label": "Huruf",
+   "title": "Huruf hijaiah dan harakat",
+   "note": "28 huruf",
+   "to": "HRF-01"
+  },
+  {
+   "label": "Kenalan",
+   "title": "Ta'aruf",
+   "note": "Salam, perkenalan",
+   "to": "MWD-01"
+  },
+  {
+   "label": "Kata",
+   "title": "Isim, fi'il, harf",
+   "note": "Tiga jenis kata",
+   "to": "NHW-01"
+  },
+  {
+   "label": "Dhamir",
+   "title": "Kata ganti",
+   "note": "Ana, anta, huwa",
+   "to": "NHW-03"
+  },
+  {
+   "label": "Ismiyah",
+   "title": "Mubtada' dan khabar",
+   "note": "Kalimat nominal",
+   "to": "NHW-05"
+  },
+  {
+   "label": "Fi'il",
+   "title": "Madhi dan mudhari'",
+   "note": "Perubahan kata kerja",
+   "to": "NHW-06"
+  },
+  {
+   "label": "Fi'liyah",
+   "title": "Fi'il, fa'il, maf'ul",
+   "note": "Kalimat verbal",
+   "to": "NHW-08"
+  }
+ ],
+ "domains": [
+  {
+   "id": "HRF",
+   "name": "Huruf dan kata",
+   "short": "Huruf",
+   "note": "Huruf hijaiah, harakat, alif lam, bentuk huruf bersambung, dan akar kata.",
+   "topics": [
+    {
+     "code": "HRF-01",
+     "title": "Huruf hijaiah dan harakat",
+     "scope": "Harakat, tanwin, syamsiyah-qamariyah",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Bahasa Arab ditulis dari kanan ke kiri dengan 28 huruf hijaiah; bunyi vokal ditandai harakat.",
+     "blocks": [
+      {
+       "h": "Tanda baca",
+       "table": {
+        "cols": [
+         "Tanda",
+         "Bunyi"
+        ],
+        "rows": [
+         [
+          "Fathah (ـَ)",
+          "a"
+         ],
+         [
+          "Kasrah (ـِ)",
+          "i"
+         ],
+         [
+          "Dammah (ـُ)",
+          "u"
+         ],
+         [
+          "Sukun (ـْ)",
+          "Mati, tanpa vokal"
+         ],
+         [
+          "Tasydid (ـّ)",
+          "Huruf dibaca dobel"
+         ],
+         [
+          "Tanwin (ـً ـٍ ـٌ)",
+          "an, in, un"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Alif lam",
+       "li": [
+        "<b>Alif lam qamariyah</b>: lam dibaca jelas, misalnya اَلْقَمَرُ al-qamaru (bulan).",
+        "Alif lam syamsiyah: lam lebur ke huruf berikutnya yang bertasydid, misalnya اَلشَّمْسُ asy-syamsu (matahari).",
+        "Huruf syamsiyah 14 dan huruf qamariyah 14."
+       ]
+      }
+     ],
+     "traps": [
+      "Pada alif lam syamsiyah, huruf lam tidak dibaca; huruf sesudahnya dibaca dobel."
+     ]
+    },
+    {
+     "code": "HRF-02",
+     "title": "Bentuk huruf bersambung",
+     "scope": "Awal, tengah, akhir",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Huruf Arab berubah bentuk menurut letaknya dalam kata; enam huruf tidak bersambung dengan huruf sesudahnya.",
+     "blocks": [
+      {
+       "h": "Aturan",
+       "li": [
+        "Sebagian besar huruf punya bentuk berdiri sendiri, awal, tengah, dan akhir.",
+        "<b>Huruf yang tidak bersambung ke kiri</b>: ا د ذ ر ز و.",
+        "Ta marbutah (ة) hanya muncul di akhir kata dan dibaca h bila waqaf (berhenti)."
+       ]
+      }
+     ],
+     "traps": [
+      "Huruf ا د ذ ر ز و tetap disambung dari kanan, tetapi tidak menyambung ke huruf sesudahnya."
+     ]
+    },
+    {
+     "code": "HRF-03",
+     "title": "Akar kata dan kamus",
+     "scope": "Huruf asal tiga, wazan",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Sebagian besar kata Arab dibentuk dari akar tiga huruf; kamus Arab tradisional disusun menurut akar kata.",
+     "blocks": [
+      {
+       "h": "Akar kata",
+       "li": [
+        "<b>Akar ك ت ب (k-t-b)</b> bermakna menulis: كَتَبَ kataba (menulis), كِتَابٌ kitab (buku), كَاتِبٌ katib (penulis), مَكْتَبٌ maktab (meja/kantor), مَكْتَبَةٌ maktabah (perpustakaan).",
+        "Pola (wazan) dasar kata kerja adalah فَعَلَ fa'ala.",
+        "Untuk mencari kata di kamus seperti Al-Munawwir, kembalikan dulu kata ke akar tiga hurufnya."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "NHW",
+   "name": "Qawaid (tata bahasa)",
+   "short": "Qawaid",
+   "note": "Jenis kata, jenis dan jumlah isim, kata ganti, kata tunjuk, kalimat nominal dan verbal, kata kerja, dan huruf jar.",
+   "topics": [
+    {
+     "code": "NHW-01",
+     "title": "Isim, fi'il, dan harf",
+     "scope": "Tiga jenis kata",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Kata dalam bahasa Arab dibagi tiga: isim (kata benda), fi'il (kata kerja), dan harf (kata tugas).",
+     "blocks": [
+      {
+       "h": "Jenis kata",
+       "table": {
+        "cols": [
+         "Jenis",
+         "Pengertian",
+         "Ciri atau contoh"
+        ],
+        "rows": [
+         [
+          "Isim",
+          "Kata benda, sifat, atau kata ganti",
+          "Bisa diberi alif lam atau tanwin: اَلْكِتَابُ، كِتَابٌ"
+         ],
+         [
+          "Fi'il",
+          "Kata kerja yang terikat waktu",
+          "كَتَبَ (telah menulis), يَكْتُبُ (sedang menulis)"
+         ],
+         [
+          "Harf",
+          "Kata tugas yang baru bermakna bila bersambung",
+          "فِيْ، مِنْ، إِلَى"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Kata yang dapat diberi alif lam atau tanwin adalah isim, bukan fi'il."
+     ]
+    },
+    {
+     "code": "NHW-02",
+     "title": "Jenis dan jumlah isim",
+     "scope": "Mudzakkar-muannats, mufrad-mutsanna-jamak",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Isim dibedakan menurut jenis (laki-laki atau perempuan) dan jumlah (tunggal, dua, atau banyak).",
+     "blocks": [
+      {
+       "h": "Jenis",
+       "li": [
+        "Mudzakkar (maskulin): مُدَرِّسٌ mudarris (guru laki-laki).",
+        "<b>Muannats</b> (feminin) umumnya ditandai ta marbutah: مُدَرِّسَةٌ mudarrisah (guru perempuan)."
+       ]
+      },
+      {
+       "h": "Jumlah",
+       "table": {
+        "cols": [
+         "Bentuk",
+         "Ciri",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Mufrad (tunggal)",
+          "Satu",
+          "طَالِبٌ thalib"
+         ],
+         [
+          "Mutsanna (dua)",
+          "Akhiran -ani atau -aini",
+          "طَالِبَانِ thaliban"
+         ],
+         [
+          "Jamak mudzakkar salim",
+          "Akhiran -una atau -ina",
+          "مُدَرِّسُوْنَ mudarrisun"
+         ],
+         [
+          "Jamak muannats salim",
+          "Akhiran -at",
+          "مُدَرِّسَاتٌ mudarrisat"
+         ],
+         [
+          "Jamak taksir",
+          "Bentuk berubah tidak beraturan",
+          "كِتَابٌ → كُتُبٌ kutub"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Jamak taksir tidak punya akhiran tetap; bentuknya harus dihafal (qalam → aqlam, walad → aulad)."
+     ]
+    },
+    {
+     "code": "NHW-03",
+     "title": "Dhamir (kata ganti)",
+     "scope": "Dhamir munfashil",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Kata ganti orang dalam bahasa Arab membedakan jumlah dan jenis kelamin.",
+     "blocks": [
+      {
+       "h": "Dhamir",
+       "table": {
+        "cols": [
+         "Orang",
+         "Tunggal",
+         "Dua",
+         "Jamak"
+        ],
+        "rows": [
+         [
+          "Pertama",
+          "أَنَا ana (saya)",
+          "نَحْنُ nahnu (kami)",
+          "نَحْنُ nahnu (kami)"
+         ],
+         [
+          "Kedua laki-laki",
+          "أَنْتَ anta",
+          "أَنْتُمَا antuma",
+          "أَنْتُمْ antum"
+         ],
+         [
+          "Kedua perempuan",
+          "أَنْتِ anti",
+          "أَنْتُمَا antuma",
+          "أَنْتُنَّ antunna"
+         ],
+         [
+          "Ketiga laki-laki",
+          "هُوَ huwa",
+          "هُمَا huma",
+          "هُمْ hum"
+         ],
+         [
+          "Ketiga perempuan",
+          "هِيَ hiya",
+          "هُمَا huma",
+          "هُنَّ hunna"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "أَنْتَ (anta) untuk laki-laki, أَنْتِ (anti) untuk perempuan; bedanya hanya harakat akhir."
+     ]
+    },
+    {
+     "code": "NHW-04",
+     "title": "Isim isyarah (kata tunjuk)",
+     "scope": "Hadza, hadzihi, dzalika, tilka",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Kata tunjuk dibedakan menurut jarak (dekat atau jauh), jenis, dan jumlah benda yang ditunjuk.",
+     "blocks": [
+      {
+       "h": "Isim isyarah",
+       "table": {
+        "cols": [
+         "Untuk",
+         "Dekat (ini)",
+         "Jauh (itu)"
+        ],
+        "rows": [
+         [
+          "Mudzakkar tunggal",
+          "هٰذَا hadza",
+          "ذٰلِكَ dzalika"
+         ],
+         [
+          "Muannats tunggal",
+          "هٰذِهِ hadzihi",
+          "تِلْكَ tilka"
+         ],
+         [
+          "Jamak (manusia)",
+          "هٰؤُلَاءِ ha'ula'i",
+          "أُولٰئِكَ ula'ika"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Contoh",
+       "li": [
+        "<b>هٰذَا كِتَابٌ</b> (ini buku); هٰذِهِ سَبُّوْرَةٌ (ini papan tulis); تِلْكَ مَدْرَسَةٌ (itu sekolah)."
+       ]
+      }
+     ],
+     "traps": [
+      "Kata benda bertanda ta marbutah memakai هٰذِهِ atau تِلْكَ, bukan هٰذَا atau ذٰلِكَ."
+     ]
+    },
+    {
+     "code": "NHW-05",
+     "title": "Jumlah ismiyah",
+     "scope": "Mubtada' dan khabar",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Kalimat nominal (jumlah ismiyah) diawali isim dan terdiri atas mubtada' (subjek) dan khabar (predikat).",
+     "blocks": [
+      {
+       "h": "Aturan",
+       "li": [
+        "<b>Mubtada' dan khabar sama-sama marfu'</b> (umumnya berharakat akhir dammah).",
+        "Mubtada' biasanya ma'rifah (tertentu, misalnya beralif lam); khabar biasanya nakirah.",
+        "Khabar menyesuaikan mubtada' dalam jenis dan jumlah: اَلطَّالِبُ مُجْتَهِدٌ، اَلطَّالِبَةُ مُجْتَهِدَةٌ."
+       ]
+      },
+      {
+       "h": "Contoh",
+       "li": [
+        "اَلْبَيْتُ كَبِيْرٌ (rumah itu besar); اَلْمُدَرِّسُ فِي الْفَصْلِ (guru ada di kelas)."
+       ]
+      }
+     ],
+     "traps": [
+      "Bila mubtada' muannats, khabar sifatnya juga muannats."
+     ]
+    },
+    {
+     "code": "NHW-06",
+     "title": "Fi'il madhi dan mudhari'",
+     "scope": "Perubahan kata kerja (tashrif)",
+     "src": "Kelas XI–XII",
+     "tier": 1,
+     "sum": "Fi'il madhi menyatakan perbuatan lampau; fi'il mudhari' menyatakan perbuatan sekarang atau akan datang; keduanya berubah menurut pelaku.",
+     "blocks": [
+      {
+       "h": "Perubahan كَتَبَ",
+       "table": {
+        "cols": [
+         "Pelaku",
+         "Madhi (telah)",
+         "Mudhari' (sedang/akan)"
+        ],
+        "rows": [
+         [
+          "هُوَ huwa",
+          "كَتَبَ kataba",
+          "يَكْتُبُ yaktubu"
+         ],
+         [
+          "هِيَ hiya",
+          "كَتَبَتْ katabat",
+          "تَكْتُبُ taktubu"
+         ],
+         [
+          "أَنْتَ anta",
+          "كَتَبْتَ katabta",
+          "تَكْتُبُ taktubu"
+         ],
+         [
+          "أَنَا ana",
+          "كَتَبْتُ katabtu",
+          "أَكْتُبُ aktubu"
+         ],
+         [
+          "نَحْنُ nahnu",
+          "كَتَبْنَا katabna",
+          "نَكْتُبُ naktubu"
+         ],
+         [
+          "هُمْ hum",
+          "كَتَبُوْا katabu",
+          "يَكْتُبُوْنَ yaktubuna"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Ciri mudhari'",
+       "li": [
+        "<b>Fi'il mudhari'</b> diawali salah satu huruf أ ن ي ت (sering dihafal \"anaitu\")."
+       ]
+      }
+     ],
+     "traps": [
+      "تَكْتُبُ bisa berarti \"kamu (laki-laki) menulis\" atau \"dia (perempuan) menulis\"; konteks menentukannya."
+     ]
+    },
+    {
+     "code": "NHW-07",
+     "title": "Fi'il amr dan nahi",
+     "scope": "Perintah dan larangan",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Fi'il amr menyatakan perintah; larangan dibentuk dengan لَا nahiyah ditambah fi'il mudhari' yang dijazmkan.",
+     "blocks": [
+      {
+       "h": "Bentuk",
+       "li": [
+        "<b>Amr</b>: اُكْتُبْ uktub (tulislah!), اِقْرَأْ iqra' (bacalah!), اِجْلِسْ ijlis (duduklah!).",
+        "Nahi: لَا تَكْتُبْ la taktub (jangan menulis!), لَا تَجْلِسْ la tajlis.",
+        "Amr untuk perempuan: اُكْتُبِيْ uktubi; untuk jamak laki-laki: اُكْتُبُوْا uktubu."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "NHW-08",
+     "title": "Jumlah fi'liyah",
+     "scope": "Fi'il, fa'il, maf'ul bih",
+     "src": "Kelas XII",
+     "tier": 1,
+     "sum": "Kalimat verbal (jumlah fi'liyah) diawali fi'il, diikuti fa'il (pelaku) dan bila perlu maf'ul bih (objek).",
+     "blocks": [
+      {
+       "h": "Aturan",
+       "li": [
+        "<b>Fa'il marfu'</b> (umumnya dammah); maf'ul bih manshub (umumnya fathah).",
+        "Contoh: قَرَأَ الطَّالِبُ الْكِتَابَ qara'a ath-thalibu al-kitaba (siswa itu membaca buku).",
+        "Bila fa'il muannats, fi'il diberi ta: قَرَأَتِ الطَّالِبَةُ.",
+        "Bila fa'il berupa isim zhahir jamak, fi'il tetap tunggal: كَتَبَ الطُّلَّابُ."
+       ]
+      }
+     ],
+     "traps": [
+      "Pelaku (fa'il) berharakat dammah dan objek (maf'ul bih) berharakat fathah; jangan tertukar."
+     ]
+    },
+    {
+     "code": "NHW-09",
+     "title": "Huruf jar",
+     "scope": "Min, ila, 'an, 'ala, fi, bi, li",
+     "src": "Kelas XI–XII",
+     "tier": 2,
+     "sum": "Huruf jar adalah kata depan yang membuat isim sesudahnya majrur (umumnya berharakat kasrah).",
+     "blocks": [
+      {
+       "h": "Huruf jar",
+       "table": {
+        "cols": [
+         "Huruf",
+         "Arti"
+        ],
+        "rows": [
+         [
+          "مِنْ min",
+          "Dari"
+         ],
+         [
+          "إِلَى ila",
+          "Ke"
+         ],
+         [
+          "عَنْ 'an",
+          "Tentang, dari"
+         ],
+         [
+          "عَلَى 'ala",
+          "Di atas"
+         ],
+         [
+          "فِيْ fi",
+          "Di dalam"
+         ],
+         [
+          "بِـ bi",
+          "Dengan"
+         ],
+         [
+          "لِـ li",
+          "Untuk, milik"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Contoh",
+       "li": [
+        "<b>ذَهَبْتُ إِلَى الْمَدْرَسَةِ</b>: kata الْمَدْرَسَةِ berharakat kasrah karena didahului huruf jar."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "MWD",
+   "name": "Maudhu' (tema sehari-hari)",
+   "short": "Tema",
+   "note": "Perkenalan, bilangan dan jam, keluarga dan rumah, sekolah, hari, serta letak benda.",
+   "topics": [
+    {
+     "code": "MWD-01",
+     "title": "Ta'aruf (perkenalan)",
+     "scope": "Salam, perkenalan, sapaan",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Ungkapan salam, menanyakan kabar, dan memperkenalkan diri dalam bahasa Arab.",
+     "blocks": [
+      {
+       "h": "Ungkapan",
+       "table": {
+        "cols": [
+         "Ungkapan",
+         "Jawaban",
+         "Arti"
+        ],
+        "rows": [
+         [
+          "صَبَاحَ الْخَيْرِ shabahal khair",
+          "صَبَاحَ النُّوْرِ shabahan nur",
+          "Selamat pagi"
+         ],
+         [
+          "مَسَاءَ الْخَيْرِ masa'al khair",
+          "مَسَاءَ النُّوْرِ masa'an nur",
+          "Selamat sore/malam"
+         ],
+         [
+          "كَيْفَ حَالُكَ؟ kaifa haluka?",
+          "بِخَيْرٍ، اَلْحَمْدُ لِلّٰهِ bikhair, alhamdulillah",
+          "Apa kabar? Baik"
+         ],
+         [
+          "شُكْرًا syukran",
+          "عَفْوًا 'afwan",
+          "Terima kasih, sama-sama"
+         ],
+         [
+          "أَهْلًا وَسَهْلًا ahlan wa sahlan",
+          "",
+          "Selamat datang"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Perkenalan",
+       "li": [
+        "<b>مَا اسْمُكَ؟</b> (siapa namamu?) dijawab اِسْمِيْ ... (nama saya ...).",
+        "مِنْ أَيْنَ أَنْتَ؟ (dari mana kamu?) dijawab أَنَا مِنْ إِنْدُوْنِيْسِيَا."
+       ]
+      }
+     ],
+     "traps": [
+      "Jawaban صَبَاحَ الْخَيْرِ adalah صَبَاحَ النُّوْرِ, bukan mengulang ucapan yang sama."
+     ]
+    },
+    {
+     "code": "MWD-02",
+     "title": "Bilangan dan jam",
+     "scope": "Al-'adad, as-sa'ah",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Bilangan 1–10 dan cara menyebut jam dalam bahasa Arab.",
+     "blocks": [
+      {
+       "h": "Bilangan",
+       "table": {
+        "cols": [
+         "Angka",
+         "Bahasa Arab"
+        ],
+        "rows": [
+         [
+          "1",
+          "وَاحِدٌ wahid"
+         ],
+         [
+          "2",
+          "اِثْنَانِ itsnan"
+         ],
+         [
+          "3",
+          "ثَلَاثَةٌ tsalatsah"
+         ],
+         [
+          "4",
+          "أَرْبَعَةٌ arba'ah"
+         ],
+         [
+          "5",
+          "خَمْسَةٌ khamsah"
+         ],
+         [
+          "6",
+          "سِتَّةٌ sittah"
+         ],
+         [
+          "7",
+          "سَبْعَةٌ sab'ah"
+         ],
+         [
+          "8",
+          "ثَمَانِيَةٌ tsamaniyah"
+         ],
+         [
+          "9",
+          "تِسْعَةٌ tis'ah"
+         ],
+         [
+          "10",
+          "عَشَرَةٌ 'asyarah"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Jam",
+       "li": [
+        "<b>كَمِ السَّاعَةُ؟</b> (jam berapa?) dijawab misalnya اَلسَّاعَةُ الثَّالِثَةُ (jam tiga).",
+        "Setengah: وَالنِّصْفُ wan-nishfu; seperempat: وَالرُّبْعُ war-rub'u."
+       ]
+      }
+     ],
+     "traps": [
+      "Untuk jam dipakai bilangan bertingkat (ats-tsalitsah), bukan bilangan biasa (tsalatsah)."
+     ]
+    },
+    {
+     "code": "MWD-03",
+     "title": "Keluarga dan rumah",
+     "scope": "Al-usrah, al-bait",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Kosakata anggota keluarga dan bagian rumah.",
+     "blocks": [
+      {
+       "h": "Kosakata",
+       "table": {
+        "cols": [
+         "Arab",
+         "Arti",
+         "Arab",
+         "Arti"
+        ],
+        "rows": [
+         [
+          "أَبٌ ab",
+          "Ayah",
+          "غُرْفَةٌ ghurfah",
+          "Kamar"
+         ],
+         [
+          "أُمٌّ umm",
+          "Ibu",
+          "مَطْبَخٌ mathbakh",
+          "Dapur"
+         ],
+         [
+          "أَخٌ akh",
+          "Saudara laki-laki",
+          "حَمَّامٌ hammam",
+          "Kamar mandi"
+         ],
+         [
+          "أُخْتٌ ukht",
+          "Saudara perempuan",
+          "حَدِيْقَةٌ hadiqah",
+          "Taman, kebun"
+         ],
+         [
+          "جَدٌّ jadd",
+          "Kakek",
+          "بَيْتٌ bait",
+          "Rumah"
+         ]
+        ]
+       }
+      }
+     ]
+    },
+    {
+     "code": "MWD-04",
+     "title": "Sekolah dan kegiatan harian",
+     "scope": "Al-madrasah, al-yaumiyyat",
+     "src": "Kelas XI–XII",
+     "tier": 2,
+     "sum": "Kosakata sekolah dan kegiatan sehari-hari.",
+     "blocks": [
+      {
+       "h": "Kosakata",
+       "li": [
+        "مَدْرَسَةٌ madrasah (sekolah), فَصْلٌ fashl (kelas), مُدَرِّسٌ mudarris (guru), طَالِبٌ thalib (siswa), مَكْتَبَةٌ maktabah (perpustakaan), سَبُّوْرَةٌ sabburah (papan tulis).",
+        "Kegiatan: أَسْتَيْقِظُ (saya bangun), أَذْهَبُ إِلَى الْمَدْرَسَةِ (saya pergi ke sekolah), أَتَعَلَّمُ (saya belajar), أَنَامُ (saya tidur).",
+        "<b>مَكْتَبَةٌ</b> berarti perpustakaan atau toko buku, bukan kantor (مَكْتَبٌ)."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "MWD-05",
+     "title": "Hari dan waktu",
+     "scope": "Al-ayyam",
+     "src": "Kelas XI–XII",
+     "tier": 2,
+     "sum": "Nama hari dalam bahasa Arab dan keterangan waktu.",
+     "blocks": [
+      {
+       "h": "Hari",
+       "table": {
+        "cols": [
+         "Hari",
+         "Bahasa Arab"
+        ],
+        "rows": [
+         [
+          "Minggu",
+          "اَلْأَحَدُ al-ahad"
+         ],
+         [
+          "Senin",
+          "اَلْاِثْنَيْنِ al-itsnain"
+         ],
+         [
+          "Selasa",
+          "اَلثُّلَاثَاءُ ats-tsulatsa'"
+         ],
+         [
+          "Rabu",
+          "اَلْأَرْبِعَاءُ al-arbi'a'"
+         ],
+         [
+          "Kamis",
+          "اَلْخَمِيْسُ al-khamis"
+         ],
+         [
+          "Jumat",
+          "اَلْجُمُعَةُ al-jumu'ah"
+         ],
+         [
+          "Sabtu",
+          "اَلسَّبْتُ as-sabt"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Waktu",
+       "li": [
+        "<b>أَمْسِ</b> (kemarin), اَلْيَوْمَ (hari ini), غَدًا (besok)."
+       ]
+      }
+     ],
+     "traps": [
+      "Al-ahad (satu) adalah hari Minggu, karena hitungan hari dimulai dari Minggu."
+     ]
+    },
+    {
+     "code": "MWD-06",
+     "title": "Letak dan arah",
+     "scope": "Zharaf makan",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Kata keterangan tempat untuk menyebut letak benda.",
+     "blocks": [
+      {
+       "h": "Letak",
+       "table": {
+        "cols": [
+         "Arab",
+         "Arti"
+        ],
+        "rows": [
+         [
+          "فَوْقَ fauqa",
+          "Di atas"
+         ],
+         [
+          "تَحْتَ tahta",
+          "Di bawah"
+         ],
+         [
+          "أَمَامَ amama",
+          "Di depan"
+         ],
+         [
+          "خَلْفَ khalfa",
+          "Di belakang"
+         ],
+         [
+          "بِجَانِبِ bijanibi",
+          "Di samping"
+         ],
+         [
+          "بَيْنَ baina",
+          "Di antara"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Contoh",
+       "li": [
+        "اَلْكِتَابُ فَوْقَ الْمَكْتَبِ (buku itu di atas meja)."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "TSQ",
+   "name": "Budaya dan sastra Arab",
+   "short": "Budaya",
+   "note": "Bahasa Arab di dunia dan karya sastra Arab.",
+   "topics": [
+    {
+     "code": "TSQ-01",
+     "title": "Bahasa Arab di dunia",
+     "scope": "Liga Arab, bahasa resmi PBB",
+     "src": "Kelas XI",
+     "tier": 3,
+     "sum": "Kedudukan bahasa Arab sebagai bahasa resmi banyak negara dan organisasi internasional.",
+     "blocks": [
+      {
+       "h": "Fakta",
+       "li": [
+        "Liga Arab beranggotakan 22 negara dan wilayah.",
+        "<b>Bahasa Arab menjadi bahasa resmi PBB</b> pada 1973; Hari Bahasa Arab Sedunia diperingati setiap 18 Desember.",
+        "Bahasa Arab fusha (baku) dipakai dalam Al-Qur'an, buku, dan media resmi; bahasa amiyah (dialek) dipakai sehari-hari dan berbeda antarnegara."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "TSQ-02",
+     "title": "Sastra Arab",
+     "scope": "Syair, mu'allaqat, sastrawan modern",
+     "src": "Kelas XII",
+     "tier": 3,
+     "sum": "Sastra Arab berkembang dari syair Arab pra-Islam sampai novel modern.",
+     "blocks": [
+      {
+       "h": "Karya dan tokoh",
+       "li": [
+        "Mu'allaqat: kumpulan syair terbaik masa pra-Islam; salah satu penyairnya Imru' al-Qais.",
+        "<b>Naguib Mahfouz</b> (Mesir) menerima Hadiah Nobel Sastra pada 1988.",
+        "Kahlil Gibran (kelahiran Lebanon) dikenal lewat Sang Nabi (The Prophet, 1923).",
+        "Unsur syair Arab: wazan (pola irama) dan qafiyah (rima akhir)."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "Perlu diperhatikan",
+   "items": [
+    "Transliterasi disederhanakan seperti buku sekolah; sistem resmi (SKB Menteri Agama dan Menteri P dan K 1987) memakai tanda yang lebih rinci.",
+    "Buku Bahasa Arab SMA dan MA berbeda dalam urutan tema dan qawaid; cocokkan dengan buku sekolah.",
+    "Huruf Arab pada halaman ini memakai fon perangkat; harakat bisa tampil sedikit bergeser pada sebagian perangkat.",
+    "Jumlah anggota Liga Arab (22) dihitung termasuk Palestina; status keanggotaan beberapa negara pernah ditangguhkan."
+   ]
+  },
+  {
+   "title": "Rujukan",
+   "items": [
+    "Buku Bahasa Arab SMA kelas XI–XII dan buku Bahasa Arab MA (Kementerian Agama): pembagian materi umum.",
+    "Kaidah nahwu dan sharaf dasar: jumlah ismiyah, jumlah fi'liyah, tashrif fi'il.",
+    "PBB: bahasa Arab sebagai bahasa resmi (1973) dan Hari Bahasa Arab Sedunia (18 Desember)."
+   ]
+  }
+ ]
+}

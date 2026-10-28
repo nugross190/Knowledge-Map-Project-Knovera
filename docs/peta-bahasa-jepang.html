@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Bahasa Jepang SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "bahasa-jepang", "subject": "Bahasa dan Sastra Jepang", "title": "Peta Materi Bahasa Jepang SMA", "lead": "Seluruh materi Bahasa Jepang SMA, dari hiragana, katakana, dan kanji dasar sampai partikel, bentuk kata kerja, ungkapan sehari-hari, dan budaya Jepang, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Jepang dan romaji. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Hiragana, katakana, kanji dasar, partikel, kalimat dasar, kata kerja dan kata sifat, bentuk te, bilangan, salam, waktu, dan budaya Jepang.", "source_note": "Bahasa dan Sastra Jepang adalah mapel pilihan kelas XI–XII. Cakupan peta setara tingkat dasar (sekitar JLPT N5), seperti buku pelajaran Bahasa Jepang SMA. Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Romaji memakai sistem Hepburn.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: huruf dulu, lalu salam dan perkenalan, partikel dan kalimat dasar, kemudian bentuk kata kerja dan kata sifat.", "path": [{"label": "Huruf", "title": "Hiragana dan katakana", "note": "46 huruf dasar", "to": "MOJ-01"}, {"label": "Salam", "title": "Aisatsu", "note": "Salam sehari-hari", "to": "KTM-01"}, {"label": "Kenalan", "title": "Perkenalan", "note": "Jikoshoukai, keluarga", "to": "KTM-02"}, {"label": "Kalimat", "title": "Kalimat dasar", "note": "A wa B desu", "to": "BNP-02"}, {"label": "Partikel", "title": "Partikel", "note": "wa, ga, o, ni, de", "to": "BNP-01"}, {"label": "Kerja", "title": "Bentuk -masu", "note": "Golongan kata kerja", "to": "BNP-03"}, {"label": "Sifat", "title": "Kata sifat i dan na", "note": "Negatif, lampau", "to": "BNP-04"}, {"label": "Te", "title": "Bentuk te", "note": "-te kudasai", "to": "BNP-05"}, {"label": "Kanji", "title": "Kanji dasar", "note": "On dan kun", "to": "MOJ-02"}], "domains": [{"id": "MOJ", "name": "Moji (huruf)", "short": "Huruf", "note": "Hiragana, katakana, kanji dasar, dan penulisan romaji.", "topics": [{"code": "MOJ-01", "title": "Hiragana dan katakana", "scope": "Huruf dasar, dakuten, huruf kecil", "src": "Kelas XI", "tier": 1, "sum": "Bahasa Jepang memakai dua huruf suku kata, hiragana dan katakana, masing-masing dengan 46 huruf dasar, ditambah tanda bunyi dan huruf kecil.", "blocks": [{"h": "Fungsi", "li": ["<b>Hiragana<\/b> untuk kata asli Jepang, partikel, dan akhiran kata kerja.", "Katakana untuk kata serapan asing, nama asing, dan bunyi tiruan, misalnya テレビ (terebi, televisi).", "Pada katakana, garis ー memanjangkan vokal: コーヒー (koohii, kopi)."]}, {"h": "Tanda dan huruf kecil", "table": {"cols": ["Tanda", "Fungsi", "Contoh"], "rows": [["Dakuten (゛)", "Membuat bunyi bersuara", "か ka → が ga"], ["Handakuten (゜)", "Mengubah h menjadi p", "は ha → ぱ pa"], ["Yōon (ゃ ゅ ょ kecil)", "Bunyi gabungan", "き + ゃ = きゃ kya"], ["Sokuon (っ kecil)", "Menggandakan konsonan berikutnya", "きって kitte (perangko)"]]}}], "traps": ["っ kecil tidak dibaca tsu, tetapi menggandakan konsonan berikutnya.", "Kata serapan seperti コンピューター (konpyuutaa) ditulis dengan katakana, bukan hiragana."]}, {"code": "MOJ-02", "title": "Kanji dasar", "scope": "Onyomi, kunyomi, kanji N5", "src": "Kelas XI–XII", "tier": 1, "sum": "Kanji adalah huruf bermakna dari Tiongkok yang punya bacaan onyomi (cara Tiongkok) dan kunyomi (cara Jepang).", "blocks": [{"h": "Kanji dasar", "table": {"cols": ["Kanji", "Arti", "Onyomi", "Kunyomi"], "rows": [["日", "hari, matahari", "nichi, jitsu", "hi, ka"], ["月", "bulan", "getsu, gatsu", "tsuki"], ["山", "gunung", "san", "yama"], ["人", "orang", "jin, nin", "hito"], ["大", "besar", "dai", "oo(kii)"], ["水", "air", "sui", "mizu"]]}}, {"h": "Bacaan", "li": ["<b>Onyomi<\/b> dipakai terutama pada gabungan kanji: 日本 nihon (Jepang), 富士山 Fujisan (Gunung Fuji).", "Kunyomi dipakai terutama bila kanji berdiri sendiri atau diikuti okurigana (akhiran hiragana): 大きい ookii.", "Angka kanji: 一 ichi, 二 ni, 三 san, 十 juu, 百 hyaku, 千 sen, 万 man."]}], "traps": ["Satu kanji bisa punya beberapa bacaan; bacaan yang dipakai bergantung pada kata gabungannya."]}, {"code": "MOJ-03", "title": "Romaji", "scope": "Sistem Hepburn", "src": "Kelas XI", "tier": 3, "sum": "Romaji adalah penulisan bahasa Jepang dengan huruf Latin; sistem yang paling umum adalah Hepburn.", "blocks": [{"h": "Hepburn", "li": ["し ditulis shi, ち chi, つ tsu, ふ fu, じ ji.", "<b>Partikel は dibaca wa<\/b>, を dibaca o, dan へ dibaca e, walau ditulis dengan huruf ha, wo, dan he.", "Vokal panjang ditulis dengan garis di atas (ō) atau huruf ganda (oo, uu)."]}]}]}, {"id": "BNP", "name": "Bunpou (tata bahasa)", "short": "Tata bahasa", "note": "Partikel, pola kalimat dasar, kata kerja, kata sifat, keberadaan, bilangan, dan kata tanya.", "topics": [{"code": "BNP-01", "title": "Partikel", "scope": "wa, ga, o, ni, de, e, to, mo, no, ka", "src": "Kelas XI", "tier": 1, "sum": "Partikel adalah kata kecil sesudah kata benda yang menunjukkan fungsinya dalam kalimat.", "blocks": [{"h": "Partikel", "table": {"cols": ["Partikel", "Fungsi", "Contoh"], "rows": [["は (wa)", "Penanda topik", "わたしは がくせいです。Saya pelajar."], ["が (ga)", "Penanda subjek, keberadaan", "ねこが います。Ada kucing."], ["を (o)", "Penanda objek", "パンを たべます。Makan roti."], ["に (ni)", "Tujuan, waktu, tempat keberadaan", "がっこうに いきます。Pergi ke sekolah."], ["で (de)", "Tempat kegiatan, alat", "としょかんで よみます。Membaca di perpustakaan."], ["へ (e)", "Arah", "うちへ かえります。Pulang ke rumah."], ["と (to)", "Dan, bersama", "ともだちと いきます。Pergi dengan teman."], ["も (mo)", "Juga", "わたしも がくせいです。Saya juga pelajar."], ["の (no)", "Kepemilikan", "わたしの ほん。Buku saya."], ["か (ka)", "Penanda kalimat tanya", "がくせいですか。Apakah pelajar?"]]}}], "traps": ["に menandai tempat keberadaan (います、あります); で menandai tempat kegiatan (たべます、よみます).", "を dipakai untuk objek kata kerja, bukan は."]}, {"code": "BNP-02", "title": "Kalimat dasar dan kata tunjuk", "scope": "A wa B desu, ko-so-a-do", "src": "Kelas XI", "tier": 1, "sum": "Pola kalimat benda A は B です beserta bentuk negatif, tanya, dan kata tunjuk ko-so-a-do.", "blocks": [{"h": "Pola kalimat", "li": ["<b>A は B です<\/b> (A wa B desu): A adalah B.", "Negatif: A は B じゃ ありません (ja arimasen) atau では ありません (dewa arimasen).", "Tanya: tambahkan か di akhir; jawab はい (hai, ya) atau いいえ (iie, tidak)."]}, {"h": "Kata tunjuk", "table": {"cols": ["Ko (dekat pembicara)", "So (dekat lawan bicara)", "A (jauh dari keduanya)", "Do (tanya)"], "rows": [["これ kore (ini)", "それ sore (itu)", "あれ are (itu, jauh)", "どれ dore (yang mana)"], ["この kono + benda", "その sono + benda", "あの ano + benda", "どの dono + benda"], ["ここ koko (di sini)", "そこ soko (di situ)", "あそこ asoko (di sana)", "どこ doko (di mana)"]]}}], "traps": ["これ berdiri sendiri, sedangkan この harus diikuti kata benda: これは ほんです / この ほん。"]}, {"code": "BNP-03", "title": "Kata kerja bentuk -masu", "scope": "Golongan I, II, III; waktu", "src": "Kelas XI", "tier": 1, "sum": "Kata kerja sopan berakhiran -masu berubah menjadi negatif, lampau, dan lampau negatif; kata kerja dibagi tiga golongan.", "blocks": [{"h": "Perubahan -masu", "table": {"cols": ["Bentuk", "Akhiran", "Contoh (たべる)"], "rows": [["Sekarang/akan datang", "-masu", "たべます tabemasu"], ["Negatif", "-masen", "たべません tabemasen"], ["Lampau", "-mashita", "たべました tabemashita"], ["Lampau negatif", "-masen deshita", "たべませんでした tabemasen deshita"]]}}, {"h": "Golongan kata kerja", "li": ["<b>Golongan I<\/b>: akhiran -u, misalnya いく iku (いきます), のむ nomu (のみます).", "Golongan II: akhiran -eru atau -iru, misalnya たべる taberu (たべます), みる miru (みます).", "Golongan III (tidak beraturan): する suru (します) dan くる kuru (きます)."]}], "traps": ["Bentuk -masu tidak membedakan sekarang dan akan datang; waktunya ditentukan keterangan waktu.", "かえる (kaeru, pulang) termasuk golongan I walau berakhiran -eru: かえります."]}, {"code": "BNP-04", "title": "Kata sifat i dan na", "scope": "Bentuk negatif dan lampau", "src": "Kelas XI", "tier": 1, "sum": "Kata sifat Jepang ada dua jenis, berakhiran -i dan -na, dengan cara perubahan yang berbeda.", "blocks": [{"h": "Perubahan", "table": {"cols": ["Bentuk", "Sifat-i (おおきい)", "Sifat-na (しずか)"], "rows": [["Positif", "おおきいです ookii desu", "しずかです shizuka desu"], ["Negatif", "おおきくないです ookikunai desu", "しずかじゃありません shizuka ja arimasen"], ["Lampau", "おおきかったです ookikatta desu", "しずかでした shizuka deshita"], ["Menerangkan benda", "おおきい いえ (rumah besar)", "しずかな へや (kamar sepi)"]]}}, {"h": "Pengecualian", "li": ["<b>いい (ii, baik)<\/b> berubah menjadi よくない (yokunai) dan よかった (yokatta).", "きれい (kirei, cantik/bersih) adalah sifat-na walau berakhiran i: きれいな はな."]}], "traps": ["きれい termasuk sifat-na, sehingga negatifnya きれいじゃありません, bukan きれくない."]}, {"code": "BNP-05", "title": "Bentuk te", "scope": "Aturan, -te kudasai, -te imasu", "src": "Kelas XII", "tier": 2, "sum": "Bentuk te dipakai untuk meminta, menyatakan kegiatan yang sedang berlangsung, dan merangkai kegiatan.", "blocks": [{"h": "Aturan golongan I", "table": {"cols": ["Akhiran kamus", "Bentuk te", "Contoh"], "rows": [["-u, -tsu, -ru", "-tte", "かう → かって, まつ → まって"], ["-mu, -bu, -nu", "-nde", "のむ → のんで, あそぶ → あそんで"], ["-ku", "-ite", "かく → かいて (kecuali いく → いって)"], ["-gu", "-ide", "およぐ → およいで"], ["-su", "-shite", "はなす → はなして"]]}}, {"h": "Pemakaian", "li": ["Golongan II: buang -ru, tambah -te (たべる → たべて); golongan III: する → して, くる → きて.", "<b>-te kudasai<\/b>: meminta dengan sopan, misalnya みて ください (tolong lihat).", "-te imasu: sedang melakukan, misalnya よんで います (sedang membaca)."]}], "traps": ["いく (iku) adalah pengecualian: bentuk te-nya いって, bukan いいて."]}, {"code": "BNP-06", "title": "Keberadaan", "scope": "Arimasu dan imasu", "src": "Kelas XI", "tier": 2, "sum": "Bahasa Jepang membedakan kata kerja keberadaan untuk benda mati dan makhluk hidup.", "blocks": [{"h": "Arimasu dan imasu", "li": ["<b>あります (arimasu)<\/b> untuk benda mati dan tumbuhan: つくえの うえに ほんが あります。", "います (imasu) untuk manusia dan hewan: きょうしつに せんせいが います。", "Pola: tempat に benda が あります/います."]}], "traps": ["Pohon memakai あります karena tidak bergerak sendiri, walau makhluk hidup."]}, {"code": "BNP-07", "title": "Bilangan dan kata bantu bilangan", "scope": "Angka, jam, josuushi", "src": "Kelas XI", "tier": 1, "sum": "Angka Jepang beserta perubahan bunyinya, cara menyebut jam, dan kata bantu bilangan untuk berbagai benda.", "blocks": [{"h": "Angka", "li": ["1 ichi, 2 ni, 3 san, 4 yon/shi, 5 go, 6 roku, 7 nana/shichi, 8 hachi, 9 kyuu/ku, 10 juu.", "<b>Perubahan bunyi<\/b>: 300 sanbyaku, 600 roppyaku, 800 happyaku, 3.000 sanzen, 8.000 hassen.", "Jam: 4 yoji, 7 shichiji, 9 kuji; menit: ippun, gofun, juppun."]}, {"h": "Kata bantu bilangan", "table": {"cols": ["Kata bantu", "Untuk", "Contoh"], "rows": [["~つ", "Benda umum", "ひとつ, ふたつ, みっつ"], ["~人 (nin)", "Orang", "ひとり, ふたり, さんにん"], ["~本 (hon)", "Benda panjang", "えんぴつ いっぽん"], ["~枚 (mai)", "Benda tipis datar", "かみ さんまい"], ["~冊 (satsu)", "Buku", "ほん にさつ"], ["~匹 (hiki)", "Hewan kecil", "ねこ いっぴき"]]}}], "traps": ["Satu orang dan dua orang adalah ひとり dan ふたり, bukan いちにん dan ににん."]}, {"code": "BNP-08", "title": "Kata tanya", "scope": "Nani, dare, doko, itsu, ikura", "src": "Kelas XI", "tier": 1, "sum": "Kata tanya dasar untuk menanyakan benda, orang, tempat, waktu, jumlah, harga, dan alasan.", "blocks": [{"h": "Kata tanya", "table": {"cols": ["Kata tanya", "Arti"], "rows": [["なん/なに (nan/nani)", "Apa"], ["だれ (dare)", "Siapa"], ["どこ (doko)", "Di mana"], ["いつ (itsu)", "Kapan"], ["いくら (ikura)", "Berapa harganya"], ["いくつ (ikutsu)", "Berapa buah, berapa umur"], ["どうして (doushite)", "Mengapa"], ["どう (dou)", "Bagaimana"]]}}], "traps": ["いくら menanyakan harga; いくつ menanyakan jumlah benda atau umur."]}]}, {"id": "KTM", "name": "Komunikasi dan tema sehari-hari", "short": "Komunikasi", "note": "Salam, perkenalan, keluarga, waktu, sekolah, belanja, dan letak benda.", "topics": [{"code": "KTM-01", "title": "Aisatsu (salam)", "scope": "Salam, terima kasih, minta maaf", "src": "Kelas XI", "tier": 1, "sum": "Ungkapan salam dan sopan santun yang dipakai sehari-hari di Jepang.", "blocks": [{"h": "Ungkapan", "table": {"cols": ["Ungkapan", "Arti dan pemakaian"], "rows": [["おはようございます", "Selamat pagi (sopan)"], ["こんにちは", "Selamat siang, halo"], ["こんばんは", "Selamat malam (saat bertemu)"], ["ありがとうございます", "Terima kasih"], ["すみません", "Maaf, permisi"], ["いただきます / ごちそうさまでした", "Sebelum makan / sesudah makan"], ["いってきます / いってらっしゃい", "Saat berangkat / jawaban yang ditinggal"], ["ただいま / おかえりなさい", "Saat pulang / jawaban yang di rumah"]]}}, {"h": "Perkenalan pertama", "li": ["<b>はじめまして<\/b> (hajimemashite) dipakai saat pertama kali bertemu, ditutup どうぞ よろしく おねがいします."]}], "traps": ["おやすみなさい adalah salam sebelum tidur, bukan salam bertemu di malam hari (itu こんばんは)."]}, {"code": "KTM-02", "title": "Perkenalan dan keluarga", "scope": "Jikoshoukai, sebutan keluarga", "src": "Kelas XI", "tier": 1, "sum": "Memperkenalkan diri dan menyebut anggota keluarga dengan bentuk yang benar untuk keluarga sendiri dan keluarga orang lain.", "blocks": [{"h": "Jikoshoukai", "li": ["はじめまして。わたしは アニ です。インドネシアから きました。こうこうせい です。どうぞ よろしく。", "Nama orang lain diberi さん (san); nama sendiri tidak."]}, {"h": "Keluarga", "table": {"cols": ["Arti", "Keluarga sendiri", "Keluarga orang lain"], "rows": [["Ayah", "ちち (chichi)", "おとうさん (otousan)"], ["Ibu", "はは (haha)", "おかあさん (okaasan)"], ["Kakak laki-laki", "あに (ani)", "おにいさん (oniisan)"], ["Kakak perempuan", "あね (ane)", "おねえさん (oneesan)"], ["Adik laki-laki", "おとうと (otouto)", "おとうとさん"], ["Adik perempuan", "いもうと (imouto)", "いもうとさん"]]}}], "traps": ["Saat bercerita tentang ayah sendiri kepada orang lain dipakai ちち, bukan おとうさん.", "さん tidak dipakai untuk nama sendiri."]}, {"code": "KTM-03", "title": "Hari, tanggal, dan waktu", "scope": "Youbi, tanggal khusus", "src": "Kelas XI–XII", "tier": 2, "sum": "Nama hari, cara menyebut tanggal yang banyak berbentuk khusus, dan keterangan waktu.", "blocks": [{"h": "Hari", "table": {"cols": ["Hari", "Bahasa Jepang"], "rows": [["Senin", "げつようび getsuyoubi"], ["Selasa", "かようび kayoubi"], ["Rabu", "すいようび suiyoubi"], ["Kamis", "もくようび mokuyoubi"], ["Jumat", "きんようび kin'youbi"], ["Sabtu", "どようび doyoubi"], ["Minggu", "にちようび nichiyoubi"]]}}, {"h": "Tanggal khusus", "li": ["<b>1 tsuitachi<\/b>, 2 futsuka, 3 mikka, 4 yokka, 5 itsuka, 6 muika, 7 nanoka, 8 youka, 9 kokonoka, 10 tooka, 20 hatsuka.", "Keterangan waktu: きのう (kemarin), きょう (hari ini), あした (besok)."]}], "traps": ["Tanggal 4 adalah よっか (yokka), sedangkan tanggal 8 adalah ようか (youka)."]}, {"code": "KTM-04", "title": "Kehidupan sekolah dan sehari-hari", "scope": "Kosakata sekolah, kegiatan harian", "src": "Kelas XI", "tier": 2, "sum": "Kosakata tentang sekolah dan kegiatan sehari-hari, dari bangun tidur sampai tidur.", "blocks": [{"h": "Kosakata", "li": ["がっこう gakkou (sekolah), せんせい sensei (guru), がくせい gakusei (pelajar), きょうしつ kyoushitsu (ruang kelas), としょかん toshokan (perpustakaan).", "Kegiatan: おきます (bangun), あさごはんを たべます, がっこうへ いきます, べんきょうします, かえります, ねます (tidur).", "<b>Kebiasaan<\/b> diurutkan dengan それから (sesudah itu)."]}]}, {"code": "KTM-05", "title": "Belanja dan makanan", "scope": "Ikura desu ka, o kudasai, yen", "src": "Kelas XII", "tier": 2, "sum": "Ungkapan berbelanja, menanyakan harga, dan memesan makanan.", "blocks": [{"h": "Ungkapan", "li": ["これは いくらですか。(Ini berapa harganya?)", "<b>~を ください<\/b>: minta (membeli) sesuatu, misalnya みずを ください.", "Mata uang Jepang: えん (yen); 100 えん dibaca hyaku en.", "Makanan: ごはん (nasi), パン (roti), さかな (ikan), やさい (sayur), おちゃ (teh hijau)."]}]}, {"code": "KTM-06", "title": "Letak dan arah", "scope": "Ue, shita, mae, ushiro, tonari", "src": "Kelas XI–XII", "tier": 2, "sum": "Kata penunjuk letak dipakai dengan pola benda の letak に.", "blocks": [{"h": "Letak", "table": {"cols": ["Kata", "Arti"], "rows": [["うえ ue", "Atas"], ["した shita", "Bawah"], ["まえ mae", "Depan"], ["うしろ ushiro", "Belakang"], ["なか naka", "Dalam"], ["となり tonari", "Sebelah"], ["みぎ / ひだり", "Kanan / kiri"]]}}, {"h": "Pola", "li": ["つくえの うえに ほんが あります。(Ada buku di atas meja.)"]}]}]}, {"id": "BDY", "name": "Budaya Jepang", "short": "Budaya", "note": "Etiket, perayaan, seni tradisional, dan pengenalan negara Jepang.", "topics": [{"code": "BDY-01", "title": "Etiket dan perayaan", "scope": "Ojigi, genkan, festival tahunan", "src": "Kelas XI–XII", "tier": 2, "sum": "Kebiasaan sopan santun dan perayaan tahunan yang sering muncul di buku pelajaran.", "blocks": [{"h": "Etiket", "li": ["<b>Ojigi<\/b> (membungkuk) dipakai untuk memberi salam, berterima kasih, dan meminta maaf.", "Sepatu dilepas di genkan (pintu masuk) sebelum masuk rumah.", "Keigo: bahasa hormat untuk atasan dan orang yang belum akrab."]}, {"h": "Perayaan", "table": {"cols": ["Perayaan", "Waktu", "Keterangan"], "rows": [["Oshougatsu", "Awal Januari", "Tahun Baru"], ["Hinamatsuri", "3 Maret", "Hari anak perempuan, memajang boneka hina"], ["Hanami", "Musim semi", "Menikmati bunga sakura"], ["Kodomo no Hi", "5 Mei", "Hari anak, memasang koinobori (bendera ikan koi)"], ["Tanabata", "7 Juli", "Menggantung kertas harapan di bambu"]]}}], "traps": ["Hinamatsuri (3 Maret) untuk anak perempuan; Kodomo no Hi (5 Mei) untuk anak-anak, dulu khusus anak laki-laki."]}, {"code": "BDY-02", "title": "Seni dan sastra tradisional", "scope": "Haiku, kabuki, origami, ikebana", "src": "Kelas XII", "tier": 2, "sum": "Seni dan sastra tradisional Jepang yang dikenal luas.", "blocks": [{"h": "Seni", "table": {"cols": ["Seni", "Keterangan"], "rows": [["Haiku", "Puisi pendek 5-7-5 suku kata; tokohnya Matsuo Bashō"], ["Kabuki", "Teater tradisional dengan rias dan kostum mencolok"], ["Noh", "Teater klasik bertopeng"], ["Origami", "Seni melipat kertas"], ["Ikebana", "Seni merangkai bunga"], ["Chanoyu (sadou)", "Upacara minum teh"]]}}], "traps": ["Haiku berpola 5-7-5 suku kata dalam tiga baris."]}, {"code": "BDY-03", "title": "Mengenal negara Jepang", "scope": "Pulau utama, ibu kota, Gunung Fuji", "src": "Kelas XI", "tier": 3, "sum": "Fakta dasar tentang negara Jepang yang sering menjadi bahan bacaan.", "blocks": [{"h": "Fakta", "li": ["Empat pulau utama: Honshu (terbesar), Hokkaido, Kyushu, Shikoku.", "Ibu kota: Tokyo; mata uang: yen.", "<b>Gunung Fuji<\/b> setinggi 3.776 m adalah gunung tertinggi di Jepang.", "Nama Jepang dalam bahasanya: 日本 (Nihon atau Nippon)."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Bahasa Jepang SMA berbeda antarpenerbit dalam urutan tema dan jumlah kanji; peta ini memuat pola dasar setara JLPT N5.", "Romaji memakai sistem Hepburn; sebagian buku memakai garis panjang (ō), sebagian huruf ganda (oo).", "Negatif kalimat benda ditulis じゃ ありません atau では ありません; keduanya benar, では lebih formal.", "Huruf Jepang pada halaman ini memakai fon perangkat; bila tampil sebagai kotak, perangkat belum memiliki fon Jepang."]}, {"title": "Rujukan", "items": ["Buku Bahasa Jepang SMA kelas XI–XII (beberapa penerbit) dan cakupan JLPT N5.", "Pola tata bahasa umum: partikel, bentuk -masu, kata sifat i dan na, bentuk te."]}], "bank": "bank-bahasa-jepang.html"};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>

@@ -1,0 +1,173 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+HRF-01-001,HRF-01,1,Berapa jumlah huruf hijaiah?,28,,
+HRF-01-002,HRF-01,1,Harakat yang berbunyi a disebut…,Fathah,,
+HRF-01-003,HRF-01,1,Tanda yang membuat huruf dibaca dobel disebut…,Tasydid,,
+HRF-01-004,HRF-01,2,Tanda yang menunjukkan huruf mati disebut…,Sukun,,
+HRF-01-005,HRF-01,2,Harakat yang berbunyi u disebut…,Dammah,,
+HRF-01-006,HRF-01,2,"Tanda an, in, un di akhir kata disebut…",Tanwin,,
+HRF-01-007,HRF-01,2,"Pada اَلشَّمْسُ, alif lam termasuk…",Syamsiyah (lam tidak dibaca),,
+HRF-01-008,HRF-01,2,"Pada اَلْقَمَرُ, alif lam termasuk…",Qamariyah (lam dibaca jelas),,
+HRF-01-009,HRF-01,2,Bahasa Arab ditulis dari arah…,Kanan ke kiri,,
+HRF-01-010,HRF-01,3,"Bagaimana membaca اَلنُّوْرُ, dan mengapa?",An-nuru; ن termasuk huruf syamsiyah sehingga lam lebur dan nun dibaca dobel,,
+HRF-01-011,HRF-01,2,Papan nama masjid bertuliskan اَلنُّوْرُ. Bagaimana alif lam pada kata itu dibaca?,Tidak dibaca (syamsiyah): an-nur,,papan masjid
+HRF-02-001,HRF-02,1,Huruf yang hanya muncul di akhir kata dan menandai muannats adalah…,Ta marbutah (ة),,
+HRF-02-002,HRF-02,2,Sebutkan huruf yang tidak bersambung dengan huruf sesudahnya.,ا د ذ ر ز و,,
+HRF-02-003,HRF-02,2,Ta marbutah dibaca apa saat waqaf (berhenti)?,H,,
+HRF-02-004,HRF-02,2,Berapa bentuk tulisan sebagian besar huruf Arab menurut letaknya?,"Empat: berdiri sendiri, awal, tengah, akhir",,
+HRF-02-005,HRF-02,2,Kata دَرْسٌ ditulis terputus setelah huruf د dan ر. Mengapa?,د dan ر tidak bersambung dengan huruf sesudahnya,,
+HRF-03-001,HRF-03,1,Sebagian besar kata Arab dibentuk dari akar berapa huruf?,Tiga,,
+HRF-03-002,HRF-03,2,Akar kata كِتَابٌ (kitab) adalah…,ك ت ب (k-t-b),,
+HRF-03-003,HRF-03,2,Arti مَكْتَبَةٌ adalah…,Perpustakaan (atau toko buku),,
+HRF-03-004,HRF-03,2,Arti كَاتِبٌ adalah…,Penulis,,
+HRF-03-005,HRF-03,2,Pola dasar kata kerja tiga huruf adalah…,فَعَلَ (fa'ala),,
+HRF-03-006,HRF-03,3,Siswa mencari kata مَدْرَسَةٌ di kamus Al-Munawwir. Pada akar huruf apa ia harus mencarinya?,د ر س (d-r-s),,kamus
+NHW-01-001,NHW-01,1,Tiga jenis kata dalam bahasa Arab adalah…,"Isim, fi'il, harf",,
+NHW-01-002,NHW-01,1,Kata benda dalam bahasa Arab disebut…,Isim,,
+NHW-01-003,NHW-01,1,Kata kerja dalam bahasa Arab disebut…,Fi'il,,
+NHW-01-004,NHW-01,2,Kata tugas yang baru bermakna bila bersambung disebut…,Harf,,
+NHW-01-005,NHW-01,2,Kata yang dapat diberi alif lam atau tanwin termasuk…,Isim,,
+NHW-01-006,NHW-01,2,Kata فِيْ termasuk jenis kata…,Harf,,
+NHW-01-007,NHW-01,2,Kata يَكْتُبُ termasuk jenis kata…,Fi'il,,
+NHW-01-008,NHW-01,3,Tentukan jenis kata pada kalimat ذَهَبَ أَحْمَدُ إِلَى السُّوْقِ.,"ذَهَبَ fi'il, أَحْمَدُ isim, إِلَى harf, السُّوْقِ isim",,pasar
+NHW-02-001,NHW-02,1,Isim berjenis perempuan disebut…,Muannats,,
+NHW-02-002,NHW-02,1,Isim berjenis laki-laki disebut…,Mudzakkar,,
+NHW-02-003,NHW-02,1,Isim yang menunjukkan dua disebut…,Mutsanna,,
+NHW-02-004,NHW-02,2,Tanda umum isim muannats adalah…,Ta marbutah (ة),,
+NHW-02-005,NHW-02,2,Bentuk mutsanna dari طَالِبٌ adalah…,طَالِبَانِ (thaliban),,
+NHW-02-006,NHW-02,2,Bentuk jamak muannats salim dari مُدَرِّسَةٌ adalah…,مُدَرِّسَاتٌ (mudarrisat),,
+NHW-02-007,NHW-02,2,Bentuk jamak mudzakkar salim dari مُدَرِّسٌ adalah…,مُدَرِّسُوْنَ (mudarrisun),,
+NHW-02-008,NHW-02,2,Jamak dari كِتَابٌ adalah…,كُتُبٌ (kutub),,
+NHW-02-009,NHW-02,2,Jamak yang bentuknya berubah tidak beraturan disebut…,Jamak taksir,,
+NHW-02-010,NHW-02,2,Jamak dari قَلَمٌ adalah…,أَقْلَامٌ (aqlam),,
+NHW-02-011,NHW-02,3,"Mengapa مُدَرِّسَاتٌ disebut jamak muannats salim, sedangkan كُتُبٌ jamak taksir?",مُدَرِّسَاتٌ hanya menambah akhiran -at tanpa mengubah bentuk; كُتُبٌ mengubah bentuk kata,,
+NHW-02-012,NHW-02,2,Di pondok pesantren ada dua orang guru perempuan baru. Bentuk mutsanna muannats dari مُدَرِّسَةٌ adalah…,مُدَرِّسَتَانِ (mudarrisatan),,pesantren
+NHW-03-001,NHW-03,1,"Dhamir untuk ""saya"" adalah…",أَنَا (ana),,
+NHW-03-002,NHW-03,1,"Dhamir untuk ""kami"" adalah…",نَحْنُ (nahnu),,
+NHW-03-003,NHW-03,1,"Dhamir untuk ""dia (laki-laki)"" adalah…",هُوَ (huwa),,
+NHW-03-004,NHW-03,2,"Dhamir untuk ""kamu (perempuan)"" adalah…",أَنْتِ (anti),,
+NHW-03-005,NHW-03,2,"Dhamir untuk ""dia (perempuan)"" adalah…",هِيَ (hiya),,
+NHW-03-006,NHW-03,2,"Dhamir untuk ""mereka (laki-laki)"" adalah…",هُمْ (hum),,
+NHW-03-007,NHW-03,2,"Dhamir untuk ""kalian (laki-laki)"" adalah…",أَنْتُمْ (antum),,
+NHW-03-008,NHW-03,2,"Dhamir untuk ""mereka berdua"" adalah…",هُمَا (huma),,
+NHW-03-009,NHW-03,2,"Dhamir untuk ""mereka (perempuan)"" adalah…",هُنَّ (hunna),,
+NHW-03-010,NHW-03,3,Apa beda أَنْتَ dan أَنْتِ?,"أَنْتَ (anta) untuk laki-laki, أَنْتِ (anti) untuk perempuan; bedanya pada harakat akhir",,
+NHW-03-011,NHW-03,2,"Guru menyapa satu siswi di kelas: ""مَا اسْمُكِ؟"" Dhamir apa yang dipakai untuk menyapanya bila disebut terpisah?",أَنْتِ (anti),,kelas
+NHW-04-001,NHW-04,1,"Kata tunjuk ""ini"" untuk mudzakkar adalah…",هٰذَا (hadza),,
+NHW-04-002,NHW-04,1,"Kata tunjuk ""ini"" untuk muannats adalah…",هٰذِهِ (hadzihi),,
+NHW-04-003,NHW-04,2,"Kata tunjuk ""itu"" untuk mudzakkar adalah…",ذٰلِكَ (dzalika),,
+NHW-04-004,NHW-04,2,"Kata tunjuk ""itu"" untuk muannats adalah…",تِلْكَ (tilka),,
+NHW-04-005,NHW-04,2,"Kata tunjuk ""ini"" untuk jamak manusia adalah…",هٰؤُلَاءِ (ha'ula'i),,
+NHW-04-006,NHW-04,2,"Kata tunjuk ""itu"" untuk jamak manusia adalah…",أُولٰئِكَ (ula'ika),,
+NHW-04-007,NHW-04,2,Lengkapi: ___ سَبُّوْرَةٌ (ini papan tulis),هٰذِهِ,,
+NHW-04-008,NHW-04,2,"Di kelas, siswa menunjuk meja di depannya: ___ مَكْتَبٌ. Kata tunjuk apa yang tepat?",هٰذَا,,kelas
+NHW-04-009,NHW-04,3,Siswa menulis هٰذَا مَدْرَسَةٌ. Apa kesalahannya dan perbaikannya?,"مَدْرَسَةٌ muannats (ta marbutah), jadi seharusnya هٰذِهِ مَدْرَسَةٌ",,
+NHW-05-001,NHW-05,1,Kalimat nominal dalam bahasa Arab disebut…,Jumlah ismiyah,,
+NHW-05-002,NHW-05,1,Subjek dalam jumlah ismiyah disebut…,Mubtada',,
+NHW-05-003,NHW-05,1,Predikat dalam jumlah ismiyah disebut…,Khabar,,
+NHW-05-004,NHW-05,2,Harakat akhir mubtada' dan khabar adalah…,Marfu' (umumnya dammah),,
+NHW-05-005,NHW-05,2,Mubtada' biasanya berbentuk ma'rifah atau nakirah?,Ma'rifah,,
+NHW-05-006,NHW-05,2,"Pada kalimat اَلْبَيْتُ كَبِيْرٌ, mana mubtada' dan mana khabar?",Mubtada' اَلْبَيْتُ; khabar كَبِيْرٌ,,
+NHW-05-007,NHW-05,2,Lengkapi dengan khabar yang sesuai: اَلطَّالِبَةُ ___ (rajin),مُجْتَهِدَةٌ,,
+NHW-05-008,NHW-05,3,Siswa menulis اَلْمَدْرَسَةُ كَبِيْرٌ. Apa kesalahannya?,"Mubtada' muannats, jadi khabar juga muannats: كَبِيْرَةٌ",,
+NHW-05-009,NHW-05,2,"Siswa menulis tentang pasar di dekat rumahnya: اَلسُّوْقُ ___ (ramai, مُزْدَحِمٌ). Bagian yang dilengkapi berfungsi sebagai…",Khabar,,pasar
+NHW-06-001,NHW-06,1,Kata kerja lampau dalam bahasa Arab disebut…,Fi'il madhi,,
+NHW-06-002,NHW-06,1,Kata kerja sekarang atau akan datang disebut…,Fi'il mudhari',,
+NHW-06-003,NHW-06,2,Fi'il madhi كَتَبَ untuk هِيَ adalah…,كَتَبَتْ (katabat),,
+NHW-06-004,NHW-06,2,Fi'il madhi كَتَبَ untuk أَنَا adalah…,كَتَبْتُ (katabtu),,
+NHW-06-005,NHW-06,2,Fi'il mudhari' كَتَبَ untuk أَنَا adalah…,أَكْتُبُ (aktubu),,
+NHW-06-006,NHW-06,2,Fi'il mudhari' كَتَبَ untuk نَحْنُ adalah…,نَكْتُبُ (naktubu),,
+NHW-06-007,NHW-06,2,Fi'il madhi كَتَبَ untuk هُمْ adalah…,كَتَبُوْا (katabu),,
+NHW-06-008,NHW-06,2,Huruf awal penanda fi'il mudhari' adalah…,أ ن ي ت,,
+NHW-06-009,NHW-06,2,Fi'il mudhari' كَتَبَ untuk هُوَ adalah…,يَكْتُبُ (yaktubu),,
+NHW-06-010,NHW-06,3,تَكْتُبُ bisa untuk dua pelaku. Sebutkan keduanya.,أَنْتَ (kamu laki-laki) dan هِيَ (dia perempuan),,
+NHW-06-011,NHW-06,2,"Siswa bercerita di buku harian: ""Kemarin saya menulis surat."" Bentuk fi'il apa yang tepat untuk ""saya menulis"" di sini?",Fi'il madhi: كَتَبْتُ,,buku harian
+NHW-07-001,NHW-07,1,Kata kerja perintah dalam bahasa Arab disebut…,Fi'il amr,,
+NHW-07-002,NHW-07,2,Fi'il amr dari كَتَبَ adalah…,اُكْتُبْ (uktub),,
+NHW-07-003,NHW-07,2,"Bentuk larangan ""jangan menulis"" adalah…",لَا تَكْتُبْ (la taktub),,
+NHW-07-004,NHW-07,2,Fi'il amr dari جَلَسَ adalah…,اِجْلِسْ (ijlis),,
+NHW-07-005,NHW-07,2,Fi'il amr كَتَبَ untuk perempuan adalah…,اُكْتُبِيْ (uktubi),,
+NHW-07-006,NHW-07,2,Ustaz meminta santri membaca kitab. Fi'il amr apa yang ia ucapkan kepada satu santri laki-laki?,اِقْرَأْ (iqra'),,pesantren
+NHW-08-001,NHW-08,1,Kalimat verbal dalam bahasa Arab disebut…,Jumlah fi'liyah,,
+NHW-08-002,NHW-08,1,Pelaku dalam jumlah fi'liyah disebut…,Fa'il,,
+NHW-08-003,NHW-08,1,Objek dalam jumlah fi'liyah disebut…,Maf'ul bih,,
+NHW-08-004,NHW-08,2,Harakat akhir fa'il adalah…,Marfu' (umumnya dammah),,
+NHW-08-005,NHW-08,2,Harakat akhir maf'ul bih adalah…,Manshub (umumnya fathah),,
+NHW-08-006,NHW-08,2,"Pada قَرَأَ الطَّالِبُ الْكِتَابَ, mana fa'il dan mana maf'ul bih?",Fa'il الطَّالِبُ; maf'ul bih الْكِتَابَ,,
+NHW-08-007,NHW-08,2,"Bila fa'il muannats, fi'il madhi diberi huruf…",Ta (تْ),,
+NHW-08-008,NHW-08,2,Apa beda jumlah ismiyah dan jumlah fi'liyah?,Jumlah ismiyah diawali isim; jumlah fi'liyah diawali fi'il,,
+NHW-08-009,NHW-08,3,"Mengapa ditulis كَتَبَ الطُّلَّابُ, bukan كَتَبُوا الطُّلَّابُ?","Bila fa'il isim zhahir jamak disebut sesudah fi'il, fi'il tetap tunggal",,
+NHW-08-010,NHW-08,2,"Berita sekolah: ""Siswi itu membaca Al-Qur'an"". Lengkapi: ___ الطَّالِبَةُ الْقُرْآنَ (membaca).",قَرَأَتْ,,berita sekolah
+NHW-09-001,NHW-09,1,"Huruf jar untuk ""dari"" adalah…",مِنْ (min),,
+NHW-09-002,NHW-09,1,"Huruf jar untuk ""ke"" adalah…",إِلَى (ila),,
+NHW-09-003,NHW-09,2,"Huruf jar untuk ""di dalam"" adalah…",فِيْ (fi),,
+NHW-09-004,NHW-09,2,Isim sesudah huruf jar berharakat…,Majrur (umumnya kasrah),,
+NHW-09-005,NHW-09,2,"Huruf jar untuk ""di atas"" adalah…",عَلَى ('ala),,
+NHW-09-006,NHW-09,2,"Huruf jar untuk ""tentang"" adalah…",عَنْ ('an),,
+NHW-09-007,NHW-09,2,Siswa menulis ذَهَبْتُ إِلَى الْمَسْجِدِ. Mengapa الْمَسْجِدِ berharakat kasrah?,Didahului huruf jar إِلَى (majrur),,masjid
+MWD-01-001,MWD-01,1,Jawaban صَبَاحَ الْخَيْرِ adalah…,صَبَاحَ النُّوْرِ,,
+MWD-01-002,MWD-01,1,Arti شُكْرًا adalah…,Terima kasih,,
+MWD-01-003,MWD-01,1,Arti أَهْلًا وَسَهْلًا adalah…,Selamat datang,,
+MWD-01-004,MWD-01,2,Jawaban شُكْرًا adalah…,عَفْوًا ('afwan),,
+MWD-01-005,MWD-01,2,Arti كَيْفَ حَالُكَ؟ adalah…,Apa kabar?,,
+MWD-01-006,MWD-01,2,Arti مَا اسْمُكَ؟ adalah…,Siapa namamu?,,
+MWD-01-007,MWD-01,2,Jawaban مِنْ أَيْنَ أَنْتَ؟ untuk orang Indonesia adalah…,أَنَا مِنْ إِنْدُوْنِيْسِيَا,,
+MWD-01-008,MWD-01,2,Siswa menyambut tamu dari Mesir di gerbang sekolah. Ungkapan selamat datang yang tepat adalah…,أَهْلًا وَسَهْلًا,,tamu Mesir
+MWD-01-009,MWD-01,2,"Sore hari, siswa bertemu ustazah di depan masjid dan menyapa مَسَاءَ الْخَيْرِ. Jawaban yang lazim adalah…",مَسَاءَ النُّوْرِ,,masjid
+MWD-02-001,MWD-02,1,Angka 3 dalam bahasa Arab adalah…,ثَلَاثَةٌ (tsalatsah),,
+MWD-02-002,MWD-02,1,Angka 10 dalam bahasa Arab adalah…,عَشَرَةٌ ('asyarah),,
+MWD-02-003,MWD-02,2,Angka 7 dalam bahasa Arab adalah…,سَبْعَةٌ (sab'ah),,
+MWD-02-004,MWD-02,2,Angka 8 dalam bahasa Arab adalah…,ثَمَانِيَةٌ (tsamaniyah),,
+MWD-02-005,MWD-02,2,Ungkapan untuk menanyakan jam adalah…,كَمِ السَّاعَةُ؟,,
+MWD-02-006,MWD-02,2,Arti وَالنِّصْفُ dalam penyebutan jam adalah…,Setengah,,
+MWD-02-007,MWD-02,3,"Mengapa jam tiga disebut اَلسَّاعَةُ الثَّالِثَةُ, bukan اَلسَّاعَةُ ثَلَاثَةٌ?","Untuk jam dipakai bilangan bertingkat (ordinal), bukan bilangan biasa",,
+MWD-02-008,MWD-02,2,Penjual di pasar Arab menyebut harga خَمْسَةٌ رِيَالٍ. Berapa harganya?,Lima riyal,,pasar
+MWD-03-001,MWD-03,1,Arti أَبٌ adalah…,Ayah,,
+MWD-03-002,MWD-03,1,Arti أُمٌّ adalah…,Ibu,,
+MWD-03-003,MWD-03,2,Arti مَطْبَخٌ adalah…,Dapur,,
+MWD-03-004,MWD-03,2,Arti غُرْفَةٌ adalah…,Kamar,,
+MWD-03-005,MWD-03,2,Arti أُخْتٌ adalah…,Saudara perempuan,,
+MWD-03-006,MWD-03,2,Ibu sedang memasak di bagian rumah ini. Dalam bahasa Arab tempat itu disebut…,مَطْبَخٌ (mathbakh),,rumah
+MWD-04-001,MWD-04,1,Arti مَدْرَسَةٌ adalah…,Sekolah,,
+MWD-04-002,MWD-04,1,Arti طَالِبٌ adalah…,Siswa,,
+MWD-04-003,MWD-04,2,Arti سَبُّوْرَةٌ adalah…,Papan tulis,,
+MWD-04-004,MWD-04,2,Arti أَسْتَيْقِظُ adalah…,Saya bangun (tidur),,
+MWD-04-005,MWD-04,2,Apa beda مَكْتَبٌ dan مَكْتَبَةٌ?,مَكْتَبٌ meja atau kantor; مَكْتَبَةٌ perpustakaan atau toko buku,,
+MWD-04-006,MWD-04,2,Siswa meminjam buku di ruang baca sekolah. Ruangan itu dalam bahasa Arab disebut…,مَكْتَبَةٌ (maktabah),,perpustakaan
+MWD-05-001,MWD-05,1,Hari Jumat dalam bahasa Arab adalah…,اَلْجُمُعَةُ (al-jumu'ah),,
+MWD-05-002,MWD-05,1,Hari Minggu dalam bahasa Arab adalah…,اَلْأَحَدُ (al-ahad),,
+MWD-05-003,MWD-05,2,Hari Senin dalam bahasa Arab adalah…,اَلْاِثْنَيْنِ (al-itsnain),,
+MWD-05-004,MWD-05,2,Hari Kamis dalam bahasa Arab adalah…,اَلْخَمِيْسُ (al-khamis),,
+MWD-05-005,MWD-05,2,Arti غَدًا adalah…,Besok,,
+MWD-05-006,MWD-05,2,"Pengajian rutin di kampung diadakan setiap malam Jumat, yaitu Kamis malam. Hari Kamis dalam bahasa Arab adalah…",اَلْخَمِيْسُ (al-khamis),,pengajian
+MWD-06-001,MWD-06,1,Arti فَوْقَ adalah…,Di atas,,
+MWD-06-002,MWD-06,1,Arti تَحْتَ adalah…,Di bawah,,
+MWD-06-003,MWD-06,2,Arti أَمَامَ adalah…,Di depan,,
+MWD-06-004,MWD-06,2,Arti خَلْفَ adalah…,Di belakang,,
+MWD-06-005,MWD-06,2,Arti بَيْنَ adalah…,Di antara,,
+MWD-06-006,MWD-06,2,Tas berada di bawah meja. Lengkapi: اَلْحَقِيْبَةُ ___ الْمَكْتَبِ.,تَحْتَ,,kelas
+TSQ-01-001,TSQ-01,1,Bahasa Arab menjadi bahasa resmi PBB pada tahun…,1973,,
+TSQ-01-002,TSQ-01,2,Hari Bahasa Arab Sedunia diperingati setiap tanggal…,18 Desember,,
+TSQ-01-003,TSQ-01,2,Liga Arab beranggotakan berapa negara dan wilayah?,22,,
+TSQ-01-004,TSQ-01,2,Bahasa Arab baku yang dipakai dalam Al-Qur'an dan media resmi disebut…,Fusha,,
+TSQ-01-005,TSQ-01,2,Bahasa Arab dialek sehari-hari disebut…,Amiyah,,
+TSQ-02-001,TSQ-02,1,Sastrawan Mesir peraih Nobel Sastra 1988 adalah…,Naguib Mahfouz,,
+TSQ-02-002,TSQ-02,2,Kumpulan syair terbaik masa pra-Islam disebut…,Mu'allaqat,,
+TSQ-02-003,TSQ-02,2,Sastrawan kelahiran Lebanon penulis Sang Nabi (The Prophet) adalah…,Kahlil Gibran,,
+TSQ-02-004,TSQ-02,2,Pola irama dalam syair Arab disebut…,Wazan,,
+TSQ-02-005,TSQ-02,2,Rima akhir dalam syair Arab disebut…,Qafiyah,,
+HRF-01-012,HRF-01,2,Kaligrafi di dinding musala sekolah bertuliskan اَلرَّحْمٰنُ. Huruf ر termasuk huruf syamsiyah atau qamariyah?,Syamsiyah (dibaca ar-rahman),,kaligrafi
+HRF-02-006,HRF-02,2,"Siswa menulis nama ""Zaid"" (زَيْدٌ) di papan. Mengapa huruf ز tidak tersambung ke ي?",ز termasuk huruf yang tidak bersambung dengan huruf sesudahnya,,papan tulis
+HRF-03-007,HRF-03,2,Toko di Pasar Tanah Abang berpapan nama مَكْتَبَةُ الْهُدَى. Toko apa ini?,Toko buku (maktabah),,Tanah Abang
+NHW-01-009,NHW-01,2,Pada papan petunjuk di bandara Jeddah tertulis مِنْ هُنَا (dari sini). Kata مِنْ termasuk jenis kata…,Harf (huruf jar),,bandara
+NHW-02-013,NHW-02,2,"Dalam acara wisuda santri, pembawa acara menyebut ""para guru laki-laki"". Bentuk jamak mudzakkar salim dari مُدَرِّسٌ adalah…",مُدَرِّسُوْنَ (mudarrisun),,wisuda santri
+NHW-03-012,NHW-03,2,"Ustaz bertanya kepada sekelompok santri laki-laki: ""مِنْ أَيْنَ ___؟"" (dari mana kalian?). Dhamir apa yang tepat?",أَنْتُمْ (antum),,pesantren
+NHW-04-010,NHW-04,3,"Pemandu wisata menunjuk masjid besar di kejauhan dan berkata ___ مَسْجِدٌ كَبِيْرٌ. Kata tunjuk apa yang tepat, dan mengapa?",ذٰلِكَ; masjid mudzakkar dan letaknya jauh,,pemandu wisata
+NHW-05-010,NHW-05,2,Siswa menulis kalimat tentang kelasnya: اَلْفَصْلُ نَظِيْفٌ (kelas itu bersih). Kata نَظِيْفٌ berfungsi sebagai…,Khabar,,kelas
+NHW-06-012,NHW-06,2,Ibu bercerita bahwa kakak sedang belajar. Fi'il mudhari' دَرَسَ untuk هُوَ adalah…,يَدْرُسُ (yadrusu),,rumah
+NHW-07-007,NHW-07,2,Papan di perpustakaan pesantren bertuliskan لَا تَتَكَلَّمْ (jangan berbicara). Bentuk kalimat apa ini?,Nahi (larangan),,perpustakaan
+NHW-08-011,NHW-08,3,"Dalam lomba pidato bahasa Arab, peserta mengucapkan قَرَأَ الطَّالِبُ الْكِتَابُ. Apa kesalahan i'rab-nya?","Maf'ul bih harus manshub: الْكِتَابَ, bukan الْكِتَابُ",,lomba pidato
+NHW-09-008,NHW-09,2,Siswa menulis: أَنَا مِنْ ___ (dari Bandung). Bagaimana harakat isim sesudah مِنْ?,Majrur (kasrah),,Bandung
+MWD-02-009,MWD-02,2,"Bel sekolah berbunyi pukul tujuh pagi. Dalam bahasa Arab ""jam tujuh"" disebut…",اَلسَّاعَةُ السَّابِعَةُ,,bel sekolah
+MWD-05-007,MWD-05,2,Libur sekolah jatuh pada hari Ahad. Hari apa itu dalam bahasa Indonesia?,Minggu,,libur
+MWD-06-007,MWD-06,2,Kantin sekolah berada di antara masjid dan perpustakaan. Kata keterangan tempat apa yang dipakai?,بَيْنَ (baina),,kantin
+TSQ-01-006,TSQ-01,2,"Pada 18 Desember, ekstrakurikuler bahasa Arab mengadakan lomba kaligrafi untuk memperingati hari internasional. Hari apa itu?",Hari Bahasa Arab Sedunia,,ekstrakurikuler

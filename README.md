@@ -24,6 +24,8 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-seni-musik.html` | Knowledge map for Seni Musik (20 topics): theory, instruments, Indonesian and world music, singing and creating. |
 | `docs/peta-seni-tari.html` | Knowledge map for Seni Tari (20 topics): dance elements, Indonesian dances, dancers, choreography and staging. |
 | `docs/peta-seni-rupa.html` | Knowledge map for Seni Rupa (20 topics): elements and principles, 2D and 3D techniques, movements and artists, exhibitions. |
+| `docs/peta-bahasa-jepang.html` | Knowledge map for Bahasa dan Sastra Jepang (20 topics): kana and kanji, grammar, everyday topics, culture. |
+| `docs/peta-bahasa-arab.html` | Knowledge map for Bahasa dan Sastra Arab (20 topics): letters and roots, qawaid, everyday topics, culture and literature. |
 | `docs/peta-informatika.html` | Knowledge map for Informatika (25 topics), organised by its curriculum elements, from computational thinking to digital law. |
 | `docs/peta-pkwu.html` | Knowledge map for Prakarya dan Kewirausahaan (21 topics): entrepreneurship core plus crafts, engineering, cultivation, and food processing. |
 | `docs/peta-pjok.html` | Knowledge map for PJOK (21 topics): ball games, athletics, gymnastics, swimming, fitness, and health. |
@@ -36,6 +38,8 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank-seni-musik.html` | Short-answer question bank for Seni Musik (160 questions, about a fifth with everyday-context items). |
 | `docs/bank-seni-tari.html` | Short-answer question bank for Seni Tari (149 questions, about a fifth with everyday-context items). |
 | `docs/bank-seni-rupa.html` | Short-answer question bank for Seni Rupa (157 questions, about a fifth with everyday-context items). |
+| `docs/bank-bahasa-jepang.html` | Short-answer question bank for Bahasa Jepang (187 questions, about a fifth with everyday-context items). |
+| `docs/bank-bahasa-arab.html` | Short-answer question bank for Bahasa Arab (172 questions, about a fifth with everyday-context items). |
 | `docs/bank-informatika.html` | Short-answer question bank for Informatika (203 questions, about a fifth with everyday-context items). |
 | `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (159 questions, about a fifth with everyday-context items). |
 | `docs/bank-pjok.html` | Short-answer question bank for PJOK (197 questions, about a fifth with everyday-context items). |
