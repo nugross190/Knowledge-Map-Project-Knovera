@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi PAI SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "pai", "subject": "Pendidikan Agama Islam dan Budi Pekerti", "title": "Peta Materi PAI SMA", "lead": "Seluruh materi Pendidikan Agama Islam dan Budi Pekerti SMA, dari tajwid dan hadis sampai fikih muamalah dan sejarah peradaban Islam, disusun sebagai satu peta. Setiap simpul memuat dalil, istilah kunci, dan jebakan soal. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Al-Qur'an dan hadis, akidah, akhlak, fikih ibadah dan muamalah, serta sejarah peradaban Islam dunia dan Indonesia.", "source_note": "Domain mengikuti lima elemen Capaian Pembelajaran PAI dan Budi Pekerti Kurikulum Merdeka: Al-Qur'an Hadis, Akidah, Akhlak, Fikih, dan Sejarah Peradaban Islam. Penempatan kelas mengikuti buku Kemendikbudristek 2021 untuk kelas X dan XI; buku kelas XII dan banyak bahan ajar sekolah masih memakai urutan Kurikulum 2013, jadi label kelas XII hanya perkiraan. Penulisan nama surah dan istilah mengikuti kebiasaan buku sekolah.", "domains": [{"id": "QH", "name": "Al-Qur'an dan hadis", "short": "Al-Qur'an Hadis", "note": "Tajwid, ilmu hadis, dan kandungan ayat-ayat yang dikaji di SMA.", "topics": [{"code": "QH-01", "title": "Ilmu tajwid", "scope": "Nun mati, mim mati, mad, qalqalah", "src": "Kelas X–XII", "tier": 1, "sum": "Kaidah membaca Al-Qur'an dengan benar: hukum nun mati dan tanwin, mim mati, mad, dan qalqalah.", "blocks": [{"h": "Nun mati atau tanwin", "table": {"cols": ["Hukum", "Bertemu huruf", "Cara baca"], "rows": [["Izhar halqi", "ء ه ع ح غ خ (6 huruf tenggorokan)", "Jelas, tanpa dengung"], ["Idgam bigunnah", "ي ن م و (yanmu)", "Dilebur dengan dengung"], ["Idgam bilagunnah", "ل ر", "Dilebur tanpa dengung"], ["Iqlab", "ب", "Nun berubah menjadi bunyi mim"], ["Ikhfa haqiqi", "15 huruf sisanya", "Samar dengan dengung"]]}}, {"h": "Mim mati", "table": {"cols": ["Hukum", "Bertemu huruf"], "rows": [["Ikhfa syafawi", "ب"], ["Idgam mimi (mutamasilain)", "م"], ["Izhar syafawi", "Semua huruf selain ب dan م"]]}}, {"h": "Mad dan qalqalah", "li": ["<b>Mad thabi'i<\/b> (mad asli) dibaca panjang 2 harakat.", "Qalqalah (bunyi memantul) pada huruf ق ط ب ج د yang mati; kubra bila di akhir bacaan karena waqaf, sugra bila di tengah."]}], "traps": ["Idgam bigunnah memakai huruf ي ن م و; huruf ل dan ر termasuk idgam bilagunnah (tanpa dengung).", "Iqlab hanya satu huruf, yaitu ب; ikhfa syafawi juga ب tetapi untuk mim mati, bukan nun mati."]}, {"code": "QH-02", "title": "Hadis dan sumber hukum Islam", "scope": "Sanad, matan, rawi, kualitas hadis", "src": "Kelas X–XI", "tier": 1, "sum": "Hadis adalah sumber hukum Islam kedua setelah Al-Qur'an; ilmu hadis menilai mata rantai periwayatan dan isinya.", "blocks": [{"h": "Unsur hadis", "li": ["<b>Sanad<\/b>: rangkaian orang yang meriwayatkan; matan: isi atau teks hadis; rawi: orang yang meriwayatkan dan membukukan.", "Sunah menurut bentuknya: qauliyah (ucapan), fi'liyah (perbuatan), taqririyah (persetujuan Nabi atas perbuatan sahabat)."]}, {"h": "Kualitas hadis", "table": {"cols": ["Kualitas", "Ciri"], "rows": [["Sahih", "Sanad bersambung, rawi adil dan kuat hafalannya, tanpa cacat dan kejanggalan"], ["Hasan", "Seperti sahih tetapi hafalan rawinya sedikit kurang kuat"], ["Daif", "Tidak memenuhi syarat sahih atau hasan"]]}}, {"h": "Urutan sumber hukum", "li": ["Al-Qur'an, hadis (sunah), lalu ijtihad; bentuk ijtihad antara lain ijmak (kesepakatan ulama) dan qiyas (analogi)."]}], "traps": ["Sanad adalah rantai periwayat, matan adalah isi hadis; keduanya sering tertukar."]}, {"code": "QH-03", "title": "Kompetisi dalam kebaikan dan etos kerja", "scope": "QS Al-Baqarah 148, Al-Ma'idah 48, At-Taubah 105", "src": "Kelas X", "tier": 2, "sum": "Ayat-ayat yang mendorong berlomba-lomba dalam kebaikan dan bekerja sungguh-sungguh.", "blocks": [{"h": "Ayat", "li": ["<b>Fastabiqul khairat<\/b> (berlomba-lombalah dalam kebaikan) terdapat dalam QS Al-Baqarah/2:148 dan QS Al-Ma'idah/5:48.", "QS At-Taubah/9:105 memerintahkan bekerja; Allah, Rasul-Nya, dan orang-orang mukmin akan melihat pekerjaan itu.", "Etos kerja dalam Islam: bekerja dengan niat ibadah, jujur, disiplin, dan profesional."]}, {"h": "Penerapan", "li": ["Bersaing secara sehat dalam prestasi, menolong teman belajar, dan menyelesaikan tugas tepat waktu."]}]}, {"code": "QH-04", "title": "Berpikir kritis dan ilmu pengetahuan", "scope": "QS Ali 'Imran 190–191, Al-'Alaq 1–5", "src": "Kelas XI", "tier": 2, "sum": "Al-Qur'an mendorong manusia mengamati alam dan berpikir, serta menjadikan ilmu sebagai jalan mengenal Allah Swt.", "blocks": [{"h": "Ayat", "li": ["QS Ali 'Imran/3:190–191 menyebut ulul albab: orang yang berzikir dan memikirkan penciptaan langit dan bumi.", "<b>QS Al-'Alaq/96:1–5<\/b> adalah wahyu pertama, diawali perintah iqra' (bacalah).", "Berpikir kritis: memeriksa informasi, mencari bukti, dan tidak menerima sesuatu tanpa dasar."]}]}, {"code": "QH-05", "title": "Toleransi dan persaudaraan", "scope": "QS Al-Kafirun, Al-Hujurat 13", "src": "Kelas XI", "tier": 2, "sum": "Ayat-ayat tentang menghormati pemeluk agama lain dan persaudaraan antarmanusia.", "blocks": [{"h": "Ayat", "li": ["QS Al-Kafirun/109:6: lakum dinukum wa liya din (untukmu agamamu, untukku agamaku).", "<b>QS Al-Hujurat/49:13<\/b>: manusia diciptakan bersuku-suku dan berbangsa-bangsa untuk saling mengenal; yang paling mulia adalah yang paling bertakwa.", "Toleransi berarti menghormati keyakinan dan ibadah pemeluk agama lain tanpa mencampuradukkan akidah dan ibadah."]}, {"h": "Bentuk kerukunan", "li": ["Kerukunan intern umat beragama, antarumat beragama, dan antara umat beragama dengan pemerintah."]}]}]}, {"id": "AQD", "name": "Akidah", "short": "Akidah", "note": "Rukun iman beserta dalil dan maknanya.", "topics": [{"code": "AQD-01", "title": "Iman kepada Allah dan cabang-cabang iman", "scope": "Tauhid, asmaulhusna, syu'abul iman", "src": "Kelas X", "tier": 1, "sum": "Iman kepada Allah Swt. diwujudkan dengan tauhid, mengenal asmaulhusna, dan mengamalkan cabang-cabang iman.", "blocks": [{"h": "Tauhid", "li": ["Tauhid rububiyah: Allah satu-satunya pencipta dan pengatur; uluhiyah: hanya Allah yang disembah; asma wa sifat: mengimani nama dan sifat-Nya.", "Asmaulhusna berjumlah 99 menurut hadis, misalnya al-Karim (Maha Mulia), al-Mu'min (Maha Memberi Keamanan), al-Wakil (Maha Mewakili), al-'Adl (Maha Adil)."]}, {"h": "Syu'abul iman", "li": ["<b>Iman memiliki lebih dari 70 cabang<\/b> (riwayat lain lebih dari 60): yang paling utama ucapan la ilaha illallah, yang paling rendah menyingkirkan gangguan dari jalan, dan malu adalah cabang iman (HR Muslim).", "Iman meliputi keyakinan dalam hati, ucapan dengan lisan, dan pengamalan dengan anggota badan."]}], "traps": ["Cabang iman yang paling rendah adalah menyingkirkan gangguan dari jalan, bukan sekadar senyum atau salam."]}, {"code": "AQD-02", "title": "Iman kepada malaikat", "scope": "Nama dan tugas malaikat", "src": "Kelas X–XI", "tier": 1, "sum": "Malaikat diciptakan dari cahaya, selalu taat, dan masing-masing memiliki tugas; ada sepuluh yang wajib diketahui.", "blocks": [{"h": "Malaikat dan tugasnya", "table": {"cols": ["Malaikat", "Tugas"], "rows": [["Jibril", "Menyampaikan wahyu"], ["Mikail", "Membagi rezeki dan menurunkan hujan"], ["Israfil", "Meniup sangkakala"], ["Izrail (malakul maut)", "Mencabut nyawa"], ["Munkar dan Nakir", "Menanyai manusia di alam kubur"], ["Raqib dan Atid", "Mencatat amal baik dan amal buruk"], ["Malik", "Menjaga neraka"], ["Ridwan", "Menjaga surga"]]}}, {"h": "Hikmah", "li": ["Menyadari amal selalu dicatat mendorong berhati-hati dalam ucapan dan perbuatan."]}], "traps": ["Raqib mencatat amal baik dan Atid mencatat amal buruk.", "Nama Izrail dipakai buku sekolah; Al-Qur'an menyebutnya malakul maut."]}, {"code": "AQD-03", "title": "Iman kepada kitab dan rasul", "scope": "Empat kitab, ulul azmi, sifat rasul", "src": "Kelas XI", "tier": 1, "sum": "Allah menurunkan kitab kepada para rasul; ada 25 rasul yang wajib diketahui dan lima di antaranya ulul azmi.", "blocks": [{"h": "Kitab Allah", "table": {"cols": ["Kitab", "Diturunkan kepada"], "rows": [["Taurat", "Nabi Musa a.s."], ["Zabur", "Nabi Daud a.s."], ["Injil", "Nabi Isa a.s."], ["Al-Qur'an", "Nabi Muhammad saw."]]}}, {"h": "Rasul", "li": ["Selain kitab, ada suhuf (lembaran wahyu) yang diturunkan kepada Nabi Ibrahim dan Nabi Musa.", "<b>Ulul azmi<\/b> (rasul yang paling teguh): Nuh, Ibrahim, Musa, Isa, dan Muhammad.", "Sifat wajib rasul: siddiq (jujur), amanah (dapat dipercaya), tablig (menyampaikan), fatanah (cerdas).", "Nabi menerima wahyu untuk diri sendiri; rasul menerima wahyu dan wajib menyampaikannya."]}], "traps": ["Zabur diturunkan kepada Nabi Daud, bukan Nabi Musa; Musa menerima Taurat."]}, {"code": "AQD-04", "title": "Iman kepada hari akhir serta qada dan qadar", "scope": "Kiamat, alam akhirat, takdir", "src": "Kelas XII", "tier": 1, "sum": "Iman kepada hari akhir dan takdir Allah mendorong manusia berikhtiar, berdoa, dan bertawakal.", "blocks": [{"h": "Hari akhir", "li": ["Kiamat sugra: kematian atau bencana yang menimpa sebagian makhluk; kiamat kubra: kehancuran seluruh alam.", "Urutan peristiwa: alam barzakh, yaumul ba'as (kebangkitan), yaumul mahsyar (dikumpulkan), hisab (perhitungan), mizan (timbangan), sirat (titian), lalu surga atau neraka."]}, {"h": "Qada dan qadar", "li": ["<b>Qada<\/b>: ketetapan Allah sejak zaman azali; qadar: perwujudan ketetapan itu sesuai ukuran-Nya.", "Takdir mubram tidak dapat diubah (misalnya kematian); takdir muallaq dapat berubah dengan ikhtiar dan doa.", "Sikap: ikhtiar (berusaha), doa, lalu tawakal (berserah diri) dan sabar terhadap hasilnya."]}], "traps": ["Tawakal dilakukan setelah ikhtiar, bukan pengganti ikhtiar."]}]}, {"id": "AKH", "name": "Akhlak", "short": "Akhlak", "note": "Akhlak terpuji yang diteladankan dan akhlak tercela yang dijauhi, termasuk adab di ruang digital.", "topics": [{"code": "AKH-01", "title": "Akhlak terpuji", "scope": "Ikhlas, sabar, syukur, malu, zuhud", "src": "Kelas X–XII", "tier": 1, "sum": "Sifat terpuji yang dibahas di SMA: ikhlas, sabar, syukur, malu (haya'), zuhud, jujur, dan etos kerja.", "blocks": [{"h": "Sifat terpuji", "table": {"cols": ["Sifat", "Makna"], "rows": [["Ikhlas", "Beramal hanya mengharap rida Allah"], ["Sabar", "Menahan diri saat musibah, dalam ketaatan, dan dari maksiat"], ["Syukur", "Mengakui nikmat dengan hati, lisan, dan perbuatan"], ["Malu (haya')", "Merasa malu berbuat buruk; termasuk cabang iman"], ["Zuhud", "Tidak menggantungkan hati pada dunia walau memilikinya"], ["Tawakal", "Berserah diri kepada Allah setelah berusaha"]]}}], "traps": ["Zuhud bukan menolak bekerja atau hidup miskin, melainkan tidak terikat hati pada harta."]}, {"code": "AKH-02", "title": "Akhlak tercela", "scope": "Riya', sum'ah, takabur, hasad, khamar", "src": "Kelas X–XI", "tier": 1, "sum": "Sifat dan perbuatan tercela yang harus dijauhi: hidup berlebihan, riya', sum'ah, takabur, hasad, perkelahian, minuman keras, dan narkoba.", "blocks": [{"h": "Sifat tercela", "table": {"cols": ["Sifat", "Makna"], "rows": [["Israf dan tabzir", "Berlebihan dan menghambur-hamburkan harta (foya-foya)"], ["Riya'", "Beramal agar dilihat orang"], ["Sum'ah", "Beramal agar didengar dan dipuji orang"], ["Takabur", "Sombong, merasa lebih dari orang lain"], ["Hasad", "Dengki, ingin nikmat orang lain hilang"]]}}, {"h": "Larangan lain", "li": ["<b>QS Al-Ma'idah/5:90<\/b> menyebut khamar, judi, berkurban untuk berhala, dan mengundi nasib sebagai perbuatan setan yang harus dijauhi.", "Narkoba diharamkan karena memabukkan dan merusak, sama dengan khamar.", "QS Al-Isra'/17:32 melarang mendekati zina."]}], "traps": ["Riya' berkaitan dengan ingin dilihat; sum'ah dengan ingin didengar."]}, {"code": "AKH-03", "title": "Adab bermedia sosial", "scope": "Tabayyun, ghibah, olok-olok", "src": "Kelas XI", "tier": 2, "sum": "Etika berkomunikasi di media sosial berdasarkan QS Al-Hujurat: memeriksa berita, tidak mengolok-olok, dan tidak bergunjing.", "blocks": [{"h": "Ayat", "li": ["<b>QS Al-Hujurat/49:6<\/b>: bila datang berita dari orang fasik, periksalah kebenarannya (tabayyun).", "QS Al-Hujurat/49:11: larangan mengolok-olok dan memanggil dengan gelar yang buruk.", "QS Al-Hujurat/49:12: larangan berprasangka buruk, mencari-cari kesalahan, dan menggunjing (ghibah)."]}, {"h": "Penerapan", "li": ["Periksa sumber sebelum membagikan, tidak menyebar aib orang, dan berkomentar dengan santun."]}]}, {"code": "AKH-04", "title": "Birrulwalidain dan hormat kepada guru", "scope": "QS Al-Isra' 23–24", "src": "Kelas X–XII", "tier": 2, "sum": "Berbakti kepada orang tua dan menghormati guru sebagai bagian dari akhlak kepada sesama manusia.", "blocks": [{"h": "Ayat dan adab", "li": ["<b>QS Al-Isra'/17:23–24<\/b>: berbuat baik kepada ibu-bapak, tidak berkata \"ah\" kepada mereka, dan mendoakan mereka.", "Birrulwalidain tetap berlaku setelah orang tua wafat: mendoakan, menunaikan janji mereka, dan menyambung silaturahmi dengan kerabat mereka.", "Adab kepada guru: menghormati, mendengarkan, dan mengamalkan ilmunya."]}]}]}, {"id": "FIK", "name": "Fikih", "short": "Fikih", "note": "Hukum Islam: dasar hukum, muamalah, zakat dan wakaf, haji, jenazah, khotbah, waris, dan pernikahan.", "topics": [{"code": "FIK-01", "title": "Hukum taklifi dan ijtihad", "scope": "Wajib sampai haram, ijmak, qiyas", "src": "Kelas XII", "tier": 1, "sum": "Lima hukum taklifi menilai perbuatan mukalaf; ijtihad dipakai ketika hukum tidak dijelaskan langsung oleh Al-Qur'an dan hadis.", "blocks": [{"h": "Hukum taklifi", "table": {"cols": ["Hukum", "Keterangan"], "rows": [["Wajib", "Dikerjakan berpahala, ditinggalkan berdosa"], ["Sunah", "Dikerjakan berpahala, ditinggalkan tidak berdosa"], ["Mubah", "Boleh dikerjakan atau ditinggalkan"], ["Makruh", "Ditinggalkan berpahala, dikerjakan tidak berdosa"], ["Haram", "Dikerjakan berdosa, ditinggalkan berpahala"]]}}, {"h": "Ijtihad", "li": ["<b>Ijmak<\/b>: kesepakatan para mujtahid atas suatu hukum; qiyas: menyamakan hukum perkara baru dengan perkara yang ada dalilnya karena kesamaan alasan ('illat).", "Contoh qiyas: narkoba diharamkan karena sama-sama memabukkan seperti khamar.", "Wajib ain dibebankan kepada setiap orang; wajib kifayah cukup dikerjakan sebagian orang."]}], "traps": ["Makruh tidak berdosa bila dikerjakan; yang berdosa bila dikerjakan adalah haram."]}, {"code": "FIK-02", "title": "Muamalah dan ekonomi syariah", "scope": "Jual beli, riba, akad bank syariah", "src": "Kelas XI–XII", "tier": 1, "sum": "Aturan Islam tentang jual beli dan transaksi ekonomi, larangan riba, serta akad-akad yang dipakai lembaga keuangan syariah.", "blocks": [{"h": "Jual beli", "li": ["Rukun: penjual dan pembeli, barang dan harga, serta ijab kabul (serah terima dengan kerelaan).", "<b>Riba<\/b> (tambahan yang disyaratkan pada utang atau pertukaran tertentu) diharamkan.", "Jual beli yang dilarang antara lain mengandung penipuan, barang haram, atau ketidakjelasan (garar)."]}, {"h": "Akad keuangan syariah", "table": {"cols": ["Akad", "Bentuk"], "rows": [["Mudarabah", "Pemodal dan pengelola usaha berbagi hasil"], ["Musyarakah", "Beberapa pihak sama-sama menyertakan modal"], ["Murabahah", "Jual beli dengan keuntungan yang disepakati dan diketahui"], ["Ijarah", "Sewa-menyewa"], ["Wadi'ah", "Titipan"]]}}], "traps": ["Mudarabah: satu pihak modal, satu pihak tenaga; musyarakah: semua pihak menyertakan modal."]}, {"code": "FIK-03", "title": "Zakat, infak, sedekah, dan wakaf", "scope": "Fitrah, mal, asnaf, wakaf", "src": "Kelas X–XII", "tier": 1, "sum": "Zakat wajib bagi yang memenuhi syarat dan diberikan kepada delapan golongan; infak, sedekah, dan wakaf dianjurkan.", "blocks": [{"h": "Zakat", "li": ["<b>Zakat fitrah<\/b> dibayar pada bulan Ramadan sebelum salat Idulfitri, sebesar 2,5 kg atau 3,5 liter makanan pokok (ketentuan BAZNAS) per jiwa.", "Zakat mal emas: nisab 85 gram, kadar 2,5%, setelah dimiliki satu tahun (haul).", "Delapan asnaf (QS At-Taubah/9:60): fakir, miskin, amil, mualaf, riqab, garim, fisabilillah, ibnu sabil.", "Zakat diatur UU No. 23 Tahun 2011; pengelolanya BAZNAS dan LAZ."]}, {"h": "Wakaf dan sedekah", "li": ["Wakaf: menahan harta yang tahan lama untuk dimanfaatkan bagi kepentingan umum; diatur UU No. 41 Tahun 2004.", "Infak berupa harta; sedekah lebih luas, termasuk kebaikan nonmateri seperti senyum."]}], "traps": ["Nisab adalah batas minimal harta wajib zakat; haul adalah masa kepemilikan satu tahun. Keduanya berbeda."]}, {"code": "FIK-04", "title": "Haji dan umrah", "scope": "Rukun, wajib, perbedaan", "src": "Kelas X", "tier": 2, "sum": "Haji wajib sekali seumur hidup bagi yang mampu; rukun haji harus dikerjakan, sedangkan wajib haji yang ditinggalkan diganti dam.", "blocks": [{"h": "Rukun dan wajib", "li": ["<b>Rukun haji<\/b>: ihram, wukuf di Arafah, tawaf ifadah, sai, tahalul (mencukur rambut), dan tertib.", "Wajib haji: ihram dari miqat, mabit di Muzdalifah, mabit di Mina, melontar jamrah, tawaf wada', dan menjauhi larangan ihram.", "Wukuf di Arafah dilakukan pada 9 Zulhijah."]}, {"h": "Umrah", "li": ["Rukun umrah sama dengan haji tetapi tanpa wukuf; umrah dapat dilakukan kapan saja.", "Meninggalkan rukun membuat haji tidak sah; meninggalkan wajib haji diganti dengan dam (denda)."]}], "traps": ["Wukuf di Arafah adalah rukun haji; mabit di Muzdalifah adalah wajib haji."]}, {"code": "FIK-05", "title": "Penyelenggaraan jenazah", "scope": "Memandikan, mengafani, menyalatkan, menguburkan", "src": "Kelas XI", "tier": 2, "sum": "Merawat jenazah muslim hukumnya fardu kifayah dan terdiri atas empat kewajiban.", "blocks": [{"h": "Empat kewajiban", "li": ["Memandikan, mengafani, menyalatkan, dan menguburkan.", "<b>Salat jenazah<\/b> dikerjakan dengan empat takbir, tanpa rukuk dan sujud.", "Kain kafan laki-laki tiga lapis; perempuan lima lembar menurut kebiasaan buku sekolah."]}], "traps": ["Salat jenazah tidak memakai rukuk dan sujud."]}, {"code": "FIK-06", "title": "Khotbah, tablig, dan dakwah", "scope": "Rukun khotbah Jumat, bentuk dakwah", "src": "Kelas XI", "tier": 2, "sum": "Menyampaikan ajaran Islam melalui khotbah, tablig, dan dakwah dengan cara yang bijaksana.", "blocks": [{"h": "Khotbah Jumat", "li": ["Rukun khotbah menurut mazhab Syafi'i: memuji Allah (hamdalah), selawat kepada Nabi, wasiat takwa, membaca ayat Al-Qur'an, dan doa untuk kaum mukmin pada khotbah kedua.", "Khotbah Jumat terdiri atas dua khotbah yang dipisah duduk sebentar."]}, {"h": "Dakwah", "li": ["<b>QS An-Nahl/16:125<\/b>: serulah ke jalan Tuhan dengan hikmah, nasihat yang baik, dan berdebat dengan cara yang baik.", "Tablig: menyampaikan ajaran; dakwah: mengajak kepada kebaikan, termasuk dengan perbuatan."]}]}, {"code": "FIK-07", "title": "Mawaris", "scope": "Ahli waris, furudul muqaddarah", "src": "Kelas XII", "tier": 2, "sum": "Pembagian harta warisan menurut Islam dengan bagian-bagian tertentu bagi ahli waris.", "blocks": [{"h": "Ketentuan", "li": ["Sebelum dibagi, harta peninggalan dipakai untuk biaya perawatan jenazah, membayar utang, dan menunaikan wasiat (paling banyak sepertiga).", "<b>Furudul muqaddarah<\/b> (bagian yang ditentukan): 1/2, 1/4, 1/8, 1/3, 2/3, dan 1/6.", "Anak laki-laki mendapat dua kali bagian anak perempuan (QS An-Nisa'/4:11); keduanya menjadi asabah bila bersama.", "Suami: 1/2 bila tidak ada anak, 1/4 bila ada anak; istri: 1/4 bila tidak ada anak, 1/8 bila ada anak (QS An-Nisa'/4:12)."]}]}, {"code": "FIK-08", "title": "Pernikahan dalam Islam", "scope": "Rukun nikah, UU Perkawinan", "src": "Kelas XII", "tier": 3, "sum": "Ketentuan pernikahan menurut Islam dan undang-undang perkawinan di Indonesia.", "blocks": [{"h": "Ketentuan", "li": ["<b>Rukun nikah<\/b>: calon suami, calon istri, wali, dua orang saksi, serta ijab dan kabul.", "Mahar diberikan suami kepada istri, tetapi bukan rukun nikah.", "UU No. 1 Tahun 1974 tentang Perkawinan, diubah UU No. 16 Tahun 2019: usia minimal menikah 19 tahun bagi laki-laki dan perempuan."]}]}]}, {"id": "SPI", "name": "Sejarah peradaban Islam", "short": "Sejarah", "note": "Dakwah Nabi, khulafaurrasyidin, masa keemasan, dan perkembangan Islam di Indonesia.", "topics": [{"code": "SPI-01", "title": "Dakwah Nabi Muhammad saw.", "scope": "Makkah, hijrah, Madinah", "src": "Kelas X", "tier": 1, "sum": "Dakwah Nabi dari wahyu pertama di Gua Hira sampai terbentuknya masyarakat Madinah dan penaklukan Makkah.", "blocks": [{"h": "Peristiwa", "table": {"cols": ["Tahun", "Peristiwa"], "rows": [["610 M", "Wahyu pertama (QS Al-'Alaq 1–5) di Gua Hira"], ["610–613 M", "Dakwah secara sembunyi-sembunyi sekitar tiga tahun"], ["622 M", "Hijrah ke Madinah; menjadi awal kalender hijriah"], ["622 M", "Piagam Madinah mengatur hidup bersama warga Madinah"], ["630 M (8 H)", "Fathu Makkah (pembebasan Makkah)"], ["632 M (11 H)", "Nabi wafat di Madinah"]]}}, {"h": "Strategi", "li": ["Di Makkah dakwah menekankan akidah; di Madinah dakwah membangun masyarakat: masjid, persaudaraan Muhajirin-Ansar, dan Piagam Madinah."]}], "traps": ["Kalender hijriah dihitung dari peristiwa hijrah (622 M), tetapi baru ditetapkan pada masa Khalifah Umar bin Khattab."]}, {"code": "SPI-02", "title": "Khulafaurrasyidin", "scope": "Abu Bakar, Umar, Usman, Ali", "src": "Kelas X", "tier": 1, "sum": "Empat khalifah pengganti Nabi beserta kebijakan pentingnya.", "blocks": [{"h": "Khalifah", "table": {"cols": ["Khalifah", "Masa", "Kebijakan penting"], "rows": [["Abu Bakar as-Siddiq", "632–634 M", "Memerangi kaum murtad dan nabi palsu; mengumpulkan Al-Qur'an atas usul Umar"], ["Umar bin Khattab", "634–644 M", "Menetapkan kalender hijriah, memperluas wilayah, membentuk lembaga pemerintahan"], ["Usman bin Affan", "644–656 M", "Menyeragamkan bacaan dengan mushaf Usmani"], ["Ali bin Abi Talib", "656–661 M", "Menghadapi perang saudara (Jamal dan Siffin)"]]}}], "traps": ["Pengumpulan Al-Qur'an dimulai masa Abu Bakar; penyeragaman mushaf dilakukan masa Usman."]}, {"code": "SPI-03", "title": "Masa keemasan Islam", "scope": "Umayyah, Abbasiyah, ilmuwan muslim", "src": "Kelas XI", "tier": 3, "sum": "Perkembangan ilmu pengetahuan dan peradaban pada masa Dinasti Umayyah dan Abbasiyah.", "blocks": [{"h": "Dinasti", "li": ["Umayyah (661–750 M) berpusat di Damaskus; Abbasiyah (750–1258 M) berpusat di Baghdad.", "<b>Baitul Hikmah<\/b> di Baghdad menjadi pusat penerjemahan dan ilmu pengetahuan, terutama masa Harun ar-Rasyid dan al-Ma'mun.", "Baghdad jatuh ke tangan bangsa Mongol pimpinan Hulagu Khan pada 1258 M."]}, {"h": "Ilmuwan", "table": {"cols": ["Tokoh", "Bidang"], "rows": [["Ibnu Sina", "Kedokteran; kitab Al-Qanun fi at-Tibb"], ["Al-Khawarizmi", "Matematika; asal istilah aljabar dan algoritma"], ["Ibnu Rusyd", "Filsafat dan kedokteran"], ["Ibnu Khaldun", "Sejarah dan sosiologi; kitab Al-Muqaddimah"]]}}]}, {"code": "SPI-04", "title": "Masuknya Islam dan Walisongo", "scope": "Teori masuk, Walisongo, akulturasi", "src": "Kelas X–XI", "tier": 1, "sum": "Islam masuk ke Nusantara melalui perdagangan dan dakwah, lalu disebarkan Walisongo di Jawa dengan pendekatan budaya.", "blocks": [{"h": "Teori masuk", "li": ["Teori Gujarat, Makkah (Arab), Persia, dan Tiongkok; saluran penyebaran: perdagangan, perkawinan, pendidikan (pesantren), tasawuf, dan kesenian."]}, {"h": "Walisongo", "li": ["Maulana Malik Ibrahim, Sunan Ampel, Sunan Giri, Sunan Bonang, Sunan Drajat, Sunan Kudus, Sunan Kalijaga, Sunan Muria, dan Sunan Gunung Jati.", "<b>Sunan Kalijaga<\/b> berdakwah melalui wayang, tembang, dan seni budaya.", "Sunan Gunung Jati berdakwah di Cirebon dan Banten."]}], "traps": ["Sunan Gunung Jati berdakwah di Jawa Barat (Cirebon dan Banten), bukan di Jawa Timur."]}, {"code": "SPI-05", "title": "Ulama dan organisasi Islam Indonesia", "scope": "Ulama mendunia, Muhammadiyah, NU", "src": "Kelas XI–XII", "tier": 2, "sum": "Ulama Nusantara yang berpengaruh di dunia Islam dan organisasi Islam yang berperan dalam pendidikan dan kebangsaan.", "blocks": [{"h": "Ulama", "table": {"cols": ["Ulama", "Keterangan"], "rows": [["Syekh Nawawi al-Bantani", "Dari Banten; mengajar di Makkah dan menulis banyak kitab"], ["Syekh Ahmad Khatib al-Minangkabawi", "Imam dan khatib Mazhab Syafi'i di Masjidil Haram; guru K.H. Ahmad Dahlan dan K.H. Hasyim Asy'ari"], ["Syekh Yusuf al-Makassari", "Ulama dan pejuang; diasingkan Belanda ke Afrika Selatan; pahlawan nasional"]]}}, {"h": "Organisasi", "table": {"cols": ["Organisasi", "Berdiri", "Pendiri"], "rows": [["Muhammadiyah", "18 November 1912, Yogyakarta", "K.H. Ahmad Dahlan"], ["Persatuan Islam (Persis)", "12 September 1923, Bandung", "K.H. Zamzam dan Muhammad Yunus"], ["Nahdlatul Ulama", "31 Januari 1926, Surabaya", "K.H. Hasyim Asy'ari"]]}}], "traps": ["Muhammadiyah berdiri di Yogyakarta (1912), Nahdlatul Ulama di Surabaya (1926)."]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku PAI dan Budi Pekerti Kurikulum Merdeka disusun per bab tematik yang menggabungkan beberapa elemen; peta ini memisahkannya menurut elemen agar mudah diulang.", "Beberapa ketentuan fikih berbeda antarmazhab (misalnya rukun khotbah, jumlah lapis kafan); peta ini memakai mazhab Syafi'i seperti buku sekolah di Indonesia.", "Besaran zakat fitrah dan nisab zakat mal mengikuti ketentuan BAZNAS; nilainya dalam rupiah berubah setiap tahun.", "Jumlah cabang iman disebut lebih dari 70 dalam riwayat Muslim dan lebih dari 60 dalam riwayat Bukhari.", "Nomor surah dan ayat ditulis dengan format QS Nama/nomor surah:ayat; cocokkan dengan mushaf."]}, {"title": "Rujukan", "items": ["Buku PAI dan Budi Pekerti SMA kelas X dan XI (Kemendikbudristek, 2021): daftar bab dari ringkasan sekunder; PDF resminya tidak dapat dibuka dari lingkungan kerja ini.", "Capaian Pembelajaran PAI dan Budi Pekerti Fase E–F (Keputusan Kepala BSKAP No. 032/H/KR/2024), lima elemen.", "UU No. 23 Tahun 2011 (Pengelolaan Zakat); UU No. 41 Tahun 2004 (Wakaf); UU No. 1 Tahun 1974 dan UU No. 16 Tahun 2019 (Perkawinan)."]}], "bank": "bank-pai.html"};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>
