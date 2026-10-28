@@ -8,6 +8,7 @@ UNS-01-006,UNS-01,2,Cepat lambatnya lagu disebut…,Tempo,,
 UNS-01-007,UNS-01,2,Apa beda irama dan melodi?,Irama tentang panjang pendek bunyi; melodi tentang tinggi rendah nada yang berurutan,,
 UNS-01-008,UNS-01,2,"Di acara pengajian, peserta mengenali suara rebana dan suling walau tidak melihat alatnya. Unsur musik apa yang membuat keduanya dapat dibedakan?",Timbre (warna bunyi),,pengajian
 UNS-01-009,UNS-01,2,"Kelompok kasidah di kampung menyanyikan satu lagu bersama-sama dalam suara satu, dua, dan tiga yang dibunyikan serentak. Unsur musik apa yang muncul dari paduan suara itu?",Harmoni,,kasidah
+UNS-01-010,UNS-01,1,"Penghayatan musik yang tampak lewat tempo, dinamika, dan warna bunyi disebut…",Ekspresi,,
 UNS-02-001,UNS-02,1,Not seperempat dalam birama 4/4 bernilai berapa ketuk?,1,,
 UNS-02-002,UNS-02,1,Not penuh bernilai berapa ketuk?,4,,
 UNS-02-003,UNS-02,1,"Dalam not angka, angka 0 berarti…",Tanda diam (istirahat),,
@@ -18,6 +19,8 @@ UNS-02-007,UNS-02,2,"Dalam not angka, titik di atas angka berarti…",Nada satu 
 UNS-02-008,UNS-02,2,"Dalam not angka, satu garis di atas angka berarti nilainya…",Setengah ketuk,,
 UNS-02-009,UNS-02,3,Satu birama 4/4 berisi not setengah dan dua not seperdelapan. Berapa ketuk lagi yang diperlukan agar birama penuh?,1 ketuk,2 + ½ + ½ = 3.,
 UNS-02-010,UNS-02,2,Pelatih paduan suara sekolah membagikan partitur bertanda birama 6/8 untuk lagu berirama mengayun. Berapa ketuk per birama dan not apa yang bernilai satu ketuk?,6 ketuk; not seperdelapan,,paduan suara
+UNS-02-011,UNS-02,3,Satu birama 3/4 berisi not seperempat bertitik. Berapa ketuk lagi yang diperlukan agar birama penuh?,1½ ketuk,1 + ½ = 1½; 3 − 1½.,
+UNS-02-012,UNS-02,1,Kunci yang dipakai untuk nada tinggi adalah…,Kunci G (treble),,
 UNS-03-001,UNS-03,1,Susunan jarak tangga nada diatonis mayor adalah…,1 – 1 – ½ – 1 – 1 – 1 – ½,,
 UNS-03-002,UNS-03,1,Tangga nada yang terdiri atas lima nada pokok disebut…,Pentatonis,,
 UNS-03-003,UNS-03,1,Tangga nada minor asli biasanya diawali dan diakhiri nada…,La,,
@@ -25,14 +28,18 @@ UNS-03-004,UNS-03,2,Susunan jarak tangga nada minor asli adalah…,1 – ½ – 
 UNS-03-005,UNS-03,2,Di antara nada mana saja jarak ½ pada tangga nada mayor?,Mi–fa (3–4) dan si–do (7–8),,
 UNS-03-006,UNS-03,2,Laras gamelan dengan lima nada berjarak hampir sama disebut…,Slendro,,
 UNS-03-007,UNS-03,2,Laras gamelan dengan tujuh nada berjarak tidak sama disebut…,Pelog,,
-UNS-03-008,UNS-03,2,Tangga nada yang memakai jarak setengah di seluruhnya disebut…,Kromatis,,
+UNS-03-008,UNS-03,1,Tangga nada yang memakai jarak setengah di seluruhnya disebut…,Kromatis,,
 UNS-03-009,UNS-03,2,Paduan suara sekolah memilih lagu berkesan sedih dan syahdu untuk mengenang guru yang wafat. Lagu berkesan seperti ini umumnya memakai tangga nada…,Minor,,mengenang guru
+UNS-03-010,UNS-03,3,Tangga nada C mayor tidak memakai tanda kres atau mol. Mengapa jarak ½ jatuh tepat di E–F dan B–C?,"Karena pada tuts piano tidak ada tuts hitam di antara E–F dan B–C, sesuai pola mayor 1–1–½–1–1–1–½",,
+UNS-03-011,UNS-03,1,Tangga nada diatonis mayor berkesan…,"Gembira, bersemangat",,
 UNS-04-001,UNS-04,1,Gabungan tiga nada atau lebih yang dibunyikan bersamaan disebut…,Akor,,
 UNS-04-002,UNS-04,2,Akor I pada tangga nada C mayor terdiri atas nada…,C – E – G (do-mi-sol),,
 UNS-04-003,UNS-04,2,Akor IV pada C mayor adalah…,F (F-A-C),,
 UNS-04-004,UNS-04,2,Akor V pada C mayor adalah…,G (G-B-D),,
-UNS-04-005,UNS-04,2,Jarak dua nada disebut…,Interval,,
+UNS-04-005,UNS-04,1,Jarak dua nada disebut…,Interval,,
 UNS-04-006,UNS-04,2,"Gitaris di pos ronda mengiringi lagu C mayor hanya dengan akor C, F, dan G. Ketiga akor ini disebut akor…","Akor pokok (I, IV, V)",,pos ronda
+UNS-04-007,UNS-04,3,"Lagu dalam G mayor diakhiri dengan akor D lalu G. Akor apa D dan G dalam G mayor, dan apa nama akhiran ini?","D akor V, G akor I; kadens V–I",,
+UNS-04-008,UNS-04,1,Akor pokok tangga nada mayor adalah akor…,"I, IV, dan V",,
 UNS-05-001,UNS-05,1,"Istilah tempo untuk ""cepat"" adalah…",Allegro,,
 UNS-05-002,UNS-05,1,Tanda dinamika f (forte) berarti…,Keras,,
 UNS-05-003,UNS-05,1,Tanda dinamika p (piano) berarti…,Lembut,,
@@ -42,9 +49,11 @@ UNS-05-006,UNS-05,2,Istilah tempo largo berarti…,Sangat lambat,,
 UNS-05-007,UNS-05,2,Tanda ff berarti…,Sangat keras (fortissimo),,
 UNS-05-008,UNS-05,2,Mana yang lebih cepat: andante atau allegro?,Allegro,,
 UNS-05-009,UNS-05,2,Dirigen paduan suara di upacara sekolah memberi isyarat agar suara makin lama makin lembut di akhir lagu. Istilahnya adalah…,Decrescendo,,upacara
+UNS-05-010,UNS-05,3,Partitur lagu daerah bertanda moderato dengan dinamika mp lalu crescendo ke f. Jelaskan cara menyanyikannya.,"Tempo sedang, mulai agak lembut lalu makin keras sampai keras",,
+UNS-05-011,UNS-05,1,Tanda mf berarti…,Agak keras (mezzo forte),,
 UNS-06-001,UNS-06,1,Bentuk lagu A–B disebut lagu…,Dua bagian,,
-UNS-06-002,UNS-06,2,Frase yang diakhiri nada yang terasa belum selesai disebut frase…,Tanya (antecedens),,
-UNS-06-003,UNS-06,2,Frase yang diakhiri nada yang terasa selesai disebut frase…,Jawab (konsekuens),,
+UNS-06-002,UNS-06,1,Frase yang diakhiri nada yang terasa belum selesai disebut frase…,Tanya (antecedens),,
+UNS-06-003,UNS-06,1,Frase yang diakhiri nada yang terasa selesai disebut frase…,Jawab (konsekuens),,
 UNS-06-004,UNS-06,2,Bentuk A–B–A–C–A disebut…,Rondo,,
 UNS-06-005,UNS-06,2,"Siswa menulis lagu untuk Hari Kartini: kalimat pertama diulang dua kali, lalu muncul kalimat kedua yang berbeda dan lagu selesai. Jika setiap kalimat satu bagian, bentuk lagu apa ini?",Lagu dua bagian (A–B),,Hari Kartini
 ALT-01-001,ALT-01,1,Alat musik yang sumber bunyinya dari badan alat itu sendiri disebut…,Idiofon,,
@@ -57,6 +66,7 @@ ALT-01-007,ALT-01,2,"Alat musik yang memainkan akor, seperti gitar dan piano, di
 ALT-01-008,ALT-01,2,Synthesizer termasuk golongan…,Elektrofon,,
 ALT-01-009,ALT-01,2,"Grup marching band sekolah memakai snare drum, bass drum, dan simbal untuk mengatur irama. Alat-alat ini termasuk alat musik…",Ritmis,,marching band
 ALT-01-010,ALT-01,3,Pengamen di bus memainkan ukulele dan tamborin. Golongkan keduanya menurut sumber bunyi.,Ukulele: kordofon; tamborin: membranofon (selaputnya) sekaligus idiofon (kerincingnya),,pengamen
+ALT-01-011,ALT-01,1,Alat musik yang sumber bunyinya dari getaran udara disebut…,Aerofon,,
 ALT-02-001,ALT-02,1,Sasando berasal dari…,"Pulau Rote, NTT",,
 ALT-02-002,ALT-02,1,Kolintang berasal dari…,"Minahasa, Sulawesi Utara",,
 ALT-02-003,ALT-02,1,Cara memainkan sasando adalah…,Dipetik,,
@@ -66,12 +76,15 @@ ALT-02-006,ALT-02,2,Sape adalah alat musik petik dari…,"Dayak, Kalimantan",,
 ALT-02-007,ALT-02,2,Alat musik tiup bambu dari Sumatra Barat adalah…,Saluang,,
 ALT-02-008,ALT-02,2,Tifa berasal dari…,Papua dan Maluku,,
 ALT-02-009,ALT-02,2,Wisatawan di Kupang membeli suvenir alat musik dari daun lontar berdawai. Alat musik apa ini?,Sasando,,Kupang
+ALT-02-010,ALT-02,2,"Pada festival budaya Minahasa di Manado, ansambel memainkan alat musik bilah kayu yang dipukul. Alat musik apa ini?",Kolintang,,festival Manado
 ALT-03-001,ALT-03,1,Permainan musik bersama disebut…,Ansambel,,
 ALT-03-002,ALT-03,2,Pemimpin orkestra disebut…,Konduktor (dirigen),,
 ALT-03-003,ALT-03,2,Ansambel yang memakai satu jenis alat musik disebut ansambel…,Sejenis,,
 ALT-03-004,ALT-03,2,Sebutkan empat kelompok alat dalam orkestra.,"Gesek, tiup kayu, tiup logam, perkusi",,
 ALT-03-005,ALT-03,2,Semua pemain memainkan melodi yang sama disebut…,Unisono,,
 ALT-03-006,ALT-03,2,"Kelompok musik karang taruna memakai gitar, kendang, suling, dan keyboard. Jenis ansambel ini adalah…",Ansambel campuran,,karang taruna
+ALT-03-007,ALT-03,2,"Orkestra kota tampil di alun-alun: biola, cello, klarinet, trompet, dan timpani. Kelompok mana yang diisi klarinet?",Tiup kayu,,orkestra kota
+ALT-03-008,ALT-03,1,"Ansambel besar dengan kelompok gesek, tiup, dan perkusi disebut…",Orkestra,,
 MNU-01-001,MNU-01,1,Lagu Bungong Jeumpa berasal dari…,Aceh,,
 MNU-01-002,MNU-01,1,Lagu Ampar-Ampar Pisang berasal dari…,Kalimantan Selatan,,
 MNU-01-003,MNU-01,1,Lagu Manuk Dadali berasal dari…,Jawa Barat,,
@@ -82,24 +95,29 @@ MNU-01-007,MNU-01,2,Lagu Rasa Sayange berasal dari…,Maluku,,
 MNU-01-008,MNU-01,2,Mengapa banyak lagu daerah disebut anonim?,Penciptanya tidak diketahui karena diwariskan secara lisan,,
 MNU-01-009,MNU-01,2,Lagu Gundul-Gundul Pacul berasal dari…,Jawa Tengah,,
 MNU-01-010,MNU-01,2,"Pada lomba paduan suara antarsekolah, satu tim membawakan lagu berbahasa Banjar tentang pohon pisang. Lagu apa ini?",Ampar-Ampar Pisang,,lomba paduan suara
+MNU-01-011,MNU-01,1,Lagu daerah yang penciptanya tidak diketahui disebut lagu…,Anonim,,
 MNU-02-001,MNU-02,1,Gamelan ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada tahun…,2021,,
 MNU-02-002,MNU-02,2,Instrumen gamelan yang mengatur irama adalah…,Kendang,,
-MNU-02-003,MNU-02,2,Sebutkan dua laras gamelan.,Slendro dan pelog,,
+MNU-02-003,MNU-02,1,Sebutkan dua laras gamelan.,Slendro dan pelog,,
 MNU-02-004,MNU-02,2,Gamelan Bali yang dikenal bertempo cepat dan dinamis adalah…,Gong kebyar,,
 MNU-02-005,MNU-02,2,Instrumen gesek dalam gamelan Jawa adalah…,Rebab,,
 MNU-02-006,MNU-02,2,Pertunjukan wayang kulit di balai desa diiringi gamelan yang memakai tujuh nada berjarak tidak sama. Laras apa ini?,Pelog,,wayang kulit
+MNU-02-007,MNU-02,3,Mengapa lagu gamelan berlaras slendro sulit dimainkan dengan piano biasa?,Jarak nada slendro hampir sama dan tidak sesuai jarak nada diatonis piano,,
+MNU-02-008,MNU-02,1,"Ansambel musik tradisional Jawa, Bali, dan Sunda disebut…",Gamelan,,
 MNU-03-001,MNU-03,1,Penyanyi yang dijuluki Raja Dangdut adalah…,Rhoma Irama,,
 MNU-03-002,MNU-03,2,Keroncong berakar dari musik bangsa…,Portugis,,
 MNU-03-003,MNU-03,2,Kampung di Jakarta yang menjadi tempat berkembangnya keroncong adalah…,Kampung Tugu,,
 MNU-03-004,MNU-03,2,Musik yang memadukan gamelan Jawa dengan alat musik modern disebut…,Campursari,,
 MNU-03-005,MNU-03,2,Alat musik khas keroncong yang mirip ukulele disebut…,Cak dan cuk,,
 MNU-03-006,MNU-03,2,"Grup musik di acara hajatan memainkan lagu dengan iringan kendang, suling bambu, dan gitar listrik berirama khas Melayu-India. Jenis musik apa ini?",Dangdut,,hajatan
+MNU-03-007,MNU-03,2,"Grup musik di Kampung Tugu memainkan lagu dengan ukulele, cello dipetik, dan biola dalam irama khas. Jenis musik apa ini?",Keroncong,,Kampung Tugu
 MNU-04-001,MNU-04,1,Periode musik Barat sekitar 1600–1750 disebut…,Barok,,
 MNU-04-002,MNU-04,2,Komponis Barok yang terkenal adalah…,"J.S. Bach (juga Handel, Vivaldi)",,
 MNU-04-003,MNU-04,2,Mozart termasuk komponis periode…,Klasik,,
 MNU-04-004,MNU-04,2,Chopin termasuk komponis periode…,Romantik,,
-MNU-04-005,MNU-04,2,Komponis yang disebut tokoh peralihan Klasik ke Romantik adalah…,Beethoven,,
+MNU-04-005,MNU-04,1,Komponis yang disebut tokoh peralihan Klasik ke Romantik adalah…,Beethoven,,
 MNU-04-006,MNU-04,3,Urutkan periode musik Barat dari yang paling awal.,"Barok, Klasik, Romantik, Modern",,
+MNU-04-007,MNU-04,2,Kelompok musik gereja di kota memainkan karya Bach saat perayaan. Bach termasuk komponis periode…,Barok,,gereja
 MNU-05-001,MNU-05,1,Pencipta lagu Indonesia Raya adalah…,W.R. Supratman,,
 MNU-05-002,MNU-05,1,Pencipta lagu Rayuan Pulau Kelapa adalah…,Ismail Marzuki,,
 MNU-05-003,MNU-05,1,Pencipta lagu Bagimu Negeri adalah…,Kusbini,,
@@ -112,25 +130,27 @@ MNU-05-009,MNU-05,2,"Paduan suara upacara 17 Agustus menyanyikan lagu ciptaan Is
 KRY-01-001,KRY-01,1,Teknik pernapasan yang paling dianjurkan untuk bernyanyi adalah…,Pernapasan diafragma,,
 KRY-01-002,KRY-01,1,Jenis suara perempuan yang tinggi disebut…,Sopran,,
 KRY-01-003,KRY-01,1,Jenis suara laki-laki yang rendah disebut…,Bas,,
-KRY-01-004,KRY-01,2,Kejelasan pengucapan kata saat bernyanyi disebut…,Artikulasi,,
-KRY-01-005,KRY-01,2,Ketepatan tinggi rendah nada saat bernyanyi disebut…,Intonasi,,
+KRY-01-004,KRY-01,1,Kejelasan pengucapan kata saat bernyanyi disebut…,Artikulasi,,
+KRY-01-005,KRY-01,1,Ketepatan tinggi rendah nada saat bernyanyi disebut…,Intonasi,,
 KRY-01-006,KRY-01,2,Pemenggalan kalimat lagu disebut…,Phrasering,,
 KRY-01-007,KRY-01,2,Jenis suara perempuan yang rendah disebut…,Alto,,
 KRY-01-008,KRY-01,2,Jenis suara laki-laki yang tinggi disebut…,Tenor,,
 KRY-01-009,KRY-01,3,Peserta lomba menyanyi kehabisan napas di tengah kalimat lagu. Dua teknik apa yang perlu diperbaiki?,Pernapasan (diafragma) dan phrasering,,lomba menyanyi
 KRY-01-010,KRY-01,2,Juri lomba qasidah menilai peserta yang liriknya tidak terdengar jelas. Aspek teknik vokal apa yang kurang?,Artikulasi,,lomba qasidah
 KRY-02-001,KRY-02,1,Mengubah atau menata lagu yang sudah ada disebut…,Aransemen,,
-KRY-02-002,KRY-02,2,Menciptakan lagu baru disebut…,Komposisi,,
-KRY-02-003,KRY-02,2,Potongan melodi pendek yang menjadi bahan pengembangan lagu disebut…,Motif,,
+KRY-02-002,KRY-02,1,Menciptakan lagu baru disebut…,Komposisi,,
+KRY-02-003,KRY-02,1,Potongan melodi pendek yang menjadi bahan pengembangan lagu disebut…,Motif,,
 KRY-02-004,KRY-02,2,Mengulang motif pada nada yang lebih tinggi atau rendah disebut…,Sekuens,,
 KRY-02-005,KRY-02,2,Band sekolah membawakan lagu daerah Rasa Sayange dengan irama reggae. Kegiatan ini disebut…,Aransemen,,band sekolah
+KRY-02-006,KRY-02,3,"Untuk perpisahan sekolah, siswa menambah suara dua dan mengganti iringan piano dengan angklung pada lagu ""Kemesraan"". Mengapa ini disebut aransemen, bukan komposisi?","Lagunya sudah ada; yang diubah penataan suara dan alatnya, bukan diciptakan baru",,perpisahan
 KRY-03-001,KRY-03,1,Sebutkan empat tahap penyelenggaraan pertunjukan musik.,"Perencanaan, persiapan, pelaksanaan, evaluasi",,
-KRY-03-002,KRY-03,2,Orang yang mengatur mikrofon dan pengeras suara disebut…,Penata suara,,
+KRY-03-002,KRY-03,1,Orang yang mengatur mikrofon dan pengeras suara disebut…,Penata suara,,
 KRY-03-003,KRY-03,2,Sebutkan tiga seksi kepanitiaan pertunjukan.,"Contoh: acara, dekorasi, publikasi, konsumsi, keamanan (tiga di antaranya)",,
 KRY-03-004,KRY-03,2,Hal yang ditentukan pada tahap perencanaan pertunjukan adalah…,"Tema, waktu, tempat, anggaran",,
 KRY-03-005,KRY-03,2,OSIS menyiapkan pentas seni akhir tahun dan membagikan poster di media sosial dua minggu sebelumnya. Tugas ini dikerjakan seksi…,Publikasi,,pentas seni
+KRY-03-006,KRY-03,3,"Saat gladi pentas seni di aula, suara vokal tenggelam oleh drum. Siapa yang bertugas memperbaikinya dan apa yang diatur?",Penata suara; keseimbangan volume mikrofon dan pengeras suara,,gladi pentas
 KRY-04-001,KRY-04,1,Perangkat lunak untuk merekam dan menyunting musik disebut…,DAW (Digital Audio Workstation),,
-KRY-04-002,KRY-04,2,Protokol yang mengirim data nada antara alat musik elektronik dan komputer adalah…,MIDI,,
+KRY-04-002,KRY-04,1,Protokol yang mengirim data nada antara alat musik elektronik dan komputer adalah…,MIDI,,
 KRY-04-003,KRY-04,2,Apakah MIDI mengirim suara rekaman?,"Tidak, MIDI mengirim data nada (perintah), bukan suara",,
 KRY-04-004,KRY-04,2,"Siswa merekam lagu ciptaannya di laptop dengan perangkat lunak rekaman, lalu mengunggahnya ke platform digital. Perangkat lunak itu termasuk…",DAW,,rekaman lagu
 KRY-04-005,KRY-04,2,Apa yang diperlukan untuk memutar lagu orang lain di kafe untuk tujuan komersial?,Izin dan pembayaran royalti,,
@@ -139,7 +159,7 @@ KRY-05-002,KRY-05,1,Tahap kritik yang menilai kualitas karya disebut…,Evaluasi
 KRY-05-003,KRY-05,2,Sebutkan empat tahap kritik Feldman.,"Deskripsi, analisis formal, interpretasi, evaluasi",,
 KRY-05-004,KRY-05,2,Tahap kritik yang menafsirkan makna dan suasana lagu disebut…,Interpretasi,,
 KRY-05-005,KRY-05,2,Tahap kritik yang menguraikan unsur musik dan hubungannya disebut…,Analisis formal,,
-KRY-05-006,KRY-05,2,Kegiatan menghayati dan menilai karya musik disebut…,Apresiasi,,
+KRY-05-006,KRY-05,1,Kegiatan menghayati dan menilai karya musik disebut…,Apresiasi,,
 KRY-05-007,KRY-05,2,"Penonton konser kampus menulis ""Penyanyinya memakai gitar akustik dan tempo lagunya lambat."" Tahap kritik apa ini?",Deskripsi,,konser kampus
 KRY-05-008,KRY-05,3,"Pengulas musik di koran menulis, ""Lagu ini kurang berhasil karena liriknya tidak sejalan dengan suasana melodinya."" Tahap kritik apa ini, dan apa yang membuatnya berbeda dari deskripsi?","Evaluasi; ia menilai kualitas dengan alasan, sedangkan deskripsi hanya menyebut apa yang ada",,koran
 KRY-06-001,KRY-06,1,Berapa lama hak cipta lagu berlaku menurut UU No. 28 Tahun 2014?,Seumur hidup pencipta ditambah 70 tahun,,
@@ -147,15 +167,4 @@ KRY-06-002,KRY-06,2,Lembaga yang menghimpun royalti lagu untuk layanan publik ko
 KRY-06-003,KRY-06,2,Peraturan pemerintah tentang royalti lagu dan musik adalah…,PP No. 56 Tahun 2021,,
 KRY-06-004,KRY-06,2,Hak pencipta agar namanya dicantumkan disebut hak…,Moral,,
 KRY-06-005,KRY-06,2,Hotel di kota memutar lagu-lagu Indonesia di lobi setiap hari. Kewajiban apa yang timbul menurut PP No. 56 Tahun 2021?,Membayar royalti melalui LMKN,,hotel
-UNS-02-011,UNS-02,3,Satu birama 3/4 berisi not seperempat bertitik. Berapa ketuk lagi yang diperlukan agar birama penuh?,1½ ketuk,1 + ½ = 1½; 3 − 1½.,
-UNS-03-010,UNS-03,3,Tangga nada C mayor tidak memakai tanda kres atau mol. Mengapa jarak ½ jatuh tepat di E–F dan B–C?,"Karena pada tuts piano tidak ada tuts hitam di antara E–F dan B–C, sesuai pola mayor 1–1–½–1–1–1–½",,
-UNS-04-007,UNS-04,3,"Lagu dalam G mayor diakhiri dengan akor D lalu G. Akor apa D dan G dalam G mayor, dan apa nama akhiran ini?","D akor V, G akor I; kadens V–I",,
-UNS-05-010,UNS-05,3,Partitur lagu daerah bertanda moderato dengan dinamika mp lalu crescendo ke f. Jelaskan cara menyanyikannya.,"Tempo sedang, mulai agak lembut lalu makin keras sampai keras",,
-MNU-02-007,MNU-02,3,Mengapa lagu gamelan berlaras slendro sulit dimainkan dengan piano biasa?,Jarak nada slendro hampir sama dan tidak sesuai jarak nada diatonis piano,,
-ALT-02-010,ALT-02,2,"Pada festival budaya Minahasa di Manado, ansambel memainkan alat musik bilah kayu yang dipukul. Alat musik apa ini?",Kolintang,,festival Manado
-ALT-03-007,ALT-03,2,"Orkestra kota tampil di alun-alun: biola, cello, klarinet, trompet, dan timpani. Kelompok mana yang diisi klarinet?",Tiup kayu,,orkestra kota
-MNU-03-007,MNU-03,2,"Grup musik di Kampung Tugu memainkan lagu dengan ukulele, cello dipetik, dan biola dalam irama khas. Jenis musik apa ini?",Keroncong,,Kampung Tugu
-MNU-04-007,MNU-04,2,Kelompok musik gereja di kota memainkan karya Bach saat perayaan. Bach termasuk komponis periode…,Barok,,gereja
-KRY-02-006,KRY-02,3,"Untuk perpisahan sekolah, siswa menambah suara dua dan mengganti iringan piano dengan angklung pada lagu ""Kemesraan"". Mengapa ini disebut aransemen, bukan komposisi?","Lagunya sudah ada; yang diubah penataan suara dan alatnya, bukan diciptakan baru",,perpisahan
-KRY-03-006,KRY-03,3,"Saat gladi pentas seni di aula, suara vokal tenggelam oleh drum. Siapa yang bertugas memperbaikinya dan apa yang diatur?",Penata suara; keseimbangan volume mikrofon dan pengeras suara,,gladi pentas
 KRY-06-006,KRY-06,3,"Siswa mengunggah video menyanyikan lagu orang lain dan menulis nama pencipta di keterangan, tetapi videonya dimonetisasi. Hak apa yang sudah dihormati dan apa yang masih perlu izin?",Hak moral sudah (nama dicantumkan); pemakaian komersial (hak ekonomi) perlu izin,,video daring

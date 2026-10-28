@@ -29,20 +29,20 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-informatika.html` | Knowledge map for Informatika (25 topics), organised by its curriculum elements, from computational thinking to digital law. |
 | `docs/peta-pkwu.html` | Knowledge map for Prakarya dan Kewirausahaan (21 topics): entrepreneurship core plus crafts, engineering, cultivation, and food processing. |
 | `docs/peta-pjok.html` | Knowledge map for PJOK (21 topics): ball games, athletics, gymnastics, swimming, fitness, and health. |
-| `docs/bank-fisika.html` | Short-answer question bank for Fisika (255 questions, about a fifth with everyday-context items). |
+| `docs/bank-fisika.html` | Short-answer question bank for Fisika (258 questions, about a fifth with everyday-context items). |
 | `docs/bank-kimia.html` | Short-answer question bank for Kimia (210 questions, about a fifth with everyday-context items). |
-| `docs/bank-biologi.html` | Short-answer question bank for Biologi (214 questions, about a fifth with everyday-context items). |
-| `docs/bank-matematika.html` | Short-answer question bank for Matematika (233 questions, about a fifth with everyday-context items). |
-| `docs/bank-pai.html` | Short-answer question bank for PAI dan Budi Pekerti (222 questions, about a fifth with everyday-context items). |
-| `docs/bank-bahasa-sunda.html` | Short-answer question bank for Bahasa Sunda (179 questions, about a fifth with everyday-context items). |
-| `docs/bank-seni-musik.html` | Short-answer question bank for Seni Musik (160 questions, about a fifth with everyday-context items). |
-| `docs/bank-seni-tari.html` | Short-answer question bank for Seni Tari (149 questions, about a fifth with everyday-context items). |
-| `docs/bank-seni-rupa.html` | Short-answer question bank for Seni Rupa (157 questions, about a fifth with everyday-context items). |
-| `docs/bank-bahasa-jepang.html` | Short-answer question bank for Bahasa Jepang (187 questions, about a fifth with everyday-context items). |
-| `docs/bank-bahasa-arab.html` | Short-answer question bank for Bahasa Arab (172 questions, about a fifth with everyday-context items). |
-| `docs/bank-informatika.html` | Short-answer question bank for Informatika (203 questions, about a fifth with everyday-context items). |
-| `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (159 questions, about a fifth with everyday-context items). |
-| `docs/bank-pjok.html` | Short-answer question bank for PJOK (197 questions, about a fifth with everyday-context items). |
+| `docs/bank-biologi.html` | Short-answer question bank for Biologi (220 questions, about a fifth with everyday-context items). |
+| `docs/bank-matematika.html` | Short-answer question bank for Matematika (253 questions, about a fifth with everyday-context items). |
+| `docs/bank-pai.html` | Short-answer question bank for PAI dan Budi Pekerti (238 questions, about a fifth with everyday-context items). |
+| `docs/bank-bahasa-sunda.html` | Short-answer question bank for Bahasa Sunda (193 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-musik.html` | Short-answer question bank for Seni Musik (169 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-tari.html` | Short-answer question bank for Seni Tari (151 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-rupa.html` | Short-answer question bank for Seni Rupa (158 questions, about a fifth with everyday-context items). |
+| `docs/bank-bahasa-jepang.html` | Short-answer question bank for Bahasa Jepang (219 questions, about a fifth with everyday-context items). |
+| `docs/bank-bahasa-arab.html` | Short-answer question bank for Bahasa Arab (187 questions, about a fifth with everyday-context items). |
+| `docs/bank-informatika.html` | Short-answer question bank for Informatika (208 questions, about a fifth with everyday-context items). |
+| `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (170 questions, about a fifth with everyday-context items). |
+| `docs/bank-pjok.html` | Short-answer question bank for PJOK (211 questions, about a fifth with everyday-context items). |
 | `docs/bank-ekonomi.html` | Short-answer question bank for Ekonomi (215 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-geografi.html` | Short-answer question bank for Geografi (164 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-sosiologi.html` | Short-answer question bank for Sosiologi (156 questions, about a fifth to a quarter with everyday-context items). |

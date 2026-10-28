@@ -10,6 +10,8 @@ QH-01-008,QH-01,2,Mim mati bertemu huruf م dibaca dengan hukum…,Idgam mimi (m
 QH-01-009,QH-01,2,Berapa jumlah huruf ikhfa haqiqi?,15,,
 QH-01-010,QH-01,3,Apa beda qalqalah kubra dan sugra?,Kubra bila huruf qalqalah mati karena waqaf di akhir bacaan; sugra bila mati di tengah bacaan,,
 QH-01-011,QH-01,2,"Dalam lomba tilawah di masjid kampung, juri mengoreksi peserta yang membaca ""min ba'di"" dengan nun yang jelas. Hukum apa yang seharusnya dipakai?",Iqlab (nun dibaca seperti mim),,lomba tilawah
+QH-01-012,QH-01,1,Ilmu tentang kaidah membaca Al-Qur'an dengan benar disebut…,Tajwid,,
+QH-01-013,QH-01,1,Huruf idgam bilagunnah adalah…,ل dan ر,,
 QH-02-001,QH-02,1,Rangkaian orang yang meriwayatkan hadis disebut…,Sanad,,
 QH-02-002,QH-02,1,Isi atau teks hadis disebut…,Matan,,
 QH-02-003,QH-02,1,Sumber hukum Islam kedua setelah Al-Qur'an adalah…,Hadis (sunah),,
@@ -20,31 +22,40 @@ QH-02-007,QH-02,2,Hadis yang tidak memenuhi syarat sahih atau hasan disebut hadi
 QH-02-008,QH-02,2,Kesepakatan para mujtahid atas suatu hukum disebut…,Ijmak,,
 QH-02-009,QH-02,3,Apa beda hadis sahih dan hasan?,"Keduanya bersambung sanadnya dan rawinya adil, tetapi hafalan rawi hadis hasan sedikit kurang kuat",,
 QH-02-010,QH-02,2,"Di grup WhatsApp keluarga beredar ""hadis"" tanpa nama periwayat dan tanpa sumber kitab. Unsur hadis apa yang tidak ada sehingga hadis itu perlu diperiksa?",Sanad (rangkaian periwayat),,grup WhatsApp
+QH-02-011,QH-02,3,"Ustaz di pengajian RT menjelaskan bahwa Nabi diam dan tidak melarang ketika sahabat makan daging dhab di hadapannya. Jenis sunah apa ini, dan mengapa?",Sunah taqririyah; berupa persetujuan (diamnya) Nabi atas perbuatan sahabat,,pengajian RT
+QH-02-012,QH-02,1,Orang yang meriwayatkan dan membukukan hadis disebut…,Rawi,,
+QH-02-013,QH-02,1,Sunah berupa ucapan Nabi disebut sunah…,Qauliyah,,
 QH-03-001,QH-03,1,"Ungkapan ""berlomba-lombalah dalam kebaikan"" dalam bahasa Arab adalah…",Fastabiqul khairat,,
 QH-03-002,QH-03,2,Ayat yang memuat perintah fastabiqul khairat terdapat dalam QS Al-Baqarah ayat… dan QS Al-Ma'idah ayat…,Al-Baqarah/2:148 dan Al-Ma'idah/5:48,,
 QH-03-003,QH-03,2,"Ayat yang memerintahkan bekerja karena Allah, Rasul, dan orang mukmin akan melihat pekerjaan itu adalah…",QS At-Taubah/9:105,,
 QH-03-004,QH-03,2,Sebutkan dua ciri etos kerja dalam Islam.,"Contoh: niat ibadah, jujur, disiplin, profesional (dua di antaranya)",,
 QH-03-005,QH-03,2,"Para pedagang di pasar pagi membuka lapak sejak subuh, menimbang dengan jujur, dan melayani dengan baik. Ayat apa yang memerintahkan bekerja seperti ini?",QS At-Taubah/9:105,,pasar pagi
+QH-03-006,QH-03,2,"Dua kelompok siswa bersaing mengumpulkan donasi terbanyak untuk korban gempa, tetapi tetap saling membantu. Ungkapan Al-Qur'an apa yang menggambarkan persaingan ini?",Fastabiqul khairat,,donasi gempa
+QH-03-007,QH-03,1,Arti fastabiqul khairat adalah…,Berlomba-lombalah dalam kebaikan,,
 QH-04-001,QH-04,1,Wahyu pertama yang diterima Nabi Muhammad saw. adalah…,QS Al-'Alaq/96:1–5,,
 QH-04-002,QH-04,1,Perintah pertama dalam wahyu pertama adalah…,Iqra' (bacalah),,
 QH-04-003,QH-04,2,Ayat tentang ulul albab yang memikirkan penciptaan langit dan bumi adalah…,QS Ali 'Imran/3:190–191,,
 QH-04-004,QH-04,2,Siapa yang disebut ulul albab dalam QS Ali 'Imran/3:190–191?,Orang yang berzikir dan memikirkan penciptaan langit dan bumi,,
 QH-04-005,QH-04,2,Sikap berpikir kritis terhadap informasi berarti…,Memeriksa informasi dan mencari bukti sebelum menerimanya,,
+QH-04-006,QH-04,2,Siswa mengamati pergantian siang dan malam di observatorium sekolah lalu menghubungkannya dengan kebesaran Allah. Ayat apa yang menggambarkan sikap ini?,QS Ali 'Imran/3:190–191 (ulul albab),,observatorium
+QH-04-007,QH-04,1,Wahyu pertama turun dalam surah…,Al-'Alaq (ayat 1–5),,
 QH-05-001,QH-05,1,"Ayat ""lakum dinukum wa liya din"" terdapat dalam surah…",QS Al-Kafirun/109:6,,
 QH-05-002,QH-05,1,Ayat yang menyatakan manusia diciptakan bersuku-suku dan berbangsa-bangsa untuk saling mengenal adalah…,QS Al-Hujurat/49:13,,
 QH-05-003,QH-05,2,"Menurut QS Al-Hujurat/49:13, siapa yang paling mulia di sisi Allah?",Yang paling bertakwa,,
 QH-05-004,QH-05,2,Sebutkan tiga bentuk kerukunan umat beragama.,"Intern umat beragama, antarumat beragama, dan antara umat beragama dengan pemerintah",,
 QH-05-005,QH-05,2,Apa batas toleransi menurut QS Al-Kafirun?,Menghormati keyakinan dan ibadah pemeluk agama lain tanpa mencampuradukkan akidah dan ibadah,,
 QH-05-006,QH-05,2,Warga sebuah desa bergotong royong mengamankan perayaan hari besar agama tetangganya tanpa ikut beribadah bersama. Ayat apa yang menjadi dasar sikap tidak mencampuradukkan ibadah ini?,QS Al-Kafirun/109:6,,desa
+QH-05-007,QH-05,1,Arti lakum dinukum wa liya din adalah…,"Untukmu agamamu, untukku agamaku",,
 AQD-01-001,AQD-01,1,Jumlah asmaulhusna menurut hadis adalah…,99,,
 AQD-01-002,AQD-01,1,Tauhid yang meyakini hanya Allah yang berhak disembah disebut tauhid…,Uluhiyah,,
 AQD-01-003,AQD-01,1,Tauhid yang meyakini Allah satu-satunya pencipta dan pengatur disebut tauhid…,Rububiyah,,
 AQD-01-004,AQD-01,2,Asmaulhusna al-'Adl berarti…,Maha Adil,,
-AQD-01-005,AQD-01,2,"Menurut HR Muslim, iman memiliki berapa cabang?",Lebih dari 70,,
+AQD-01-005,AQD-01,1,"Menurut HR Muslim, iman memiliki berapa cabang?",Lebih dari 70,,
 AQD-01-006,AQD-01,2,Cabang iman yang paling utama adalah…,Ucapan la ilaha illallah,,
 AQD-01-007,AQD-01,2,Cabang iman yang paling rendah adalah…,Menyingkirkan gangguan dari jalan,,
 AQD-01-008,AQD-01,2,"Iman meliputi tiga hal, yaitu…","Keyakinan dalam hati, ucapan dengan lisan, pengamalan dengan anggota badan",,
 AQD-01-009,AQD-01,2,"Siswa yang pulang sekolah memindahkan batu besar dari tengah jalan kampung agar tidak membahayakan pengendara. Menurut hadis syu'abul iman, perbuatan ini termasuk…",Cabang iman (yang paling rendah: menyingkirkan gangguan dari jalan),,jalan kampung
+AQD-01-010,AQD-01,1,Nama-nama baik Allah disebut…,Asmaulhusna,,
 AQD-02-001,AQD-02,1,Malaikat yang bertugas menyampaikan wahyu adalah…,Jibril,,
 AQD-02-002,AQD-02,1,Malaikat yang bertugas meniup sangkakala adalah…,Israfil,,
 AQD-02-003,AQD-02,1,Malaikat yang mencatat amal baik adalah…,Raqib,,
@@ -52,8 +63,10 @@ AQD-02-004,AQD-02,2,Malaikat yang mencatat amal buruk adalah…,Atid,,
 AQD-02-005,AQD-02,2,Malaikat yang bertugas membagi rezeki dan menurunkan hujan adalah…,Mikail,,
 AQD-02-006,AQD-02,2,Malaikat yang menanyai manusia di alam kubur adalah…,Munkar dan Nakir,,
 AQD-02-007,AQD-02,2,Malaikat penjaga neraka adalah…,Malik,,
-AQD-02-008,AQD-02,2,Malaikat diciptakan dari…,Cahaya (nur),,
+AQD-02-008,AQD-02,1,Malaikat diciptakan dari…,Cahaya (nur),,
 AQD-02-009,AQD-02,2,"Petani di sawah tadah hujan berdoa agar hujan turun pada awal musim tanam. Dalam akidah Islam, malaikat yang diberi tugas menurunkan hujan adalah…",Mikail,,sawah tadah hujan
+AQD-02-010,AQD-02,2,Siswa menahan diri untuk tidak berkata kasar di media sosial karena sadar setiap ucapan dicatat. Malaikat apa yang mencatat perbuatan buruk?,Atid,,media sosial
+AQD-02-011,AQD-02,1,Malaikat yang mencabut nyawa adalah…,Izrail (malakul maut),,
 AQD-03-001,AQD-03,1,Kitab Zabur diturunkan kepada…,Nabi Daud a.s.,,
 AQD-03-002,AQD-03,1,Kitab Taurat diturunkan kepada…,Nabi Musa a.s.,,
 AQD-03-003,AQD-03,1,Berapa jumlah rasul yang wajib diketahui?,25,,
@@ -63,16 +76,19 @@ AQD-03-006,AQD-03,2,Lembaran wahyu yang diturunkan kepada Nabi Ibrahim dan Nabi 
 AQD-03-007,AQD-03,2,Apa beda nabi dan rasul?,Nabi menerima wahyu untuk dirinya; rasul menerima wahyu dan wajib menyampaikannya,,
 AQD-03-008,AQD-03,2,Sifat wajib rasul fatanah berarti…,Cerdas,,
 AQD-03-009,AQD-03,2,Pengurus koperasi masjid memilih bendahara yang terbukti tidak pernah menyalahgunakan uang titipan jamaah. Sifat rasul apa yang dijadikan teladan?,Amanah,,koperasi masjid
+AQD-03-010,AQD-03,2,Pedagang di pasar menimbang dengan tepat dan tidak menyembunyikan cacat barang. Sifat wajib rasul apa yang diteladani?,Siddiq (jujur),,pasar
+AQD-03-011,AQD-03,1,Kitab Injil diturunkan kepada…,Nabi Isa a.s.,,
 AQD-04-001,AQD-04,1,Kehancuran seluruh alam disebut kiamat…,Kubra,,
 AQD-04-002,AQD-04,1,Hari dibangkitkannya manusia dari kubur disebut…,Yaumul ba'as,,
 AQD-04-003,AQD-04,2,Alam antara kematian dan hari kebangkitan disebut…,Alam barzakh,,
-AQD-04-004,AQD-04,2,Ketetapan Allah sejak zaman azali disebut…,Qada,,
+AQD-04-004,AQD-04,1,Ketetapan Allah sejak zaman azali disebut…,Qada,,
 AQD-04-005,AQD-04,2,Takdir yang dapat berubah dengan ikhtiar dan doa disebut takdir…,Muallaq,,
 AQD-04-006,AQD-04,2,Takdir yang tidak dapat diubah disebut takdir…,Mubram,,
 AQD-04-007,AQD-04,2,"Urutkan: hisab, yaumul ba'as, yaumul mahsyar, mizan.","Yaumul ba'as, yaumul mahsyar, hisab, mizan",,
 AQD-04-008,AQD-04,3,Mengapa tawakal tidak boleh menjadi pengganti ikhtiar?,"Tawakal adalah berserah diri setelah berusaha; tanpa ikhtiar, sikap itu bukan tawakal",,
 AQD-04-009,AQD-04,2,"Nelayan memperbaiki jaring, memeriksa cuaca, dan berdoa sebelum melaut, lalu menerima hasil tangkapan apa adanya. Urutan sikap ini menggambarkan…","Ikhtiar, doa, lalu tawakal",,nelayan
 AQD-04-010,AQD-04,3,"Petani gagal panen karena banjir walau sudah berusaha keras, lalu menanam lagi di musim berikutnya. Dalam ajaran qada dan qadar, sikap apa yang ditunjukkan?",Sabar dan tetap berikhtiar (takdir muallaq dapat diubah dengan usaha),,petani
+AQD-04-011,AQD-04,1,Perwujudan ketetapan Allah sesuai ukuran-Nya disebut…,Qadar,,
 AKH-01-001,AKH-01,1,Beramal hanya mengharap rida Allah disebut…,Ikhlas,,
 AKH-01-002,AKH-01,1,Tidak menggantungkan hati pada dunia walau memilikinya disebut…,Zuhud,,
 AKH-01-003,AKH-01,1,"Mengakui nikmat dengan hati, lisan, dan perbuatan disebut…",Syukur,,
@@ -81,28 +97,32 @@ AKH-01-005,AKH-01,2,Apakah zuhud berarti tidak boleh kaya?,Tidak; zuhud berarti 
 AKH-01-006,AKH-01,2,Malu (haya') termasuk bagian dari…,Iman (cabang iman),,
 AKH-01-007,AKH-01,2,Pedagang sukses yang hidup sederhana dan rutin menyumbang untuk sekolah desa menunjukkan sifat…,Zuhud,,pedagang
 AKH-01-008,AKH-01,2,Relawan dapur umum korban banjir memasak tanpa ingin namanya disebut. Sifat apa yang ditunjukkan?,Ikhlas,,dapur umum
+AKH-01-009,AKH-01,3,Atlet yang kalah di final pekan olahraga provinsi tetap menyalami lawan dan berlatih lebih giat. Dua sifat terpuji apa yang tampak?,Sabar dan etos kerja (fastabiqul khairat),,pekan olahraga
+AKH-01-010,AKH-01,1,Berserah diri kepada Allah setelah berusaha disebut…,Tawakal,,
 AKH-02-001,AKH-02,1,Beramal agar dilihat orang disebut…,Riya',,
 AKH-02-002,AKH-02,1,Beramal agar didengar dan dipuji orang disebut…,Sum'ah,,
 AKH-02-003,AKH-02,1,Ingin nikmat orang lain hilang disebut…,Hasad,,
 AKH-02-004,AKH-02,2,Menghambur-hamburkan harta disebut…,Tabzir (juga israf: berlebihan),,
-AKH-02-005,AKH-02,2,Ayat yang menyebut khamar dan judi sebagai perbuatan setan adalah…,QS Al-Ma'idah/5:90,,
+AKH-02-005,AKH-02,1,Ayat yang menyebut khamar dan judi sebagai perbuatan setan adalah…,QS Al-Ma'idah/5:90,,
 AKH-02-006,AKH-02,2,Ayat yang melarang mendekati zina adalah…,QS Al-Isra'/17:32,,
 AKH-02-007,AKH-02,2,Mengapa narkoba diharamkan seperti khamar?,Karena sama-sama memabukkan dan merusak (qiyas),,
-AKH-02-008,AKH-02,2,Merasa lebih dari orang lain dan meremehkan mereka disebut…,Takabur,,
+AKH-02-008,AKH-02,1,Merasa lebih dari orang lain dan meremehkan mereka disebut…,Takabur,,
 AKH-02-009,AKH-02,2,Seseorang mengunggah foto sedang bersedekah di panti asuhan agar mendapat banyak pujian. Sifat tercela apa yang perlu diwaspadai?,Riya',,panti asuhan
 AKH-02-010,AKH-02,3,"Pesta ulang tahun dengan menghamburkan makanan sampai banyak yang dibuang. Istilah akhlak tercela apa yang tepat, dan apa bedanya dengan israf?",Tabzir (menghambur-hamburkan untuk hal sia-sia); israf adalah berlebihan dalam hal yang pada dasarnya boleh,,pesta
+AKH-02-011,AKH-02,2,Siswa yang juara kelas meremehkan teman-temannya dan menolak belajar kelompok. Sifat tercela apa ini?,Takabur,,kelas
 AKH-03-001,AKH-03,1,Memeriksa kebenaran berita sebelum menyebarkannya disebut…,Tabayyun,,
 AKH-03-002,AKH-03,1,Membicarakan keburukan orang lain di belakangnya disebut…,Ghibah,,
-AKH-03-003,AKH-03,2,Ayat tentang tabayyun adalah…,QS Al-Hujurat/49:6,,
+AKH-03-003,AKH-03,1,Ayat tentang tabayyun adalah…,QS Al-Hujurat/49:6,,
 AKH-03-004,AKH-03,2,Ayat yang melarang berprasangka buruk dan bergunjing adalah…,QS Al-Hujurat/49:12,,
 AKH-03-005,AKH-03,2,Ayat yang melarang mengolok-olok dan memanggil dengan gelar buruk adalah…,QS Al-Hujurat/49:11,,
 AKH-03-006,AKH-03,2,"Akun gosip memberi julukan buruk kepada seorang artis, lalu banyak warganet ikut memakainya. Ayat mana yang melarang perbuatan ini?",QS Al-Hujurat/49:11,,media sosial
 AKH-03-007,AKH-03,2,Kabar bendungan jebol menyebar di grup warga tanpa sumber resmi. Sikap apa yang diajarkan Islam sebelum meneruskan kabar itu?,Tabayyun (memeriksa kebenarannya),,grup warga
 AKH-04-001,AKH-04,1,Berbakti kepada orang tua disebut…,Birrulwalidain,,
-AKH-04-002,AKH-04,2,"Ayat yang melarang berkata ""ah"" kepada orang tua adalah…",QS Al-Isra'/17:23,,
+AKH-04-002,AKH-04,1,"Ayat yang melarang berkata ""ah"" kepada orang tua adalah…",QS Al-Isra'/17:23,,
 AKH-04-003,AKH-04,2,Sebutkan dua cara berbakti kepada orang tua yang sudah wafat.,"Contoh: mendoakan, menunaikan janji atau wasiat mereka, menyambung silaturahmi dengan kerabat mereka (dua di antaranya)",,
 AKH-04-004,AKH-04,2,Sebutkan dua adab kepada guru.,"Contoh: menghormati, mendengarkan, mengamalkan ilmunya (dua di antaranya)",,
 AKH-04-005,AKH-04,2,Seorang perantau rutin mengunjungi saudara almarhum ibunya setiap mudik. Ini termasuk birrulwalidain dalam bentuk…,Menyambung silaturahmi dengan kerabat orang tua,,mudik
+AKH-04-006,AKH-04,2,Remaja yang membantu ibunya berjualan di warung sepulang sekolah tanpa menggerutu menjalankan ajaran…,Birrulwalidain (QS Al-Isra'/17:23–24),,warung
 FIK-01-001,FIK-01,1,Sebutkan lima hukum taklifi.,"Wajib, sunah, mubah, makruh, haram",,
 FIK-01-002,FIK-01,1,Perbuatan yang dikerjakan berpahala dan ditinggalkan berdosa hukumnya…,Wajib,,
 FIK-01-003,FIK-01,1,Menyamakan hukum perkara baru dengan perkara yang ada dalilnya karena kesamaan alasan disebut…,Qiyas,,
@@ -112,6 +132,7 @@ FIK-01-006,FIK-01,2,Alasan hukum yang menjadi dasar qiyas disebut…,'Illat,,
 FIK-01-007,FIK-01,2,Hukum salat lima waktu bagi setiap muslim yang balig adalah…,Wajib ain,,
 FIK-01-008,FIK-01,3,"Narkoba tidak disebut dalam Al-Qur'an, tetapi diharamkan. Metode ijtihad apa yang dipakai, dan apa 'illat-nya?",Qiyas; 'illat-nya memabukkan seperti khamar,,
 FIK-01-009,FIK-01,2,"Di sebuah kampung, sebagian warga sudah menyalatkan jenazah tetangga sehingga warga lain tidak berdosa. Hukum menyalatkan jenazah adalah…",Fardu kifayah,,kampung
+FIK-01-010,FIK-01,1,Perbuatan yang boleh dikerjakan atau ditinggalkan hukumnya…,Mubah,,
 FIK-02-001,FIK-02,1,Tambahan yang disyaratkan pada utang dan diharamkan disebut…,Riba,,
 FIK-02-002,FIK-02,1,Sebutkan rukun jual beli.,"Penjual dan pembeli, barang dan harga, ijab kabul",,
 FIK-02-003,FIK-02,2,Akad bagi hasil antara pemilik modal dan pengelola usaha disebut…,Mudarabah,,
@@ -122,6 +143,8 @@ FIK-02-007,FIK-02,2,Jual beli yang mengandung ketidakjelasan disebut jual beli�
 FIK-02-008,FIK-02,2,Pedagang bakso meminjam modal ke BMT; keuntungan usahanya dibagi dengan BMT menurut nisbah yang disepakati. Akad apa ini?,Mudarabah,,BMT
 FIK-02-009,FIK-02,2,Seorang guru membeli motor lewat bank syariah: bank membeli motor lalu menjualnya kepada guru dengan margin keuntungan yang disebutkan di awal. Akad apa ini?,Murabahah,,bank syariah
 FIK-02-010,FIK-02,3,"Tiga warga menyetorkan modal bersama untuk membuka toko kelontong dan membagi keuntungan sesuai porsi modal. Akad apa ini, dan apa bedanya dengan mudarabah?","Musyarakah; semua pihak menyertakan modal, sedangkan pada mudarabah satu pihak modal dan satu pihak tenaga",,toko kelontong
+FIK-02-011,FIK-02,2,Penjual di pasar menjual karung beras yang isinya tidak boleh dilihat pembeli dan beratnya tidak disebut. Jual beli seperti ini mengandung…,Garar (ketidakjelasan),,pasar
+FIK-02-012,FIK-02,3,"Koperasi syariah menitipkan uang anggota dan boleh memakainya dengan izin, lalu mengembalikannya utuh kapan saja diminta. Akad apa ini, dan apa bedanya dengan mudarabah?",Wadi'ah (titipan); tidak ada bagi hasil usaha seperti mudarabah,,koperasi syariah
 FIK-03-001,FIK-03,1,Zakat fitrah per jiwa menurut ketentuan BAZNAS sebesar…,"2,5 kg atau 3,5 liter makanan pokok",,
 FIK-03-002,FIK-03,1,Kadar zakat mal emas adalah…,"2,5%",,
 FIK-03-003,FIK-03,1,Nisab zakat emas adalah…,85 gram,,
@@ -134,26 +157,31 @@ FIK-03-009,FIK-03,3,Seseorang memiliki tabungan emas 100 gram selama satu tahun 
 FIK-03-010,FIK-03,2,Panitia zakat di masjid menerima beras dari warga sebelum salat Idulfitri. Zakat apa yang dikumpulkan?,Zakat fitrah,,panitia zakat
 FIK-03-011,FIK-03,2,Seorang petani menyerahkan sebidang tanah untuk dibangun madrasah dan tanah itu tidak boleh dijual. Ibadah apa ini?,Wakaf,,madrasah
 FIK-03-012,FIK-03,3,Keluarga di kampung terdiri atas 4 orang. Berapa kilogram beras zakat fitrah yang dikeluarkan menurut ketentuan BAZNAS?,10 kg,"4 × 2,5 kg.",zakat keluarga
+FIK-03-013,FIK-03,2,Pegawai yang dipekerjakan BAZNAS kota untuk mengumpulkan dan membagikan zakat termasuk asnaf…,Amil,,BAZNAS
+FIK-03-014,FIK-03,1,Zakat yang dibayar pada bulan Ramadan sebelum salat Idulfitri disebut…,Zakat fitrah,,
 FIK-04-001,FIK-04,1,Wukuf di Arafah dilakukan pada tanggal…,9 Zulhijah,,
 FIK-04-002,FIK-04,1,Rukun haji yang tidak ada dalam umrah adalah…,Wukuf di Arafah,,
 FIK-04-003,FIK-04,2,Sebutkan enam rukun haji.,"Ihram, wukuf di Arafah, tawaf ifadah, sai, tahalul (mencukur), tertib",,
-FIK-04-004,FIK-04,2,Meninggalkan wajib haji diganti dengan…,Dam (denda),,
-FIK-04-005,FIK-04,2,Mabit di Muzdalifah termasuk rukun atau wajib haji?,Wajib haji,,
+FIK-04-004,FIK-04,1,Meninggalkan wajib haji diganti dengan…,Dam (denda),,
+FIK-04-005,FIK-04,1,Mabit di Muzdalifah termasuk rukun atau wajib haji?,Wajib haji,,
 FIK-04-006,FIK-04,2,Tempat dan waktu yang ditentukan untuk memulai ihram disebut…,Miqat,,
 FIK-04-007,FIK-04,3,"Mengapa jamaah yang tidak wukuf di Arafah tidak sah hajinya, tetapi yang tidak mabit di Muzdalifah tetap sah?",Wukuf adalah rukun haji; mabit adalah wajib haji yang dapat diganti dam,,
 FIK-04-008,FIK-04,2,"Seorang tetangga berangkat ke Tanah Suci di bulan Rajab dan melakukan ihram, tawaf, sai, dan tahalul tanpa wukuf. Ibadah apa yang ia kerjakan?",Umrah,,tanah suci
+FIK-04-009,FIK-04,2,Jamaah haji asal kampung mengenakan kain ihram sebelum melewati batas yang ditentukan dalam perjalanan ke Makkah. Batas itu disebut…,Miqat,,jamaah haji
+FIK-04-010,FIK-04,1,Ibadah haji wajib dikerjakan berapa kali seumur hidup bagi yang mampu?,Sekali,,
 FIK-05-001,FIK-05,1,Sebutkan empat kewajiban terhadap jenazah muslim.,"Memandikan, mengafani, menyalatkan, menguburkan",,
 FIK-05-002,FIK-05,1,Berapa takbir dalam salat jenazah?,4,,
 FIK-05-003,FIK-05,2,Apakah salat jenazah memakai rukuk dan sujud?,Tidak,,
-FIK-05-004,FIK-05,2,Hukum merawat jenazah muslim adalah…,Fardu kifayah,,
+FIK-05-004,FIK-05,1,Hukum merawat jenazah muslim adalah…,Fardu kifayah,,
 FIK-05-005,FIK-05,2,"Menurut kebiasaan buku sekolah, berapa lapis kain kafan untuk jenazah laki-laki?",3 lapis,,
 FIK-05-006,FIK-05,2,Pengurus masjid membagi tugas merawat jenazah tetangga: ada yang memandikan dan mengafani. Dua kewajiban apa lagi yang masih harus diatur?,Menyalatkan dan menguburkan,,pengurus masjid
 FIK-06-001,FIK-06,1,Khotbah Jumat terdiri atas berapa khotbah?,Dua,,
 FIK-06-002,FIK-06,2,Sebutkan rukun khotbah menurut mazhab Syafi'i.,"Hamdalah, selawat, wasiat takwa, membaca ayat Al-Qur'an, doa untuk kaum mukmin",,
-FIK-06-003,FIK-06,2,Ayat tentang dakwah dengan hikmah dan nasihat yang baik adalah…,QS An-Nahl/16:125,,
+FIK-06-003,FIK-06,1,Ayat tentang dakwah dengan hikmah dan nasihat yang baik adalah…,QS An-Nahl/16:125,,
 FIK-06-004,FIK-06,2,Apa beda tablig dan dakwah?,"Tablig menyampaikan ajaran; dakwah mengajak kepada kebaikan, termasuk dengan perbuatan",,
 FIK-06-005,FIK-06,2,Doa untuk kaum mukmin dibaca pada khotbah…,Kedua,,
 FIK-06-006,FIK-06,2,Remaja masjid membuat konten video pendek yang mengajak teman-teman salat berjamaah dengan bahasa santun. Cara dakwah menurut QS An-Nahl/16:125 yang dipakai adalah…,Hikmah dan nasihat yang baik,,remaja masjid
+FIK-06-007,FIK-06,2,"Khatib Jumat di masjid sekolah lupa berwasiat takwa pada khotbah pertama. Menurut mazhab Syafi'i, wasiat takwa termasuk…",Rukun khotbah,,masjid sekolah
 FIK-07-001,FIK-07,1,Sebutkan enam furudul muqaddarah.,"1/2, 1/4, 1/8, 1/3, 2/3, 1/6",,
 FIK-07-002,FIK-07,2,Perbandingan bagian anak laki-laki dan perempuan menurut QS An-Nisa'/4:11 adalah…,2 : 1,,
 FIK-07-003,FIK-07,2,Bagian suami bila istri yang wafat tidak meninggalkan anak adalah…,1/2,,
@@ -161,6 +189,7 @@ FIK-07-004,FIK-07,2,Bagian istri bila suami yang wafat meninggalkan anak adalah�
 FIK-07-005,FIK-07,2,Wasiat paling banyak berapa bagian dari harta peninggalan?,Sepertiga (1/3),,
 FIK-07-006,FIK-07,2,Apa yang harus diselesaikan dari harta peninggalan sebelum dibagi kepada ahli waris?,"Biaya perawatan jenazah, utang, dan wasiat",,
 FIK-07-007,FIK-07,3,"Seorang ayah wafat meninggalkan satu anak laki-laki dan satu anak perempuan sebagai ahli waris saja, dengan sisa harta Rp90.000.000. Berapa bagian masing-masing?","Laki-laki Rp60.000.000, perempuan Rp30.000.000",2 : 1 sebagai asabah.,
+FIK-07-008,FIK-07,3,"Seorang suami wafat meninggalkan istri dan anak. Berapa bagian istri, dan dalil apa yang menetapkannya?",1/8; QS An-Nisa'/4:12,,waris keluarga
 FIK-08-001,FIK-08,1,Sebutkan rukun nikah.,"Calon suami, calon istri, wali, dua orang saksi, ijab dan kabul",,
 FIK-08-002,FIK-08,2,Apakah mahar termasuk rukun nikah?,"Tidak, mahar wajib tetapi bukan rukun nikah",,
 FIK-08-003,FIK-08,2,Berapa usia minimal menikah menurut UU No. 16 Tahun 2019?,19 tahun bagi laki-laki dan perempuan,,
@@ -182,9 +211,11 @@ SPI-02-004,SPI-02,2,Pengumpulan Al-Qur'an dalam satu mushaf pertama kali dilakuk
 SPI-02-005,SPI-02,2,Perang Jamal dan Siffin terjadi pada masa khalifah…,Ali bin Abi Talib,,
 SPI-02-006,SPI-02,2,Masa pemerintahan Umar bin Khattab adalah…,634–644 M,,
 SPI-02-007,SPI-02,3,Apa beda peran Abu Bakar dan Usman dalam sejarah mushaf Al-Qur'an?,Abu Bakar mengumpulkan Al-Qur'an menjadi satu mushaf; Usman menyeragamkan bacaannya dengan mushaf Usmani,,
+SPI-02-008,SPI-02,2,Kalender di dinding masjid menulis tanggal hijriah. Khalifah siapa yang menetapkan penanggalan ini?,Umar bin Khattab,,kalender masjid
+SPI-02-009,SPI-02,1,Khalifah keempat adalah…,Ali bin Abi Talib,,
 SPI-03-001,SPI-03,1,Pusat pemerintahan Dinasti Abbasiyah adalah…,Baghdad,,
 SPI-03-002,SPI-03,1,Pusat pemerintahan Dinasti Umayyah adalah…,Damaskus,,
-SPI-03-003,SPI-03,2,Lembaga ilmu pengetahuan dan penerjemahan di Baghdad disebut…,Baitul Hikmah,,
+SPI-03-003,SPI-03,1,Lembaga ilmu pengetahuan dan penerjemahan di Baghdad disebut…,Baitul Hikmah,,
 SPI-03-004,SPI-03,2,Ilmuwan muslim penulis Al-Qanun fi at-Tibb adalah…,Ibnu Sina,,
 SPI-03-005,SPI-03,2,Istilah aljabar dan algoritma berasal dari karya dan nama…,Al-Khawarizmi,,
 SPI-03-006,SPI-03,2,Baghdad jatuh ke tangan bangsa Mongol pada tahun…,1258 M,,
@@ -205,19 +236,4 @@ SPI-05-006,SPI-05,2,Imam Mazhab Syafi'i di Masjidil Haram yang menjadi guru K.H.
 SPI-05-007,SPI-05,2,Ulama pejuang yang diasingkan Belanda ke Afrika Selatan adalah…,Syekh Yusuf al-Makassari,,
 SPI-05-008,SPI-05,2,Persatuan Islam (Persis) berdiri di kota…,Bandung (1923),,
 SPI-05-009,SPI-05,2,"Sekolah dan rumah sakit ""PKU"" yang banyak dijumpai di kota-kota dikelola oleh organisasi Islam yang didirikan K.H. Ahmad Dahlan. Organisasi apa itu?",Muhammadiyah,,rumah sakit
-QH-02-011,QH-02,3,"Ustaz di pengajian RT menjelaskan bahwa Nabi diam dan tidak melarang ketika sahabat makan daging dhab di hadapannya. Jenis sunah apa ini, dan mengapa?",Sunah taqririyah; berupa persetujuan (diamnya) Nabi atas perbuatan sahabat,,pengajian RT
-QH-03-006,QH-03,2,"Dua kelompok siswa bersaing mengumpulkan donasi terbanyak untuk korban gempa, tetapi tetap saling membantu. Ungkapan Al-Qur'an apa yang menggambarkan persaingan ini?",Fastabiqul khairat,,donasi gempa
-QH-04-006,QH-04,2,Siswa mengamati pergantian siang dan malam di observatorium sekolah lalu menghubungkannya dengan kebesaran Allah. Ayat apa yang menggambarkan sikap ini?,QS Ali 'Imran/3:190–191 (ulul albab),,observatorium
-AQD-03-010,AQD-03,2,Pedagang di pasar menimbang dengan tepat dan tidak menyembunyikan cacat barang. Sifat wajib rasul apa yang diteladani?,Siddiq (jujur),,pasar
-AQD-02-010,AQD-02,2,Siswa menahan diri untuk tidak berkata kasar di media sosial karena sadar setiap ucapan dicatat. Malaikat apa yang mencatat perbuatan buruk?,Atid,,media sosial
-AKH-01-009,AKH-01,3,Atlet yang kalah di final pekan olahraga provinsi tetap menyalami lawan dan berlatih lebih giat. Dua sifat terpuji apa yang tampak?,Sabar dan etos kerja (fastabiqul khairat),,pekan olahraga
-AKH-02-011,AKH-02,2,Siswa yang juara kelas meremehkan teman-temannya dan menolak belajar kelompok. Sifat tercela apa ini?,Takabur,,kelas
-AKH-04-006,AKH-04,2,Remaja yang membantu ibunya berjualan di warung sepulang sekolah tanpa menggerutu menjalankan ajaran…,Birrulwalidain (QS Al-Isra'/17:23–24),,warung
-FIK-02-011,FIK-02,2,Penjual di pasar menjual karung beras yang isinya tidak boleh dilihat pembeli dan beratnya tidak disebut. Jual beli seperti ini mengandung…,Garar (ketidakjelasan),,pasar
-FIK-02-012,FIK-02,3,"Koperasi syariah menitipkan uang anggota dan boleh memakainya dengan izin, lalu mengembalikannya utuh kapan saja diminta. Akad apa ini, dan apa bedanya dengan mudarabah?",Wadi'ah (titipan); tidak ada bagi hasil usaha seperti mudarabah,,koperasi syariah
-FIK-03-013,FIK-03,2,Pegawai yang dipekerjakan BAZNAS kota untuk mengumpulkan dan membagikan zakat termasuk asnaf…,Amil,,BAZNAS
-FIK-04-009,FIK-04,2,Jamaah haji asal kampung mengenakan kain ihram sebelum melewati batas yang ditentukan dalam perjalanan ke Makkah. Batas itu disebut…,Miqat,,jamaah haji
-FIK-06-007,FIK-06,2,"Khatib Jumat di masjid sekolah lupa berwasiat takwa pada khotbah pertama. Menurut mazhab Syafi'i, wasiat takwa termasuk…",Rukun khotbah,,masjid sekolah
-FIK-07-008,FIK-07,3,"Seorang suami wafat meninggalkan istri dan anak. Berapa bagian istri, dan dalil apa yang menetapkannya?",1/8; QS An-Nisa'/4:12,,waris keluarga
-SPI-02-008,SPI-02,2,Kalender di dinding masjid menulis tanggal hijriah. Khalifah siapa yang menetapkan penanggalan ini?,Umar bin Khattab,,kalender masjid
 SPI-05-010,SPI-05,2,Banyak madrasah dan pesantren tradisional di Jawa Timur bernaung di organisasi yang didirikan di Surabaya tahun 1926. Organisasi apa itu?,Nahdlatul Ulama,,pesantren

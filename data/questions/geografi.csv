@@ -26,7 +26,7 @@ DAS-03-008,DAS-03,2,"Pada citra, tambak dikenali karena letaknya di tepi pantai.
 DAS-04-001,DAS-04,1,"Data spasial berbentuk titik, garis, dan poligon disebut data…",Vektor,,
 DAS-04-002,DAS-04,1,Data spasial berbentuk sel atau piksel disebut data…,Raster,,
 DAS-04-003,DAS-04,1,Analisis SIG yang menggabungkan beberapa peta tematik disebut…,Tumpang susun (overlay),,
-DAS-04-004,DAS-04,2,Analisis SIG yang membuat zona dengan jarak tertentu dari suatu objek disebut…,Buffer,,
+DAS-04-004,DAS-04,1,Analisis SIG yang membuat zona dengan jarak tertentu dari suatu objek disebut…,Buffer,,
 DAS-04-005,DAS-04,2,Komponen SIG berupa manusia yang mengoperasikan sistem disebut…,Brainware,,
 DAS-04-006,DAS-04,2,"Pemerintah kabupaten ingin menentukan lahan yang cocok untuk kebun kopi dari peta lereng, peta tanah, dan peta curah hujan. Analisis SIG yang dipakai adalah…",Tumpang susun (overlay),,kebun kopi
 DAS-04-007,DAS-04,2,Dinas lingkungan menandai zona 50 m dari tepi sungai yang tidak boleh dibangun rumah. Analisis SIG yang dipakai adalah…,Buffer,,sungai
@@ -57,9 +57,9 @@ GEO-03-001,GEO-03,1,"Awan, hujan, dan petir yang dialami warga sehari-hari terja
 GEO-03-002,GEO-03,1,Lapisan ozon yang menyerap ultraviolet berada di lapisan…,Stratosfer,,
 GEO-03-003,GEO-03,1,Lapisan atmosfer yang memantulkan gelombang radio adalah…,Ionosfer (termosfer),,
 GEO-03-004,GEO-03,1,Angin selalu bertiup dari daerah bertekanan … ke daerah bertekanan rendah.,Tinggi,,
-GEO-03-005,GEO-03,2,"Klasifikasi iklim yang membagi iklim menjadi A tropis, B kering, C sedang, D dingin, dan E kutub adalah klasifikasi…",Köppen,,
+GEO-03-005,GEO-03,1,"Klasifikasi iklim yang membagi iklim menjadi A tropis, B kering, C sedang, D dingin, dan E kutub adalah klasifikasi…",Köppen,,
 GEO-03-006,GEO-03,2,"Menurut Schmidt–Ferguson, bulan basah adalah bulan dengan curah hujan lebih dari … mm.",100,,
-GEO-03-007,GEO-03,2,Klasifikasi iklim yang dipakai untuk pertanian dengan batas bulan basah lebih dari 200 mm adalah klasifikasi…,Oldeman,,
+GEO-03-007,GEO-03,1,Klasifikasi iklim yang dipakai untuk pertanian dengan batas bulan basah lebih dari 200 mm adalah klasifikasi…,Oldeman,,
 GEO-03-008,GEO-03,3,"Menurut rumus Braak, berapa suhu rata-rata kota pada ketinggian 1.500 m?","17,3 °C","26,3 − 0,6 × 15.",
 GEO-03-009,GEO-03,2,"Di Indonesia, angin muson barat yang bertiup sekitar Oktober–April membawa musim…",Hujan,,
 GEO-03-010,GEO-03,1,"Kota di pegunungan terasa lebih sejuk daripada kota di pantai. Menurut rumus Braak, suhu turun sekitar … °C setiap naik 100 m.","0,6",,pegunungan
@@ -102,7 +102,7 @@ PEN-01-002,PEN-01,1,"Setelah lulus sekolah, banyak pemuda dari sebuah desa pinda
 PEN-01-003,PEN-01,1,"Perpindahan penduduk antarpulau di dalam negeri, terutama yang diatur pemerintah, disebut…",Transmigrasi,,
 PEN-01-004,PEN-01,1,Piramida penduduk dengan alas lebar karena kelahiran tinggi disebut piramida…,Ekspansif,,
 PEN-01-005,PEN-01,1,Rasio ketergantungan membandingkan penduduk usia 0–14 dan 65 tahun ke atas dengan penduduk usia…,15–64 tahun,,
-PEN-01-006,PEN-01,2,Angka kelahiran kasar (CBR) dihitung per … penduduk.,1.000,,
+PEN-01-006,PEN-01,1,Angka kelahiran kasar (CBR) dihitung per … penduduk.,1.000,,
 PEN-01-007,PEN-01,3,Sebuah kecamatan berpenduduk 50.000 jiwa mencatat 1.000 kelahiran dalam setahun. Berapa CBR-nya?,20 per 1.000 penduduk,,
 PEN-01-008,PEN-01,3,"Penduduk usia 0–14 tahun 300, usia 65 tahun ke atas 100, dan usia 15–64 tahun 800. Berapa rasio ketergantungannya?",50,(300 + 100) : 800 × 100.,
 PEN-01-009,PEN-01,2,Banyak pemuda dari sebuah desa pindah ke kota karena di kota lebih banyak lapangan kerja. Faktor lapangan kerja di kota disebut faktor…,Penarik,,urbanisasi
@@ -115,7 +115,7 @@ PEN-02-005,PEN-02,2,Posyandu di sebuah desa memantau berat badan balita dan memb
 PEN-03-001,PEN-03,1,Suhu rata-rata di banyak daerah terus naik karena gas rumah kaca di atmosfer bertambah. Gejala kenaikan suhu bumi ini disebut…,Pemanasan global,,cuaca
 PEN-03-002,PEN-03,2,Kajian dampak lingkungan yang wajib bagi usaha berdampak penting disebut…,AMDAL,,
 PEN-03-003,PEN-03,2,SDGs berisi berapa tujuan?,17,,
-PEN-03-004,PEN-03,2,Pembangunan yang memenuhi kebutuhan kini tanpa mengorbankan generasi mendatang disebut pembangunan…,Berkelanjutan,,
+PEN-03-004,PEN-03,1,Pembangunan yang memenuhi kebutuhan kini tanpa mengorbankan generasi mendatang disebut pembangunan…,Berkelanjutan,,
 PEN-03-005,PEN-03,2,Bekas tambang pasir di sebuah desa dibiarkan menjadi lubang tanpa ditanami kembali. Kegiatan pemulihan lahan bekas tambang yang tidak dilakukan disebut…,Reklamasi,,tambang pasir
 BEN-01-001,BEN-01,1,Kampung di bantaran sungai tergenang setiap musim hujan. Banjir termasuk kelompok bencana…,Hidrometeorologis,,banjir
 BEN-01-002,BEN-01,1,"Gempa bumi, tsunami, dan letusan gunung api termasuk bencana…",Geologis,,
@@ -130,7 +130,7 @@ BEN-02-001,BEN-02,1,Pemerintah membangun tanggul di sepanjang sungai sebelum mus
 BEN-02-002,BEN-02,1,Lembaga penanggulangan bencana di tingkat pusat adalah…,BNPB,,
 BEN-02-003,BEN-02,1,Membangun kembali rumah dan fasilitas setelah bencana termasuk tahap…,Rekonstruksi,,
 BEN-02-004,BEN-02,2,Memulihkan layanan dasar setelah bencana termasuk tahap…,Rehabilitasi,,
-BEN-02-005,BEN-02,2,Pelatihan evakuasi termasuk mitigasi struktural atau nonstruktural?,Nonstruktural,,
+BEN-02-005,BEN-02,1,Pelatihan evakuasi termasuk mitigasi struktural atau nonstruktural?,Nonstruktural,,
 BEN-02-006,BEN-02,2,"Lembaga yang memantau cuaca, iklim, dan gempa adalah…",BMKG,,
 BEN-02-007,BEN-02,2,Sekolah di daerah rawan gempa mengadakan latihan evakuasi setiap semester. Tahap penanggulangan bencana ini termasuk…,Prabencana (mitigasi dan kesiapsiagaan),,sekolah
 BEN-02-008,BEN-02,2,Warga di daerah langganan banjir membangun rumah panggung. Upaya menyesuaikan diri dengan bencana seperti ini disebut…,Adaptasi,,banjir
@@ -155,7 +155,7 @@ WIL-02-008,WIL-02,2,Rumah-rumah di sebuah kampung nelayan berjajar mengikuti gar
 WIL-02-009,WIL-02,3,Sebutkan satu dampak interaksi desa–kota bagi desa.,"Satu di antara: pengetahuan bertambah, tenaga kerja muda pindah ke kota",,
 WIL-03-001,WIL-03,1,Negara dengan sektor industri dan jasa dominan serta pertumbuhan penduduk rendah disebut negara…,Maju,,
 WIL-03-002,WIL-03,2,Lembaga yang mengelompokkan negara menurut pendapatan nasional bruto per kapita adalah…,Bank Dunia,,
-WIL-03-003,WIL-03,2,Negara yang masih bergantung pada ekspor bahan mentah dan sektor pertanian disebut negara…,Berkembang,,
+WIL-03-003,WIL-03,1,Negara yang masih bergantung pada ekspor bahan mentah dan sektor pertanian disebut negara…,Berkembang,,
 WIL-03-004,WIL-03,2,Sebutkan satu bentuk interaksi negara maju dan berkembang.,"Satu di antara: perdagangan, investasi, bantuan pembangunan, alih teknologi, migrasi tenaga kerja",,
 WIL-03-005,WIL-03,2,Pabrik mobil dari Jepang dibangun di Karawang dan memakai tenaga kerja lokal. Bentuk interaksi negara maju dan berkembang ini adalah…,Investasi,,pabrik
 WIL-04-001,WIL-04,1,Faktor pendorong utama globalisasi adalah kemajuan transportasi dan…,Komunikasi,,

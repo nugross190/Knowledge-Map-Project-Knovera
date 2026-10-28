@@ -4,7 +4,7 @@ KEH-01-002,KEH-01,1,"Pelestarian di habitat asli, seperti taman nasional, disebu
 KEH-01-003,KEH-01,1,"Pelestarian di luar habitat asli, seperti kebun raya, disebut pelestarian…",Ex situ,,
 KEH-01-004,KEH-01,2,Garis yang memisahkan fauna Asiatis dan fauna peralihan disebut garis…,Wallace,,
 KEH-01-005,KEH-01,2,"Anoa, komodo, dan maleo termasuk fauna…",Peralihan (Wallacea),,
-KEH-01-006,KEH-01,2,"Variasi antarjenis dalam satu genus, seperti harimau dan singa, disebut keanekaragaman tingkat…",Spesies,,
+KEH-01-006,KEH-01,1,"Variasi antarjenis dalam satu genus, seperti harimau dan singa, disebut keanekaragaman tingkat…",Spesies,,
 KEH-01-007,KEH-01,3,Rafflesia arnoldii merupakan tumbuhan endemik dari pulau…,Sumatra,,
 KEH-01-008,KEH-01,1,"Komodo dilindungi di habitat aslinya di Taman Nasional Komodo, NTT. Bentuk pelestarian ini adalah pelestarian…",In situ,,taman nasional
 KEH-01-009,KEH-01,2,Siswa melihat hutan bakau dan terumbu karang dalam satu kunjungan ke pesisir. Perbedaan kedua lingkungan beserta makhluk hidupnya menunjukkan keanekaragaman tingkat…,Ekosistem,,pesisir
@@ -17,10 +17,11 @@ KEH-02-006,KEH-02,2,"Sistem tiga domain membagi makhluk hidup menjadi Bacteria, 
 KEH-02-007,KEH-02,3,Sistem tiga domain dikemukakan oleh…,Carl Woese,,
 KEH-02-008,KEH-02,2,Nama ilmiah padi ditulis Oryza sativa. Bagian “Oryza” menunjukkan takson…,Genus,,sawah
 KEH-02-009,KEH-02,1,Jamur merang yang dijual di pasar tidak berklorofil dan berdinding sel kitin. Jamur termasuk kingdom…,Fungi,,pasar
+KEH-02-010,KEH-02,1,Sistem penamaan makhluk hidup dengan dua kata disebut…,Tata nama binomial,,
 KEH-03-001,KEH-03,1,Virus hanya dapat berkembang biak di dalam…,Sel hidup,,
 KEH-03-002,KEH-03,1,"Dokter puskesmas tidak memberi antibiotik kepada pasien flu biasa, karena antibiotik tidak mempan terhadap penyebab flu, yaitu…",Virus,,puskesmas
 KEH-03-003,KEH-03,2,Selubung protein virus disebut…,Kapsid,,
-KEH-03-004,KEH-03,2,Daur replikasi virus yang diakhiri pecahnya sel inang disebut daur…,Litik,,
+KEH-03-004,KEH-03,1,Daur replikasi virus yang diakhiri pecahnya sel inang disebut daur…,Litik,,
 KEH-03-005,KEH-03,2,HIV menyerang sel…,T helper,,
 KEH-03-006,KEH-03,2,Kader posyandu mengajak warga menguras bak mandi seminggu sekali untuk mencegah demam berdarah. Virus dengue ditularkan oleh nyamuk…,Aedes aegypti,,posyandu
 KEH-04-001,KEH-04,1,Organisme yang membuat makanannya sendiri disebut…,Produsen,,
@@ -73,6 +74,7 @@ TUM-02-003,TUM-02,2,Gerak bagian tumbuhan menuju arah cahaya disebut…,Fototrop
 TUM-02-004,TUM-02,2,Naiknya air di xilem terutama disebabkan oleh daya isap daun akibat…,Transpirasi,,
 TUM-02-005,TUM-02,2,"Petani mangga menguliti cabang pohon, membungkusnya dengan tanah, lalu memotongnya setelah berakar. Cara perbanyakan vegetatif ini disebut…",Mencangkok,,kebun mangga
 TUM-02-006,TUM-02,2,Daun lamtoro menutup saat malam hari. Gerak ini disebut…,Niktinasti,,kebun
+TUM-02-007,TUM-02,1,Pembuahan pada tumbuhan berbiji tertutup yang terjadi dua kali disebut…,Pembuahan ganda,,
 TUM-03-001,TUM-03,1,Hormon tumbuhan yang mempercepat pematangan buah adalah…,Etilen,,
 TUM-03-002,TUM-03,2,Pucuk tanaman teh dipangkas agar tumbuh banyak tunas samping. Pemangkasan menghilangkan dominansi apikal yang diatur hormon…,Auksin,,kebun teh
 TUM-03-003,TUM-03,2,Hormon yang dapat menghasilkan buah tanpa biji adalah…,Giberelin,,
@@ -131,6 +133,7 @@ MAN-07-006,MAN-07,2,Zat kimia yang meneruskan impuls di sinapsis disebut…,Neur
 MAN-07-007,MAN-07,3,Saraf otonom yang mempercepat detak jantung dan melebarkan pupil adalah saraf…,Simpatik,,
 MAN-07-008,MAN-07,1,"Tangan langsung ditarik saat tidak sengaja menyentuh panci panas, sebelum orangnya sempat berpikir. Gerak ini disebut gerak…",Refleks,,dapur
 MAN-07-009,MAN-07,2,Jantung berdebar dan gula darah naik saat seseorang dikejar anjing. Hormon yang berperan adalah…,Adrenalin,,kampung
+MAN-07-010,MAN-07,1,Gerak yang terjadi tanpa disadari dan tidak melalui otak disebut…,Gerak refleks,,
 MAN-08-001,MAN-08,1,Hormon yang memicu ovulasi adalah…,LH,,
 MAN-08-002,MAN-08,1,Fertilisasi pada manusia terjadi di…,Tuba falopi (saluran telur),,
 MAN-08-003,MAN-08,2,Hormon yang dihasilkan sel Leydig di testis adalah…,Testosteron,,
@@ -143,12 +146,13 @@ MET-01-001,MET-01,1,Enzim merupakan biokatalisator yang tersusun dari…,Protein
 MET-01-002,MET-01,2,Model kerja enzim gembok-kunci dikemukakan oleh…,Emil Fischer,,
 MET-01-003,MET-01,2,Rusaknya enzim karena suhu tinggi disebut…,Denaturasi,,
 MET-01-004,MET-01,2,Inhibitor yang menempati sisi aktif enzim disebut inhibitor…,Kompetitif,,
-MET-01-005,MET-01,2,"Reaksi penyusunan molekul yang memerlukan energi, seperti fotosintesis, disebut…",Anabolisme,,
+MET-01-005,MET-01,1,"Reaksi penyusunan molekul yang memerlukan energi, seperti fotosintesis, disebut…",Anabolisme,,
 MET-01-006,MET-01,2,Nanas segar dapat melunakkan daging karena mengandung enzim; enzim ini tidak bekerja lagi bila nanasnya direbus karena…,Enzimnya terdenaturasi oleh suhu tinggi,,dapur
+MET-01-007,MET-01,1,Reaksi penguraian molekul kompleks menjadi sederhana yang menghasilkan energi disebut…,Katabolisme,,
 MET-02-001,MET-02,1,Glikolisis terjadi di…,Sitoplasma,,
 MET-02-002,MET-02,1,Penerima elektron terakhir pada respirasi aerob adalah…,Oksigen (O₂),,
 MET-02-003,MET-02,2,Siklus Krebs terjadi di…,Matriks mitokondria,,
-MET-02-004,MET-02,2,Tahap respirasi yang menghasilkan ATP paling banyak adalah…,Transpor elektron,,
+MET-02-004,MET-02,1,Tahap respirasi yang menghasilkan ATP paling banyak adalah…,Transpor elektron,,
 MET-02-005,MET-02,2,Hasil glikolisis satu molekul glukosa adalah 2 molekul…,Asam piruvat,,
 MET-02-006,MET-02,3,Total ATP respirasi aerob satu glukosa menurut buku SMA sekitar…,36–38 ATP,,
 MET-02-007,MET-02,1,Otot kaki terasa pegal setelah lari jauh karena menumpuknya…,Asam laktat,,olahraga
@@ -161,14 +165,16 @@ MET-03-005,MET-03,2,Tokoh yang membuktikan fotosintesis menghasilkan amilum deng
 MET-03-006,MET-03,2,Tokoh yang membuktikan O₂ dihasilkan di kloroplas dengan Spirogyra adalah…,Engelmann,,
 MET-03-007,MET-03,3,Tokoh yang membuktikan O₂ hasil fotosintesis berasal dari air dengan isotop ¹⁸O adalah…,Ruben dan Kamen,,
 MET-03-008,MET-03,2,"Siswa menutup sebagian daun singkong dengan kertas timah selama sehari, lalu mengujinya dengan iodin. Bagian yang tertutup tidak berwarna biru tua karena tidak menghasilkan…",Amilum,,kebun sekolah
+MET-03-009,MET-03,1,Reaksi gelap fotosintesis disebut juga…,Siklus Calvin,,
 GEN-01-001,GEN-01,1,Penemu model heliks ganda DNA adalah…,Watson dan Crick,,
 GEN-01-002,GEN-01,1,Jumlah kromosom pada sel tubuh manusia adalah…,46,,
 GEN-01-003,GEN-01,1,Basa pada RNA yang menggantikan timin adalah…,Urasil,,
 GEN-01-004,GEN-01,2,Adenin pada DNA berpasangan dengan…,Timin,,
-GEN-01-005,GEN-01,2,Proses pencetakan mRNA dari DNA disebut…,Transkripsi,,
+GEN-01-005,GEN-01,1,Proses pencetakan mRNA dari DNA disebut…,Transkripsi,,
 GEN-01-006,GEN-01,2,Kodon awal pada sintesis protein adalah…,AUG,,
 GEN-01-007,GEN-01,2,Gula penyusun DNA adalah…,Deoksiribosa,,
 GEN-01-008,GEN-01,3,Replikasi DNA bersifat semikonservatif. Hal ini dibuktikan oleh…,Meselson dan Stahl,,
+GEN-01-009,GEN-01,1,Materi genetik yang berbentuk heliks ganda adalah…,DNA,,
 GEN-02-001,GEN-02,1,Pembelahan sel yang menghasilkan dua sel identik disebut…,Mitosis,,
 GEN-02-002,GEN-02,1,Pembelahan sel yang menghasilkan sel kelamin haploid disebut…,Meiosis,,
 GEN-02-003,GEN-02,2,Fase mitosis ketika kromosom berjajar di bidang ekuator disebut…,Metafase,,
@@ -199,7 +205,7 @@ GEN-05-004,GEN-05,2,Zat kimia yang memicu poliploidi adalah…,Kolkisin,,
 GEN-05-005,GEN-05,3,Semangka tanpa biji memiliki kromosom…,Triploid (3n),,
 GEN-05-006,GEN-05,2,Pedagang buah menjual semangka tanpa biji yang dihasilkan lewat perubahan jumlah set kromosom. Jenis mutasi ini disebut…,Poliploidi (euploidi),,pedagang buah
 GEN-06-001,GEN-06,1,Buku On the Origin of Species (1859) ditulis oleh…,Charles Darwin,,
-GEN-06-002,GEN-06,2,Teori evolusi yang menyatakan sifat yang sering dipakai diwariskan dikemukakan oleh…,Lamarck,,
+GEN-06-002,GEN-06,1,Teori evolusi yang menyatakan sifat yang sering dipakai diwariskan dikemukakan oleh…,Lamarck,,
 GEN-06-003,GEN-06,2,Ilmuwan yang membantah abiogenesis dengan labu leher angsa adalah…,Louis Pasteur,,
 GEN-06-004,GEN-06,2,Sayap kelelawar dan lengan manusia merupakan organ…,Homolog,,
 GEN-06-005,GEN-06,2,Sayap burung dan sayap kupu-kupu merupakan organ…,Analog,,

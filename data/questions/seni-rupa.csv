@@ -2,9 +2,9 @@ id,simpul,tingkat,soal,jawaban,catatan,konteks
 UNR-01-001,UNR-01,1,Unsur seni rupa yang paling dasar adalah…,Titik,,
 UNR-01-002,UNR-01,1,Tekstur yang hanya terlihat kasar tetapi rata bila diraba disebut tekstur…,Semu,,
 UNR-01-003,UNR-01,1,Bentuk datar dua dimensi disebut…,Bidang,,
-UNR-01-004,UNR-01,2,Wujud tiga dimensi yang bervolume disebut…,Bentuk,,
-UNR-01-005,UNR-01,2,Kesan jauh-dekat atau kedalaman dalam karya disebut…,Ruang,,
-UNR-01-006,UNR-01,2,Perbedaan intensitas cahaya yang memberi kesan volume disebut…,Gelap terang,,
+UNR-01-004,UNR-01,1,Wujud tiga dimensi yang bervolume disebut…,Bentuk,,
+UNR-01-005,UNR-01,1,Kesan jauh-dekat atau kedalaman dalam karya disebut…,Ruang,,
+UNR-01-006,UNR-01,1,Perbedaan intensitas cahaya yang memberi kesan volume disebut…,Gelap terang,,
 UNR-01-007,UNR-01,2,Garis zig-zag memberi kesan…,"Gerak, tegang, atau dinamis",,
 UNR-01-008,UNR-01,2,Permukaan anyaman tikar pandan di pasar terasa kasar saat diraba. Jenis tekstur apa ini?,Tekstur nyata,,pasar
 UNR-01-009,UNR-01,3,"Poster lomba memakai gambar kayu yang tampak berserat, padahal kertasnya licin. Unsur apa yang dipakai dan jenisnya apa?",Tekstur semu,,poster
@@ -28,20 +28,23 @@ UNR-03-007,UNR-03,2,Sistem warna untuk layar adalah…,RGB,,
 UNR-03-008,UNR-03,2,Sistem warna untuk tinta cetak adalah…,CMYK,,
 UNR-03-009,UNR-03,2,Spanduk promosi warung memakai tulisan biru di atas latar jingga agar mencolok. Hubungan kedua warna ini disebut…,Komplementer (kontras),,spanduk warung
 UNR-03-010,UNR-03,3,"Siswa hanya punya cat merah, kuning, dan biru tetapi ingin melukis daun dan langit senja ungu. Bagaimana caranya?",Hijau dari kuning + biru; ungu dari merah + biru,,
+UNR-03-011,UNR-03,2,Penjual es di sekolah mengecat gerobaknya merah dan kuning agar terlihat segar dan bersemangat. Golongan warna apa ini?,Warna panas,,gerobak es
 UNR-04-001,UNR-04,1,Garis setinggi mata pengamat dalam perspektif disebut…,Garis horizon,,
-UNR-04-002,UNR-04,2,Titik tempat garis-garis sejajar bertemu di horizon disebut…,Titik hilang,,
-UNR-04-003,UNR-04,2,Perspektif untuk menggambar jalan lurus dilihat dari depan memakai berapa titik hilang?,Satu,,
-UNR-04-004,UNR-04,2,Benda dilihat dari sudut memakai perspektif berapa titik hilang?,Dua,,
+UNR-04-002,UNR-04,1,Titik tempat garis-garis sejajar bertemu di horizon disebut…,Titik hilang,,
+UNR-04-003,UNR-04,1,Perspektif untuk menggambar jalan lurus dilihat dari depan memakai berapa titik hilang?,Satu,,
+UNR-04-004,UNR-04,1,Benda dilihat dari sudut memakai perspektif berapa titik hilang?,Dua,,
 UNR-04-005,UNR-04,2,Mengapa gunung yang jauh dilukis lebih pudar dan kebiruan?,Perspektif warna: benda jauh tampak lebih pudar,,
 UNR-04-006,UNR-04,2,Siswa menggambar rel kereta yang tampak menyempit dan bertemu di satu titik di kejauhan. Teknik apa yang dipakai?,Perspektif satu titik hilang,,rel kereta
+UNR-04-007,UNR-04,1,Perspektif untuk objek yang dilihat dari sudut memakai berapa titik hilang?,Dua,,
 UNR-05-001,UNR-05,1,Bayangan benda yang jatuh di bidang dasar disebut…,Bayangan jatuh (cast shadow),,
 UNR-05-002,UNR-05,2,Di sisi mana bayangan jatuh berada terhadap sumber cahaya?,Di sisi yang berlawanan dengan sumber cahaya,,
-UNR-05-003,UNR-05,2,Gambar benda diam seperti buah dan botol disebut…,Gambar bentuk (still life),,
+UNR-05-003,UNR-05,1,Gambar benda diam seperti buah dan botol disebut…,Gambar bentuk (still life),,
 UNR-05-004,UNR-05,2,Bagian benda yang paling terang adalah bagian yang…,Paling banyak terkena cahaya,,
 UNR-05-005,UNR-05,2,Siswa menggambar kendi dengan lampu dari kiri. Di sisi mana bayangan jatuhnya digambar?,Di kanan kendi,,kelas gambar
+UNR-05-006,UNR-05,1,Bagian benda yang tidak terkena cahaya langsung disebut…,Bayangan (bagian gelap),,
 KRP-01-001,KRP-01,1,Teknik menggambar dengan garis sejajar atau bersilang disebut…,Arsir,,
 KRP-01-002,KRP-01,1,Teknik menggambar dengan titik-titik rapat disebut…,Pointilis,,
-KRP-01-003,KRP-01,2,Teknik cat air yang tipis dan transparan disebut…,Aquarel,,
+KRP-01-003,KRP-01,1,Teknik cat air yang tipis dan transparan disebut…,Aquarel,,
 KRP-01-004,KRP-01,2,Teknik cat air yang tebal dan menutup disebut…,Plakat,,
 KRP-01-005,KRP-01,2,Teknik menggosok goresan pensil agar halus disebut…,Dusel,,
 KRP-01-006,KRP-01,2,"Cat yang cepat kering dan diencerkan dengan air, tetapi tahan air setelah kering, adalah cat…",Akrilik,,
@@ -56,10 +59,11 @@ KRP-02-005,KRP-02,2,Litografi termasuk teknik cetak…,Datar,,
 KRP-02-006,KRP-02,2,"Pada cetak dalam, bagian mana yang tercetak?",Bagian cekung yang digores atau diasamkan,,
 KRP-02-007,KRP-02,2,Usaha kaos di Bandung mencetak desain dengan menekan tinta melewati screen berpola. Teknik grafis apa ini?,Cetak saring (sablon),,usaha kaos
 KRP-02-008,KRP-02,3,"Siswa mencukil papan lino lalu menggulung tinta di atasnya dan menekannya ke kertas. Bagian mana yang tercetak, dan termasuk teknik apa?",Bagian yang tidak dicukil (menonjol); cetak tinggi,,
+KRP-02-009,KRP-02,2,Tukang stempel di dekat kantor kecamatan membuat cap karet dengan bagian huruf menonjol yang diberi tinta. Prinsip cetak apa yang dipakai?,Cetak tinggi,,tukang stempel
 KRP-03-001,KRP-03,1,Teknik membuat patung dengan mengurangi bahan disebut…,Pahat (subtraktif),,
 KRP-03-002,KRP-03,1,Teknik membuat patung dengan menambah bahan disebut…,Butsir/modeling (aditif),,
 KRP-03-003,KRP-03,2,Teknik membuat patung dengan menuang bahan cair ke cetakan disebut…,Cor,,
-KRP-03-004,KRP-03,2,Patung yang menempel pada bidang dan hanya dilihat dari depan disebut…,Relief,,
+KRP-03-004,KRP-03,1,Patung yang menempel pada bidang dan hanya dilihat dari depan disebut…,Relief,,
 KRP-03-005,KRP-03,2,Teknik menyambung bagian-bagian menjadi patung disebut…,Konstruksi (rakit),,
 KRP-03-006,KRP-03,2,Bahan yang cocok untuk teknik butsir adalah…,Tanah liat atau plastisin,,
 KRP-03-007,KRP-03,2,Pematung di Jepara membuat patung dari batang kayu jati dengan pahat. Teknik ini termasuk…,Subtraktif,,Jepara
@@ -70,11 +74,14 @@ KRP-04-002,KRP-04,2,Sebutkan dua teknik membentuk keramik.,"Contoh: pijat, pilin
 KRP-04-003,KRP-04,2,Daerah yang terkenal dengan kriya ukir kayu adalah…,Jepara,,
 KRP-04-004,KRP-04,2,Sebutkan tiga fungsi kriya.,"Hias, pakai, benda upacara",,
 KRP-04-005,KRP-04,2,Perajin di Kasongan membentuk kendi dengan alat yang berputar. Teknik ini disebut teknik…,Putar,,Kasongan
+KRP-04-006,KRP-04,1,"Batik, tenun, dan sulam termasuk kriya…",Tekstil,,
+KRP-04-007,KRP-04,2,Penenun di Sumba membuat kain dengan alat tenun gedogan. Karya ini termasuk kriya…,Tekstil,,tenun Sumba
 KRP-05-001,KRP-05,1,Lambang identitas sebuah lembaga atau merek disebut…,Logo,,
-KRP-05-002,KRP-05,2,Seni memilih dan menata huruf disebut…,Tipografi,,
+KRP-05-002,KRP-05,1,Seni memilih dan menata huruf disebut…,Tipografi,,
 KRP-05-003,KRP-05,2,Huruf tanpa kait disebut huruf…,Sans-serif,,
 KRP-05-004,KRP-05,2,Prinsip tata letak yang membuat informasi penting lebih menonjol disebut…,Hierarki,,
 KRP-05-005,KRP-05,2,"Poster imunisasi di puskesmas memakai judul besar, gambar anak, dan keterangan kecil di bawahnya. Prinsip tata letak apa yang dipakai pada judul besar?",Hierarki,,puskesmas
+KRP-05-006,KRP-05,1,Media desain berisi pesan singkat yang dipasang di tempat umum disebut…,Poster,,
 KRP-06-001,KRP-06,1,Aturan komposisi foto yang membagi bidang menjadi tiga bagian disebut…,Aturan sepertiga (rule of thirds),,
 KRP-06-002,KRP-06,2,Karya yang menata benda di suatu ruang agar dialami penonton disebut…,Seni instalasi,,
 KRP-06-003,KRP-06,2,Karya seni yang dibuat dengan perangkat lunak disebut…,Seni digital,,
@@ -85,6 +92,7 @@ KRP-07-002,KRP-07,2,Apa yang diperlukan sebelum membuat karya di ruang publik?,I
 KRP-07-003,KRP-07,2,Karya untuk memperingati tokoh atau peristiwa di ruang kota disebut…,Monumen,,
 KRP-07-004,KRP-07,2,Warga RW melukis tembok gang dengan gambar sungai bersih dan ajakan tidak membuang sampah. Karya ini termasuk…,Mural (seni rupa publik),,gang RW
 KRP-07-005,KRP-07,2,Sebutkan dua tema yang sering diangkat mural.,"Contoh: lingkungan, sosial, budaya lokal (dua di antaranya)",,
+KRP-07-006,KRP-07,1,Gambar besar yang dilukis pada tembok disebut…,Mural,,
 SEJ-01-001,SEJ-01,1,Aliran yang menangkap kesan cahaya sesaat disebut…,Impresionisme,,
 SEJ-01-002,SEJ-01,1,Aliran yang memecah objek menjadi bidang geometris disebut…,Kubisme,,
 SEJ-01-003,SEJ-01,1,Aliran yang menggambarkan dunia mimpi disebut…,Surealisme,,
@@ -106,17 +114,21 @@ SEJ-02-007,SEJ-02,2,Lukisan pemandangan Hindia yang serba indah dan dikritik Sud
 SEJ-02-008,SEJ-02,2,"Konsep ""jiwa ketok"" dikemukakan oleh…",S. Sudjojono,,
 SEJ-02-009,SEJ-02,2,Gerakan Seni Rupa Baru muncul pada tahun…,1975,,
 SEJ-02-010,SEJ-02,2,Pengunjung Museum Affandi di Yogyakarta melihat lukisan dengan goresan cat tebal yang meliuk-liuk dan penuh emosi. Aliran apa ini?,Ekspresionisme,,Museum Affandi
+SEJ-02-011,SEJ-02,3,"Raden Saleh melukis Penangkapan Pangeran Diponegoro (1857) dengan suasana dramatis. Aliran apa ini, dan apa beda pendekatannya dengan Mooi Indië?",Romantisme yang dramatis; Mooi Indië melukis pemandangan serba indah tanpa ketegangan,,
+SEJ-02-012,SEJ-02,1,Pelukis istana yang dikenal dengan lukisan potret realis adalah…,Basuki Abdullah,,
 SEJ-03-001,SEJ-03,1,Lukisan cap tangan prasejarah ditemukan di gua-gua…,"Maros, Sulawesi Selatan",,
 SEJ-03-002,SEJ-03,2,Lukisan babi kutil di Leang Tedongnge berumur sedikitnya…,45.500 tahun (diumumkan 2021),,
 SEJ-03-003,SEJ-03,2,Lukisan gua di Leang Karampuang yang diumumkan 2024 berumur sedikitnya…,51.200 tahun,,
 SEJ-03-004,SEJ-03,2,Sebutkan dua motif ragam hias geometris.,"Contoh: tumpal, meander, pilin (dua di antaranya)",,
 SEJ-03-005,SEJ-03,2,Sebutkan empat golongan ragam hias.,"Geometris, flora, fauna, figuratif",,
 SEJ-03-006,SEJ-03,2,Ukiran sulur daun pada pintu rumah adat termasuk ragam hias…,Flora,,rumah adat
+SEJ-03-007,SEJ-03,1,"Hiasan berulang yang dipakai pada batik, ukiran, dan tenun disebut…",Ragam hias,,
 SEJ-04-001,SEJ-04,1,Pelukis Mona Lisa adalah…,Leonardo da Vinci,,
 SEJ-04-002,SEJ-04,2,Pembuat patung Daud dan lukisan langit-langit Kapel Sistina adalah…,Michelangelo,,
 SEJ-04-003,SEJ-04,2,Pelukis Sekolah Athena adalah…,Raffaello Sanzio,,
 SEJ-04-004,SEJ-04,2,Renaisans berlangsung kira-kira pada abad…,Ke-14 sampai ke-16,,
-SEJ-04-005,SEJ-04,2,Apa yang ditekankan seniman Renaisans?,"Proporsi, perspektif, dan anatomi",,
+SEJ-04-005,SEJ-04,1,Apa yang ditekankan seniman Renaisans?,"Proporsi, perspektif, dan anatomi",,
+SEJ-04-006,SEJ-04,1,Masa kelahiran kembali seni dan ilmu di Eropa disebut…,Renaisans,,
 APR-01-001,APR-01,1,Tahap kritik yang menyebut apa yang terlihat disebut…,Deskripsi,,
 APR-01-002,APR-01,1,Tahap kritik yang menilai kualitas karya disebut…,Evaluasi,,
 APR-01-003,APR-01,2,Sebutkan empat tahap kritik Feldman.,"Deskripsi, analisis formal, interpretasi, evaluasi",,
@@ -127,9 +139,9 @@ APR-01-007,APR-01,2,Guru seni menulis catatan pada karya siswa untuk membantu me
 APR-01-008,APR-01,3,"Pengunjung pameran menulis, ""Lukisan ini gagal karena warnanya terlalu ramai sehingga objek utama tenggelam."" Tahap kritik apa ini, dan apa yang membuatnya sah?",Evaluasi; penilaian disertai alasan berdasarkan unsur (warna) dan prinsip (pusat perhatian),,pameran
 APR-02-001,APR-02,1,Seni rupa yang dibuat terutama untuk dinikmati keindahannya disebut seni rupa…,Murni,,
 APR-02-002,APR-02,1,Seni rupa yang mengutamakan fungsi pakai disebut seni rupa…,Terapan,,
-APR-02-003,APR-02,2,Kriya dan desain termasuk seni rupa…,Terapan,,
+APR-02-003,APR-02,1,Kriya dan desain termasuk seni rupa…,Terapan,,
 APR-02-004,APR-02,2,Sebutkan dua fungsi sosial seni rupa.,"Contoh: pendidikan, keagamaan, kritik sosial, hiburan (dua di antaranya)",,
-APR-02-005,APR-02,2,Lukisan dan patung termasuk seni rupa…,Murni,,
+APR-02-005,APR-02,1,Lukisan dan patung termasuk seni rupa…,Murni,,
 APR-02-006,APR-02,2,Perajin membuat tas anyaman yang indah sekaligus dipakai belanja ke pasar. Seni rupa apa ini?,Seni rupa terapan,,tas anyaman
 APR-02-007,APR-02,3,Mural tentang bahaya membuang sampah ke sungai dibuat di dekat jembatan kota. Fungsi seni rupa apa yang paling tampak?,Fungsi sosial (kritik sosial dan pendidikan),,jembatan kota
 APR-03-001,APR-03,1,Orang yang memilih karya dan menyusun konsep pameran disebut…,Kurator,,
@@ -138,21 +150,10 @@ APR-03-003,APR-03,2,Buku berisi daftar karya dan pengantar pameran disebut…,Ka
 APR-03-004,APR-03,2,Pameran yang berpindah dari satu tempat ke tempat lain disebut pameran…,Keliling,,
 APR-03-005,APR-03,2,Sebutkan empat tahap pameran.,"Perencanaan, persiapan, pelaksanaan, evaluasi",,
 APR-03-006,APR-03,2,OSIS menggelar pameran karya kelas XII di aula selama tiga hari. Jenis pameran menurut waktunya adalah…,Temporer,,pameran sekolah
+APR-03-007,APR-03,1,Pameran yang menampilkan karya banyak seniman disebut pameran…,Bersama,,
 APR-04-001,APR-04,1,Berapa lama hak cipta lukisan berlaku menurut UU No. 28 Tahun 2014?,Seumur hidup pencipta ditambah 70 tahun,,
-APR-04-002,APR-04,2,Hak pencipta agar namanya dicantumkan disebut hak…,Moral,,
+APR-04-002,APR-04,1,Hak pencipta agar namanya dicantumkan disebut hak…,Moral,,
 APR-04-003,APR-04,2,Apakah meniru lukisan untuk latihan boleh dijual sebagai karya sendiri?,Tidak,,
 APR-04-004,APR-04,2,Undang-undang yang melindungi karya seni rupa adalah…,UU No. 28 Tahun 2014 tentang Hak Cipta,,
 APR-04-005,APR-04,2,Toko suvenir menjual kaos bergambar lukisan pelukis terkenal tanpa izin. Hak apa yang dilanggar?,Hak cipta (hak ekonomi pencipta),,toko suvenir
-UNR-04-007,UNR-04,1,Perspektif untuk objek yang dilihat dari sudut memakai berapa titik hilang?,Dua,,
-UNR-05-006,UNR-05,1,Bagian benda yang tidak terkena cahaya langsung disebut…,Bayangan (bagian gelap),,
-KRP-04-006,KRP-04,1,"Batik, tenun, dan sulam termasuk kriya…",Tekstil,,
-KRP-05-006,KRP-05,1,Media desain berisi pesan singkat yang dipasang di tempat umum disebut…,Poster,,
-KRP-07-006,KRP-07,1,Gambar besar yang dilukis pada tembok disebut…,Mural,,
-SEJ-03-007,SEJ-03,1,"Hiasan berulang yang dipakai pada batik, ukiran, dan tenun disebut…",Ragam hias,,
-SEJ-04-006,SEJ-04,1,Masa kelahiran kembali seni dan ilmu di Eropa disebut…,Renaisans,,
-APR-03-007,APR-03,1,Pameran yang menampilkan karya banyak seniman disebut pameran…,Bersama,,
 APR-04-006,APR-04,1,Hak cipta karya seni rupa diatur dalam UU nomor dan tahun berapa?,UU No. 28 Tahun 2014,,
-SEJ-02-011,SEJ-02,3,"Raden Saleh melukis Penangkapan Pangeran Diponegoro (1857) dengan suasana dramatis. Aliran apa ini, dan apa beda pendekatannya dengan Mooi Indië?",Romantisme yang dramatis; Mooi Indië melukis pemandangan serba indah tanpa ketegangan,,
-KRP-02-009,KRP-02,2,Tukang stempel di dekat kantor kecamatan membuat cap karet dengan bagian huruf menonjol yang diberi tinta. Prinsip cetak apa yang dipakai?,Cetak tinggi,,tukang stempel
-KRP-04-007,KRP-04,2,Penenun di Sumba membuat kain dengan alat tenun gedogan. Karya ini termasuk kriya…,Tekstil,,tenun Sumba
-UNR-03-011,UNR-03,2,Penjual es di sekolah mengecat gerobaknya merah dan kuning agar terlihat segar dan bersemangat. Golongan warna apa ini?,Warna panas,,gerobak es
