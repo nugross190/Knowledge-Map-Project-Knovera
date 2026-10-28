@@ -19,6 +19,7 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-bahasa-indonesia.html` | Knowledge map for Bahasa Indonesia (22 topics): reading, nonfiction and literary texts, language rules. |
 | `docs/peta-bahasa-inggris.html` | Knowledge map for Bahasa Inggris (22 topics): reading skills, text types, grammar. |
 | `docs/peta-sejarah.html` | Knowledge map for school and TKA history (24 topics), from historical method to Reformasi, plus world history. Separate from the LCCM kit (`peta.html`). |
+| `docs/peta-pai.html` | Knowledge map for Pendidikan Agama Islam dan Budi Pekerti (26 topics), organised by its five curriculum elements. |
 | `docs/peta-informatika.html` | Knowledge map for Informatika (25 topics), organised by its curriculum elements, from computational thinking to digital law. |
 | `docs/peta-pkwu.html` | Knowledge map for Prakarya dan Kewirausahaan (21 topics): entrepreneurship core plus crafts, engineering, cultivation, and food processing. |
 | `docs/peta-pjok.html` | Knowledge map for PJOK (21 topics): ball games, athletics, gymnastics, swimming, fitness, and health. |
@@ -26,6 +27,7 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank-kimia.html` | Short-answer question bank for Kimia (210 questions, about a fifth with everyday-context items). |
 | `docs/bank-biologi.html` | Short-answer question bank for Biologi (214 questions, about a fifth with everyday-context items). |
 | `docs/bank-matematika.html` | Short-answer question bank for Matematika (233 questions, about a fifth with everyday-context items). |
+| `docs/bank-pai.html` | Short-answer question bank for PAI dan Budi Pekerti (222 questions, about a fifth with everyday-context items). |
 | `docs/bank-informatika.html` | Short-answer question bank for Informatika (203 questions, about a fifth with everyday-context items). |
 | `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (159 questions, about a fifth with everyday-context items). |
 | `docs/bank-pjok.html` | Short-answer question bank for PJOK (197 questions, about a fifth with everyday-context items). |

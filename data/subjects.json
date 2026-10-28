@@ -1,7 +1,7 @@
 {
  "source": "Daftar mapel SMA kelas X–XII dari roster sekolah (V2HADIR, scripts/parsers/parse_erapor_leger_deskripsi.py), Kurikulum Merdeka. build.py mencetak status setiap mapel dari daftar ini.",
  "subjects": [
-  {"id": "agama", "name": "Pendidikan Agama dan Budi Pekerti", "kelompok": "Wajib X–XII", "map": "agama", "note": "Perlu keputusan: agama apa yang dipetakan."},
+  {"id": "pai", "name": "Pendidikan Agama Islam dan Budi Pekerti", "kelompok": "Wajib X–XII", "map": "pai", "note": "Agama lain belum dipetakan."},
   {"id": "ppkn", "name": "Pendidikan Pancasila", "kelompok": "Wajib X–XII", "map": "ppkn", "tka": ["tka-ppkn-pilihan-2025"]},
   {"id": "bahasa-indonesia", "name": "Bahasa Indonesia", "kelompok": "Wajib X–XII", "map": "bahasa-indonesia", "tka": ["tka-bahasa-indonesia-wajib-2025"]},
   {"id": "matematika", "name": "Matematika (Umum)", "kelompok": "Wajib X–XII", "map": "matematika", "tka": ["tka-matematika-umum-2025"]},
