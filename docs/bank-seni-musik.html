@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Bank Soal Seni Musik</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: same catalogue look as Peta Materi. Header + filter rail, then one of three panels: a single question card (Latihan), the full list (Daftar), per-topic results (Kemajuan). */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --indigo:#2B3A78; --soga:#8A5526; --patina:#2C6B63;
+  --indigo-soft:#E4E8F6; --soga-soft:#F3E9DF; --patina-soft:#DFEFEC;
+  --plum:#6E3466; --olive:#5B6A1E; --plum-soft:#F1E4EE; --olive-soft:#ECEFDD;
+  --ok:#2C6B3F; --ok-soft:#E1F0E5; --bad:#A3361C; --bad-soft:#F8E6DF;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.5rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:64ch;color:var(--muted);font-size:1.05rem;margin-top:10px}
+.lbl{font-family:var(--f-label);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;margin-top:22px;border-bottom:2px solid var(--ink);overflow-x:auto}
+.tab{font-family:var(--f-label);font-weight:700;font-size:1.05rem;padding:10px 16px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:6px 6px 0 0;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;padding-block:16px;border-bottom:1px solid var(--line)}
+.fgroup{display:flex;flex-direction:column;gap:6px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font-family:var(--f-label);font-weight:600;font-size:.9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:5px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--c,var(--ink));background:var(--c,var(--ink));color:var(--bg)}
+.seg button:focus-visible,select:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+select,input[type="search"]{font:inherit;font-size:.92rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:5px;padding:6px 8px;max-width:100%}
+select{min-width:0;width:min(320px,100%)}
+.check{display:flex;align-items:center;gap:7px;font-family:var(--f-label);font-size:.92rem;cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--ink)}
+#poolInfo{font-family:var(--f-label);font-size:.92rem;color:var(--muted);margin-left:auto}
+
+.btn{font-family:var(--f-label);font-weight:700;font-size:1rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.btn.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.btn kbd{font-family:var(--f-mono);font-size:.72rem;border:1px solid currentColor;border-radius:3px;padding:0 4px;opacity:.75}
+.btn.small{font-size:.88rem;padding:6px 12px}
+
+/* practice */
+.panel{padding-top:22px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 10px 10px;padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;min-height:340px}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:.82rem;color:var(--c);text-decoration:none;border:1px solid var(--c);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.code:hover{background:var(--soft)}
+.lv{font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.lv1{border:1.3px solid var(--muted);color:var(--muted)}
+.lv2{border:1.3px solid var(--ink)}
+.lv3{background:var(--ink);color:var(--bg)}
+.qtext{font-size:clamp(1.25rem,3.2vw,1.65rem);line-height:1.45;max-width:46ch;text-wrap:pretty}
+.timer{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.timer i{display:block;height:100%;background:var(--c);width:100%}
+.answer{background:var(--soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.answer .a{font-size:1.2rem;font-weight:600}
+.answer .x{font-size:.95rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.score{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-family:var(--f-label);color:var(--muted);font-size:.95rem}
+.score b{color:var(--ink);font-variant-numeric:tabular-nums}
+.hint{font-size:.85rem;color:var(--muted);margin-top:6px}
+.empty{padding:28px;text-align:left;background:var(--surface);border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+
+/* list */
+.listbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.listbar input{flex:1 1 240px;min-width:0;padding:9px 10px}
+.group{margin-top:22px}
+.ghead{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:6px;margin-bottom:6px}
+.ghead h3{font-size:1.15rem;color:var(--c)}
+.ghead span{font-family:var(--f-label);font-size:.88rem;color:var(--muted)}
+.ghead a{font-family:var(--f-label);font-size:.88rem;color:var(--c)}
+.qlist{list-style:none;margin:0;padding:0}
+.qlist li{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.qlist .n{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);padding-top:4px;min-width:6.5em}
+.qlist .body{min-width:0;display:flex;flex-direction:column;gap:4px}
+.qlist .qq{font-size:1rem}
+.qlist details summary{cursor:pointer;font-family:var(--f-label);font-weight:600;font-size:.88rem;color:var(--c);width:max-content}
+.qlist details summary:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.qlist .aa{font-weight:600}
+.qlist .xx{color:var(--muted);font-size:.92rem}
+.ktx{font-family:var(--f-label);font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:9px;background:var(--sunk);color:var(--ink)}
+.mark-ok{color:var(--ok);font-family:var(--f-label);font-size:.8rem}
+.mark-bad{color:var(--bad);font-family:var(--f-label);font-size:.8rem}
+
+/* progress */
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.stat b{display:block;font-family:var(--f-label);font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.88rem;color:var(--muted)}
+.weak{margin-top:20px;background:var(--bad-soft);border-radius:8px;padding:14px 16px}
+.weak h3{color:var(--bad);font-size:1.05rem}
+.weak ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.weak li{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.tbl{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{font-family:var(--f-label);text-align:left;padding:8px 10px;background:var(--sunk);white-space:nowrap}
+td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:middle;font-variant-numeric:tabular-nums}
+td.t{min-width:200px}
+.bar{width:120px;height:9px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%}
+.resetrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px;font-size:.92rem;color:var(--muted)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:640px){
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #poolInfo{margin-left:0;flex-basis:100%}
+  .qcard{padding:18px 16px 20px}
+}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
+    <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
+    <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Mode">
+    <button class="tab" role="tab" id="tab-latihan" aria-controls="p-latihan" aria-selected="true">Latihan</button>
+    <button class="tab" role="tab" id="tab-daftar" aria-controls="p-daftar" aria-selected="false">Daftar soal</button>
+    <button class="tab" role="tab" id="tab-kemajuan" aria-controls="p-kemajuan" aria-selected="false">Kemajuan</button>
+  </div>
+
+  <div class="filters" aria-label="Saring soal">
+    <div class="fgroup"><span class="lbl">Bidang</span><div class="seg" id="fDomain"></div></div>
+    <div class="fgroup"><label class="lbl" for="fTopic">Simpul</label><select id="fTopic"></select></div>
+    <div class="fgroup"><span class="lbl">Tingkat</span><div class="seg" id="fLevel"></div></div>
+    <label class="check" for="fWrong"><input type="checkbox" id="fWrong"> Hanya yang terakhir dijawab salah</label>
+    <label class="check" for="fCtx" id="ctxBox" hidden><input type="checkbox" id="fCtx"> Hanya soal konteks sehari-hari</label>
+    <span id="poolInfo" aria-live="polite"></span>
+  </div>
+
+  <section class="panel" id="p-latihan" role="tabpanel" aria-labelledby="tab-latihan">
+    <div id="practice"></div>
+    <div class="score"><span>Sesi ini: <b id="sRight">0</b> benar dari <b id="sTotal">0</b></span>
+      <label class="check" for="useTimer"><input type="checkbox" id="useTimer"> Batas waktu</label>
+      <select id="timerSec" aria-label="Lama batas waktu" style="width:auto"><option value="5">5 detik</option><option value="10" selected>10 detik</option><option value="15">15 detik</option></select>
+    </div>
+    <p class="hint">Pintasan papan ketik: Spasi = lihat jawaban, B = benar, S = salah, L = lewati.</p>
+  </section>
+
+  <section class="panel" id="p-daftar" role="tabpanel" aria-labelledby="tab-daftar" hidden>
+    <div class="listbar">
+      <input type="search" id="lSearch" placeholder="Cari kata dalam soal atau jawaban…" aria-label="Cari soal">
+      <button class="btn small" id="showAll" type="button">Tampilkan semua jawaban</button>
+      <button class="btn small" id="hideAll" type="button">Sembunyikan jawaban</button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="panel" id="p-kemajuan" role="tabpanel" aria-labelledby="tab-kemajuan" hidden>
+    <div id="progress"></div>
+  </section>
+
+  <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
+</div>
+
+<script>
+const DATA = {"topics": {"map_url": "peta-seni-musik.html", "domains": [{"id": "UNS", "name": "Unsur dan teori musik", "short": "Teori", "weight": 30.0, "topics": {"UNS-01": "Unsur musik", "UNS-02": "Notasi musik", "UNS-03": "Tangga nada", "UNS-04": "Interval dan akor", "UNS-05": "Tempo dan dinamika", "UNS-06": "Bentuk lagu"}}, {"id": "ALT", "name": "Alat musik", "short": "Alat musik", "weight": 15.0, "topics": {"ALT-01": "Klasifikasi alat musik", "ALT-02": "Alat musik Nusantara", "ALT-03": "Ansambel musik"}}, {"id": "MNU", "name": "Musik Nusantara dan dunia", "short": "Ragam musik", "weight": 25.0, "topics": {"MNU-01": "Lagu daerah", "MNU-02": "Gamelan", "MNU-03": "Musik populer Indonesia", "MNU-04": "Sejarah musik Barat", "MNU-05": "Lagu nasional"}}, {"id": "KRY", "name": "Bernyanyi, berkarya, dan apresiasi", "short": "Berkarya", "weight": 30.0, "topics": {"KRY-01": "Teknik vokal", "KRY-02": "Aransemen dan komposisi", "KRY-03": "Pertunjukan musik", "KRY-04": "Teknologi musik", "KRY-05": "Apresiasi dan kritik musik", "KRY-06": "Hak cipta lagu"}}]}, "questions": [{"id": "UNS-01-001", "t": "UNS-01", "lv": 1, "q": "Pola panjang pendek bunyi dan diam yang teratur disebut…", "a": "Irama (ritme)", "x": ""}, {"id": "UNS-01-002", "t": "UNS-01", "lv": 1, "q": "Rangkaian nada yang berurutan dan bermakna disebut…", "a": "Melodi", "x": ""}, {"id": "UNS-01-003", "t": "UNS-01", "lv": 1, "q": "Paduan beberapa nada yang dibunyikan bersamaan disebut…", "a": "Harmoni", "x": ""}, {"id": "UNS-01-004", "t": "UNS-01", "lv": 2, "q": "Ciri khas bunyi yang membedakan suara biola dan suling disebut…", "a": "Timbre (warna bunyi)", "x": ""}, {"id": "UNS-01-005", "t": "UNS-01", "lv": 2, "q": "Keras lembutnya bunyi disebut…", "a": "Dinamika", "x": ""}, {"id": "UNS-01-006", "t": "UNS-01", "lv": 2, "q": "Cepat lambatnya lagu disebut…", "a": "Tempo", "x": ""}, {"id": "UNS-01-007", "t": "UNS-01", "lv": 2, "q": "Apa beda irama dan melodi?", "a": "Irama tentang panjang pendek bunyi; melodi tentang tinggi rendah nada yang berurutan", "x": ""}, {"id": "UNS-01-008", "t": "UNS-01", "lv": 2, "q": "Di acara pengajian, peserta mengenali suara rebana dan suling walau tidak melihat alatnya. Unsur musik apa yang membuat keduanya dapat dibedakan?", "a": "Timbre (warna bunyi)", "x": "", "k": "pengajian"}, {"id": "UNS-01-009", "t": "UNS-01", "lv": 2, "q": "Kelompok kasidah di kampung menyanyikan satu lagu bersama-sama dalam suara satu, dua, dan tiga yang dibunyikan serentak. Unsur musik apa yang muncul dari paduan suara itu?", "a": "Harmoni", "x": "", "k": "kasidah"}, {"id": "UNS-02-001", "t": "UNS-02", "lv": 1, "q": "Not seperempat dalam birama 4/4 bernilai berapa ketuk?", "a": "1", "x": ""}, {"id": "UNS-02-002", "t": "UNS-02", "lv": 1, "q": "Not penuh bernilai berapa ketuk?", "a": "4", "x": ""}, {"id": "UNS-02-003", "t": "UNS-02", "lv": 1, "q": "Dalam not angka, angka 0 berarti…", "a": "Tanda diam (istirahat)", "x": ""}, {"id": "UNS-02-004", "t": "UNS-02", "lv": 2, "q": "Berapa ketuk not setengah bertitik?", "a": "3", "x": ""}, {"id": "UNS-02-005", "t": "UNS-02", "lv": 2, "q": "Birama 3/4 berarti…", "a": "Setiap birama berisi 3 ketuk dengan not seperempat sebagai satu ketuk", "x": ""}, {"id": "UNS-02-006", "t": "UNS-02", "lv": 2, "q": "Kunci yang dipakai untuk nada rendah adalah…", "a": "Kunci F (bas)", "x": ""}, {"id": "UNS-02-007", "t": "UNS-02", "lv": 2, "q": "Dalam not angka, titik di atas angka berarti…", "a": "Nada satu oktaf lebih tinggi", "x": ""}, {"id": "UNS-02-008", "t": "UNS-02", "lv": 2, "q": "Dalam not angka, satu garis di atas angka berarti nilainya…", "a": "Setengah ketuk", "x": ""}, {"id": "UNS-02-009", "t": "UNS-02", "lv": 3, "q": "Satu birama 4/4 berisi not setengah dan dua not seperdelapan. Berapa ketuk lagi yang diperlukan agar birama penuh?", "a": "1 ketuk", "x": "2 + ½ + ½ = 3."}, {"id": "UNS-02-010", "t": "UNS-02", "lv": 2, "q": "Pelatih paduan suara sekolah membagikan partitur bertanda birama 6/8 untuk lagu berirama mengayun. Berapa ketuk per birama dan not apa yang bernilai satu ketuk?", "a": "6 ketuk; not seperdelapan", "x": "", "k": "paduan suara"}, {"id": "UNS-03-001", "t": "UNS-03", "lv": 1, "q": "Susunan jarak tangga nada diatonis mayor adalah…", "a": "1 – 1 – ½ – 1 – 1 – 1 – ½", "x": ""}, {"id": "UNS-03-002", "t": "UNS-03", "lv": 1, "q": "Tangga nada yang terdiri atas lima nada pokok disebut…", "a": "Pentatonis", "x": ""}, {"id": "UNS-03-003", "t": "UNS-03", "lv": 1, "q": "Tangga nada minor asli biasanya diawali dan diakhiri nada…", "a": "La", "x": ""}, {"id": "UNS-03-004", "t": "UNS-03", "lv": 2, "q": "Susunan jarak tangga nada minor asli adalah…", "a": "1 – ½ – 1 – 1 – ½ – 1 – 1", "x": ""}, {"id": "UNS-03-005", "t": "UNS-03", "lv": 2, "q": "Di antara nada mana saja jarak ½ pada tangga nada mayor?", "a": "Mi–fa (3–4) dan si–do (7–8)", "x": ""}, {"id": "UNS-03-006", "t": "UNS-03", "lv": 2, "q": "Laras gamelan dengan lima nada berjarak hampir sama disebut…", "a": "Slendro", "x": ""}, {"id": "UNS-03-007", "t": "UNS-03", "lv": 2, "q": "Laras gamelan dengan tujuh nada berjarak tidak sama disebut…", "a": "Pelog", "x": ""}, {"id": "UNS-03-008", "t": "UNS-03", "lv": 2, "q": "Tangga nada yang memakai jarak setengah di seluruhnya disebut…", "a": "Kromatis", "x": ""}, {"id": "UNS-03-009", "t": "UNS-03", "lv": 2, "q": "Paduan suara sekolah memilih lagu berkesan sedih dan syahdu untuk mengenang guru yang wafat. Lagu berkesan seperti ini umumnya memakai tangga nada…", "a": "Minor", "x": "", "k": "mengenang guru"}, {"id": "UNS-04-001", "t": "UNS-04", "lv": 1, "q": "Gabungan tiga nada atau lebih yang dibunyikan bersamaan disebut…", "a": "Akor", "x": ""}, {"id": "UNS-04-002", "t": "UNS-04", "lv": 2, "q": "Akor I pada tangga nada C mayor terdiri atas nada…", "a": "C – E – G (do-mi-sol)", "x": ""}, {"id": "UNS-04-003", "t": "UNS-04", "lv": 2, "q": "Akor IV pada C mayor adalah…", "a": "F (F-A-C)", "x": ""}, {"id": "UNS-04-004", "t": "UNS-04", "lv": 2, "q": "Akor V pada C mayor adalah…", "a": "G (G-B-D)", "x": ""}, {"id": "UNS-04-005", "t": "UNS-04", "lv": 2, "q": "Jarak dua nada disebut…", "a": "Interval", "x": ""}, {"id": "UNS-04-006", "t": "UNS-04", "lv": 2, "q": "Gitaris di pos ronda mengiringi lagu C mayor hanya dengan akor C, F, dan G. Ketiga akor ini disebut akor…", "a": "Akor pokok (I, IV, V)", "x": "", "k": "pos ronda"}, {"id": "UNS-05-001", "t": "UNS-05", "lv": 1, "q": "Istilah tempo untuk \"cepat\" adalah…", "a": "Allegro", "x": ""}, {"id": "UNS-05-002", "t": "UNS-05", "lv": 1, "q": "Tanda dinamika f (forte) berarti…", "a": "Keras", "x": ""}, {"id": "UNS-05-003", "t": "UNS-05", "lv": 1, "q": "Tanda dinamika p (piano) berarti…", "a": "Lembut", "x": ""}, {"id": "UNS-05-004", "t": "UNS-05", "lv": 2, "q": "Istilah tempo andante berarti…", "a": "Sedang, seperti orang berjalan", "x": ""}, {"id": "UNS-05-005", "t": "UNS-05", "lv": 2, "q": "Istilah untuk makin keras secara bertahap adalah…", "a": "Crescendo", "x": ""}, {"id": "UNS-05-006", "t": "UNS-05", "lv": 2, "q": "Istilah tempo largo berarti…", "a": "Sangat lambat", "x": ""}, {"id": "UNS-05-007", "t": "UNS-05", "lv": 2, "q": "Tanda ff berarti…", "a": "Sangat keras (fortissimo)", "x": ""}, {"id": "UNS-05-008", "t": "UNS-05", "lv": 2, "q": "Mana yang lebih cepat: andante atau allegro?", "a": "Allegro", "x": ""}, {"id": "UNS-05-009", "t": "UNS-05", "lv": 2, "q": "Dirigen paduan suara di upacara sekolah memberi isyarat agar suara makin lama makin lembut di akhir lagu. Istilahnya adalah…", "a": "Decrescendo", "x": "", "k": "upacara"}, {"id": "UNS-06-001", "t": "UNS-06", "lv": 1, "q": "Bentuk lagu A–B disebut lagu…", "a": "Dua bagian", "x": ""}, {"id": "UNS-06-002", "t": "UNS-06", "lv": 2, "q": "Frase yang diakhiri nada yang terasa belum selesai disebut frase…", "a": "Tanya (antecedens)", "x": ""}, {"id": "UNS-06-003", "t": "UNS-06", "lv": 2, "q": "Frase yang diakhiri nada yang terasa selesai disebut frase…", "a": "Jawab (konsekuens)", "x": ""}, {"id": "UNS-06-004", "t": "UNS-06", "lv": 2, "q": "Bentuk A–B–A–C–A disebut…", "a": "Rondo", "x": ""}, {"id": "UNS-06-005", "t": "UNS-06", "lv": 2, "q": "Siswa menulis lagu untuk Hari Kartini: kalimat pertama diulang dua kali, lalu muncul kalimat kedua yang berbeda dan lagu selesai. Jika setiap kalimat satu bagian, bentuk lagu apa ini?", "a": "Lagu dua bagian (A–B)", "x": "", "k": "Hari Kartini"}, {"id": "ALT-01-001", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari badan alat itu sendiri disebut…", "a": "Idiofon", "x": ""}, {"id": "ALT-01-002", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari dawai disebut…", "a": "Kordofon", "x": ""}, {"id": "ALT-01-003", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari selaput yang ditegangkan disebut…", "a": "Membranofon", "x": ""}, {"id": "ALT-01-004", "t": "ALT-01", "lv": 2, "q": "Suling termasuk golongan…", "a": "Aerofon", "x": ""}, {"id": "ALT-01-005", "t": "ALT-01", "lv": 2, "q": "Kendang termasuk golongan…", "a": "Membranofon", "x": ""}, {"id": "ALT-01-006", "t": "ALT-01", "lv": 2, "q": "Angklung termasuk golongan menurut sumber bunyinya…", "a": "Idiofon", "x": ""}, {"id": "ALT-01-007", "t": "ALT-01", "lv": 2, "q": "Alat musik yang memainkan akor, seperti gitar dan piano, disebut alat musik…", "a": "Harmonis", "x": ""}, {"id": "ALT-01-008", "t": "ALT-01", "lv": 2, "q": "Synthesizer termasuk golongan…", "a": "Elektrofon", "x": ""}, {"id": "ALT-01-009", "t": "ALT-01", "lv": 2, "q": "Grup marching band sekolah memakai snare drum, bass drum, dan simbal untuk mengatur irama. Alat-alat ini termasuk alat musik…", "a": "Ritmis", "x": "", "k": "marching band"}, {"id": "ALT-01-010", "t": "ALT-01", "lv": 3, "q": "Pengamen di bus memainkan ukulele dan tamborin. Golongkan keduanya menurut sumber bunyi.", "a": "Ukulele: kordofon; tamborin: membranofon (selaputnya) sekaligus idiofon (kerincingnya)", "x": "", "k": "pengamen"}, {"id": "ALT-02-001", "t": "ALT-02", "lv": 1, "q": "Sasando berasal dari…", "a": "Pulau Rote, NTT", "x": ""}, {"id": "ALT-02-002", "t": "ALT-02", "lv": 1, "q": "Kolintang berasal dari…", "a": "Minahasa, Sulawesi Utara", "x": ""}, {"id": "ALT-02-003", "t": "ALT-02", "lv": 1, "q": "Cara memainkan sasando adalah…", "a": "Dipetik", "x": ""}, {"id": "ALT-02-004", "t": "ALT-02", "lv": 2, "q": "Talempong berasal dari…", "a": "Sumatra Barat", "x": ""}, {"id": "ALT-02-005", "t": "ALT-02", "lv": 2, "q": "Gordang sambilan berasal dari…", "a": "Mandailing, Sumatra Utara", "x": ""}, {"id": "ALT-02-006", "t": "ALT-02", "lv": 2, "q": "Sape adalah alat musik petik dari…", "a": "Dayak, Kalimantan", "x": ""}, {"id": "ALT-02-007", "t": "ALT-02", "lv": 2, "q": "Alat musik tiup bambu dari Sumatra Barat adalah…", "a": "Saluang", "x": ""}, {"id": "ALT-02-008", "t": "ALT-02", "lv": 2, "q": "Tifa berasal dari…", "a": "Papua dan Maluku", "x": ""}, {"id": "ALT-02-009", "t": "ALT-02", "lv": 2, "q": "Wisatawan di Kupang membeli suvenir alat musik dari daun lontar berdawai. Alat musik apa ini?", "a": "Sasando", "x": "", "k": "Kupang"}, {"id": "ALT-03-001", "t": "ALT-03", "lv": 1, "q": "Permainan musik bersama disebut…", "a": "Ansambel", "x": ""}, {"id": "ALT-03-002", "t": "ALT-03", "lv": 2, "q": "Pemimpin orkestra disebut…", "a": "Konduktor (dirigen)", "x": ""}, {"id": "ALT-03-003", "t": "ALT-03", "lv": 2, "q": "Ansambel yang memakai satu jenis alat musik disebut ansambel…", "a": "Sejenis", "x": ""}, {"id": "ALT-03-004", "t": "ALT-03", "lv": 2, "q": "Sebutkan empat kelompok alat dalam orkestra.", "a": "Gesek, tiup kayu, tiup logam, perkusi", "x": ""}, {"id": "ALT-03-005", "t": "ALT-03", "lv": 2, "q": "Semua pemain memainkan melodi yang sama disebut…", "a": "Unisono", "x": ""}, {"id": "ALT-03-006", "t": "ALT-03", "lv": 2, "q": "Kelompok musik karang taruna memakai gitar, kendang, suling, dan keyboard. Jenis ansambel ini adalah…", "a": "Ansambel campuran", "x": "", "k": "karang taruna"}, {"id": "MNU-01-001", "t": "MNU-01", "lv": 1, "q": "Lagu Bungong Jeumpa berasal dari…", "a": "Aceh", "x": ""}, {"id": "MNU-01-002", "t": "MNU-01", "lv": 1, "q": "Lagu Ampar-Ampar Pisang berasal dari…", "a": "Kalimantan Selatan", "x": ""}, {"id": "MNU-01-003", "t": "MNU-01", "lv": 1, "q": "Lagu Manuk Dadali berasal dari…", "a": "Jawa Barat", "x": ""}, {"id": "MNU-01-004", "t": "MNU-01", "lv": 2, "q": "Lagu Yamko Rambe Yamko berasal dari…", "a": "Papua", "x": ""}, {"id": "MNU-01-005", "t": "MNU-01", "lv": 2, "q": "Lagu Soleram berasal dari…", "a": "Riau", "x": ""}, {"id": "MNU-01-006", "t": "MNU-01", "lv": 2, "q": "Lagu Sinanggar Tullo berasal dari…", "a": "Sumatra Utara (Batak Toba)", "x": ""}, {"id": "MNU-01-007", "t": "MNU-01", "lv": 2, "q": "Lagu Rasa Sayange berasal dari…", "a": "Maluku", "x": ""}, {"id": "MNU-01-008", "t": "MNU-01", "lv": 2, "q": "Mengapa banyak lagu daerah disebut anonim?", "a": "Penciptanya tidak diketahui karena diwariskan secara lisan", "x": ""}, {"id": "MNU-01-009", "t": "MNU-01", "lv": 2, "q": "Lagu Gundul-Gundul Pacul berasal dari…", "a": "Jawa Tengah", "x": ""}, {"id": "MNU-01-010", "t": "MNU-01", "lv": 2, "q": "Pada lomba paduan suara antarsekolah, satu tim membawakan lagu berbahasa Banjar tentang pohon pisang. Lagu apa ini?", "a": "Ampar-Ampar Pisang", "x": "", "k": "lomba paduan suara"}, {"id": "MNU-02-001", "t": "MNU-02", "lv": 1, "q": "Gamelan ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada tahun…", "a": "2021", "x": ""}, {"id": "MNU-02-002", "t": "MNU-02", "lv": 2, "q": "Instrumen gamelan yang mengatur irama adalah…", "a": "Kendang", "x": ""}, {"id": "MNU-02-003", "t": "MNU-02", "lv": 2, "q": "Sebutkan dua laras gamelan.", "a": "Slendro dan pelog", "x": ""}, {"id": "MNU-02-004", "t": "MNU-02", "lv": 2, "q": "Gamelan Bali yang dikenal bertempo cepat dan dinamis adalah…", "a": "Gong kebyar", "x": ""}, {"id": "MNU-02-005", "t": "MNU-02", "lv": 2, "q": "Instrumen gesek dalam gamelan Jawa adalah…", "a": "Rebab", "x": ""}, {"id": "MNU-02-006", "t": "MNU-02", "lv": 2, "q": "Pertunjukan wayang kulit di balai desa diiringi gamelan yang memakai tujuh nada berjarak tidak sama. Laras apa ini?", "a": "Pelog", "x": "", "k": "wayang kulit"}, {"id": "MNU-03-001", "t": "MNU-03", "lv": 1, "q": "Penyanyi yang dijuluki Raja Dangdut adalah…", "a": "Rhoma Irama", "x": ""}, {"id": "MNU-03-002", "t": "MNU-03", "lv": 2, "q": "Keroncong berakar dari musik bangsa…", "a": "Portugis", "x": ""}, {"id": "MNU-03-003", "t": "MNU-03", "lv": 2, "q": "Kampung di Jakarta yang menjadi tempat berkembangnya keroncong adalah…", "a": "Kampung Tugu", "x": ""}, {"id": "MNU-03-004", "t": "MNU-03", "lv": 2, "q": "Musik yang memadukan gamelan Jawa dengan alat musik modern disebut…", "a": "Campursari", "x": ""}, {"id": "MNU-03-005", "t": "MNU-03", "lv": 2, "q": "Alat musik khas keroncong yang mirip ukulele disebut…", "a": "Cak dan cuk", "x": ""}, {"id": "MNU-03-006", "t": "MNU-03", "lv": 2, "q": "Grup musik di acara hajatan memainkan lagu dengan iringan kendang, suling bambu, dan gitar listrik berirama khas Melayu-India. Jenis musik apa ini?", "a": "Dangdut", "x": "", "k": "hajatan"}, {"id": "MNU-04-001", "t": "MNU-04", "lv": 1, "q": "Periode musik Barat sekitar 1600–1750 disebut…", "a": "Barok", "x": ""}, {"id": "MNU-04-002", "t": "MNU-04", "lv": 2, "q": "Komponis Barok yang terkenal adalah…", "a": "J.S. Bach (juga Handel, Vivaldi)", "x": ""}, {"id": "MNU-04-003", "t": "MNU-04", "lv": 2, "q": "Mozart termasuk komponis periode…", "a": "Klasik", "x": ""}, {"id": "MNU-04-004", "t": "MNU-04", "lv": 2, "q": "Chopin termasuk komponis periode…", "a": "Romantik", "x": ""}, {"id": "MNU-04-005", "t": "MNU-04", "lv": 2, "q": "Komponis yang disebut tokoh peralihan Klasik ke Romantik adalah…", "a": "Beethoven", "x": ""}, {"id": "MNU-04-006", "t": "MNU-04", "lv": 3, "q": "Urutkan periode musik Barat dari yang paling awal.", "a": "Barok, Klasik, Romantik, Modern", "x": ""}, {"id": "MNU-05-001", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Indonesia Raya adalah…", "a": "W.R. Supratman", "x": ""}, {"id": "MNU-05-002", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Rayuan Pulau Kelapa adalah…", "a": "Ismail Marzuki", "x": ""}, {"id": "MNU-05-003", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Bagimu Negeri adalah…", "a": "Kusbini", "x": ""}, {"id": "MNU-05-004", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Maju Tak Gentar adalah…", "a": "Cornel Simanjuntak", "x": ""}, {"id": "MNU-05-005", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Garuda Pancasila adalah…", "a": "Sudharnoto", "x": ""}, {"id": "MNU-05-006", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Hari Merdeka (17 Agustus) adalah…", "a": "H. Mutahar", "x": ""}, {"id": "MNU-05-007", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Bangun Pemudi Pemuda adalah…", "a": "A. Simanjuntak", "x": ""}, {"id": "MNU-05-008", "t": "MNU-05", "lv": 2, "q": "Bagaimana cara membawakan lagu nasional bertempo mars?", "a": "Dengan semangat (maestoso atau marcia)", "x": ""}, {"id": "MNU-05-009", "t": "MNU-05", "lv": 2, "q": "Paduan suara upacara 17 Agustus menyanyikan lagu ciptaan Ismail Marzuki tentang keindahan tanah air yang \"tetap dipuja-puja bangsa\". Lagu apa ini?", "a": "Indonesia Pusaka", "x": "", "k": "tujuh belasan"}, {"id": "KRY-01-001", "t": "KRY-01", "lv": 1, "q": "Teknik pernapasan yang paling dianjurkan untuk bernyanyi adalah…", "a": "Pernapasan diafragma", "x": ""}, {"id": "KRY-01-002", "t": "KRY-01", "lv": 1, "q": "Jenis suara perempuan yang tinggi disebut…", "a": "Sopran", "x": ""}, {"id": "KRY-01-003", "t": "KRY-01", "lv": 1, "q": "Jenis suara laki-laki yang rendah disebut…", "a": "Bas", "x": ""}, {"id": "KRY-01-004", "t": "KRY-01", "lv": 2, "q": "Kejelasan pengucapan kata saat bernyanyi disebut…", "a": "Artikulasi", "x": ""}, {"id": "KRY-01-005", "t": "KRY-01", "lv": 2, "q": "Ketepatan tinggi rendah nada saat bernyanyi disebut…", "a": "Intonasi", "x": ""}, {"id": "KRY-01-006", "t": "KRY-01", "lv": 2, "q": "Pemenggalan kalimat lagu disebut…", "a": "Phrasering", "x": ""}, {"id": "KRY-01-007", "t": "KRY-01", "lv": 2, "q": "Jenis suara perempuan yang rendah disebut…", "a": "Alto", "x": ""}, {"id": "KRY-01-008", "t": "KRY-01", "lv": 2, "q": "Jenis suara laki-laki yang tinggi disebut…", "a": "Tenor", "x": ""}, {"id": "KRY-01-009", "t": "KRY-01", "lv": 3, "q": "Peserta lomba menyanyi kehabisan napas di tengah kalimat lagu. Dua teknik apa yang perlu diperbaiki?", "a": "Pernapasan (diafragma) dan phrasering", "x": "", "k": "lomba menyanyi"}, {"id": "KRY-01-010", "t": "KRY-01", "lv": 2, "q": "Juri lomba qasidah menilai peserta yang liriknya tidak terdengar jelas. Aspek teknik vokal apa yang kurang?", "a": "Artikulasi", "x": "", "k": "lomba qasidah"}, {"id": "KRY-02-001", "t": "KRY-02", "lv": 1, "q": "Mengubah atau menata lagu yang sudah ada disebut…", "a": "Aransemen", "x": ""}, {"id": "KRY-02-002", "t": "KRY-02", "lv": 2, "q": "Menciptakan lagu baru disebut…", "a": "Komposisi", "x": ""}, {"id": "KRY-02-003", "t": "KRY-02", "lv": 2, "q": "Potongan melodi pendek yang menjadi bahan pengembangan lagu disebut…", "a": "Motif", "x": ""}, {"id": "KRY-02-004", "t": "KRY-02", "lv": 2, "q": "Mengulang motif pada nada yang lebih tinggi atau rendah disebut…", "a": "Sekuens", "x": ""}, {"id": "KRY-02-005", "t": "KRY-02", "lv": 2, "q": "Band sekolah membawakan lagu daerah Rasa Sayange dengan irama reggae. Kegiatan ini disebut…", "a": "Aransemen", "x": "", "k": "band sekolah"}, {"id": "KRY-03-001", "t": "KRY-03", "lv": 1, "q": "Sebutkan empat tahap penyelenggaraan pertunjukan musik.", "a": "Perencanaan, persiapan, pelaksanaan, evaluasi", "x": ""}, {"id": "KRY-03-002", "t": "KRY-03", "lv": 2, "q": "Orang yang mengatur mikrofon dan pengeras suara disebut…", "a": "Penata suara", "x": ""}, {"id": "KRY-03-003", "t": "KRY-03", "lv": 2, "q": "Sebutkan tiga seksi kepanitiaan pertunjukan.", "a": "Contoh: acara, dekorasi, publikasi, konsumsi, keamanan (tiga di antaranya)", "x": ""}, {"id": "KRY-03-004", "t": "KRY-03", "lv": 2, "q": "Hal yang ditentukan pada tahap perencanaan pertunjukan adalah…", "a": "Tema, waktu, tempat, anggaran", "x": ""}, {"id": "KRY-03-005", "t": "KRY-03", "lv": 2, "q": "OSIS menyiapkan pentas seni akhir tahun dan membagikan poster di media sosial dua minggu sebelumnya. Tugas ini dikerjakan seksi…", "a": "Publikasi", "x": "", "k": "pentas seni"}, {"id": "KRY-04-001", "t": "KRY-04", "lv": 1, "q": "Perangkat lunak untuk merekam dan menyunting musik disebut…", "a": "DAW (Digital Audio Workstation)", "x": ""}, {"id": "KRY-04-002", "t": "KRY-04", "lv": 2, "q": "Protokol yang mengirim data nada antara alat musik elektronik dan komputer adalah…", "a": "MIDI", "x": ""}, {"id": "KRY-04-003", "t": "KRY-04", "lv": 2, "q": "Apakah MIDI mengirim suara rekaman?", "a": "Tidak, MIDI mengirim data nada (perintah), bukan suara", "x": ""}, {"id": "KRY-04-004", "t": "KRY-04", "lv": 2, "q": "Siswa merekam lagu ciptaannya di laptop dengan perangkat lunak rekaman, lalu mengunggahnya ke platform digital. Perangkat lunak itu termasuk…", "a": "DAW", "x": "", "k": "rekaman lagu"}, {"id": "KRY-04-005", "t": "KRY-04", "lv": 2, "q": "Apa yang diperlukan untuk memutar lagu orang lain di kafe untuk tujuan komersial?", "a": "Izin dan pembayaran royalti", "x": ""}, {"id": "KRY-05-001", "t": "KRY-05", "lv": 1, "q": "Tahap kritik yang menyebut apa yang terdengar disebut…", "a": "Deskripsi", "x": ""}, {"id": "KRY-05-002", "t": "KRY-05", "lv": 1, "q": "Tahap kritik yang menilai kualitas karya disebut…", "a": "Evaluasi", "x": ""}, {"id": "KRY-05-003", "t": "KRY-05", "lv": 2, "q": "Sebutkan empat tahap kritik Feldman.", "a": "Deskripsi, analisis formal, interpretasi, evaluasi", "x": ""}, {"id": "KRY-05-004", "t": "KRY-05", "lv": 2, "q": "Tahap kritik yang menafsirkan makna dan suasana lagu disebut…", "a": "Interpretasi", "x": ""}, {"id": "KRY-05-005", "t": "KRY-05", "lv": 2, "q": "Tahap kritik yang menguraikan unsur musik dan hubungannya disebut…", "a": "Analisis formal", "x": ""}, {"id": "KRY-05-006", "t": "KRY-05", "lv": 2, "q": "Kegiatan menghayati dan menilai karya musik disebut…", "a": "Apresiasi", "x": ""}, {"id": "KRY-05-007", "t": "KRY-05", "lv": 2, "q": "Penonton konser kampus menulis \"Penyanyinya memakai gitar akustik dan tempo lagunya lambat.\" Tahap kritik apa ini?", "a": "Deskripsi", "x": "", "k": "konser kampus"}, {"id": "KRY-05-008", "t": "KRY-05", "lv": 3, "q": "Pengulas musik di koran menulis, \"Lagu ini kurang berhasil karena liriknya tidak sejalan dengan suasana melodinya.\" Tahap kritik apa ini, dan apa yang membuatnya berbeda dari deskripsi?", "a": "Evaluasi; ia menilai kualitas dengan alasan, sedangkan deskripsi hanya menyebut apa yang ada", "x": "", "k": "koran"}, {"id": "KRY-06-001", "t": "KRY-06", "lv": 1, "q": "Berapa lama hak cipta lagu berlaku menurut UU No. 28 Tahun 2014?", "a": "Seumur hidup pencipta ditambah 70 tahun", "x": ""}, {"id": "KRY-06-002", "t": "KRY-06", "lv": 2, "q": "Lembaga yang menghimpun royalti lagu untuk layanan publik komersial adalah…", "a": "LMKN (Lembaga Manajemen Kolektif Nasional)", "x": ""}, {"id": "KRY-06-003", "t": "KRY-06", "lv": 2, "q": "Peraturan pemerintah tentang royalti lagu dan musik adalah…", "a": "PP No. 56 Tahun 2021", "x": ""}, {"id": "KRY-06-004", "t": "KRY-06", "lv": 2, "q": "Hak pencipta agar namanya dicantumkan disebut hak…", "a": "Moral", "x": ""}, {"id": "KRY-06-005", "t": "KRY-06", "lv": 2, "q": "Hotel di kota memutar lagu-lagu Indonesia di lobi setiap hari. Kewajiban apa yang timbul menurut PP No. 56 Tahun 2021?", "a": "Membayar royalti melalui LMKN", "x": "", "k": "hotel"}, {"id": "UNS-02-011", "t": "UNS-02", "lv": 3, "q": "Satu birama 3/4 berisi not seperempat bertitik. Berapa ketuk lagi yang diperlukan agar birama penuh?", "a": "1½ ketuk", "x": "1 + ½ = 1½; 3 − 1½."}, {"id": "UNS-03-010", "t": "UNS-03", "lv": 3, "q": "Tangga nada C mayor tidak memakai tanda kres atau mol. Mengapa jarak ½ jatuh tepat di E–F dan B–C?", "a": "Karena pada tuts piano tidak ada tuts hitam di antara E–F dan B–C, sesuai pola mayor 1–1–½–1–1–1–½", "x": ""}, {"id": "UNS-04-007", "t": "UNS-04", "lv": 3, "q": "Lagu dalam G mayor diakhiri dengan akor D lalu G. Akor apa D dan G dalam G mayor, dan apa nama akhiran ini?", "a": "D akor V, G akor I; kadens V–I", "x": ""}, {"id": "UNS-05-010", "t": "UNS-05", "lv": 3, "q": "Partitur lagu daerah bertanda moderato dengan dinamika mp lalu crescendo ke f. Jelaskan cara menyanyikannya.", "a": "Tempo sedang, mulai agak lembut lalu makin keras sampai keras", "x": ""}, {"id": "MNU-02-007", "t": "MNU-02", "lv": 3, "q": "Mengapa lagu gamelan berlaras slendro sulit dimainkan dengan piano biasa?", "a": "Jarak nada slendro hampir sama dan tidak sesuai jarak nada diatonis piano", "x": ""}, {"id": "ALT-02-010", "t": "ALT-02", "lv": 2, "q": "Pada festival budaya Minahasa di Manado, ansambel memainkan alat musik bilah kayu yang dipukul. Alat musik apa ini?", "a": "Kolintang", "x": "", "k": "festival Manado"}, {"id": "ALT-03-007", "t": "ALT-03", "lv": 2, "q": "Orkestra kota tampil di alun-alun: biola, cello, klarinet, trompet, dan timpani. Kelompok mana yang diisi klarinet?", "a": "Tiup kayu", "x": "", "k": "orkestra kota"}, {"id": "MNU-03-007", "t": "MNU-03", "lv": 2, "q": "Grup musik di Kampung Tugu memainkan lagu dengan ukulele, cello dipetik, dan biola dalam irama khas. Jenis musik apa ini?", "a": "Keroncong", "x": "", "k": "Kampung Tugu"}, {"id": "MNU-04-007", "t": "MNU-04", "lv": 2, "q": "Kelompok musik gereja di kota memainkan karya Bach saat perayaan. Bach termasuk komponis periode…", "a": "Barok", "x": "", "k": "gereja"}, {"id": "KRY-02-006", "t": "KRY-02", "lv": 3, "q": "Untuk perpisahan sekolah, siswa menambah suara dua dan mengganti iringan piano dengan angklung pada lagu \"Kemesraan\". Mengapa ini disebut aransemen, bukan komposisi?", "a": "Lagunya sudah ada; yang diubah penataan suara dan alatnya, bukan diciptakan baru", "x": "", "k": "perpisahan"}, {"id": "KRY-03-006", "t": "KRY-03", "lv": 3, "q": "Saat gladi pentas seni di aula, suara vokal tenggelam oleh drum. Siapa yang bertugas memperbaikinya dan apa yang diatur?", "a": "Penata suara; keseimbangan volume mikrofon dan pengeras suara", "x": "", "k": "gladi pentas"}, {"id": "KRY-06-006", "t": "KRY-06", "lv": 3, "q": "Siswa mengunggah video menyanyikan lagu orang lain dan menulis nama pencipta di keterangan, tetapi videonya dimonetisasi. Hak apa yang sudah dihormati dan apa yang masih perlu izin?", "a": "Hak moral sudah (nama dicantumkan); pemakaian komersial (hak ekonomi) perlu izin", "x": "", "k": "video daring"}], "bank": {"key": "bank-soal-seni-musik-v1", "title": "Bank Soal Seni Musik", "map_title": "Peta Materi Seni Musik SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Seni Musik. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Seni Musik dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+const CFG = DATA.bank || {};
+const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
+const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
+  : {SNI:["var(--indigo)","var(--indigo-soft)"], BUD:["var(--soga)","var(--soga-soft)"], MUS:["var(--patina)","var(--patina-soft)"]};
+const LV = {1:"Mudah",2:"Sedang",3:"Sulit"};
+const KEY = CFG.key || "bank-soal-lomba-v1";
+const MIX = CFG.mix || "Campuran 40/30/30";
+const WEIGHT_LABEL = CFG.weight_label || "penguasaan menurut bobot 40/30/30";
+const Q = DATA.questions;
+const DOMS = DATA.topics.domains;
+const MAP = DATA.topics.map_url;
+const TITLE = {}; const DOM_OF = {};
+DOMS.forEach(d => Object.entries(d.topics).forEach(([c,t]) => { TITLE[c] = t; DOM_OF[c] = d.id; }));
+
+let stats = {};
+try { stats = JSON.parse(localStorage.getItem(KEY) || "{}").stats || {}; } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify({stats})); } catch(e) {} }
+
+const state = {domain:"mix", topic:"", level:0, wrong:false, ctx:false, tab:"latihan", cur:null, revealed:false, recent:[], sRight:0, sTotal:0};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mapHref = code => MAP + "#t-" + code;
+
+function setColors(el, dom){ el.style.setProperty("--c", COLORS[dom][0]); el.style.setProperty("--soft", COLORS[dom][1]); }
+
+/* ---------- filters ---------- */
+function buildFilters(){
+  const fd = $("fDomain");
+  const opts = [["mix",MIX,""]].concat(DOMS.map(d => [d.id, d.short + (CFG.key ? "" : " " + d.weight + "%"), COLORS[d.id][0]]));
+  fd.innerHTML = opts.map(([v,l,c]) => '<button type="button" data-v="' + v + '"' + (c ? ' style="--c:' + c + '"' : '') + ' aria-pressed="' + (v === state.domain) + '">' + esc(l) + '</button>').join("");
+  $("fLevel").innerHTML = [[0,"Semua"],[1,"Mudah"],[2,"Sedang"],[3,"Sulit"]].map(([v,l]) => '<button type="button" data-v="' + v + '" aria-pressed="' + (v === state.level) + '">' + l + '</button>').join("");
+  fillTopics();
+}
+function fillTopics(){
+  const sel = $("fTopic");
+  const doms = state.domain === "mix" ? DOMS : DOMS.filter(d => d.id === state.domain);
+  sel.innerHTML = '<option value="">Semua simpul</option>' + doms.map(d => '<optgroup label="' + esc(d.name) + '">' +
+    Object.entries(d.topics).map(([c,t]) => '<option value="' + c + '"' + (c === state.topic ? " selected" : "") + '>' + c + " · " + esc(t) + '</option>').join("") + '</optgroup>').join("");
+  if(state.topic && !doms.some(d => d.topics[state.topic])) { state.topic = ""; sel.value = ""; }
+}
+function pool(){
+  return Q.filter(q => {
+    if(state.topic) { if(q.t !== state.topic) return false; }
+    else if(state.domain !== "mix" && DOM_OF[q.t] !== state.domain) return false;
+    if(state.level && q.lv !== state.level) return false;
+    if(state.wrong) { const s = stats[q.id]; if(!s || s.l !== 0) return false; }
+    if(state.ctx && !q.k) return false;
+    return true;
+  });
+}
+function updatePoolInfo(){
+  const n = pool().length;
+  $("poolInfo").textContent = n + " soal sesuai saringan";
+}
+
+/* ---------- practice ---------- */
+function weightOf(q){
+  const s = stats[q.id];
+  if(!s) return 2;
+  return s.l === 0 ? 4 : 1;
+}
+function weightedPick(list){
+  const total = list.reduce((a,q) => a + weightOf(q), 0);
+  let r = Math.random() * total;
+  for(const q of list){ r -= weightOf(q); if(r <= 0) return q; }
+  return list[list.length - 1];
+}
+function pickNext(){
+  let list = pool();
+  if(!list.length) return null;
+  const fresh = list.filter(q => !state.recent.includes(q.id));
+  if(fresh.length) list = fresh;
+  if(state.domain === "mix" && !state.topic){
+    const avail = DOMS.filter(d => list.some(q => DOM_OF[q.t] === d.id));
+    let r = Math.random() * avail.reduce((a,d) => a + d.weight, 0);
+    let dom = avail[avail.length - 1];
+    for(const d of avail){ r -= d.weight; if(r <= 0){ dom = d; break; } }
+    list = list.filter(q => DOM_OF[q.t] === dom.id);
+  }
+  return weightedPick(list);
+}
+let tick = null;
+function stopTimer(){ if(tick){ clearInterval(tick); tick = null; } }
+function startTimer(){
+  stopTimer();
+  if(!$("useTimer").checked) return;
+  const total = +$("timerSec").value * 1000, t0 = Date.now();
+  const bar = document.querySelector(".timer i");
+  tick = setInterval(() => {
+    const left = Math.max(0, total - (Date.now() - t0));
+    if(bar) bar.style.width = (left / total * 100) + "%";
+    if(left <= 0){ stopTimer(); if(!state.revealed) reveal(); }
+  }, 100);
+}
+function renderPractice(){
+  const host = $("practice");
+  const q = state.cur;
+  if(!q){
+    host.innerHTML = '<div class="empty"><h3 style="color:var(--ink)">Tidak ada soal untuk saringan ini.</h3><p style="margin-top:6px">' +
+      (state.ctx && !state.wrong ? "Belum ada soal konteks untuk saringan ini. Hapus centang “Hanya soal konteks sehari-hari”." : state.wrong ? "Belum ada soal yang terakhir dijawab salah. Hapus centang “Hanya yang terakhir dijawab salah” untuk berlatih semua soal." : "Longgarkan saringan bidang, simpul, atau tingkat.") + '</p></div>';
+    return;
+  }
+  const dom = DOM_OF[q.t];
+  const s = stats[q.id];
+  host.innerHTML = '<article class="qcard" aria-live="polite">' +
+    '<div class="qmeta"><a class="code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener" title="Buka simpul di Peta Materi">' + q.t + '</a><span>' + esc(TITLE[q.t]) + '</span><span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? '<span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
+    (s ? '<span>' + (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') + '</span>' : '<span>soal baru</span>') + '</div>' +
+    ($("useTimer").checked ? '<div class="timer" aria-hidden="true"><i></i></div>' : '') +
+    '<p class="qtext">' + esc(q.q) + '</p>' +
+    (state.revealed ? '<div class="answer"><span class="lbl">Jawaban</span><span class="a">' + esc(q.a) + '</span>' + (q.x ? '<span class="x">' + esc(q.x) + '</span>' : '') + '</div>' : '') +
+    '<div class="actions">' + (state.revealed
+      ? '<button class="btn ok" type="button" data-act="right">Benar <kbd>B</kbd></button><button class="btn bad" type="button" data-act="wrong">Salah <kbd>S</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>'
+      : '<button class="btn primary" type="button" data-act="reveal">Lihat jawaban <kbd>Spasi</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>') + '</div>' +
+    '</article>';
+  setColors(host.querySelector(".qcard"), dom);
+}
+function next(){
+  stopTimer();
+  state.cur = pickNext();
+  state.revealed = false;
+  if(state.cur){ state.recent.push(state.cur.id); if(state.recent.length > 25) state.recent.shift(); }
+  renderPractice();
+  if(state.cur) startTimer();
+}
+function reveal(){ stopTimer(); state.revealed = true; renderPractice(); const b = document.querySelector('[data-act="right"]'); if(b) b.focus({preventScroll:true}); }
+function grade(ok){
+  const q = state.cur; if(!q) return;
+  const s = stats[q.id] || {r:0, w:0, l:null};
+  ok ? s.r++ : s.w++; s.l = ok ? 1 : 0;
+  stats[q.id] = s; save();
+  state.sTotal++; if(ok) state.sRight++;
+  $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
+  updatePoolInfo();
+  next();
+}
+
+/* ---------- list ---------- */
+function renderList(){
+  const term = $("lSearch").value.trim().toLowerCase();
+  const list = pool().filter(q => !term || (q.q + " " + q.a + " " + q.x + " " + q.t + " " + (q.k || "")).toLowerCase().includes(term));
+  const host = $("list");
+  if(!list.length){ host.innerHTML = '<div class="empty">Tidak ada soal yang cocok. Coba kata lain atau longgarkan saringan.</div>'; return; }
+  const groups = {};
+  list.forEach(q => (groups[q.t] = groups[q.t] || []).push(q));
+  host.innerHTML = Object.keys(groups).map(code => {
+    const items = groups[code];
+    return '<div class="group" data-dom="' + DOM_OF[code] + '"><div class="ghead"><h3>' + code + ' · ' + esc(TITLE[code]) + '</h3><span>' + items.length + ' soal</span><a href="' + mapHref(code) + '" target="_blank" rel="noopener">Buka di peta ↗</a></div><ol class="qlist">' +
+      items.map(q => {
+        const s = stats[q.id];
+        const mk = s ? (s.l ? ' <span class="mark-ok">✓ terakhir benar</span>' : ' <span class="mark-bad">✗ terakhir salah</span>') : '';
+        return '<li><span class="n">' + q.id + '</span><div class="body"><span class="qq">' + esc(q.q) + ' <span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? ' <span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') + mk + '</span>' +
+          '<details><summary>Jawaban</summary><div class="aa">' + esc(q.a) + '</div>' + (q.x ? '<div class="xx">' + esc(q.x) + '</div>' : '') + '</details></div></li>';
+      }).join("") + '</ol></div>';
+  }).join("");
+  host.querySelectorAll(".group").forEach(g => setColors(g, g.dataset.dom));
+}
+
+/* ---------- progress ---------- */
+let confirmReset = false;
+function renderProgress(){
+  const host = $("progress");
+  const ids = Object.keys(stats).filter(id => Q.some(q => q.id === id));
+  const tried = ids.length;
+  const lastRight = ids.filter(id => stats[id].l === 1).length;
+  const attempts = ids.reduce((a,id) => a + stats[id].r + stats[id].w, 0);
+  let weighted = 0;
+  DOMS.forEach(d => {
+    const qs = Q.filter(q => DOM_OF[q.t] === d.id);
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    weighted += d.weight * ok / qs.length;
+  });
+  const rows = DOMS.flatMap(d => Object.entries(d.topics).map(([code,title]) => {
+    const qs = Q.filter(q => q.t === code);
+    const t = qs.filter(q => stats[q.id]).length;
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    return {code, title, dom:d.id, n:qs.length, t, ok, acc: t ? ok / t : null};
+  }));
+  const weak = rows.filter(r => r.t >= 3 && r.acc < 0.6).sort((a,b) => a.acc - b.acc).slice(0,3);
+  const untouched = rows.filter(r => r.t === 0).length;
+  host.innerHTML =
+    '<div class="sumrow">' +
+      '<div class="stat"><b>' + tried + '</b><span>dari ' + Q.length + ' soal pernah dicoba</span></div>' +
+      '<div class="stat"><b>' + (tried ? Math.round(lastRight / tried * 100) : 0) + '%</b><span>soal yang dicoba, terakhir dijawab benar</span></div>' +
+      '<div class="stat"><b>' + Math.round(weighted) + '%</b><span>' + WEIGHT_LABEL + '</span></div>' +
+      '<div class="stat"><b>' + attempts + '</b><span>total jawaban dinilai</span></div>' +
+    '</div>' +
+    (weak.length ? '<div class="weak"><h3>Perlu diulang</h3><ul>' + weak.map(r =>
+      '<li><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a><span>' + esc(r.title) + ' — ' + Math.round(r.acc * 100) + '% benar</span>' +
+      '<button class="btn small" type="button" data-drill="' + r.code + '">Latih simpul ini</button></li>').join("") + '</ul></div>'
+      : '<p class="hint" style="margin-top:16px">' + (tried ? "Belum ada simpul yang lemah (minimal 3 soal dicoba dan di bawah 60% benar)." : "Belum ada hasil. Mulai dari tab Latihan; hasilnya muncul di sini.") + (untouched ? " " + untouched + " simpul belum pernah dicoba." : "") + '</p>') +
+    '<div class="tbl"><table><thead><tr><th>Simpul</th><th>Judul</th><th>Soal</th><th>Dicoba</th><th>Benar</th><th>Penguasaan</th><th></th></tr></thead><tbody>' +
+      rows.map(r => {
+        const pct = r.n ? r.ok / r.n * 100 : 0;
+        return '<tr><td><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a></td><td class="t">' + esc(r.title) + '</td><td>' + r.n + '</td><td>' + r.t + '</td><td>' + (r.acc === null ? "–" : Math.round(r.acc * 100) + "%") + '</td>' +
+          '<td><div class="bar" title="' + r.ok + ' dari ' + r.n + ' soal terakhir dijawab benar"><i style="width:' + pct + '%;background:' + COLORS[r.dom][0] + '"></i></div></td><td><button class="btn small" type="button" data-drill="' + r.code + '">Latih</button></td></tr>';
+      }).join("") + '</tbody></table></div>' +
+    '<div class="resetrow">' + (confirmReset
+      ? '<span>Hapus semua hasil latihan di peramban ini?</span><button class="btn small bad" type="button" id="resetYes">Ya, hapus</button><button class="btn small" type="button" id="resetNo">Batal</button>'
+      : '<button class="btn small" type="button" id="resetAsk">Hapus hasil latihan</button>') + '</div>';
+}
+
+/* ---------- wiring ---------- */
+function showTab(name){
+  state.tab = name;
+  ["latihan","daftar","kemajuan"].forEach(t => {
+    $("tab-" + t).setAttribute("aria-selected", t === name ? "true" : "false");
+    $("p-" + t).hidden = t !== name;
+  });
+  document.querySelector(".filters").hidden = name === "kemajuan";
+  if(name === "daftar") renderList();
+  if(name === "kemajuan") renderProgress();
+}
+function onFilterChange(){
+  updatePoolInfo();
+  if(state.tab === "latihan") next();
+  else if(state.tab === "daftar") renderList();
+  else renderProgress();
+}
+
+if(CFG.key){
+  document.title = CFG.title; $("bTitle").textContent = CFG.title; $("bLead").textContent = CFG.lead; $("bFoot").textContent = CFG.footer;
+  const a = document.createElement("a"); a.id = "mapLink"; a.href = MAP; a.textContent = "Buka " + CFG.map_title + " →";
+  $("bLead").append(" ", a);
+}
+if(Q.some(q => q.k)) $("ctxBox").hidden = false;
+$("qCount").textContent = Q.length;
+$("tCount").textContent = Object.keys(TITLE).length;
+$("mapLink").href = MAP;
+buildFilters();
+updatePoolInfo();
+next();
+
+document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(b) showTab(b.id.slice(4)); });
+$("fDomain").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.domain = b.dataset.v;
+  $("fDomain").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  fillTopics(); onFilterChange();
+});
+$("fLevel").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.level = +b.dataset.v;
+  $("fLevel").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  onFilterChange();
+});
+$("fTopic").addEventListener("change", e => { state.topic = e.target.value; onFilterChange(); });
+$("fWrong").addEventListener("change", e => { state.wrong = e.target.checked; onFilterChange(); });
+$("fCtx").addEventListener("change", e => { state.ctx = e.target.checked; onFilterChange(); });
+$("useTimer").addEventListener("change", () => { if(state.tab === "latihan" && !state.revealed){ renderPractice(); startTimer(); } else stopTimer(); });
+$("timerSec").addEventListener("change", () => { if($("useTimer").checked && !state.revealed){ renderPractice(); startTimer(); } });
+$("practice").addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  ({reveal, right:() => grade(true), wrong:() => grade(false), skip:next})[b.dataset.act]();
+});
+let lt;
+$("lSearch").addEventListener("input", () => { clearTimeout(lt); lt = setTimeout(renderList, 150); });
+$("showAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = true));
+$("hideAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = false));
+$("progress").addEventListener("click", e => {
+  const drill = e.target.closest("[data-drill]");
+  if(drill){
+    state.domain = "mix"; state.topic = drill.dataset.drill; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
+    buildFilters(); updatePoolInfo(); showTab("latihan"); next(); window.scrollTo({top:0}); return;
+  }
+  if(e.target.id === "resetAsk"){ confirmReset = true; renderProgress(); }
+  else if(e.target.id === "resetNo"){ confirmReset = false; renderProgress(); }
+  else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
+});
+document.addEventListener("keydown", e => {
+  if(state.tab !== "latihan" || !state.cur) return;
+  if(e.target.closest("input, select, textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if(!state.revealed && (k === " " || (k === "enter" && !e.target.closest("button, a")))){ e.preventDefault(); reveal(); }
+  else if(state.revealed && k === "b"){ grade(true); }
+  else if(state.revealed && k === "s"){ grade(false); }
+  else if(k === "l"){ next(); }
+});
+const h = location.hash.slice(1);
+if(["latihan","daftar","kemajuan"].includes(h)) showTab(h);
+</script>

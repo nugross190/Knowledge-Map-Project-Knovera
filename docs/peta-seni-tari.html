@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Seni Tari SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.lj{border:1.3px dotted var(--ink);font-style:italic}
+.btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.chip.off{opacity:.35}
+#lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
+    <p id="lanjutNote" hidden></p>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "seni-tari", "subject": "Seni Tari", "title": "Peta Materi Seni Tari SMA", "lead": "Seluruh materi Seni Tari SMA, dari unsur dan jenis tari sampai tari Nusantara, tokoh, koreografi, dan pergelaran, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur tari, ruang-waktu-tenaga, jenis tari, tata rias dan panggung, tari Nusantara, tokoh tari, koreografi, pergelaran, dan apresiasi.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Tari SMA: dasar tari, tari Nusantara, tokoh, serta berkarya dan apresiasi. Label kelas hanya perkiraan karena buku menyusun materi per proyek.", "domains": [{"id": "UNT", "name": "Unsur dan dasar tari", "short": "Dasar tari", "note": "Unsur utama dan pendukung tari, aspek gerak, jenis gerak, dan jenis tari.", "topics": [{"code": "UNT-01", "title": "Unsur utama tari", "scope": "Wiraga, wirama, wirasa", "src": "Kelas X", "tier": 1, "sum": "Tari dinilai dari tiga unsur utama: wiraga (gerak), wirama (irama), dan wirasa (penjiwaan).", "blocks": [{"h": "Unsur", "li": ["<b>Wiraga<\/b>: kemampuan gerak tubuh, termasuk hafalan dan ketepatan gerak.", "Wirama: kesesuaian gerak dengan irama dan tempo iringan.", "Wirasa: penjiwaan atau ekspresi yang sesuai dengan maksud tari.", "Sebagian buku menambah wirupa: kesesuaian rias dan busana dengan karakter tari."]}], "traps": ["Wirama berkaitan dengan irama; wirasa berkaitan dengan penghayatan. Keduanya sering tertukar."]}, {"code": "UNT-02", "title": "Ruang, waktu, dan tenaga", "scope": "Level, arah, tempo, intensitas", "src": "Kelas X", "tier": 1, "sum": "Setiap gerak tari mengolah tiga aspek: ruang, waktu, dan tenaga.", "blocks": [{"h": "Aspek gerak", "table": {"cols": ["Aspek", "Unsur yang diolah"], "rows": [["Ruang", "Level (rendah, sedang, tinggi), arah hadap, jangkauan, pola lantai"], ["Waktu", "Tempo (cepat, lambat), ritme, durasi"], ["Tenaga", "Intensitas (kuat, lemah), aksen (tekanan), kualitas gerak"]]}}, {"h": "Contoh", "li": ["<b>Level rendah<\/b>: gerak duduk atau jongkok, seperti pada Tari Saman."]}], "traps": ["Level adalah tinggi rendah posisi tubuh penari, bukan tingkat kesulitan gerak."]}, {"code": "UNT-03", "title": "Jenis gerak tari", "scope": "Maknawi, murni, stilisasi, distorsi", "src": "Kelas X", "tier": 1, "sum": "Gerak tari dibedakan menurut maksudnya (maknawi atau murni) dan menurut cara mengolah gerak sehari-hari (stilisasi atau distorsi).", "blocks": [{"h": "Jenis", "li": ["<b>Gerak maknawi<\/b>: gerak yang mengandung arti, misalnya gerak menyisir rambut atau berdandan.", "Gerak murni: gerak yang hanya mementingkan keindahan, tanpa maksud tertentu.", "Stilisasi: gerak sehari-hari diperhalus atau diperindah.", "Distorsi: gerak sehari-hari diubah bentuknya (dipatahkan atau dirombak).", "Gerak lokomotor berpindah tempat; nonlokomotor dilakukan di tempat."]}], "traps": ["Gerak maknawi punya maksud; gerak murni hanya mengutamakan keindahan."]}, {"code": "UNT-04", "title": "Jenis tari", "scope": "Menurut jumlah penari, fungsi, garapan", "src": "Kelas X", "tier": 1, "sum": "Tari digolongkan menurut jumlah penari, fungsi, dan pola garapannya.", "blocks": [{"h": "Penggolongan", "table": {"cols": ["Dasar", "Jenis"], "rows": [["Jumlah penari", "Tunggal, berpasangan, kelompok (massal)"], ["Fungsi", "Upacara (ritual), hiburan atau pergaulan, pertunjukan (tontonan), penyambutan"], ["Pola garapan", "Tradisional (klasik atau istana, dan kerakyatan) dan kreasi baru"]]}}, {"h": "Catatan", "li": ["<b>Tari kreasi baru<\/b> dikembangkan dari tari tradisional dengan bebas, misalnya Jaipongan.", "Tari klasik tumbuh di lingkungan istana dengan aturan baku; tari kerakyatan tumbuh di masyarakat dan lebih sederhana."]}], "traps": ["Tari kreasi baru tetap bisa berakar pada tari tradisional; yang membedakan adalah kebebasan garapannya."]}, {"code": "UNT-05", "title": "Tata rias, busana, dan properti", "scope": "Rias karakter, properti tari", "src": "Kelas X–XI", "tier": 2, "sum": "Unsur pendukung yang memperjelas karakter tari: tata rias, tata busana, dan properti.", "blocks": [{"h": "Unsur pendukung", "li": ["Tata rias korektif mempercantik wajah; rias karakter mengubah wajah sesuai tokoh (raksasa, binatang, orang tua).", "Tata busana disesuaikan dengan tema, karakter, dan keleluasaan gerak.", "<b>Properti<\/b>: benda yang dipakai penari, misalnya kipas (Pakarena), piring (Tari Piring), selendang, atau topeng."]}]}, {"code": "UNT-06", "title": "Iringan, pola lantai, dan panggung", "scope": "Iringan internal-eksternal, panggung", "src": "Kelas X–XI", "tier": 1, "sum": "Iringan, pola lantai, dan bentuk panggung menentukan suasana dan cara tari dinikmati penonton.", "blocks": [{"h": "Iringan dan pola lantai", "li": ["<b>Iringan internal<\/b> dihasilkan penari sendiri (tepukan, hentakan, nyanyian, seperti Tari Saman); iringan eksternal berasal dari luar penari (gamelan, musik rekaman).", "Pola lantai: garis yang dilalui penari di panggung; garis lurus berkesan tegas dan kuat, garis lengkung berkesan lembut."]}, {"h": "Panggung", "table": {"cols": ["Bentuk", "Ciri"], "rows": [["Prosenium", "Penonton menyaksikan dari satu arah (depan)"], ["Arena", "Penonton mengelilingi pertunjukan, dari tiga atau empat sisi"], ["Pendapa", "Panggung terbuka tradisional Jawa beratap, berlantai lebih tinggi"]]}}], "traps": ["Tari Saman memakai iringan internal (tepukan dan nyanyian penari), bukan alat musik."]}]}, {"id": "NUS", "name": "Tari Nusantara", "short": "Tari Nusantara", "note": "Tari tradisional dan kreasi dari berbagai daerah di Indonesia.", "topics": [{"code": "NUS-01", "title": "Tari dari Sumatra", "scope": "Saman, Piring, Tor-tor, Zapin", "src": "Kelas X–XII", "tier": 1, "sum": "Tari-tari Sumatra yang paling sering dibahas beserta asal dan cirinya.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Saman", "Gayo, Aceh", "Duduk berbanjar, tepuk dada dan paha, tanpa alat musik; UNESCO 2011"], ["Ratoh Jaroe", "Aceh", "Mirip Saman, dibawakan penari perempuan dengan iringan rapai"], ["Tari Piring", "Sumatra Barat", "Penari membawa piring di telapak tangan"], ["Tor-tor", "Batak, Sumatra Utara", "Diiringi gondang, untuk upacara adat"], ["Zapin", "Melayu Riau", "Pengaruh Arab, langkah kaki lincah"], ["Serampang Dua Belas", "Melayu Deli, Sumatra Utara", "Tari pergaulan dengan 12 ragam gerak"]]}}], "traps": ["Tari yang dibawakan penari perempuan dengan iringan rapai biasanya Ratoh Jaroe, bukan Saman."]}, {"code": "NUS-02", "title": "Tari dari Jawa", "scope": "Bedhaya, Serimpi, Reog, Gambyong", "src": "Kelas X–XII", "tier": 1, "sum": "Tari Jawa meliputi tari klasik keraton dan tari kerakyatan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Bedhaya Ketawang", "Keraton Surakarta", "Tari sakral, sembilan penari perempuan"], ["Serimpi", "Keraton Yogyakarta dan Surakarta", "Tari klasik, empat penari perempuan"], ["Gambyong", "Jawa Tengah", "Tari pergaulan dan penyambutan"], ["Reog Ponorogo", "Jawa Timur", "Topeng dadak merak, warok, jathil"], ["Gandrung", "Banyuwangi, Jawa Timur", "Tari pergaulan penyambutan"]]}}], "traps": ["Bedhaya Ketawang ditarikan sembilan penari; Serimpi empat penari."]}, {"code": "NUS-03", "title": "Tari dari Bali", "scope": "Kecak, Pendet, Legong, Barong", "src": "Kelas X–XII", "tier": 1, "sum": "Tari Bali erat dengan upacara agama Hindu dan banyak dipentaskan untuk wisatawan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Ciri"], "rows": [["Kecak", "Puluhan penari laki-laki bersuara \"cak\" tanpa gamelan, mengisahkan Ramayana"], ["Pendet", "Awalnya tari pemujaan, kemudian menjadi tari penyambutan"], ["Legong", "Tari klasik penari perempuan dengan gerak mata dan jari yang rumit"], ["Barong", "Pertarungan Barong (kebaikan) dan Rangda (keburukan)"]]}}, {"h": "Catatan", "li": ["<b>Tari Kecak<\/b> dikembangkan pada 1930-an oleh I Wayan Limbak bersama pelukis Jerman Walter Spies.", "UNESCO menetapkan tiga genre tari tradisional Bali sebagai Warisan Budaya Takbenda pada 2015."]}], "traps": ["Tari Kecak tidak diiringi gamelan; iringannya suara \"cak\" para penari."]}, {"code": "NUS-04", "title": "Tari Sunda dan Betawi", "scope": "Jaipongan, Merak, Topeng, Yapong", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari Jawa Barat dan Jakarta, baik tradisional maupun kreasi baru.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Keterangan"], "rows": [["Jaipongan", "Tari kreasi Jawa Barat yang dikembangkan Gugum Gumbira pada 1970-an"], ["Tari Merak", "Tari kreasi Sunda karya Raden Tjetje Somantri (1955)"], ["Topeng Cirebon", "Tari bertopeng dengan beberapa karakter, dari Cirebon"], ["Yapong", "Tari kreasi Betawi karya Bagong Kussudiardja (1977)"], ["Cokek", "Tari pergaulan Betawi dengan pengaruh Tionghoa"]]}}]}, {"code": "NUS-05", "title": "Tari dari Kalimantan dan Sulawesi", "scope": "Gantar, Hudoq, Pakarena, Kabasaran", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari Kalimantan dan Sulawesi yang berkaitan dengan pertanian, penyambutan, dan peperangan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Gantar", "Dayak, Kalimantan Timur", "Tari pergaulan dengan tongkat dan bambu"], ["Hudoq", "Dayak, Kalimantan Timur", "Tari bertopeng untuk upacara masa tanam"], ["Pakarena", "Gowa, Sulawesi Selatan", "Gerak lembut dengan kipas"], ["Kabasaran", "Minahasa, Sulawesi Utara", "Tari perang dengan pedang dan tombak"]]}}]}, {"code": "NUS-06", "title": "Tari dari Maluku, Nusa Tenggara, dan Papua", "scope": "Cakalele, Lenso, Caci, Yospan", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari wilayah timur Indonesia yang berkaitan dengan peperangan, pergaulan, dan upacara adat.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Cakalele", "Maluku", "Tari perang dengan parang dan salawaku (perisai)"], ["Lenso", "Maluku dan Minahasa", "Tari pergaulan dengan saputangan"], ["Caci", "Manggarai, NTT", "Tarung cambuk dan perisai dalam upacara adat"], ["Yospan", "Papua", "Tari pergaulan yang lincah dan riang"]]}}]}]}, {"id": "TOK", "name": "Tokoh tari", "short": "Tokoh", "note": "Tokoh tari Indonesia dan tari dari berbagai negara.", "topics": [{"code": "TOK-01", "title": "Tokoh tari Indonesia", "scope": "Koreografer dan karyanya", "src": "Kelas XI–XII", "tier": 2, "sum": "Koreografer Indonesia yang karyanya sering dibahas di buku sekolah.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Karya atau peran"], "rows": [["Bagong Kussudiardja", "Koreografer Yogyakarta; Tari Yapong; mendirikan padepokan seni"], ["Gugum Gumbira", "Pengembang Jaipongan"], ["Raden Tjetje Somantri", "Pencipta Tari Merak dan tari kreasi Sunda"], ["Guru Sauti", "Pencipta Tari Serampang Dua Belas"], ["I Wayan Limbak", "Pengembang Tari Kecak"], ["Sardono W. Kusumo", "Koreografer tari kontemporer"], ["Didik Nini Thowok", "Penari dan koreografer, dikenal dengan tari lintas gender"]]}}]}, {"code": "TOK-02", "title": "Tari mancanegara", "scope": "Balet, flamenco, hula", "src": "Kelas XII", "tier": 3, "sum": "Tari dari berbagai negara sebagai bahan perbandingan dengan tari Nusantara.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Asal", "Ciri"], "rows": [["Balet", "Berkembang di istana Prancis, lalu Rusia", "Gerak berjinjit (en pointe), teknik baku"], ["Flamenco", "Andalusia, Spanyol", "Hentakan kaki, tepukan tangan, iringan gitar"], ["Hula", "Hawaii", "Gerak pinggul dan tangan yang bercerita"], ["Bharatanatyam", "India Selatan", "Tari klasik dengan gerak tangan (mudra) dan ekspresi wajah"], ["Tango", "Argentina", "Tari berpasangan"]]}}]}]}, {"id": "KRY", "name": "Berkarya dan apresiasi", "short": "Berkarya", "note": "Proses koreografi, pengembangan gerak, olah tubuh, pergelaran, apresiasi, dan notasi tari.", "topics": [{"code": "KRY-01", "title": "Proses koreografi", "scope": "Eksplorasi, improvisasi, komposisi", "src": "Kelas X–XII", "tier": 1, "sum": "Membuat tari melalui tiga tahap: eksplorasi, improvisasi, dan komposisi (pembentukan).", "blocks": [{"h": "Tahap", "li": ["<b>Eksplorasi<\/b>: menjajaki gagasan dan kemungkinan gerak dari sumber inspirasi (alam, kegiatan sehari-hari, cerita).", "Improvisasi: mencoba gerak secara spontan untuk menemukan gerak baru.", "Komposisi (pembentukan): menyusun gerak terpilih menjadi tarian utuh dengan iringan dan pola lantai.", "Koreografer adalah penata tari; koreografi adalah karya atau ilmu menata tari."]}], "traps": ["Urutan tahapnya eksplorasi, improvisasi, lalu komposisi."]}, {"code": "KRY-02", "title": "Pengembangan motif gerak", "scope": "Pengulangan, variasi, kontras", "src": "Kelas XI", "tier": 2, "sum": "Motif gerak (satuan gerak terkecil yang bermakna) dikembangkan agar tari tidak monoton.", "blocks": [{"h": "Cara", "li": ["Pengulangan (repetisi), variasi (mengubah level, arah, atau tempo), kontras (perbedaan tajam), dan transisi (gerak penghubung).", "<b>Motif gerak<\/b> dapat dikembangkan dari gerak tradisional menjadi tari kreasi."]}]}, {"code": "KRY-03", "title": "Olah tubuh", "scope": "Pemanasan, kelenturan, keselamatan", "src": "Kelas X", "tier": 2, "sum": "Latihan fisik untuk menyiapkan tubuh penari agar lentur, kuat, dan terhindar dari cedera.", "blocks": [{"h": "Olah tubuh", "li": ["Tahap: pemanasan, latihan inti (kelenturan, kekuatan, keseimbangan), pendinginan.", "<b>Pemanasan<\/b> menaikkan suhu otot dan mencegah cedera.", "Latihan kelenturan meliputi peregangan leher, bahu, pinggang, dan kaki."]}]}, {"code": "KRY-04", "title": "Pergelaran tari", "scope": "Tahap, kepanitiaan", "src": "Kelas XI–XII", "tier": 2, "sum": "Menyelenggarakan pergelaran tari dari perencanaan sampai evaluasi.", "blocks": [{"h": "Tahap dan peran", "li": ["Perencanaan (tema, waktu, tempat, anggaran), persiapan (latihan, gladi), pelaksanaan, evaluasi.", "<b>Gladi resik<\/b>: latihan terakhir lengkap dengan kostum, rias, dan tata panggung, sesuai urutan pertunjukan.", "Peran: sutradara atau pimpinan produksi, penata tari, penata musik, penata rias dan busana, penata cahaya, stage manager."]}]}, {"code": "KRY-05", "title": "Apresiasi dan kritik tari", "scope": "Tahap kritik Feldman", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi tari adalah menghayati dan menilai pertunjukan tari; kritik menyampaikan penilaian itu dengan alasan.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terlihat (jumlah penari, busana, gerak, iringan).", "Analisis formal: menguraikan unsur tari dan hubungannya.", "Interpretasi: menafsirkan makna dan pesan tari.", "Evaluasi: menilai kualitas tari dengan alasan."]}], "traps": ["Menilai bagus atau tidak termasuk tahap evaluasi, bukan deskripsi."]}, {"code": "KRY-06", "title": "Notasi dan dokumentasi tari", "scope": "Labanotation, rekaman", "src": "Kelas XII", "tier": 3, "sum": "Tari dicatat dengan simbol atau direkam agar dapat dipelajari ulang dan dilestarikan.", "blocks": [{"h": "Pencatatan", "li": ["<b>Labanotation<\/b>: sistem simbol pencatat gerak yang dikembangkan Rudolf Laban.", "Dokumentasi lain: deskripsi tertulis, foto, dan rekaman video.", "Dokumentasi membantu pelestarian tari tradisional yang diwariskan secara lisan."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Tari Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Sebagian buku menambah wirupa sebagai unsur keempat tari.", "Tari Saman dan Ratoh Jaroe sering tertukar dalam pertunjukan sekolah; perbedaannya dicatat di NUS-01.", "Tahun penciptaan tari kreasi (Merak 1955, Yapong 1977) mengikuti sumber umum; cocokkan dengan buku sekolah."]}, {"title": "Rujukan", "items": ["Buku Seni Tari SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "UNESCO: Tari Saman (2011, daftar yang memerlukan pelindungan mendesak) dan tiga genre tari tradisional Bali (2015)."]}], "bank": "bank-seni-tari.html"};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
+let onlyLanjut = false;
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum, t.lanjut ? "Tingkat Lanjut" : ""];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' ' + tags(t) + '</span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  if(Object.values(byCode).some(x => x.t.lanjut)){
+    $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
+    if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
+  }
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    const keep = !onlyLanjut || t.lanjut;
+    if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = keep && new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>
