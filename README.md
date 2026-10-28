@@ -19,6 +19,10 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-bahasa-indonesia.html` | Knowledge map for Bahasa Indonesia (22 topics): reading, nonfiction and literary texts, language rules. |
 | `docs/peta-bahasa-inggris.html` | Knowledge map for Bahasa Inggris (22 topics): reading skills, text types, grammar. |
 | `docs/peta-sejarah.html` | Knowledge map for school and TKA history (24 topics), from historical method to Reformasi, plus world history. Separate from the LCCM kit (`peta.html`). |
+| `docs/bank-fisika.html` | Short-answer question bank for Fisika (255 questions, about a fifth with everyday-context items). |
+| `docs/bank-kimia.html` | Short-answer question bank for Kimia (210 questions, about a fifth with everyday-context items). |
+| `docs/bank-biologi.html` | Short-answer question bank for Biologi (214 questions, about a fifth with everyday-context items). |
+| `docs/bank-matematika.html` | Short-answer question bank for Matematika (233 questions, about a fifth with everyday-context items). |
 | `docs/bank-ekonomi.html` | Short-answer question bank for Ekonomi (215 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-geografi.html` | Short-answer question bank for Geografi (164 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-sosiologi.html` | Short-answer question bank for Sosiologi (156 questions, about a fifth to a quarter with everyday-context items). |

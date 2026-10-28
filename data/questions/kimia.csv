@@ -1,0 +1,211 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+STR-01-001,STR-01,1,Merancang proses dan produk kimia yang mengurangi atau menghilangkan zat berbahaya disebut…,Kimia hijau,,
+STR-01-002,STR-01,2,Dua belas prinsip kimia hijau dirumuskan oleh Paul Anastas dan…,John Warner,,
+STR-01-003,STR-01,2,Langkah metode ilmiah sesudah merumuskan masalah adalah…,Merumuskan hipotesis,,
+STR-01-004,STR-01,2,"Menurut prinsip kimia hijau, mencegah limbah lebih baik daripada…",Mengolahnya,,
+STR-01-005,STR-01,2,Botol pembersih lantai di toko memuat simbol tangan dan logam yang terkikis cairan. Simbol bahaya ini berarti bahan…,Korosif,,label bahan kimia
+STR-02-001,STR-02,1,Partikel atom bermuatan negatif adalah…,Elektron,,
+STR-02-002,STR-02,1,Penemu neutron (1932) adalah…,James Chadwick,,
+STR-02-003,STR-02,1,Atom-atom dengan nomor atom sama tetapi nomor massa berbeda disebut…,Isotop,,
+STR-02-004,STR-02,1,Penemu elektron melalui percobaan sinar katode adalah…,J. J. Thomson,,
+STR-02-005,STR-02,2,Atom-atom dengan nomor massa sama disebut…,Isobar,,
+STR-02-006,STR-02,2,Atom ²³₁₁Na memiliki berapa neutron?,12,23 − 11.,
+STR-02-007,STR-02,2,Berapa jumlah elektron pada ion Na⁺ (nomor atom 11)?,10,Ion positif kehilangan elektron.,
+STR-02-008,STR-02,3,Berapa jumlah elektron pada ion S²⁻ (nomor atom 16)?,18,,
+STR-02-009,STR-02,2,"Arkeolog memakai karbon-14, sedangkan sebagian besar karbon di alam adalah karbon-12. Hubungan ¹²C dan ¹⁴C disebut…",Isotop,,situs purbakala
+STR-03-001,STR-03,1,Aturan bahwa elektron mengisi orbital dari energi terendah disebut aturan…,Aufbau,,
+STR-03-002,STR-03,1,Aturan bahwa elektron mengisi orbital satu per satu sebelum berpasangan disebut aturan…,Hund,,
+STR-03-003,STR-03,1,Satu orbital dapat berisi paling banyak … elektron.,2,,
+STR-03-004,STR-03,2,Bilangan kuantum yang menyatakan subkulit adalah bilangan kuantum…,Azimut (l),,
+STR-03-005,STR-03,2,Konfigurasi elektron atom klor (Z = 17) adalah…,1s² 2s² 2p⁶ 3s² 3p⁵,,
+STR-03-006,STR-03,2,Unsur dengan Z = 17 terletak pada golongan dan periode…,"VIIA, periode 3",,
+STR-03-007,STR-03,2,Konfigurasi elektron yang berakhir pada subkulit d menunjukkan unsur golongan…,B (transisi),,
+STR-03-008,STR-03,3,Konfigurasi elektron kromium (Cr) adalah…,[Ar] 3d⁵ 4s¹,Subkulit d setengah penuh lebih stabil.,
+STR-03-009,STR-03,3,Konfigurasi ion Fe²⁺ adalah…,[Ar] 3d⁶,Elektron 4s dilepas lebih dulu.,
+STR-04-001,STR-04,1,Golongan VIIA disebut golongan…,Halogen,,
+STR-04-002,STR-04,1,Golongan VIIIA disebut golongan…,Gas mulia,,
+STR-04-003,STR-04,1,Unsur dengan keelektronegatifan tertinggi adalah…,Fluor (F),,
+STR-04-004,STR-04,2,"Dalam satu golongan dari atas ke bawah, jari-jari atom…",Bertambah,,
+STR-04-005,STR-04,2,"Dalam satu periode dari kiri ke kanan, energi ionisasi cenderung…",Bertambah,,
+STR-04-006,STR-04,2,Tabel periodik modern disusun berdasarkan kenaikan nomor atom oleh…,Moseley,,
+STR-04-007,STR-04,2,Hukum oktaf dikemukakan oleh…,Newlands,,
+STR-04-008,STR-04,3,Unsur ekasilikon yang diramalkan Mendeleev kini dikenal sebagai…,Germanium,,
+STR-04-009,STR-04,2,"Lampu papan reklame berisi gas yang hampir tidak bereaksi dengan unsur lain, seperti neon. Gas ini termasuk golongan…",Gas mulia (VIIIA),,papan reklame
+STR-05-001,STR-05,1,Ikatan yang terbentuk dari serah-terima elektron antara logam dan nonlogam disebut ikatan…,Ion,,
+STR-05-002,STR-05,1,Ikatan dari pemakaian bersama pasangan elektron antara nonlogam disebut ikatan…,Kovalen,,
+STR-05-003,STR-05,1,Kecenderungan atom mencapai 8 elektron valensi disebut aturan…,Oktet,,
+STR-05-004,STR-05,2,"Ikatan yang pasangan elektronnya hanya disumbang satu atom, seperti pada NH₄⁺, disebut ikatan…",Kovalen koordinasi,,
+STR-05-005,STR-05,2,Molekul CO₂ bersifat polar atau nonpolar?,Nonpolar,Bentuknya linear dan simetris.,
+STR-05-006,STR-05,2,Ikatan yang berupa lautan elektron sehingga bahannya dapat ditempa disebut ikatan…,Logam,,
+STR-05-007,STR-05,3,Senyawa yang atom pusatnya hanya memiliki 6 elektron sehingga tidak memenuhi oktet adalah…,BF₃,,
+STR-05-008,STR-05,1,Garam dapur (NaCl) yang dilarutkan dalam air menghantarkan listrik. Jenis ikatan dalam NaCl adalah…,Ion,,dapur
+STR-05-009,STR-05,2,Pandai besi menempa besi panas menjadi parang tanpa membuatnya pecah. Sifat dapat ditempa ini disebabkan oleh ikatan…,Logam,,pandai besi
+STR-06-001,STR-06,1,Bentuk molekul H₂O adalah…,Bentuk V (bengkok),,
+STR-06-002,STR-06,2,Bentuk molekul CH₄ adalah…,Tetrahedral,,
+STR-06-003,STR-06,2,Bentuk molekul NH₃ adalah…,Piramida segitiga,,
+STR-06-004,STR-06,2,"Gaya antarmolekul yang paling kuat di antara gaya London, dipol-dipol, dan ikatan hidrogen adalah…",Ikatan hidrogen,,
+STR-06-005,STR-06,3,Hibridisasi atom pusat pada molekul SF₆ adalah…,sp³d²,,
+STR-06-006,STR-06,2,"Air mendidih pada 100 °C, jauh lebih tinggi daripada senyawa sejenis bermassa kecil. Penyebab utamanya adalah…",Ikatan hidrogen,,dapur
+STO-01-001,STO-01,1,Nama senyawa NaCl adalah…,Natrium klorida,,
+STO-01-002,STO-01,1,Nama senyawa FeCl₃ adalah…,Besi(III) klorida,,
+STO-01-003,STO-01,2,Nama senyawa N₂O₅ adalah…,Dinitrogen pentaoksida,,
+STO-01-004,STO-01,2,"Dalam menyetarakan persamaan reaksi, yang boleh diubah hanya…",Koefisien,,
+STO-01-005,STO-01,2,Lambang wujud (aq) dalam persamaan reaksi berarti…,Larutan dalam air,,
+STO-01-006,STO-01,2,Cuka dapur mengandung asam asetat. Nama lain asam asetat menurut IUPAC adalah…,Asam etanoat,,dapur
+STO-02-001,STO-02,1,Hukum kekekalan massa dikemukakan oleh…,Lavoisier,,
+STO-02-002,STO-02,1,Hukum perbandingan tetap dikemukakan oleh…,Proust,,
+STO-02-003,STO-02,2,Hukum kelipatan perbandingan dikemukakan oleh…,Dalton,,
+STO-02-004,STO-02,2,Hukum perbandingan volume gas dikemukakan oleh…,Gay-Lussac,,
+STO-02-005,STO-02,2,"Pada suhu dan tekanan sama, gas bervolume sama mengandung jumlah molekul sama. Ini adalah hipotesis…",Avogadro,,
+STO-02-006,STO-02,3,Karbon dan oksigen membentuk CO dan CO₂. Hukum yang menjelaskan perbandingan massa oksigennya 1 : 2 adalah hukum…,Kelipatan perbandingan (Dalton),,
+STO-02-007,STO-02,2,Kayu yang dibakar di tungku tampak menjadi abu yang jauh lebih ringan. Massa yang “hilang” sebenarnya berubah menjadi gas. Hukum yang tetap berlaku adalah hukum…,Kekekalan massa (Lavoisier),,tungku
+STO-02-008,STO-02,1,Air dari mata air pegunungan maupun air laut yang disuling selalu tersusun dari hidrogen dan oksigen dengan perbandingan massa yang sama. Hukum yang tergambar adalah hukum…,Perbandingan tetap (Proust),,air minum
+STO-03-001,STO-03,1,Bilangan Avogadro bernilai…,"6,02 × 10²³ partikel/mol",,
+STO-03-002,STO-03,1,"Volume 1 mol gas pada STP (0 °C, 1 atm) adalah…","22,4 L",,
+STO-03-003,STO-03,1,Rumus jumlah mol dari massa adalah n = …,m/Mr,,
+STO-03-004,STO-03,2,Berapa mol 18 g air (Mr = 18)?,1 mol,,
+STO-03-005,STO-03,2,"Berapa mol gas yang volumenya 11,2 L pada STP?","0,5 mol",,
+STO-03-006,STO-03,2,"Sebanyak 0,2 mol zat dilarutkan dalam air sampai 500 mL. Berapa molaritasnya?","0,4 M",,
+STO-03-007,STO-03,2,Zat yang habis lebih dulu dalam reaksi disebut…,Pereaksi pembatas,,
+STO-03-008,STO-03,3,Senyawa berumus empiris CH₂ memiliki Mr 28. Rumus molekulnya adalah…,C₂H₄,,
+STO-03-009,STO-03,3,"Berapa kadar karbon dalam CO₂ (Ar C = 12, O = 16)?","Sekitar 27,3%",12/44 × 100%.,
+STO-03-010,STO-03,2,"Satu sendok garam dapur berisi 0,1 mol NaCl. Berapa jumlah satuan NaCl di dalamnya?","6,02 × 10²²",,dapur
+STO-03-011,STO-03,2,"Penjual es teh melarutkan 0,5 mol gula dalam air sampai volumenya 1 L. Berapa molaritas larutan gula itu?","0,5 M",,warung
+STO-04-001,STO-04,1,Pelepasan elektron disebut…,Oksidasi,,
+STO-04-002,STO-04,1,Zat yang mengalami oksidasi disebut…,Reduktor,,
+STO-04-003,STO-04,1,Bilangan oksidasi unsur bebas adalah…,0,,
+STO-04-004,STO-04,2,Bilangan oksidasi O dalam H₂O₂ adalah…,−1,,
+STO-04-005,STO-04,2,Bilangan oksidasi H dalam NaH adalah…,−1,,
+STO-04-006,STO-04,2,Bilangan oksidasi S dalam H₂SO₄ adalah…,+6,,
+STO-04-007,STO-04,3,Bilangan oksidasi Mn dalam KMnO₄ adalah…,+7,,
+STO-04-008,STO-04,3,Reaksi ketika satu zat mengalami oksidasi dan reduksi sekaligus disebut…,Autoredoks (disproporsionasi),,
+STO-04-009,STO-04,2,Pagar besi di depan rumah berkarat karena bereaksi dengan oksigen dan air. Dalam reaksi ini besi mengalami…,Oksidasi,,karat pagar
+STO-05-001,STO-05,1,Larutan yang menghantarkan listrik disebut larutan…,Elektrolit,,
+STO-05-002,STO-05,2,Larutan gula termasuk elektrolit atau nonelektrolit?,Nonelektrolit,,
+STO-05-003,STO-05,2,Derajat ionisasi elektrolit kuat adalah…,1,,
+STO-05-004,STO-05,2,Larutan asam asetat menyalakan lampu dengan redup. Larutan ini termasuk elektrolit…,Lemah,,
+STO-05-005,STO-05,2,Minuman isotonik mengandung ion natrium dan kalium yang membantu tubuh mengganti cairan. Larutan bermuatan ion seperti ini disebut larutan…,Elektrolit,,minuman isotonik
+ENE-01-001,ENE-01,1,Reaksi yang melepas kalor ke lingkungan disebut reaksi…,Eksoterm,,
+ENE-01-002,ENE-01,1,Tanda ΔH pada reaksi endoterm adalah…,Positif,,
+ENE-01-003,ENE-01,1,Perubahan entalpi pembentukan standar unsur dalam bentuk paling stabil bernilai…,0,,
+ENE-01-004,ENE-01,2,Hukum yang menyatakan ΔH reaksi hanya bergantung pada keadaan awal dan akhir adalah hukum…,Hess,,
+ENE-01-005,ENE-01,2,"Jika persamaan reaksi dibalik, tanda ΔH…",Ikut berbalik,,
+ENE-01-006,ENE-01,2,Rumus ΔH dari energi ikatan adalah energi ikatan yang diputus dikurangi…,Energi ikatan yang dibentuk,,
+ENE-01-007,ENE-01,3,"Kalorimeter berisi 100 g air naik suhunya 10 °C (c = 4,2 J/g·°C). Berapa kalor yang diserap air?",4.200 J,,
+ENE-01-008,ENE-01,3,"Kalor 4.200 J dilepas oleh 0,1 mol zat yang bereaksi. Berapa ΔH reaksi per mol?",−42 kJ/mol,ΔH = −q/n.,
+ENE-01-009,ENE-01,1,Kompres dingin instan terasa dingin di kulit karena reaksi di dalamnya menyerap kalor. Reaksi ini termasuk reaksi…,Endoterm,,P3K
+ENE-01-010,ENE-01,2,Kompor gas memanaskan panci karena pembakaran gas melepas kalor. Reaksi pembakaran ini memiliki ΔH bertanda…,Negatif (eksoterm),,dapur
+ENE-02-001,ENE-02,1,Zat yang mempercepat reaksi tanpa ikut habis bereaksi disebut…,Katalis,,
+ENE-02-002,ENE-02,1,Katalis mempercepat reaksi dengan cara menurunkan…,Energi aktivasi,,
+ENE-02-003,ENE-02,2,Sebutkan dua faktor yang mempercepat laju reaksi.,"Dua di antara: konsentrasi, luas permukaan, suhu, katalis",,
+ENE-02-004,ENE-02,2,Orde reaksi ditentukan dari…,Data percobaan,,
+ENE-02-005,ENE-02,2,"Pada persamaan laju v = k[A]²[B], orde total reaksinya adalah…",3,,
+ENE-02-006,ENE-02,3,"Laju reaksi menjadi 2 kali setiap kenaikan suhu 10 °C. Jika suhu dinaikkan 30 °C, laju menjadi … kali.",8,,
+ENE-02-007,ENE-02,1,Obat berbentuk serbuk bekerja lebih cepat daripada tablet utuh. Faktor laju reaksi yang berperan adalah…,Luas permukaan,,obat
+ENE-02-008,ENE-02,2,Sayur yang disimpan di kulkas lebih lama membusuk karena laju reaksi pembusukan turun. Faktor yang berperan adalah…,Suhu,,kulkas
+ENE-03-001,ENE-03,1,Asas yang menjelaskan pergeseran kesetimbangan bila diberi aksi disebut asas…,Le Chatelier,,
+ENE-03-002,ENE-03,1,"Jika suhu dinaikkan, kesetimbangan bergeser ke arah reaksi…",Endoterm,,
+ENE-03-003,ENE-03,2,"Jika tekanan dinaikkan, kesetimbangan bergeser ke ruas dengan jumlah mol gas…",Lebih kecil,,
+ENE-03-004,ENE-03,2,Satu-satunya faktor yang mengubah nilai tetapan kesetimbangan K adalah…,Suhu,,
+ENE-03-005,ENE-03,2,Proses industri pembuatan amonia disebut proses…,Haber-Bosch,,
+ENE-03-006,ENE-03,2,Katalis dalam proses kontak pembuatan asam sulfat adalah…,V₂O₅,,
+ENE-03-007,ENE-03,3,"Dalam Kc, zat yang tidak dimasukkan ke rumus adalah zat…",Padat dan cair murni,,
+ENE-03-008,ENE-03,2,Pabrik pupuk urea membutuhkan amonia yang dibuat dari N₂ dan H₂. Proses industri pembuatan amonia ini disebut…,Proses Haber-Bosch,,pabrik pupuk
+ENE-03-009,ENE-03,2,Botol minuman bersoda dibuka sehingga tekanan di dalamnya turun dan gas CO₂ keluar. Penurunan tekanan menggeser kesetimbangan ke ruas dengan jumlah mol gas yang…,Lebih besar,,minuman bersoda
+LAR-01-001,LAR-01,1,"Menurut Arrhenius, asam adalah zat yang dalam air menghasilkan ion…",H⁺,,
+LAR-01-002,LAR-01,1,"Menurut Brønsted-Lowry, asam adalah donor…",Proton (H⁺),,
+LAR-01-003,LAR-01,1,"Pada 25 °C, pH + pOH = …",14,,
+LAR-01-004,LAR-01,2,"Berapa pH larutan HCl 0,01 M?",2,,
+LAR-01-005,LAR-01,2,"Berapa pH larutan NaOH 0,001 M?",11,pOH = 3.,
+LAR-01-006,LAR-01,2,Indikator fenolftalein dalam basa berwarna…,Merah muda,,
+LAR-01-007,LAR-01,3,"Berapa pH larutan CH₃COOH 0,1 M (Ka = 10⁻⁵)?",3,"[H⁺] = √(10⁻⁵ × 0,1) = 10⁻³.",
+LAR-01-008,LAR-01,3,"Berapa pH larutan H₂SO₄ 0,005 M?",2,"[H⁺] = 2 × 0,005 = 0,01.",
+LAR-01-009,LAR-01,2,"Volume NaOH 0,1 M yang tepat menetralkan 20 mL HCl 0,1 M adalah…",20 mL,,
+LAR-01-010,LAR-01,1,Air sabun membuat kertas lakmus merah berubah biru. Sifat air sabun adalah…,Basa,,sabun
+LAR-01-011,LAR-01,2,"Cuka dapur diencerkan 10 kali. Karena asam asetat asam lemah, pH-nya naik … 1 satuan.",Kurang dari,,dapur
+LAR-02-001,LAR-02,1,Larutan yang pH-nya hampir tidak berubah bila ditambah sedikit asam atau basa disebut larutan…,Penyangga (buffer),,
+LAR-02-002,LAR-02,1,Penyangga utama dalam darah adalah pasangan…,H₂CO₃/HCO₃⁻ (karbonat),,
+LAR-02-003,LAR-02,2,Campuran CH₃COOH dan CH₃COONa membentuk penyangga…,Asam,,
+LAR-02-004,LAR-02,2,Campuran NH₃ dan NH₄Cl membentuk penyangga…,Basa,,
+LAR-02-005,LAR-02,2,Penyangga dalam cairan sel adalah penyangga…,Fosfat,,
+LAR-02-006,LAR-02,3,"Campuran 0,1 mol CH₃COOH dan 0,1 mol CH₃COONa (Ka = 10⁻⁵). Berapa pH-nya?",5,,
+LAR-02-007,LAR-02,2,pH darah manusia dijaga sekitar…,"7,4",,
+LAR-02-008,LAR-02,2,Cairan infus di puskesmas disiapkan agar pH-nya stabil saat masuk darah. Sistem penjaga pH alami dalam darah disebut…,Penyangga karbonat,,puskesmas
+LAR-03-001,LAR-03,1,"Garam dari asam kuat dan basa kuat, seperti NaCl, bersifat…",Netral,,
+LAR-03-002,LAR-03,2,Garam CH₃COONa bersifat…,Basa,,
+LAR-03-003,LAR-03,2,Garam NH₄Cl bersifat…,Asam,,
+LAR-03-004,LAR-03,2,Garam dari asam lemah dan basa lemah mengalami hidrolisis…,Total,,
+LAR-03-005,LAR-03,3,Sifat garam mengikuti komponen pembentuknya yang…,Kuat,,
+LAR-03-006,LAR-03,2,"Petani menebar pupuk ZA, yaitu amonium sulfat dari asam kuat H₂SO₄ dan basa lemah NH₃. Larutan pupuk ini bersifat…",Asam,,pupuk
+LAR-04-001,LAR-04,1,Rumus Ksp untuk AgCl adalah…,s²,,
+LAR-04-002,LAR-04,2,Rumus Ksp untuk Ag₂CrO₄ adalah…,4s³,,
+LAR-04-003,LAR-04,2,Adanya ion senama … kelarutan.,Memperkecil,,
+LAR-04-004,LAR-04,2,"Jika Qc lebih besar daripada Ksp, maka…",Terbentuk endapan,,
+LAR-04-005,LAR-04,3,Kelarutan AgCl dalam air 10⁻⁵ mol/L. Berapa Ksp-nya?,10⁻¹⁰,,
+LAR-04-006,LAR-04,2,Kerak putih menempel di dasar panci perebus air karena ion-ion dalam air sadah melampaui batas kelarutannya. Terbentuknya padatan ketika Qc lebih besar daripada Ksp disebut…,Pengendapan,,dapur
+LAR-05-001,LAR-05,1,Sifat larutan yang hanya bergantung pada jumlah partikel zat terlarut disebut sifat…,Koligatif,,
+LAR-05-002,LAR-05,1,Satuan molalitas adalah mol per…,Kilogram pelarut,,
+LAR-05-003,LAR-05,2,Faktor van't Hoff untuk larutan nonelektrolit adalah…,1,,
+LAR-05-004,LAR-05,2,"Berapa kenaikan titik didih larutan urea 1 molal (Kb air = 0,52 °C/m)?","0,52 °C",,
+LAR-05-005,LAR-05,2,"Berapa penurunan titik beku larutan glukosa 0,1 molal (Kf air = 1,86 °C/m)?","0,186 °C",,
+LAR-05-006,LAR-05,3,"Berapa penurunan titik beku larutan NaCl 0,1 molal (Kf = 1,86 °C/m, i = 2)?","0,372 °C",,
+LAR-05-007,LAR-05,3,Penyulingan air laut menjadi air tawar dengan memberi tekanan melebihi tekanan osmotik disebut…,Osmosis balik,,
+LAR-05-008,LAR-05,2,Nelayan mengawetkan ikan dengan garam karena garam menarik air keluar dari sel mikroba. Sifat koligatif yang berperan adalah…,Tekanan osmotik,,ikan asin
+LAR-05-009,LAR-05,2,Cairan infus harus memiliki tekanan osmotik sama dengan cairan darah. Larutan seperti ini disebut…,Isotonik,,puskesmas
+LAR-06-001,LAR-06,1,Penghamburan cahaya oleh partikel koloid disebut efek…,Tyndall,,
+LAR-06-002,LAR-06,2,Koloid zat cair dalam zat cair disebut…,Emulsi,,
+LAR-06-003,LAR-06,2,Asap dari pembakaran sampah di halaman termasuk koloid jenis…,Aerosol padat,,pembakaran sampah
+LAR-06-004,LAR-06,2,Busa sabun cuci piring (gas yang terdispersi dalam cairan) termasuk koloid jenis…,Buih,,dapur
+LAR-06-005,LAR-06,2,"Pemisahan ion dari koloid dengan selaput semipermeabel, seperti cuci darah, disebut…",Dialisis,,
+LAR-06-006,LAR-06,1,Santan kelapa dan susu sapi termasuk koloid jenis…,Emulsi,,dapur
+LAR-06-007,LAR-06,2,Agar-agar yang sudah dingin dan kenyal termasuk koloid jenis…,Gel,,dapur
+LAR-06-008,LAR-06,2,Berkas sinar matahari terlihat jelas menembus kabut pagi di kebun teh. Gejala ini disebut…,Efek Tyndall,,kebun teh
+ELK-01-001,ELK-01,1,"Di sel volta, anoda adalah tempat terjadinya…",Oksidasi,,
+ELK-01-002,ELK-01,1,Kutub katoda pada sel volta bermuatan…,Positif,,
+ELK-01-003,ELK-01,1,Rumus potensial sel standar adalah E°sel = …,E°katoda − E°anoda,,
+ELK-01-004,ELK-01,2,"E° Zn = −0,76 V dan E° Cu = +0,34 V. Berapa E°sel Zn–Cu?","1,10 V",,
+ELK-01-005,ELK-01,2,Reaksi redoks berlangsung spontan bila E°sel…,Positif (lebih dari 0),,
+ELK-01-006,ELK-01,2,Pelapisan besi dengan seng untuk mencegah karat disebut…,Galvanisasi,,
+ELK-01-007,ELK-01,3,Logam di sebelah kiri deret volta lebih mudah…,Teroksidasi,,
+ELK-01-008,ELK-01,2,Atap seng di rumah-rumah tidak cepat berkarat karena lembaran besinya dilapisi seng. Cara pencegahan korosi ini disebut…,Galvanisasi,,atap rumah
+ELK-01-009,ELK-01,2,Pipa besi di dalam tanah dihubungkan dengan batang magnesium agar tidak berkarat. Cara ini disebut…,Proteksi katodik,,pipa air
+ELK-02-001,ELK-02,1,"Di sel elektrolisis, kutub anoda bermuatan…",Positif,,
+ELK-02-002,ELK-02,1,"Pada elektrolisis, reduksi terjadi di…",Katoda,,
+ELK-02-003,ELK-02,2,Elektrolisis larutan NaCl menghasilkan gas … di katoda.,H₂,,
+ELK-02-004,ELK-02,2,Elektrolisis larutan yang mengandung ion halida menghasilkan … di anoda.,Gas halogen (X₂),,
+ELK-02-005,ELK-02,2,"Pada penyepuhan, benda yang akan dilapisi dipasang sebagai…",Katoda,,
+ELK-02-006,ELK-02,3,Arus 10 A dialirkan selama 9.650 s ke larutan CuSO₄ (Ar Cu = 64). Berapa massa tembaga yang mengendap?,32 g,(64/2 × 10 × 9.650)/96.500.,
+ELK-02-007,ELK-02,3,Bilangan 96.500 dalam hukum Faraday menyatakan muatan listrik satu mol…,Elektron (1 faraday),,
+ELK-02-008,ELK-02,1,Pengrajin perhiasan melapisi cincin tembaga dengan emas memakai arus listrik. Proses ini disebut…,Penyepuhan (elektrolisis),,pengrajin perhiasan
+ORG-01-001,ORG-01,1,Rumus umum alkana adalah…,CₙH₂ₙ₊₂,,
+ORG-01-002,ORG-01,1,Hidrokarbon dengan satu ikatan rangkap dua disebut…,Alkena,,
+ORG-01-003,ORG-01,2,Rumus molekul pentana adalah…,C₅H₁₂,,
+ORG-01-004,ORG-01,2,Minyak bumi dipisahkan dengan distilasi bertingkat berdasarkan perbedaan…,Titik didih,,
+ORG-01-005,ORG-01,2,Bilangan oktan isooktana adalah…,100,,
+ORG-01-006,ORG-01,3,Atom karbon yang terikat pada tiga atom karbon lain disebut atom C…,Tersier,,
+ORG-01-007,ORG-01,2,"Mesin motor yang dihidupkan di garasi tertutup berbahaya karena pembakaran tidak sempurna menghasilkan gas beracun, yaitu…",CO (karbon monoksida),,garasi
+ORG-01-008,ORG-01,2,"SPBU menjual bensin dengan angka 90, 92, dan 98. Angka itu menyatakan…",Bilangan oktan,,SPBU
+ORG-02-001,ORG-02,1,Gugus fungsi alkohol adalah…,–OH,,
+ORG-02-002,ORG-02,1,Senyawa karbon dengan gugus –COOH disebut…,Asam karboksilat,,
+ORG-02-003,ORG-02,1,Senyawa dengan gugus –CHO disebut…,Aldehida,,
+ORG-02-004,ORG-02,2,Isomer fungsi dari alkohol adalah…,Eter,,
+ORG-02-005,ORG-02,2,Uji Tollens positif untuk senyawa…,Aldehida,,
+ORG-02-006,ORG-02,2,Reaksi asam karboksilat dengan alkohol menghasilkan ester dan air disebut…,Esterifikasi,,
+ORG-02-007,ORG-02,3,Nama IUPAC dari aseton adalah…,Propanon,,
+ORG-02-008,ORG-02,1,Penghapus kuteks umumnya mengandung aseton. Aseton termasuk golongan senyawa…,Keton,,kosmetik
+ORG-02-009,ORG-02,2,Aroma buah pada perisa permen berasal dari senyawa yang dibuat dari asam karboksilat dan alkohol. Golongan senyawa itu adalah…,Ester,,permen
+ORG-03-001,ORG-03,1,Tokoh yang mengusulkan struktur cincin benzena (1865) adalah…,Kekulé,,
+ORG-03-002,ORG-03,2,Benzena lebih mudah mengalami reaksi substitusi atau adisi?,Substitusi,,
+ORG-03-003,ORG-03,2,Nama lain metilbenzena adalah…,Toluena,,
+ORG-03-004,ORG-03,2,"Posisi dua substituen 1,4 pada benzena disebut posisi…",Para,,
+ORG-03-005,ORG-03,3,Nama lain hidroksibenzena adalah…,Fenol,,
+ORG-04-001,ORG-04,1,"Polimer yang terbentuk dari monomer berikatan rangkap melalui adisi, seperti plastik kantong, adalah…",Polietena,,
+ORG-04-002,ORG-04,1,Monomer protein adalah…,Asam amino,,
+ORG-04-003,ORG-04,2,Uji iodin pada amilum menghasilkan warna…,Biru tua,,
+ORG-04-004,ORG-04,2,Uji biuret untuk ikatan peptida menghasilkan warna…,Ungu,,
+ORG-04-005,ORG-04,2,Disakarida yang tersusun dari glukosa dan fruktosa adalah…,Sukrosa,,
+ORG-04-006,ORG-04,2,Reaksi lemak dengan basa kuat yang menghasilkan sabun disebut…,Saponifikasi,,
+ORG-04-007,ORG-04,3,Uji Benedict pada sukrosa memberi hasil…,Negatif (bukan gula pereduksi),,
+ORG-04-008,ORG-04,2,Usaha rumahan membuat sabun dari minyak kelapa dan larutan basa kuat. Reaksi pembuatan sabun ini disebut…,Saponifikasi,,usaha sabun
+ORG-04-009,ORG-04,2,Tali jaring nelayan dari nilon dibuat dengan polimerisasi yang melepas molekul air. Jenis polimerisasi ini adalah…,Kondensasi,,nelayan
+ORG-04-010,ORG-04,2,Tahu dan tempe kaya protein. Ikatan yang menghubungkan asam-asam amino dalam protein disebut ikatan…,Peptida,,makanan
