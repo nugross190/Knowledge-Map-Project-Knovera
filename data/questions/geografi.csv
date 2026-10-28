@@ -1,0 +1,165 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+DAS-01-001,DAS-01,1,Pendekatan geografi yang menekankan persebaran dan lokasi gejala disebut pendekatan…,Keruangan,,
+DAS-01-002,DAS-01,1,Pendekatan geografi yang menekankan interaksi manusia dengan lingkungannya disebut pendekatan…,Kelingkungan (ekologi),,
+DAS-01-003,DAS-01,1,Pendekatan yang menggabungkan analisis keruangan dan kelingkungan disebut pendekatan…,Kompleks wilayah,,
+DAS-01-004,DAS-01,1,Lokasi yang ditentukan dengan garis lintang dan garis bujur disebut lokasi…,Absolut,,
+DAS-01-005,DAS-01,2,"Prinsip geografi yang menggabungkan persebaran, interelasi, dan deskripsi dalam satu ruang disebut prinsip…",Korologi,,
+DAS-01-006,DAS-01,2,"Konsep geografi tentang pengelompokan gejala di suatu tempat, misalnya industri di kawasan industri, disebut…",Aglomerasi,,
+DAS-01-007,DAS-01,1,"Hutan di hulu sungai ditebang, lalu kampung di hilir sering banjir. Konsep esensial geografi yang tergambar adalah…",Keterkaitan keruangan,,banjir
+DAS-01-008,DAS-01,2,"Dataran tinggi di sebuah kabupaten ditanami sayur, sedangkan dataran rendahnya ditanami padi. Konsep esensial geografi yang tergambar adalah…",Diferensiasi area,,sawah
+DAS-02-001,DAS-02,1,Jarak sebenarnya dihitung dengan mengalikan jarak di peta dengan…,Penyebut skala,,
+DAS-02-002,DAS-02,1,Guru meminta siswa membuat peta yang hanya menampilkan sebaran sekolah di kecamatan mereka. Peta yang menampilkan satu tema seperti ini disebut peta…,Tematik,,sekolah
+DAS-02-003,DAS-02,1,Proyeksi peta yang cocok untuk daerah kutub adalah proyeksi…,Bidang datar (azimutal),,
+DAS-02-004,DAS-02,2,"Skala 1 : 5.000 dan 1 : 50.000, mana yang lebih besar?",1 : 5.000,"Makin kecil penyebut, makin besar skala.",
+DAS-02-005,DAS-02,2,Proyeksi silinder yang membuat daerah lintang tinggi tampak membesar dikenal sebagai proyeksi…,Mercator,,
+DAS-02-006,DAS-02,2,Komponen peta yang menunjukkan arah utara disebut…,Orientasi (petunjuk arah),,
+DAS-02-007,DAS-02,3,Jarak dua kota pada peta berskala 1 : 250.000 adalah 4 cm. Berapa jarak sebenarnya?,10 km,4 × 250.000 = 1.000.000 cm.,
+DAS-02-008,DAS-02,2,"Pada peta desa berskala 1 : 10.000, jarak sekolah ke balai desa 5 cm. Berapa jarak sebenarnya dalam meter?",500 m,5 × 10.000 = 50.000 cm.,peta desa
+DAS-03-001,DAS-03,1,Penginderaan jauh yang memakai tenaga dari matahari disebut sistem…,Pasif,,
+DAS-03-002,DAS-03,1,BMKG memakai radar cuaca yang memancarkan gelombangnya sendiri sehingga dapat memantau awan pada malam hari. Penginderaan jauh seperti ini disebut sistem…,Aktif,,cuaca
+DAS-03-003,DAS-03,1,Unsur interpretasi citra yang menunjukkan tingkat kecerahan pada citra hitam-putih disebut…,Rona,,
+DAS-03-004,DAS-03,2,Unsur interpretasi yang membedakan hutan (kasar) dan sawah (halus) adalah…,Tekstur,,
+DAS-03-005,DAS-03,2,Skala foto udara dihitung dengan rumus…,f : H (panjang fokus : tinggi terbang),,
+DAS-03-006,DAS-03,3,Foto udara dibuat dengan kamera berfokus 15 cm dari ketinggian 3.000 m. Berapa skalanya?,1 : 20.000,15 cm : 300.000 cm.,
+DAS-03-007,DAS-03,2,"Pada citra, deretan rumah tampak memanjang mengikuti jalan dan sungai. Unsur interpretasi yang dipakai untuk mengenalinya adalah…",Pola,,permukiman
+DAS-03-008,DAS-03,2,"Pada citra, tambak dikenali karena letaknya di tepi pantai. Unsur interpretasi yang dipakai adalah…",Situs,,pesisir
+DAS-04-001,DAS-04,1,"Data spasial berbentuk titik, garis, dan poligon disebut data…",Vektor,,
+DAS-04-002,DAS-04,1,Data spasial berbentuk sel atau piksel disebut data…,Raster,,
+DAS-04-003,DAS-04,1,Analisis SIG yang menggabungkan beberapa peta tematik disebut…,Tumpang susun (overlay),,
+DAS-04-004,DAS-04,2,Analisis SIG yang membuat zona dengan jarak tertentu dari suatu objek disebut…,Buffer,,
+DAS-04-005,DAS-04,2,Komponen SIG berupa manusia yang mengoperasikan sistem disebut…,Brainware,,
+DAS-04-006,DAS-04,2,"Pemerintah kabupaten ingin menentukan lahan yang cocok untuk kebun kopi dari peta lereng, peta tanah, dan peta curah hujan. Analisis SIG yang dipakai adalah…",Tumpang susun (overlay),,kebun kopi
+DAS-04-007,DAS-04,2,Dinas lingkungan menandai zona 50 m dari tepi sungai yang tidak boleh dibangun rumah. Analisis SIG yang dipakai adalah…,Buffer,,sungai
+DAS-04-008,DAS-04,3,Kumpulan keterangan berbentuk tabel yang melekat pada data spasial disebut data…,Atribut,,
+DAS-05-001,DAS-05,1,Data yang dikumpulkan sendiri oleh peneliti lewat observasi atau wawancara disebut data…,Primer,,
+DAS-05-002,DAS-05,1,Data yang diambil dari BPS atau peta yang sudah ada disebut data…,Sekunder,,
+DAS-05-003,DAS-05,2,Teknik sampel wilayah yang dipilih sesuai tujuan penelitian disebut…,Purposive,,
+DAS-05-004,DAS-05,2,Jawaban sementara yang diuji dengan data dalam penelitian disebut…,Hipotesis,,
+DAS-05-005,DAS-05,2,Siswa meneliti kualitas air sumur di kampungnya dengan mengambil contoh air dan mengukurnya sendiri. Data yang dihasilkan adalah data…,Primer,,air sumur
+GEO-01-001,GEO-01,1,Batuan yang terbentuk dari pembekuan magma disebut batuan…,Beku,,
+GEO-01-002,GEO-01,1,Batuan yang terbentuk dari endapan hasil pelapukan dan erosi disebut batuan…,Sedimen,,
+GEO-01-003,GEO-01,1,Marmer adalah batuan metamorf yang berasal dari batu…,Kapur,,
+GEO-01-004,GEO-01,1,Titik di permukaan bumi tepat di atas pusat gempa disebut…,Episentrum,,
+GEO-01-005,GEO-01,2,Gerak pembentukan pegunungan yang cepat dan meliputi wilayah sempit disebut…,Orogenesa,,
+GEO-01-006,GEO-01,2,Gelombang gempa yang paling cepat merambat adalah gelombang…,Primer (P),,
+GEO-01-007,GEO-01,2,Pengikisan pantai oleh gelombang laut disebut…,Abrasi,,
+GEO-01-008,GEO-01,2,Magma yang menyusup di antara lapisan batuan dan membeku membentuk lempeng sejajar lapisan disebut…,Sill,,
+GEO-01-009,GEO-01,3,Selisih datangnya gelombang S dan P adalah 3 menit 20 detik. Berapa jarak episentrum menurut rumus Laska?,Sekitar 2.333 km,(3′20″ − 1′) × 1.000 km.,
+GEO-01-010,GEO-01,3,"Gunung api berbentuk kerucut berlapis-lapis, seperti kebanyakan gunung api di Jawa, disebut gunung api…",Strato,,
+GEO-01-011,GEO-01,2,Tebing di pantai selatan Jawa terus mundur karena terus dihantam ombak. Proses tenaga eksogen ini disebut…,Abrasi,,pesisir
+GEO-01-012,GEO-01,2,Warga di lereng gunung menemukan batu hitam mengilap seperti kaca dari bekas letusan. Batuan beku luar yang mendingin sangat cepat ini disebut…,Obsidian,,gunung api
+GEO-02-001,GEO-02,1,Kebun sayur di lereng gunung api sangat subur karena tanahnya terbentuk dari abu letusan. Jenis tanah ini disebut tanah…,Andosol (vulkanis),,kebun sayur
+GEO-02-002,GEO-02,1,Tanah hasil endapan sungai yang subur di dataran rendah disebut tanah…,Aluvial,,
+GEO-02-003,GEO-02,2,Horizon tanah lapisan atas yang kaya bahan organik dan dipakai bercocok tanam disebut horizon…,A (topsoil),,
+GEO-02-004,GEO-02,2,Tanah dari bahan organik yang tergenang dan bersifat asam disebut tanah…,Organosol (gambut),,
+GEO-02-005,GEO-02,2,Petani di lereng bukit membuat sawah bertingkat-tingkat agar tanah tidak hanyut. Metode konservasi mekanik ini disebut…,Terasering,,sawah
+GEO-03-001,GEO-03,1,"Awan, hujan, dan petir yang dialami warga sehari-hari terjadi di lapisan atmosfer paling bawah, yaitu…",Troposfer,,cuaca
+GEO-03-002,GEO-03,1,Lapisan ozon yang menyerap ultraviolet berada di lapisan…,Stratosfer,,
+GEO-03-003,GEO-03,1,Lapisan atmosfer yang memantulkan gelombang radio adalah…,Ionosfer (termosfer),,
+GEO-03-004,GEO-03,1,Angin selalu bertiup dari daerah bertekanan … ke daerah bertekanan rendah.,Tinggi,,
+GEO-03-005,GEO-03,2,"Klasifikasi iklim yang membagi iklim menjadi A tropis, B kering, C sedang, D dingin, dan E kutub adalah klasifikasi…",Köppen,,
+GEO-03-006,GEO-03,2,"Menurut Schmidt–Ferguson, bulan basah adalah bulan dengan curah hujan lebih dari … mm.",100,,
+GEO-03-007,GEO-03,2,Klasifikasi iklim yang dipakai untuk pertanian dengan batas bulan basah lebih dari 200 mm adalah klasifikasi…,Oldeman,,
+GEO-03-008,GEO-03,3,"Menurut rumus Braak, berapa suhu rata-rata kota pada ketinggian 1.500 m?","17,3 °C","26,3 − 0,6 × 15.",
+GEO-03-009,GEO-03,2,"Di Indonesia, angin muson barat yang bertiup sekitar Oktober–April membawa musim…",Hujan,,
+GEO-03-010,GEO-03,1,"Kota di pegunungan terasa lebih sejuk daripada kota di pantai. Menurut rumus Braak, suhu turun sekitar … °C setiap naik 100 m.","0,6",,pegunungan
+GEO-03-011,GEO-03,2,"Petani di Jawa mulai menanam padi sekitar Oktober, saat angin muson yang membawa hujan mulai bertiup. Angin muson ini adalah muson…",Barat,,sawah
+GEO-03-012,GEO-03,3,"Menurut Schmidt–Ferguson, nilai Q dihitung dari rata-rata bulan kering dibagi rata-rata…, dikali 100%.",Bulan basah,,
+GEO-04-001,GEO-04,1,Hujan yang turun di lereng-lereng bukit di sekitar sebuah kota akhirnya mengalir ke satu sungai besar. Wilayah tangkapan air seperti ini disebut…,Daerah aliran sungai (DAS),,sungai
+GEO-04-002,GEO-04,1,Lapisan batuan yang dapat menyimpan dan mengalirkan air tanah disebut…,Akuifer,,
+GEO-04-003,GEO-04,1,Lebar laut teritorial menurut UNCLOS 1982 adalah … mil laut dari garis pangkal.,12,,
+GEO-04-004,GEO-04,2,Lebar zona ekonomi eksklusif menurut UNCLOS 1982 adalah … mil laut.,200,,
+GEO-04-005,GEO-04,2,Pola aliran sungai yang menyebar dari puncak gunung disebut pola…,Radial sentrifugal,,
+GEO-04-006,GEO-04,2,Danau Toba terbentuk sebagai danau…,Tektonik-vulkanik (kaldera),,
+GEO-04-007,GEO-04,2,Siklus hidrologi ketika uap air laut terkondensasi lalu turun sebagai hujan langsung di laut disebut siklus…,Pendek,,
+GEO-04-008,GEO-04,2,Sumur di sebuah desa memancarkan air tanpa dipompa karena airnya berasal dari akuifer yang tertekan. Sumur seperti ini disebut sumur…,Artesis,,air sumur
+GEO-04-009,GEO-04,3,Zona laut dengan kedalaman sampai sekitar 200 m disebut zona…,Neritik,,
+IND-01-001,IND-01,1,Letak Indonesia di antara Benua Asia dan Australia serta Samudra Hindia dan Pasifik disebut letak…,Geografis,,
+IND-01-002,IND-01,1,"Letak Indonesia di pertemuan Lempeng Indo-Australia, Eurasia, dan Pasifik disebut letak…",Geologis,,
+IND-01-003,IND-01,1,Letak astronomis Indonesia membuat iklimnya…,Tropis,,
+IND-01-004,IND-01,1,Deklarasi yang menjadikan laut di antara pulau-pulau bagian wilayah Indonesia adalah Deklarasi…,Djuanda,,
+IND-01-005,IND-01,2,Deklarasi Djuanda dicetuskan pada tanggal…,13 Desember 1957,,
+IND-01-006,IND-01,1,Jalur pelayaran internasional yang ditetapkan melalui perairan Indonesia disebut…,Alur Laut Kepulauan Indonesia (ALKI),,
+IND-01-007,IND-01,2,Zona waktu WITA berselisih berapa jam dari UTC?,UTC+8,,
+IND-01-008,IND-01,3,ALKI diatur dalam PP Nomor … Tahun 2002.,37,,
+IND-01-009,IND-01,2,Indonesia banyak gunung api sehingga tanahnya subur tetapi rawan gempa. Letak yang menyebabkan keadaan ini adalah letak…,Geologis,,gunung api
+IND-01-010,IND-01,2,Kapal-kapal dagang dunia ramai melintasi Selat Malaka. Letak yang membuat Indonesia berada di jalur perdagangan dunia adalah letak…,Geografis,,pelabuhan
+IND-02-001,IND-02,1,Batu bara yang ditambang di Kalimantan Timur tidak akan terbentuk kembali dalam rentang waktu manusia. Sumber daya ini termasuk sumber daya…,Tidak dapat diperbarui,,tambang
+IND-02-002,IND-02,1,Pengolahan bahan mentah di dalam negeri untuk menambah nilai tambah disebut…,Hilirisasi,,
+IND-02-003,IND-02,1,Provinsi penghasil timah utama di Indonesia adalah…,Kepulauan Bangka Belitung,,
+IND-02-004,IND-02,2,Daerah penghasil nikel utama di Indonesia terletak di pulau…,Sulawesi (dan Maluku Utara),,
+IND-02-005,IND-02,2,Tambang tembaga dan emas Grasberg terletak di…,Papua,,
+IND-02-006,IND-02,2,"Pasal UUD 1945 yang menyatakan bumi, air, dan kekayaan alam dikuasai negara untuk kemakmuran rakyat adalah Pasal…",33 ayat (3),,
+IND-02-007,IND-02,2,"Ikan di laut dapat diperbarui, tetapi tangkapan nelayan di sebuah teluk terus berkurang karena ditangkap melebihi daya pulihnya. Prinsip pengelolaan yang dilanggar adalah prinsip…",Berkelanjutan,,nelayan
+IND-02-008,IND-02,3,"Sumber daya alam yang tidak akan habis meskipun dipakai terus, seperti sinar matahari, disebut sumber daya…",Tidak habis,,
+IND-03-001,IND-03,1,Garis yang memisahkan fauna Asiatis dan fauna peralihan disebut garis…,Wallace,,
+IND-03-002,IND-03,1,"Warga di Sulawesi mengenal anoa, hewan yang tidak ditemukan di Kalimantan maupun Papua. Anoa termasuk fauna…",Peralihan (Wallacea),,satwa lokal
+IND-03-003,IND-03,2,Garis Weber terletak di sebelah … Sulawesi dan Nusa Tenggara.,Timur,,
+IND-03-004,IND-03,2,Faktor persebaran flora dan fauna yang berasal dari tanah disebut faktor…,Edafik,,
+IND-03-005,IND-03,2,"Padang rumput dengan pohon jarang, seperti di Nusa Tenggara Timur, disebut bioma…",Sabana,,savana NTT
+PEN-01-001,PEN-01,1,Pertumbuhan penduduk alami dihitung dari kelahiran dikurangi…,Kematian,,
+PEN-01-002,PEN-01,1,"Setelah lulus sekolah, banyak pemuda dari sebuah desa pindah ke kota untuk bekerja. Perpindahan dari desa ke kota ini disebut…",Urbanisasi,,urbanisasi
+PEN-01-003,PEN-01,1,"Perpindahan penduduk antarpulau di dalam negeri, terutama yang diatur pemerintah, disebut…",Transmigrasi,,
+PEN-01-004,PEN-01,1,Piramida penduduk dengan alas lebar karena kelahiran tinggi disebut piramida…,Ekspansif,,
+PEN-01-005,PEN-01,1,Rasio ketergantungan membandingkan penduduk usia 0–14 dan 65 tahun ke atas dengan penduduk usia…,15–64 tahun,,
+PEN-01-006,PEN-01,2,Angka kelahiran kasar (CBR) dihitung per … penduduk.,1.000,,
+PEN-01-007,PEN-01,3,Sebuah kecamatan berpenduduk 50.000 jiwa mencatat 1.000 kelahiran dalam setahun. Berapa CBR-nya?,20 per 1.000 penduduk,,
+PEN-01-008,PEN-01,3,"Penduduk usia 0–14 tahun 300, usia 65 tahun ke atas 100, dan usia 15–64 tahun 800. Berapa rasio ketergantungannya?",50,(300 + 100) : 800 × 100.,
+PEN-01-009,PEN-01,2,Banyak pemuda dari sebuah desa pindah ke kota karena di kota lebih banyak lapangan kerja. Faktor lapangan kerja di kota disebut faktor…,Penarik,,urbanisasi
+PEN-01-010,PEN-01,2,Proporsi penduduk usia produktif sangat besar sehingga rasio ketergantungan rendah. Keadaan ini disebut…,Bonus demografi,,
+PEN-02-001,PEN-02,1,"Ukuran kualitas penduduk yang merangkum pendidikan, kesehatan, dan pendapatan disebut…",Indeks Pembangunan Manusia (IPM),,
+PEN-02-002,PEN-02,2,Sensus penduduk terakhir di Indonesia dilaksanakan pada tahun…,2020,,
+PEN-02-003,PEN-02,2,Pulau tempat penduduk Indonesia paling terpusat adalah…,Jawa,,
+PEN-02-004,PEN-02,2,Sebutkan satu upaya pemerintah menekan pertumbuhan penduduk.,Keluarga berencana (KB),,
+PEN-02-005,PEN-02,2,Posyandu di sebuah desa memantau berat badan balita dan memberi imunisasi. Upaya ini bertujuan meningkatkan kualitas penduduk dari segi…,Kesehatan,,posyandu
+PEN-03-001,PEN-03,1,Suhu rata-rata di banyak daerah terus naik karena gas rumah kaca di atmosfer bertambah. Gejala kenaikan suhu bumi ini disebut…,Pemanasan global,,cuaca
+PEN-03-002,PEN-03,2,Kajian dampak lingkungan yang wajib bagi usaha berdampak penting disebut…,AMDAL,,
+PEN-03-003,PEN-03,2,SDGs berisi berapa tujuan?,17,,
+PEN-03-004,PEN-03,2,Pembangunan yang memenuhi kebutuhan kini tanpa mengorbankan generasi mendatang disebut pembangunan…,Berkelanjutan,,
+PEN-03-005,PEN-03,2,Bekas tambang pasir di sebuah desa dibiarkan menjadi lubang tanpa ditanami kembali. Kegiatan pemulihan lahan bekas tambang yang tidak dilakukan disebut…,Reklamasi,,tambang pasir
+BEN-01-001,BEN-01,1,Kampung di bantaran sungai tergenang setiap musim hujan. Banjir termasuk kelompok bencana…,Hidrometeorologis,,banjir
+BEN-01-002,BEN-01,1,"Gempa bumi, tsunami, dan letusan gunung api termasuk bencana…",Geologis,,
+BEN-01-003,BEN-01,1,Ukuran energi yang dilepaskan gempa disebut…,Magnitudo,,
+BEN-01-004,BEN-01,1,Status gunung api tertinggi menurut PVMBG adalah Level IV yang disebut…,Awas,,
+BEN-01-005,BEN-01,2,Skala yang mengukur dampak gempa yang dirasakan di suatu tempat disebut skala…,MMI (intensitas),,
+BEN-01-006,BEN-01,2,Undang-undang penanggulangan bencana adalah UU Nomor … Tahun 2007.,24,,
+BEN-01-007,BEN-01,2,"Wabah penyakit termasuk bencana alam, nonalam, atau sosial menurut UU Nomor 24 Tahun 2007?",Nonalam,,
+BEN-01-008,BEN-01,2,Warga pesisir melihat air laut tiba-tiba surut jauh setelah gempa kuat. Bencana yang mungkin segera datang adalah…,Tsunami,,pesisir
+BEN-01-009,BEN-01,3,Status gunung api Level III disebut…,Siaga,,
+BEN-02-001,BEN-02,1,Pemerintah membangun tanggul di sepanjang sungai sebelum musim hujan untuk mengurangi risiko banjir. Upaya sebelum bencana seperti ini disebut…,Mitigasi,,banjir
+BEN-02-002,BEN-02,1,Lembaga penanggulangan bencana di tingkat pusat adalah…,BNPB,,
+BEN-02-003,BEN-02,1,Membangun kembali rumah dan fasilitas setelah bencana termasuk tahap…,Rekonstruksi,,
+BEN-02-004,BEN-02,2,Memulihkan layanan dasar setelah bencana termasuk tahap…,Rehabilitasi,,
+BEN-02-005,BEN-02,2,Pelatihan evakuasi termasuk mitigasi struktural atau nonstruktural?,Nonstruktural,,
+BEN-02-006,BEN-02,2,"Lembaga yang memantau cuaca, iklim, dan gempa adalah…",BMKG,,
+BEN-02-007,BEN-02,2,Sekolah di daerah rawan gempa mengadakan latihan evakuasi setiap semester. Tahap penanggulangan bencana ini termasuk…,Prabencana (mitigasi dan kesiapsiagaan),,sekolah
+BEN-02-008,BEN-02,2,Warga di daerah langganan banjir membangun rumah panggung. Upaya menyesuaikan diri dengan bencana seperti ini disebut…,Adaptasi,,banjir
+BEN-02-009,BEN-02,3,Kearifan lokal di Simeulue yang membantu warga selamat dari tsunami disebut…,Smong,,
+WIL-01-001,WIL-01,1,"Wilayah yang dihubungkan oleh aktivitas, misalnya kota dan daerah sekitarnya, disebut wilayah…",Fungsional,,
+WIL-01-002,WIL-01,1,Teori tempat sentral dikemukakan oleh…,Walter Christaller,,
+WIL-01-003,WIL-01,1,Teori kutub pertumbuhan dikemukakan oleh…,François Perroux,,
+WIL-01-004,WIL-01,2,Faktor interaksi Ullman ketika ada wilayah ketiga yang memenuhi kebutuhan sehingga interaksi dua wilayah melemah disebut…,Kesempatan berintervensi (intervening opportunity),,
+WIL-01-005,WIL-01,1,"Dalam model gravitasi, kekuatan interaksi dua kota sebanding dengan hasil kali jumlah penduduknya dan berbanding terbalik dengan…",Kuadrat jarak (d²),,
+WIL-01-006,WIL-01,3,"Kota A berpenduduk 10.000 jiwa dan Kota B 40.000 jiwa, berjarak 60 km. Berapa jarak titik henti dari Kota A?",20 km,60 : (1 + √(40.000 : 10.000)) = 60 : 3.,
+WIL-01-007,WIL-01,3,Indeks konektivitas β dihitung dari jumlah jalur dibagi…,Jumlah simpul,,
+WIL-01-008,WIL-01,2,"Desa pegunungan memasok sayur ke kota, sedangkan kota memasok pupuk dan alat pertanian ke desa. Faktor interaksi Ullman yang tergambar adalah…",Saling melengkapi (complementarity),,pasar sayur
+WIL-01-009,WIL-01,2,Jalan baru yang mulus memperpendek waktu tempuh desa ke kota sehingga warga makin sering ke kota. Faktor interaksi Ullman yang meningkat adalah…,Kemudahan perpindahan (transferability),,jalan desa
+WIL-02-001,WIL-02,1,Teori struktur kota berbentuk lingkaran-lingkaran zona dari pusat kota dikemukakan oleh…,E. W. Burgess,,
+WIL-02-002,WIL-02,1,Teori struktur kota berbentuk sektor mengikuti jalur transportasi dikemukakan oleh…,Homer Hoyt,,
+WIL-02-003,WIL-02,1,Teori struktur kota dengan beberapa pusat kegiatan disebut teori…,Inti ganda (Harris dan Ullman),,
+WIL-02-004,WIL-02,2,Pola permukiman desa yang memanjang biasanya mengikuti…,"Jalan, sungai, atau garis pantai",,
+WIL-02-005,WIL-02,2,Pusat kegiatan bisnis di tengah kota disebut…,CBD (central business district),,
+WIL-02-006,WIL-02,2,Rumah-rumah di sebuah desa mengumpul di sekitar mata air di lembah. Pola permukiman ini disebut pola…,Memusat,,mata air
+WIL-02-007,WIL-02,2,"Di sebuah kota, kawasan industri dan permukiman memanjang mengikuti rel kereta dan jalan raya dari pusat kota. Teori struktur kota yang paling sesuai adalah teori…",Sektoral (Hoyt),,kota
+WIL-02-008,WIL-02,2,Rumah-rumah di sebuah kampung nelayan berjajar mengikuti garis pantai. Pola permukiman ini disebut pola…,Memanjang,,nelayan
+WIL-02-009,WIL-02,3,Sebutkan satu dampak interaksi desa–kota bagi desa.,"Satu di antara: pengetahuan bertambah, tenaga kerja muda pindah ke kota",,
+WIL-03-001,WIL-03,1,Negara dengan sektor industri dan jasa dominan serta pertumbuhan penduduk rendah disebut negara…,Maju,,
+WIL-03-002,WIL-03,2,Lembaga yang mengelompokkan negara menurut pendapatan nasional bruto per kapita adalah…,Bank Dunia,,
+WIL-03-003,WIL-03,2,Negara yang masih bergantung pada ekspor bahan mentah dan sektor pertanian disebut negara…,Berkembang,,
+WIL-03-004,WIL-03,2,Sebutkan satu bentuk interaksi negara maju dan berkembang.,"Satu di antara: perdagangan, investasi, bantuan pembangunan, alih teknologi, migrasi tenaga kerja",,
+WIL-03-005,WIL-03,2,Pabrik mobil dari Jepang dibangun di Karawang dan memakai tenaga kerja lokal. Bentuk interaksi negara maju dan berkembang ini adalah…,Investasi,,pabrik
+WIL-04-001,WIL-04,1,Faktor pendorong utama globalisasi adalah kemajuan transportasi dan…,Komunikasi,,
+WIL-04-002,WIL-04,2,Sebutkan satu kerja sama kawasan Asia Tenggara yang diikuti Indonesia.,ASEAN,,
+WIL-04-003,WIL-04,2,Sebutkan satu dampak negatif globalisasi bagi wilayah.,"Satu di antara: persaingan produk, ketimpangan antarwilayah",,
+WIL-04-004,WIL-04,2,Forum kerja sama negara-negara berekonomi besar yang diikuti Indonesia dan memakai angka 20 dalam namanya adalah…,G20,,
+WIL-04-005,WIL-04,2,Produk tenun dari sebuah kampung di NTT kini dipesan pembeli dari luar negeri lewat internet. Gejala yang tergambar adalah…,Globalisasi,,tenun

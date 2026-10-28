@@ -19,6 +19,13 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-bahasa-indonesia.html` | Knowledge map for Bahasa Indonesia (22 topics): reading, nonfiction and literary texts, language rules. |
 | `docs/peta-bahasa-inggris.html` | Knowledge map for Bahasa Inggris (22 topics): reading skills, text types, grammar. |
 | `docs/peta-sejarah.html` | Knowledge map for school and TKA history (24 topics), from historical method to Reformasi, plus world history. Separate from the LCCM kit (`peta.html`). |
+| `docs/bank-ekonomi.html` | Short-answer question bank for Ekonomi (215 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-geografi.html` | Short-answer question bank for Geografi (164 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-sosiologi.html` | Short-answer question bank for Sosiologi (156 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-ppkn.html` | Short-answer question bank for Pendidikan Pancasila (155 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-sejarah.html` | Short-answer question bank for Sejarah (210 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-bahasa-indonesia.html` | Short-answer question bank for Bahasa Indonesia (169 questions, about a fifth to a quarter with everyday-context items). |
+| `docs/bank-bahasa-inggris.html` | Short-answer question bank for Bahasa Inggris (151 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/modul-vektor-gerak.html` | Learning module Vektor dan Gerak: 7 lessons linking vectors with displacement, speed, velocity and relative motion, then 42 exercises in 5 stages from easy to TKA level (14 TKA-style items), with answer checking, hints and worked solutions. |
 | `docs/modul-vektor-gerak.pdf` | Printable version of the Vektor dan Gerak module (39 pages A4): 5 sub-chapters, 105 exercises from easy to TKA level including 13 TKA-style items, Uji Kompetensi, and an answer key. Source in `print/`. |
 | `docs/tka.html` | TKA 2025 practice: transcribed exam items per subject, with figure descriptions, answer checking against proposed (unofficial) keys, and per-item notes. |

@@ -20,7 +20,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 | Any content work | `specs/agent-workflow.md`, then `specs/quality-checklist.md` |
 | Maps (`data/maps/`) | `specs/map-spec.md` |
 | Modules (`data/modules/`, `print/`) | `specs/module-spec.md`, `print/README.md` |
-| Questions (`data/questions.csv`) | `specs/question-spec.md` |
+| Questions (`data/questions.csv`, `data/questions/`) | `specs/question-spec.md` |
 | TKA banks (`data/tka/`) | `specs/tka-spec.md` |
 | Generating TKA items (`data/tka-generated/`) | `specs/tka-generation.md`, `specs/tka-item-types.md`, `specs/tka-templates/<subject>.md` |
 
@@ -52,6 +52,7 @@ Python 3 standard library only; no dependencies to install.
 data/maps/<id>.json      subject maps (source of truth)
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
+data/questions/<id>.csv  subject question banks, one per map (feeds docs/bank-<id>.html)
 data/modules/<id>.json   learning modules: lessons and staged exercises
 print/                   printable PDF modules (content.py, render.py, print.mjs, <id>.pdf); see print/README.md
 data/tka/<id>.json       TKA exam banks (transcribed papers, proposed keys)
