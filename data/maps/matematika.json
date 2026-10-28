@@ -4,7 +4,8 @@
   "title": "Peta Materi Matematika SMA",
   "lead": "Seluruh materi Matematika SMA, dari eksponen sampai integral, disusun sebagai satu peta. Setiap simpul memuat konsep, rumus inti, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
   "blurb": "Aljabar, fungsi, trigonometri dan geometri, statistika dan peluang, sampai kalkulus, lengkap dengan rumus inti dan alur prasyarat.",
-  "source_note": "Mencakup buku Matematika (wajib) kelas X–XII dan Matematika Tingkat Lanjut kelas XI–XII Kurikulum Merdeka. Label “lanjut” menandai materi buku Tingkat Lanjut. Pembagian kelas mengikuti ringkasan umum; cocokkan dengan buku sekolah.",
+  "source_note": "Mencakup buku Matematika (wajib) kelas X–XII dan Matematika Tingkat Lanjut kelas XI–XII Kurikulum Merdeka. Pembagian kelas mengikuti ringkasan umum; cocokkan dengan buku sekolah.",
+  "lanjut_note": "Tanda Lanjut menandai materi buku Matematika Tingkat Lanjut, mapel pilihan kelas XI–XII. TKA 2025 Matematika Tingkat Lanjut juga menguji komposisi fungsi, vektor, lingkaran, dan transformasi geometri dari buku Matematika Umum, jadi peserta mapel pilihan tetap mempelajari simpul-simpul itu.",
   "path_title": "Alur prasyarat",
   "path_note": "Urutan belajar yang disarankan. Aljabar dan fungsi menjadi alat untuk trigonometri, statistika, dan terutama kalkulus.",
   "path": [
@@ -91,7 +92,7 @@
          ],
          "traps": ["Mengalikan atau membagi pertidaksamaan dengan bilangan negatif membalik tanda pertidaksamaannya.", "Kendala x ≥ 0 dan y ≥ 0 sering tersirat dalam soal cerita (jumlah barang tidak mungkin negatif)."]},
 
-        {"code": "ALJ-05", "title": "Matriks", "scope": "Operasi, determinan, invers", "src": "Kelas XI (lanjut)", "tier": 2,
+        {"code": "ALJ-05", "title": "Matriks", "scope": "Operasi, determinan, invers", "src": "Kelas XI", "tier": 2, "lanjut": true,
          "sum": "Operasi matriks, determinan, invers, dan penyelesaian persamaan matriks.",
          "blocks": [
            {"h": "Operasi", "li": [
@@ -107,7 +108,7 @@
          ],
          "traps": ["Urutan perkalian invers tidak boleh dibalik: A<sup>−1</sup>B berbeda dengan BA<sup>−1</sup>."]},
 
-        {"code": "ALJ-06", "title": "Polinomial", "scope": "Pembagian, teorema sisa", "src": "Kelas XI (lanjut)", "tier": 2,
+        {"code": "ALJ-06", "title": "Polinomial", "scope": "Pembagian, teorema sisa", "src": "Kelas XI", "tier": 2, "lanjut": true,
          "sum": "Pembagian polinomial, teorema sisa dan teorema faktor, serta hubungan akar dengan koefisien.",
          "blocks": [
            {"h": "Pembagian", "li": [
@@ -121,7 +122,7 @@
          ],
          "traps": ["Sisa pembagian oleh (x + 2) adalah P(−2), bukan P(2)."]},
 
-        {"code": "ALJ-07", "title": "Bilangan kompleks", "scope": "Bentuk a + bi, bentuk polar", "src": "Kelas XI (lanjut)", "tier": 3,
+        {"code": "ALJ-07", "title": "Bilangan kompleks", "scope": "Bentuk a + bi, bentuk polar", "src": "Kelas XI", "tier": 3, "lanjut": true,
          "sum": "Bilangan imajiner, operasi bilangan kompleks, modulus dan argumen, bentuk polar, dan rumus De Moivre.",
          "blocks": [
            {"h": "Konsep", "li": [
@@ -183,7 +184,7 @@
          ],
          "traps": ["f(x − 3) menggeser grafik ke kanan, bukan ke kiri."]},
 
-        {"code": "FUN-04", "title": "Fungsi trigonometri", "scope": "Grafik, periode, amplitudo", "src": "Kelas XI (lanjut)", "tier": 2,
+        {"code": "FUN-04", "title": "Fungsi trigonometri", "scope": "Grafik, periode, amplitudo", "src": "Kelas XI", "tier": 2, "lanjut": true,
          "sum": "Grafik fungsi sinus, kosinus, dan tangen, beserta amplitudo, periode, dan nilai maksimum-minimum.",
          "blocks": [
            {"h": "Bentuk umum y = A sin(kx + c) + d", "li": [
@@ -230,7 +231,7 @@
          ],
          "traps": ["Pada luas ½ ab sin C, sudut C harus sudut yang diapit sisi a dan b."]},
 
-        {"code": "GEO-03", "title": "Identitas dan persamaan trigonometri", "scope": "Jumlah sudut, sudut rangkap", "src": "Kelas XI (lanjut)", "tier": 2,
+        {"code": "GEO-03", "title": "Identitas dan persamaan trigonometri", "scope": "Jumlah sudut, sudut rangkap", "src": "Kelas XI", "tier": 2, "lanjut": true,
          "sum": "Rumus jumlah dan selisih sudut, sudut rangkap, dan penyelesaian umum persamaan trigonometri.",
          "blocks": [
            {"h": "Rumus", "li": [
@@ -273,7 +274,7 @@
          ],
          "traps": ["Rumus x₁x + y₁y = r² hanya berlaku bila titik (x₁, y₁) terletak pada lingkaran."]},
 
-        {"code": "GEO-06", "title": "Irisan kerucut", "scope": "Parabola, elips, hiperbola", "src": "Kelas XII (lanjut)", "tier": 2,
+        {"code": "GEO-06", "title": "Irisan kerucut", "scope": "Parabola, elips, hiperbola", "src": "Kelas XII", "tier": 2, "lanjut": true,
          "sum": "Persamaan baku parabola, elips, dan hiperbola beserta fokus, direktriks, sumbu, dan eksentrisitasnya.",
          "blocks": [
            {"h": "Persamaan baku (pusat atau puncak di O)", "table": {"cols": ["Kurva", "Persamaan", "Ciri"], "rows": [
@@ -365,7 +366,7 @@
       "id": "KAL", "name": "Kalkulus", "short": "Kalkulus",
       "note": "Limit, turunan dan penerapannya, serta integral. Dibahas dalam Matematika Tingkat Lanjut kelas XII.",
       "topics": [
-        {"code": "KAL-01", "title": "Limit fungsi", "scope": "Aljabar, tak hingga, trigonometri", "src": "Kelas XII (lanjut)", "tier": 1,
+        {"code": "KAL-01", "title": "Limit fungsi", "scope": "Aljabar, tak hingga, trigonometri", "src": "Kelas XII", "tier": 1, "lanjut": true,
          "sum": "Menentukan limit dengan substitusi, faktorisasi, perkalian sekawan, limit di tak hingga, dan limit trigonometri.",
          "blocks": [
            {"h": "Cara", "li": [
@@ -379,7 +380,7 @@
          ],
          "traps": ["Pangkat pembilang lebih tinggi dari penyebut: limit di tak hingga menuju ±∞; lebih rendah: menuju 0."]},
 
-        {"code": "KAL-02", "title": "Turunan fungsi", "scope": "Aturan turunan", "src": "Kelas XII (lanjut)", "tier": 1,
+        {"code": "KAL-02", "title": "Turunan fungsi", "scope": "Aturan turunan", "src": "Kelas XII", "tier": 1, "lanjut": true,
          "sum": "Definisi turunan dan aturan-aturannya: pangkat, perkalian, pembagian, rantai, dan fungsi trigonometri.",
          "blocks": [
            {"h": "Aturan", "li": [
@@ -391,7 +392,7 @@
          ],
          "traps": ["Turunan cos x bertanda negatif: −sin x."]},
 
-        {"code": "KAL-03", "title": "Penerapan turunan", "scope": "Naik-turun, stasioner, optimasi", "src": "Kelas XII (lanjut)", "tier": 1,
+        {"code": "KAL-03", "title": "Penerapan turunan", "scope": "Naik-turun, stasioner, optimasi", "src": "Kelas XII", "tier": 1, "lanjut": true,
          "sum": "Gradien garis singgung, interval naik dan turun, titik stasioner, nilai maksimum-minimum, dan soal optimasi.",
          "blocks": [
            {"h": "Penerapan", "li": [
@@ -403,7 +404,7 @@
          ],
          "traps": ["f'(x) = 0 belum tentu titik maksimum atau minimum; bisa titik belok horizontal (contoh f(x) = x³ di x = 0)."]},
 
-        {"code": "KAL-04", "title": "Integral tak tentu", "scope": "Antiturunan, substitusi, parsial", "src": "Kelas XII (lanjut)", "tier": 1,
+        {"code": "KAL-04", "title": "Integral tak tentu", "scope": "Antiturunan, substitusi, parsial", "src": "Kelas XII", "tier": 1, "lanjut": true,
          "sum": "Integral sebagai antiturunan, rumus dasar, integral fungsi trigonometri, serta teknik substitusi dan parsial.",
          "blocks": [
            {"h": "Rumus", "li": [
@@ -415,7 +416,7 @@
          ],
          "traps": ["Jangan lupa konstanta C pada integral tak tentu."]},
 
-        {"code": "KAL-05", "title": "Integral tentu dan luas daerah", "scope": "Teorema dasar kalkulus", "src": "Kelas XII (lanjut)", "tier": 1,
+        {"code": "KAL-05", "title": "Integral tentu dan luas daerah", "scope": "Teorema dasar kalkulus", "src": "Kelas XII", "tier": 1, "lanjut": true,
          "sum": "Menghitung integral tentu dengan teorema dasar kalkulus, sifat-sifatnya, dan luas daerah di antara kurva.",
          "blocks": [
            {"h": "Rumus", "li": [

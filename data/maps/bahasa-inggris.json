@@ -5,6 +5,7 @@
  "lead": "Seluruh materi Bahasa Inggris SMA disusun sebagai satu peta: keterampilan membaca, jenis teks beserta struktur dan ciri kebahasaannya, serta tata bahasa yang sering diuji. Penjelasan dalam bahasa Indonesia, contoh dalam bahasa Inggris. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
  "blurb": "Membaca untuk gagasan, detail, inferensi, dan evaluasi; jenis teks dari descriptive sampai discussion; tenses, passive, conditional, dan klausa.",
  "source_note": "Disusun menurut keterampilan, jenis teks, dan tata bahasa. Capaian Pembelajaran Bahasa Inggris Kurikulum Merdeka menyebut jenis teks tanpa mengikatnya pada kelas tertentu, dan buku tiap kelas disusun per tema; label kelas mengikuti kebiasaan umum dan hanya perkiraan. Domain membaca mengikuti tipe soal TKA 2025.",
+ "lanjut_note": "Tanda Lanjut menandai simpul yang menjadi fokus TKA 2025 Bahasa Inggris mapel pilihan (Tingkat Lanjut): exposition dan discussion text berkalimat kompleks, kredibilitas informasi, serta fakta dan opini. TKA mapel wajib lebih banyak memakai narrative, procedure, dan descriptive text.",
  "path_title": "Alur belajar",
  "path_note": "Urutan belajar yang disarankan: strategi membaca dulu, lalu jenis teks dari yang paling sederhana, lalu tata bahasa yang menopangnya.",
  "path": [
@@ -169,6 +170,7 @@
      "scope": "Fact, opinion, credibility",
      "src": "Kelas XI–XII",
      "tier": 1,
+     "lanjut": true,
      "sum": "Membedakan fakta dan opini, menilai kekuatan argumen dan kredibilitas sumber, serta memilih informasi tambahan yang memperkuat teks.",
      "blocks": [
       {
@@ -331,6 +333,7 @@
      "scope": "Thesis, arguments, recommendation",
      "src": "Kelas XI",
      "tier": 1,
+     "lanjut": true,
      "sum": "Teks argumentatif yang meyakinkan pembaca (analytical) atau membujuk pembaca melakukan sesuatu (hortatory).",
      "blocks": [
       {
@@ -371,6 +374,7 @@
      "scope": "Issue, pros, cons",
      "src": "Kelas XI–XII",
      "tier": 1,
+     "lanjut": true,
      "sum": "Teks yang menyajikan isu dari dua sudut pandang sebelum memberi kesimpulan atau rekomendasi.",
      "blocks": [
       {

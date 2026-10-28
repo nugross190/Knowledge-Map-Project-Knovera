@@ -5,6 +5,7 @@
  "lead": "Seluruh materi Bahasa Indonesia SMA disusun sebagai satu peta: keterampilan membaca, jenis teks nonfiksi dan sastra, serta kaidah kebahasaan. Setiap simpul memuat struktur, ciri kebahasaan, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
  "blurb": "Membaca kritis dan membaca data, teks nonfiksi dari laporan sampai surat lamaran, sastra, serta ejaan, kata, kalimat, dan paragraf.",
  "source_note": "Disusun menurut keterampilan dan jenis teks, bukan nomor bab, karena urutan bab Bahasa Indonesia Kurikulum Merdeka berbeda antarbuku. Penempatan kelas mengikuti ringkasan umum: kelas X (laporan hasil observasi, anekdot, eksposisi, hikayat, negosiasi, debat, puisi), kelas XI (prosedur, eksplanasi, karya ilmiah, resensi, drama, cerpen), kelas XII (surat lamaran, novel sejarah, kritik dan esai, artikel opini). Domain membaca mengikuti tipe soal TKA 2025.",
+ "lanjut_note": "Tanda Lanjut menandai simpul yang banyak diuji di TKA 2025 Bahasa Indonesia mapel pilihan (Tingkat Lanjut) tetapi jarang di mapel wajib: kelogisan argumen, parafrasa data tabel atau grafik, majas dan citraan, afiks, serta frasa, klausa, dan kalimat. Simpul lain tetap dipelajari di kedua mapel.",
  "path_title": "Alur belajar",
  "path_note": "Urutan belajar yang disarankan: kuasai cara membaca dulu, lalu kenali jenis teks, lalu kaidah bahasa yang sering diuji.",
  "path": [
@@ -209,6 +210,7 @@
      "scope": "Fakta, opini, deduksi, induksi, sesat nalar",
      "src": "Kelas X–XII",
      "tier": 1,
+     "lanjut": true,
      "sum": "Membedakan fakta dan opini, mengenali penalaran deduktif dan induktif, silogisme, serta kesalahan nalar dalam argumen.",
      "blocks": [
       {
@@ -262,6 +264,7 @@
      "scope": "Tabel, grafik, infografik",
      "src": "Kelas X–XII",
      "tier": 1,
+     "lanjut": true,
      "sum": "Menafsirkan tabel, grafik, dan infografik dalam teks, mencocokkan pernyataan dengan data, dan menyimpulkan dari dua teks atau lebih.",
      "blocks": [
       {
@@ -576,6 +579,7 @@
      "scope": "Unsur fisik dan batin, majas, citraan",
      "src": "Kelas X",
      "tier": 1,
+     "lanjut": true,
      "sum": "Unsur fisik dan batin puisi, jenis majas dan citraan, serta rima dalam puisi lama dan baru.",
      "blocks": [
       {
@@ -709,6 +713,7 @@
      "scope": "Imbuhan, kata baku, kata ulang",
      "src": "Semua kelas",
      "tier": 1,
+     "lanjut": true,
      "sum": "Kata baku dan tidak baku, aturan imbuhan meN- dan peN-, serta kata ulang dan gabungan kata.",
      "blocks": [
       {
@@ -781,6 +786,7 @@
      "scope": "Syarat efektif, jenis konjungsi",
      "src": "Semua kelas",
      "tier": 1,
+     "lanjut": true,
      "sum": "Syarat kalimat efektif, kalimat tunggal dan majemuk, serta pemakaian konjungsi intrakalimat dan antarkalimat.",
      "blocks": [
       {

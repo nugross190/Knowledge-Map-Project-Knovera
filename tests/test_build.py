@@ -158,6 +158,19 @@ class MapsTest(unittest.TestCase):
         for needle in ("summary has", "no traps", "more than one bold", "tier mix"):
             self.assertIn(needle, warnings)
 
+    def test_lanjut_tag(self):
+        m = json.loads(json.dumps(self.maps["fisika"]))
+        m["domains"][0]["topics"][0]["lanjut"] = "ya"
+        self.assertIn("'lanjut' must be true or false", " | ".join(build.validate_map("fisika", m)))
+        m["domains"][0]["topics"][0]["lanjut"] = True
+        self.assertEqual(build.validate_map("fisika", m), [])
+        self.assertIn("no 'lanjut_note'", " | ".join(build.lint_map("fisika", m)))
+        tagged = {name for name, mp in self.maps.items() if any(t.get("lanjut") for d in mp["domains"] for t in d["topics"])}
+        self.assertTrue({"matematika", "bahasa-indonesia", "bahasa-inggris", "sejarah"} <= tagged, tagged)
+        page = build.map_pages(self.maps, {})["peta-matematika.html"]
+        self.assertIn('id="onlyLanjut"', page)
+        self.assertIn('"lanjut": true', page)
+
     def test_map_pages_render(self):
         pages = build.map_pages(self.maps, {})
         for m in self.maps.values():
