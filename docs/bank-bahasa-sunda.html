@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Bank Soal Bahasa Sunda</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: same catalogue look as Peta Materi. Header + filter rail, then one of three panels: a single question card (Latihan), the full list (Daftar), per-topic results (Kemajuan). */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --indigo:#2B3A78; --soga:#8A5526; --patina:#2C6B63;
+  --indigo-soft:#E4E8F6; --soga-soft:#F3E9DF; --patina-soft:#DFEFEC;
+  --plum:#6E3466; --olive:#5B6A1E; --plum-soft:#F1E4EE; --olive-soft:#ECEFDD;
+  --ok:#2C6B3F; --ok-soft:#E1F0E5; --bad:#A3361C; --bad-soft:#F8E6DF;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.5rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:64ch;color:var(--muted);font-size:1.05rem;margin-top:10px}
+.lbl{font-family:var(--f-label);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;margin-top:22px;border-bottom:2px solid var(--ink);overflow-x:auto}
+.tab{font-family:var(--f-label);font-weight:700;font-size:1.05rem;padding:10px 16px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:6px 6px 0 0;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;padding-block:16px;border-bottom:1px solid var(--line)}
+.fgroup{display:flex;flex-direction:column;gap:6px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font-family:var(--f-label);font-weight:600;font-size:.9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:5px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--c,var(--ink));background:var(--c,var(--ink));color:var(--bg)}
+.seg button:focus-visible,select:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+select,input[type="search"]{font:inherit;font-size:.92rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:5px;padding:6px 8px;max-width:100%}
+select{min-width:0;width:min(320px,100%)}
+.check{display:flex;align-items:center;gap:7px;font-family:var(--f-label);font-size:.92rem;cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--ink)}
+#poolInfo{font-family:var(--f-label);font-size:.92rem;color:var(--muted);margin-left:auto}
+
+.btn{font-family:var(--f-label);font-weight:700;font-size:1rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.btn.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.btn kbd{font-family:var(--f-mono);font-size:.72rem;border:1px solid currentColor;border-radius:3px;padding:0 4px;opacity:.75}
+.btn.small{font-size:.88rem;padding:6px 12px}
+
+/* practice */
+.panel{padding-top:22px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 10px 10px;padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;min-height:340px}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:.82rem;color:var(--c);text-decoration:none;border:1px solid var(--c);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.code:hover{background:var(--soft)}
+.lv{font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.lv1{border:1.3px solid var(--muted);color:var(--muted)}
+.lv2{border:1.3px solid var(--ink)}
+.lv3{background:var(--ink);color:var(--bg)}
+.qtext{font-size:clamp(1.25rem,3.2vw,1.65rem);line-height:1.45;max-width:46ch;text-wrap:pretty}
+.timer{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.timer i{display:block;height:100%;background:var(--c);width:100%}
+.answer{background:var(--soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.answer .a{font-size:1.2rem;font-weight:600}
+.answer .x{font-size:.95rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.score{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-family:var(--f-label);color:var(--muted);font-size:.95rem}
+.score b{color:var(--ink);font-variant-numeric:tabular-nums}
+.hint{font-size:.85rem;color:var(--muted);margin-top:6px}
+.empty{padding:28px;text-align:left;background:var(--surface);border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+
+/* list */
+.listbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.listbar input{flex:1 1 240px;min-width:0;padding:9px 10px}
+.group{margin-top:22px}
+.ghead{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:6px;margin-bottom:6px}
+.ghead h3{font-size:1.15rem;color:var(--c)}
+.ghead span{font-family:var(--f-label);font-size:.88rem;color:var(--muted)}
+.ghead a{font-family:var(--f-label);font-size:.88rem;color:var(--c)}
+.qlist{list-style:none;margin:0;padding:0}
+.qlist li{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.qlist .n{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);padding-top:4px;min-width:6.5em}
+.qlist .body{min-width:0;display:flex;flex-direction:column;gap:4px}
+.qlist .qq{font-size:1rem}
+.qlist details summary{cursor:pointer;font-family:var(--f-label);font-weight:600;font-size:.88rem;color:var(--c);width:max-content}
+.qlist details summary:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.qlist .aa{font-weight:600}
+.qlist .xx{color:var(--muted);font-size:.92rem}
+.ktx{font-family:var(--f-label);font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:9px;background:var(--sunk);color:var(--ink)}
+.mark-ok{color:var(--ok);font-family:var(--f-label);font-size:.8rem}
+.mark-bad{color:var(--bad);font-family:var(--f-label);font-size:.8rem}
+
+/* progress */
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.stat b{display:block;font-family:var(--f-label);font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.88rem;color:var(--muted)}
+.weak{margin-top:20px;background:var(--bad-soft);border-radius:8px;padding:14px 16px}
+.weak h3{color:var(--bad);font-size:1.05rem}
+.weak ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.weak li{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.tbl{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{font-family:var(--f-label);text-align:left;padding:8px 10px;background:var(--sunk);white-space:nowrap}
+td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:middle;font-variant-numeric:tabular-nums}
+td.t{min-width:200px}
+.bar{width:120px;height:9px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%}
+.resetrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px;font-size:.92rem;color:var(--muted)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:640px){
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #poolInfo{margin-left:0;flex-basis:100%}
+  .qcard{padding:18px 16px 20px}
+}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
+    <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
+    <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Mode">
+    <button class="tab" role="tab" id="tab-latihan" aria-controls="p-latihan" aria-selected="true">Latihan</button>
+    <button class="tab" role="tab" id="tab-daftar" aria-controls="p-daftar" aria-selected="false">Daftar soal</button>
+    <button class="tab" role="tab" id="tab-kemajuan" aria-controls="p-kemajuan" aria-selected="false">Kemajuan</button>
+  </div>
+
+  <div class="filters" aria-label="Saring soal">
+    <div class="fgroup"><span class="lbl">Bidang</span><div class="seg" id="fDomain"></div></div>
+    <div class="fgroup"><label class="lbl" for="fTopic">Simpul</label><select id="fTopic"></select></div>
+    <div class="fgroup"><span class="lbl">Tingkat</span><div class="seg" id="fLevel"></div></div>
+    <label class="check" for="fWrong"><input type="checkbox" id="fWrong"> Hanya yang terakhir dijawab salah</label>
+    <label class="check" for="fCtx" id="ctxBox" hidden><input type="checkbox" id="fCtx"> Hanya soal konteks sehari-hari</label>
+    <span id="poolInfo" aria-live="polite"></span>
+  </div>
+
+  <section class="panel" id="p-latihan" role="tabpanel" aria-labelledby="tab-latihan">
+    <div id="practice"></div>
+    <div class="score"><span>Sesi ini: <b id="sRight">0</b> benar dari <b id="sTotal">0</b></span>
+      <label class="check" for="useTimer"><input type="checkbox" id="useTimer"> Batas waktu</label>
+      <select id="timerSec" aria-label="Lama batas waktu" style="width:auto"><option value="5">5 detik</option><option value="10" selected>10 detik</option><option value="15">15 detik</option></select>
+    </div>
+    <p class="hint">Pintasan papan ketik: Spasi = lihat jawaban, B = benar, S = salah, L = lewati.</p>
+  </section>
+
+  <section class="panel" id="p-daftar" role="tabpanel" aria-labelledby="tab-daftar" hidden>
+    <div class="listbar">
+      <input type="search" id="lSearch" placeholder="Cari kata dalam soal atau jawaban…" aria-label="Cari soal">
+      <button class="btn small" id="showAll" type="button">Tampilkan semua jawaban</button>
+      <button class="btn small" id="hideAll" type="button">Sembunyikan jawaban</button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="panel" id="p-kemajuan" role="tabpanel" aria-labelledby="tab-kemajuan" hidden>
+    <div id="progress"></div>
+  </section>
+
+  <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
+</div>
+
+<script>
+const DATA = {"topics": {"map_url": "peta-bahasa-sunda.html", "domains": [{"id": "BSN", "name": "Basa (kebahasaan)", "short": "Basa", "weight": 20.0, "topics": {"BSN-01": "Undak-usuk basa", "BSN-02": "Aksara Sunda", "BSN-03": "Kecap rundayan dan kalimah", "BSN-04": "Babasan jeung paribasa"}}, {"id": "SAS", "name": "Sastra", "short": "Sastra", "weight": 40.0, "topics": {"SAS-01": "Pupuh", "SAS-02": "Wawacan jeung guguritan", "SAS-03": "Sisindiran jeung sajak", "SAS-04": "Carpon jeung novel", "SAS-05": "Dongéng", "SAS-06": "Carita pantun", "SAS-07": "Kawih, kakawihan, jeung tembang", "SAS-08": "Drama Sunda"}}, {"id": "TKS", "name": "Téks nonsastra", "short": "Téks", "weight": 20.0, "topics": {"TKS-01": "Warta", "TKS-02": "Biantara jeung pangjejer acara", "TKS-03": "Sawala jeung artikel", "TKS-04": "Surat jeung iklan"}}, {"id": "BUD", "name": "Budaya Sunda", "short": "Budaya", "weight": 20.0, "topics": {"BUD-01": "Kasenian Sunda", "BUD-02": "Upacara adat jeung kampung adat", "BUD-03": "Kaulinan barudak jeung falsafah Sunda", "BUD-04": "Kerajaan Sunda"}}]}, "questions": [{"id": "BSN-01-001", "t": "BSN-01", "lv": 1, "q": "Ragam bahasa Sunda untuk teman sebaya atau yang sudah akrab disebut…", "a": "Basa loma", "x": ""}, {"id": "BSN-01-002", "t": "BSN-01", "lv": 1, "q": "Kata hormat untuk \"dahar\" bila ditujukan kepada orang lain adalah…", "a": "Tuang", "x": ""}, {"id": "BSN-01-003", "t": "BSN-01", "lv": 1, "q": "Kata hormat untuk \"dahar\" bila dipakai untuk diri sendiri adalah…", "a": "Neda", "x": ""}, {"id": "BSN-01-004", "t": "BSN-01", "lv": 2, "q": "Kata hormat untuk \"imah\" bila ditujukan kepada orang lain adalah…", "a": "Bumi", "x": ""}, {"id": "BSN-01-005", "t": "BSN-01", "lv": 2, "q": "Kata hormat untuk \"imah\" bila dipakai untuk diri sendiri adalah…", "a": "Rorompok", "x": ""}, {"id": "BSN-01-006", "t": "BSN-01", "lv": 2, "q": "Kata hormat untuk \"indit\" bila dipakai untuk diri sendiri adalah…", "a": "Mios", "x": ""}, {"id": "BSN-01-007", "t": "BSN-01", "lv": 2, "q": "Kata hormat untuk \"saré\" bila ditujukan kepada orang lain adalah…", "a": "Kulem", "x": ""}, {"id": "BSN-01-008", "t": "BSN-01", "lv": 2, "q": "Perbaiki kalimat \"Abdi badé tuang heula.\"", "a": "Abdi badé neda heula.", "x": "Tuang dipakai untuk orang lain."}, {"id": "BSN-01-009", "t": "BSN-01", "lv": 3, "q": "Lengkapi dengan kata hormat yang tepat: \"Bapa tos ... ti Bandung?\" (datang)", "a": "Sumping", "x": "Sumping hormat ka batur; dongkap ka sorangan."}, {"id": "BSN-01-010", "t": "BSN-01", "lv": 2, "q": "Siswa menyambut kepala sekolah yang baru tiba di acara perpisahan: \"Wilujeng ..., Bapa.\" Kata hormat apa untuk \"datang\" yang tepat?", "a": "Sumping", "x": "", "k": "perpisahan"}, {"id": "BSN-01-011", "t": "BSN-01", "lv": 3, "q": "Di warung, seorang pemuda berkata kepada nenek pemilik warung, \"Nini, abdi badé tumaros, ari ieu sabaraha?\" Nenek menjawab, \"Mangga, badé tumaros naon?\" Siapa yang keliru memakai kata hormat, dan apa yang seharusnya?", "a": "Nenek; \"tumaros\" untuk diri sendiri, sedangkan untuk lawan bicara dipakai \"naros\" (atau loma \"nanya\" kepada yang lebih muda)", "x": "", "k": "warung"}, {"id": "BSN-02-001", "t": "BSN-02", "lv": 1, "q": "Berapa jumlah aksara swara dalam Aksara Sunda Baku?", "a": "7", "x": ""}, {"id": "BSN-02-002", "t": "BSN-02", "lv": 1, "q": "Sebutkan aksara swara.", "a": "a, é, i, o, u, e, eu", "x": ""}, {"id": "BSN-02-003", "t": "BSN-02", "lv": 1, "q": "Berapa jumlah aksara ngalagena dasar?", "a": "18", "x": ""}, {"id": "BSN-02-004", "t": "BSN-02", "lv": 2, "q": "Rarangkén yang mengubah bunyi a menjadi i disebut…", "a": "Panghulu", "x": ""}, {"id": "BSN-02-005", "t": "BSN-02", "lv": 2, "q": "Rarangkén yang mengubah bunyi a menjadi u disebut…", "a": "Panyuku", "x": ""}, {"id": "BSN-02-006", "t": "BSN-02", "lv": 2, "q": "Rarangkén yang menambah bunyi -ng di akhir suku kata disebut…", "a": "Panyecek", "x": ""}, {"id": "BSN-02-007", "t": "BSN-02", "lv": 2, "q": "Rarangkén yang menambah bunyi -h disebut…", "a": "Pangwisad", "x": ""}, {"id": "BSN-02-008", "t": "BSN-02", "lv": 2, "q": "Rarangkén yang menghilangkan vokal aksara ngalagena disebut…", "a": "Pamaéh", "x": ""}, {"id": "BSN-02-009", "t": "BSN-02", "lv": 2, "q": "Berapa jumlah rarangkén dalam Aksara Sunda Baku?", "a": "13", "x": ""}, {"id": "BSN-02-010", "t": "BSN-02", "lv": 3, "q": "Rarangkén paneleng dan panolong mengubah bunyi a menjadi…", "a": "Paneleng menjadi é, panolong menjadi o", "x": ""}, {"id": "BSN-02-011", "t": "BSN-02", "lv": 2, "q": "Papan nama jalan di Bandung ditulis dalam huruf Latin dan aksara Sunda. Peraturan daerah Jawa Barat tentang pemeliharaan bahasa, sastra, dan aksara daerah adalah…", "a": "Perda Jawa Barat No. 5 Tahun 2003", "x": "", "k": "papan jalan"}, {"id": "BSN-03-001", "t": "BSN-03", "lv": 1, "q": "Kata berimbuhan dalam bahasa Sunda disebut…", "a": "Kecap rundayan", "x": ""}, {"id": "BSN-03-002", "t": "BSN-03", "lv": 2, "q": "Rarangkén tengah yang menandai jamak adalah…", "a": "-ar- (atau -al-)", "x": ""}, {"id": "BSN-03-003", "t": "BSN-03", "lv": 2, "q": "Bentuk jamak dari \"budak\" adalah…", "a": "Barudak", "x": ""}, {"id": "BSN-03-004", "t": "BSN-03", "lv": 2, "q": "Kata \"kasenian\" memakai rarangkén…", "a": "Barung ka-an", "x": ""}, {"id": "BSN-03-005", "t": "BSN-03", "lv": 2, "q": "Kalimah yang berisi perintah disebut kalimah…", "a": "Paréntah", "x": ""}, {"id": "BSN-03-006", "t": "BSN-03", "lv": 2, "q": "Kalimah yang berisi pertanyaan disebut kalimah…", "a": "Pananya", "x": ""}, {"id": "BSN-03-007", "t": "BSN-03", "lv": 2, "q": "Guru menulis di papan, \"Marurid kelas X baris di lapang.\" Rarangkén apa yang ada pada kata \"marurid\", dan apa maknanya?", "a": "Rarangkén tengah -ar-; menandai jamak (banyak murid)", "x": "", "k": "upacara"}, {"id": "BSN-04-001", "t": "BSN-04", "lv": 1, "q": "Ungkapan pendek bermakna kiasan dalam bahasa Sunda disebut…", "a": "Babasan", "x": ""}, {"id": "BSN-04-002", "t": "BSN-04", "lv": 1, "q": "Peribahasa berbentuk kalimat dalam bahasa Sunda disebut…", "a": "Paribasa", "x": ""}, {"id": "BSN-04-003", "t": "BSN-04", "lv": 1, "q": "Babasan \"gedé hulu\" berarti…", "a": "Sombong", "x": ""}, {"id": "BSN-04-004", "t": "BSN-04", "lv": 2, "q": "Babasan \"panjang leungeun\" berarti…", "a": "Suka mencuri", "x": ""}, {"id": "BSN-04-005", "t": "BSN-04", "lv": 2, "q": "Babasan \"hampang birit\" berarti…", "a": "Rajin, mudah disuruh", "x": ""}, {"id": "BSN-04-006", "t": "BSN-04", "lv": 2, "q": "Babasan \"leutik burih\" berarti…", "a": "Penakut", "x": ""}, {"id": "BSN-04-007", "t": "BSN-04", "lv": 2, "q": "Paribasa \"Cikaracak ninggang batu, laun-laun jadi legok\" berarti…", "a": "Usaha yang terus-menerus akhirnya berhasil", "x": ""}, {"id": "BSN-04-008", "t": "BSN-04", "lv": 2, "q": "Paribasa \"Adat kakurung ku iga\" berarti…", "a": "Kebiasaan buruk sulit diubah", "x": ""}, {"id": "BSN-04-009", "t": "BSN-04", "lv": 2, "q": "Paribasa \"Kawas cai dina daun taleus\" berarti…", "a": "Tidak tetap pendirian", "x": ""}, {"id": "BSN-04-010", "t": "BSN-04", "lv": 3, "q": "Apa beda babasan dan paribasa dari segi bentuk?", "a": "Babasan berupa frasa (kecap kantétan); paribasa berupa kalimat", "x": ""}, {"id": "BSN-04-011", "t": "BSN-04", "lv": 2, "q": "Warga satu RW bergotong royong membangun kembali rumah tetangga yang terkena longsor. Paribasa apa yang menggambarkan kebersamaan dalam suka dan duka ini?", "a": "Bengkung ngariung bongkok ngaronyok", "x": "", "k": "longsor"}, {"id": "BSN-04-012", "t": "BSN-04", "lv": 2, "q": "Siswa yang setiap hari menghafal sepuluh kosakata akhirnya lancar berbahasa Inggris. Paribasa apa yang cocok?", "a": "Cikaracak ninggang batu, laun-laun jadi legok", "x": "", "k": "belajar"}, {"id": "BSN-04-013", "t": "BSN-04", "lv": 2, "q": "Seorang siswa selalu sigap ketika diminta guru membantu membawa buku. Babasan apa yang menggambarkan sifatnya?", "a": "Hampang birit", "x": "", "k": "kelas"}, {"id": "SAS-01-001", "t": "SAS-01", "lv": 1, "q": "Berapa jumlah pupuh dalam sastra Sunda?", "a": "17", "x": ""}, {"id": "SAS-01-002", "t": "SAS-01", "lv": 1, "q": "Jumlah suku kata dalam satu padalisan pupuh disebut…", "a": "Guru wilangan", "x": ""}, {"id": "SAS-01-003", "t": "SAS-01", "lv": 1, "q": "Bunyi vokal di akhir padalisan pupuh disebut…", "a": "Guru lagu", "x": ""}, {"id": "SAS-01-004", "t": "SAS-01", "lv": 2, "q": "Sebutkan empat pupuh sekar ageung.", "a": "Kinanti, Sinom, Asmarandana, Dangdanggula", "x": ""}, {"id": "SAS-01-005", "t": "SAS-01", "lv": 2, "q": "Pupuh yang berwatak gembira adalah…", "a": "Sinom", "x": ""}, {"id": "SAS-01-006", "t": "SAS-01", "lv": 2, "q": "Pupuh yang berwatak menunggu atau prihatin adalah…", "a": "Kinanti", "x": ""}, {"id": "SAS-01-007", "t": "SAS-01", "lv": 2, "q": "Pupuh yang berwatak marah atau bersemangat adalah…", "a": "Durma", "x": ""}, {"id": "SAS-01-008", "t": "SAS-01", "lv": 2, "q": "Pupuh yang berwatak sedih atau nelangsa adalah…", "a": "Maskumambang", "x": ""}, {"id": "SAS-01-009", "t": "SAS-01", "lv": 2, "q": "Pupuh dengan pola 12-u, 6-a, 8-é/o, 12-a adalah…", "a": "Pucung", "x": ""}, {"id": "SAS-01-010", "t": "SAS-01", "lv": 3, "q": "Berapa padalisan dan apa guru lagu pupuh Kinanti?", "a": "6 padalisan; u, i, a, i, a, i (masing-masing 8 engang)", "x": ""}, {"id": "SAS-01-011", "t": "SAS-01", "lv": 3, "q": "Padalisan \"Budak leutik bisa ngapung\" dipakai sebagai baris pertama pupuh Kinanti. Apakah sesuai guru wilangan dan guru lagunya?", "a": "Ya; 8 engang dan berakhir bunyi u", "x": ""}, {"id": "SAS-01-012", "t": "SAS-01", "lv": 2, "q": "Pada acara pernikahan adat, juru tembang membawakan pupuh yang berwatak kasih sayang untuk kedua mempelai. Pupuh apa yang paling cocok?", "a": "Asmarandana", "x": "", "k": "pernikahan adat"}, {"id": "SAS-01-013", "t": "SAS-01", "lv": 2, "q": "Untuk lomba ngawih tujuh belasan bertema perjuangan yang bersemangat, peserta memilih pupuh berwatak marah atau bersemangat. Pupuh apa itu?", "a": "Durma", "x": "", "k": "tujuh belasan"}, {"id": "SAS-02-001", "t": "SAS-02", "lv": 1, "q": "Cerita panjang yang ditulis dalam rangkaian pupuh disebut…", "a": "Wawacan", "x": ""}, {"id": "SAS-02-002", "t": "SAS-02", "lv": 1, "q": "Puisi pendek berpupuh tentang satu tema disebut…", "a": "Guguritan", "x": ""}, {"id": "SAS-02-003", "t": "SAS-02", "lv": 2, "q": "Mengapa pupuh dalam wawacan berganti-ganti?", "a": "Mengikuti suasana cerita (watek pupuh)", "x": ""}, {"id": "SAS-02-004", "t": "SAS-02", "lv": 2, "q": "Apa persamaan wawacan dan guguritan?", "a": "Sama-sama memakai pupuh (dangding)", "x": ""}, {"id": "SAS-02-005", "t": "SAS-02", "lv": 2, "q": "Tradisi melagukan wawacan bersama-sama semalam suntuk disebut…", "a": "Beluk (mamaos)", "x": ""}, {"id": "SAS-02-006", "t": "SAS-02", "lv": 2, "q": "Sebutkan tiga unsur intrinsik wawacan.", "a": "Contoh: tokoh, latar, alur, tema, amanat (tiga di antaranya)", "x": ""}, {"id": "SAS-03-001", "t": "SAS-03", "lv": 1, "q": "Puisi lama Sunda yang terdiri atas cangkang dan eusi disebut…", "a": "Sisindiran", "x": ""}, {"id": "SAS-03-002", "t": "SAS-03", "lv": 1, "q": "Bagian sampiran dalam sisindiran disebut…", "a": "Cangkang", "x": ""}, {"id": "SAS-03-003", "t": "SAS-03", "lv": 1, "q": "Bagian isi dalam sisindiran disebut…", "a": "Eusi", "x": ""}, {"id": "SAS-03-004", "t": "SAS-03", "lv": 2, "q": "Sebutkan tiga jenis sisindiran.", "a": "Rarakitan, paparikan, wawangsalan", "x": ""}, {"id": "SAS-03-005", "t": "SAS-03", "lv": 2, "q": "Sisindiran yang kata awal cangkangnya diulang di awal eusi disebut…", "a": "Rarakitan", "x": ""}, {"id": "SAS-03-006", "t": "SAS-03", "lv": 2, "q": "Sisindiran yang bunyi cangkangnya mirip bunyi eusi disebut…", "a": "Paparikan", "x": ""}, {"id": "SAS-03-007", "t": "SAS-03", "lv": 2, "q": "Sisindiran yang berisi tebakan kata disebut…", "a": "Wawangsalan", "x": ""}, {"id": "SAS-03-008", "t": "SAS-03", "lv": 2, "q": "Puisi bebas modern Sunda disebut…", "a": "Sajak", "x": ""}, {"id": "SAS-03-009", "t": "SAS-03", "lv": 2, "q": "Sebutkan tiga isi sisindiran.", "a": "Silih asih (cinta), piwuruk (nasihat), sésébréd (lelucon)", "x": ""}, {"id": "SAS-03-010", "t": "SAS-03", "lv": 3, "q": "Apa beda sajak dan guguritan?", "a": "Sajak puisi bebas tanpa aturan pupuh; guguritan memakai pupuh", "x": ""}, {"id": "SAS-03-011", "t": "SAS-03", "lv": 2, "q": "Pada acara sawér pengantin, juru sawér melantunkan bait bersampiran dan berisi nasihat untuk mempelai. Isi sisindiran seperti ini termasuk jenis…", "a": "Piwuruk (nasihat)", "x": "", "k": "sawér"}, {"id": "SAS-03-012", "t": "SAS-03", "lv": 2, "q": "Puji-pujian yang dilantunkan di masjid sebelum azan di kampung-kampung Sunda disebut…", "a": "Pupujian", "x": "", "k": "masjid kampung"}, {"id": "SAS-04-001", "t": "SAS-04", "lv": 1, "q": "Cerita pendek dalam bahasa Sunda disebut…", "a": "Carpon (carita pondok)", "x": ""}, {"id": "SAS-04-002", "t": "SAS-04", "lv": 1, "q": "Novel Sunda pertama adalah…", "a": "Baruang ka nu Ngarora", "x": ""}, {"id": "SAS-04-003", "t": "SAS-04", "lv": 1, "q": "Pengarang Baruang ka nu Ngarora adalah…", "a": "D.K. Ardiwinata", "x": ""}, {"id": "SAS-04-004", "t": "SAS-04", "lv": 2, "q": "Baruang ka nu Ngarora terbit pada tahun…", "a": "1914", "x": ""}, {"id": "SAS-04-005", "t": "SAS-04", "lv": 2, "q": "Pengarang novel Rusiah nu Goréng Patut adalah…", "a": "Joehana", "x": ""}, {"id": "SAS-04-006", "t": "SAS-04", "lv": 2, "q": "Sebutkan unsur intrinsik carpon.", "a": "Téma, palaku dan watek, galur, latar, sudut pandang, amanat", "x": ""}, {"id": "SAS-04-007", "t": "SAS-04", "lv": 2, "q": "Istilah Sunda untuk alur cerita adalah…", "a": "Galur", "x": ""}, {"id": "SAS-04-008", "t": "SAS-04", "lv": 2, "q": "Apa beda carpon dan novel?", "a": "Carpon pendek dengan satu peristiwa utama; novel lebih panjang dengan banyak peristiwa dan tokoh", "x": ""}, {"id": "SAS-04-009", "t": "SAS-04", "lv": 3, "q": "Carpon bercerita tentang seorang petani yang sawahnya tergusur proyek jalan tol, ditulis dengan kata \"kuring\" sebagai pencerita. Sudut pandang apa yang dipakai?", "a": "Sudut pandang orang pertama", "x": "", "k": "jalan tol"}, {"id": "SAS-05-001", "t": "SAS-05", "lv": 1, "q": "Dongéng yang tokohnya binatang disebut…", "a": "Fabel", "x": ""}, {"id": "SAS-05-002", "t": "SAS-05", "lv": 1, "q": "Dongéng tentang asal-usul tempat disebut…", "a": "Sasakala", "x": ""}, {"id": "SAS-05-003", "t": "SAS-05", "lv": 1, "q": "Dongéng Si Kabayan termasuk dongéng…", "a": "Pikaseurieun (lucu)", "x": ""}, {"id": "SAS-05-004", "t": "SAS-05", "lv": 2, "q": "Dongéng Sakadang Kuya jeung Sakadang Monyét termasuk…", "a": "Fabel", "x": ""}, {"id": "SAS-05-005", "t": "SAS-05", "lv": 2, "q": "Dongéng tentang dewa atau makhluk gaib yang dipercaya disebut…", "a": "Mite", "x": ""}, {"id": "SAS-05-006", "t": "SAS-05", "lv": 2, "q": "Cerita Nyi Pohaci Sanghyang Sri termasuk dongéng…", "a": "Mite", "x": ""}, {"id": "SAS-05-007", "t": "SAS-05", "lv": 2, "q": "Dongéng yang berisi pelajaran moral disebut…", "a": "Parabel", "x": ""}, {"id": "SAS-05-008", "t": "SAS-05", "lv": 2, "q": "Wisatawan di Lembang mendengar cerita Sangkuriang yang menendang perahu sampai tertelungkup menjadi gunung. Jenis dongéng apa ini?", "a": "Sasakala (Gunung Tangkuban Parahu)", "x": "", "k": "Lembang"}, {"id": "SAS-05-009", "t": "SAS-05", "lv": 3, "q": "Apa beda sasakala dan legenda?", "a": "Sasakala menjelaskan asal-usul tempat atau benda; legenda tentang tokoh yang dianggap pernah ada", "x": ""}, {"id": "SAS-06-001", "t": "SAS-06", "lv": 1, "q": "Orang yang membawakan carita pantun disebut…", "a": "Juru pantun", "x": ""}, {"id": "SAS-06-002", "t": "SAS-06", "lv": 1, "q": "Alat musik pengiring carita pantun adalah…", "a": "Kacapi", "x": ""}, {"id": "SAS-06-003", "t": "SAS-06", "lv": 2, "q": "Bagian pembuka carita pantun yang berupa doa disebut…", "a": "Rajah", "x": ""}, {"id": "SAS-06-004", "t": "SAS-06", "lv": 2, "q": "Sebutkan dua contoh carita pantun.", "a": "Lutung Kasarung, Mundinglaya di Kusumah", "x": ""}, {"id": "SAS-06-005", "t": "SAS-06", "lv": 2, "q": "Apa beda pantun Sunda dan pantun Melayu?", "a": "Pantun Sunda cerita lisan panjang dengan iringan kacapi; pantun Melayu puisi empat baris", "x": ""}, {"id": "SAS-06-006", "t": "SAS-06", "lv": 2, "q": "Di sebuah kampung adat, juru pantun membawakan cerita semalam suntuk dengan iringan kacapi. Bagian penutup berupa doa disebut…", "a": "Rajah pamungkas", "x": "", "k": "kampung adat"}, {"id": "SAS-07-001", "t": "SAS-07", "lv": 1, "q": "Lagu permainan anak Sunda disebut…", "a": "Kakawihan", "x": ""}, {"id": "SAS-07-002", "t": "SAS-07", "lv": 1, "q": "Lirik lagu Sunda disebut…", "a": "Rumpaka", "x": ""}, {"id": "SAS-07-003", "t": "SAS-07", "lv": 2, "q": "Lagu Sunda yang memakai pupuh dan irama bebas disebut…", "a": "Tembang", "x": ""}, {"id": "SAS-07-004", "t": "SAS-07", "lv": 2, "q": "Lagu Sunda yang memakai irama tetap disebut…", "a": "Kawih", "x": ""}, {"id": "SAS-07-005", "t": "SAS-07", "lv": 2, "q": "Irama bebas dalam tembang disebut…", "a": "Sekar irama merdika", "x": ""}, {"id": "SAS-07-006", "t": "SAS-07", "lv": 2, "q": "Anak-anak bermain sambil bernyanyi \"oray-orayan, luar léor mapay sawah\". Lagu ini termasuk…", "a": "Kakawihan", "x": "", "k": "kaulinan"}, {"id": "SAS-08-001", "t": "SAS-08", "lv": 1, "q": "Dialog dalam drama Sunda disebut…", "a": "Paguneman", "x": ""}, {"id": "SAS-08-002", "t": "SAS-08", "lv": 1, "q": "Petunjuk laku untuk pemain dalam naskah drama Sunda disebut…", "a": "Kramagung", "x": ""}, {"id": "SAS-08-003", "t": "SAS-08", "lv": 2, "q": "Drama musikal Sunda yang dialognya dinyanyikan disebut…", "a": "Gending karesmén", "x": ""}, {"id": "SAS-08-004", "t": "SAS-08", "lv": 2, "q": "Teater rakyat Sunda yang memadukan tari, lawak, dan cerita disebut…", "a": "Longsér", "x": ""}, {"id": "SAS-08-005", "t": "SAS-08", "lv": 2, "q": "Dalam naskah drama kelas tertulis \"(Asép asup bari ngaléngkah lalaunan)\". Bagian ini disebut…", "a": "Kramagung", "x": "", "k": "pentas kelas"}, {"id": "TKS-01-001", "t": "TKS-01", "lv": 1, "q": "Berita dalam bahasa Sunda disebut…", "a": "Warta", "x": ""}, {"id": "TKS-01-002", "t": "TKS-01", "lv": 1, "q": "Teras berita dalam bahasa Sunda disebut…", "a": "Lulugu", "x": ""}, {"id": "TKS-01-003", "t": "TKS-01", "lv": 2, "q": "Sebutkan unsur warta.", "a": "Naon, saha, iraha, di mana, naha, kumaha", "x": ""}, {"id": "TKS-01-004", "t": "TKS-01", "lv": 2, "q": "Unsur \"naha\" dalam warta menjawab pertanyaan…", "a": "Mengapa", "x": ""}, {"id": "TKS-01-005", "t": "TKS-01", "lv": 2, "q": "Unsur \"iraha\" dalam warta menjawab pertanyaan…", "a": "Kapan", "x": ""}, {"id": "TKS-01-006", "t": "TKS-01", "lv": 2, "q": "Bagaimana ragam bahasa warta?", "a": "Lugas, jelas, tanpa pendapat pribadi penulis", "x": ""}, {"id": "TKS-01-007", "t": "TKS-01", "lv": 2, "q": "Orang yang membacakan warta disebut…", "a": "Pamaca warta (penyiar)", "x": ""}, {"id": "TKS-01-008", "t": "TKS-01", "lv": 2, "q": "Radio komunitas di Garut menyiarkan banjir bandang di sebuah desa pada Selasa pagi. Unsur warta apa yang dijawab oleh \"Selasa pagi\"?", "a": "Iraha (kapan)", "x": "", "k": "radio komunitas"}, {"id": "TKS-01-009", "t": "TKS-01", "lv": 3, "q": "Siswa menulis warta tentang pasar kaget di alun-alun, lalu menambahkan kalimat \"Pasar ieu pikaresepeun pisan.\" Mengapa kalimat itu kurang tepat dalam warta?", "a": "Berisi pendapat pribadi; warta harus faktual", "x": "", "k": "pasar kaget"}, {"id": "TKS-02-001", "t": "TKS-02", "lv": 1, "q": "Pidato dalam bahasa Sunda disebut…", "a": "Biantara", "x": ""}, {"id": "TKS-02-002", "t": "TKS-02", "lv": 1, "q": "Pembawa acara dalam bahasa Sunda disebut…", "a": "Pangjejer acara (panata acara)", "x": ""}, {"id": "TKS-02-003", "t": "TKS-02", "lv": 2, "q": "Sebutkan struktur biantara.", "a": "Bubuka, eusi, panutup", "x": ""}, {"id": "TKS-02-004", "t": "TKS-02", "lv": 2, "q": "Metode biantara dengan membawa catatan pokok disebut…", "a": "Ekstemporan", "x": ""}, {"id": "TKS-02-005", "t": "TKS-02", "lv": 2, "q": "Metode biantara tanpa persiapan disebut…", "a": "Impromtu", "x": ""}, {"id": "TKS-02-006", "t": "TKS-02", "lv": 2, "q": "Bagian biantara yang berisi salam, puji syukur, dan penghormatan adalah…", "a": "Bubuka", "x": ""}, {"id": "TKS-02-007", "t": "TKS-02", "lv": 2, "q": "Ketua OSIS berpidato di acara perpisahan kelas XII hanya dengan melihat kartu kecil berisi poin-poin. Metode biantara apa yang dipakai?", "a": "Ekstemporan", "x": "", "k": "perpisahan"}, {"id": "TKS-02-008", "t": "TKS-02", "lv": 3, "q": "Pangjejer acara di hajatan pernikahan membuka acara dengan \"Assalamu'alaikum\" lalu langsung membacakan susunan acara. Bagian bubuka apa yang terlewat?", "a": "Puji syukur dan penghormatan kepada hadirin", "x": "", "k": "hajatan"}, {"id": "TKS-03-001", "t": "TKS-03", "lv": 1, "q": "Diskusi dalam bahasa Sunda disebut…", "a": "Sawala", "x": ""}, {"id": "TKS-03-002", "t": "TKS-03", "lv": 1, "q": "Pemimpin sawala disebut…", "a": "Pupuhu", "x": ""}, {"id": "TKS-03-003", "t": "TKS-03", "lv": 2, "q": "Orang yang menyampaikan pendapat utama dalam sawala disebut…", "a": "Panyatur", "x": ""}, {"id": "TKS-03-004", "t": "TKS-03", "lv": 2, "q": "Orang yang mencatat jalannya sawala disebut…", "a": "Notulén", "x": ""}, {"id": "TKS-03-005", "t": "TKS-03", "lv": 2, "q": "Peserta sawala yang bertanya dan menanggapi disebut…", "a": "Pamilon", "x": ""}, {"id": "TKS-03-006", "t": "TKS-03", "lv": 2, "q": "Apa beda artikel dan warta?", "a": "Artikel berisi pendapat penulis yang didukung fakta; warta hanya melaporkan fakta", "x": ""}, {"id": "TKS-03-007", "t": "TKS-03", "lv": 2, "q": "Karang taruna mengadakan sawala tentang sampah di sungai desa. Siapa yang bertugas mengatur giliran bicara?", "a": "Pupuhu", "x": "", "k": "karang taruna"}, {"id": "TKS-03-008", "t": "TKS-03", "lv": 3, "q": "Rapat warga membahas jadwal ronda: satu orang memimpin, satu mencatat, dan sisanya memberi pendapat. Sebutkan istilah Sunda untuk ketiga peran itu.", "a": "Pupuhu, notulén, pamilon", "x": "", "k": "rapat warga"}, {"id": "TKS-04-001", "t": "TKS-04", "lv": 1, "q": "Tanggal surat dalam bahasa Sunda disebut…", "a": "Titimangsa", "x": ""}, {"id": "TKS-04-002", "t": "TKS-04", "lv": 2, "q": "Surat resmi memakai ragam bahasa…", "a": "Hormat (lemes) yang baku", "x": ""}, {"id": "TKS-04-003", "t": "TKS-04", "lv": 2, "q": "Iklan yang mengajak berbuat baik disebut iklan…", "a": "Layanan masyarakat", "x": ""}, {"id": "TKS-04-004", "t": "TKS-04", "lv": 2, "q": "Iklan yang menawarkan barang atau jasa disebut iklan…", "a": "Niaga", "x": ""}, {"id": "TKS-04-005", "t": "TKS-04", "lv": 2, "q": "Spanduk di depan puskesmas berbunyi \"Hayu urang imunisasi barudak!\" Jenis iklan apa ini?", "a": "Iklan layanan masyarakat", "x": "", "k": "puskesmas"}, {"id": "BUD-01-001", "t": "BUD-01", "lv": 1, "q": "Alat musik bambu Sunda yang digoyang adalah…", "a": "Angklung", "x": ""}, {"id": "BUD-01-002", "t": "BUD-01", "lv": 1, "q": "Wayang boneka kayu khas Sunda disebut…", "a": "Wayang golek", "x": ""}, {"id": "BUD-01-003", "t": "BUD-01", "lv": 2, "q": "Angklung diakui UNESCO sebagai Warisan Budaya Takbenda pada tahun…", "a": "2010", "x": ""}, {"id": "BUD-01-004", "t": "BUD-01", "lv": 2, "q": "Tari kreasi Sunda yang dikembangkan Gugum Gumbira adalah…", "a": "Jaipongan", "x": ""}, {"id": "BUD-01-005", "t": "BUD-01", "lv": 2, "q": "Ansambel gamelan Sunda disebut…", "a": "Degung", "x": ""}, {"id": "BUD-01-006", "t": "BUD-01", "lv": 2, "q": "Alat musik bambu Sunda yang dipukul adalah…", "a": "Calung", "x": ""}, {"id": "BUD-01-007", "t": "BUD-01", "lv": 2, "q": "Di Saung Angklung Udjo, pengunjung diajak memainkan alat musik bambu dengan cara digoyang. Alat musik apa itu?", "a": "Angklung", "x": "", "k": "Saung Angklung"}, {"id": "BUD-02-001", "t": "BUD-02", "lv": 1, "q": "Upacara syukur atas hasil panen padi disebut…", "a": "Seren taun", "x": ""}, {"id": "BUD-02-002", "t": "BUD-02", "lv": 2, "q": "Kampung adat di Tasikmalaya yang mempertahankan rumah panggung adalah…", "a": "Kampung Naga", "x": ""}, {"id": "BUD-02-003", "t": "BUD-02", "lv": 2, "q": "Masyarakat adat Baduy disebut juga…", "a": "Urang Kanekes", "x": ""}, {"id": "BUD-02-004", "t": "BUD-02", "lv": 2, "q": "Aturan adat yang dipegang masyarakat Baduy disebut…", "a": "Pikukuh", "x": ""}, {"id": "BUD-02-005", "t": "BUD-02", "lv": 2, "q": "Upacara tujuh bulan kehamilan disebut…", "a": "Tingkeban", "x": ""}, {"id": "BUD-02-006", "t": "BUD-02", "lv": 2, "q": "Di Cigugur, Kuningan, warga mengarak hasil bumi dan menumbuk padi bersama setiap tahun. Upacara apa ini?", "a": "Seren taun", "x": "", "k": "Cigugur"}, {"id": "BUD-03-001", "t": "BUD-03", "lv": 1, "q": "Permainan engklek dalam bahasa Sunda disebut…", "a": "Sondah", "x": ""}, {"id": "BUD-03-002", "t": "BUD-03", "lv": 2, "q": "Permainan petak umpet dalam bahasa Sunda disebut…", "a": "Ucing sumput", "x": ""}, {"id": "BUD-03-003", "t": "BUD-03", "lv": 2, "q": "Falsafah \"silih asah, silih asih, silih asuh\" berarti…", "a": "Saling mencerdaskan, saling mengasihi, saling membimbing", "x": ""}, {"id": "BUD-03-004", "t": "BUD-03", "lv": 2, "q": "Sebutkan empat cita-cita manusia Sunda \"cageur, bageur, bener, pinter\".", "a": "Sehat, baik, benar, pintar", "x": ""}, {"id": "BUD-03-005", "t": "BUD-03", "lv": 2, "q": "Kakak kelas mengajari adik kelas berlatih pidato sebelum lomba. Bagian falsafah Sunda apa yang paling tampak?", "a": "Silih asah (saling mencerdaskan)", "x": "", "k": "latihan pidato"}, {"id": "BUD-04-001", "t": "BUD-04", "lv": 1, "q": "Raja Tarumanagara yang terkenal adalah…", "a": "Purnawarman", "x": ""}, {"id": "BUD-04-002", "t": "BUD-04", "lv": 2, "q": "Ibu kota Kerajaan Sunda (Pajajaran) adalah…", "a": "Pakuan (sekitar Bogor)", "x": ""}, {"id": "BUD-04-003", "t": "BUD-04", "lv": 2, "q": "Prasasti Batutulis dibuat pada tahun…", "a": "1533", "x": ""}, {"id": "BUD-04-004", "t": "BUD-04", "lv": 2, "q": "Prasasti Batutulis dibuat untuk mengenang…", "a": "Sri Baduga Maharaja (Prabu Siliwangi)", "x": ""}, {"id": "BUD-04-005", "t": "BUD-04", "lv": 2, "q": "Peristiwa Bubat terjadi pada tahun…", "a": "1357", "x": ""}, {"id": "BUD-04-006", "t": "BUD-04", "lv": 2, "q": "Siswa berkunjung ke situs di Bogor yang menyimpan prasasti dari masa Prabu Surawisesa. Prasasti apa itu?", "a": "Prasasti Batutulis", "x": "", "k": "Bogor"}, {"id": "BSN-01-012", "t": "BSN-01", "lv": 1, "q": "Kata hormat untuk \"indit\" bila ditujukan kepada orang lain adalah…", "a": "Angkat", "x": ""}, {"id": "BSN-02-012", "t": "BSN-02", "lv": 1, "q": "Aksara Sunda yang menyatakan konsonan disebut aksara…", "a": "Ngalagena", "x": ""}, {"id": "BSN-03-008", "t": "BSN-03", "lv": 1, "q": "Rarangkén yang dipasang di depan kata disebut rarangkén…", "a": "Hareup", "x": ""}, {"id": "SAS-02-007", "t": "SAS-02", "lv": 1, "q": "Bentuk puisi terikat yang memakai pupuh disebut…", "a": "Dangding", "x": ""}, {"id": "SAS-05-010", "t": "SAS-05", "lv": 1, "q": "Dongéng yang tokohnya dianggap pernah ada disebut…", "a": "Legenda", "x": ""}, {"id": "TKS-02-009", "t": "TKS-02", "lv": 1, "q": "Bagian penutup biantara disebut…", "a": "Panutup", "x": ""}, {"id": "BUD-01-008", "t": "BUD-01", "lv": 1, "q": "Alat musik petik yang mengiringi tembang Cianjuran dan carita pantun adalah…", "a": "Kacapi", "x": ""}, {"id": "BUD-03-006", "t": "BUD-03", "lv": 1, "q": "Permainan anak tradisional dalam bahasa Sunda disebut…", "a": "Kaulinan barudak", "x": ""}, {"id": "BSN-01-013", "t": "BSN-01", "lv": 2, "q": "Di kantor kelurahan, petugas bertanya kepada warga yang lebih tua, \"Bapa badé ... ka mana?\" (indit). Kata hormat apa yang tepat?", "a": "Angkat", "x": "", "k": "kantor kelurahan"}, {"id": "BSN-02-013", "t": "BSN-02", "lv": 2, "q": "Gapura desa wisata di Kuningan menulis nama desa dengan aksara Sunda. Untuk menulis konsonan -ng di akhir suku kata, rarangkén apa yang dipakai?", "a": "Panyecek", "x": "", "k": "gapura desa"}, {"id": "SAS-04-010", "t": "SAS-04", "lv": 2, "q": "Kelas membaca carpon yang berlatar pasar tradisional di Cianjur pada pagi hari. Unsur intrinsik apa yang dijelaskan oleh \"pasar tradisional di Cianjur pada pagi hari\"?", "a": "Latar", "x": "", "k": "kelas"}, {"id": "SAS-07-007", "t": "SAS-07", "lv": 2, "q": "Di acara hajatan, sinden menyanyikan lagu Sunda berirama tetap diiringi gamelan degung. Jenis lagu apa ini?", "a": "Kawih", "x": "", "k": "hajatan"}, {"id": "TKS-01-010", "t": "TKS-01", "lv": 2, "q": "Mading sekolah memuat berita kerja bakti membersihkan selokan. Kalimat pertama yang memuat inti peristiwa disebut…", "a": "Lulugu", "x": "", "k": "mading"}, {"id": "TKS-04-006", "t": "TKS-04", "lv": 2, "q": "OSIS menulis surat undangan rapat untuk orang tua siswa dalam bahasa Sunda. Ragam bahasa apa yang dipakai?", "a": "Basa hormat (lemes) yang baku", "x": "", "k": "surat undangan"}, {"id": "BUD-02-007", "t": "BUD-02", "lv": 3, "q": "Wisatawan di Kampung Naga dilarang memotret area tertentu dan mengikuti aturan warga. Apa istilah untuk aturan adat seperti ini pada masyarakat Baduy, dan apa tujuannya?", "a": "Pikukuh; menjaga adat dan kelestarian alam", "x": "", "k": "Kampung Naga"}, {"id": "BUD-03-007", "t": "BUD-03", "lv": 2, "q": "Sekelompok anak di halaman rumah melompat di kotak-kotak yang digambar di tanah dengan satu kaki. Permainan apa ini?", "a": "Sondah", "x": "", "k": "halaman rumah"}, {"id": "SAS-03-013", "t": "SAS-03", "lv": 3, "q": "Saat Agustusan, MC membuka acara dengan sisindiran yang kata pertama cangkangnya diulang di awal eusi. Jenis sisindiran apa ini, dan apa beda utamanya dengan paparikan?", "a": "Rarakitan; pada paparikan yang mirip hanya bunyinya, bukan kata awalnya", "x": "", "k": "Agustusan"}], "bank": {"key": "bank-soal-bahasa-sunda-v1", "title": "Bank Soal Bahasa Sunda", "map_title": "Peta Materi Bahasa Sunda SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Bahasa Sunda. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Bahasa Sunda dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+const CFG = DATA.bank || {};
+const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
+const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
+  : {SNI:["var(--indigo)","var(--indigo-soft)"], BUD:["var(--soga)","var(--soga-soft)"], MUS:["var(--patina)","var(--patina-soft)"]};
+const LV = {1:"Mudah",2:"Sedang",3:"Sulit"};
+const KEY = CFG.key || "bank-soal-lomba-v1";
+const MIX = CFG.mix || "Campuran 40/30/30";
+const WEIGHT_LABEL = CFG.weight_label || "penguasaan menurut bobot 40/30/30";
+const Q = DATA.questions;
+const DOMS = DATA.topics.domains;
+const MAP = DATA.topics.map_url;
+const TITLE = {}; const DOM_OF = {};
+DOMS.forEach(d => Object.entries(d.topics).forEach(([c,t]) => { TITLE[c] = t; DOM_OF[c] = d.id; }));
+
+let stats = {};
+try { stats = JSON.parse(localStorage.getItem(KEY) || "{}").stats || {}; } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify({stats})); } catch(e) {} }
+
+const state = {domain:"mix", topic:"", level:0, wrong:false, ctx:false, tab:"latihan", cur:null, revealed:false, recent:[], sRight:0, sTotal:0};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mapHref = code => MAP + "#t-" + code;
+
+function setColors(el, dom){ el.style.setProperty("--c", COLORS[dom][0]); el.style.setProperty("--soft", COLORS[dom][1]); }
+
+/* ---------- filters ---------- */
+function buildFilters(){
+  const fd = $("fDomain");
+  const opts = [["mix",MIX,""]].concat(DOMS.map(d => [d.id, d.short + (CFG.key ? "" : " " + d.weight + "%"), COLORS[d.id][0]]));
+  fd.innerHTML = opts.map(([v,l,c]) => '<button type="button" data-v="' + v + '"' + (c ? ' style="--c:' + c + '"' : '') + ' aria-pressed="' + (v === state.domain) + '">' + esc(l) + '</button>').join("");
+  $("fLevel").innerHTML = [[0,"Semua"],[1,"Mudah"],[2,"Sedang"],[3,"Sulit"]].map(([v,l]) => '<button type="button" data-v="' + v + '" aria-pressed="' + (v === state.level) + '">' + l + '</button>').join("");
+  fillTopics();
+}
+function fillTopics(){
+  const sel = $("fTopic");
+  const doms = state.domain === "mix" ? DOMS : DOMS.filter(d => d.id === state.domain);
+  sel.innerHTML = '<option value="">Semua simpul</option>' + doms.map(d => '<optgroup label="' + esc(d.name) + '">' +
+    Object.entries(d.topics).map(([c,t]) => '<option value="' + c + '"' + (c === state.topic ? " selected" : "") + '>' + c + " · " + esc(t) + '</option>').join("") + '</optgroup>').join("");
+  if(state.topic && !doms.some(d => d.topics[state.topic])) { state.topic = ""; sel.value = ""; }
+}
+function pool(){
+  return Q.filter(q => {
+    if(state.topic) { if(q.t !== state.topic) return false; }
+    else if(state.domain !== "mix" && DOM_OF[q.t] !== state.domain) return false;
+    if(state.level && q.lv !== state.level) return false;
+    if(state.wrong) { const s = stats[q.id]; if(!s || s.l !== 0) return false; }
+    if(state.ctx && !q.k) return false;
+    return true;
+  });
+}
+function updatePoolInfo(){
+  const n = pool().length;
+  $("poolInfo").textContent = n + " soal sesuai saringan";
+}
+
+/* ---------- practice ---------- */
+function weightOf(q){
+  const s = stats[q.id];
+  if(!s) return 2;
+  return s.l === 0 ? 4 : 1;
+}
+function weightedPick(list){
+  const total = list.reduce((a,q) => a + weightOf(q), 0);
+  let r = Math.random() * total;
+  for(const q of list){ r -= weightOf(q); if(r <= 0) return q; }
+  return list[list.length - 1];
+}
+function pickNext(){
+  let list = pool();
+  if(!list.length) return null;
+  const fresh = list.filter(q => !state.recent.includes(q.id));
+  if(fresh.length) list = fresh;
+  if(state.domain === "mix" && !state.topic){
+    const avail = DOMS.filter(d => list.some(q => DOM_OF[q.t] === d.id));
+    let r = Math.random() * avail.reduce((a,d) => a + d.weight, 0);
+    let dom = avail[avail.length - 1];
+    for(const d of avail){ r -= d.weight; if(r <= 0){ dom = d; break; } }
+    list = list.filter(q => DOM_OF[q.t] === dom.id);
+  }
+  return weightedPick(list);
+}
+let tick = null;
+function stopTimer(){ if(tick){ clearInterval(tick); tick = null; } }
+function startTimer(){
+  stopTimer();
+  if(!$("useTimer").checked) return;
+  const total = +$("timerSec").value * 1000, t0 = Date.now();
+  const bar = document.querySelector(".timer i");
+  tick = setInterval(() => {
+    const left = Math.max(0, total - (Date.now() - t0));
+    if(bar) bar.style.width = (left / total * 100) + "%";
+    if(left <= 0){ stopTimer(); if(!state.revealed) reveal(); }
+  }, 100);
+}
+function renderPractice(){
+  const host = $("practice");
+  const q = state.cur;
+  if(!q){
+    host.innerHTML = '<div class="empty"><h3 style="color:var(--ink)">Tidak ada soal untuk saringan ini.</h3><p style="margin-top:6px">' +
+      (state.ctx && !state.wrong ? "Belum ada soal konteks untuk saringan ini. Hapus centang “Hanya soal konteks sehari-hari”." : state.wrong ? "Belum ada soal yang terakhir dijawab salah. Hapus centang “Hanya yang terakhir dijawab salah” untuk berlatih semua soal." : "Longgarkan saringan bidang, simpul, atau tingkat.") + '</p></div>';
+    return;
+  }
+  const dom = DOM_OF[q.t];
+  const s = stats[q.id];
+  host.innerHTML = '<article class="qcard" aria-live="polite">' +
+    '<div class="qmeta"><a class="code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener" title="Buka simpul di Peta Materi">' + q.t + '</a><span>' + esc(TITLE[q.t]) + '</span><span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? '<span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
+    (s ? '<span>' + (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') + '</span>' : '<span>soal baru</span>') + '</div>' +
+    ($("useTimer").checked ? '<div class="timer" aria-hidden="true"><i></i></div>' : '') +
+    '<p class="qtext">' + esc(q.q) + '</p>' +
+    (state.revealed ? '<div class="answer"><span class="lbl">Jawaban</span><span class="a">' + esc(q.a) + '</span>' + (q.x ? '<span class="x">' + esc(q.x) + '</span>' : '') + '</div>' : '') +
+    '<div class="actions">' + (state.revealed
+      ? '<button class="btn ok" type="button" data-act="right">Benar <kbd>B</kbd></button><button class="btn bad" type="button" data-act="wrong">Salah <kbd>S</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>'
+      : '<button class="btn primary" type="button" data-act="reveal">Lihat jawaban <kbd>Spasi</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>') + '</div>' +
+    '</article>';
+  setColors(host.querySelector(".qcard"), dom);
+}
+function next(){
+  stopTimer();
+  state.cur = pickNext();
+  state.revealed = false;
+  if(state.cur){ state.recent.push(state.cur.id); if(state.recent.length > 25) state.recent.shift(); }
+  renderPractice();
+  if(state.cur) startTimer();
+}
+function reveal(){ stopTimer(); state.revealed = true; renderPractice(); const b = document.querySelector('[data-act="right"]'); if(b) b.focus({preventScroll:true}); }
+function grade(ok){
+  const q = state.cur; if(!q) return;
+  const s = stats[q.id] || {r:0, w:0, l:null};
+  ok ? s.r++ : s.w++; s.l = ok ? 1 : 0;
+  stats[q.id] = s; save();
+  state.sTotal++; if(ok) state.sRight++;
+  $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
+  updatePoolInfo();
+  next();
+}
+
+/* ---------- list ---------- */
+function renderList(){
+  const term = $("lSearch").value.trim().toLowerCase();
+  const list = pool().filter(q => !term || (q.q + " " + q.a + " " + q.x + " " + q.t + " " + (q.k || "")).toLowerCase().includes(term));
+  const host = $("list");
+  if(!list.length){ host.innerHTML = '<div class="empty">Tidak ada soal yang cocok. Coba kata lain atau longgarkan saringan.</div>'; return; }
+  const groups = {};
+  list.forEach(q => (groups[q.t] = groups[q.t] || []).push(q));
+  host.innerHTML = Object.keys(groups).map(code => {
+    const items = groups[code];
+    return '<div class="group" data-dom="' + DOM_OF[code] + '"><div class="ghead"><h3>' + code + ' · ' + esc(TITLE[code]) + '</h3><span>' + items.length + ' soal</span><a href="' + mapHref(code) + '" target="_blank" rel="noopener">Buka di peta ↗</a></div><ol class="qlist">' +
+      items.map(q => {
+        const s = stats[q.id];
+        const mk = s ? (s.l ? ' <span class="mark-ok">✓ terakhir benar</span>' : ' <span class="mark-bad">✗ terakhir salah</span>') : '';
+        return '<li><span class="n">' + q.id + '</span><div class="body"><span class="qq">' + esc(q.q) + ' <span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? ' <span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') + mk + '</span>' +
+          '<details><summary>Jawaban</summary><div class="aa">' + esc(q.a) + '</div>' + (q.x ? '<div class="xx">' + esc(q.x) + '</div>' : '') + '</details></div></li>';
+      }).join("") + '</ol></div>';
+  }).join("");
+  host.querySelectorAll(".group").forEach(g => setColors(g, g.dataset.dom));
+}
+
+/* ---------- progress ---------- */
+let confirmReset = false;
+function renderProgress(){
+  const host = $("progress");
+  const ids = Object.keys(stats).filter(id => Q.some(q => q.id === id));
+  const tried = ids.length;
+  const lastRight = ids.filter(id => stats[id].l === 1).length;
+  const attempts = ids.reduce((a,id) => a + stats[id].r + stats[id].w, 0);
+  let weighted = 0;
+  DOMS.forEach(d => {
+    const qs = Q.filter(q => DOM_OF[q.t] === d.id);
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    weighted += d.weight * ok / qs.length;
+  });
+  const rows = DOMS.flatMap(d => Object.entries(d.topics).map(([code,title]) => {
+    const qs = Q.filter(q => q.t === code);
+    const t = qs.filter(q => stats[q.id]).length;
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    return {code, title, dom:d.id, n:qs.length, t, ok, acc: t ? ok / t : null};
+  }));
+  const weak = rows.filter(r => r.t >= 3 && r.acc < 0.6).sort((a,b) => a.acc - b.acc).slice(0,3);
+  const untouched = rows.filter(r => r.t === 0).length;
+  host.innerHTML =
+    '<div class="sumrow">' +
+      '<div class="stat"><b>' + tried + '</b><span>dari ' + Q.length + ' soal pernah dicoba</span></div>' +
+      '<div class="stat"><b>' + (tried ? Math.round(lastRight / tried * 100) : 0) + '%</b><span>soal yang dicoba, terakhir dijawab benar</span></div>' +
+      '<div class="stat"><b>' + Math.round(weighted) + '%</b><span>' + WEIGHT_LABEL + '</span></div>' +
+      '<div class="stat"><b>' + attempts + '</b><span>total jawaban dinilai</span></div>' +
+    '</div>' +
+    (weak.length ? '<div class="weak"><h3>Perlu diulang</h3><ul>' + weak.map(r =>
+      '<li><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a><span>' + esc(r.title) + ' — ' + Math.round(r.acc * 100) + '% benar</span>' +
+      '<button class="btn small" type="button" data-drill="' + r.code + '">Latih simpul ini</button></li>').join("") + '</ul></div>'
+      : '<p class="hint" style="margin-top:16px">' + (tried ? "Belum ada simpul yang lemah (minimal 3 soal dicoba dan di bawah 60% benar)." : "Belum ada hasil. Mulai dari tab Latihan; hasilnya muncul di sini.") + (untouched ? " " + untouched + " simpul belum pernah dicoba." : "") + '</p>') +
+    '<div class="tbl"><table><thead><tr><th>Simpul</th><th>Judul</th><th>Soal</th><th>Dicoba</th><th>Benar</th><th>Penguasaan</th><th></th></tr></thead><tbody>' +
+      rows.map(r => {
+        const pct = r.n ? r.ok / r.n * 100 : 0;
+        return '<tr><td><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a></td><td class="t">' + esc(r.title) + '</td><td>' + r.n + '</td><td>' + r.t + '</td><td>' + (r.acc === null ? "–" : Math.round(r.acc * 100) + "%") + '</td>' +
+          '<td><div class="bar" title="' + r.ok + ' dari ' + r.n + ' soal terakhir dijawab benar"><i style="width:' + pct + '%;background:' + COLORS[r.dom][0] + '"></i></div></td><td><button class="btn small" type="button" data-drill="' + r.code + '">Latih</button></td></tr>';
+      }).join("") + '</tbody></table></div>' +
+    '<div class="resetrow">' + (confirmReset
+      ? '<span>Hapus semua hasil latihan di peramban ini?</span><button class="btn small bad" type="button" id="resetYes">Ya, hapus</button><button class="btn small" type="button" id="resetNo">Batal</button>'
+      : '<button class="btn small" type="button" id="resetAsk">Hapus hasil latihan</button>') + '</div>';
+}
+
+/* ---------- wiring ---------- */
+function showTab(name){
+  state.tab = name;
+  ["latihan","daftar","kemajuan"].forEach(t => {
+    $("tab-" + t).setAttribute("aria-selected", t === name ? "true" : "false");
+    $("p-" + t).hidden = t !== name;
+  });
+  document.querySelector(".filters").hidden = name === "kemajuan";
+  if(name === "daftar") renderList();
+  if(name === "kemajuan") renderProgress();
+}
+function onFilterChange(){
+  updatePoolInfo();
+  if(state.tab === "latihan") next();
+  else if(state.tab === "daftar") renderList();
+  else renderProgress();
+}
+
+if(CFG.key){
+  document.title = CFG.title; $("bTitle").textContent = CFG.title; $("bLead").textContent = CFG.lead; $("bFoot").textContent = CFG.footer;
+  const a = document.createElement("a"); a.id = "mapLink"; a.href = MAP; a.textContent = "Buka " + CFG.map_title + " →";
+  $("bLead").append(" ", a);
+}
+if(Q.some(q => q.k)) $("ctxBox").hidden = false;
+$("qCount").textContent = Q.length;
+$("tCount").textContent = Object.keys(TITLE).length;
+$("mapLink").href = MAP;
+buildFilters();
+updatePoolInfo();
+next();
+
+document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(b) showTab(b.id.slice(4)); });
+$("fDomain").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.domain = b.dataset.v;
+  $("fDomain").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  fillTopics(); onFilterChange();
+});
+$("fLevel").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.level = +b.dataset.v;
+  $("fLevel").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  onFilterChange();
+});
+$("fTopic").addEventListener("change", e => { state.topic = e.target.value; onFilterChange(); });
+$("fWrong").addEventListener("change", e => { state.wrong = e.target.checked; onFilterChange(); });
+$("fCtx").addEventListener("change", e => { state.ctx = e.target.checked; onFilterChange(); });
+$("useTimer").addEventListener("change", () => { if(state.tab === "latihan" && !state.revealed){ renderPractice(); startTimer(); } else stopTimer(); });
+$("timerSec").addEventListener("change", () => { if($("useTimer").checked && !state.revealed){ renderPractice(); startTimer(); } });
+$("practice").addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  ({reveal, right:() => grade(true), wrong:() => grade(false), skip:next})[b.dataset.act]();
+});
+let lt;
+$("lSearch").addEventListener("input", () => { clearTimeout(lt); lt = setTimeout(renderList, 150); });
+$("showAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = true));
+$("hideAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = false));
+$("progress").addEventListener("click", e => {
+  const drill = e.target.closest("[data-drill]");
+  if(drill){
+    state.domain = "mix"; state.topic = drill.dataset.drill; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
+    buildFilters(); updatePoolInfo(); showTab("latihan"); next(); window.scrollTo({top:0}); return;
+  }
+  if(e.target.id === "resetAsk"){ confirmReset = true; renderProgress(); }
+  else if(e.target.id === "resetNo"){ confirmReset = false; renderProgress(); }
+  else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
+});
+document.addEventListener("keydown", e => {
+  if(state.tab !== "latihan" || !state.cur) return;
+  if(e.target.closest("input, select, textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if(!state.revealed && (k === " " || (k === "enter" && !e.target.closest("button, a")))){ e.preventDefault(); reveal(); }
+  else if(state.revealed && k === "b"){ grade(true); }
+  else if(state.revealed && k === "s"){ grade(false); }
+  else if(k === "l"){ next(); }
+});
+const h = location.hash.slice(1);
+if(["latihan","daftar","kemajuan"].includes(h)) showTab(h);
+</script>

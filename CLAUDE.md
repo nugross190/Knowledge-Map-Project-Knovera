@@ -38,7 +38,7 @@ Python 3 standard library only; no dependencies to install.
 
 ## Progress
 
-`data/subjects.json` lists every subject in the school's roster (grades X–XII) with its map id, Tingkat Lanjut parent, and TKA papers. `build.py` prints a status line per subject: map size, bank size and konteks share, tags, TKA papers, or "belum ada peta". Add a subject to the roster before building its map (the build fails on a map that is not listed), and end every content task by reporting the status table to the owner.
+`data/subjects.json` lists every subject in the school's roster (grades X–XII) with its map id, Tingkat Lanjut parent, and TKA papers. `build.py` prints a status line per subject: map size, bank size and konteks share, tags, TKA papers, or "belum ada peta". Add a subject to the roster before building its map (the build fails on a map that is not listed). **After every subject added (map or bank), report the full status table to the owner and put it in the pull request.** Do not skip this even when several subjects are added in one session.
 
 ## Hard rules
 
