@@ -36,11 +36,12 @@ MEK-01-007,MEK-01,2,Bola dilempar vertikal ke atas dengan kecepatan 20 m/s (g = 
 MEK-01-008,MEK-01,3,Mobil melaju 20 m/s lalu direm dengan perlambatan 4 m/s² sampai berhenti. Berapa jarak pengeremannya?,50 m,0 = 400 − 2 × 4 × s.,
 MEK-01-009,MEK-01,2,Angkot melaju tetap 10 m/s di jalan lurus selama 30 s. Berapa jarak yang ditempuh?,300 m,,angkot
 MEK-01-010,MEK-01,2,Motor ojek berangkat dari diam di lampu merah dan dipercepat tetap 2 m/s² selama 4 s. Berapa jarak yang ditempuhnya?,16 m,½ × 2 × 4².,ojek
+MEK-01-011,MEK-01,1,Panjang lintasan yang ditempuh benda disebut…,Jarak,,
 MEK-02-001,MEK-02,1,"Pada gerak parabola, gerak pada arah mendatar adalah…",GLB (kecepatan tetap),,
 MEK-02-002,MEK-02,1,Sudut elevasi yang menghasilkan jarak mendatar terjauh adalah…,45°,,
 MEK-02-003,MEK-02,1,Arah percepatan sentripetal adalah…,Menuju pusat lingkaran,,
 MEK-02-004,MEK-02,2,Benda berputar 2 putaran per sekon. Berapa kecepatan sudutnya?,4π rad/s,ω = 2πf.,
-MEK-02-005,MEK-02,2,Roda-roda yang sepusat memiliki … yang sama.,Kecepatan sudut,,
+MEK-02-005,MEK-02,1,Roda-roda yang sepusat memiliki … yang sama.,Kecepatan sudut,,
 MEK-02-006,MEK-02,2,Peluru ditembakkan dengan kelajuan sama pada sudut 30° dan 60°. Jarak mendatarnya…,Sama,,
 MEK-02-007,MEK-02,3,Bola ditendang dengan kecepatan 20 m/s pada sudut 30° (g = 10 m/s²). Berapa jarak mendatar maksimumnya?,"20√3 m (≈ 34,6 m)",R = v₀² sin 2α / g = 400 × sin 60° / 10.,
 MEK-02-008,MEK-02,2,Gir depan dan gir belakang sepeda dihubungkan rantai. Besaran yang sama pada kedua gir adalah…,Kecepatan linear,,sepeda
@@ -55,6 +56,7 @@ MEK-03-007,MEK-03,2,Umumnya koefisien gesek statis … koefisien gesek kinetis.,
 MEK-03-008,MEK-03,3,Katrol Atwood licin dengan m₁ = 3 kg dan m₂ = 2 kg (g = 10 m/s²). Berapa percepatan sistem?,2 m/s²,(3 − 2) × 10 / (3 + 2).,
 MEK-03-009,MEK-03,1,Penumpang angkot terdorong ke depan saat sopir mengerem mendadak. Hukum yang menjelaskan peristiwa ini adalah…,Hukum I Newton (kelembaman),,angkot
 MEK-03-010,MEK-03,2,"Peti 10 kg di lantai gudang ditarik mendatar dan bergerak; koefisien gesek kinetis 0,2 (g = 10 m/s²). Berapa gaya gesek kinetisnya?",20 N,μk × m × g.,gudang
+MEK-03-011,MEK-03,1,Hukum Newton yang disebut hukum kelembaman adalah hukum…,I,,
 MEK-04-001,MEK-04,1,Rumus gaya gravitasi Newton adalah…,F = G m₁m₂ / r²,,
 MEK-04-002,MEK-04,2,Orang pertama yang mengukur nilai G (1798) adalah…,Henry Cavendish,,
 MEK-04-003,MEK-04,2,"Menurut hukum I Kepler, lintasan planet berbentuk…",Elips,,
@@ -73,7 +75,7 @@ MEK-05-010,MEK-05,2,Pompa air mengangkat 100 kg air setinggi 5 m dalam 10 s (g =
 MEK-06-001,MEK-06,1,Rumus momentum adalah…,p = mv,,
 MEK-06-002,MEK-06,1,Impuls sama dengan perubahan…,Momentum,,
 MEK-06-003,MEK-06,1,Koefisien restitusi tumbukan lenting sempurna adalah…,1,,
-MEK-06-004,MEK-06,2,Besaran yang selalu kekal pada semua jenis tumbukan adalah…,Momentum,,
+MEK-06-004,MEK-06,1,Besaran yang selalu kekal pada semua jenis tumbukan adalah…,Momentum,,
 MEK-06-005,MEK-06,2,"Bola 0,5 kg bergerak 10 m/s. Berapa momentumnya?",5 kg·m/s,,
 MEK-06-006,MEK-06,2,"Gaya 100 N bekerja selama 0,2 s. Berapa impulsnya?",20 N·s,,
 MEK-06-007,MEK-06,3,Bola dijatuhkan dari ketinggian 4 m dan memantul setinggi 1 m. Berapa koefisien restitusinya?,"0,5",e = √(h'/h).,
@@ -192,6 +194,7 @@ LIS-02-008,LIS-02,3,Lampu “220 V 100 W” dipasang pada tegangan 110 V. Berapa
 LIS-02-009,LIS-02,2,Lampu 10 W di teras menyala 10 jam setiap hari selama 30 hari. Berapa energi listrik yang dipakai?,3 kWh,,lampu rumah
 LIS-02-010,LIS-02,2,Setrika 300 W dipakai selama 2 jam. Berapa energi listriknya?,"0,6 kWh",,setrika
 LIS-02-011,LIS-02,1,Lampu-lampu di rumah dipasang paralel sehingga tegangan pada setiap lampu…,Sama (220 V),,instalasi rumah
+LIS-02-012,LIS-02,1,Hukum yang menyatakan V = I · R adalah hukum…,Ohm,,
 LIS-03-001,LIS-03,1,Penemu bahwa arus listrik menimbulkan medan magnet (1820) adalah…,Hans Christian Oersted,,
 LIS-03-002,LIS-03,1,"Bahan yang ditarik kuat oleh magnet, seperti besi, disebut bahan…",Feromagnetik,,
 LIS-03-003,LIS-03,2,Rumus gaya Lorentz pada kawat berarus adalah…,F = BIL sin θ,,
@@ -205,7 +208,7 @@ LIS-04-002,LIS-04,1,Transformator penaik tegangan disebut transformator…,Step-
 LIS-04-003,LIS-04,1,Transformator tidak dapat bekerja dengan arus…,Searah (DC),,
 LIS-04-004,LIS-04,2,Transformator dengan Np = 1.000 dan Ns = 100 diberi tegangan 220 V. Berapa tegangan sekundernya?,22 V,,
 LIS-04-005,LIS-04,2,Tegangan PLN 220 V merupakan nilai…,Efektif,,
-LIS-04-006,LIS-04,2,Arus induksi selalu melawan perubahan fluks penyebabnya. Ini bunyi hukum…,Lenz,,
+LIS-04-006,LIS-04,1,Arus induksi selalu melawan perubahan fluks penyebabnya. Ini bunyi hukum…,Lenz,,
 LIS-04-007,LIS-04,3,Tegangan maksimum arus bolak-balik 311 V. Berapa tegangan efektifnya?,Sekitar 220 V,311/√2.,
 LIS-04-008,LIS-04,3,"Pada keadaan resonansi rangkaian RLC, impedansinya bernilai…",Minimum (Z = R),,
 LIS-04-009,LIS-04,1,Charger ponsel menurunkan tegangan 220 V dari stopkontak. Bagian penurun tegangan itu bekerja seperti transformator…,Step-down,,charger ponsel
@@ -216,18 +219,18 @@ MOD-01-002,MOD-01,1,Tokoh yang menjelaskan efek fotolistrik pada 1905 adalah…,
 MOD-01-003,MOD-01,1,Elektron dapat lepas pada efek fotolistrik hanya bila frekuensi cahaya … frekuensi ambang.,Lebih besar dari,,
 MOD-01-004,MOD-01,2,"Di atas frekuensi ambang, menaikkan intensitas cahaya menambah … elektron foto.",Jumlah,,
 MOD-01-005,MOD-01,2,Nilai tetapan pergeseran Wien adalah…,"2,898 × 10⁻³ m·K",,
-MOD-01-006,MOD-01,2,Gagasan bahwa partikel bersifat gelombang dengan λ = h/p dikemukakan oleh…,de Broglie,,
+MOD-01-006,MOD-01,1,Gagasan bahwa partikel bersifat gelombang dengan λ = h/p dikemukakan oleh…,de Broglie,,
 MOD-01-007,MOD-01,3,Foton berenergi 5 eV mengenai logam dengan fungsi kerja 2 eV. Berapa energi kinetik maksimum elektron foto?,3 eV,,
 MOD-01-008,MOD-01,3,Sinar-X ditemukan pada 1895 oleh…,Wilhelm Röntgen,,
 MOD-01-009,MOD-01,2,"Besi yang dipanaskan pandai besi berubah warna dari merah ke kuning keputihan. Menurut hukum Wien, makin panas benda, panjang gelombang puncak radiasinya makin…",Pendek,,pandai besi
 MOD-02-001,MOD-02,1,Model atom roti kismis dikemukakan oleh…,J. J. Thomson,,
-MOD-02-002,MOD-02,2,Percobaan hamburan partikel alfa pada lempeng emas mendasari model atom…,Rutherford,,
+MOD-02-002,MOD-02,1,Percobaan hamburan partikel alfa pada lempeng emas mendasari model atom…,Rutherford,,
 MOD-02-003,MOD-02,2,Energi elektron atom hidrogen pada n = 1 adalah…,"−13,6 eV",,
 MOD-02-004,MOD-02,2,Deret spektrum hidrogen yang sebagian berada di cahaya tampak adalah deret…,Balmer,,
 MOD-02-005,MOD-02,3,Berapa energi elektron atom hidrogen pada n = 2?,"−3,4 eV","−13,6/4.",
 MOD-02-006,MOD-02,2,Lampu neon pada papan iklan memancarkan warna tertentu ketika elektron atom gasnya pindah ke lintasan lebih rendah sambil memancarkan…,Foton (energi hf),,papan iklan
 MOD-03-001,MOD-03,1,"Berapa faktor γ untuk benda bergerak 0,6c?","1,25",,
-MOD-03-002,MOD-03,2,Jam yang bergerak berdetak lebih lambat. Gejala ini disebut…,Dilatasi waktu,,
+MOD-03-002,MOD-03,1,Jam yang bergerak berdetak lebih lambat. Gejala ini disebut…,Dilatasi waktu,,
 MOD-03-003,MOD-03,2,Percobaan yang gagal mendeteksi eter (1887) adalah percobaan…,Michelson–Morley,,
 MOD-03-004,MOD-03,2,Rumus energi diam benda adalah…,E₀ = m₀c²,,
 MOD-03-005,MOD-03,3,"Berapa faktor γ untuk benda bergerak 0,8c?",5/3,,
@@ -237,14 +240,14 @@ MOD-04-002,MOD-04,1,Sinar radioaktif dengan daya tembus paling kuat adalah sinar
 MOD-04-003,MOD-04,1,Penemu radioaktivitas (1896) adalah…,Henri Becquerel,,
 MOD-04-004,MOD-04,2,Peluruhan alfa mengurangi nomor massa sebesar…,4,,
 MOD-04-005,MOD-04,2,Peluruhan beta minus menaikkan nomor atom sebesar…,1,,
-MOD-04-006,MOD-04,2,"Reaksi penggabungan inti ringan, seperti di Matahari, disebut reaksi…",Fusi,,
+MOD-04-006,MOD-04,1,"Reaksi penggabungan inti ringan, seperti di Matahari, disebut reaksi…",Fusi,,
 MOD-04-007,MOD-04,3,"Setelah tiga kali waktu paruh, sisa zat radioaktif adalah … bagian.",1/8,,
 MOD-04-008,MOD-04,3,Zat radioaktif 80 g memiliki waktu paruh 2 hari. Berapa sisanya setelah 6 hari?,10 g,80 × (½)³.,
 MOD-04-009,MOD-04,2,Arkeolog menentukan umur fosil kayu di sebuah situs purbakala memakai isotop…,C-14,,situs purbakala
 MOD-04-010,MOD-04,2,"Rumah sakit memakai radioisotop untuk terapi kanker, yaitu…",Co-60,,rumah sakit
 TER-01-001,TER-01,1,Sebutkan dua sumber energi terbarukan.,"Dua di antara: surya, angin, air, panas bumi, biomassa, gelombang dan pasang surut laut",,
 TER-01-002,TER-01,2,Kesepakatan iklim 2015 yang membatasi kenaikan suhu global di bawah 2 °C adalah…,Persetujuan Paris,,
-TER-01-003,TER-01,2,"Pada PLTA, energi potensial air diubah menjadi energi kinetik, lalu menjadi energi…",Listrik,,
+TER-01-003,TER-01,1,"Pada PLTA, energi potensial air diubah menjadi energi kinetik, lalu menjadi energi…",Listrik,,
 TER-01-004,TER-01,2,Gas rumah kaca utama dari pembakaran bahan bakar fosil adalah…,CO₂,,
 TER-01-005,TER-01,2,Panel surya di atap balai desa mengubah energi cahaya menjadi energi…,Listrik,,balai desa
 TER-01-006,TER-01,2,Pembangkit listrik di dataran tinggi Dieng memanfaatkan uap dari perut bumi. Sumber energinya adalah…,Panas bumi,,pembangkit
@@ -252,5 +255,5 @@ TER-02-001,TER-02,1,1 byte sama dengan … bit.,8,,
 TER-02-002,TER-02,2,Bilangan biner 1011 sama dengan bilangan desimal…,11,,
 TER-02-003,TER-02,2,Gerbang logika yang keluarannya 1 hanya bila semua masukan 1 adalah…,AND,,
 TER-02-004,TER-02,2,Gerbang logika yang keluarannya 1 bila kedua masukan berbeda adalah…,XOR,,
-TER-02-005,TER-02,2,"Sinyal yang nilainya diskret, 0 dan 1, disebut sinyal…",Digital,,
+TER-02-005,TER-02,1,"Sinyal yang nilainya diskret, 0 dan 1, disebut sinyal…",Digital,,
 TER-02-006,TER-02,2,Lampu teras menyala bila saklar A atau saklar B (atau keduanya) ditekan. Gerbang logika yang sesuai adalah…,OR,,rumah

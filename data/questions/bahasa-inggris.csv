@@ -2,7 +2,7 @@ id,simpul,tingkat,soal,jawaban,catatan,konteks
 RDG-01-001,RDG-01,1,"Strategi membaca cepat judul, kalimat pertama paragraf, dan kesimpulan untuk menangkap gagasan umum disebut…",Skimming,,
 RDG-01-002,RDG-01,1,Pernyataan penulis tentang topik sebuah teks atau paragraf disebut…,Main idea (gagasan utama),,
 RDG-01-003,RDG-01,1,"Hal yang dibahas sebuah teks, biasanya berupa satu frasa, disebut…",Topic (topik),,
-RDG-01-004,RDG-01,2,Pertanyaan “What is the best title for the text?” menguji kemampuan menemukan…,Gagasan utama (main idea),,
+RDG-01-004,RDG-01,1,Pertanyaan “What is the best title for the text?” menguji kemampuan menemukan…,Gagasan utama (main idea),,
 RDG-01-005,RDG-01,2,Gagasan utama sebuah teks harus mencakup…,"Seluruh paragraf, bukan satu paragraf saja",,
 RDG-01-006,RDG-01,2,"Brosur wisata di sebuah desa wisata berjudul “Explore Our Rice Terraces” dan semua paragrafnya membahas sawah bertingkat, cara menanam padi, dan jalur trekking di sawah. Topik brosur ini adalah…",Sawah bertingkat (rice terraces) di desa itu,,desa wisata
 RDG-02-001,RDG-02,1,"Strategi mencari kata kunci tertentu, seperti nama atau angka, di dalam teks disebut…",Scanning,,
@@ -30,7 +30,7 @@ RDG-04-009,RDG-04,1,Kartu ucapan untuk guru berbunyi “Thank you for your patie
 RDG-05-001,RDG-05,1,"Pernyataan yang dapat dibuktikan, misalnya dengan data atau tanggal, disebut…",Fact (fakta),,
 RDG-05-002,RDG-05,1,Ungkapan seperti “I think” dan “in my opinion” menandai…,Opinion (opini),,
 RDG-05-003,RDG-05,2,"Argumen yang kuat didukung data, contoh, dan sumber yang…",Kredibel,,
-RDG-05-004,RDG-05,2,Kalimat “It is the best result ever” termasuk fakta atau opini?,Opini,,
+RDG-05-004,RDG-05,1,Kalimat “It is the best result ever” termasuk fakta atau opini?,Opini,,
 RDG-05-005,RDG-05,2,Informasi tambahan yang tepat untuk memperkuat teks harus mendukung klaim yang…,Sama,,
 RDG-05-006,RDG-05,3,Sebutkan dua hal yang dinilai saat memeriksa kredibilitas sumber.,"Dua di antara: siapa sumbernya, apakah datanya terbaru, apakah ada kepentingan tertentu",,
 RDG-05-007,RDG-05,2,Ulasan sebuah warung di aplikasi peta: “The warung opened in 2015. Their soto is the most delicious in town.” Kalimat kedua termasuk…,Opini,,ulasan daring
@@ -40,7 +40,7 @@ TXT-01-002,TXT-01,1,Struktur descriptive text adalah identification dan…,Descr
 TXT-01-003,TXT-01,1,"Teks yang menggambarkan satu kelas benda secara umum, seperti “Whales”, disebut…",Report text,,
 TXT-01-004,TXT-01,2,Struktur report text adalah general classification dan…,Description,,
 TXT-01-005,TXT-01,2,Tense yang dipakai dalam descriptive dan report text adalah…,Simple present tense,,
-TXT-01-006,TXT-01,2,Report text banyak memakai istilah ilmiah dan kata benda…,Umum,,
+TXT-01-006,TXT-01,1,Report text banyak memakai istilah ilmiah dan kata benda…,Umum,,
 TXT-01-007,TXT-01,2,Brosur museum berisi “Borobudur Temple is located in Magelang. It has 72 stupas…”. Jenis teks ini adalah…,Descriptive text,,wisata candi
 TXT-01-008,TXT-01,2,"Papan informasi di kebun binatang berjudul “Komodo Dragons” menjelaskan habitat, makanan, dan ciri-ciri komodo secara umum. Jenis teks ini adalah…",Report text,,kebun binatang
 TXT-02-001,TXT-02,1,Teks yang menceritakan kembali pengalaman atau peristiwa masa lalu disebut…,Recount text,,
@@ -141,7 +141,7 @@ GRM-06-003,GRM-06,2,"Ubah ke reported speech: He said, “I am tired.”",He sai
 GRM-06-004,GRM-06,3,"Ubah ke reported speech: She asked, “Where do you live?”",She asked where I lived.,,
 GRM-06-005,GRM-06,2,"Kepala sekolah berkata kepada siswa, “Don't be late.” Dalam reported speech: The principal told the students…",Not to be late.,,sekolah
 GRM-07-001,GRM-07,1,Kata kerja “enjoy” diikuti gerund atau to-infinitive?,Gerund (V-ing),,
-GRM-07-002,GRM-07,2,Kata kerja “decide” diikuti gerund atau to-infinitive?,To-infinitive,,
+GRM-07-002,GRM-07,1,Kata kerja “decide” diikuti gerund atau to-infinitive?,To-infinitive,,
 GRM-07-003,GRM-07,2,Lengkapi kalimat causative pasif: “I had my hair … (cut).”,Cut,,
 GRM-07-004,GRM-07,2,Lengkapi: “She avoids … (eat) spicy food.”,Eating,,
 GRM-07-005,GRM-07,2,"Pelanggan berkata di bengkel, “I want to get my motorbike … (repair) today.” Bentuk yang tepat adalah…",Repaired,,bengkel

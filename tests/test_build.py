@@ -85,6 +85,11 @@ class SubjectBanksTest(unittest.TestCase):
         self.assertTrue(self.banks, "data/questions/ has no banks")
         self.assertEqual(build.validate_subject_banks(self.banks, self.maps), [])
 
+    def test_level1_share(self):
+        for name, rows in self.banks.items():
+            share = sum(r["tingkat"] == "1" for r in rows) / len(rows)
+            self.assertGreaterEqual(share, build.MIN_LEVEL1_SHARE, f"{name}: level 1 is {share:.0%}")
+
     def test_every_topic_has_enough_questions(self):
         for name, rows in self.banks.items():
             per_topic = Counter(r["simpul"] for r in rows)

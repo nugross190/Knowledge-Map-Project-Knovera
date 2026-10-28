@@ -50,7 +50,7 @@ id,simpul,tingkat,soal,jawaban,catatan,konteks
 | 2 sedang | A specific detail from the topic's bullets or tables | *Prasasti Sriwijaya tahun 684 tentang taman Sriksetra adalah…* |
 | 3 sulit | A precise date, number, minor figure, or a link between two topics | *Monumenten Ordonnantie dimuat dalam Staatsblad tahun 1931 nomor…* |
 
-A bank SHOULD be roughly 45–55% level 1, 30–40% level 2, and 10–20% level 3. Subject banks with `konteks` items (§6) MAY run about 35–40% level 1 and 50–55% level 2: applying a concept to a scene is a level 2 task even when the concept is a headline fact.
+A bank SHOULD be roughly 45–55% level 1, 30–40% level 2, and 10–20% level 3. Subject banks with `konteks` items (§6) MAY run about 35–40% level 1 and 50–55% level 2: applying a concept to a scene is a level 2 task even when the concept is a headline fact. A subject bank MUST NOT fall below 35% level 1 (`build.py` warns and a test fails). Grade by the table above: a non-konteks question whose answer is the topic's summary fact or bold text is level 1.
 
 ## 4. Coverage
 

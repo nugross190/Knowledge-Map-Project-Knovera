@@ -3,8 +3,8 @@ MBC-01-001,MBC-01,1,Inti sebuah paragraf disebut…,Gagasan pokok (gagasan utama
 MBC-01-002,MBC-01,1,Kalimat yang memuat gagasan pokok paragraf disebut kalimat…,Utama,,
 MBC-01-003,MBC-01,1,Paragraf yang kalimat utamanya terletak di awal disebut paragraf…,Deduktif,,
 MBC-01-004,MBC-01,1,Paragraf yang kalimat utamanya terletak di akhir disebut paragraf…,Induktif,,
-MBC-01-005,MBC-01,2,Informasi yang tertulis langsung di dalam teks disebut informasi…,Tersurat,,
-MBC-01-006,MBC-01,2,Informasi yang disimpulkan dari isi teks tanpa ditulis langsung disebut informasi…,Tersirat,,
+MBC-01-005,MBC-01,1,Informasi yang tertulis langsung di dalam teks disebut informasi…,Tersurat,,
+MBC-01-006,MBC-01,1,Informasi yang disimpulkan dari isi teks tanpa ditulis langsung disebut informasi…,Tersirat,,
 MBC-01-007,MBC-01,2,Paragraf yang kalimat utamanya di awal dan diulang di akhir disebut paragraf…,Campuran,,
 MBC-01-008,MBC-01,3,Ringkasan yang boleh mengubah urutan dan tidak harus mempertahankan sudut pandang penulis disebut…,Ikhtisar,,
 MBC-01-009,MBC-01,2,Pengumuman RT berbunyi: “Kerja bakti dilaksanakan Minggu pukul 07.00. Warga membawa cangkul dan karung.” Informasi bahwa kerja bakti diadakan pagi hari termasuk informasi…,Tersurat,,pengumuman RT
@@ -49,15 +49,15 @@ NON-01-002,NON-01,1,Teks laporan hasil observasi bersifat objektif atau subjekti
 NON-01-003,NON-01,2,Kata kerja seperti “adalah” dan “merupakan” dalam teks laporan disebut kata kerja…,Relasional,,
 NON-01-004,NON-01,2,Bagian teks laporan yang merinci bagian-bagian objek disebut…,Deskripsi bagian (aspek),,
 NON-01-005,NON-01,2,"Teks yang membahas satu kelas benda secara umum adalah teks laporan, sedangkan teks yang menggambarkan satu objek khusus adalah teks…",Deskripsi,,
-NON-01-006,NON-01,2,Teks yang memakai kata benda umum dan istilah teknis serta tanpa opini pribadi adalah teks…,Laporan hasil observasi,,
+NON-01-006,NON-01,1,Teks yang memakai kata benda umum dan istilah teknis serta tanpa opini pribadi adalah teks…,Laporan hasil observasi,,
 NON-01-007,NON-01,3,Bagian penutup teks laporan hasil observasi yang bersifat opsional berisi…,Simpulan atau manfaat,,
 NON-01-008,NON-01,2,"Siswa menulis tentang jenis-jenis perahu nelayan di pantai desanya: definisi, jenis, dan bagian-bagiannya, tanpa pendapat pribadi. Teks yang ia tulis adalah teks…",Laporan hasil observasi,,nelayan
 NON-02-001,NON-02,1,Bagian awal teks eksposisi yang berisi pendapat penulis disebut…,Tesis,,
 NON-02-002,NON-02,1,Bagian akhir teks eksposisi yang menegaskan kembali tesis disebut…,Penegasan ulang,,
 NON-02-003,NON-02,1,Bagian teks eksposisi yang berisi fakta dan data pendukung disebut…,Argumentasi,,
 NON-02-004,NON-02,2,Kata kerja seperti “berpendapat” dan “menduga” dalam teks eksposisi disebut kata kerja…,Mental,,
-NON-02-005,NON-02,2,Teks yang memaparkan pendapat penulis disertai fakta dan data disebut teks…,Eksposisi,,
-NON-02-006,NON-02,2,Artikel opini dan editorial memiliki struktur yang mirip dengan teks…,Eksposisi,,
+NON-02-005,NON-02,1,Teks yang memaparkan pendapat penulis disertai fakta dan data disebut teks…,Eksposisi,,
+NON-02-006,NON-02,1,Artikel opini dan editorial memiliki struktur yang mirip dengan teks…,Eksposisi,,
 NON-02-007,NON-02,3,Penegasan ulang tidak boleh berisi…,Argumen baru,,
 NON-02-008,NON-02,2,Mading sekolah memuat tulisan “Kantin sekolah harus bebas plastik” yang disertai data jumlah sampah kantin per hari. Kalimat “Kantin sekolah harus bebas plastik” berfungsi sebagai…,Tesis,,mading sekolah
 NON-03-001,NON-03,1,OSIS mengumumkan lomba debat dengan topik “Ponsel boleh dibawa ke kelas”. Topik yang diperdebatkan ini disebut…,Mosi,,lomba debat
@@ -69,7 +69,7 @@ NON-04-001,NON-04,1,Teks yang berisi langkah-langkah melakukan sesuatu disebut t
 NON-04-002,NON-04,1,Teks yang menjelaskan proses terjadinya suatu fenomena disebut teks…,Eksplanasi,,
 NON-04-003,NON-04,1,"Petunjuk di kemasan mi instan berbunyi “Rebus air, masukkan mi, aduk, lalu angkat.” Jenis kalimat yang dipakai adalah kalimat…",Perintah,,kemasan makanan
 NON-04-004,NON-04,2,"Struktur teks eksplanasi terdiri atas identifikasi fenomena, rangkaian kejadian, dan…",Ulasan,,
-NON-04-005,NON-04,2,Konjungsi seperti “karena” dan “sehingga” paling banyak dipakai dalam teks…,Eksplanasi,,
+NON-04-005,NON-04,1,Konjungsi seperti “karena” dan “sehingga” paling banyak dipakai dalam teks…,Eksplanasi,,
 NON-04-006,NON-04,2,Konjungsi seperti “lalu” dan “kemudian” dalam teks prosedur disebut konjungsi…,Temporal,,
 NON-04-007,NON-04,3,"Kata kerja seperti “aduk”, “potong”, dan “tuang” dalam teks prosedur disebut kata kerja…",Material,,
 NON-04-008,NON-04,1,"Kertas yang ditempel di dinding posyandu berisi urutan mencuci tangan: basahi tangan, beri sabun, gosok, bilas, keringkan. Teks ini termasuk teks…",Prosedur,,posyandu
@@ -85,7 +85,7 @@ NON-06-003,NON-06,2,Bagian surat lamaran yang berisi identitas dan kualifikasi p
 NON-06-004,NON-06,2,"Bahasa surat lamaran pekerjaan harus baku, santun, ringkas, dan…",Meyakinkan,,
 NON-06-005,NON-06,2,Lulusan SMK melihat lowongan di papan pengumuman sebuah bengkel. Pada bagian mana ia menulis “Berdasarkan informasi lowongan di papan pengumuman bengkel…”?,Pembuka,,lowongan kerja
 NON-07-001,NON-07,1,Tulisan berisi pandangan pribadi penulis tentang suatu topik disebut…,Esai,,
-NON-07-002,NON-07,2,Penilaian atas karya sastra atau seni dengan dasar dan bukti disebut…,Kritik,,
+NON-07-002,NON-07,1,Penilaian atas karya sastra atau seni dengan dasar dan bukti disebut…,Kritik,,
 NON-07-003,NON-07,2,Artikel opini yang mewakili sikap redaksi media disebut…,Editorial (tajuk rencana),,
 NON-07-004,NON-07,2,"Kritik bersifat objektif, sedangkan esai bersifat…",Subjektif,,
 NON-07-005,NON-07,2,Koran daerah memuat tulisan tanpa nama penulis yang menyatakan sikap koran tentang rencana pembangunan pasar baru. Tulisan ini disebut…,Editorial (tajuk rencana),,koran daerah
@@ -95,14 +95,14 @@ SAS-01-003,SAS-01,1,Alur cerita yang memakai sorot balik ke masa lalu disebut al
 SAS-01-004,SAS-01,1,"Tempat, waktu, dan suasana dalam cerita disebut…",Latar,,
 SAS-01-005,SAS-01,2,"Penggambaran watak tokoh lewat tindakan, dialog, dan pikiran disebut penokohan…",Dramatik,,
 SAS-01-006,SAS-01,2,Sudut pandang cerita yang memakai kata “aku” disebut sudut pandang orang…,Pertama,,
-SAS-01-007,SAS-01,2,Latar belakang pengarang dan keadaan masyarakat saat karya ditulis termasuk unsur…,Ekstrinsik,,
+SAS-01-007,SAS-01,1,Latar belakang pengarang dan keadaan masyarakat saat karya ditulis termasuk unsur…,Ekstrinsik,,
 SAS-01-008,SAS-01,3,Bagian struktur cerpen yang berisi tanggapan atau penilaian terhadap konflik disebut…,Evaluasi,,
 SAS-01-009,SAS-01,1,Cerpen di majalah sekolah menceritakan pasar malam di alun-alun yang ramai dan riuh. Suasana ramai dan riuh termasuk unsur…,Latar (suasana),,pasar malam
 SAS-02-001,SAS-02,1,Ciri hikayat berupa peristiwa yang tidak masuk akal disebut…,Kemustahilan,,
 SAS-02-002,SAS-02,1,"Cerita Malin Kundang dikenal luas di Sumatra Barat, tetapi tidak ada yang tahu siapa pengarangnya. Sifat cerita rakyat seperti ini disebut…",Anonim,,cerita rakyat
 SAS-02-003,SAS-02,2,Hikayat yang ceritanya berpusat pada kehidupan raja dan istana disebut bersifat…,Istanasentris,,
-SAS-02-004,SAS-02,2,Kata arkais seperti “syahdan” dan “hatta” merupakan penanda…,Hikayat,,
-SAS-02-005,SAS-02,2,Prosa modern yang tokohnya orang biasa dan peristiwanya masuk akal disebut…,Cerpen,,
+SAS-02-004,SAS-02,1,Kata arkais seperti “syahdan” dan “hatta” merupakan penanda…,Hikayat,,
+SAS-02-005,SAS-02,1,Prosa modern yang tokohnya orang biasa dan peristiwanya masuk akal disebut…,Cerpen,,
 SAS-02-006,SAS-02,3,Bagian struktur hikayat yang berisi pesan di akhir cerita disebut…,Koda,,
 SAS-02-007,SAS-02,2,Nenek bercerita tentang putri yang dapat terbang dan raja yang menjelma menjadi naga untuk menjaga kerajaannya. Ciri hikayat yang paling tampak adalah…,Kemustahilan,,cerita rakyat
 SAS-02-008,SAS-02,1,Sebutkan dua nilai yang dapat ditemukan dalam hikayat.,"Dua di antara: agama, moral, budaya, sosial, pendidikan",,
@@ -147,7 +147,7 @@ KEB-02-002,KEB-02,1,Syarat kalimat efektif yang melarang kata mubazir disebut…
 KEB-02-003,KEB-02,1,"Konjungsi “dan”, “atau”, dan “tetapi” disebut konjungsi…",Koordinatif,,
 KEB-02-004,KEB-02,2,Konjungsi “baik … maupun” disebut konjungsi…,Korelatif,,
 KEB-02-005,KEB-02,2,Konjungsi “karena” dan “ketika” disebut konjungsi…,Subordinatif,,
-KEB-02-006,KEB-02,2,“Namun” termasuk konjungsi intrakalimat atau antarkalimat?,Antarkalimat,,
+KEB-02-006,KEB-02,1,“Namun” termasuk konjungsi intrakalimat atau antarkalimat?,Antarkalimat,,
 KEB-02-007,KEB-02,2,Kalimat majemuk yang memiliki induk kalimat dan anak kalimat disebut kalimat majemuk…,Bertingkat,,
 KEB-02-008,KEB-02,3,"Kesesuaian bentuk kata dalam rincian, seperti “pemeriksaan, pengukuran, pencatatan”, disebut…",Keparalelan,,
 KEB-02-009,KEB-02,1,Pengumuman RT berbunyi “Para warga-warga diharap hadir.” Kesalahan kalimat ini melanggar syarat kalimat efektif berupa…,Kehematan,,pengumuman RT
@@ -157,7 +157,7 @@ KEB-03-002,KEB-03,1,Awalan “di-” pada kata kerja pasif ditulis serangkai ata
 KEB-03-003,KEB-03,1,Pedoman ejaan yang berlaku sejak 2022 disebut…,EYD Edisi V,,
 KEB-03-004,KEB-03,2,Penulisan yang benar: “apapun” atau “apa pun”?,Apa pun,,
 KEB-03-005,KEB-03,2,Penulisan yang benar: “meskipun” atau “meski pun”?,Meskipun,,
-KEB-03-006,KEB-03,2,Angka di awal kalimat harus ditulis dengan…,Huruf,,
+KEB-03-006,KEB-03,1,Angka di awal kalimat harus ditulis dengan…,Huruf,,
 KEB-03-007,KEB-03,2,"Tanda koma dipakai sebelum kata “tetapi”, “melainkan”, dan…",Sedangkan,,
 KEB-03-008,KEB-03,3,Pedoman ejaan sebelum EYD Edisi V disebut…,PUEBI,,
 KEB-03-009,KEB-03,1,Spanduk di depan warung bertuliskan “Di jual pulsa”. Penulisan yang benar adalah…,Dijual,,spanduk
@@ -166,5 +166,5 @@ KEB-03-011,KEB-03,2,Undangan karang taruna menulis “acara diadakan di balai de
 KEB-04-001,KEB-04,1,Kepaduan bentuk antarkalimat dalam paragraf disebut…,Kohesi,,
 KEB-04-002,KEB-04,1,Kepaduan makna antarkalimat dalam paragraf disebut…,Koherensi,,
 KEB-04-003,KEB-04,2,Kalimat yang tidak mendukung gagasan pokok paragraf disebut kalimat…,Sumbang,,
-KEB-04-004,KEB-04,2,Kata ganti seperti “ia” dan “hal itu” yang menghubungkan antarkalimat termasuk alat…,Kohesi,,
+KEB-04-004,KEB-04,1,Kata ganti seperti “ia” dan “hal itu” yang menghubungkan antarkalimat termasuk alat…,Kohesi,,
 KEB-04-005,KEB-04,2,Paragraf di mading sekolah tentang bahaya rokok tiba-tiba memuat kalimat tentang jadwal pertandingan futsal. Kalimat itu disebut kalimat…,Sumbang,,mading sekolah

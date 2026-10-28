@@ -9,6 +9,8 @@ ALJ-01-007,ALJ-01,3,Rasionalkan penyebut 1/(√5 + √3).,(√5 − √3)/2,Kali
 ALJ-01-008,ALJ-01,2,Koperasi sekolah menyimpan Rp1.000.000 di bank dengan bunga majemuk 10% per tahun. Berapa saldonya setelah 2 tahun?,Rp1.210.000,"1.000.000 × 1,1².",koperasi
 ALJ-01-009,ALJ-01,2,Harga sebuah motor bekas Rp15.000.000 menyusut 20% per tahun. Berapa harganya setelah 2 tahun?,Rp9.600.000,"15.000.000 × 0,8² (peluruhan).",penyusutan
 ALJ-01-010,ALJ-01,2,Penduduk sebuah desa 10.000 jiwa dan tumbuh 2% per tahun. Berapa penduduknya setelah 2 tahun?,10.404 jiwa,"10.000 × 1,02².",penduduk desa
+ALJ-01-011,ALJ-01,1,Hasil a⁰ untuk a ≠ 0 adalah…,1,,
+ALJ-01-012,ALJ-01,1,Bentuk am · an sama dengan…,a pangkat (m + n),Pangkat dijumlahkan.,
 ALJ-02-001,ALJ-02,1,Nilai ²log 8 adalah…,3,2³ = 8.,
 ALJ-02-002,ALJ-02,1,Nilai log 1000 adalah…,3,Basis 10.,
 ALJ-02-003,ALJ-02,1,"Pada ᵃlog b, syarat numerus b adalah…",b > 0,Basis a > 0 dan a ≠ 1.,
@@ -18,6 +20,8 @@ ALJ-02-006,ALJ-02,2,Nilai ³log 5 · ⁵log 9 adalah…,2,Berantai: ³log 9.,
 ALJ-02-007,ALJ-02,3,Penyelesaian ²log(x − 1) + ²log(x + 1) = 3 adalah…,x = 3,x² − 1 = 8 memberi x = ±3; x = −3 membuat numerus negatif sehingga dibuang.,
 ALJ-02-008,ALJ-02,3,"Tabungan Rp1.000.000 berbunga majemuk 10% per tahun. Lama menabung n agar saldo menjadi Rp2.000.000 memenuhi 1,1ⁿ = 2. Berapa n?","n = log 2 / log 1,1 ≈ 7,3; saldo baru melewati Rp2.000.000 pada akhir tahun ke-8",Ganti basis.,tabungan
 ALJ-02-009,ALJ-02,2,Magnitudo gempa skala Richter dihitung dengan logaritma basis 10 dari amplitudo gelombang. Amplitudo gempa B 100 kali amplitudo gempa A di jarak yang sama. Berapa selisih magnitudonya?,2,log 100 = 2.,gempa
+ALJ-02-010,ALJ-02,1,Logaritma adalah kebalikan dari operasi…,Eksponen (perpangkatan),,
+ALJ-02-011,ALJ-02,1,Bentuk log(bc) sama dengan…,log b + log c,,
 ALJ-03-001,ALJ-03,1,"Suku ke-10 barisan 3, 7, 11, … adalah…",39,3 + 9 × 4.,
 ALJ-03-002,ALJ-03,1,"Rasio barisan geometri 2, 6, 18, … adalah…",3,,
 ALJ-03-003,ALJ-03,1,Jumlah deret 2 + 4 + 6 + … + 20 adalah…,110,10/2 × (2 + 20).,
@@ -28,6 +32,9 @@ ALJ-03-007,ALJ-03,3,Bola dijatuhkan dari tinggi 4 m dan setiap memantul mencapai
 ALJ-03-008,ALJ-03,2,Produksi kerupuk sebuah UMKM 200 bungkus pada bulan pertama dan naik tetap 50 bungkus tiap bulan. Berapa produksi bulan ke-12?,750 bungkus,200 + 11 × 50.,UMKM
 ALJ-03-009,ALJ-03,2,"Gedung pertemuan desa menata kursi: baris pertama 20 kursi, tiap baris berikutnya 2 kursi lebih banyak, ada 15 baris. Berapa jumlah kursinya?",510 kursi,15/2 × (2 × 20 + 14 × 2).,gedung pertemuan
 ALJ-03-010,ALJ-03,2,Pedagang menabung Rp10.000 pada hari pertama dan menambah Rp2.000 lebih banyak setiap hari berikutnya. Berapa total tabungannya setelah 10 hari?,Rp190.000,10/2 × (20.000 + 9 × 2.000).,tabungan harian
+ALJ-03-011,ALJ-03,1,Rumus suku ke-n barisan aritmetika adalah…,Un = a + (n − 1)b,,
+ALJ-03-012,ALJ-03,1,Rumus suku ke-n barisan geometri adalah…,Un = a · r pangkat (n − 1),,
+ALJ-03-013,ALJ-03,1,Rumus jumlah deret geometri tak hingga adalah…,"S∞ = a/(1 − r), untuk −1 < r < 1",,
 ALJ-04-001,ALJ-04,1,Penyelesaian sistem x + y = 5 dan x − y = 1 adalah…,"x = 3, y = 2",Jumlahkan kedua persamaan.,
 ALJ-04-002,ALJ-04,1,Nilai optimum fungsi objektif program linear selalu tercapai di…,Titik pojok daerah penyelesaian,,
 ALJ-04-003,ALJ-04,1,Penyelesaian −2x > 6 adalah…,x < −3,Membagi dengan bilangan negatif membalik tanda.,
@@ -37,6 +44,7 @@ ALJ-04-006,ALJ-04,3,"Nilai maksimum f(x, y) = 3x + 2y dengan kendala x + y ≤ 6
 ALJ-04-007,ALJ-04,1,"Dalam soal cerita program linear, kendala yang sering tersirat untuk banyak barang x dan y adalah…",x ≥ 0 dan y ≥ 0,Banyak barang tidak mungkin negatif.,
 ALJ-04-008,ALJ-04,3,"Usaha kue rumahan membuat x loyang bolu dan y loyang donat. Tepung cukup untuk x + y ≤ 6, kapasitas oven 2x + y ≤ 8. Untung bolu Rp30.000 dan donat Rp20.000 per loyang. Berapa untung maksimum?","Rp140.000 (2 loyang bolu, 4 loyang donat)","Titik pojok (2, 4) memberi 60.000 + 80.000.",usaha kue
 ALJ-04-009,ALJ-04,2,"Di sebuah warung, 2 kg beras dan 1 kg gula seharga Rp40.000, sedangkan 1 kg beras dan 2 kg gula Rp41.000. Berapa harga 1 kg beras?",Rp13.000,Gula Rp14.000; eliminasi.,warung
+ALJ-04-010,ALJ-04,1,Sebutkan dua metode menyelesaikan sistem persamaan linear dua variabel.,"Contoh: substitusi, eliminasi, gabungan, determinan (dua di antaranya)",,
 ALJ-05-001,ALJ-05,1,Matriks berordo 2 × 3 dikalikan matriks berordo 3 × 4 menghasilkan ordo…,2 × 4,,
 ALJ-05-002,ALJ-05,1,"Determinan matriks [[3, 2], [1, 4]] adalah…",10,3 · 4 − 2 · 1.,
 ALJ-05-003,ALJ-05,2,"Invers matriks [[2, 1], [5, 3]] adalah…","[[3, −1], [−5, 2]]",Determinannya 1.,
@@ -50,6 +58,7 @@ ALJ-06-003,ALJ-06,2,Sisa pembagian P(x) = x³ + 2x² − x + 3 oleh (x + 2) adal
 ALJ-06-004,ALJ-06,2,"Jika (x − 2) faktor dari x³ − 4x² + kx + 2, nilai k adalah…",3,P(2) = 8 − 16 + 2k + 2 = 0.,
 ALJ-06-005,ALJ-06,2,Akar-akar x³ − 6x² + 11x − 6 = 0. Jumlah dan hasil kali ketiga akarnya adalah…,"Jumlah 6, hasil kali 6","−b/a dan −d/a. Akarnya 1, 2, 3.",
 ALJ-06-006,ALJ-06,3,P(x) dibagi (x − 1) bersisa 3 dan dibagi (x − 2) bersisa 5. Sisa pembagian P(x) oleh (x − 1)(x − 2) adalah…,2x + 1,p + q = 3 dan 2p + q = 5.,
+ALJ-06-007,ALJ-06,1,"Menurut teorema sisa, sisa pembagian P(x) oleh (x − k) adalah…",P(k),,
 ALJ-07-001,ALJ-07,1,Nilai i² adalah…,−1,,
 ALJ-07-002,ALJ-07,1,Modulus bilangan kompleks 3 + 4i adalah…,5,√(3² + 4²).,
 ALJ-07-003,ALJ-07,2,Hasil (2 + 3i)(1 − i) adalah…,5 + i,2 − 2i + 3i − 3i² = 5 + i.,
@@ -65,6 +74,8 @@ FUN-01-007,FUN-01,2,Penyelesaian x² − x − 6 < 0 adalah…,−2 < x < 3,Akar
 FUN-01-008,FUN-01,3,Nilai m agar x² + mx + 4 definit positif adalah…,−4 < m < 4,a = 1 > 0 dan D = m² − 16 < 0.,
 FUN-01-009,FUN-01,2,Bola ditendang di lapangan desa dengan tinggi h(t) = 20t − 5t² meter. Berapa tinggi maksimumnya?,20 m (saat t = 2 s),"Nilai y puncak, bukan t.",lapangan
 FUN-01-010,FUN-01,3,Kebun sayur di pekarangan dipagari 20 m kawat pada tiga sisi; sisi keempat tembok rumah. Berapa luas maksimum kebun?,"50 m² (lebar 5 m, panjang 10 m)","L = x(20 − 2x), puncak di x = 5.",kebun pekarangan
+FUN-01-011,FUN-01,1,Rumus diskriminan persamaan kuadrat ax² + bx + c = 0 adalah…,D = b² − 4ac,,
+FUN-01-012,FUN-01,1,"Jika D < 0, persamaan kuadrat memiliki…",Tidak ada akar real,,
 FUN-02-001,FUN-02,1,"Jika f(x) = 2x + 1 dan g(x) = x², nilai (f ∘ g)(2) adalah…",9,"g(2) = 4, lalu f(4) = 9.",
 FUN-02-002,FUN-02,1,"Pada (f ∘ g)(x), fungsi yang dikerjakan lebih dulu adalah…",g,,
 FUN-02-003,FUN-02,1,Invers dari f(x) = 3x − 6 adalah…,f⁻¹(x) = (x + 6)/3,,
@@ -99,6 +110,8 @@ GEO-01-007,GEO-01,2,Nilai cos 120° adalah…,−½,cos(180° − 60°) = −cos
 GEO-01-008,GEO-01,2,Nilai tan 90° adalah…,Tidak terdefinisi,Bukan nol dan bukan tak hingga.,
 GEO-01-009,GEO-01,2,Tangga 4 m disandarkan ke tembok dan membentuk sudut 60° dengan tanah. Berapa tinggi ujung tangga di tembok?,"2√3 m ≈ 3,46 m",4 sin 60°.,tukang bangunan
 GEO-01-010,GEO-01,2,"Dari jarak 10 m, puncak tiang bendera sekolah terlihat dengan sudut elevasi 45° (tinggi mata diabaikan). Berapa tinggi tiang?",10 m,tan 45° = 1.,tiang bendera
+GEO-01-011,GEO-01,1,Identitas trigonometri dasar adalah…,sin² α + cos² α = 1,,
+GEO-01-012,GEO-01,1,Rumus tan α dalam sin dan cos adalah…,sin α / cos α,,
 GEO-02-001,GEO-02,1,Aturan kosinus untuk sisi a adalah…,a² = b² + c² − 2bc cos A,,
 GEO-02-002,GEO-02,1,"Luas segitiga dengan dua sisi a, b dan sudut apit C adalah…",½ ab sin C,C harus sudut apit.,
 GEO-02-003,GEO-02,2,"Segitiga dengan b = 3, c = 8, dan A = 60°. Panjang a adalah…",7,9 + 64 − 24 = 49.,
@@ -108,6 +121,7 @@ GEO-02-006,GEO-02,2,"Luas segitiga bersisi 5, 5, dan 6 adalah…",12,"Heron: s =
 GEO-02-007,GEO-02,3,"Pada segitiga dengan a = 6 dan A = 30°, jari-jari lingkaran luarnya adalah…",6,a/sin A = 2R = 12.,
 GEO-02-008,GEO-02,2,Petani mengukur sawah berbentuk segitiga: dua sisinya 40 m dan 50 m dengan sudut apit 30°. Berapa luasnya?,500 m²,½ · 40 · 50 · sin 30°.,sawah
 GEO-02-009,GEO-02,3,"Dua perahu nelayan berangkat dari dermaga yang sama; satu menempuh 3 km, yang lain 5 km, dengan sudut 120° antara arahnya. Berapa jarak kedua perahu?",7 km,9 + 25 − 30 cos 120° = 49.,nelayan
+GEO-02-010,GEO-02,1,Rumus aturan sinus adalah…,a/sin A = b/sin B = c/sin C,,
 GEO-03-001,GEO-03,1,Rumus sin 2α adalah…,2 sin α cos α,,
 GEO-03-002,GEO-03,1,Rumus cos(α + β) adalah…,cos α cos β − sin α sin β,Tandanya menjadi minus.,
 GEO-03-003,GEO-03,2,Nilai sin 75° adalah…,(√6 + √2)/4,sin(45° + 30°).,
@@ -160,6 +174,7 @@ STA-01-006,STA-01,2,Rata-rata sekelompok data 70 dengan simpangan baku 4. Setiap
 STA-01-007,STA-01,3,"Nilai ulangan: 41–50 (5 siswa), 51–60 (8), 61–70 (12), 71–80 (5). Median data ini adalah…","≈ 62,17","Kelas median 61–70: 60,5 + ((15 − 13)/12) × 10.",
 STA-01-008,STA-01,2,"Hasil panen cabai lima petak kebun kelompok tani (kg): 12, 15, 15, 18, 20. Rata-rata dan modusnya adalah…","Rata-rata 16 kg, modus 15 kg",,kelompok tani
 STA-01-009,STA-01,3,"Upah harian di sebuah proyek (ribu rupiah): 100, 100, 120, 150, 400; nilai terakhir upah mandor. Bandingkan rata-rata dan median. Mana yang lebih mewakili upah kebanyakan pekerja?","Rata-rata 174 ribu, median 120 ribu; median lebih mewakili karena rata-rata tertarik satu nilai yang jauh lebih besar",,upah proyek
+STA-01-010,STA-01,1,Nilai yang paling sering muncul dalam data disebut…,Modus,,
 STA-02-001,STA-02,1,Diagram untuk menampilkan pasangan data dua variabel adalah…,Diagram pencar,,
 STA-02-002,STA-02,1,Koefisien korelasi r bernilai antara…,−1 dan 1,,
 STA-02-003,STA-02,2,"Koefisien korelasi r = −0,9 menunjukkan…",Korelasi negatif yang kuat,"Satu naik, yang lain cenderung turun.",
@@ -176,6 +191,7 @@ STA-03-007,STA-03,2,Banyak cara 5 orang duduk melingkar adalah…,24,Permutasi s
 STA-03-008,STA-03,3,Koefisien x² pada (x + 2)⁴ adalah…,24,"C(4, 2) · 2².",
 STA-03-009,STA-03,2,"Warung makan menawarkan paket berisi 1 lauk dari 3 pilihan, 1 sayur dari 2 pilihan, dan 1 minuman dari 2 pilihan. Berapa macam paket yang mungkin?",12,3 × 2 × 2.,warung makan
 STA-03-010,STA-03,2,"Kelompok tani beranggota 7 orang memilih ketua, sekretaris, dan bendahara. Berapa banyak susunan pengurus yang mungkin?",210,"P(7, 3) = 7 × 6 × 5.",kelompok tani
+STA-03-011,STA-03,1,Memilih tanpa memperhatikan urutan memakai rumus…,Kombinasi,,
 STA-04-001,STA-04,1,Peluang muncul mata dadu genap pada satu lemparan adalah…,½,3/6.,
 STA-04-002,STA-04,1,"Jika P(A) = 0,3, peluang A tidak terjadi adalah…","0,7",Komplemen.,
 STA-04-003,STA-04,1,Dua kejadian saling lepas berarti…,P(A ∩ B) = 0; tidak dapat terjadi bersamaan,Berbeda dengan saling bebas.,
@@ -187,6 +203,7 @@ STA-04-008,STA-04,3,Koin dilempar 3 kali. Peluang muncul tepat 2 gambar adalah�
 STA-04-009,STA-04,2,"Arisan RT diikuti 20 peserta; tiap bulan satu nama diundi dan yang sudah menang tidak ikut undian lagi. Berapa peluang seorang peserta tertentu menang pada bulan pertama, dan pada bulan kedua bila ia belum menang?",1/20 dan 1/19,Ruang sampel mengecil.,arisan
 STA-04-010,STA-04,2,"Petani menanam 200 bibit cabai; peluang tiap bibit tumbuh 0,9. Berapa frekuensi harapan bibit yang tumbuh?",180,"200 × 0,9.",bibit
 STA-04-011,STA-04,3,"Dari 40 siswa, 25 ikut voli, 20 ikut futsal, dan 10 ikut keduanya. Seorang siswa dipilih acak. Berapa peluang ia ikut voli atau futsal?",7/8,(25 + 20 − 10)/40.,ekstrakurikuler
+STA-04-012,STA-04,1,Rumus peluang kejadian A adalah…,P(A) = n(A)/n(S),,
 KAL-01-001,KAL-01,1,Nilai lim x→2 (3x + 1) adalah…,7,Substitusi langsung.,
 KAL-01-002,KAL-01,1,Nilai lim x→3 (x² − 9)/(x − 3) adalah…,6,Faktorkan: x + 3.,
 KAL-01-003,KAL-01,2,Nilai lim x→0 (sin 3x)/(2x) adalah…,3/2,,
@@ -196,6 +213,7 @@ KAL-01-006,KAL-01,2,Nilai lim x→1 (x² + x − 2)/(x − 1) adalah…,3,Faktor
 KAL-01-007,KAL-01,3,Nilai lim x→4 (√x − 2)/(x − 4) adalah…,1/4,Kalikan sekawan: 1/(√x + 2).,
 KAL-01-008,KAL-01,3,Nilai lim x→∞ (√(x² + 4x) − √(x² − 2x)) adalah…,3,(4 − (−2))/(2√1).,
 KAL-01-009,KAL-01,2,"Biaya rata-rata produksi keripik per bungkus (500.000 + 2.000x)/x rupiah untuk x bungkus. Bila produksi sangat besar (x → ∞), biaya rata-rata mendekati…",Rp2.000 per bungkus,Biaya tetap terbagi ke banyak bungkus.,biaya produksi
+KAL-01-010,KAL-01,1,Nilai lim x→0 (sin x)/x adalah…,1,,
 KAL-02-001,KAL-02,1,Turunan f(x) = 3x⁴ adalah…,12x³,,
 KAL-02-002,KAL-02,1,Turunan fungsi konstan f(x) = 7 adalah…,0,,
 KAL-02-003,KAL-02,1,Turunan f(x) = cos x adalah…,−sin x,Bertanda negatif.,
@@ -205,6 +223,7 @@ KAL-02-006,KAL-02,2,Turunan f(x) = x² sin x adalah…,2x sin x + x² cos x,Atur
 KAL-02-007,KAL-02,2,Turunan f(x) = x/(x + 1) adalah…,1/(x + 1)²,((x + 1) − x)/(x + 1)².,
 KAL-02-008,KAL-02,3,Turunan f(x) = sin² x adalah…,2 sin x cos x = sin 2x,Aturan rantai.,
 KAL-02-009,KAL-02,2,Biaya produksi sebuah konveksi C(x) = x² + 10x ribu rupiah untuk x potong kaos. Berapa biaya marjinal C'(x) saat x = 20?,50 ribu rupiah per potong,C'(x) = 2x + 10.,konveksi
+KAL-02-010,KAL-02,1,Turunan xⁿ adalah…,n xⁿ⁻¹,,
 KAL-03-001,KAL-03,1,Syarat titik stasioner adalah…,f'(x) = 0,,
 KAL-03-002,KAL-03,1,Fungsi f naik pada interval yang memenuhi…,f'(x) > 0,,
 KAL-03-003,KAL-03,2,Persamaan garis singgung y = x² + 3x di x = 1 adalah…,y = 5x − 1,"m = f'(1) = 5, titik (1, 4).",
@@ -223,6 +242,7 @@ KAL-04-006,KAL-04,2,Hasil ∫2x(x² + 1)³ dx adalah…,(x² + 1)⁴/4 + C,Subst
 KAL-04-007,KAL-04,2,"Jika f'(x) = 2x + 3 dan f(0) = 1, maka f(x) adalah…",x² + 3x + 1,Konstanta C ditentukan dari f(0).,
 KAL-04-008,KAL-04,3,Hasil ∫x cos x dx adalah…,x sin x + cos x + C,"Parsial: u = x, dv = cos x dx.",
 KAL-04-009,KAL-04,2,Biaya marjinal pabrik tahu C'(x) = 2x + 100 rupiah per potong dan biaya tetapnya Rp50.000. Fungsi biaya total C(x) adalah…,C(x) = x² + 100x + 50.000,Biaya tetap menjadi konstanta C.,pabrik tahu
+KAL-04-010,KAL-04,1,Hasil ∫xⁿ dx untuk n ≠ −1 adalah…,xⁿ⁺¹/(n + 1) + C,,
 KAL-05-001,KAL-05,1,Nilai integral 3x² dari x = 0 sampai x = 2 adalah…,8,[x³] dari 0 sampai 2.,
 KAL-05-002,KAL-05,1,Integral tentu dengan batas bawah dan batas atas yang sama bernilai…,0,,
 KAL-05-003,KAL-05,2,Nilai integral (2x + 1) dari x = 1 sampai x = 3 adalah…,10,[x² + x] = 12 − 2.,

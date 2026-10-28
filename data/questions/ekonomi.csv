@@ -19,7 +19,7 @@ DAS-02-008,DAS-02,2,"Di pasar induk, harga sayur naik-turun mengikuti banyaknya 
 DAS-02-009,DAS-02,1,"Di sebuah kampung nelayan pada masa lalu, ikan ditukar langsung dengan beras tanpa memakai uang. Tukar-menukar barang dengan barang ini disebut…",Barter,,nelayan
 DAS-03-001,DAS-03,1,Balas jasa untuk faktor produksi modal adalah…,Bunga,,
 DAS-03-002,DAS-03,1,Balas jasa untuk faktor produksi kewirausahaan adalah…,Laba,,
-DAS-03-003,DAS-03,2,"Dalam diagram arus melingkar tiga sektor, pelaku yang ditambahkan dibanding model dua sektor adalah…",Pemerintah,,
+DAS-03-003,DAS-03,1,"Dalam diagram arus melingkar tiga sektor, pelaku yang ditambahkan dibanding model dua sektor adalah…",Pemerintah,,
 DAS-03-004,DAS-03,2,Menyimpan beras untuk dijual saat paceklik menambah nilai guna…,Waktu (time utility),,
 DAS-03-005,DAS-03,2,Nelayan membawa ikan dari pelabuhan kecil ke pasar kota yang lebih ramai sehingga ikan lebih berharga di sana. Nilai guna yang bertambah adalah nilai guna…,Tempat (place utility),,nelayan
 DAS-03-006,DAS-03,2,Sekelompok warga desa mengolah singkong menjadi keripik sehingga harganya lebih tinggi. Nilai guna yang bertambah adalah nilai guna…,Bentuk (form utility),,UMKM
@@ -46,7 +46,7 @@ PAS-03-004,PAS-03,2,"Permintaan beras, bensin, dan obat cenderung elastis atau i
 PAS-03-005,PAS-03,3,Harga seikat kangkung di pasar naik dari Rp4.000 ke Rp5.000 dan penjualan turun dari 200 ikat ke 150 ikat. Berapa koefisien elastisitas permintaannya?,1 (uniter),"Harga naik 25%, jumlah turun 25%.",pasar
 PAS-04-001,PAS-04,1,Pasar dengan satu penjual dan tanpa barang pengganti yang dekat disebut…,Monopoli,,
 PAS-04-002,PAS-04,1,"Pasar dengan sangat banyak penjual barang homogen, masing-masing hanya menerima harga pasar, disebut pasar…",Persaingan sempurna,,
-PAS-04-003,PAS-04,2,Lembaga yang mengawasi persaingan usaha di Indonesia adalah…,KPPU (Komisi Pengawas Persaingan Usaha),,
+PAS-04-003,PAS-04,1,Lembaga yang mengawasi persaingan usaha di Indonesia adalah…,KPPU (Komisi Pengawas Persaingan Usaha),,
 PAS-04-004,PAS-04,3,Larangan praktik monopoli dan persaingan usaha tidak sehat diatur dalam UU Nomor … Tahun 1999.,5,,
 PAS-04-005,PAS-04,2,"Di sebuah daerah hanya ada satu pabrik gula yang membeli tebu dari ratusan petani, sehingga pabrik dapat menentukan harga beli tebu. Bentuk pasar ini disebut…",Monopsoni,,petani tebu
 PAS-04-006,PAS-04,2,Di satu jalan ada banyak warung bakso dengan rasa dan merek berbeda-beda. Bentuk pasarnya adalah…,Persaingan monopolistik,,warung
@@ -62,7 +62,7 @@ KEU-01-008,KEU-01,1,Pedagang sayur di pasar memajang kode QR sehingga pembeli da
 KEU-02-001,KEU-02,1,Bank sentral Republik Indonesia adalah…,Bank Indonesia,,
 KEU-02-002,KEU-02,1,"Lembaga yang mengatur dan mengawasi perbankan, pasar modal, dan IKNB adalah…",Otoritas Jasa Keuangan (OJK),,
 KEU-02-003,KEU-02,1,Lembaga yang menjamin simpanan nasabah bank adalah…,Lembaga Penjamin Simpanan (LPS),,
-KEU-02-004,KEU-02,2,Satu-satunya lembaga yang berwenang mengeluarkan dan mengedarkan rupiah adalah…,Bank Indonesia,,
+KEU-02-004,KEU-02,1,Satu-satunya lembaga yang berwenang mengeluarkan dan mengedarkan rupiah adalah…,Bank Indonesia,,
 KEU-02-005,KEU-02,1,"Menurut UU P2SK (2023), salah satu tujuan Bank Indonesia adalah mencapai stabilitas nilai…",Rupiah,Dua lainnya: stabilitas sistem pembayaran dan turut menjaga stabilitas sistem keuangan.,
 KEU-02-006,KEU-02,3,Berapa batas penjaminan LPS per nasabah per bank yang berlaku pada 2025?,Rp2 miliar,Berlaku sejak 2008.,
 KEU-02-007,KEU-02,3,Sejak tanggal berapa pengawasan bank berpindah dari Bank Indonesia ke OJK?,31 Desember 2013,,
@@ -101,13 +101,13 @@ MAK-01-001,MAK-01,1,Rumus pendapatan nasional dengan pendekatan pengeluaran adal
 MAK-01-002,MAK-01,1,"Nilai barang dan jasa akhir yang dihasilkan di wilayah suatu negara, oleh warga negara maupun asing, disebut…",Produk domestik bruto (PDB),,
 MAK-01-003,MAK-01,1,PNB = PDB + …,Pendapatan neto faktor luar negeri,,
 MAK-01-004,MAK-01,1,PDB yang dihitung dengan harga konstan tahun dasar disebut PDB…,Riil,,
-MAK-01-005,MAK-01,2,Pendapatan perseorangan dikurangi pajak langsung disebut…,Pendapatan disposabel (disposable income),,
+MAK-01-005,MAK-01,1,Pendapatan perseorangan dikurangi pajak langsung disebut…,Pendapatan disposabel (disposable income),,
 MAK-01-006,MAK-01,3,"C = 500, I = 200, G = 150, X = 100, dan M = 80 (triliun rupiah). Berapa pendapatan nasionalnya?",Rp870 triliun,500 + 200 + 150 + (100 − 80).,
 MAK-01-007,MAK-01,3,Pendapatan nasional Rp1.000 triliun dan jumlah penduduk 250 juta jiwa. Berapa pendapatan per kapitanya?,Rp4 juta,,
 MAK-01-008,MAK-01,2,Seorang perawat asal Indonesia bekerja di Jepang. Pendapatannya dihitung dalam PDB Indonesia atau PNB Indonesia?,PNB Indonesia,Pendapatan itu masuk PDB Jepang.,pekerja migran
 MAK-01-009,MAK-01,2,Pabrik milik perusahaan asing di Batam memproduksi barang elektronik. Nilai produksinya dihitung dalam PDB Indonesia atau tidak?,"Ya, masuk PDB Indonesia","PDB dihitung menurut wilayah, bukan kepemilikan.",pabrik
 MAK-02-001,MAK-02,1,Rasio Gini bernilai 0 berarti pendapatan terbagi…,Merata sempurna,,
-MAK-02-002,MAK-02,2,Kurva yang membandingkan distribusi pendapatan dengan garis kemerataan sempurna disebut kurva…,Lorenz,,
+MAK-02-002,MAK-02,1,Kurva yang membandingkan distribusi pendapatan dengan garis kemerataan sempurna disebut kurva…,Lorenz,,
 MAK-02-003,MAK-02,2,"Menurut kategori umum, rasio Gini 0,4–0,5 menunjukkan ketimpangan…",Sedang,,
 MAK-02-004,MAK-02,3,"Menurut kriteria Bank Dunia, jika 40% penduduk termiskin menerima kurang dari 12% pendapatan, ketimpangannya…",Tinggi,,
 MAK-02-005,MAK-02,2,Lembaga yang menerbitkan data rasio Gini dan kemiskinan Indonesia dua kali setahun adalah…,Badan Pusat Statistik (BPS),,
@@ -194,8 +194,8 @@ INT-03-006,INT-03,2,Kopi dari petani Indonesia dapat masuk ke negara ASEAN lain 
 AKT-01-001,AKT-01,1,Persamaan dasar akuntansi adalah…,Harta = Utang + Modal,,
 AKT-01-002,AKT-01,1,Pengambilan harta perusahaan oleh pemilik untuk keperluan pribadi disebut…,Prive,,
 AKT-01-003,AKT-01,1,Pendapatan berpengaruh menambah atau mengurangi modal?,Menambah,,
-AKT-01-004,AKT-01,2,Membeli peralatan secara kredit menambah harta dan menambah…,Utang,,
-AKT-01-005,AKT-01,2,Membayar gaji karyawan mengurangi kas dan mengurangi…,Modal (sebagai beban),,
+AKT-01-004,AKT-01,1,Membeli peralatan secara kredit menambah harta dan menambah…,Utang,,
+AKT-01-005,AKT-01,1,Membayar gaji karyawan mengurangi kas dan mengurangi…,Modal (sebagai beban),,
 AKT-01-006,AKT-01,3,Harta sebuah usaha Rp50 juta dan utangnya Rp15 juta. Berapa modalnya?,Rp35 juta,,
 AKT-01-007,AKT-01,1,"Pemilik usaha laundry di dekat sekolah mengambil Rp500.000,00 dari kas usaha untuk keperluan pribadi. Transaksi ini dicatat sebagai…",Prive,,usaha laundry
 AKT-01-008,AKT-01,2,Usaha fotokopi membeli mesin baru secara tunai seharga Rp5 juta. Apakah modal usaha berubah?,Tidak,Kas berkurang dan peralatan bertambah dengan jumlah sama.,fotokopi
@@ -203,8 +203,8 @@ AKT-02-001,AKT-02,1,Tahap siklus akuntansi yang menghasilkan laporan laba rugi d
 AKT-02-002,AKT-02,2,"Pemilik toko kelontong mencatat penjualan harian di jurnal, lalu setiap minggu memindahkannya ke buku besar. Kegiatan memindahkan ini disebut…",Posting,,toko kelontong
 AKT-02-003,AKT-02,1,Saldo normal akun harta adalah…,Debit,,
 AKT-02-004,AKT-02,1,Saldo normal akun pendapatan adalah…,Kredit,,
-AKT-02-005,AKT-02,2,Saldo normal akun prive adalah…,Debit,,
-AKT-02-006,AKT-02,2,"Bukti transaksi, jurnal umum, dan posting termasuk tahap…",Pencatatan,,
+AKT-02-005,AKT-02,1,Saldo normal akun prive adalah…,Debit,,
+AKT-02-006,AKT-02,1,"Bukti transaksi, jurnal umum, dan posting termasuk tahap…",Pencatatan,,
 AKT-02-007,AKT-02,2,"Jurnal yang dibuat akhir periode untuk menutup akun pendapatan, beban, dan prive disebut…",Jurnal penutup,,
 AKT-02-008,AKT-02,3,Perlengkapan awal Rp3 juta dan sisa akhir periode Rp1 juta. Berapa beban perlengkapan dalam jurnal penyesuaian?,Rp2 juta,Yang dicatat adalah bagian yang terpakai.,
 AKT-02-009,AKT-02,2,"Usaha katering menerima pembayaran di muka untuk pesanan tiga bulan. Pada akhir bulan pertama, sepertiga pesanan sudah dikirim. Jurnal akhir periode yang diperlukan disebut…",Jurnal penyesuaian (pendapatan diterima di muka),,katering

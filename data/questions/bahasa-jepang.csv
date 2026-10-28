@@ -9,22 +9,34 @@ MOJ-01-007,MOJ-01,2,Huruf き ditambah ゃ kecil dibaca…,Kya (きゃ),,
 MOJ-01-008,MOJ-01,2,Fungsi garis ー pada katakana adalah…,Memanjangkan vokal,,
 MOJ-01-009,MOJ-01,2,"Di minimarket Jepang di Jakarta, label minuman bertuliskan コーヒー. Huruf apa yang dipakai dan apa bacaannya?",Katakana; koohii (kopi),,minimarket
 MOJ-01-010,MOJ-01,3,Bacalah きって dan jelaskan peran っ di dalamnya.,Kitte (perangko); っ menggandakan bunyi t,,
+MOJ-01-011,MOJ-01,1,Nama kota Jakarta ditulis dalam huruf Jepang sebagai ジャカルタ. Huruf apa yang dipakai?,Katakana,,nama kota
+MOJ-01-012,MOJ-01,2,"Siswa menulis namanya ""Budi"" dalam huruf Jepang untuk kartu nama. Huruf apa yang lazim dipakai untuk nama asing?",Katakana (ブディ),,kartu nama
+MOJ-01-013,MOJ-01,1,"Huruf Jepang untuk kata asli Jepang, partikel, dan akhiran kata kerja adalah…",Hiragana,,
+MOJ-01-014,MOJ-01,1,Berapa jumlah huruf dasar katakana?,46,,
+MOJ-01-015,MOJ-01,1,Tanda ゜ yang mengubah bunyi h menjadi p disebut…,Handakuten,,
+MOJ-01-016,MOJ-01,1,っ kecil yang menggandakan konsonan disebut…,Sokuon,,
 MOJ-02-001,MOJ-02,1,Bacaan kanji cara Tiongkok disebut…,Onyomi,,
 MOJ-02-002,MOJ-02,1,Bacaan kanji cara Jepang disebut…,Kunyomi,,
 MOJ-02-003,MOJ-02,1,Kanji 山 berarti…,Gunung,,
 MOJ-02-004,MOJ-02,2,Kunyomi kanji 山 adalah…,Yama,,
 MOJ-02-005,MOJ-02,2,Kanji 日本 dibaca…,Nihon (Jepang),,
 MOJ-02-006,MOJ-02,2,Kanji 水 berarti…,Air,,
-MOJ-02-007,MOJ-02,2,Kanji 人 dibaca hito bila berdiri sendiri. Bacaan itu termasuk…,Kunyomi,,
+MOJ-02-007,MOJ-02,1,Kanji 人 dibaca hito bila berdiri sendiri. Bacaan itu termasuk…,Kunyomi,,
 MOJ-02-008,MOJ-02,2,"Huruf hiragana yang mengikuti kanji, seperti きい pada 大きい, disebut…",Okurigana,,
 MOJ-02-009,MOJ-02,2,Kanji 百 dibaca…,Hyaku (seratus),,
 MOJ-02-010,MOJ-02,2,Papan di restoran Jepang bertuliskan 水 di samping gambar gelas. Apa artinya?,Air,,restoran Jepang
 MOJ-02-011,MOJ-02,3,Mengapa 山 dibaca yama pada 山 tetapi san pada 富士山?,Berdiri sendiri memakai kunyomi (yama); pada gabungan nama gunung memakai onyomi (san),,
+MOJ-02-012,MOJ-02,2,"Kalender di kelas bahasa Jepang menulis 月 di samping angka bulan. Apa onyomi kanji itu pada nama bulan, misalnya 八月?",Gatsu (hachigatsu),,kalender
+MOJ-02-013,MOJ-02,1,Huruf bermakna yang berasal dari Tiongkok disebut…,Kanji,,
+MOJ-02-014,MOJ-02,1,Kanji 月 berarti…,Bulan,,
+MOJ-02-015,MOJ-02,1,Kanji 日 berarti…,Hari atau matahari,,
+MOJ-02-016,MOJ-02,1,Kanji 人 berarti…,Orang,,
 MOJ-03-001,MOJ-03,1,Sistem romaji yang paling umum adalah sistem…,Hepburn,,
 MOJ-03-002,MOJ-03,2,Huruf し ditulis dalam romaji Hepburn sebagai…,Shi,,
 MOJ-03-003,MOJ-03,2,Huruf つ ditulis dalam romaji Hepburn sebagai…,Tsu,,
 MOJ-03-004,MOJ-03,2,Partikel は dibaca…,Wa,,
 MOJ-03-005,MOJ-03,2,Partikel を dibaca…,O,,
+MOJ-03-006,MOJ-03,1,Penulisan bahasa Jepang dengan huruf Latin disebut…,Romaji,,
 BNP-01-001,BNP-01,1,Partikel penanda objek adalah…,を (o),,
 BNP-01-002,BNP-01,1,Partikel penanda topik adalah…,は (wa),,
 BNP-01-003,BNP-01,1,Partikel penanda kepemilikan adalah…,の (no),,
@@ -36,6 +48,9 @@ BNP-01-008,BNP-01,2,Lengkapi: ともだち__ こうえんへ いきます。(per
 BNP-01-009,BNP-01,2,Lengkapi: はし__ たべます。(makan dengan sumpit),で (de),,
 BNP-01-010,BNP-01,3,Apa beda きょうしつに います dan きょうしつで べんきょうします?,に menandai tempat keberadaan; で menandai tempat kegiatan,,
 BNP-01-011,BNP-01,2,Siswa menulis di buku harian: うちで テレビを みました。Partikel apa yang menandai tempat kegiatan?,で (de),,buku harian
+BNP-01-012,BNP-01,3,"Siswa menulis: わたしは バスを がっこうへ いきます。Partikel mana yang salah, dan apa perbaikannya?",バスを salah; seharusnya バスで (alat transportasi memakai で),,naik bus
+BNP-01-013,BNP-01,1,Partikel penanda arah adalah…,へ (e),,
+BNP-01-014,BNP-01,1,"Partikel yang berarti ""juga"" adalah…",も (mo),,
 BNP-02-001,BNP-02,1,Arti これは ほんです adalah…,Ini buku,,
 BNP-02-002,BNP-02,1,Bentuk negatif です dalam kalimat benda adalah…,じゃ ありません (atau では ありません),,
 BNP-02-003,BNP-02,2,Kata tunjuk untuk benda dekat lawan bicara adalah…,それ (sore),,
@@ -45,6 +60,9 @@ BNP-02-006,BNP-02,2,Perbaiki: この は ほんです。,これは ほんです 
 BNP-02-007,BNP-02,2,Jawaban negatif untuk がくせいですか adalah…,いいえ、がくせいじゃ ありません,,
 BNP-02-008,BNP-02,2,"Penjual di toko suvenir menunjuk boneka di dekatnya dan berkata ""___ は にんぎょうです"". Kata tunjuk apa yang tepat?",これ (kore),,toko suvenir
 BNP-02-009,BNP-02,3,"Turis bertanya sambil menunjuk gedung jauh di seberang jalan. Mengapa ia memakai あれ, bukan それ?","Gedung jauh dari pembicara dan lawan bicara, sehingga memakai seri a",,turis
+BNP-02-010,BNP-02,1,"Pola kalimat ""A adalah B"" dalam bahasa Jepang adalah…",A は B です,,
+BNP-02-011,BNP-02,1,Kata tunjuk untuk benda dekat pembicara adalah…,これ (kore),,
+BNP-02-012,BNP-02,1,"Jawaban ""ya"" dalam bahasa Jepang adalah…",はい (hai),,
 BNP-03-001,BNP-03,1,Bentuk -masu dari たべる adalah…,たべます (tabemasu),,
 BNP-03-002,BNP-03,1,Bentuk negatif たべます adalah…,たべません (tabemasen),,
 BNP-03-003,BNP-03,1,Bentuk lampau たべます adalah…,たべました (tabemashita),,
@@ -56,6 +74,9 @@ BNP-03-008,BNP-03,2,Bentuk lampau negatif のみます adalah…,のみません
 BNP-03-009,BNP-03,2,Kata kerja みる termasuk golongan…,II,,
 BNP-03-010,BNP-03,3,"Mengapa かえる (pulang) menjadi かえります, bukan かえます?","かえる termasuk golongan I walau berakhiran -eru, sehingga -ru menjadi -ri",,
 BNP-03-011,BNP-03,2,Siswa bercerita: きのう ラーメンを ___。(kemarin makan ramen). Bentuk kata kerja apa yang tepat?,たべました (tabemashita),,ramen
+BNP-03-012,BNP-03,2,Teman Jepang bertanya apakah kamu minum kopi. Jawaban negatifnya: いいえ、コーヒーは ___。(のむ),のみません,,kafe
+BNP-03-013,BNP-03,1,Bentuk sopan kata kerja bahasa Jepang berakhiran…,-masu,,
+BNP-03-014,BNP-03,1,Ada berapa golongan kata kerja bahasa Jepang?,Tiga,,
 BNP-04-001,BNP-04,1,Bentuk negatif おおきいです adalah…,おおきくないです (ookikunai desu),,
 BNP-04-002,BNP-04,1,Bentuk lampau おおきいです adalah…,おおきかったです (ookikatta desu),,
 BNP-04-003,BNP-04,2,Bentuk negatif しずかです adalah…,しずかじゃ ありません,,
@@ -65,6 +86,8 @@ BNP-04-006,BNP-04,2,Kata sifat きれい termasuk sifat…,Sifat-na,,
 BNP-04-007,BNP-04,2,Lengkapi: しずか__ へや (kamar yang sepi),な (na),,
 BNP-04-008,BNP-04,3,"Mengapa きれいじゃ ありません benar, tetapi きれくない salah?","きれい adalah sifat-na, sehingga negatifnya memakai じゃ ありません",,
 BNP-04-009,BNP-04,2,"Setelah berwisata ke Bali, siswa menulis: うみは きれい___。(lautnya indah, lampau). Lengkapi.",でした,,wisata Bali
+BNP-04-010,BNP-04,2,"Di kantin sekolah, siswa berkata tentang bakso: このバクソは ___です。(enak; おいしい)",おいしい,,kantin
+BNP-04-011,BNP-04,1,Dua jenis kata sifat bahasa Jepang adalah…,Sifat-i dan sifat-na,,
 BNP-05-001,BNP-05,1,Bentuk te dari たべる adalah…,たべて (tabete),,
 BNP-05-002,BNP-05,2,Bentuk te dari のむ adalah…,のんで (nonde),,
 BNP-05-003,BNP-05,2,Bentuk te dari かく adalah…,かいて (kaite),,
@@ -75,12 +98,16 @@ BNP-05-007,BNP-05,2,Arti よんで います adalah…,Sedang membaca,,
 BNP-05-008,BNP-05,2,Bentuk te dari まつ adalah…,まって (matte),,
 BNP-05-009,BNP-05,3,"Mengapa bentuk te いく adalah いって, padahal かく menjadi かいて?",いく adalah pengecualian dari aturan -ku → -ite,,
 BNP-05-010,BNP-05,2,Guru meminta siswa menulis namanya di kertas. Lengkapi: なまえを ___ ください。(かく),かいて,,kelas
+BNP-05-011,BNP-05,2,Petugas perpustakaan meminta pengunjung menunggu sebentar. Lengkapi: ちょっと ___ ください。(まつ),まって,,perpustakaan
+BNP-05-012,BNP-05,1,Bentuk te + ください dipakai untuk…,Meminta dengan sopan,,
+BNP-05-013,BNP-05,1,Bentuk te + います menyatakan…,Kegiatan yang sedang berlangsung,,
 BNP-06-001,BNP-06,1,Kata kerja keberadaan untuk benda mati adalah…,あります (arimasu),,
 BNP-06-002,BNP-06,1,Kata kerja keberadaan untuk manusia dan hewan adalah…,います (imasu),,
 BNP-06-003,BNP-06,2,Lengkapi: こうえんに いぬが ___。,います,,
-BNP-06-004,BNP-06,2,Lengkapi: つくえの うえに ほんが ___。,あります,,
-BNP-06-005,BNP-06,2,Pohon memakai あります atau います?,あります,,
+BNP-06-004,BNP-06,1,Lengkapi: つくえの うえに ほんが ___。,あります,,
+BNP-06-005,BNP-06,1,Pohon memakai あります atau います?,あります,,
 BNP-06-006,BNP-06,2,Di kebun binatang Ragunan ada gajah. Lengkapi: ラグナンに ぞうが ___。,います,,Ragunan
+BNP-06-007,BNP-06,2,Di dapur ada kulkas. Lengkapi: だいどころに れいぞうこが ___。,あります,,dapur
 BNP-07-001,BNP-07,1,Angka 4 dalam bahasa Jepang dibaca…,Yon (atau shi),,
 BNP-07-002,BNP-07,1,Angka 9 dalam bahasa Jepang dibaca…,Kyuu (atau ku),,
 BNP-07-003,BNP-07,2,300 dalam bahasa Jepang dibaca…,Sanbyaku,,
@@ -93,6 +120,10 @@ BNP-07-009,BNP-07,2,Kata bantu bilangan untuk buku adalah…,~冊 (satsu),,
 BNP-07-010,BNP-07,2,Kata bantu bilangan untuk benda tipis datar seperti kertas adalah…,~枚 (mai),,
 BNP-07-011,BNP-07,3,Harga sebuah onigiri 150 yen. Bagaimana membacanya dalam bahasa Jepang?,Hyaku gojuu en,,minimarket
 BNP-07-012,BNP-07,2,"Di kelas ada tiga siswa baru. Bagaimana menyebut ""tiga orang""?",さんにん (sannin),,kelas
+BNP-07-013,BNP-07,2,Ibu membeli lima lembar kertas origami. Kata bantu bilangan apa yang dipakai untuk kertas?,~枚 (mai): ごまい,,toko alat tulis
+BNP-07-014,BNP-07,3,Pelajar membeli tiga pensil di toko alat tulis dan menyebut さんぼん. Mengapa bukan さんほん?,Perubahan bunyi: 本 setelah さん dibaca ぼん (bon),,toko alat tulis
+BNP-07-015,BNP-07,1,Angka 1 dalam bahasa Jepang adalah…,Ichi,,
+BNP-07-016,BNP-07,1,Angka 10 dalam bahasa Jepang adalah…,Juu,,
 BNP-08-001,BNP-08,1,"Kata tanya untuk ""siapa"" adalah…",だれ (dare),,
 BNP-08-002,BNP-08,1,"Kata tanya untuk ""kapan"" adalah…",いつ (itsu),,
 BNP-08-003,BNP-08,2,Kata tanya untuk menanyakan harga adalah…,いくら (ikura),,
@@ -100,18 +131,22 @@ BNP-08-004,BNP-08,2,"Kata tanya untuk ""mengapa"" adalah…",どうして (doush
 BNP-08-005,BNP-08,2,Kata tanya untuk menanyakan umur atau jumlah benda adalah…,いくつ (ikutsu),,
 BNP-08-006,BNP-08,2,"Kata tanya untuk ""apa"" adalah…",なん/なに (nan/nani),,
 BNP-08-007,BNP-08,2,"Di stasiun, wisatawan Jepang bertanya letak toilet. Kata tanya apa yang dipakai?",どこ (doko),,stasiun
+BNP-08-008,BNP-08,2,Penjual batik bertanya kepada turis Jepang kapan ia datang ke Yogyakarta. Kata tanya apa yang dipakai?,いつ (itsu),,Yogyakarta
+BNP-08-009,BNP-08,1,"Kata tanya untuk ""bagaimana"" adalah…",どう (dou),,
 KTM-01-001,KTM-01,1,"Salam ""selamat pagi"" yang sopan adalah…",おはようございます,,
 KTM-01-002,KTM-01,1,"Ungkapan ""terima kasih"" yang sopan adalah…",ありがとうございます,,
 KTM-01-003,KTM-01,1,Ungkapan sebelum makan adalah…,いただきます,,
 KTM-01-004,KTM-01,2,Ungkapan sesudah makan adalah…,ごちそうさまでした,,
 KTM-01-005,KTM-01,2,Ungkapan saat pulang ke rumah adalah…,ただいま,,
 KTM-01-006,KTM-01,2,Jawaban orang di rumah untuk ただいま adalah…,おかえりなさい,,
-KTM-01-007,KTM-01,2,Ungkapan saat pertama kali bertemu adalah…,はじめまして,,
+KTM-01-007,KTM-01,1,Ungkapan saat pertama kali bertemu adalah…,はじめまして,,
 KTM-01-008,KTM-01,2,Ungkapan saat berangkat dari rumah adalah…,いってきます,,
 KTM-01-009,KTM-01,2,"Salam ""selamat malam"" saat bertemu orang adalah…",こんばんは,,
 KTM-01-010,KTM-01,3,Siswa bertemu temannya pukul 19.00 dan berkata おやすみなさい. Mengapa kurang tepat?,おやすみなさい salam sebelum tidur; salam bertemu malam hari adalah こんばんは,,
 KTM-01-011,KTM-01,2,"Pelajar pertukaran dari Jepang disambut di sekolah dan berkata ""Hajimemashite"". Kalimat penutup perkenalan yang lazim adalah…",どうぞ よろしく おねがいします,,pertukaran pelajar
 KTM-01-012,KTM-01,2,"Di kantin, siswa menyenggol temannya tanpa sengaja. Ungkapan maaf yang paling umum adalah…",すみません,,kantin
+KTM-01-013,KTM-01,1,"Salam ""selamat siang"" atau ""halo"" adalah…",こんにちは,,
+KTM-01-014,KTM-01,1,"Ungkapan ""maaf"" atau ""permisi"" adalah…",すみません,,
 KTM-02-001,KTM-02,1,Ayah sendiri disebut…,ちち (chichi),,
 KTM-02-002,KTM-02,1,Ibu orang lain disebut…,おかあさん (okaasan),,
 KTM-02-003,KTM-02,2,Kakak laki-laki sendiri disebut…,あに (ani),,
@@ -121,6 +156,7 @@ KTM-02-006,KTM-02,2,Arti インドネシアから きました adalah…,Saya da
 KTM-02-007,KTM-02,2,Kakak perempuan orang lain disebut…,おねえさん (oneesan),,
 KTM-02-008,KTM-02,3,"Saat bercerita kepada guru tentang ibunya, siswa berkata わたしの おかあさんは せんせいです. Apa yang lebih tepat dan mengapa?",わたしの はは; untuk keluarga sendiri kepada orang lain dipakai sebutan rendah hati,,
 KTM-02-009,KTM-02,2,Siswa memperkenalkan diri di video untuk sekolah mitra di Osaka: わたしは リナ___。Lengkapi.,です,,sekolah mitra
+KTM-02-010,KTM-02,1,Akhiran yang ditambahkan pada nama orang lain sebagai sapaan sopan adalah…,さん (san),,
 KTM-03-001,KTM-03,1,Hari Senin dalam bahasa Jepang adalah…,げつようび (getsuyoubi),,
 KTM-03-002,KTM-03,1,Hari Minggu dalam bahasa Jepang adalah…,にちようび (nichiyoubi),,
 KTM-03-003,KTM-03,2,Tanggal 1 dalam bahasa Jepang adalah…,ついたち (tsuitachi),,
@@ -130,24 +166,33 @@ KTM-03-006,KTM-03,2,Tanggal 20 dalam bahasa Jepang adalah…,はつか (hatsuka)
 KTM-03-007,KTM-03,2,Hari Jumat dalam bahasa Jepang adalah…,きんようび (kin'youbi),,
 KTM-03-008,KTM-03,2,Arti あした adalah…,Besok,,
 KTM-03-009,KTM-03,2,Upacara 17 Agustus dalam bahasa Jepang: はちがつ じゅうしちにち. Bagaimana menyebut tanggal 10 Agustus?,はちがつ とおか (hachigatsu tooka),,17 Agustus
+KTM-03-010,KTM-03,2,Pengumuman lomba pidato bahasa Jepang diadakan hari Sabtu. Hari Sabtu dalam bahasa Jepang adalah…,どようび (doyoubi),,lomba pidato
+KTM-03-011,KTM-03,1,Hari Rabu dalam bahasa Jepang adalah…,すいようび (suiyoubi),,
+KTM-03-012,KTM-03,1,Arti きょう adalah…,Hari ini,,
 KTM-04-001,KTM-04,1,Arti がっこう adalah…,Sekolah,,
 KTM-04-002,KTM-04,1,Arti せんせい adalah…,Guru,,
 KTM-04-003,KTM-04,2,Arti としょかん adalah…,Perpustakaan,,
-KTM-04-004,KTM-04,2,Arti ねます adalah…,Tidur,,
+KTM-04-004,KTM-04,1,Arti ねます adalah…,Tidur,,
 KTM-04-005,KTM-04,2,"Kata penghubung ""sesudah itu"" adalah…",それから (sorekara),,
 KTM-04-006,KTM-04,2,Siswa menulis jadwal harian: 6じに ___。(bangun pukul 6). Kata kerja apa?,おきます,,jadwal harian
+KTM-04-007,KTM-04,2,"Dalam jadwal piket kelas tertulis ""きょうしつを そうじします"". Di mana kegiatan bersih-bersih dilakukan?",Di ruang kelas (きょうしつ),,piket kelas
+KTM-04-008,KTM-04,1,Arti がくせい adalah…,Pelajar,,
 KTM-05-001,KTM-05,1,Ungkapan untuk menanyakan harga adalah…,いくらですか (ikura desu ka),,
 KTM-05-002,KTM-05,1,Mata uang Jepang adalah…,Yen (えん),,
-KTM-05-003,KTM-05,2,Ungkapan untuk meminta atau membeli sesuatu adalah…,~を ください,,
+KTM-05-003,KTM-05,1,Ungkapan untuk meminta atau membeli sesuatu adalah…,~を ください,,
 KTM-05-004,KTM-05,2,Arti おちゃ adalah…,Teh (hijau),,
 KTM-05-005,KTM-05,2,Arti さかな adalah…,Ikan,,
 KTM-05-006,KTM-05,2,"Di bazar budaya Jepang di sekolah, siswa ingin membeli dua takoyaki. Lengkapi: たこやきを ふたつ ___。",ください,,bazar budaya
+KTM-05-007,KTM-05,3,"Di bazar, harga gantungan kunci 300 yen dan siswa ingin membeli dua. Berapa total harganya dan bagaimana membacanya?",600 yen; roppyaku en,,bazar budaya
+KTM-05-008,KTM-05,1,Arti ごはん adalah…,Nasi,,
 KTM-06-001,KTM-06,1,Arti うえ adalah…,Atas,,
 KTM-06-002,KTM-06,1,Arti した adalah…,Bawah,,
 KTM-06-003,KTM-06,2,Arti となり adalah…,Sebelah,,
 KTM-06-004,KTM-06,2,Arti うしろ adalah…,Belakang,,
 KTM-06-005,KTM-06,2,"Kata untuk ""kanan"" adalah…",みぎ (migi),,
 KTM-06-006,KTM-06,2,Kucing berada di bawah meja. Lengkapi: ねこは つくえの ___に います。,した,,rumah
+KTM-06-007,KTM-06,2,Perpustakaan sekolah berada di sebelah masjid. Lengkapi: としょかんは モスクの ___に あります。,となり,,sekolah
+KTM-06-008,KTM-06,1,Arti まえ adalah…,Depan,,
 BDY-01-001,BDY-01,1,Membungkuk sebagai salam disebut…,Ojigi,,
 BDY-01-002,BDY-01,1,Hinamatsuri dirayakan setiap tanggal…,3 Maret,,
 BDY-01-003,BDY-01,2,Kodomo no Hi dirayakan setiap tanggal…,5 Mei,,
@@ -157,6 +202,8 @@ BDY-01-006,BDY-01,2,Tempat melepas sepatu di pintu masuk rumah Jepang disebut…
 BDY-01-007,BDY-01,2,Bahasa hormat untuk atasan disebut…,Keigo,,
 BDY-01-008,BDY-01,2,Bendera ikan koi yang dipasang pada Kodomo no Hi disebut…,Koinobori,,
 BDY-01-009,BDY-01,2,"Pada festival budaya Jepang di kampus, pengunjung menulis harapan di kertas lalu menggantungnya di batang bambu. Perayaan apa yang ditiru?",Tanabata,,festival kampus
+BDY-01-010,BDY-01,2,"Saat bertamu ke rumah keluarga angkat di Jepang, siswa pertukaran pelajar melepas sepatu di bagian depan rumah. Bagian rumah ini disebut…",Genkan,,pertukaran pelajar
+BDY-01-011,BDY-01,1,Perayaan Tahun Baru Jepang disebut…,Oshougatsu,,
 BDY-02-001,BDY-02,1,Puisi pendek Jepang berpola 5-7-5 suku kata disebut…,Haiku,,
 BDY-02-002,BDY-02,1,Seni melipat kertas disebut…,Origami,,
 BDY-02-003,BDY-02,2,Tokoh haiku terkenal adalah…,Matsuo Bashō,,
@@ -165,24 +212,9 @@ BDY-02-005,BDY-02,2,Teater tradisional Jepang dengan rias dan kostum mencolok di
 BDY-02-006,BDY-02,2,Upacara minum teh Jepang disebut…,Chanoyu (sadou),,
 BDY-02-007,BDY-02,2,Teater klasik Jepang bertopeng disebut…,Noh,,
 BDY-02-008,BDY-02,2,Ekstrakurikuler bahasa Jepang membuat burung bangau dari kertas tanpa gunting dan lem. Seni apa ini?,Origami,,ekstrakurikuler
+BDY-02-009,BDY-02,1,Pola suku kata haiku adalah…,5-7-5,,
 BDY-03-001,BDY-03,1,Ibu kota Jepang adalah…,Tokyo,,
 BDY-03-002,BDY-03,1,Gunung tertinggi di Jepang adalah…,Gunung Fuji,,
 BDY-03-003,BDY-03,2,Tinggi Gunung Fuji adalah…,3.776 m,,
 BDY-03-004,BDY-03,2,Pulau terbesar Jepang adalah…,Honshu,,
 BDY-03-005,BDY-03,2,Sebutkan empat pulau utama Jepang.,"Honshu, Hokkaido, Kyushu, Shikoku",,
-MOJ-01-011,MOJ-01,1,Nama kota Jakarta ditulis dalam huruf Jepang sebagai ジャカルタ. Huruf apa yang dipakai?,Katakana,,nama kota
-MOJ-01-012,MOJ-01,2,"Siswa menulis namanya ""Budi"" dalam huruf Jepang untuk kartu nama. Huruf apa yang lazim dipakai untuk nama asing?",Katakana (ブディ),,kartu nama
-MOJ-02-012,MOJ-02,2,"Kalender di kelas bahasa Jepang menulis 月 di samping angka bulan. Apa onyomi kanji itu pada nama bulan, misalnya 八月?",Gatsu (hachigatsu),,kalender
-BNP-01-012,BNP-01,3,"Siswa menulis: わたしは バスを がっこうへ いきます。Partikel mana yang salah, dan apa perbaikannya?",バスを salah; seharusnya バスで (alat transportasi memakai で),,naik bus
-BNP-03-012,BNP-03,2,Teman Jepang bertanya apakah kamu minum kopi. Jawaban negatifnya: いいえ、コーヒーは ___。(のむ),のみません,,kafe
-BNP-04-010,BNP-04,2,"Di kantin sekolah, siswa berkata tentang bakso: このバクソは ___です。(enak; おいしい)",おいしい,,kantin
-BNP-05-011,BNP-05,2,Petugas perpustakaan meminta pengunjung menunggu sebentar. Lengkapi: ちょっと ___ ください。(まつ),まって,,perpustakaan
-BNP-06-007,BNP-06,2,Di dapur ada kulkas. Lengkapi: だいどころに れいぞうこが ___。,あります,,dapur
-BNP-07-013,BNP-07,2,Ibu membeli lima lembar kertas origami. Kata bantu bilangan apa yang dipakai untuk kertas?,~枚 (mai): ごまい,,toko alat tulis
-BNP-07-014,BNP-07,3,Pelajar membeli tiga pensil di toko alat tulis dan menyebut さんぼん. Mengapa bukan さんほん?,Perubahan bunyi: 本 setelah さん dibaca ぼん (bon),,toko alat tulis
-BNP-08-008,BNP-08,2,Penjual batik bertanya kepada turis Jepang kapan ia datang ke Yogyakarta. Kata tanya apa yang dipakai?,いつ (itsu),,Yogyakarta
-KTM-03-010,KTM-03,2,Pengumuman lomba pidato bahasa Jepang diadakan hari Sabtu. Hari Sabtu dalam bahasa Jepang adalah…,どようび (doyoubi),,lomba pidato
-KTM-04-007,KTM-04,2,"Dalam jadwal piket kelas tertulis ""きょうしつを そうじします"". Di mana kegiatan bersih-bersih dilakukan?",Di ruang kelas (きょうしつ),,piket kelas
-KTM-05-007,KTM-05,3,"Di bazar, harga gantungan kunci 300 yen dan siswa ingin membeli dua. Berapa total harganya dan bagaimana membacanya?",600 yen; roppyaku en,,bazar budaya
-KTM-06-007,KTM-06,2,Perpustakaan sekolah berada di sebelah masjid. Lengkapi: としょかんは モスクの ___に あります。,となり,,sekolah
-BDY-01-010,BDY-01,2,"Saat bertamu ke rumah keluarga angkat di Jepang, siswa pertukaran pelajar melepas sepatu di bagian depan rumah. Bagian rumah ini disebut…",Genkan,,pertukaran pelajar

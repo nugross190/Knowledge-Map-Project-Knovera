@@ -2,39 +2,45 @@ id,simpul,tingkat,soal,jawaban,catatan,konteks
 UNT-01-001,UNT-01,1,Sebutkan tiga unsur utama tari.,"Wiraga, wirama, wirasa",,
 UNT-01-002,UNT-01,1,Unsur tari yang berkaitan dengan kemampuan gerak tubuh disebut…,Wiraga,,
 UNT-01-003,UNT-01,1,Unsur tari yang berkaitan dengan kesesuaian gerak dengan irama disebut…,Wirama,,
-UNT-01-004,UNT-01,2,Unsur tari yang berkaitan dengan penjiwaan disebut…,Wirasa,,
+UNT-01-004,UNT-01,1,Unsur tari yang berkaitan dengan penjiwaan disebut…,Wirasa,,
 UNT-01-005,UNT-01,2,"Unsur keempat yang ditambahkan sebagian buku, yaitu kesesuaian rias dan busana, disebut…",Wirupa,,
 UNT-01-006,UNT-01,2,Juri lomba tari tradisional menilai penari yang gerakannya tepat tetapi wajahnya datar saat membawakan tari sedih. Unsur apa yang kurang?,Wirasa (penjiwaan),,lomba tari
 UNT-01-007,UNT-01,2,Penari terlambat sepersekian detik dari ketukan kendang di setiap gerakan. Unsur tari apa yang perlu diperbaiki?,Wirama,,latihan sanggar
 UNT-01-008,UNT-01,3,"Penari hafal semua gerak dan tepat irama, tetapi juri tetap memberi nilai rendah karena ekspresinya tidak sesuai tema. Jelaskan dengan istilah unsur tari.","Wiraga dan wirama baik, tetapi wirasa (penjiwaan) kurang",,
+UNT-01-009,UNT-01,2,Penari jathil di pertunjukan kuda lumping desa bergerak tepat mengikuti ketukan kendang. Unsur tari apa yang baik?,Wirama,,kuda lumping
 UNT-02-001,UNT-02,1,Sebutkan tiga aspek gerak tari.,"Ruang, waktu, tenaga",,
 UNT-02-002,UNT-02,1,Tinggi rendah posisi tubuh penari disebut…,Level,,
-UNT-02-003,UNT-02,2,Tempo dan ritme termasuk aspek gerak…,Waktu,,
-UNT-02-004,UNT-02,2,Intensitas dan aksen termasuk aspek gerak…,Tenaga,,
-UNT-02-005,UNT-02,2,Gerak duduk atau jongkok termasuk level…,Rendah,,
-UNT-02-006,UNT-02,2,Arah hadap dan pola lantai termasuk aspek gerak…,Ruang,,
+UNT-02-003,UNT-02,1,Tempo dan ritme termasuk aspek gerak…,Waktu,,
+UNT-02-004,UNT-02,1,Intensitas dan aksen termasuk aspek gerak…,Tenaga,,
+UNT-02-005,UNT-02,1,Gerak duduk atau jongkok termasuk level…,Rendah,,
+UNT-02-006,UNT-02,1,Arah hadap dan pola lantai termasuk aspek gerak…,Ruang,,
 UNT-02-007,UNT-02,2,"Pada Tari Saman, penari menari sambil duduk berbanjar. Level gerak apa yang dominan?",Level rendah,,Tari Saman
 UNT-02-008,UNT-02,3,Penata tari ingin menunjukkan kemarahan tokoh dengan gerak yang menghentak kuat dan cepat. Aspek gerak apa yang diolah?,Tenaga (intensitas kuat) dan waktu (tempo cepat),,
+UNT-02-009,UNT-02,3,"Tari kreasi tentang banjir dimulai dengan gerak lembut berlevel rendah, lalu berubah cepat, kuat, dan berlevel tinggi saat air datang. Aspek gerak apa saja yang diolah?","Ruang (level), waktu (tempo), dan tenaga (intensitas)",,tari banjir
 UNT-03-001,UNT-03,1,Gerak tari yang mengandung arti disebut gerak…,Maknawi,,
 UNT-03-002,UNT-03,1,Gerak tari yang hanya mementingkan keindahan disebut gerak…,Murni,,
 UNT-03-003,UNT-03,2,Gerak sehari-hari yang diperhalus atau diperindah disebut…,Stilisasi,,
 UNT-03-004,UNT-03,2,Gerak sehari-hari yang diubah bentuknya disebut…,Distorsi,,
 UNT-03-005,UNT-03,2,Gerak tari yang berpindah tempat disebut gerak…,Lokomotor,,
-UNT-03-006,UNT-03,2,Gerak menyisir rambut dalam tari termasuk gerak…,Maknawi,,
+UNT-03-006,UNT-03,1,Gerak menyisir rambut dalam tari termasuk gerak…,Maknawi,,
 UNT-03-007,UNT-03,2,"Penata tari mengamati petani menanam padi, lalu membuat gerak menanam yang lebih lembut dan indah. Pengolahan gerak ini disebut…",Stilisasi,,sawah
+UNT-03-008,UNT-03,1,Gerak tari yang dilakukan di tempat disebut gerak…,Nonlokomotor,,
 UNT-04-001,UNT-04,1,Tari yang dibawakan satu orang disebut tari…,Tunggal,,
 UNT-04-002,UNT-04,1,Tari yang tumbuh di lingkungan istana dengan aturan baku disebut tari…,Klasik,,
-UNT-04-003,UNT-04,2,Tari yang dikembangkan dari tari tradisional dengan bebas disebut tari…,Kreasi baru,,
+UNT-04-003,UNT-04,1,Tari yang dikembangkan dari tari tradisional dengan bebas disebut tari…,Kreasi baru,,
 UNT-04-004,UNT-04,2,Sebutkan tiga jenis tari menurut fungsinya.,"Contoh: upacara, hiburan atau pergaulan, pertunjukan, penyambutan (tiga di antaranya)",,
 UNT-04-005,UNT-04,2,Tari yang tumbuh di masyarakat dan lebih sederhana disebut tari…,Kerakyatan,,
-UNT-04-006,UNT-04,2,Jaipongan termasuk jenis tari menurut garapannya…,Kreasi baru,,
+UNT-04-006,UNT-04,1,Jaipongan termasuk jenis tari menurut garapannya…,Kreasi baru,,
 UNT-04-007,UNT-04,2,"Di bandara Ngurah Rai, rombongan tamu disambut tarian dengan taburan bunga. Menurut fungsinya, tari ini termasuk tari…",Penyambutan,,bandara
 UNT-04-008,UNT-04,3,Tari Bedhaya Ketawang hanya dipentaskan pada upacara tertentu di keraton. Golongkan tari ini menurut garapan dan fungsinya.,Tari klasik (istana) dan tari upacara (sakral),,keraton
+UNT-04-009,UNT-04,1,Tari yang dibawakan banyak penari disebut tari…,Kelompok (massal),,
+UNT-04-010,UNT-04,1,Tari yang dibawakan dua orang disebut tari…,Berpasangan,,
 UNT-05-001,UNT-05,1,"Benda yang dipakai penari, seperti kipas atau selendang, disebut…",Properti,,
-UNT-05-002,UNT-05,2,Tata rias yang mengubah wajah sesuai tokoh disebut rias…,Karakter,,
+UNT-05-002,UNT-05,1,Tata rias yang mengubah wajah sesuai tokoh disebut rias…,Karakter,,
 UNT-05-003,UNT-05,2,Tata rias yang mempercantik wajah disebut rias…,Korektif,,
 UNT-05-004,UNT-05,2,Properti khas Tari Piring adalah…,Piring,,
 UNT-05-005,UNT-05,2,Penari tokoh raksasa di pentas sekolah dirias dengan alis tebal dan taring. Jenis rias apa ini?,Rias karakter,,pentas sekolah
+UNT-05-006,UNT-05,1,Tata rias yang mempercantik wajah penari disebut rias…,Korektif,,
 UNT-06-001,UNT-06,1,Iringan yang dihasilkan penari sendiri disebut iringan…,Internal,,
 UNT-06-002,UNT-06,1,Panggung yang penontonnya menonton dari satu arah disebut panggung…,Prosenium,,
 UNT-06-003,UNT-06,2,Iringan dari gamelan atau musik rekaman disebut iringan…,Eksternal,,
@@ -44,6 +50,7 @@ UNT-06-006,UNT-06,2,Pola lantai garis lengkung memberi kesan…,Lembut,,
 UNT-06-007,UNT-06,2,Panggung terbuka tradisional Jawa beratap disebut…,Pendapa,,
 UNT-06-008,UNT-06,2,Tari Saman diiringi tepukan dan nyanyian penarinya. Jenis iringan apa ini?,Iringan internal,,Tari Saman
 UNT-06-009,UNT-06,2,Pentas tari di lapangan desa ditonton warga dari semua sisi. Bentuk panggung apa ini?,Arena,,lapangan desa
+UNT-06-010,UNT-06,3,Sanggar tari ingin menampilkan tari kelompok di halaman balai desa agar penonton bisa menonton dari segala arah. Bentuk panggung dan satu hal yang perlu diperhatikan pada pola lantai apa?,"Panggung arena; pola lantai harus terlihat baik dari semua sisi, tidak hanya dari depan",,balai desa
 NUS-01-001,NUS-01,1,Tari Saman berasal dari…,"Gayo, Aceh",,
 NUS-01-002,NUS-01,1,Tari Piring berasal dari…,Sumatra Barat,,
 NUS-01-003,NUS-01,1,Tari Tor-tor berasal dari…,"Batak, Sumatra Utara",,
@@ -54,6 +61,8 @@ NUS-01-007,NUS-01,2,Tari Serampang Dua Belas diciptakan oleh…,Guru Sauti,,
 NUS-01-008,NUS-01,2,Iringan Tari Tor-tor adalah…,Gondang,,
 NUS-01-009,NUS-01,2,"Di acara pernikahan adat Batak di Medan, keluarga menari bersama diiringi gondang. Tari apa ini?",Tor-tor,,pernikahan Batak
 NUS-01-010,NUS-01,3,"Sekelompok siswi menampilkan tari duduk berbanjar dengan tepukan cepat dan iringan rapai, lalu pembawa acara menyebutnya Tari Saman. Mengapa sebutan itu kurang tepat?",Tari duduk oleh penari perempuan dengan iringan rapai adalah Ratoh Jaroe; Saman dibawakan laki-laki tanpa alat musik,,pentas sekolah
+NUS-01-011,NUS-01,2,"Di festival Melayu di Pekanbaru, pasangan penari bergerak lincah dengan langkah kaki cepat diiringi gambus dan marwas. Tari apa ini?",Zapin,,festival Melayu
+NUS-01-012,NUS-01,1,Tari Saman dibawakan dengan posisi…,Duduk berbanjar,,
 NUS-02-001,NUS-02,1,Reog Ponorogo berasal dari…,Jawa Timur,,
 NUS-02-002,NUS-02,1,Berapa penari Bedhaya Ketawang?,9,,
 NUS-02-003,NUS-02,2,Berapa penari Serimpi?,4,,
@@ -62,6 +71,7 @@ NUS-02-005,NUS-02,2,Topeng besar berhias bulu merak pada Reog disebut…,Dadak m
 NUS-02-006,NUS-02,2,Tari Gandrung berasal dari…,"Banyuwangi, Jawa Timur",,
 NUS-02-007,NUS-02,2,Tari sakral Keraton Surakarta yang ditarikan sembilan penari perempuan adalah…,Bedhaya Ketawang,,
 NUS-02-008,NUS-02,2,"Pada penyambutan tamu di pendapa kabupaten di Surakarta, penari perempuan menampilkan tari pergaulan yang luwes. Tari apa yang paling mungkin?",Gambyong,,pendapa
+NUS-02-009,NUS-02,3,Penonton di Ponorogo melihat penari menahan topeng besar berbulu merak dengan gigitan. Sebutkan nama kesenian ini dan nama topengnya.,Reog Ponorogo; dadak merak,,Ponorogo
 NUS-03-001,NUS-03,1,"Tari Bali yang tidak diiringi gamelan, melainkan suara ""cak"" para penari, adalah…",Kecak,,
 NUS-03-002,NUS-03,2,Tari Kecak dikembangkan pada 1930-an oleh I Wayan Limbak bersama…,Walter Spies,,
 NUS-03-003,NUS-03,2,Tari Bali yang awalnya tari pemujaan lalu menjadi tari penyambutan adalah…,Pendet,,
@@ -69,24 +79,28 @@ NUS-03-004,NUS-03,2,Tari Bali yang mengisahkan pertarungan kebaikan dan keburuka
 NUS-03-005,NUS-03,2,UNESCO menetapkan tiga genre tari tradisional Bali pada tahun…,2015,,
 NUS-03-006,NUS-03,2,Tari klasik Bali penari perempuan dengan gerak mata dan jari rumit adalah…,Legong,,
 NUS-03-007,NUS-03,2,"Wisatawan di Uluwatu menonton puluhan penari laki-laki duduk melingkar sambil bersuara ""cak"" mengisahkan Ramayana. Tari apa ini?",Kecak,,Uluwatu
+NUS-03-008,NUS-03,1,Tari Kecak berasal dari…,Bali,,
 NUS-04-001,NUS-04,1,Jaipongan dikembangkan oleh…,Gugum Gumbira,,
 NUS-04-002,NUS-04,2,Tari Merak diciptakan oleh…,Raden Tjetje Somantri,,
 NUS-04-003,NUS-04,2,Tari Yapong diciptakan oleh…,Bagong Kussudiardja,,
 NUS-04-004,NUS-04,2,Tari bertopeng dari Cirebon disebut…,Topeng Cirebon,,
 NUS-04-005,NUS-04,2,Tari pergaulan Betawi dengan pengaruh Tionghoa adalah…,Cokek,,
 NUS-04-006,NUS-04,2,"Pada pembukaan acara di Bandung, penari perempuan berkostum bersayap warna-warni menirukan burung yang mengembangkan ekor. Tari apa ini?",Tari Merak,,acara Bandung
+NUS-04-007,NUS-04,1,Jaipongan berasal dari…,Jawa Barat,,
 NUS-05-001,NUS-05,1,Tari Pakarena berasal dari…,"Gowa, Sulawesi Selatan",,
 NUS-05-002,NUS-05,2,Properti khas Tari Pakarena adalah…,Kipas,,
 NUS-05-003,NUS-05,2,Tari bertopeng Dayak untuk upacara masa tanam adalah…,Hudoq,,
 NUS-05-004,NUS-05,2,Tari perang dari Minahasa adalah…,Kabasaran,,
 NUS-05-005,NUS-05,2,Tari Gantar berasal dari…,"Dayak, Kalimantan Timur",,
 NUS-05-006,NUS-05,2,"Pada festival di Kalimantan Timur, penari bertopeng menari menjelang musim tanam padi. Tari apa ini?",Hudoq,,festival Kaltim
+NUS-05-007,NUS-05,3,"Penari dari Gowa bergerak sangat lembut dengan kipas, sedangkan penabuh gendang bermain keras dan cepat. Tari apa ini, dan kesan apa yang muncul dari perbedaan itu?",Pakarena; kontras antara gerak lembut dan iringan yang keras,,Gowa
 NUS-06-001,NUS-06,1,Tari Cakalele berasal dari…,Maluku,,
 NUS-06-002,NUS-06,2,Tari pergaulan dengan saputangan dari Maluku dan Minahasa adalah…,Lenso,,
 NUS-06-003,NUS-06,2,Tari Caci berasal dari…,"Manggarai, NTT",,
-NUS-06-004,NUS-06,2,Tari Yospan berasal dari…,Papua,,
+NUS-06-004,NUS-06,1,Tari Yospan berasal dari…,Papua,,
 NUS-06-005,NUS-06,2,Perisai yang dipakai dalam Tari Cakalele disebut…,Salawaku,,
 NUS-06-006,NUS-06,2,"Dalam upacara adat di Manggarai, dua pemuda saling mencambuk dan menangkis dengan perisai sambil menari. Tari apa ini?",Caci,,Manggarai
+NUS-06-007,NUS-06,1,Tari Yospan adalah tari pergaulan dari…,Papua,,
 TOK-01-001,TOK-01,1,Pengembang Jaipongan adalah…,Gugum Gumbira,,
 TOK-01-002,TOK-01,2,Koreografer Yogyakarta pencipta Tari Yapong adalah…,Bagong Kussudiardja,,
 TOK-01-003,TOK-01,2,Pencipta Tari Serampang Dua Belas adalah…,Guru Sauti,,
@@ -98,11 +112,12 @@ TOK-02-002,TOK-02,2,Tari flamenco berasal dari…,"Andalusia, Spanyol",,
 TOK-02-003,TOK-02,2,Tari hula berasal dari…,Hawaii,,
 TOK-02-004,TOK-02,2,Tari klasik India Selatan dengan gerak tangan (mudra) adalah…,Bharatanatyam,,
 TOK-02-005,TOK-02,2,Gerak berjinjit di ujung kaki pada balet disebut…,En pointe,,
+TOK-02-006,TOK-02,1,Tari tango berasal dari…,Argentina,,
 KRY-01-001,KRY-01,1,Sebutkan tiga tahap proses koreografi.,"Eksplorasi, improvisasi, komposisi",,
 KRY-01-002,KRY-01,1,Penata tari disebut…,Koreografer,,
-KRY-01-003,KRY-01,2,Tahap menjajaki gagasan dan kemungkinan gerak disebut…,Eksplorasi,,
-KRY-01-004,KRY-01,2,Tahap mencoba gerak secara spontan disebut…,Improvisasi,,
-KRY-01-005,KRY-01,2,Tahap menyusun gerak terpilih menjadi tarian utuh disebut…,Komposisi (pembentukan),,
+KRY-01-003,KRY-01,1,Tahap menjajaki gagasan dan kemungkinan gerak disebut…,Eksplorasi,,
+KRY-01-004,KRY-01,1,Tahap mencoba gerak secara spontan disebut…,Improvisasi,,
+KRY-01-005,KRY-01,1,Tahap menyusun gerak terpilih menjadi tarian utuh disebut…,Komposisi (pembentukan),,
 KRY-01-006,KRY-01,2,Kelompok siswa mengamati nelayan menarik jaring di pantai sebagai bahan tari. Tahap koreografi apa ini?,Eksplorasi,,pantai
 KRY-01-007,KRY-01,3,"Setelah mencoba gerak spontan menirukan ombak, siswa memilih gerak terbaik dan menyusunnya dengan musik dan pola lantai. Sebutkan dua tahap yang dilalui dalam kalimat ini.","Improvisasi, lalu komposisi",,
 KRY-02-001,KRY-02,1,Satuan gerak terkecil yang bermakna disebut…,Motif gerak,,
@@ -110,16 +125,19 @@ KRY-02-002,KRY-02,2,"Mengubah level, arah, atau tempo motif gerak disebut…",Va
 KRY-02-003,KRY-02,2,Gerak penghubung antarbagian tari disebut…,Transisi,,
 KRY-02-004,KRY-02,2,Perbedaan tajam antargerak disebut…,Kontras,,
 KRY-02-005,KRY-02,2,"Siswa mengulang gerak tangan Jaipong yang sama, lalu melakukannya lagi sambil berjongkok. Pengembangan apa yang dilakukan?",Pengulangan lalu variasi level,,latihan tari
+KRY-02-006,KRY-02,3,"Penari mengulang motif gerak ""menanam padi"" tiga kali dengan arah hadap berbeda dan diakhiri gerak kontras melompat. Sebutkan teknik pengembangan motif yang dipakai.","Pengulangan, variasi arah, dan kontras",,tari kreasi
 KRY-03-001,KRY-03,1,Tujuan pemanasan sebelum menari adalah…,Menaikkan suhu otot dan mencegah cedera,,
 KRY-03-002,KRY-03,2,Sebutkan tiga tahap olah tubuh.,"Pemanasan, latihan inti, pendinginan",,
 KRY-03-003,KRY-03,2,"Latihan peregangan leher, bahu, dan pinggang melatih…",Kelenturan,,
 KRY-03-004,KRY-03,2,Penari sanggar langsung berlatih gerak melompat tanpa pemanasan lalu kram. Tahap olah tubuh apa yang dilewatkan?,Pemanasan,,sanggar
 KRY-03-005,KRY-03,2,"Setelah latihan berat, penari melakukan gerak pelan dan peregangan. Tahap ini disebut…",Pendinginan,,
+KRY-03-006,KRY-03,2,Klub tari sekolah selalu memulai latihan dengan peregangan dan lari kecil keliling aula. Bagian olah tubuh ini disebut…,Pemanasan,,klub tari
 KRY-04-001,KRY-04,1,Latihan terakhir lengkap dengan kostum dan tata panggung disebut…,Gladi resik,,
 KRY-04-002,KRY-04,2,Sebutkan empat tahap pergelaran tari.,"Perencanaan, persiapan, pelaksanaan, evaluasi",,
 KRY-04-003,KRY-04,2,Penata yang mengatur lampu panggung disebut…,Penata cahaya,,
 KRY-04-004,KRY-04,2,Orang yang mengatur jalannya pertunjukan di belakang panggung disebut…,Stage manager,,
 KRY-04-005,KRY-04,2,"Panitia pentas tari sekolah menentukan tema, tempat, dan anggaran sebulan sebelum acara. Tahap apa ini?",Perencanaan,,pentas tari
+KRY-04-006,KRY-04,1,Penata tari dalam pergelaran disebut juga…,Koreografer,,
 KRY-05-001,KRY-05,1,Tahap kritik yang menyebut apa yang terlihat disebut…,Deskripsi,,
 KRY-05-002,KRY-05,1,Tahap kritik yang menilai kualitas tari disebut…,Evaluasi,,
 KRY-05-003,KRY-05,2,Sebutkan empat tahap kritik Feldman.,"Deskripsi, analisis formal, interpretasi, evaluasi",,
@@ -132,19 +150,3 @@ KRY-06-002,KRY-06,2,Sebutkan dua bentuk dokumentasi tari selain notasi.,"Contoh:
 KRY-06-003,KRY-06,2,Mengapa dokumentasi penting bagi tari tradisional?,Membantu pelestarian tari yang diwariskan secara lisan,,
 KRY-06-004,KRY-06,2,Sanggar di desa merekam video tari warisan yang hanya dikuasai seorang penari tua. Tujuan utama kegiatan ini adalah…,Pelestarian (dokumentasi) tari tradisional,,sanggar desa
 KRY-06-005,KRY-06,2,Siapa pengembang sistem notasi tari Labanotation?,Rudolf Laban,,
-UNT-03-008,UNT-03,1,Gerak tari yang dilakukan di tempat disebut gerak…,Nonlokomotor,,
-UNT-04-009,UNT-04,1,Tari yang dibawakan banyak penari disebut tari…,Kelompok (massal),,
-UNT-05-006,UNT-05,1,Tata rias yang mempercantik wajah penari disebut rias…,Korektif,,
-NUS-03-008,NUS-03,1,Tari Kecak berasal dari…,Bali,,
-NUS-04-007,NUS-04,1,Jaipongan berasal dari…,Jawa Barat,,
-NUS-06-007,NUS-06,1,Tari Yospan adalah tari pergaulan dari…,Papua,,
-TOK-02-006,TOK-02,1,Tari tango berasal dari…,Argentina,,
-KRY-04-006,KRY-04,1,Penata tari dalam pergelaran disebut juga…,Koreografer,,
-UNT-06-010,UNT-06,3,Sanggar tari ingin menampilkan tari kelompok di halaman balai desa agar penonton bisa menonton dari segala arah. Bentuk panggung dan satu hal yang perlu diperhatikan pada pola lantai apa?,"Panggung arena; pola lantai harus terlihat baik dari semua sisi, tidak hanya dari depan",,balai desa
-UNT-02-009,UNT-02,3,"Tari kreasi tentang banjir dimulai dengan gerak lembut berlevel rendah, lalu berubah cepat, kuat, dan berlevel tinggi saat air datang. Aspek gerak apa saja yang diolah?","Ruang (level), waktu (tempo), dan tenaga (intensitas)",,tari banjir
-NUS-02-009,NUS-02,3,Penonton di Ponorogo melihat penari menahan topeng besar berbulu merak dengan gigitan. Sebutkan nama kesenian ini dan nama topengnya.,Reog Ponorogo; dadak merak,,Ponorogo
-NUS-05-007,NUS-05,3,"Penari dari Gowa bergerak sangat lembut dengan kipas, sedangkan penabuh gendang bermain keras dan cepat. Tari apa ini, dan kesan apa yang muncul dari perbedaan itu?",Pakarena; kontras antara gerak lembut dan iringan yang keras,,Gowa
-KRY-02-006,KRY-02,3,"Penari mengulang motif gerak ""menanam padi"" tiga kali dengan arah hadap berbeda dan diakhiri gerak kontras melompat. Sebutkan teknik pengembangan motif yang dipakai.","Pengulangan, variasi arah, dan kontras",,tari kreasi
-UNT-01-009,UNT-01,2,Penari jathil di pertunjukan kuda lumping desa bergerak tepat mengikuti ketukan kendang. Unsur tari apa yang baik?,Wirama,,kuda lumping
-NUS-01-011,NUS-01,2,"Di festival Melayu di Pekanbaru, pasangan penari bergerak lincah dengan langkah kaki cepat diiringi gambus dan marwas. Tari apa ini?",Zapin,,festival Melayu
-KRY-03-006,KRY-03,2,Klub tari sekolah selalu memulai latihan dengan peregangan dan lari kecil keliling aula. Bagian olah tubuh ini disebut…,Pemanasan,,klub tari

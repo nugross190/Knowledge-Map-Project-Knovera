@@ -4,7 +4,7 @@ PAN-01-002,PAN-01,1,Hari Lahir Pancasila diperingati setiap tanggal…,1 Juni,,
 PAN-01-003,PAN-01,1,Piagam Jakarta disusun oleh…,Panitia Sembilan,,
 PAN-01-004,PAN-01,1,Tokoh yang pada 1 Juni 1945 berpidato dan menamai dasar negara Pancasila adalah…,Soekarno,,
 PAN-01-005,PAN-01,2,Piagam Jakarta disusun pada tanggal…,22 Juni 1945,,
-PAN-01-006,PAN-01,2,Sila pertama Piagam Jakarta diubah menjadi…,Ketuhanan Yang Maha Esa,,
+PAN-01-006,PAN-01,1,Sila pertama Piagam Jakarta diubah menjadi…,Ketuhanan Yang Maha Esa,,
 PAN-01-007,PAN-01,2,Sidang pertama BPUPK yang membahas dasar negara berlangsung pada tanggal…,29 Mei–1 Juni 1945,,
 PAN-01-008,PAN-01,3,"Selain Pancasila, Soekarno juga menawarkan rumusan Trisila dan…",Ekasila (gotong royong),,
 PAN-01-009,PAN-01,3,"Pada sidang pertama BPUPK, Soepomo menyampaikan usulan dasar negara pada tanggal…",31 Mei 1945,,
@@ -77,14 +77,14 @@ UUD-04-008,UUD-04,3,Pasal UUD yang menyatakan fakir miskin dan anak telantar dip
 UUD-04-009,UUD-04,2,Siswa SMA mengikuti latihan kesiapsiagaan bencana bersama warga kampungnya. Kegiatan ini termasuk pelaksanaan hak dan kewajiban…,Bela negara,,kampung
 UUD-04-010,UUD-04,2,Pemuda karang taruna ikut ronda malam menjaga keamanan kampung. Kegiatan ini melaksanakan hak dan kewajiban dalam UUD Pasal…,30 ayat (1),,ronda
 UUD-05-001,UUD-05,1,Tidak membayar pajak termasuk pelanggaran hak atau pengingkaran kewajiban?,Pengingkaran kewajiban,,
-UUD-05-002,UUD-05,2,Menghalangi orang lain beribadah termasuk pelanggaran hak atau pengingkaran kewajiban?,Pelanggaran hak,,
+UUD-05-002,UUD-05,1,Menghalangi orang lain beribadah termasuk pelanggaran hak atau pengingkaran kewajiban?,Pelanggaran hak,,
 UUD-05-003,UUD-05,2,Sekolah mengundang polisi untuk menyosialisasikan aturan lalu lintas kepada siswa sebelum pelanggaran terjadi. Penanganan seperti ini disebut penanganan…,Preventif,,sekolah
 UUD-05-004,UUD-05,2,Polisi menilang pengendara yang melanggar lalu lintas di depan sekolah. Penanganan pelanggaran dengan sanksi seperti ini disebut penanganan…,Represif,,lalu lintas
 UUD-05-005,UUD-05,2,Pengendara motor di jalan kampung tidak memakai helm dan melawan arus. Perbuatan ini termasuk pelanggaran hak atau pengingkaran kewajiban?,Pengingkaran kewajiban,,lalu lintas
 UUD-06-001,UUD-06,1,Peraturan tertinggi dalam hierarki peraturan perundang-undangan adalah…,UUD NRI Tahun 1945,,
 UUD-06-002,UUD-06,1,Lembaga yang berwenang melakukan penuntutan adalah…,Kejaksaan,,
 UUD-06-003,UUD-06,1,Pasal UUD yang menyatakan Indonesia adalah negara hukum adalah Pasal…,1 ayat (3),,
-UUD-06-004,UUD-06,2,Perppu sederajat dengan … dalam hierarki peraturan.,Undang-undang,,
+UUD-06-004,UUD-06,1,Perppu sederajat dengan … dalam hierarki peraturan.,Undang-undang,,
 UUD-06-005,UUD-06,2,Sebutkan empat lingkungan peradilan di bawah Mahkamah Agung.,"Umum, agama, militer, tata usaha negara",,
 UUD-06-006,UUD-06,2,"Dalam hierarki peraturan, Ketetapan MPR berada langsung di bawah…",UUD NRI Tahun 1945,,
 UUD-06-007,UUD-06,3,Hierarki peraturan perundang-undangan diatur dalam UU Nomor 12 Tahun 2011 Pasal…,7,,
@@ -123,7 +123,7 @@ NKR-01-005,NKR-01,3,Konstitusi yang berlaku pada masa Republik Indonesia Serikat
 NKR-02-001,NKR-02,1,Deklarasi Djuanda dicetuskan pada tanggal…,13 Desember 1957,,
 NKR-02-002,NKR-02,1,"Aspek alamiah Wawasan Nusantara (geografi, kekayaan alam, penduduk) disebut…",Trigatra,,
 NKR-02-003,NKR-02,1,"Aspek sosial Wawasan Nusantara (ideologi, politik, ekonomi, sosial budaya, hankam) disebut…",Pancagatra,,
-NKR-02-004,NKR-02,2,Gabungan trigatra dan pancagatra disebut…,Astagatra,,
+NKR-02-004,NKR-02,1,Gabungan trigatra dan pancagatra disebut…,Astagatra,,
 NKR-02-005,NKR-02,2,UNCLOS 1982 diratifikasi Indonesia melalui UU Nomor … Tahun 1985.,17,,
 NKR-02-006,NKR-02,2,Ideologi termasuk trigatra atau pancagatra?,Pancagatra,,
 NKR-02-007,NKR-02,2,Sebutkan satu perwujudan Wawasan Nusantara.,"Satu di antara: kesatuan politik, ekonomi, sosial budaya, pertahanan keamanan",,
@@ -132,7 +132,7 @@ NKR-02-009,NKR-02,2,Kapal nelayan dari Kalimantan dapat berlayar ke perairan Jaw
 NKR-03-001,NKR-03,1,Sistem pertahanan negara Indonesia disebut sistem pertahanan dan keamanan…,Rakyat semesta (sishankamrata),,
 NKR-03-002,NKR-03,1,Lembaga yang menjaga keamanan dan ketertiban masyarakat adalah…,Polri,,
 NKR-03-003,NKR-03,1,Pasal UUD yang mengatur sishankamrata adalah Pasal…,30,,
-NKR-03-004,NKR-03,2,Komponen utama pertahanan negara adalah…,TNI,,
+NKR-03-004,NKR-03,1,Komponen utama pertahanan negara adalah…,TNI,,
 NKR-03-005,NKR-03,2,Komponen pertahanan diatur dalam UU Nomor … Tahun 2019.,23,,
 NKR-03-006,NKR-03,2,Agresi dan pelanggaran wilayah oleh negara lain termasuk ancaman…,Militer,,
 NKR-03-007,NKR-03,2,Situs layanan publik sebuah provinsi lumpuh karena serangan peretas. Ancaman seperti ini termasuk ancaman…,Nonmiliter,,serangan siber
