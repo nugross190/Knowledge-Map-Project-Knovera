@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Bank Soal Matematika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: same catalogue look as Peta Materi. Header + filter rail, then one of three panels: a single question card (Latihan), the full list (Daftar), per-topic results (Kemajuan). */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --indigo:#2B3A78; --soga:#8A5526; --patina:#2C6B63;
+  --indigo-soft:#E4E8F6; --soga-soft:#F3E9DF; --patina-soft:#DFEFEC;
+  --plum:#6E3466; --olive:#5B6A1E; --plum-soft:#F1E4EE; --olive-soft:#ECEFDD;
+  --ok:#2C6B3F; --ok-soft:#E1F0E5; --bad:#A3361C; --bad-soft:#F8E6DF;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
+  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
+  --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1040px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.5rem;font-weight:700}
+p{margin:0}
+a{color:inherit}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:64ch;color:var(--muted);font-size:1.05rem;margin-top:10px}
+.lbl{font-family:var(--f-label);font-weight:600;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+
+/* tabs */
+.tabs{display:flex;gap:4px;margin-top:22px;border-bottom:2px solid var(--ink);overflow-x:auto}
+.tab{font-family:var(--f-label);font-weight:700;font-size:1.05rem;padding:10px 16px;border:0;background:transparent;color:var(--muted);cursor:pointer;border-radius:6px 6px 0 0;white-space:nowrap}
+.tab[aria-selected="true"]{background:var(--ink);color:var(--bg)}
+.tab:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:14px 22px;align-items:flex-end;padding-block:16px;border-bottom:1px solid var(--line)}
+.fgroup{display:flex;flex-direction:column;gap:6px;min-width:0}
+.seg{display:flex;flex-wrap:wrap;gap:4px}
+.seg button{font-family:var(--f-label);font-weight:600;font-size:.9rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:6px 11px;border-radius:5px;cursor:pointer}
+.seg button[aria-pressed="true"]{border-color:var(--c,var(--ink));background:var(--c,var(--ink));color:var(--bg)}
+.seg button:focus-visible,select:focus-visible,.btn:focus-visible,input:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+select,input[type="search"]{font:inherit;font-size:.92rem;color:var(--ink);background:var(--surface);border:1.5px solid var(--line);border-radius:5px;padding:6px 8px;max-width:100%}
+select{min-width:0;width:min(320px,100%)}
+.check{display:flex;align-items:center;gap:7px;font-family:var(--f-label);font-size:.92rem;cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--ink)}
+#poolInfo{font-family:var(--f-label);font-size:.92rem;color:var(--muted);margin-left:auto}
+
+.btn{font-family:var(--f-label);font-weight:700;font-size:1rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:10px 18px;border-radius:6px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.btn:hover{border-color:var(--ink)}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.ok{background:var(--ok-soft);border-color:var(--ok);color:var(--ok)}
+.btn.bad{background:var(--bad-soft);border-color:var(--bad);color:var(--bad)}
+.btn kbd{font-family:var(--f-mono);font-size:.72rem;border:1px solid currentColor;border-radius:3px;padding:0 4px;opacity:.75}
+.btn.small{font-size:.88rem;padding:6px 12px}
+
+/* practice */
+.panel{padding-top:22px}
+.qcard{background:var(--surface);border:1px solid var(--line);border-top:5px solid var(--c);border-radius:4px 4px 10px 10px;padding:22px 24px 24px;display:flex;flex-direction:column;gap:16px;min-height:340px}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-family:var(--f-label);font-size:.92rem;color:var(--muted)}
+.code{font-family:var(--f-mono);font-size:.82rem;color:var(--c);text-decoration:none;border:1px solid var(--c);border-radius:4px;padding:1px 6px;white-space:nowrap}
+.code:hover{background:var(--soft)}
+.lv{font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px}
+.lv1{border:1.3px solid var(--muted);color:var(--muted)}
+.lv2{border:1.3px solid var(--ink)}
+.lv3{background:var(--ink);color:var(--bg)}
+.qtext{font-size:clamp(1.25rem,3.2vw,1.65rem);line-height:1.45;max-width:46ch;text-wrap:pretty}
+.timer{height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.timer i{display:block;height:100%;background:var(--c);width:100%}
+.answer{background:var(--soft);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.answer .a{font-size:1.2rem;font-weight:600}
+.answer .x{font-size:.95rem;color:var(--muted)}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+.score{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-family:var(--f-label);color:var(--muted);font-size:.95rem}
+.score b{color:var(--ink);font-variant-numeric:tabular-nums}
+.hint{font-size:.85rem;color:var(--muted);margin-top:6px}
+.empty{padding:28px;text-align:left;background:var(--surface);border:1px dashed var(--line);border-radius:10px;color:var(--muted)}
+
+/* list */
+.listbar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:16px}
+.listbar input{flex:1 1 240px;min-width:0;padding:9px 10px}
+.group{margin-top:22px}
+.ghead{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:6px;margin-bottom:6px}
+.ghead h3{font-size:1.15rem;color:var(--c)}
+.ghead span{font-family:var(--f-label);font-size:.88rem;color:var(--muted)}
+.ghead a{font-family:var(--f-label);font-size:.88rem;color:var(--c)}
+.qlist{list-style:none;margin:0;padding:0}
+.qlist li{display:grid;grid-template-columns:auto 1fr;gap:2px 12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.qlist .n{font-family:var(--f-mono);font-size:.74rem;color:var(--muted);padding-top:4px;min-width:6.5em}
+.qlist .body{min-width:0;display:flex;flex-direction:column;gap:4px}
+.qlist .qq{font-size:1rem}
+.qlist details summary{cursor:pointer;font-family:var(--f-label);font-weight:600;font-size:.88rem;color:var(--c);width:max-content}
+.qlist details summary:focus-visible{outline:2px solid var(--c);outline-offset:2px}
+.qlist .aa{font-weight:600}
+.qlist .xx{color:var(--muted);font-size:.92rem}
+.ktx{font-family:var(--f-label);font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:9px;background:var(--sunk);color:var(--ink)}
+.mark-ok{color:var(--ok);font-family:var(--f-label);font-size:.8rem}
+.mark-bad{color:var(--bad);font-family:var(--f-label);font-size:.8rem}
+
+/* progress */
+.sumrow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;min-width:0}
+.stat b{display:block;font-family:var(--f-label);font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.88rem;color:var(--muted)}
+.weak{margin-top:20px;background:var(--bad-soft);border-radius:8px;padding:14px 16px}
+.weak h3{color:var(--bad);font-size:1.05rem}
+.weak ul{margin:8px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.weak li{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.tbl{overflow-x:auto;margin-top:20px;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:.92rem}
+th{font-family:var(--f-label);text-align:left;padding:8px 10px;background:var(--sunk);white-space:nowrap}
+td{padding:7px 10px;border-top:1px solid var(--line);vertical-align:middle;font-variant-numeric:tabular-nums}
+td.t{min-width:200px}
+.bar{width:120px;height:9px;background:var(--sunk);border-radius:2px;overflow:hidden}
+.bar i{display:block;height:100%}
+.resetrow{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:18px;font-size:.92rem;color:var(--muted)}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:640px){
+  .sumrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #poolInfo{margin-left:0;flex-basis:100%}
+  .qcard{padding:18px 16px 20px}
+}
+@media (max-width:480px){.wrap{padding-inline:16px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
+    <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
+    <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Mode">
+    <button class="tab" role="tab" id="tab-latihan" aria-controls="p-latihan" aria-selected="true">Latihan</button>
+    <button class="tab" role="tab" id="tab-daftar" aria-controls="p-daftar" aria-selected="false">Daftar soal</button>
+    <button class="tab" role="tab" id="tab-kemajuan" aria-controls="p-kemajuan" aria-selected="false">Kemajuan</button>
+  </div>
+
+  <div class="filters" aria-label="Saring soal">
+    <div class="fgroup"><span class="lbl">Bidang</span><div class="seg" id="fDomain"></div></div>
+    <div class="fgroup"><label class="lbl" for="fTopic">Simpul</label><select id="fTopic"></select></div>
+    <div class="fgroup"><span class="lbl">Tingkat</span><div class="seg" id="fLevel"></div></div>
+    <label class="check" for="fWrong"><input type="checkbox" id="fWrong"> Hanya yang terakhir dijawab salah</label>
+    <label class="check" for="fCtx" id="ctxBox" hidden><input type="checkbox" id="fCtx"> Hanya soal konteks sehari-hari</label>
+    <span id="poolInfo" aria-live="polite"></span>
+  </div>
+
+  <section class="panel" id="p-latihan" role="tabpanel" aria-labelledby="tab-latihan">
+    <div id="practice"></div>
+    <div class="score"><span>Sesi ini: <b id="sRight">0</b> benar dari <b id="sTotal">0</b></span>
+      <label class="check" for="useTimer"><input type="checkbox" id="useTimer"> Batas waktu</label>
+      <select id="timerSec" aria-label="Lama batas waktu" style="width:auto"><option value="5">5 detik</option><option value="10" selected>10 detik</option><option value="15">15 detik</option></select>
+    </div>
+    <p class="hint">Pintasan papan ketik: Spasi = lihat jawaban, B = benar, S = salah, L = lewati.</p>
+  </section>
+
+  <section class="panel" id="p-daftar" role="tabpanel" aria-labelledby="tab-daftar" hidden>
+    <div class="listbar">
+      <input type="search" id="lSearch" placeholder="Cari kata dalam soal atau jawaban…" aria-label="Cari soal">
+      <button class="btn small" id="showAll" type="button">Tampilkan semua jawaban</button>
+      <button class="btn small" id="hideAll" type="button">Sembunyikan jawaban</button>
+    </div>
+    <div id="list"></div>
+  </section>
+
+  <section class="panel" id="p-kemajuan" role="tabpanel" aria-labelledby="tab-kemajuan" hidden>
+    <div id="progress"></div>
+  </section>
+
+  <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
+</div>
+
+<script>
+const DATA = {"topics": {"map_url": "peta-matematika.html", "domains": [{"id": "ALJ", "name": "Bilangan dan aljabar", "short": "Aljabar", "weight": 25.0, "topics": {"ALJ-01": "Eksponen dan bentuk akar", "ALJ-02": "Logaritma", "ALJ-03": "Barisan dan deret", "ALJ-04": "Sistem persamaan dan pertidaksamaan linear", "ALJ-05": "Matriks", "ALJ-06": "Polinomial", "ALJ-07": "Bilangan kompleks"}}, {"id": "FUN", "name": "Fungsi", "short": "Fungsi", "weight": 14.285714285714286, "topics": {"FUN-01": "Persamaan dan fungsi kuadrat", "FUN-02": "Komposisi dan invers fungsi", "FUN-03": "Transformasi fungsi", "FUN-04": "Fungsi trigonometri"}}, {"id": "GEO", "name": "Geometri dan trigonometri", "short": "Geometri", "weight": 28.571428571428573, "topics": {"GEO-01": "Perbandingan trigonometri", "GEO-02": "Aturan sinus, kosinus, dan luas segitiga", "GEO-03": "Identitas dan persamaan trigonometri", "GEO-04": "Vektor", "GEO-05": "Lingkaran", "GEO-06": "Irisan kerucut", "GEO-07": "Transformasi geometri", "GEO-08": "Jarak dan sudut dalam ruang"}}, {"id": "STA", "name": "Statistika dan peluang", "short": "Statistika", "weight": 14.285714285714286, "topics": {"STA-01": "Statistika", "STA-02": "Data bivariat", "STA-03": "Kaidah pencacahan", "STA-04": "Peluang"}}, {"id": "KAL", "name": "Kalkulus", "short": "Kalkulus", "weight": 17.857142857142858, "topics": {"KAL-01": "Limit fungsi", "KAL-02": "Turunan fungsi", "KAL-03": "Penerapan turunan", "KAL-04": "Integral tak tentu", "KAL-05": "Integral tentu dan luas daerah"}}]}, "questions": [{"id": "ALJ-01-001", "t": "ALJ-01", "lv": 1, "q": "Bentuk sederhana dari a³ · a⁵ adalah…", "a": "a⁸", "x": "Pangkat dijumlahkan."}, {"id": "ALJ-01-002", "t": "ALJ-01", "lv": 1, "q": "Nilai dari 2⁻³ adalah…", "a": "1/8", "x": "a⁻ⁿ = 1/aⁿ."}, {"id": "ALJ-01-003", "t": "ALJ-01", "lv": 1, "q": "Nilai dari −3² adalah…", "a": "−9", "x": "Pangkat dikerjakan sebelum tanda negatif; (−3)² = 9."}, {"id": "ALJ-01-004", "t": "ALJ-01", "lv": 2, "q": "Nilai dari 27 pangkat 2/3 adalah…", "a": "9", "x": "(∛27)² = 3²."}, {"id": "ALJ-01-005", "t": "ALJ-01", "lv": 2, "q": "Bentuk rasional dari 6/√3 adalah…", "a": "2√3", "x": "6√3/3."}, {"id": "ALJ-01-006", "t": "ALJ-01", "lv": 2, "q": "Penyelesaian 2ˣ⁺¹ = 32 adalah…", "a": "x = 4", "x": "32 = 2⁵, jadi x + 1 = 5."}, {"id": "ALJ-01-007", "t": "ALJ-01", "lv": 3, "q": "Rasionalkan penyebut 1/(√5 + √3).", "a": "(√5 − √3)/2", "x": "Kalikan dengan sekawan √5 − √3; penyebut menjadi 5 − 3."}, {"id": "ALJ-01-008", "t": "ALJ-01", "lv": 2, "q": "Koperasi sekolah menyimpan Rp1.000.000 di bank dengan bunga majemuk 10% per tahun. Berapa saldonya setelah 2 tahun?", "a": "Rp1.210.000", "x": "1.000.000 × 1,1².", "k": "koperasi"}, {"id": "ALJ-01-009", "t": "ALJ-01", "lv": 2, "q": "Harga sebuah motor bekas Rp15.000.000 menyusut 20% per tahun. Berapa harganya setelah 2 tahun?", "a": "Rp9.600.000", "x": "15.000.000 × 0,8² (peluruhan).", "k": "penyusutan"}, {"id": "ALJ-01-010", "t": "ALJ-01", "lv": 2, "q": "Penduduk sebuah desa 10.000 jiwa dan tumbuh 2% per tahun. Berapa penduduknya setelah 2 tahun?", "a": "10.404 jiwa", "x": "10.000 × 1,02².", "k": "penduduk desa"}, {"id": "ALJ-02-001", "t": "ALJ-02", "lv": 1, "q": "Nilai ²log 8 adalah…", "a": "3", "x": "2³ = 8."}, {"id": "ALJ-02-002", "t": "ALJ-02", "lv": 1, "q": "Nilai log 1000 adalah…", "a": "3", "x": "Basis 10."}, {"id": "ALJ-02-003", "t": "ALJ-02", "lv": 1, "q": "Pada ᵃlog b, syarat numerus b adalah…", "a": "b > 0", "x": "Basis a > 0 dan a ≠ 1."}, {"id": "ALJ-02-004", "t": "ALJ-02", "lv": 2, "q": "Nilai ²log 4 + ²log 8 adalah…", "a": "5", "x": "²log 32."}, {"id": "ALJ-02-005", "t": "ALJ-02", "lv": 2, "q": "Jika log 2 ≈ 0,301, nilai log 5 adalah…", "a": "≈ 0,699", "x": "log 5 = log 10 − log 2."}, {"id": "ALJ-02-006", "t": "ALJ-02", "lv": 2, "q": "Nilai ³log 5 · ⁵log 9 adalah…", "a": "2", "x": "Berantai: ³log 9."}, {"id": "ALJ-02-007", "t": "ALJ-02", "lv": 3, "q": "Penyelesaian ²log(x − 1) + ²log(x + 1) = 3 adalah…", "a": "x = 3", "x": "x² − 1 = 8 memberi x = ±3; x = −3 membuat numerus negatif sehingga dibuang."}, {"id": "ALJ-02-008", "t": "ALJ-02", "lv": 3, "q": "Tabungan Rp1.000.000 berbunga majemuk 10% per tahun. Lama menabung n agar saldo menjadi Rp2.000.000 memenuhi 1,1ⁿ = 2. Berapa n?", "a": "n = log 2 / log 1,1 ≈ 7,3; saldo baru melewati Rp2.000.000 pada akhir tahun ke-8", "x": "Ganti basis.", "k": "tabungan"}, {"id": "ALJ-02-009", "t": "ALJ-02", "lv": 2, "q": "Magnitudo gempa skala Richter dihitung dengan logaritma basis 10 dari amplitudo gelombang. Amplitudo gempa B 100 kali amplitudo gempa A di jarak yang sama. Berapa selisih magnitudonya?", "a": "2", "x": "log 100 = 2.", "k": "gempa"}, {"id": "ALJ-03-001", "t": "ALJ-03", "lv": 1, "q": "Suku ke-10 barisan 3, 7, 11, … adalah…", "a": "39", "x": "3 + 9 × 4."}, {"id": "ALJ-03-002", "t": "ALJ-03", "lv": 1, "q": "Rasio barisan geometri 2, 6, 18, … adalah…", "a": "3", "x": ""}, {"id": "ALJ-03-003", "t": "ALJ-03", "lv": 1, "q": "Jumlah deret 2 + 4 + 6 + … + 20 adalah…", "a": "110", "x": "10/2 × (2 + 20)."}, {"id": "ALJ-03-004", "t": "ALJ-03", "lv": 2, "q": "Suku ke-5 barisan geometri 3, 6, 12, … adalah…", "a": "48", "x": "3 × 2⁴."}, {"id": "ALJ-03-005", "t": "ALJ-03", "lv": 2, "q": "Jumlah deret tak hingga 8 + 4 + 2 + … adalah…", "a": "16", "x": "8/(1 − ½)."}, {"id": "ALJ-03-006", "t": "ALJ-03", "lv": 2, "q": "Jumlah n suku pertama sebuah deret Sₙ = n² + 2n. Suku ke-5 adalah…", "a": "11", "x": "S₅ − S₄ = 35 − 24."}, {"id": "ALJ-03-007", "t": "ALJ-03", "lv": 3, "q": "Bola dijatuhkan dari tinggi 4 m dan setiap memantul mencapai 3/4 tinggi sebelumnya. Berapa panjang lintasan total sampai berhenti?", "a": "28 m", "x": "4(1 + ¾)/(1 − ¾)."}, {"id": "ALJ-03-008", "t": "ALJ-03", "lv": 2, "q": "Produksi kerupuk sebuah UMKM 200 bungkus pada bulan pertama dan naik tetap 50 bungkus tiap bulan. Berapa produksi bulan ke-12?", "a": "750 bungkus", "x": "200 + 11 × 50.", "k": "UMKM"}, {"id": "ALJ-03-009", "t": "ALJ-03", "lv": 2, "q": "Gedung pertemuan desa menata kursi: baris pertama 20 kursi, tiap baris berikutnya 2 kursi lebih banyak, ada 15 baris. Berapa jumlah kursinya?", "a": "510 kursi", "x": "15/2 × (2 × 20 + 14 × 2).", "k": "gedung pertemuan"}, {"id": "ALJ-03-010", "t": "ALJ-03", "lv": 2, "q": "Pedagang menabung Rp10.000 pada hari pertama dan menambah Rp2.000 lebih banyak setiap hari berikutnya. Berapa total tabungannya setelah 10 hari?", "a": "Rp190.000", "x": "10/2 × (20.000 + 9 × 2.000).", "k": "tabungan harian"}, {"id": "ALJ-04-001", "t": "ALJ-04", "lv": 1, "q": "Penyelesaian sistem x + y = 5 dan x − y = 1 adalah…", "a": "x = 3, y = 2", "x": "Jumlahkan kedua persamaan."}, {"id": "ALJ-04-002", "t": "ALJ-04", "lv": 1, "q": "Nilai optimum fungsi objektif program linear selalu tercapai di…", "a": "Titik pojok daerah penyelesaian", "x": ""}, {"id": "ALJ-04-003", "t": "ALJ-04", "lv": 1, "q": "Penyelesaian −2x > 6 adalah…", "a": "x < −3", "x": "Membagi dengan bilangan negatif membalik tanda."}, {"id": "ALJ-04-004", "t": "ALJ-04", "lv": 2, "q": "Sistem 2x + 3y = 6 dan 4x + 6y = 12 memiliki berapa penyelesaian?", "a": "Tak hingga banyaknya", "x": "Persamaan kedua kelipatan persamaan pertama; garisnya berimpit."}, {"id": "ALJ-04-005", "t": "ALJ-04", "lv": 2, "q": "Penyelesaian sistem x + y + z = 6, x − y = −1, y + z = 5 adalah…", "a": "x = 1, y = 2, z = 3", "x": "Kurangkan persamaan ketiga dari yang pertama: x = 1."}, {"id": "ALJ-04-006", "t": "ALJ-04", "lv": 3, "q": "Nilai maksimum f(x, y) = 3x + 2y dengan kendala x + y ≤ 6, 2x + y ≤ 8, x ≥ 0, y ≥ 0 adalah…", "a": "14, di titik (2, 4)", "x": "Titik pojok (0, 0), (4, 0), (0, 6), (2, 4) memberi 0, 12, 12, 14."}, {"id": "ALJ-04-007", "t": "ALJ-04", "lv": 1, "q": "Dalam soal cerita program linear, kendala yang sering tersirat untuk banyak barang x dan y adalah…", "a": "x ≥ 0 dan y ≥ 0", "x": "Banyak barang tidak mungkin negatif."}, {"id": "ALJ-04-008", "t": "ALJ-04", "lv": 3, "q": "Usaha kue rumahan membuat x loyang bolu dan y loyang donat. Tepung cukup untuk x + y ≤ 6, kapasitas oven 2x + y ≤ 8. Untung bolu Rp30.000 dan donat Rp20.000 per loyang. Berapa untung maksimum?", "a": "Rp140.000 (2 loyang bolu, 4 loyang donat)", "x": "Titik pojok (2, 4) memberi 60.000 + 80.000.", "k": "usaha kue"}, {"id": "ALJ-04-009", "t": "ALJ-04", "lv": 2, "q": "Di sebuah warung, 2 kg beras dan 1 kg gula seharga Rp40.000, sedangkan 1 kg beras dan 2 kg gula Rp41.000. Berapa harga 1 kg beras?", "a": "Rp13.000", "x": "Gula Rp14.000; eliminasi.", "k": "warung"}, {"id": "ALJ-05-001", "t": "ALJ-05", "lv": 1, "q": "Matriks berordo 2 × 3 dikalikan matriks berordo 3 × 4 menghasilkan ordo…", "a": "2 × 4", "x": ""}, {"id": "ALJ-05-002", "t": "ALJ-05", "lv": 1, "q": "Determinan matriks [[3, 2], [1, 4]] adalah…", "a": "10", "x": "3 · 4 − 2 · 1."}, {"id": "ALJ-05-003", "t": "ALJ-05", "lv": 2, "q": "Invers matriks [[2, 1], [5, 3]] adalah…", "a": "[[3, −1], [−5, 2]]", "x": "Determinannya 1."}, {"id": "ALJ-05-004", "t": "ALJ-05", "lv": 2, "q": "Matriks [[2, 4], [1, 2]] tidak memiliki invers karena…", "a": "Determinannya 0 (matriks singular)", "x": "2 · 2 − 4 · 1 = 0."}, {"id": "ALJ-05-005", "t": "ALJ-05", "lv": 2, "q": "A matriks 2 × 2 dengan det A = 3. Nilai det(2A) adalah…", "a": "12", "x": "det(kA) = k² det A untuk matriks 2 × 2."}, {"id": "ALJ-05-006", "t": "ALJ-05", "lv": 3, "q": "Jika A = [[2, 1], [5, 3]] dan AX = [[1], [2]], matriks X adalah…", "a": "[[1], [−1]]", "x": "X = A⁻¹B, bukan BA⁻¹."}, {"id": "ALJ-05-007", "t": "ALJ-05", "lv": 3, "q": "Di warung kopi, 2 gelas teh dan 1 gelas kopi seharga Rp11.000; 5 gelas teh dan 3 gelas kopi Rp30.000. Dengan matriks, tentukan harga segelas teh dan segelas kopi.", "a": "Teh Rp3.000, kopi Rp5.000", "x": "Invers [[2, 1], [5, 3]] adalah [[3, −1], [−5, 2]].", "k": "warung kopi"}, {"id": "ALJ-06-001", "t": "ALJ-06", "lv": 1, "q": "Sisa pembagian P(x) = x³ − 2x + 5 oleh (x − 1) adalah…", "a": "4", "x": "P(1)."}, {"id": "ALJ-06-002", "t": "ALJ-06", "lv": 1, "q": "Bila suku banyak dibagi pembagi berderajat 2, sisanya berbentuk…", "a": "px + q (derajat paling tinggi 1)", "x": ""}, {"id": "ALJ-06-003", "t": "ALJ-06", "lv": 2, "q": "Sisa pembagian P(x) = x³ + 2x² − x + 3 oleh (x + 2) adalah…", "a": "5", "x": "P(−2), bukan P(2)."}, {"id": "ALJ-06-004", "t": "ALJ-06", "lv": 2, "q": "Jika (x − 2) faktor dari x³ − 4x² + kx + 2, nilai k adalah…", "a": "3", "x": "P(2) = 8 − 16 + 2k + 2 = 0."}, {"id": "ALJ-06-005", "t": "ALJ-06", "lv": 2, "q": "Akar-akar x³ − 6x² + 11x − 6 = 0. Jumlah dan hasil kali ketiga akarnya adalah…", "a": "Jumlah 6, hasil kali 6", "x": "−b/a dan −d/a. Akarnya 1, 2, 3."}, {"id": "ALJ-06-006", "t": "ALJ-06", "lv": 3, "q": "P(x) dibagi (x − 1) bersisa 3 dan dibagi (x − 2) bersisa 5. Sisa pembagian P(x) oleh (x − 1)(x − 2) adalah…", "a": "2x + 1", "x": "p + q = 3 dan 2p + q = 5."}, {"id": "ALJ-07-001", "t": "ALJ-07", "lv": 1, "q": "Nilai i² adalah…", "a": "−1", "x": ""}, {"id": "ALJ-07-002", "t": "ALJ-07", "lv": 1, "q": "Modulus bilangan kompleks 3 + 4i adalah…", "a": "5", "x": "√(3² + 4²)."}, {"id": "ALJ-07-003", "t": "ALJ-07", "lv": 2, "q": "Hasil (2 + 3i)(1 − i) adalah…", "a": "5 + i", "x": "2 − 2i + 3i − 3i² = 5 + i."}, {"id": "ALJ-07-004", "t": "ALJ-07", "lv": 2, "q": "Sekawan dari 5 − 2i adalah…", "a": "5 + 2i", "x": ""}, {"id": "ALJ-07-005", "t": "ALJ-07", "lv": 3, "q": "Dengan rumus De Moivre, nilai (1 + i)⁴ adalah…", "a": "−4", "x": "r = √2 dan θ = 45°, jadi r⁴ = 4 dan 4θ = 180°."}, {"id": "FUN-01-001", "t": "FUN-01", "lv": 1, "q": "Akar-akar x² − 5x + 6 = 0 adalah…", "a": "2 dan 3", "x": "(x − 2)(x − 3) = 0."}, {"id": "FUN-01-002", "t": "FUN-01", "lv": 1, "q": "Diskriminan x² + 4x + 4 = 0 bernilai 0, artinya akarnya…", "a": "Kembar (x = −2)", "x": ""}, {"id": "FUN-01-003", "t": "FUN-01", "lv": 1, "q": "Grafik y = −x² + 2x + 3 terbuka ke…", "a": "Bawah, karena a < 0", "x": "Punya nilai maksimum."}, {"id": "FUN-01-004", "t": "FUN-01", "lv": 2, "q": "Jumlah dan hasil kali akar 2x² − 6x + 1 = 0 adalah…", "a": "Jumlah 3, hasil kali 1/2", "x": "−b/a dan c/a."}, {"id": "FUN-01-005", "t": "FUN-01", "lv": 2, "q": "Titik puncak grafik y = x² − 4x + 1 adalah…", "a": "(2, −3)", "x": "x = −b/(2a) = 2."}, {"id": "FUN-01-006", "t": "FUN-01", "lv": 2, "q": "Persamaan kuadrat yang akarnya 3 dan −1 adalah…", "a": "x² − 2x − 3 = 0", "x": "x² − (jumlah)x + hasil kali."}, {"id": "FUN-01-007", "t": "FUN-01", "lv": 2, "q": "Penyelesaian x² − x − 6 < 0 adalah…", "a": "−2 < x < 3", "x": "Akar −2 dan 3; nilai negatif di antara akar."}, {"id": "FUN-01-008", "t": "FUN-01", "lv": 3, "q": "Nilai m agar x² + mx + 4 definit positif adalah…", "a": "−4 < m < 4", "x": "a = 1 > 0 dan D = m² − 16 < 0."}, {"id": "FUN-01-009", "t": "FUN-01", "lv": 2, "q": "Bola ditendang di lapangan desa dengan tinggi h(t) = 20t − 5t² meter. Berapa tinggi maksimumnya?", "a": "20 m (saat t = 2 s)", "x": "Nilai y puncak, bukan t.", "k": "lapangan"}, {"id": "FUN-01-010", "t": "FUN-01", "lv": 3, "q": "Kebun sayur di pekarangan dipagari 20 m kawat pada tiga sisi; sisi keempat tembok rumah. Berapa luas maksimum kebun?", "a": "50 m² (lebar 5 m, panjang 10 m)", "x": "L = x(20 − 2x), puncak di x = 5.", "k": "kebun pekarangan"}, {"id": "FUN-02-001", "t": "FUN-02", "lv": 1, "q": "Jika f(x) = 2x + 1 dan g(x) = x², nilai (f ∘ g)(2) adalah…", "a": "9", "x": "g(2) = 4, lalu f(4) = 9."}, {"id": "FUN-02-002", "t": "FUN-02", "lv": 1, "q": "Pada (f ∘ g)(x), fungsi yang dikerjakan lebih dulu adalah…", "a": "g", "x": ""}, {"id": "FUN-02-003", "t": "FUN-02", "lv": 1, "q": "Invers dari f(x) = 3x − 6 adalah…", "a": "f⁻¹(x) = (x + 6)/3", "x": ""}, {"id": "FUN-02-004", "t": "FUN-02", "lv": 2, "q": "Jika f(x) = 2x + 1 dan g(x) = x², bentuk (g ∘ f)(x) adalah…", "a": "4x² + 4x + 1", "x": "(2x + 1)²."}, {"id": "FUN-02-005", "t": "FUN-02", "lv": 2, "q": "Invers dari f(x) = (2x + 1)/(x − 3) adalah…", "a": "f⁻¹(x) = (3x + 1)/(x − 2)", "x": "(−dx + b)/(cx − a)."}, {"id": "FUN-02-006", "t": "FUN-02", "lv": 2, "q": "Invers dari f(x) = 2ˣ adalah…", "a": "f⁻¹(x) = ²log x", "x": ""}, {"id": "FUN-02-007", "t": "FUN-02", "lv": 3, "q": "Jika f(x) = x + 2 dan (f ∘ g)(x) = 2x + 5, maka g(x) adalah…", "a": "2x + 3", "x": "g(x) + 2 = 2x + 5."}, {"id": "FUN-02-008", "t": "FUN-02", "lv": 2, "q": "Tarif ojek pangkalan Rp5.000 ditambah Rp2.000 per km. Tulis fungsi tarif T(x), lalu tentukan jarak bila tarifnya Rp17.000.", "a": "T(x) = 5.000 + 2.000x; jaraknya 6 km", "x": "Memakai invers fungsi.", "k": "tarif ojek"}, {"id": "FUN-02-009", "t": "FUN-02", "lv": 2, "q": "Belanja daring: diskon d(x) = 0,9x lalu ongkos kirim o(x) = x + 10.000. Berapa (o ∘ d)(100.000)?", "a": "Rp100.000", "x": "Diskon dulu menjadi 90.000, lalu ditambah ongkir.", "k": "belanja daring"}, {"id": "FUN-03-001", "t": "FUN-03", "lv": 1, "q": "Grafik y = f(x) + 3 diperoleh dari y = f(x) dengan…", "a": "Geser ke atas 3 satuan", "x": ""}, {"id": "FUN-03-002", "t": "FUN-03", "lv": 1, "q": "Grafik y = f(x − 2) diperoleh dari y = f(x) dengan…", "a": "Geser ke kanan 2 satuan", "x": "Bukan ke kiri."}, {"id": "FUN-03-003", "t": "FUN-03", "lv": 1, "q": "Grafik y = −f(x) adalah pencerminan y = f(x) terhadap…", "a": "Sumbu x", "x": ""}, {"id": "FUN-03-004", "t": "FUN-03", "lv": 2, "q": "Grafik y = x² digeser 1 satuan ke kanan dan 2 satuan ke atas. Persamaannya…", "a": "y = (x − 1)² + 2", "x": ""}, {"id": "FUN-03-005", "t": "FUN-03", "lv": 2, "q": "Grafik y = 3f(x) diperoleh dari y = f(x) dengan…", "a": "Regangan vertikal dengan faktor 3", "x": ""}, {"id": "FUN-03-006", "t": "FUN-03", "lv": 2, "q": "Grafik y = f(−x) adalah pencerminan y = f(x) terhadap…", "a": "Sumbu y", "x": ""}, {"id": "FUN-03-007", "t": "FUN-03", "lv": 2, "q": "Tarif ojek T(x) = 5.000 + 2.000x naik Rp1.000 untuk semua jarak. Bagaimana grafik tarif yang baru dibanding yang lama?", "a": "Bergeser 1.000 satuan ke atas: T(x) + 1.000", "x": "Bentuk f(x) + k.", "k": "tarif ojek"}, {"id": "FUN-04-001", "t": "FUN-04", "lv": 1, "q": "Periode fungsi y = sin x adalah…", "a": "360° (2π)", "x": ""}, {"id": "FUN-04-002", "t": "FUN-04", "lv": 1, "q": "Nilai maksimum y = sin x adalah…", "a": "1", "x": ""}, {"id": "FUN-04-003", "t": "FUN-04", "lv": 2, "q": "Amplitudo dan periode y = 3 sin 2x adalah…", "a": "Amplitudo 3, periode 180°", "x": "360°/2."}, {"id": "FUN-04-004", "t": "FUN-04", "lv": 2, "q": "Nilai maksimum dan minimum y = 2 cos x + 1 adalah…", "a": "Maksimum 3, minimum −1", "x": "d ± amplitudo."}, {"id": "FUN-04-005", "t": "FUN-04", "lv": 2, "q": "Periode y = tan 2x adalah…", "a": "90°", "x": "180°/2."}, {"id": "FUN-04-006", "t": "FUN-04", "lv": 1, "q": "Sudut π/3 radian sama dengan…", "a": "60°", "x": "π rad = 180°."}, {"id": "FUN-04-007", "t": "FUN-04", "lv": 3, "q": "Tinggi air laut di sebuah dermaga dimodelkan h(t) = 2 sin(30t)° + 3 meter, t dalam jam. Berapa tinggi pasang tertinggi dan periodenya?", "a": "5 m; periode 12 jam", "x": "Maksimum 3 + 2; periode 360°/30.", "k": "pasang surut"}, {"id": "FUN-04-008", "t": "FUN-04", "lv": 2, "q": "Tinggi sebuah kursi bianglala di pasar malam h = 10 − 8 cos θ meter. Berapa tinggi tertinggi dan terendahnya?", "a": "Tertinggi 18 m, terendah 2 m", "x": "cos θ bernilai −1 sampai 1.", "k": "pasar malam"}, {"id": "GEO-01-001", "t": "GEO-01", "lv": 1, "q": "Nilai sin 30° adalah…", "a": "½", "x": ""}, {"id": "GEO-01-002", "t": "GEO-01", "lv": 1, "q": "Nilai cos 60° adalah…", "a": "½", "x": ""}, {"id": "GEO-01-003", "t": "GEO-01", "lv": 1, "q": "Nilai tan 45° adalah…", "a": "1", "x": ""}, {"id": "GEO-01-004", "t": "GEO-01", "lv": 1, "q": "Di kuadran II, perbandingan trigonometri yang bernilai positif hanya…", "a": "sin", "x": ""}, {"id": "GEO-01-005", "t": "GEO-01", "lv": 2, "q": "Jika sin α = 3/5 dan α lancip, nilai cos α adalah…", "a": "4/5", "x": "sin² α + cos² α = 1."}, {"id": "GEO-01-006", "t": "GEO-01", "lv": 2, "q": "Nilai sin 150° adalah…", "a": "½", "x": "sin(180° − 30°) = sin 30°."}, {"id": "GEO-01-007", "t": "GEO-01", "lv": 2, "q": "Nilai cos 120° adalah…", "a": "−½", "x": "cos(180° − 60°) = −cos 60°."}, {"id": "GEO-01-008", "t": "GEO-01", "lv": 2, "q": "Nilai tan 90° adalah…", "a": "Tidak terdefinisi", "x": "Bukan nol dan bukan tak hingga."}, {"id": "GEO-01-009", "t": "GEO-01", "lv": 2, "q": "Tangga 4 m disandarkan ke tembok dan membentuk sudut 60° dengan tanah. Berapa tinggi ujung tangga di tembok?", "a": "2√3 m ≈ 3,46 m", "x": "4 sin 60°.", "k": "tukang bangunan"}, {"id": "GEO-01-010", "t": "GEO-01", "lv": 2, "q": "Dari jarak 10 m, puncak tiang bendera sekolah terlihat dengan sudut elevasi 45° (tinggi mata diabaikan). Berapa tinggi tiang?", "a": "10 m", "x": "tan 45° = 1.", "k": "tiang bendera"}, {"id": "GEO-02-001", "t": "GEO-02", "lv": 1, "q": "Aturan kosinus untuk sisi a adalah…", "a": "a² = b² + c² − 2bc cos A", "x": ""}, {"id": "GEO-02-002", "t": "GEO-02", "lv": 1, "q": "Luas segitiga dengan dua sisi a, b dan sudut apit C adalah…", "a": "½ ab sin C", "x": "C harus sudut apit."}, {"id": "GEO-02-003", "t": "GEO-02", "lv": 2, "q": "Segitiga dengan b = 3, c = 8, dan A = 60°. Panjang a adalah…", "a": "7", "x": "9 + 64 − 24 = 49."}, {"id": "GEO-02-004", "t": "GEO-02", "lv": 2, "q": "Luas segitiga dengan sisi 6 dan 8 serta sudut apit 30° adalah…", "a": "12", "x": "½ · 6 · 8 · ½."}, {"id": "GEO-02-005", "t": "GEO-02", "lv": 2, "q": "Pada segitiga ABC, A = 30°, B = 90°, dan a = 5. Panjang b adalah…", "a": "10", "x": "Aturan sinus: 5/sin 30° = b/sin 90°."}, {"id": "GEO-02-006", "t": "GEO-02", "lv": 2, "q": "Luas segitiga bersisi 5, 5, dan 6 adalah…", "a": "12", "x": "Heron: s = 8, √(8 · 3 · 3 · 2)."}, {"id": "GEO-02-007", "t": "GEO-02", "lv": 3, "q": "Pada segitiga dengan a = 6 dan A = 30°, jari-jari lingkaran luarnya adalah…", "a": "6", "x": "a/sin A = 2R = 12."}, {"id": "GEO-02-008", "t": "GEO-02", "lv": 2, "q": "Petani mengukur sawah berbentuk segitiga: dua sisinya 40 m dan 50 m dengan sudut apit 30°. Berapa luasnya?", "a": "500 m²", "x": "½ · 40 · 50 · sin 30°.", "k": "sawah"}, {"id": "GEO-02-009", "t": "GEO-02", "lv": 3, "q": "Dua perahu nelayan berangkat dari dermaga yang sama; satu menempuh 3 km, yang lain 5 km, dengan sudut 120° antara arahnya. Berapa jarak kedua perahu?", "a": "7 km", "x": "9 + 25 − 30 cos 120° = 49.", "k": "nelayan"}, {"id": "GEO-03-001", "t": "GEO-03", "lv": 1, "q": "Rumus sin 2α adalah…", "a": "2 sin α cos α", "x": ""}, {"id": "GEO-03-002", "t": "GEO-03", "lv": 1, "q": "Rumus cos(α + β) adalah…", "a": "cos α cos β − sin α sin β", "x": "Tandanya menjadi minus."}, {"id": "GEO-03-003", "t": "GEO-03", "lv": 2, "q": "Nilai sin 75° adalah…", "a": "(√6 + √2)/4", "x": "sin(45° + 30°)."}, {"id": "GEO-03-004", "t": "GEO-03", "lv": 2, "q": "Jika sin α = 3/5, nilai cos 2α adalah…", "a": "7/25", "x": "1 − 2 sin² α."}, {"id": "GEO-03-005", "t": "GEO-03", "lv": 2, "q": "Penyelesaian sin x = ½ untuk 0° ≤ x ≤ 360° adalah…", "a": "30° dan 150°", "x": "α dan 180° − α."}, {"id": "GEO-03-006", "t": "GEO-03", "lv": 3, "q": "Penyelesaian 2 sin² x − 1 = 0 untuk 0° ≤ x ≤ 360° adalah…", "a": "45°, 135°, 225°, 315°", "x": "sin x = ±½√2."}, {"id": "GEO-04-001", "t": "GEO-04", "lv": 1, "q": "Panjang vektor a = (2, 3, 6) adalah…", "a": "7", "x": "√(4 + 9 + 36)."}, {"id": "GEO-04-002", "t": "GEO-04", "lv": 1, "q": "Dua vektor tegak lurus bila hasil kali titiknya…", "a": "Nol", "x": ""}, {"id": "GEO-04-003", "t": "GEO-04", "lv": 1, "q": "Hasil kali titik dua vektor berupa…", "a": "Skalar (bilangan)", "x": ""}, {"id": "GEO-04-004", "t": "GEO-04", "lv": 2, "q": "A(1, 2, 3) dan B(4, 6, 3). Panjang vektor AB adalah…", "a": "5", "x": "AB = (3, 4, 0)."}, {"id": "GEO-04-005", "t": "GEO-04", "lv": 2, "q": "Vektor a = (1, 2, 2) dan b = (4, 1, k) tegak lurus. Nilai k adalah…", "a": "−3", "x": "4 + 2 + 2k = 0."}, {"id": "GEO-04-006", "t": "GEO-04", "lv": 2, "q": "Sudut antara a = (1, 0, 1) dan b = (0, 1, 1) adalah…", "a": "60°", "x": "cos θ = 1/(√2 · √2) = ½."}, {"id": "GEO-04-007", "t": "GEO-04", "lv": 2, "q": "Proyeksi skalar a = (2, 3, 1) pada b = (2, 1, 2) adalah…", "a": "3", "x": "a · b = 9 dan panjang b = 3."}, {"id": "GEO-04-008", "t": "GEO-04", "lv": 3, "q": "A(1, 1, 1) dan B(4, 7, 10). Titik P membagi AB dengan AP : PB = 1 : 2. Koordinat P adalah…", "a": "(2, 3, 4)", "x": "p = (2a + b)/3."}, {"id": "GEO-04-009", "t": "GEO-04", "lv": 2, "q": "Pada peta kota berkoordinat km, pengemudi ojek daring berangkat dari A(1, 2) ke B(4, 6). Berapa jarak lurus A ke B?", "a": "5 km", "x": "AB = (3, 4).", "k": "peta kota"}, {"id": "GEO-05-001", "t": "GEO-05", "lv": 1, "q": "Pusat dan jari-jari lingkaran (x − 2)² + (y + 1)² = 9 adalah…", "a": "Pusat (2, −1), jari-jari 3", "x": ""}, {"id": "GEO-05-002", "t": "GEO-05", "lv": 1, "q": "Sudut keliling yang menghadap diameter besarnya…", "a": "90°", "x": ""}, {"id": "GEO-05-003", "t": "GEO-05", "lv": 2, "q": "Pusat dan jari-jari lingkaran x² + y² − 4x + 6y − 12 = 0 adalah…", "a": "Pusat (2, −3), jari-jari 5", "x": "r = √(4 + 9 + 12)."}, {"id": "GEO-05-004", "t": "GEO-05", "lv": 2, "q": "Kedudukan titik (3, 4) terhadap lingkaran x² + y² = 16 adalah…", "a": "Di luar lingkaran", "x": "9 + 16 = 25 > 16."}, {"id": "GEO-05-005", "t": "GEO-05", "lv": 2, "q": "Persamaan garis singgung x² + y² = 25 di titik (3, 4) adalah…", "a": "3x + 4y = 25", "x": "x₁x + y₁y = r²; titiknya pada lingkaran."}, {"id": "GEO-05-006", "t": "GEO-05", "lv": 2, "q": "Sudut pusat 100°. Sudut keliling yang menghadap busur yang sama adalah…", "a": "50°", "x": ""}, {"id": "GEO-05-007", "t": "GEO-05", "lv": 3, "q": "Persamaan garis singgung bergradien 2 pada x² + y² = 5 adalah…", "a": "y = 2x ± 5", "x": "r√(1 + m²) = √5 · √5."}, {"id": "GEO-05-008", "t": "GEO-05", "lv": 2, "q": "Kolam air mancur di alun-alun berbentuk lingkaran berpusat (0, 0) dengan jari-jari 10 m. Sebuah lampu dipasang di titik (6, 8). Di mana letak lampu terhadap kolam?", "a": "Tepat di tepi kolam", "x": "36 + 64 = 100 = r².", "k": "alun-alun"}, {"id": "GEO-06-001", "t": "GEO-06", "lv": 1, "q": "Fokus parabola y² = 8x adalah…", "a": "(2, 0)", "x": "4p = 8."}, {"id": "GEO-06-002", "t": "GEO-06", "lv": 1, "q": "Direktriks parabola y² = 8x adalah…", "a": "x = −2", "x": ""}, {"id": "GEO-06-003", "t": "GEO-06", "lv": 2, "q": "Fokus elips x²/25 + y²/9 = 1 adalah…", "a": "(±4, 0)", "x": "c² = 25 − 9."}, {"id": "GEO-06-004", "t": "GEO-06", "lv": 2, "q": "Eksentrisitas elips x²/25 + y²/9 = 1 adalah…", "a": "4/5", "x": "e = c/a, kurang dari 1."}, {"id": "GEO-06-005", "t": "GEO-06", "lv": 2, "q": "Persamaan asimtot hiperbola x²/9 − y²/16 = 1 adalah…", "a": "y = ±(4/3)x", "x": "y = ±(b/a)x."}, {"id": "GEO-06-006", "t": "GEO-06", "lv": 3, "q": "Eksentrisitas hiperbola x²/9 − y²/16 = 1 adalah…", "a": "5/3", "x": "c² = 9 + 16 = 25; e lebih dari 1."}, {"id": "GEO-06-007", "t": "GEO-06", "lv": 2, "q": "Penampang antena parabola mengikuti y² = 12x (satuan dm). Penerima sinyal diletakkan di titik fokus. Di mana letaknya?", "a": "(3, 0), yaitu 3 dm dari puncak", "x": "4p = 12.", "k": "antena parabola"}, {"id": "GEO-07-001", "t": "GEO-07", "lv": 1, "q": "Bayangan titik (2, 5) oleh refleksi terhadap sumbu x adalah…", "a": "(2, −5)", "x": ""}, {"id": "GEO-07-002", "t": "GEO-07", "lv": 1, "q": "Bayangan titik (1, 4) oleh translasi (3, −1) adalah…", "a": "(4, 3)", "x": ""}, {"id": "GEO-07-003", "t": "GEO-07", "lv": 2, "q": "Bayangan titik (3, 2) oleh rotasi 90° berlawanan arah jarum jam pusat O adalah…", "a": "(−2, 3)", "x": "(x, y) → (−y, x)."}, {"id": "GEO-07-004", "t": "GEO-07", "lv": 2, "q": "Bayangan titik (−1, 4) oleh refleksi terhadap garis y = x adalah…", "a": "(4, −1)", "x": ""}, {"id": "GEO-07-005", "t": "GEO-07", "lv": 2, "q": "Bayangan titik (2, −1) oleh dilatasi pusat O faktor 3 adalah…", "a": "(6, −3)", "x": ""}, {"id": "GEO-07-006", "t": "GEO-07", "lv": 3, "q": "Titik (2, 5) direfleksikan terhadap sumbu x, lalu dirotasi 90° berlawanan arah jarum jam pusat O. Bayangannya adalah…", "a": "(5, 2)", "x": "(2, −5) lalu (−y, x)."}, {"id": "GEO-07-007", "t": "GEO-07", "lv": 2, "q": "Perajin batik mencerminkan titik ujung motif (3, 1) terhadap garis y = x agar polanya simetris. Bayangannya adalah…", "a": "(1, 3)", "x": "", "k": "motif batik"}, {"id": "GEO-08-001", "t": "GEO-08", "lv": 1, "q": "Panjang diagonal ruang kubus berusuk 6 cm adalah…", "a": "6√3 cm", "x": ""}, {"id": "GEO-08-002", "t": "GEO-08", "lv": 1, "q": "Panjang diagonal sisi kubus berusuk 4 cm adalah…", "a": "4√2 cm", "x": ""}, {"id": "GEO-08-003", "t": "GEO-08", "lv": 2, "q": "Pada kubus ABCD.EFGH berusuk 6 cm, jarak titik A ke bidang BCGF adalah…", "a": "6 cm", "x": "Rusuk AB tegak lurus bidang BCGF."}, {"id": "GEO-08-004", "t": "GEO-08", "lv": 2, "q": "Pada kubus ABCD.EFGH berusuk 6 cm, jarak titik A ke titik C adalah…", "a": "6√2 cm", "x": "Diagonal sisi."}, {"id": "GEO-08-005", "t": "GEO-08", "lv": 3, "q": "Pada kubus ABCD.EFGH berusuk 6 cm, θ sudut antara garis AG dan bidang ABCD. Nilai tan θ adalah…", "a": "½√2 (θ ≈ 35,3°)", "x": "Proyeksi AG pada ABCD adalah AC: tan θ = CG/AC = 6/(6√2)."}, {"id": "GEO-08-006", "t": "GEO-08", "lv": 2, "q": "Kardus berbentuk kubus berusuk 30 cm. Berapa panjang tongkat lurus terpanjang yang muat di dalamnya?", "a": "30√3 cm ≈ 52 cm", "x": "Diagonal ruang.", "k": "kardus"}, {"id": "STA-01-001", "t": "STA-01", "lv": 1, "q": "Rata-rata data 4, 6, 8, 10, 12 adalah…", "a": "8", "x": ""}, {"id": "STA-01-002", "t": "STA-01", "lv": 1, "q": "Median data 3, 7, 5, 9, 1 adalah…", "a": "5", "x": "Urutkan dulu: 1, 3, 5, 7, 9."}, {"id": "STA-01-003", "t": "STA-01", "lv": 1, "q": "Modus data 2, 3, 3, 5, 7, 3, 5 adalah…", "a": "3", "x": ""}, {"id": "STA-01-004", "t": "STA-01", "lv": 1, "q": "Jangkauan data 12, 5, 20, 8 adalah…", "a": "15", "x": "20 − 5."}, {"id": "STA-01-005", "t": "STA-01", "lv": 2, "q": "Simpangan baku data 2, 4, 4, 4, 5, 5, 7, 9 adalah…", "a": "2", "x": "Rata-rata 5; ragam 32/8 = 4."}, {"id": "STA-01-006", "t": "STA-01", "lv": 2, "q": "Rata-rata sekelompok data 70 dengan simpangan baku 4. Setiap data ditambah 5. Rata-rata dan simpangan baku yang baru…", "a": "Rata-rata 75, simpangan baku tetap 4", "x": ""}, {"id": "STA-01-007", "t": "STA-01", "lv": 3, "q": "Nilai ulangan: 41–50 (5 siswa), 51–60 (8), 61–70 (12), 71–80 (5). Median data ini adalah…", "a": "≈ 62,17", "x": "Kelas median 61–70: 60,5 + ((15 − 13)/12) × 10."}, {"id": "STA-01-008", "t": "STA-01", "lv": 2, "q": "Hasil panen cabai lima petak kebun kelompok tani (kg): 12, 15, 15, 18, 20. Rata-rata dan modusnya adalah…", "a": "Rata-rata 16 kg, modus 15 kg", "x": "", "k": "kelompok tani"}, {"id": "STA-01-009", "t": "STA-01", "lv": 3, "q": "Upah harian di sebuah proyek (ribu rupiah): 100, 100, 120, 150, 400; nilai terakhir upah mandor. Bandingkan rata-rata dan median. Mana yang lebih mewakili upah kebanyakan pekerja?", "a": "Rata-rata 174 ribu, median 120 ribu; median lebih mewakili karena rata-rata tertarik satu nilai yang jauh lebih besar", "x": "", "k": "upah proyek"}, {"id": "STA-02-001", "t": "STA-02", "lv": 1, "q": "Diagram untuk menampilkan pasangan data dua variabel adalah…", "a": "Diagram pencar", "x": ""}, {"id": "STA-02-002", "t": "STA-02", "lv": 1, "q": "Koefisien korelasi r bernilai antara…", "a": "−1 dan 1", "x": ""}, {"id": "STA-02-003", "t": "STA-02", "lv": 2, "q": "Koefisien korelasi r = −0,9 menunjukkan…", "a": "Korelasi negatif yang kuat", "x": "Satu naik, yang lain cenderung turun."}, {"id": "STA-02-004", "t": "STA-02", "lv": 2, "q": "Garis regresi y = 2 + 3x. Taksiran y untuk x = 4 adalah…", "a": "14", "x": ""}, {"id": "STA-02-005", "t": "STA-02", "lv": 3, "q": "Data sebuah kota menunjukkan penjualan es berkorelasi kuat dengan jumlah pengunjung kolam renang. Apakah penjualan es menyebabkan orang berenang?", "a": "Tidak; korelasi tidak membuktikan sebab-akibat. Keduanya bisa sama-sama dipengaruhi cuaca panas.", "x": "", "k": "cuaca panas"}, {"id": "STA-02-006", "t": "STA-02", "lv": 2, "q": "Koperasi tani mendapat garis regresi y = 1,5 + 0,5x, dengan x pupuk (kuintal) dan y hasil panen (ton). Berapa taksiran panen untuk 4 kuintal pupuk?", "a": "3,5 ton", "x": "Taksiran, bukan kepastian.", "k": "koperasi tani"}, {"id": "STA-03-001", "t": "STA-03", "lv": 1, "q": "Nilai 5! adalah…", "a": "120", "x": ""}, {"id": "STA-03-002", "t": "STA-03", "lv": 1, "q": "Nilai 0! adalah…", "a": "1", "x": ""}, {"id": "STA-03-003", "t": "STA-03", "lv": 1, "q": "Ada 3 baju dan 4 celana. Banyak pasangan pakaian yang berbeda adalah…", "a": "12", "x": "Aturan perkalian."}, {"id": "STA-03-004", "t": "STA-03", "lv": 2, "q": "Banyak cara memilih ketua, sekretaris, dan bendahara dari 5 orang adalah…", "a": "60", "x": "Permutasi P(5, 3); jabatan berbeda."}, {"id": "STA-03-005", "t": "STA-03", "lv": 2, "q": "Banyak cara memilih 2 orang dari 6 orang tanpa jabatan adalah…", "a": "15", "x": "Kombinasi C(6, 2)."}, {"id": "STA-03-006", "t": "STA-03", "lv": 2, "q": "Banyak susunan huruf berbeda dari kata KATAK adalah…", "a": "30", "x": "5!/(2! 2!); K dan A masing-masing dua."}, {"id": "STA-03-007", "t": "STA-03", "lv": 2, "q": "Banyak cara 5 orang duduk melingkar adalah…", "a": "24", "x": "Permutasi siklis (5 − 1)!."}, {"id": "STA-03-008", "t": "STA-03", "lv": 3, "q": "Koefisien x² pada (x + 2)⁴ adalah…", "a": "24", "x": "C(4, 2) · 2²."}, {"id": "STA-03-009", "t": "STA-03", "lv": 2, "q": "Warung makan menawarkan paket berisi 1 lauk dari 3 pilihan, 1 sayur dari 2 pilihan, dan 1 minuman dari 2 pilihan. Berapa macam paket yang mungkin?", "a": "12", "x": "3 × 2 × 2.", "k": "warung makan"}, {"id": "STA-03-010", "t": "STA-03", "lv": 2, "q": "Kelompok tani beranggota 7 orang memilih ketua, sekretaris, dan bendahara. Berapa banyak susunan pengurus yang mungkin?", "a": "210", "x": "P(7, 3) = 7 × 6 × 5.", "k": "kelompok tani"}, {"id": "STA-04-001", "t": "STA-04", "lv": 1, "q": "Peluang muncul mata dadu genap pada satu lemparan adalah…", "a": "½", "x": "3/6."}, {"id": "STA-04-002", "t": "STA-04", "lv": 1, "q": "Jika P(A) = 0,3, peluang A tidak terjadi adalah…", "a": "0,7", "x": "Komplemen."}, {"id": "STA-04-003", "t": "STA-04", "lv": 1, "q": "Dua kejadian saling lepas berarti…", "a": "P(A ∩ B) = 0; tidak dapat terjadi bersamaan", "x": "Berbeda dengan saling bebas."}, {"id": "STA-04-004", "t": "STA-04", "lv": 2, "q": "Dua dadu dilempar. Peluang jumlah mata dadu 7 adalah…", "a": "1/6", "x": "6 dari 36 hasil."}, {"id": "STA-04-005", "t": "STA-04", "lv": 2, "q": "Koin dilempar 100 kali. Frekuensi harapan muncul gambar adalah…", "a": "50", "x": "100 × ½."}, {"id": "STA-04-006", "t": "STA-04", "lv": 2, "q": "A dan B saling bebas dengan P(A) = 0,4 dan P(B) = 0,5. Nilai P(A ∩ B) adalah…", "a": "0,2", "x": ""}, {"id": "STA-04-007", "t": "STA-04", "lv": 3, "q": "P(A ∩ B) = 0,2 dan P(B) = 0,5. Nilai P(A ∣ B) adalah…", "a": "0,4", "x": ""}, {"id": "STA-04-008", "t": "STA-04", "lv": 3, "q": "Koin dilempar 3 kali. Peluang muncul tepat 2 gambar adalah…", "a": "3/8", "x": "C(3, 2) · (½)³."}, {"id": "STA-04-009", "t": "STA-04", "lv": 2, "q": "Arisan RT diikuti 20 peserta; tiap bulan satu nama diundi dan yang sudah menang tidak ikut undian lagi. Berapa peluang seorang peserta tertentu menang pada bulan pertama, dan pada bulan kedua bila ia belum menang?", "a": "1/20 dan 1/19", "x": "Ruang sampel mengecil.", "k": "arisan"}, {"id": "STA-04-010", "t": "STA-04", "lv": 2, "q": "Petani menanam 200 bibit cabai; peluang tiap bibit tumbuh 0,9. Berapa frekuensi harapan bibit yang tumbuh?", "a": "180", "x": "200 × 0,9.", "k": "bibit"}, {"id": "STA-04-011", "t": "STA-04", "lv": 3, "q": "Dari 40 siswa, 25 ikut voli, 20 ikut futsal, dan 10 ikut keduanya. Seorang siswa dipilih acak. Berapa peluang ia ikut voli atau futsal?", "a": "7/8", "x": "(25 + 20 − 10)/40.", "k": "ekstrakurikuler"}, {"id": "KAL-01-001", "t": "KAL-01", "lv": 1, "q": "Nilai lim x→2 (3x + 1) adalah…", "a": "7", "x": "Substitusi langsung."}, {"id": "KAL-01-002", "t": "KAL-01", "lv": 1, "q": "Nilai lim x→3 (x² − 9)/(x − 3) adalah…", "a": "6", "x": "Faktorkan: x + 3."}, {"id": "KAL-01-003", "t": "KAL-01", "lv": 2, "q": "Nilai lim x→0 (sin 3x)/(2x) adalah…", "a": "3/2", "x": ""}, {"id": "KAL-01-004", "t": "KAL-01", "lv": 2, "q": "Nilai lim x→∞ (2x² + 1)/(x² − 3) adalah…", "a": "2", "x": "Pangkat tertinggi sama: bandingkan koefisiennya."}, {"id": "KAL-01-005", "t": "KAL-01", "lv": 2, "q": "Nilai lim x→∞ (x + 1)/x² adalah…", "a": "0", "x": "Pangkat penyebut lebih tinggi."}, {"id": "KAL-01-006", "t": "KAL-01", "lv": 2, "q": "Nilai lim x→1 (x² + x − 2)/(x − 1) adalah…", "a": "3", "x": "Faktorkan: x + 2."}, {"id": "KAL-01-007", "t": "KAL-01", "lv": 3, "q": "Nilai lim x→4 (√x − 2)/(x − 4) adalah…", "a": "1/4", "x": "Kalikan sekawan: 1/(√x + 2)."}, {"id": "KAL-01-008", "t": "KAL-01", "lv": 3, "q": "Nilai lim x→∞ (√(x² + 4x) − √(x² − 2x)) adalah…", "a": "3", "x": "(4 − (−2))/(2√1)."}, {"id": "KAL-01-009", "t": "KAL-01", "lv": 2, "q": "Biaya rata-rata produksi keripik per bungkus (500.000 + 2.000x)/x rupiah untuk x bungkus. Bila produksi sangat besar (x → ∞), biaya rata-rata mendekati…", "a": "Rp2.000 per bungkus", "x": "Biaya tetap terbagi ke banyak bungkus.", "k": "biaya produksi"}, {"id": "KAL-02-001", "t": "KAL-02", "lv": 1, "q": "Turunan f(x) = 3x⁴ adalah…", "a": "12x³", "x": ""}, {"id": "KAL-02-002", "t": "KAL-02", "lv": 1, "q": "Turunan fungsi konstan f(x) = 7 adalah…", "a": "0", "x": ""}, {"id": "KAL-02-003", "t": "KAL-02", "lv": 1, "q": "Turunan f(x) = cos x adalah…", "a": "−sin x", "x": "Bertanda negatif."}, {"id": "KAL-02-004", "t": "KAL-02", "lv": 2, "q": "Jika f(x) = x³ − 2x² + 5x, nilai f'(1) adalah…", "a": "4", "x": "f'(x) = 3x² − 4x + 5."}, {"id": "KAL-02-005", "t": "KAL-02", "lv": 2, "q": "Turunan f(x) = (2x + 1)⁵ adalah…", "a": "10(2x + 1)⁴", "x": "Aturan rantai."}, {"id": "KAL-02-006", "t": "KAL-02", "lv": 2, "q": "Turunan f(x) = x² sin x adalah…", "a": "2x sin x + x² cos x", "x": "Aturan perkalian."}, {"id": "KAL-02-007", "t": "KAL-02", "lv": 2, "q": "Turunan f(x) = x/(x + 1) adalah…", "a": "1/(x + 1)²", "x": "((x + 1) − x)/(x + 1)²."}, {"id": "KAL-02-008", "t": "KAL-02", "lv": 3, "q": "Turunan f(x) = sin² x adalah…", "a": "2 sin x cos x = sin 2x", "x": "Aturan rantai."}, {"id": "KAL-02-009", "t": "KAL-02", "lv": 2, "q": "Biaya produksi sebuah konveksi C(x) = x² + 10x ribu rupiah untuk x potong kaos. Berapa biaya marjinal C'(x) saat x = 20?", "a": "50 ribu rupiah per potong", "x": "C'(x) = 2x + 10.", "k": "konveksi"}, {"id": "KAL-03-001", "t": "KAL-03", "lv": 1, "q": "Syarat titik stasioner adalah…", "a": "f'(x) = 0", "x": ""}, {"id": "KAL-03-002", "t": "KAL-03", "lv": 1, "q": "Fungsi f naik pada interval yang memenuhi…", "a": "f'(x) > 0", "x": ""}, {"id": "KAL-03-003", "t": "KAL-03", "lv": 2, "q": "Persamaan garis singgung y = x² + 3x di x = 1 adalah…", "a": "y = 5x − 1", "x": "m = f'(1) = 5, titik (1, 4)."}, {"id": "KAL-03-004", "t": "KAL-03", "lv": 2, "q": "Nilai maksimum dan minimum lokal f(x) = x³ − 3x adalah…", "a": "Maksimum 2 (di x = −1), minimum −2 (di x = 1)", "x": "f'(x) = 3x² − 3 = 0."}, {"id": "KAL-03-005", "t": "KAL-03", "lv": 2, "q": "Fungsi f(x) = x² − 6x turun pada interval…", "a": "x < 3", "x": "f'(x) = 2x − 6 < 0."}, {"id": "KAL-03-006", "t": "KAL-03", "lv": 2, "q": "Posisi benda s(t) = t³ − 6t² + 9t meter. Kecepatannya saat t = 2 s adalah…", "a": "−3 m/s", "x": "v = 3t² − 12t + 9."}, {"id": "KAL-03-007", "t": "KAL-03", "lv": 3, "q": "f(x) = x³ memiliki f'(0) = 0. Apakah x = 0 titik maksimum atau minimum?", "a": "Bukan keduanya; titik belok horizontal", "x": "f'(x) = 3x² tidak berganti tanda di x = 0."}, {"id": "KAL-03-008", "t": "KAL-03", "lv": 3, "q": "Kemasan kardus tanpa tutup dibuat dari karton persegi 12 cm × 12 cm dengan memotong persegi x cm di tiap sudut. Nilai x agar volumenya maksimum dan volume maksimumnya adalah…", "a": "x = 2 cm; volume 128 cm³", "x": "V = x(12 − 2x)², V' = (12 − 2x)(12 − 6x).", "k": "kemasan UMKM"}, {"id": "KAL-03-009", "t": "KAL-03", "lv": 2, "q": "Untung harian usaha keripik U(x) = −x² + 40x ribu rupiah untuk x kg produksi. Berapa produksi agar untung maksimum, dan berapa untungnya?", "a": "20 kg; untung 400 ribu rupiah", "x": "U'(x) = −2x + 40 = 0.", "k": "keripik"}, {"id": "KAL-04-001", "t": "KAL-04", "lv": 1, "q": "Hasil ∫3x² dx adalah…", "a": "x³ + C", "x": ""}, {"id": "KAL-04-002", "t": "KAL-04", "lv": 1, "q": "Hasil ∫5 dx adalah…", "a": "5x + C", "x": ""}, {"id": "KAL-04-003", "t": "KAL-04", "lv": 1, "q": "Hasil ∫cos x dx adalah…", "a": "sin x + C", "x": ""}, {"id": "KAL-04-004", "t": "KAL-04", "lv": 2, "q": "Hasil ∫(4x³ − 2x + 1) dx adalah…", "a": "x⁴ − x² + x + C", "x": ""}, {"id": "KAL-04-005", "t": "KAL-04", "lv": 2, "q": "Hasil ∫sin x dx adalah…", "a": "−cos x + C", "x": ""}, {"id": "KAL-04-006", "t": "KAL-04", "lv": 2, "q": "Hasil ∫2x(x² + 1)³ dx adalah…", "a": "(x² + 1)⁴/4 + C", "x": "Substitusi u = x² + 1."}, {"id": "KAL-04-007", "t": "KAL-04", "lv": 2, "q": "Jika f'(x) = 2x + 3 dan f(0) = 1, maka f(x) adalah…", "a": "x² + 3x + 1", "x": "Konstanta C ditentukan dari f(0)."}, {"id": "KAL-04-008", "t": "KAL-04", "lv": 3, "q": "Hasil ∫x cos x dx adalah…", "a": "x sin x + cos x + C", "x": "Parsial: u = x, dv = cos x dx."}, {"id": "KAL-04-009", "t": "KAL-04", "lv": 2, "q": "Biaya marjinal pabrik tahu C'(x) = 2x + 100 rupiah per potong dan biaya tetapnya Rp50.000. Fungsi biaya total C(x) adalah…", "a": "C(x) = x² + 100x + 50.000", "x": "Biaya tetap menjadi konstanta C.", "k": "pabrik tahu"}, {"id": "KAL-05-001", "t": "KAL-05", "lv": 1, "q": "Nilai integral 3x² dari x = 0 sampai x = 2 adalah…", "a": "8", "x": "[x³] dari 0 sampai 2."}, {"id": "KAL-05-002", "t": "KAL-05", "lv": 1, "q": "Integral tentu dengan batas bawah dan batas atas yang sama bernilai…", "a": "0", "x": ""}, {"id": "KAL-05-003", "t": "KAL-05", "lv": 2, "q": "Nilai integral (2x + 1) dari x = 1 sampai x = 3 adalah…", "a": "10", "x": "[x² + x] = 12 − 2."}, {"id": "KAL-05-004", "t": "KAL-05", "lv": 2, "q": "Luas daerah di bawah y = x² di atas sumbu x dari x = 0 sampai x = 3 adalah…", "a": "9", "x": "[x³/3] = 9."}, {"id": "KAL-05-005", "t": "KAL-05", "lv": 2, "q": "Nilai integral sin x dari x = 0 sampai x = π adalah…", "a": "2", "x": "[−cos x] = 1 − (−1)."}, {"id": "KAL-05-006", "t": "KAL-05", "lv": 2, "q": "Integral y = −x dari x = 0 sampai x = 2 bernilai −2. Berapa luas daerahnya?", "a": "2", "x": "Daerah di bawah sumbu x; ambil nilai mutlak."}, {"id": "KAL-05-007", "t": "KAL-05", "lv": 3, "q": "Luas daerah antara y = x² dan y = 2x adalah…", "a": "4/3", "x": "Integral (2x − x²) dari 0 sampai 2, atau D√D/(6a²) dengan D = 4."}, {"id": "KAL-05-008", "t": "KAL-05", "lv": 2, "q": "Air mengalir ke tandon dengan debit Q(t) = 2t liter per menit. Berapa liter air yang masuk dalam 10 menit pertama?", "a": "100 liter", "x": "Integral 2t dari 0 sampai 10.", "k": "tandon air"}, {"id": "KAL-05-009", "t": "KAL-05", "lv": 3, "q": "Penampang saluran irigasi dibatasi parabola y = x² dan garis y = 1 (meter). Berapa luas penampangnya?", "a": "4/3 m²", "x": "Integral (1 − x²) dari −1 sampai 1.", "k": "saluran irigasi"}], "bank": {"key": "bank-soal-matematika-v1", "title": "Bank Soal Matematika", "map_title": "Peta Materi Matematika SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Matematika. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Matematika dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+const CFG = DATA.bank || {};
+const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
+const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
+  : {SNI:["var(--indigo)","var(--indigo-soft)"], BUD:["var(--soga)","var(--soga-soft)"], MUS:["var(--patina)","var(--patina-soft)"]};
+const LV = {1:"Mudah",2:"Sedang",3:"Sulit"};
+const KEY = CFG.key || "bank-soal-lomba-v1";
+const MIX = CFG.mix || "Campuran 40/30/30";
+const WEIGHT_LABEL = CFG.weight_label || "penguasaan menurut bobot 40/30/30";
+const Q = DATA.questions;
+const DOMS = DATA.topics.domains;
+const MAP = DATA.topics.map_url;
+const TITLE = {}; const DOM_OF = {};
+DOMS.forEach(d => Object.entries(d.topics).forEach(([c,t]) => { TITLE[c] = t; DOM_OF[c] = d.id; }));
+
+let stats = {};
+try { stats = JSON.parse(localStorage.getItem(KEY) || "{}").stats || {}; } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify({stats})); } catch(e) {} }
+
+const state = {domain:"mix", topic:"", level:0, wrong:false, ctx:false, tab:"latihan", cur:null, revealed:false, recent:[], sRight:0, sTotal:0};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const mapHref = code => MAP + "#t-" + code;
+
+function setColors(el, dom){ el.style.setProperty("--c", COLORS[dom][0]); el.style.setProperty("--soft", COLORS[dom][1]); }
+
+/* ---------- filters ---------- */
+function buildFilters(){
+  const fd = $("fDomain");
+  const opts = [["mix",MIX,""]].concat(DOMS.map(d => [d.id, d.short + (CFG.key ? "" : " " + d.weight + "%"), COLORS[d.id][0]]));
+  fd.innerHTML = opts.map(([v,l,c]) => '<button type="button" data-v="' + v + '"' + (c ? ' style="--c:' + c + '"' : '') + ' aria-pressed="' + (v === state.domain) + '">' + esc(l) + '</button>').join("");
+  $("fLevel").innerHTML = [[0,"Semua"],[1,"Mudah"],[2,"Sedang"],[3,"Sulit"]].map(([v,l]) => '<button type="button" data-v="' + v + '" aria-pressed="' + (v === state.level) + '">' + l + '</button>').join("");
+  fillTopics();
+}
+function fillTopics(){
+  const sel = $("fTopic");
+  const doms = state.domain === "mix" ? DOMS : DOMS.filter(d => d.id === state.domain);
+  sel.innerHTML = '<option value="">Semua simpul</option>' + doms.map(d => '<optgroup label="' + esc(d.name) + '">' +
+    Object.entries(d.topics).map(([c,t]) => '<option value="' + c + '"' + (c === state.topic ? " selected" : "") + '>' + c + " · " + esc(t) + '</option>').join("") + '</optgroup>').join("");
+  if(state.topic && !doms.some(d => d.topics[state.topic])) { state.topic = ""; sel.value = ""; }
+}
+function pool(){
+  return Q.filter(q => {
+    if(state.topic) { if(q.t !== state.topic) return false; }
+    else if(state.domain !== "mix" && DOM_OF[q.t] !== state.domain) return false;
+    if(state.level && q.lv !== state.level) return false;
+    if(state.wrong) { const s = stats[q.id]; if(!s || s.l !== 0) return false; }
+    if(state.ctx && !q.k) return false;
+    return true;
+  });
+}
+function updatePoolInfo(){
+  const n = pool().length;
+  $("poolInfo").textContent = n + " soal sesuai saringan";
+}
+
+/* ---------- practice ---------- */
+function weightOf(q){
+  const s = stats[q.id];
+  if(!s) return 2;
+  return s.l === 0 ? 4 : 1;
+}
+function weightedPick(list){
+  const total = list.reduce((a,q) => a + weightOf(q), 0);
+  let r = Math.random() * total;
+  for(const q of list){ r -= weightOf(q); if(r <= 0) return q; }
+  return list[list.length - 1];
+}
+function pickNext(){
+  let list = pool();
+  if(!list.length) return null;
+  const fresh = list.filter(q => !state.recent.includes(q.id));
+  if(fresh.length) list = fresh;
+  if(state.domain === "mix" && !state.topic){
+    const avail = DOMS.filter(d => list.some(q => DOM_OF[q.t] === d.id));
+    let r = Math.random() * avail.reduce((a,d) => a + d.weight, 0);
+    let dom = avail[avail.length - 1];
+    for(const d of avail){ r -= d.weight; if(r <= 0){ dom = d; break; } }
+    list = list.filter(q => DOM_OF[q.t] === dom.id);
+  }
+  return weightedPick(list);
+}
+let tick = null;
+function stopTimer(){ if(tick){ clearInterval(tick); tick = null; } }
+function startTimer(){
+  stopTimer();
+  if(!$("useTimer").checked) return;
+  const total = +$("timerSec").value * 1000, t0 = Date.now();
+  const bar = document.querySelector(".timer i");
+  tick = setInterval(() => {
+    const left = Math.max(0, total - (Date.now() - t0));
+    if(bar) bar.style.width = (left / total * 100) + "%";
+    if(left <= 0){ stopTimer(); if(!state.revealed) reveal(); }
+  }, 100);
+}
+function renderPractice(){
+  const host = $("practice");
+  const q = state.cur;
+  if(!q){
+    host.innerHTML = '<div class="empty"><h3 style="color:var(--ink)">Tidak ada soal untuk saringan ini.</h3><p style="margin-top:6px">' +
+      (state.ctx && !state.wrong ? "Belum ada soal konteks untuk saringan ini. Hapus centang “Hanya soal konteks sehari-hari”." : state.wrong ? "Belum ada soal yang terakhir dijawab salah. Hapus centang “Hanya yang terakhir dijawab salah” untuk berlatih semua soal." : "Longgarkan saringan bidang, simpul, atau tingkat.") + '</p></div>';
+    return;
+  }
+  const dom = DOM_OF[q.t];
+  const s = stats[q.id];
+  host.innerHTML = '<article class="qcard" aria-live="polite">' +
+    '<div class="qmeta"><a class="code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener" title="Buka simpul di Peta Materi">' + q.t + '</a><span>' + esc(TITLE[q.t]) + '</span><span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? '<span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
+    (s ? '<span>' + (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') + '</span>' : '<span>soal baru</span>') + '</div>' +
+    ($("useTimer").checked ? '<div class="timer" aria-hidden="true"><i></i></div>' : '') +
+    '<p class="qtext">' + esc(q.q) + '</p>' +
+    (state.revealed ? '<div class="answer"><span class="lbl">Jawaban</span><span class="a">' + esc(q.a) + '</span>' + (q.x ? '<span class="x">' + esc(q.x) + '</span>' : '') + '</div>' : '') +
+    '<div class="actions">' + (state.revealed
+      ? '<button class="btn ok" type="button" data-act="right">Benar <kbd>B</kbd></button><button class="btn bad" type="button" data-act="wrong">Salah <kbd>S</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>'
+      : '<button class="btn primary" type="button" data-act="reveal">Lihat jawaban <kbd>Spasi</kbd></button><button class="btn" type="button" data-act="skip">Lewati <kbd>L</kbd></button>') + '</div>' +
+    '</article>';
+  setColors(host.querySelector(".qcard"), dom);
+}
+function next(){
+  stopTimer();
+  state.cur = pickNext();
+  state.revealed = false;
+  if(state.cur){ state.recent.push(state.cur.id); if(state.recent.length > 25) state.recent.shift(); }
+  renderPractice();
+  if(state.cur) startTimer();
+}
+function reveal(){ stopTimer(); state.revealed = true; renderPractice(); const b = document.querySelector('[data-act="right"]'); if(b) b.focus({preventScroll:true}); }
+function grade(ok){
+  const q = state.cur; if(!q) return;
+  const s = stats[q.id] || {r:0, w:0, l:null};
+  ok ? s.r++ : s.w++; s.l = ok ? 1 : 0;
+  stats[q.id] = s; save();
+  state.sTotal++; if(ok) state.sRight++;
+  $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
+  updatePoolInfo();
+  next();
+}
+
+/* ---------- list ---------- */
+function renderList(){
+  const term = $("lSearch").value.trim().toLowerCase();
+  const list = pool().filter(q => !term || (q.q + " " + q.a + " " + q.x + " " + q.t + " " + (q.k || "")).toLowerCase().includes(term));
+  const host = $("list");
+  if(!list.length){ host.innerHTML = '<div class="empty">Tidak ada soal yang cocok. Coba kata lain atau longgarkan saringan.</div>'; return; }
+  const groups = {};
+  list.forEach(q => (groups[q.t] = groups[q.t] || []).push(q));
+  host.innerHTML = Object.keys(groups).map(code => {
+    const items = groups[code];
+    return '<div class="group" data-dom="' + DOM_OF[code] + '"><div class="ghead"><h3>' + code + ' · ' + esc(TITLE[code]) + '</h3><span>' + items.length + ' soal</span><a href="' + mapHref(code) + '" target="_blank" rel="noopener">Buka di peta ↗</a></div><ol class="qlist">' +
+      items.map(q => {
+        const s = stats[q.id];
+        const mk = s ? (s.l ? ' <span class="mark-ok">✓ terakhir benar</span>' : ' <span class="mark-bad">✗ terakhir salah</span>') : '';
+        return '<li><span class="n">' + q.id + '</span><div class="body"><span class="qq">' + esc(q.q) + ' <span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? ' <span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') + mk + '</span>' +
+          '<details><summary>Jawaban</summary><div class="aa">' + esc(q.a) + '</div>' + (q.x ? '<div class="xx">' + esc(q.x) + '</div>' : '') + '</details></div></li>';
+      }).join("") + '</ol></div>';
+  }).join("");
+  host.querySelectorAll(".group").forEach(g => setColors(g, g.dataset.dom));
+}
+
+/* ---------- progress ---------- */
+let confirmReset = false;
+function renderProgress(){
+  const host = $("progress");
+  const ids = Object.keys(stats).filter(id => Q.some(q => q.id === id));
+  const tried = ids.length;
+  const lastRight = ids.filter(id => stats[id].l === 1).length;
+  const attempts = ids.reduce((a,id) => a + stats[id].r + stats[id].w, 0);
+  let weighted = 0;
+  DOMS.forEach(d => {
+    const qs = Q.filter(q => DOM_OF[q.t] === d.id);
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    weighted += d.weight * ok / qs.length;
+  });
+  const rows = DOMS.flatMap(d => Object.entries(d.topics).map(([code,title]) => {
+    const qs = Q.filter(q => q.t === code);
+    const t = qs.filter(q => stats[q.id]).length;
+    const ok = qs.filter(q => stats[q.id] && stats[q.id].l === 1).length;
+    return {code, title, dom:d.id, n:qs.length, t, ok, acc: t ? ok / t : null};
+  }));
+  const weak = rows.filter(r => r.t >= 3 && r.acc < 0.6).sort((a,b) => a.acc - b.acc).slice(0,3);
+  const untouched = rows.filter(r => r.t === 0).length;
+  host.innerHTML =
+    '<div class="sumrow">' +
+      '<div class="stat"><b>' + tried + '</b><span>dari ' + Q.length + ' soal pernah dicoba</span></div>' +
+      '<div class="stat"><b>' + (tried ? Math.round(lastRight / tried * 100) : 0) + '%</b><span>soal yang dicoba, terakhir dijawab benar</span></div>' +
+      '<div class="stat"><b>' + Math.round(weighted) + '%</b><span>' + WEIGHT_LABEL + '</span></div>' +
+      '<div class="stat"><b>' + attempts + '</b><span>total jawaban dinilai</span></div>' +
+    '</div>' +
+    (weak.length ? '<div class="weak"><h3>Perlu diulang</h3><ul>' + weak.map(r =>
+      '<li><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a><span>' + esc(r.title) + ' — ' + Math.round(r.acc * 100) + '% benar</span>' +
+      '<button class="btn small" type="button" data-drill="' + r.code + '">Latih simpul ini</button></li>').join("") + '</ul></div>'
+      : '<p class="hint" style="margin-top:16px">' + (tried ? "Belum ada simpul yang lemah (minimal 3 soal dicoba dan di bawah 60% benar)." : "Belum ada hasil. Mulai dari tab Latihan; hasilnya muncul di sini.") + (untouched ? " " + untouched + " simpul belum pernah dicoba." : "") + '</p>') +
+    '<div class="tbl"><table><thead><tr><th>Simpul</th><th>Judul</th><th>Soal</th><th>Dicoba</th><th>Benar</th><th>Penguasaan</th><th></th></tr></thead><tbody>' +
+      rows.map(r => {
+        const pct = r.n ? r.ok / r.n * 100 : 0;
+        return '<tr><td><a class="code" style="--c:' + COLORS[r.dom][0] + '" href="' + mapHref(r.code) + '" target="_blank" rel="noopener">' + r.code + '</a></td><td class="t">' + esc(r.title) + '</td><td>' + r.n + '</td><td>' + r.t + '</td><td>' + (r.acc === null ? "–" : Math.round(r.acc * 100) + "%") + '</td>' +
+          '<td><div class="bar" title="' + r.ok + ' dari ' + r.n + ' soal terakhir dijawab benar"><i style="width:' + pct + '%;background:' + COLORS[r.dom][0] + '"></i></div></td><td><button class="btn small" type="button" data-drill="' + r.code + '">Latih</button></td></tr>';
+      }).join("") + '</tbody></table></div>' +
+    '<div class="resetrow">' + (confirmReset
+      ? '<span>Hapus semua hasil latihan di peramban ini?</span><button class="btn small bad" type="button" id="resetYes">Ya, hapus</button><button class="btn small" type="button" id="resetNo">Batal</button>'
+      : '<button class="btn small" type="button" id="resetAsk">Hapus hasil latihan</button>') + '</div>';
+}
+
+/* ---------- wiring ---------- */
+function showTab(name){
+  state.tab = name;
+  ["latihan","daftar","kemajuan"].forEach(t => {
+    $("tab-" + t).setAttribute("aria-selected", t === name ? "true" : "false");
+    $("p-" + t).hidden = t !== name;
+  });
+  document.querySelector(".filters").hidden = name === "kemajuan";
+  if(name === "daftar") renderList();
+  if(name === "kemajuan") renderProgress();
+}
+function onFilterChange(){
+  updatePoolInfo();
+  if(state.tab === "latihan") next();
+  else if(state.tab === "daftar") renderList();
+  else renderProgress();
+}
+
+if(CFG.key){
+  document.title = CFG.title; $("bTitle").textContent = CFG.title; $("bLead").textContent = CFG.lead; $("bFoot").textContent = CFG.footer;
+  const a = document.createElement("a"); a.id = "mapLink"; a.href = MAP; a.textContent = "Buka " + CFG.map_title + " →";
+  $("bLead").append(" ", a);
+}
+if(Q.some(q => q.k)) $("ctxBox").hidden = false;
+$("qCount").textContent = Q.length;
+$("tCount").textContent = Object.keys(TITLE).length;
+$("mapLink").href = MAP;
+buildFilters();
+updatePoolInfo();
+next();
+
+document.querySelector(".tabs").addEventListener("click", e => { const b = e.target.closest(".tab"); if(b) showTab(b.id.slice(4)); });
+$("fDomain").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.domain = b.dataset.v;
+  $("fDomain").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  fillTopics(); onFilterChange();
+});
+$("fLevel").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  state.level = +b.dataset.v;
+  $("fLevel").querySelectorAll("button").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  onFilterChange();
+});
+$("fTopic").addEventListener("change", e => { state.topic = e.target.value; onFilterChange(); });
+$("fWrong").addEventListener("change", e => { state.wrong = e.target.checked; onFilterChange(); });
+$("fCtx").addEventListener("change", e => { state.ctx = e.target.checked; onFilterChange(); });
+$("useTimer").addEventListener("change", () => { if(state.tab === "latihan" && !state.revealed){ renderPractice(); startTimer(); } else stopTimer(); });
+$("timerSec").addEventListener("change", () => { if($("useTimer").checked && !state.revealed){ renderPractice(); startTimer(); } });
+$("practice").addEventListener("click", e => {
+  const b = e.target.closest("[data-act]"); if(!b) return;
+  ({reveal, right:() => grade(true), wrong:() => grade(false), skip:next})[b.dataset.act]();
+});
+let lt;
+$("lSearch").addEventListener("input", () => { clearTimeout(lt); lt = setTimeout(renderList, 150); });
+$("showAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = true));
+$("hideAll").addEventListener("click", () => document.querySelectorAll("#list details").forEach(d => d.open = false));
+$("progress").addEventListener("click", e => {
+  const drill = e.target.closest("[data-drill]");
+  if(drill){
+    state.domain = "mix"; state.topic = drill.dataset.drill; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
+    buildFilters(); updatePoolInfo(); showTab("latihan"); next(); window.scrollTo({top:0}); return;
+  }
+  if(e.target.id === "resetAsk"){ confirmReset = true; renderProgress(); }
+  else if(e.target.id === "resetNo"){ confirmReset = false; renderProgress(); }
+  else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
+});
+document.addEventListener("keydown", e => {
+  if(state.tab !== "latihan" || !state.cur) return;
+  if(e.target.closest("input, select, textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
+  const k = e.key.toLowerCase();
+  if(!state.revealed && (k === " " || (k === "enter" && !e.target.closest("button, a")))){ e.preventDefault(); reveal(); }
+  else if(state.revealed && k === "b"){ grade(true); }
+  else if(state.revealed && k === "s"){ grade(false); }
+  else if(k === "l"){ next(); }
+});
+const h = location.hash.slice(1);
+if(["latihan","daftar","kemajuan"].includes(h)) showTab(h);
+</script>

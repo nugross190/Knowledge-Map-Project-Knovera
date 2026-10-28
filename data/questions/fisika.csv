@@ -1,0 +1,256 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+DAS-01-001,DAS-01,1,Satuan SI untuk besaran pokok suhu adalah…,Kelvin (K),,
+DAS-01-002,DAS-01,1,Satuan SI untuk besaran pokok kuat arus listrik adalah…,Ampere (A),,
+DAS-01-003,DAS-01,1,Ketelitian jangka sorong dengan nonius 10 skala adalah…,"0,1 mm",,
+DAS-01-004,DAS-01,1,Ketelitian mikrometer sekrup adalah…,"0,01 mm",,
+DAS-01-005,DAS-01,2,Dimensi gaya adalah…,[M][L][T]⁻²,,
+DAS-01-006,DAS-01,2,"Menurut aturan angka penting, hasil 2,5 × 3,14 ditulis…","7,9",Mengikuti 2 angka penting.,
+DAS-01-007,DAS-01,2,"Mikrometer menunjukkan skala utama 4,5 mm dan skala putar 28. Berapa hasil pengukurannya?","4,78 mm","4,5 + 28 × 0,01.",
+DAS-01-008,DAS-01,3,"Berapa jumlah angka penting pada 0,00450?",3,Nol di depan tidak penting; nol di belakang koma desimal penting.,
+DAS-01-009,DAS-01,2,Tukang kayu mengukur papan sekali dengan mistar berskala terkecil 1 mm. Berapa ketidakpastian pengukurannya?,"0,5 mm",Setengah skala terkecil.,tukang kayu
+DAS-02-001,DAS-02,1,Besaran yang hanya memiliki nilai disebut besaran…,Skalar,,
+DAS-02-002,DAS-02,1,Besaran yang memiliki nilai dan arah disebut besaran…,Vektor,,
+DAS-02-003,DAS-02,1,Dua vektor 3 N dan 4 N saling tegak lurus. Berapa resultannya?,5 N,√(3² + 4²).,
+DAS-02-004,DAS-02,2,Berapa resultan maksimum dua vektor 3 N dan 4 N?,7 N,Saat searah.,
+DAS-02-005,DAS-02,2,Berapa resultan minimum dua vektor 3 N dan 4 N?,1 N,Saat berlawanan arah.,
+DAS-02-006,DAS-02,2,Hasil perkalian titik (dot) dua vektor berupa besaran…,Skalar,,
+DAS-02-007,DAS-02,3,Vektor 10 N membentuk sudut 60° terhadap sumbu x. Berapa komponen x-nya?,5 N,10 cos 60°.,
+DAS-02-008,DAS-02,2,Dua pedagang mendorong gerobak sayur ke arah yang sama dengan gaya 30 N dan 40 N. Berapa resultan gayanya?,70 N,,pasar
+DAS-02-009,DAS-02,2,Perahu menyeberang sungai dengan kecepatan 4 m/s tegak lurus arus sungai yang 3 m/s. Berapa kecepatan resultan perahu?,5 m/s,,perahu sungai
+DAS-03-001,DAS-03,1,Nilai percepatan gravitasi bumi yang sering dibulatkan dalam soal adalah…,10 m/s²,,
+DAS-03-002,DAS-03,1,Kecepatan cahaya di ruang hampa adalah…,3 × 10⁸ m/s,,
+DAS-03-003,DAS-03,1,Besar muatan elementer adalah…,"1,6 × 10⁻¹⁹ C",,
+DAS-03-004,DAS-03,2,Nilai konstanta gravitasi umum G adalah…,"6,67 × 10⁻¹¹ N·m²/kg²",,
+DAS-03-005,DAS-03,2,Nilai konstanta Coulomb k adalah…,9 × 10⁹ N·m²/C²,,
+DAS-03-006,DAS-03,2,Nilai bilangan Avogadro adalah…,"6,02 × 10²³ partikel/mol",,
+DAS-03-007,DAS-03,2,1 eV setara dengan berapa joule?,"1,6 × 10⁻¹⁹ J",,
+DAS-03-008,DAS-03,3,1 sma setara dengan energi…,"931,5 MeV",,
+DAS-03-009,DAS-03,3,Nilai konstanta Planck adalah…,"6,63 × 10⁻³⁴ J·s",,
+MEK-01-001,MEK-01,1,Rumus gerak lurus beraturan adalah s = …,v·t,,
+MEK-01-002,MEK-01,1,"Pada grafik v–t, luas di bawah kurva menyatakan…",Perpindahan,,
+MEK-01-003,MEK-01,1,"Pada grafik s–t, kemiringan grafik menyatakan…",Kecepatan,,
+MEK-01-004,MEK-01,1,Berapa kecepatan benda di titik tertinggi gerak vertikal ke atas?,Nol,Percepatannya tetap g ke bawah.,
+MEK-01-005,MEK-01,2,Mobil dari diam dipercepat 2 m/s² selama 5 s. Berapa kecepatan akhirnya?,10 m/s,vt = 0 + 2 × 5.,
+MEK-01-006,MEK-01,2,Benda jatuh bebas dari ketinggian 20 m (g = 10 m/s²). Berapa lama waktu jatuhnya?,2 s,20 = ½ × 10 × t².,
+MEK-01-007,MEK-01,2,Bola dilempar vertikal ke atas dengan kecepatan 20 m/s (g = 10 m/s²). Berapa tinggi maksimumnya?,20 m,v₀²/(2g) = 400/20.,
+MEK-01-008,MEK-01,3,Mobil melaju 20 m/s lalu direm dengan perlambatan 4 m/s² sampai berhenti. Berapa jarak pengeremannya?,50 m,0 = 400 − 2 × 4 × s.,
+MEK-01-009,MEK-01,2,Angkot melaju tetap 10 m/s di jalan lurus selama 30 s. Berapa jarak yang ditempuh?,300 m,,angkot
+MEK-01-010,MEK-01,2,Motor ojek berangkat dari diam di lampu merah dan dipercepat tetap 2 m/s² selama 4 s. Berapa jarak yang ditempuhnya?,16 m,½ × 2 × 4².,ojek
+MEK-02-001,MEK-02,1,"Pada gerak parabola, gerak pada arah mendatar adalah…",GLB (kecepatan tetap),,
+MEK-02-002,MEK-02,1,Sudut elevasi yang menghasilkan jarak mendatar terjauh adalah…,45°,,
+MEK-02-003,MEK-02,1,Arah percepatan sentripetal adalah…,Menuju pusat lingkaran,,
+MEK-02-004,MEK-02,2,Benda berputar 2 putaran per sekon. Berapa kecepatan sudutnya?,4π rad/s,ω = 2πf.,
+MEK-02-005,MEK-02,2,Roda-roda yang sepusat memiliki … yang sama.,Kecepatan sudut,,
+MEK-02-006,MEK-02,2,Peluru ditembakkan dengan kelajuan sama pada sudut 30° dan 60°. Jarak mendatarnya…,Sama,,
+MEK-02-007,MEK-02,3,Bola ditendang dengan kecepatan 20 m/s pada sudut 30° (g = 10 m/s²). Berapa jarak mendatar maksimumnya?,"20√3 m (≈ 34,6 m)",R = v₀² sin 2α / g = 400 × sin 60° / 10.,
+MEK-02-008,MEK-02,2,Gir depan dan gir belakang sepeda dihubungkan rantai. Besaran yang sama pada kedua gir adalah…,Kecepatan linear,,sepeda
+MEK-02-009,MEK-02,2,"Bola yang ditendang dalam pertandingan sepak bola antarkampung melambung. Di titik tertingginya, kecepatan bola…",Tidak nol; tinggal komponen mendatar,,sepak bola
+MEK-03-001,MEK-03,1,Hukum I Newton disebut juga hukum…,Kelembaman (inersia),,
+MEK-03-002,MEK-03,1,Rumus hukum II Newton adalah…,ΣF = m·a,,
+MEK-03-003,MEK-03,1,Gaya aksi dan reaksi bekerja pada … benda.,Dua (benda yang berbeda),,
+MEK-03-004,MEK-03,2,Gaya 20 N bekerja pada benda 4 kg di bidang licin. Berapa percepatannya?,5 m/s²,,
+MEK-03-005,MEK-03,2,Benda meluncur pada bidang miring licin bersudut 30° (g = 10 m/s²). Berapa percepatannya?,5 m/s²,g sin 30°.,
+MEK-03-006,MEK-03,2,Orang 50 kg berada dalam lift yang naik dipercepat 2 m/s² (g = 10 m/s²). Berapa gaya normal lantai lift?,600 N,N = m(g + a).,
+MEK-03-007,MEK-03,2,Umumnya koefisien gesek statis … koefisien gesek kinetis.,Lebih besar dari,,
+MEK-03-008,MEK-03,3,Katrol Atwood licin dengan m₁ = 3 kg dan m₂ = 2 kg (g = 10 m/s²). Berapa percepatan sistem?,2 m/s²,(3 − 2) × 10 / (3 + 2).,
+MEK-03-009,MEK-03,1,Penumpang angkot terdorong ke depan saat sopir mengerem mendadak. Hukum yang menjelaskan peristiwa ini adalah…,Hukum I Newton (kelembaman),,angkot
+MEK-03-010,MEK-03,2,"Peti 10 kg di lantai gudang ditarik mendatar dan bergerak; koefisien gesek kinetis 0,2 (g = 10 m/s²). Berapa gaya gesek kinetisnya?",20 N,μk × m × g.,gudang
+MEK-04-001,MEK-04,1,Rumus gaya gravitasi Newton adalah…,F = G m₁m₂ / r²,,
+MEK-04-002,MEK-04,2,Orang pertama yang mengukur nilai G (1798) adalah…,Henry Cavendish,,
+MEK-04-003,MEK-04,2,"Menurut hukum I Kepler, lintasan planet berbentuk…",Elips,,
+MEK-04-004,MEK-04,2,"Menurut hukum III Kepler, nilai T²/r³ untuk semua planet…",Sama,,
+MEK-04-005,MEK-04,3,"Pada ketinggian sama dengan jari-jari Bumi, percepatan gravitasi menjadi berapa kali g di permukaan?",¼,(R/2R)².,
+MEK-05-001,MEK-05,1,Rumus energi kinetik adalah…,½mv²,,
+MEK-05-002,MEK-05,1,Rumus energi potensial gravitasi adalah…,mgh,,
+MEK-05-003,MEK-05,1,Satuan daya adalah…,Watt (W),,
+MEK-05-004,MEK-05,2,Gaya 50 N memindahkan benda 4 m searah gaya. Berapa usahanya?,200 J,,
+MEK-05-005,MEK-05,2,Benda 2 kg bergerak dengan kecepatan 3 m/s. Berapa energi kinetiknya?,9 J,,
+MEK-05-006,MEK-05,2,"Jika kecepatan benda dijadikan dua kali, energi kinetiknya menjadi … kali semula.",4,,
+MEK-05-007,MEK-05,2,Mesin menerima energi 1.000 J dan menghasilkan 800 J energi berguna. Berapa efisiensinya?,80%,,
+MEK-05-008,MEK-05,3,Benda 1 kg jatuh bebas dari ketinggian 5 m (g = 10 m/s²). Berapa kecepatannya sesaat sebelum menyentuh tanah?,10 m/s,√(2gh).,
+MEK-05-009,MEK-05,1,Kuli angkut membawa karung beras sambil berjalan mendatar dengan kecepatan tetap. Berapa usaha oleh gaya angkat tangannya?,Nol,Gaya tegak lurus perpindahan.,pasar
+MEK-05-010,MEK-05,2,Pompa air mengangkat 100 kg air setinggi 5 m dalam 10 s (g = 10 m/s²). Berapa daya pompa?,500 W,mgh / t.,pompa air
+MEK-06-001,MEK-06,1,Rumus momentum adalah…,p = mv,,
+MEK-06-002,MEK-06,1,Impuls sama dengan perubahan…,Momentum,,
+MEK-06-003,MEK-06,1,Koefisien restitusi tumbukan lenting sempurna adalah…,1,,
+MEK-06-004,MEK-06,2,Besaran yang selalu kekal pada semua jenis tumbukan adalah…,Momentum,,
+MEK-06-005,MEK-06,2,"Bola 0,5 kg bergerak 10 m/s. Berapa momentumnya?",5 kg·m/s,,
+MEK-06-006,MEK-06,2,"Gaya 100 N bekerja selama 0,2 s. Berapa impulsnya?",20 N·s,,
+MEK-06-007,MEK-06,3,Bola dijatuhkan dari ketinggian 4 m dan memantul setinggi 1 m. Berapa koefisien restitusinya?,"0,5",e = √(h'/h).,
+MEK-06-008,MEK-06,3,"Benda 2 kg bergerak 3 m/s menumbuk benda 1 kg yang diam, lalu keduanya menyatu. Berapa kecepatan bersamanya?",2 m/s,6 = 3v.,
+MEK-06-009,MEK-06,2,Kantong udara mobil mengurangi cedera dengan cara memperpanjang…,Waktu tumbukan (Δt),"Impuls sama, gaya lebih kecil.",keselamatan berkendara
+MEK-06-010,MEK-06,2,"Nelayan melompat dari perahu kecil ke dermaga, dan perahunya terdorong menjauh. Hukum yang menjelaskan peristiwa ini adalah…",Kekekalan momentum,,nelayan
+MEK-07-001,MEK-07,1,Rumus torsi adalah τ = …,r·F·sin θ,,
+MEK-07-002,MEK-07,2,Momen inersia silinder pejal terhadap sumbunya adalah…,½ mR²,,
+MEK-07-003,MEK-07,2,Penari balet menarik lengannya ke dalam saat berputar. Kecepatan sudutnya…,Membesar (momentum sudut kekal),,
+MEK-07-004,MEK-07,2,Syarat kesetimbangan benda tegar adalah ΣF = 0 dan…,Στ = 0,,
+MEK-07-005,MEK-07,3,"Gaya 20 N bekerja tegak lurus pada kunci pas sepanjang 0,25 m. Berapa torsinya?",5 N·m,,
+MEK-07-006,MEK-07,2,Montir membuka mur roda dengan kunci bergagang lebih panjang agar terasa lebih ringan. Besaran yang diperbesar adalah…,Torsi (lengan gaya),,bengkel
+MEK-08-001,MEK-08,1,Rumus hukum Hooke adalah F = …,kx,,
+MEK-08-002,MEK-08,2,"Pegas berkonstanta 200 N/m diregangkan 0,1 m. Berapa gaya pegasnya?",20 N,,
+MEK-08-003,MEK-08,2,Periode bandul sederhana tidak bergantung pada…,Massa beban,,
+MEK-08-004,MEK-08,2,Dua pegas 100 N/m disusun paralel. Berapa konstanta penggantinya?,200 N/m,,
+MEK-08-005,MEK-08,3,Dua pegas 100 N/m disusun seri. Berapa konstanta penggantinya?,50 N/m,,
+MEK-08-006,MEK-08,2,"Pegas jok motor tertekan 0,02 m oleh gaya berat 600 N. Berapa konstanta pegasnya?",30.000 N/m,,motor
+FLT-01-001,FLT-01,1,Rumus tekanan hidrostatis adalah…,ρgh,,
+FLT-01-002,FLT-01,1,Tekanan pada fluida tertutup diteruskan ke segala arah sama besar. Ini bunyi hukum…,Pascal,,
+FLT-01-003,FLT-01,1,Gaya apung pada benda di dalam fluida dijelaskan oleh hukum…,Archimedes,,
+FLT-01-004,FLT-01,2,"Berapa tekanan hidrostatis air pada kedalaman 2 m (ρ = 1.000 kg/m³, g = 10 m/s²)?",20.000 Pa,,
+FLT-01-005,FLT-01,2,Benda terapung bila massa jenisnya … massa jenis fluida.,Lebih kecil dari,,
+FLT-01-006,FLT-01,2,"Dongkrak hidrolik: A₁ = 10 cm², A₂ = 200 cm², F₁ = 50 N. Berapa F₂?",1.000 N,F₂ = F₁ × A₂/A₁.,
+FLT-01-007,FLT-01,3,"Benda bervolume 0,002 m³ tercelup seluruhnya dalam air (ρ = 1.000 kg/m³, g = 10 m/s²). Berapa gaya apungnya?",20 N,,
+FLT-01-008,FLT-01,1,Kapal nelayan dari baja dapat terapung di laut karena adanya gaya…,Apung (hukum Archimedes),,nelayan
+FLT-01-009,FLT-01,2,Montir di bengkel mengangkat mobil dengan alat yang meneruskan tekanan zat cair dari pengisap kecil ke pengisap besar. Alat ini bekerja berdasarkan hukum…,Pascal,,bengkel
+FLT-01-010,FLT-01,2,Minyak naik melalui sumbu lampu teplok sampai ke ujung sumbu. Peristiwa ini disebut…,Kapilaritas,,lampu teplok
+FLT-02-001,FLT-02,1,Rumus debit aliran adalah Q = …,A·v (atau V/t),,
+FLT-02-002,FLT-02,2,Persamaan kontinuitas adalah…,A₁v₁ = A₂v₂,,
+FLT-02-003,FLT-02,2,"Di tempat kecepatan aliran fluida besar, tekanannya…",Kecil,,
+FLT-02-004,FLT-02,3,Air menyembur dari lubang 5 m di bawah permukaan air tangki (g = 10 m/s²). Berapa kecepatan semburannya?,10 m/s,√(2gh).,
+FLT-02-005,FLT-02,2,Ujung selang ditekan agar air menyemprot lebih jauh saat menyiram tanaman. Kecepatan air bertambah karena…,Luas penampang mengecil (persamaan kontinuitas),,menyiram tanaman
+FLT-02-006,FLT-02,2,"Bak mandi 200 L diisi dari keran berdebit 0,5 L/s. Berapa lama bak itu penuh?",400 s,,bak mandi
+FLT-03-001,FLT-03,1,Suhu 0 °C sama dengan … K.,273,,
+FLT-03-002,FLT-03,1,Rumus kalor untuk perubahan suhu adalah…,Q = m·c·ΔT,,
+FLT-03-003,FLT-03,1,Perpindahan kalor tanpa medium disebut…,Radiasi,,
+FLT-03-004,FLT-03,2,Berapa kalor jenis air?,4.200 J/(kg·K),,
+FLT-03-005,FLT-03,2,Suhu 100 °C sama dengan … °F.,212,,
+FLT-03-006,FLT-03,2,Massa jenis air terbesar terjadi pada suhu…,4 °C,,
+FLT-03-007,FLT-03,3,Berapa kalor yang diperlukan untuk memanaskan 2 kg air dari 20 °C menjadi 70 °C?,420.000 J,2 × 4.200 × 50.,
+FLT-03-008,FLT-03,3,Pada suhu berapa skala Celsius dan Fahrenheit menunjukkan angka sama?,−40,,
+FLT-03-009,FLT-03,1,Gagang panci dibuat dari kayu atau plastik agar tidak panas saat dipegang. Gagang itu menghambat perpindahan kalor secara…,Konduksi,,dapur
+FLT-03-010,FLT-03,2,Siang hari angin bertiup dari laut ke darat karena udara di atas darat lebih cepat panas lalu naik. Perpindahan kalor ini disebut…,Konveksi,,pantai
+FLT-03-011,FLT-03,2,"Es batu dalam segelas es teh sedang mencair. Selama masih ada es, suhu campuran es dan air itu…",Tetap 0 °C,,warung
+FLT-04-001,FLT-04,1,Persamaan umum gas ideal adalah…,PV = nRT,,
+FLT-04-002,FLT-04,2,Hukum Boyle berlaku pada … tetap.,Suhu,,
+FLT-04-003,FLT-04,2,Energi kinetik rata-rata partikel gas monoatomik hanya bergantung pada…,Suhu,,
+FLT-04-004,FLT-04,3,Gas bersuhu 27 °C dipanaskan sampai energi kinetik rata-ratanya dua kali semula. Berapa suhu akhirnya?,600 K (327 °C),Ek sebanding T dalam kelvin: 300 K → 600 K.,
+FLT-04-005,FLT-04,2,Ban motor yang diparkir di bawah terik matahari tekanannya naik karena suhunya naik sementara volumenya hampir tetap. Hukum gas yang berlaku adalah hukum…,Gay-Lussac,,ban motor
+FLT-05-001,FLT-05,1,Hukum I termodinamika dirumuskan Q = …,ΔU + W,,
+FLT-05-002,FLT-05,1,Proses termodinamika pada volume tetap disebut…,Isokhorik,,
+FLT-05-003,FLT-05,1,Proses termodinamika tanpa pertukaran kalor disebut…,Adiabatik,,
+FLT-05-004,FLT-05,1,"Menurut hukum II termodinamika, kalor mengalir spontan dari benda…",Panas ke benda dingin,,
+FLT-05-005,FLT-05,2,"Pada proses isotermal, perubahan energi dalam gas sama dengan…",Nol,,
+FLT-05-006,FLT-05,2,"Gas memuai pada tekanan tetap 2 × 10⁵ Pa sehingga volumenya bertambah 0,01 m³. Berapa usaha gas?",2.000 J,P·ΔV.,
+FLT-05-007,FLT-05,2,Mesin kalor menerima 1.000 J dan membuang 600 J. Berapa efisiensinya?,40%,1 − 600/1.000.,
+FLT-05-008,FLT-05,3,Mesin Carnot bekerja antara 527 °C dan 127 °C. Berapa efisiensinya?,50%,1 − 400/800.,
+FLT-05-009,FLT-05,3,Mesin pendingin Carnot bekerja antara 300 K dan 270 K. Berapa koefisien kinerjanya?,9,270/(300 − 270).,
+FLT-05-010,FLT-05,2,Kulkas memindahkan kalor dari ruang dalam ke udara luar dengan bantuan kerja kompresor. Alat ini termasuk mesin…,Pendingin,,dapur
+FLT-05-011,FLT-05,2,Udara dalam pompa ban ditekan cepat sehingga menjadi panas karena hampir tidak ada kalor yang sempat keluar. Proses ini mendekati proses…,Adiabatik,,pompa ban
+GEL-01-001,GEL-01,1,Gelombang yang arah getarnya tegak lurus arah rambatnya disebut gelombang…,Transversal,,
+GEL-01-002,GEL-01,1,Bunyi termasuk gelombang…,Longitudinal,,
+GEL-01-003,GEL-01,1,Rumus cepat rambat gelombang adalah v = …,λf,,
+GEL-01-004,GEL-01,2,Gelombang berfrekuensi 50 Hz memiliki panjang gelombang 2 m. Berapa cepat rambatnya?,100 m/s,,
+GEL-01-005,GEL-01,2,Jarak dua simpul berdekatan pada gelombang stasioner adalah…,½λ,,
+GEL-01-006,GEL-01,2,Sifat gelombang yang hanya dimiliki gelombang transversal adalah…,Polarisasi,,
+GEL-01-007,GEL-01,2,Pelenturan gelombang saat melewati celah sempit disebut…,Difraksi,,
+GEL-01-008,GEL-01,3,"Tali bertegangan 100 N memiliki massa per panjang 0,01 kg/m. Berapa cepat rambat gelombang pada tali?",100 m/s,√(F/μ).,
+GEL-01-009,GEL-01,2,Gabus di kolam naik-turun saat gelombang lewat tetapi tidak ikut terbawa ke tepi. Hal ini menunjukkan gelombang memindahkan…,"Energi, bukan medium",,kolam
+GEL-01-010,GEL-01,2,Ombak di pantai datang setiap 4 s dengan jarak antarpuncak 12 m. Berapa cepat rambat ombak?,3 m/s,λ/T.,pantai
+GEL-02-001,GEL-02,1,Rentang frekuensi pendengaran manusia adalah…,20–20.000 Hz,,
+GEL-02-002,GEL-02,1,Bunyi berfrekuensi di bawah 20 Hz disebut…,Infrasonik,,
+GEL-02-003,GEL-02,1,Satuan taraf intensitas bunyi adalah…,Desibel (dB),,
+GEL-02-004,GEL-02,2,Pipa organa tertutup hanya memiliki harmonik…,Ganjil,,
+GEL-02-005,GEL-02,2,Dua sumber bunyi masing-masing 60 dB dibunyikan bersamaan. Berapa taraf intensitas totalnya?,Sekitar 63 dB,60 + 10 log 2.,
+GEL-02-006,GEL-02,2,Dua garpu tala 440 Hz dan 444 Hz dibunyikan bersamaan. Berapa frekuensi pelayangannya?,4 Hz,,
+GEL-02-007,GEL-02,2,"Bila sumber bunyi mendekati pendengar, frekuensi yang terdengar…",Lebih tinggi,,
+GEL-02-008,GEL-02,3,Taraf intensitas satu mesin 60 dB. Berapa taraf intensitas 10 mesin identik?,70 dB,60 + 10 log 10.,
+GEL-02-009,GEL-02,2,Sirene ambulans terdengar makin tinggi saat mendekat dan makin rendah saat menjauh. Gejala ini disebut…,Efek Doppler,,ambulans
+GEL-02-010,GEL-02,1,Pemeriksaan kehamilan di puskesmas memakai gelombang bunyi berfrekuensi di atas pendengaran manusia. Gelombang ini disebut…,Ultrasonik (USG),,puskesmas
+GEL-03-001,GEL-03,1,Gelombang elektromagnetik dengan frekuensi tertinggi adalah…,Sinar gamma,,
+GEL-03-002,GEL-03,2,Warna cahaya tampak dengan panjang gelombang terpanjang adalah…,Merah,,
+GEL-03-003,GEL-03,2,Tokoh yang membuktikan keberadaan gelombang elektromagnetik lewat percobaan adalah…,Heinrich Hertz,,
+GEL-03-004,GEL-03,3,Cahaya alami melewati satu polarisator. Intensitasnya tinggal…,½ intensitas semula,,
+GEL-03-005,GEL-03,2,Remote televisi di rumah mengirim sinyal dengan gelombang elektromagnetik jenis…,Inframerah,,rumah
+GEL-03-006,GEL-03,2,Puskesmas memotret tulang yang diduga patah memakai gelombang elektromagnetik jenis…,Sinar-X,,puskesmas
+GEL-04-001,GEL-04,1,Jarak fokus cermin cekung bertanda…,Positif,,
+GEL-04-002,GEL-04,1,Rabun jauh (miopi) ditolong dengan lensa…,Cekung,,
+GEL-04-003,GEL-04,1,Rumus cermin dan lensa adalah 1/f = …,1/s + 1/s',,
+GEL-04-004,GEL-04,2,Lensa berjarak fokus 50 cm. Berapa kekuatannya?,2 dioptri,100/50.,
+GEL-04-005,GEL-04,2,Benda diletakkan 30 cm di depan cermin cekung berjarak fokus 20 cm. Berapa jarak bayangannya?,60 cm,1/s' = 1/20 − 1/30.,
+GEL-04-006,GEL-04,2,Hukum pembiasan n₁ sin θ₁ = n₂ sin θ₂ disebut hukum…,Snellius,,
+GEL-04-007,GEL-04,3,Titik jauh mata seseorang 100 cm. Berapa kekuatan kacamata yang diperlukan?,−1 dioptri,−100/PR.,
+GEL-04-008,GEL-04,3,Lup berjarak fokus 5 cm dipakai dengan mata tak berakomodasi. Berapa perbesarannya?,5 kali,25/f.,
+GEL-04-009,GEL-04,1,Tukang servis jam memakai lensa cembung untuk melihat komponen kecil. Alat optik ini disebut…,Lup (kaca pembesar),,servis jam
+GEL-04-010,GEL-04,2,Seorang siswa memeriksa mata di toko optik; titik jauhnya 200 cm. Berapa kekuatan kacamata yang diperlukan?,"−0,5 dioptri",,optik
+GEL-04-011,GEL-04,2,Kabel internet serat optik dapat mengalirkan cahaya sampai jauh berdasarkan peristiwa…,Pemantulan sempurna,,internet
+LIS-01-001,LIS-01,1,Hukum tentang gaya antara dua muatan listrik disebut hukum…,Coulomb,,
+LIS-01-002,LIS-01,1,Dua muatan sejenis saling…,Tolak-menolak,,
+LIS-01-003,LIS-01,1,Satuan kapasitas kapasitor adalah…,Farad (F),,
+LIS-01-004,LIS-01,2,"Medan listrik termasuk besaran vektor, sedangkan potensial listrik termasuk besaran…",Skalar,,
+LIS-01-005,LIS-01,2,Dua kapasitor 2 μF disusun paralel. Berapa kapasitas penggantinya?,4 μF,,
+LIS-01-006,LIS-01,2,Dua kapasitor 6 μF disusun seri. Berapa kapasitas penggantinya?,3 μF,,
+LIS-01-007,LIS-01,3,Kapasitor 10 μF dipasang pada tegangan 10 V. Berapa energi yang tersimpan?,5 × 10⁻⁴ J,½CV².,
+LIS-01-008,LIS-01,3,"Dua muatan masing-masing 1 μC berjarak 0,1 m (k = 9 × 10⁹ N·m²/C²). Berapa gaya Coulombnya?","0,9 N",,
+LIS-01-009,LIS-01,2,Penggaris plastik yang digosokkan ke rambut dapat menarik potongan kertas kecil karena penggaris itu…,Bermuatan listrik statis,,kelas
+LIS-02-001,LIS-02,1,Rumus hukum Ohm adalah…,V = IR,,
+LIS-02-002,LIS-02,1,Amperemeter dipasang dalam rangkaian secara…,Seri,,
+LIS-02-003,LIS-02,1,Voltmeter dipasang dalam rangkaian secara…,Paralel,,
+LIS-02-004,LIS-02,2,Resistor 4 Ω dan 6 Ω disusun seri. Berapa hambatan penggantinya?,10 Ω,,
+LIS-02-005,LIS-02,2,Dua resistor 6 Ω disusun paralel. Berapa hambatan penggantinya?,3 Ω,,
+LIS-02-006,LIS-02,2,1 kWh sama dengan berapa joule?,"3,6 × 10⁶ J",,
+LIS-02-007,LIS-02,2,Arus 2 A mengalir melalui hambatan 5 Ω. Berapa tegangannya?,10 V,,
+LIS-02-008,LIS-02,3,Lampu “220 V 100 W” dipasang pada tegangan 110 V. Berapa dayanya?,25 W,P sebanding V²: (110/220)² × 100.,
+LIS-02-009,LIS-02,2,Lampu 10 W di teras menyala 10 jam setiap hari selama 30 hari. Berapa energi listrik yang dipakai?,3 kWh,,lampu rumah
+LIS-02-010,LIS-02,2,Setrika 300 W dipakai selama 2 jam. Berapa energi listriknya?,"0,6 kWh",,setrika
+LIS-02-011,LIS-02,1,Lampu-lampu di rumah dipasang paralel sehingga tegangan pada setiap lampu…,Sama (220 V),,instalasi rumah
+LIS-03-001,LIS-03,1,Penemu bahwa arus listrik menimbulkan medan magnet (1820) adalah…,Hans Christian Oersted,,
+LIS-03-002,LIS-03,1,"Bahan yang ditarik kuat oleh magnet, seperti besi, disebut bahan…",Feromagnetik,,
+LIS-03-003,LIS-03,2,Rumus gaya Lorentz pada kawat berarus adalah…,F = BIL sin θ,,
+LIS-03-004,LIS-03,2,Dua kawat sejajar dengan arus searah saling…,Tarik-menarik,,
+LIS-03-005,LIS-03,2,Gaya Lorentz pada muatan bergerak tidak mengubah … muatan itu.,Kelajuan,,
+LIS-03-006,LIS-03,2,Arah medan magnet di sekitar kawat berarus ditentukan dengan kaidah…,Tangan kanan,,
+LIS-03-007,LIS-03,3,"Kawat 0,5 m berarus 2 A berada tegak lurus medan magnet 0,4 T. Berapa gaya Lorentznya?","0,4 N",,
+LIS-03-008,LIS-03,1,Baling-baling kipas angin berputar karena motor listrik di dalamnya memanfaatkan gaya…,Lorentz,,kipas angin
+LIS-04-001,LIS-04,1,Hukum tentang GGL induksi akibat perubahan fluks magnet disebut hukum…,Faraday,,
+LIS-04-002,LIS-04,1,Transformator penaik tegangan disebut transformator…,Step-up,,
+LIS-04-003,LIS-04,1,Transformator tidak dapat bekerja dengan arus…,Searah (DC),,
+LIS-04-004,LIS-04,2,Transformator dengan Np = 1.000 dan Ns = 100 diberi tegangan 220 V. Berapa tegangan sekundernya?,22 V,,
+LIS-04-005,LIS-04,2,Tegangan PLN 220 V merupakan nilai…,Efektif,,
+LIS-04-006,LIS-04,2,Arus induksi selalu melawan perubahan fluks penyebabnya. Ini bunyi hukum…,Lenz,,
+LIS-04-007,LIS-04,3,Tegangan maksimum arus bolak-balik 311 V. Berapa tegangan efektifnya?,Sekitar 220 V,311/√2.,
+LIS-04-008,LIS-04,3,"Pada keadaan resonansi rangkaian RLC, impedansinya bernilai…",Minimum (Z = R),,
+LIS-04-009,LIS-04,1,Charger ponsel menurunkan tegangan 220 V dari stopkontak. Bagian penurun tegangan itu bekerja seperti transformator…,Step-down,,charger ponsel
+LIS-04-010,LIS-04,2,Listrik dari pembangkit dikirim lewat kabel bertegangan sangat tinggi (SUTET) agar…,Arus kecil sehingga rugi daya kecil,,SUTET
+LIS-04-011,LIS-04,2,Dinamo sepeda menyalakan lampu ketika rodanya berputar. Prinsip kerja dinamo adalah…,Induksi elektromagnetik,,sepeda
+MOD-01-001,MOD-01,1,Energi satu foton dirumuskan E = …,hf,,
+MOD-01-002,MOD-01,1,Tokoh yang menjelaskan efek fotolistrik pada 1905 adalah…,Albert Einstein,,
+MOD-01-003,MOD-01,1,Elektron dapat lepas pada efek fotolistrik hanya bila frekuensi cahaya … frekuensi ambang.,Lebih besar dari,,
+MOD-01-004,MOD-01,2,"Di atas frekuensi ambang, menaikkan intensitas cahaya menambah … elektron foto.",Jumlah,,
+MOD-01-005,MOD-01,2,Nilai tetapan pergeseran Wien adalah…,"2,898 × 10⁻³ m·K",,
+MOD-01-006,MOD-01,2,Gagasan bahwa partikel bersifat gelombang dengan λ = h/p dikemukakan oleh…,de Broglie,,
+MOD-01-007,MOD-01,3,Foton berenergi 5 eV mengenai logam dengan fungsi kerja 2 eV. Berapa energi kinetik maksimum elektron foto?,3 eV,,
+MOD-01-008,MOD-01,3,Sinar-X ditemukan pada 1895 oleh…,Wilhelm Röntgen,,
+MOD-01-009,MOD-01,2,"Besi yang dipanaskan pandai besi berubah warna dari merah ke kuning keputihan. Menurut hukum Wien, makin panas benda, panjang gelombang puncak radiasinya makin…",Pendek,,pandai besi
+MOD-02-001,MOD-02,1,Model atom roti kismis dikemukakan oleh…,J. J. Thomson,,
+MOD-02-002,MOD-02,2,Percobaan hamburan partikel alfa pada lempeng emas mendasari model atom…,Rutherford,,
+MOD-02-003,MOD-02,2,Energi elektron atom hidrogen pada n = 1 adalah…,"−13,6 eV",,
+MOD-02-004,MOD-02,2,Deret spektrum hidrogen yang sebagian berada di cahaya tampak adalah deret…,Balmer,,
+MOD-02-005,MOD-02,3,Berapa energi elektron atom hidrogen pada n = 2?,"−3,4 eV","−13,6/4.",
+MOD-02-006,MOD-02,2,Lampu neon pada papan iklan memancarkan warna tertentu ketika elektron atom gasnya pindah ke lintasan lebih rendah sambil memancarkan…,Foton (energi hf),,papan iklan
+MOD-03-001,MOD-03,1,"Berapa faktor γ untuk benda bergerak 0,6c?","1,25",,
+MOD-03-002,MOD-03,2,Jam yang bergerak berdetak lebih lambat. Gejala ini disebut…,Dilatasi waktu,,
+MOD-03-003,MOD-03,2,Percobaan yang gagal mendeteksi eter (1887) adalah percobaan…,Michelson–Morley,,
+MOD-03-004,MOD-03,2,Rumus energi diam benda adalah…,E₀ = m₀c²,,
+MOD-03-005,MOD-03,3,"Berapa faktor γ untuk benda bergerak 0,8c?",5/3,,
+MOD-03-006,MOD-03,3,"Batang sepanjang 10 m bergerak 0,6c searah panjangnya. Berapa panjangnya menurut pengamat diam?",8 m,"L₀/γ = 10/1,25.",
+MOD-04-001,MOD-04,1,Inti-inti dengan nomor atom sama tetapi nomor massa berbeda disebut…,Isotop,,
+MOD-04-002,MOD-04,1,Sinar radioaktif dengan daya tembus paling kuat adalah sinar…,Gamma,,
+MOD-04-003,MOD-04,1,Penemu radioaktivitas (1896) adalah…,Henri Becquerel,,
+MOD-04-004,MOD-04,2,Peluruhan alfa mengurangi nomor massa sebesar…,4,,
+MOD-04-005,MOD-04,2,Peluruhan beta minus menaikkan nomor atom sebesar…,1,,
+MOD-04-006,MOD-04,2,"Reaksi penggabungan inti ringan, seperti di Matahari, disebut reaksi…",Fusi,,
+MOD-04-007,MOD-04,3,"Setelah tiga kali waktu paruh, sisa zat radioaktif adalah … bagian.",1/8,,
+MOD-04-008,MOD-04,3,Zat radioaktif 80 g memiliki waktu paruh 2 hari. Berapa sisanya setelah 6 hari?,10 g,80 × (½)³.,
+MOD-04-009,MOD-04,2,Arkeolog menentukan umur fosil kayu di sebuah situs purbakala memakai isotop…,C-14,,situs purbakala
+MOD-04-010,MOD-04,2,"Rumah sakit memakai radioisotop untuk terapi kanker, yaitu…",Co-60,,rumah sakit
+TER-01-001,TER-01,1,Sebutkan dua sumber energi terbarukan.,"Dua di antara: surya, angin, air, panas bumi, biomassa, gelombang dan pasang surut laut",,
+TER-01-002,TER-01,2,Kesepakatan iklim 2015 yang membatasi kenaikan suhu global di bawah 2 °C adalah…,Persetujuan Paris,,
+TER-01-003,TER-01,2,"Pada PLTA, energi potensial air diubah menjadi energi kinetik, lalu menjadi energi…",Listrik,,
+TER-01-004,TER-01,2,Gas rumah kaca utama dari pembakaran bahan bakar fosil adalah…,CO₂,,
+TER-01-005,TER-01,2,Panel surya di atap balai desa mengubah energi cahaya menjadi energi…,Listrik,,balai desa
+TER-01-006,TER-01,2,Pembangkit listrik di dataran tinggi Dieng memanfaatkan uap dari perut bumi. Sumber energinya adalah…,Panas bumi,,pembangkit
+TER-02-001,TER-02,1,1 byte sama dengan … bit.,8,,
+TER-02-002,TER-02,2,Bilangan biner 1011 sama dengan bilangan desimal…,11,,
+TER-02-003,TER-02,2,Gerbang logika yang keluarannya 1 hanya bila semua masukan 1 adalah…,AND,,
+TER-02-004,TER-02,2,Gerbang logika yang keluarannya 1 bila kedua masukan berbeda adalah…,XOR,,
+TER-02-005,TER-02,2,"Sinyal yang nilainya diskret, 0 dan 1, disebut sinyal…",Digital,,
+TER-02-006,TER-02,2,Lampu teras menyala bila saklar A atau saklar B (atau keduanya) ditekan. Gerbang logika yang sesuai adalah…,OR,,rumah
