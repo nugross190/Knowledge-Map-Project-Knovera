@@ -85,6 +85,11 @@ class SubjectBanksTest(unittest.TestCase):
         self.assertTrue(self.banks, "data/questions/ has no banks")
         self.assertEqual(build.validate_subject_banks(self.banks, self.maps), [])
 
+    def test_konteks_share(self):
+        for name, rows in self.banks.items():
+            share = sum(bool(r["konteks"]) for r in rows) / len(rows)
+            self.assertGreaterEqual(share, build.MIN_KONTEKS_SHARE, f"{name}: konteks is {share:.0%}")
+
     def test_level1_share(self):
         for name, rows in self.banks.items():
             share = sum(r["tingkat"] == "1" for r in rows) / len(rows)

@@ -37,6 +37,7 @@ MEK-01-008,MEK-01,3,Mobil melaju 20 m/s lalu direm dengan perlambatan 4 m/s² sa
 MEK-01-009,MEK-01,2,Angkot melaju tetap 10 m/s di jalan lurus selama 30 s. Berapa jarak yang ditempuh?,300 m,,angkot
 MEK-01-010,MEK-01,2,Motor ojek berangkat dari diam di lampu merah dan dipercepat tetap 2 m/s² selama 4 s. Berapa jarak yang ditempuhnya?,16 m,½ × 2 × 4².,ojek
 MEK-01-011,MEK-01,1,Panjang lintasan yang ditempuh benda disebut…,Jarak,,
+MEK-01-012,MEK-01,1,Perubahan posisi benda dari titik awal ke titik akhir disebut…,Perpindahan,,
 MEK-02-001,MEK-02,1,"Pada gerak parabola, gerak pada arah mendatar adalah…",GLB (kecepatan tetap),,
 MEK-02-002,MEK-02,1,Sudut elevasi yang menghasilkan jarak mendatar terjauh adalah…,45°,,
 MEK-02-003,MEK-02,1,Arah percepatan sentripetal adalah…,Menuju pusat lingkaran,,
@@ -57,6 +58,7 @@ MEK-03-008,MEK-03,3,Katrol Atwood licin dengan m₁ = 3 kg dan m₂ = 2 kg (g = 
 MEK-03-009,MEK-03,1,Penumpang angkot terdorong ke depan saat sopir mengerem mendadak. Hukum yang menjelaskan peristiwa ini adalah…,Hukum I Newton (kelembaman),,angkot
 MEK-03-010,MEK-03,2,"Peti 10 kg di lantai gudang ditarik mendatar dan bergerak; koefisien gesek kinetis 0,2 (g = 10 m/s²). Berapa gaya gesek kinetisnya?",20 N,μk × m × g.,gudang
 MEK-03-011,MEK-03,1,Hukum Newton yang disebut hukum kelembaman adalah hukum…,I,,
+MEK-03-012,MEK-03,2,Penumpang angkot terdorong ke depan saat sopir mengerem mendadak. Hukum Newton apa yang menjelaskannya?,Hukum I Newton (kelembaman),,angkot
 MEK-04-001,MEK-04,1,Rumus gaya gravitasi Newton adalah…,F = G m₁m₂ / r²,,
 MEK-04-002,MEK-04,2,Orang pertama yang mengukur nilai G (1798) adalah…,Henry Cavendish,,
 MEK-04-003,MEK-04,2,"Menurut hukum I Kepler, lintasan planet berbentuk…",Elips,,
@@ -121,6 +123,7 @@ FLT-03-008,FLT-03,3,Pada suhu berapa skala Celsius dan Fahrenheit menunjukkan an
 FLT-03-009,FLT-03,1,Gagang panci dibuat dari kayu atau plastik agar tidak panas saat dipegang. Gagang itu menghambat perpindahan kalor secara…,Konduksi,,dapur
 FLT-03-010,FLT-03,2,Siang hari angin bertiup dari laut ke darat karena udara di atas darat lebih cepat panas lalu naik. Perpindahan kalor ini disebut…,Konveksi,,pantai
 FLT-03-011,FLT-03,2,"Es batu dalam segelas es teh sedang mencair. Selama masih ada es, suhu campuran es dan air itu…",Tetap 0 °C,,warung
+FLT-03-012,FLT-03,2,Penjual es teh mencampur es batu dengan teh panas sampai suhunya sama. Asas apa yang dipakai untuk menghitung suhu akhirnya?,Asas Black,,es teh
 FLT-04-001,FLT-04,1,Persamaan umum gas ideal adalah…,PV = nRT,,
 FLT-04-002,FLT-04,2,Hukum Boyle berlaku pada … tetap.,Suhu,,
 FLT-04-003,FLT-04,2,Energi kinetik rata-rata partikel gas monoatomik hanya bergantung pada…,Suhu,,
@@ -147,6 +150,7 @@ GEL-01-007,GEL-01,2,Pelenturan gelombang saat melewati celah sempit disebut…,D
 GEL-01-008,GEL-01,3,"Tali bertegangan 100 N memiliki massa per panjang 0,01 kg/m. Berapa cepat rambat gelombang pada tali?",100 m/s,√(F/μ).,
 GEL-01-009,GEL-01,2,Gabus di kolam naik-turun saat gelombang lewat tetapi tidak ikut terbawa ke tepi. Hal ini menunjukkan gelombang memindahkan…,"Energi, bukan medium",,kolam
 GEL-01-010,GEL-01,2,Ombak di pantai datang setiap 4 s dengan jarak antarpuncak 12 m. Berapa cepat rambat ombak?,3 m/s,λ/T.,pantai
+GEL-01-011,GEL-01,2,Nelayan melihat 6 gelombang laut melewati perahunya dalam 3 sekon. Berapa frekuensi gelombangnya?,2 Hz,f = n/t.,nelayan
 GEL-02-001,GEL-02,1,Rentang frekuensi pendengaran manusia adalah…,20–20.000 Hz,,
 GEL-02-002,GEL-02,1,Bunyi berfrekuensi di bawah 20 Hz disebut…,Infrasonik,,
 GEL-02-003,GEL-02,1,Satuan taraf intensitas bunyi adalah…,Desibel (dB),,
@@ -195,6 +199,7 @@ LIS-02-009,LIS-02,2,Lampu 10 W di teras menyala 10 jam setiap hari selama 30 har
 LIS-02-010,LIS-02,2,Setrika 300 W dipakai selama 2 jam. Berapa energi listriknya?,"0,6 kWh",,setrika
 LIS-02-011,LIS-02,1,Lampu-lampu di rumah dipasang paralel sehingga tegangan pada setiap lampu…,Sama (220 V),,instalasi rumah
 LIS-02-012,LIS-02,1,Hukum yang menyatakan V = I · R adalah hukum…,Ohm,,
+LIS-02-013,LIS-02,2,"Kipas angin di warung berarus 0,5 A pada tegangan 220 V. Berapa hambatannya?",440 Ω,R = V/I.,warung
 LIS-03-001,LIS-03,1,Penemu bahwa arus listrik menimbulkan medan magnet (1820) adalah…,Hans Christian Oersted,,
 LIS-03-002,LIS-03,1,"Bahan yang ditarik kuat oleh magnet, seperti besi, disebut bahan…",Feromagnetik,,
 LIS-03-003,LIS-03,2,Rumus gaya Lorentz pada kawat berarus adalah…,F = BIL sin θ,,

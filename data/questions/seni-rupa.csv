@@ -8,6 +8,7 @@ UNR-01-006,UNR-01,1,Perbedaan intensitas cahaya yang memberi kesan volume disebu
 UNR-01-007,UNR-01,2,Garis zig-zag memberi kesan…,"Gerak, tegang, atau dinamis",,
 UNR-01-008,UNR-01,2,Permukaan anyaman tikar pandan di pasar terasa kasar saat diraba. Jenis tekstur apa ini?,Tekstur nyata,,pasar
 UNR-01-009,UNR-01,3,"Poster lomba memakai gambar kayu yang tampak berserat, padahal kertasnya licin. Unsur apa yang dipakai dan jenisnya apa?",Tekstur semu,,poster
+UNR-01-010,UNR-01,2,Kerajinan tikar pandan dari Tasikmalaya terasa kasar bila diraba. Unsur seni rupa apa yang dirasakan?,Tekstur (nyata),,tikar pandan
 UNR-02-001,UNR-02,1,Keseimbangan yang kedua sisinya sama disebut keseimbangan…,Simetris,,
 UNR-02-002,UNR-02,1,Bagian karya yang paling menarik perhatian disebut…,Pusat perhatian (aksen),,
 UNR-02-003,UNR-02,2,Keseimbangan yang kedua sisinya berbeda tetapi tetap seimbang disebut keseimbangan…,Asimetris,,
@@ -29,6 +30,7 @@ UNR-03-008,UNR-03,2,Sistem warna untuk tinta cetak adalah…,CMYK,,
 UNR-03-009,UNR-03,2,Spanduk promosi warung memakai tulisan biru di atas latar jingga agar mencolok. Hubungan kedua warna ini disebut…,Komplementer (kontras),,spanduk warung
 UNR-03-010,UNR-03,3,"Siswa hanya punya cat merah, kuning, dan biru tetapi ingin melukis daun dan langit senja ungu. Bagaimana caranya?",Hijau dari kuning + biru; ungu dari merah + biru,,
 UNR-03-011,UNR-03,2,Penjual es di sekolah mengecat gerobaknya merah dan kuning agar terlihat segar dan bersemangat. Golongan warna apa ini?,Warna panas,,gerobak es
+UNR-03-012,UNR-03,1,Warna yang berseberangan pada lingkaran warna disebut warna…,Komplementer,,
 UNR-04-001,UNR-04,1,Garis setinggi mata pengamat dalam perspektif disebut…,Garis horizon,,
 UNR-04-002,UNR-04,1,Titik tempat garis-garis sejajar bertemu di horizon disebut…,Titik hilang,,
 UNR-04-003,UNR-04,1,Perspektif untuk menggambar jalan lurus dilihat dari depan memakai berapa titik hilang?,Satu,,
@@ -51,6 +53,7 @@ KRP-01-006,KRP-01,2,"Cat yang cepat kering dan diencerkan dengan air, tetapi tah
 KRP-01-007,KRP-01,2,Cat yang lambat kering dan diencerkan dengan minyak adalah cat…,Minyak,,
 KRP-01-008,KRP-01,2,Pelukis di kampung seni Ubud melukis pemandangan sawah dengan cat air tipis sehingga warna kertas masih terlihat. Teknik apa ini?,Aquarel,,Ubud
 KRP-01-009,KRP-01,3,Siswa ingin melukis poster dengan warna rata yang menutupi sketsa pensil di bawahnya. Teknik cat air apa yang tepat dan mengapa?,Plakat; catnya tebal dan opak sehingga menutup sketsa,,poster
+KRP-01-010,KRP-01,2,Pelukis jalanan di Malioboro membuat potret dengan titik-titik rapat. Teknik apa ini?,Pointilis,,Malioboro
 KRP-02-001,KRP-02,1,Teknik cetak yang bagian menonjolnya menerima tinta disebut cetak…,Tinggi,,
 KRP-02-002,KRP-02,1,Sablon termasuk teknik cetak…,Saring,,
 KRP-02-003,KRP-02,2,Cukil kayu termasuk teknik cetak…,Tinggi,,
@@ -69,6 +72,7 @@ KRP-03-006,KRP-03,2,Bahan yang cocok untuk teknik butsir adalah…,Tanah liat at
 KRP-03-007,KRP-03,2,Pematung di Jepara membuat patung dari batang kayu jati dengan pahat. Teknik ini termasuk…,Subtraktif,,Jepara
 KRP-03-008,KRP-03,2,Karang taruna membuat patung ikan dari tutup botol dan kawat bekas untuk lomba kebersihan. Teknik apa ini?,Konstruksi (rakit),,lomba kebersihan
 KRP-03-009,KRP-03,3,Relief pada dinding Candi Borobudur dipahat pada batu dan hanya bisa dilihat dari satu sisi. Golongkan menurut teknik dan jenisnya.,Teknik pahat (subtraktif); patung relief,,Borobudur
+KRP-03-010,KRP-03,2,Perajin di Kasongan membentuk patung kodok dari tanah liat dengan menambah bahan sedikit demi sedikit. Teknik apa ini?,Butsir (aditif),,Kasongan
 KRP-04-001,KRP-04,1,Seni rupa terapan yang mengutamakan keterampilan tangan dan fungsi disebut…,Kriya,,
 KRP-04-002,KRP-04,2,Sebutkan dua teknik membentuk keramik.,"Contoh: pijat, pilin, lempeng (slab), putar (dua di antaranya)",,
 KRP-04-003,KRP-04,2,Daerah yang terkenal dengan kriya ukir kayu adalah…,Jepara,,
@@ -151,6 +155,7 @@ APR-03-004,APR-03,2,Pameran yang berpindah dari satu tempat ke tempat lain diseb
 APR-03-005,APR-03,2,Sebutkan empat tahap pameran.,"Perencanaan, persiapan, pelaksanaan, evaluasi",,
 APR-03-006,APR-03,2,OSIS menggelar pameran karya kelas XII di aula selama tiga hari. Jenis pameran menurut waktunya adalah…,Temporer,,pameran sekolah
 APR-03-007,APR-03,1,Pameran yang menampilkan karya banyak seniman disebut pameran…,Bersama,,
+APR-03-008,APR-03,2,Galeri kota memamerkan lukisan satu pelukis lokal saja selama dua minggu. Jenis pameran apa menurut jumlah seniman?,Pameran tunggal,,galeri kota
 APR-04-001,APR-04,1,Berapa lama hak cipta lukisan berlaku menurut UU No. 28 Tahun 2014?,Seumur hidup pencipta ditambah 70 tahun,,
 APR-04-002,APR-04,1,Hak pencipta agar namanya dicantumkan disebut hak…,Moral,,
 APR-04-003,APR-04,2,Apakah meniru lukisan untuk latihan boleh dijual sebagai karya sendiri?,Tidak,,

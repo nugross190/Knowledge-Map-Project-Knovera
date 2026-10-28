@@ -78,4 +78,4 @@ A `konteks` item opens with a scene from everyday life around the students, then
 
 The `konteks` column names the scene's theme in one or two words (`pasar`, `nelayan`, `banjir`); it is empty for ordinary items. The bank page shows the theme as a tag and offers a filter "Hanya soal konteks sehari-hari". Themes here are starting points chosen by the authors: a class that runs a dialogue phase (among generator spec, F1) should replace them with its own.
 
-A subject bank SHOULD have about 20–30% `konteks` items. Ordinary recall items remain: K items practise applying a concept, not memorising it.
+A subject bank MUST have at least 20% `konteks` items and SHOULD stay within about 20–30% (`build.py` warns below 20% and a test fails). Because konteks items are level 2, adding them lowers the level 1 share; top up level 1 at the same time so both floors hold. Ordinary recall items remain: K items practise applying a concept, not memorising it.

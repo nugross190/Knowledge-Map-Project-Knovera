@@ -59,6 +59,7 @@ SK-02-008,SK-02,3,Ubah bilangan desimal 25 ke biner.,11001,16 + 8 + 1.,
 SK-02-009,SK-02,2,Satu digit heksadesimal setara dengan berapa bit?,4,,
 SK-02-010,SK-02,3,Kamera CCTV di pos ronda menyimpan setiap piksel warna dengan 24 bit. Berapa banyak warna berbeda yang dapat dinyatakan?,16.777.216,2²⁴.,pos ronda
 SK-02-011,SK-02,1,Satuan data terkecil disebut…,Bit,,
+SK-02-012,SK-02,2,Lampu indikator di mesin fotokopi menyatakan status dengan 3 bit. Berapa banyak status berbeda yang dapat dinyatakan?,8,2³.,mesin fotokopi
 SK-03-001,SK-03,1,Gerbang yang keluarannya 1 hanya bila kedua masukannya 1 adalah…,AND,,
 SK-03-002,SK-03,1,Gerbang yang membalik nilai masukan adalah…,NOT,,
 SK-03-003,SK-03,1,Gerbang yang bernilai 1 hanya bila kedua masukan berbeda adalah…,XOR,,
@@ -85,6 +86,7 @@ JKI-01-007,JKI-01,2,Jaringan yang menghubungkan antarkota atau antarnegara diseb
 JKI-01-008,JKI-01,3,Mengapa topologi mesh lebih tahan gangguan tetapi lebih mahal?,"Setiap perangkat terhubung ke banyak perangkat, sehingga ada jalur cadangan tetapi butuh banyak kabel",,
 JKI-01-009,JKI-01,2,"Laboratorium komputer sekolah: semua komputer tersambung ke satu switch di meja guru. Ketika switch itu rusak, semua komputer putus. Topologi apa ini?",Star,,lab sekolah
 JKI-01-010,JKI-01,2,Warung kopi memasang perangkat yang memancarkan Wi-Fi agar pengunjung bisa terhubung tanpa kabel. Perangkat ini disebut…,Access point,,warung kopi
+JKI-01-011,JKI-01,2,Kantor kecamatan menghubungkan jaringan lokalnya ke internet melalui satu perangkat yang meneruskan data antarjaringan berdasarkan alamat IP. Perangkat apa ini?,Router,,kantor kecamatan
 JKI-02-001,JKI-02,1,Berapa lapisan model OSI?,7,,
 JKI-02-002,JKI-02,1,Protokol yang menerjemahkan nama domain menjadi alamat IP adalah…,DNS,,
 JKI-02-003,JKI-02,1,Panjang alamat IPv4 adalah…,32 bit,,
@@ -145,6 +147,7 @@ AP-01-006,AP-01,2,Simbol persegi panjang dalam diagram alir menyatakan…,Proses
 AP-01-007,AP-01,2,"Langkah memasak mi instan ditulis sebagai diagram alir. Langkah ""apakah air sudah mendidih?"" digambar dengan simbol…",Belah ketupat (keputusan),,dapur
 AP-01-008,AP-01,3,"Mengapa langkah ""masukkan garam secukupnya"" kurang memenuhi ciri algoritma?",Tidak jelas atau ambigu; algoritma menuntut langkah yang pasti,,
 AP-01-009,AP-01,1,Langkah-langkah penyelesaian masalah yang runtut dan berhingga disebut…,Algoritma,,
+AP-01-010,AP-01,2,"Panitia bazar menggambar diagram alir pendaftaran: ""Apakah peserta sudah membayar?"" Simbol apa yang dipakai untuk langkah itu?",Belah ketupat (keputusan),,bazar
 AP-02-001,AP-02,1,Tipe data Python untuk bilangan bulat adalah…,int,,
 AP-02-002,AP-02,1,Tipe data Python untuk nilai True dan False adalah…,bool,,
 AP-02-003,AP-02,1,Berapa hasil 7 // 2 di Python?,3,,

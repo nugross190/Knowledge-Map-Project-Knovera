@@ -31,6 +31,7 @@ STR-04-006,STR-04,1,Tabel periodik modern disusun berdasarkan kenaikan nomor ato
 STR-04-007,STR-04,2,Hukum oktaf dikemukakan oleh…,Newlands,,
 STR-04-008,STR-04,3,Unsur ekasilikon yang diramalkan Mendeleev kini dikenal sebagai…,Germanium,,
 STR-04-009,STR-04,2,"Lampu papan reklame berisi gas yang hampir tidak bereaksi dengan unsur lain, seperti neon. Gas ini termasuk golongan…",Gas mulia (VIIIA),,papan reklame
+STR-04-010,STR-04,2,Petugas laboratorium sekolah menyusun unsur di tabel periodik menurut kenaikan nomor atom. Penyusunan ini dikemukakan oleh…,Moseley,,laboratorium
 STR-05-001,STR-05,1,Ikatan yang terbentuk dari serah-terima elektron antara logam dan nonlogam disebut ikatan…,Ion,,
 STR-05-002,STR-05,1,Ikatan dari pemakaian bersama pasangan elektron antara nonlogam disebut ikatan…,Kovalen,,
 STR-05-003,STR-05,1,Kecenderungan atom mencapai 8 elektron valensi disebut aturan…,Oktet,,
@@ -40,6 +41,7 @@ STR-05-006,STR-05,1,Ikatan yang berupa lautan elektron sehingga bahannya dapat d
 STR-05-007,STR-05,3,Senyawa yang atom pusatnya hanya memiliki 6 elektron sehingga tidak memenuhi oktet adalah…,BF₃,,
 STR-05-008,STR-05,1,Garam dapur (NaCl) yang dilarutkan dalam air menghantarkan listrik. Jenis ikatan dalam NaCl adalah…,Ion,,dapur
 STR-05-009,STR-05,2,Pandai besi menempa besi panas menjadi parang tanpa membuatnya pecah. Sifat dapat ditempa ini disebabkan oleh ikatan…,Logam,,pandai besi
+STR-05-010,STR-05,2,Kabel listrik di rumah dibuat dari tembaga yang dapat ditempa dan menghantarkan listrik karena ikatannya berupa lautan elektron. Ikatan apa ini?,Ikatan logam,,kabel listrik
 STR-06-001,STR-06,1,Bentuk molekul H₂O adalah…,Bentuk V (bengkok),,
 STR-06-002,STR-06,2,Bentuk molekul CH₄ adalah…,Tetrahedral,,
 STR-06-003,STR-06,2,Bentuk molekul NH₃ adalah…,Piramida segitiga,,
@@ -60,6 +62,7 @@ STO-02-005,STO-02,1,"Pada suhu dan tekanan sama, gas bervolume sama mengandung j
 STO-02-006,STO-02,3,Karbon dan oksigen membentuk CO dan CO₂. Hukum yang menjelaskan perbandingan massa oksigennya 1 : 2 adalah hukum…,Kelipatan perbandingan (Dalton),,
 STO-02-007,STO-02,2,Kayu yang dibakar di tungku tampak menjadi abu yang jauh lebih ringan. Massa yang “hilang” sebenarnya berubah menjadi gas. Hukum yang tetap berlaku adalah hukum…,Kekekalan massa (Lavoisier),,tungku
 STO-02-008,STO-02,1,Air dari mata air pegunungan maupun air laut yang disuling selalu tersusun dari hidrogen dan oksigen dengan perbandingan massa yang sama. Hukum yang tergambar adalah hukum…,Perbandingan tetap (Proust),,air minum
+STO-02-009,STO-02,2,"Tabung elpiji 3 kg di warung berisi gas propana dan butana. Pada suhu dan tekanan sama, volume yang sama dari dua gas berbeda berisi jumlah molekul yang…",Sama (hukum Avogadro),,elpiji
 STO-03-001,STO-03,1,Bilangan Avogadro bernilai…,"6,02 × 10²³ partikel/mol",,
 STO-03-002,STO-03,1,"Volume 1 mol gas pada STP (0 °C, 1 atm) adalah…","22,4 L",,
 STO-03-003,STO-03,1,Rumus jumlah mol dari massa adalah n = …,m/Mr,,

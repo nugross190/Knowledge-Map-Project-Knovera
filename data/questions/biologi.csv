@@ -18,6 +18,7 @@ KEH-02-007,KEH-02,3,Sistem tiga domain dikemukakan oleh…,Carl Woese,,
 KEH-02-008,KEH-02,2,Nama ilmiah padi ditulis Oryza sativa. Bagian “Oryza” menunjukkan takson…,Genus,,sawah
 KEH-02-009,KEH-02,1,Jamur merang yang dijual di pasar tidak berklorofil dan berdinding sel kitin. Jamur termasuk kingdom…,Fungi,,pasar
 KEH-02-010,KEH-02,1,Sistem penamaan makhluk hidup dengan dua kata disebut…,Tata nama binomial,,
+KEH-02-011,KEH-02,2,Papan nama pohon di kebun raya bertuliskan Mangifera indica. Kata pertama menunjukkan…,Genus,,kebun raya
 KEH-03-001,KEH-03,1,Virus hanya dapat berkembang biak di dalam…,Sel hidup,,
 KEH-03-002,KEH-03,1,"Dokter puskesmas tidak memberi antibiotik kepada pasien flu biasa, karena antibiotik tidak mempan terhadap penyebab flu, yaitu…",Virus,,puskesmas
 KEH-03-003,KEH-03,2,Selubung protein virus disebut…,Kapsid,,
@@ -58,6 +59,7 @@ SEL-02-006,SEL-02,2,Sel darah merah dalam larutan hipotonis akan…,Pecah (hemol
 SEL-02-007,SEL-02,3,Pompa natrium-kalium mengeluarkan … ion Na⁺ dan memasukkan 2 ion K⁺.,3,,
 SEL-02-008,SEL-02,2,Sayur selada yang layu kembali segar setelah direndam air tawar. Sel-selnya menjadi tegang karena air masuk secara…,Osmosis,,dapur
 SEL-02-009,SEL-02,2,Aroma minyak kayu putih menyebar ke seluruh kamar tanpa ditiup. Peristiwa perpindahan ini disebut…,Difusi,,rumah
+SEL-02-010,SEL-02,2,Sayur yang direndam air garam pekat di warung pecel menjadi layu karena airnya keluar dari sel. Peristiwa apa ini?,Osmosis (plasmolisis),,warung pecel
 TUM-01-001,TUM-01,1,Jaringan yang mengangkut air dan mineral dari akar ke daun adalah…,Xilem,,
 TUM-01-002,TUM-01,1,Jaringan yang mengangkut hasil fotosintesis adalah…,Floem,,
 TUM-01-003,TUM-01,1,Jaringan meristem yang menyebabkan batang membesar adalah…,Kambium,,
@@ -149,6 +151,7 @@ MET-01-004,MET-01,2,Inhibitor yang menempati sisi aktif enzim disebut inhibitor�
 MET-01-005,MET-01,1,"Reaksi penyusunan molekul yang memerlukan energi, seperti fotosintesis, disebut…",Anabolisme,,
 MET-01-006,MET-01,2,Nanas segar dapat melunakkan daging karena mengandung enzim; enzim ini tidak bekerja lagi bila nanasnya direbus karena…,Enzimnya terdenaturasi oleh suhu tinggi,,dapur
 MET-01-007,MET-01,1,Reaksi penguraian molekul kompleks menjadi sederhana yang menghasilkan energi disebut…,Katabolisme,,
+MET-01-008,MET-01,2,Daun tanaman cabai di kebun warga yang terkena cahaya matahari menyusun glukosa dari karbon dioksida dan air. Proses penyusunan ini termasuk anabolisme atau katabolisme?,Anabolisme (fotosintesis),,kebun tembakau
 MET-02-001,MET-02,1,Glikolisis terjadi di…,Sitoplasma,,
 MET-02-002,MET-02,1,Penerima elektron terakhir pada respirasi aerob adalah…,Oksigen (O₂),,
 MET-02-003,MET-02,2,Siklus Krebs terjadi di…,Matriks mitokondria,,
@@ -175,6 +178,7 @@ GEN-01-006,GEN-01,2,Kodon awal pada sintesis protein adalah…,AUG,,
 GEN-01-007,GEN-01,2,Gula penyusun DNA adalah…,Deoksiribosa,,
 GEN-01-008,GEN-01,3,Replikasi DNA bersifat semikonservatif. Hal ini dibuktikan oleh…,Meselson dan Stahl,,
 GEN-01-009,GEN-01,1,Materi genetik yang berbentuk heliks ganda adalah…,DNA,,
+GEN-01-010,GEN-01,1,Proses penerjemahan kodon mRNA menjadi rantai asam amino disebut…,Translasi,,
 GEN-02-001,GEN-02,1,Pembelahan sel yang menghasilkan dua sel identik disebut…,Mitosis,,
 GEN-02-002,GEN-02,1,Pembelahan sel yang menghasilkan sel kelamin haploid disebut…,Meiosis,,
 GEN-02-003,GEN-02,2,Fase mitosis ketika kromosom berjajar di bidang ekuator disebut…,Metafase,,
