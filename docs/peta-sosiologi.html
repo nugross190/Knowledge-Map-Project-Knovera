@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Sosiologi SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span></div>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "sosiologi", "subject": "Sosiologi", "title": "Peta Materi Sosiologi SMA", "lead": "Seluruh materi Sosiologi SMA, dari sosiologi sebagai ilmu sampai perubahan sosial dan globalisasi, disusun sebagai satu peta. Setiap simpul memuat konsep kunci, tokoh, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Sosiologi sebagai ilmu, interaksi dan sosialisasi, penelitian sosial, kelompok dan multikultural, ketimpangan, konflik dan integrasi, perubahan sosial, globalisasi.", "source_note": "Urutan mengikuti materi Sosiologi Kurikulum Merdeka: kelas X (di dalam IPS: sosiologi sebagai ilmu, tindakan dan interaksi, sosialisasi, lembaga, penelitian sosial), kelas XI (kelompok sosial, permasalahan akibat pengelompokan, konflik, harmoni sosial), kelas XII (perubahan sosial, globalisasi, ketimpangan, pemberdayaan komunitas). Penyimpangan dan pengendalian sosial diambil dari buku sebelumnya. Nomor bab berbeda antarsumber; cocokkan dengan buku sekolah.", "path_title": "Alur belajar", "path_note": "Urutan belajar yang disarankan: dari cara sosiologi memandang masyarakat, ke individu dan kelompok, ke ketidaksetaraan dan konflik, lalu perubahan.", "path": [{"label": "Ilmu", "title": "Sosiologi sebagai ilmu", "note": "Tokoh, ciri, paradigma", "to": "DAS-01"}, {"label": "Tindakan", "title": "Tindakan dan interaksi", "note": "Weber, asosiatif, disosiatif", "to": "DAS-02"}, {"label": "Norma", "title": "Nilai, norma, sosialisasi", "note": "Agen dan tahap", "to": "DAS-03"}, {"label": "Meneliti", "title": "Penelitian sosial", "note": "Kuantitatif dan kualitatif", "to": "PEN-01"}, {"label": "Kelompok", "title": "Kelompok sosial", "note": "Primer, sekunder, Tönnies", "to": "KEL-01"}, {"label": "Lapisan", "title": "Stratifikasi sosial", "note": "Lapisan dan mobilitas", "to": "KES-01"}, {"label": "Konflik", "title": "Konflik sosial", "note": "Sebab, bentuk, teori", "to": "KON-01"}, {"label": "Harmoni", "title": "Integrasi sosial", "note": "Akomodasi dan integrasi", "to": "KON-02"}, {"label": "Berubah", "title": "Perubahan sosial", "note": "Bentuk, faktor, teori", "to": "PER-01"}, {"label": "Global", "title": "Globalisasi", "note": "Dampak dan sikap kritis", "to": "PER-02"}], "domains": [{"id": "DAS", "name": "Dasar sosiologi", "short": "Dasar", "note": "Sosiologi sebagai ilmu, tindakan dan interaksi, nilai dan norma, lembaga, penyimpangan, dan pengendalian sosial.", "topics": [{"code": "DAS-01", "title": "Sosiologi sebagai ilmu", "scope": "Tokoh, ciri, objek, paradigma", "src": "Kelas X", "tier": 1, "sum": "Sejarah singkat dan tokoh sosiologi, ciri sosiologi sebagai ilmu, objek kajiannya, serta paradigma dan manfaatnya.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Gagasan"], "rows": [["Auguste Comte", "Bapak sosiologi; memperkenalkan istilah sosiologi; hukum tiga tahap (teologis, metafisik, positif)"], ["Émile Durkheim", "Fakta sosial; solidaritas mekanik dan organik; studi bunuh diri"], ["Max Weber", "Tindakan sosial; memahami makna (verstehen)"], ["Karl Marx", "Konflik kelas antara borjuis dan proletar"], ["Selo Soemardjan", "Bapak sosiologi Indonesia; kajian perubahan sosial di Yogyakarta"]]}}, {"h": "Ciri dan objek", "li": ["Ciri sosiologi: <b>empiris<\/b> (berdasar pengamatan), teoretis, kumulatif, dan nonetis (tidak menilai baik-buruk).", "Objek material: kehidupan sosial manusia; objek formal: hubungan antarmanusia dan proses yang timbul darinya.", "Sosiologi termasuk ilmu sosial yang murni (bukan terapan), abstrak, dan umum."]}, {"h": "Paradigma", "li": ["Fakta sosial (Durkheim): struktur dan pranata yang memaksa individu.", "Definisi sosial (Weber): makna tindakan menurut pelakunya.", "Perilaku sosial: perilaku dibentuk oleh ganjaran dan hukuman."]}], "traps": ["Sosiologi bersifat nonetis: menjelaskan gejala apa adanya, bukan menilai baik atau buruknya.", "Bapak sosiologi dunia adalah Auguste Comte; bapak sosiologi Indonesia adalah Selo Soemardjan."]}, {"code": "DAS-02", "title": "Tindakan dan interaksi sosial", "scope": "Tipe tindakan, syarat, bentuk interaksi", "src": "Kelas X", "tier": 1, "sum": "Empat tipe tindakan sosial menurut Weber, syarat dan faktor interaksi sosial, serta bentuk interaksi asosiatif dan disosiatif.", "blocks": [{"h": "Tindakan sosial (Weber)", "table": {"cols": ["Tipe", "Contoh"], "rows": [["Rasional instrumental", "Memilih jurusan kuliah setelah menimbang peluang kerja"], ["Rasional berorientasi nilai", "Beribadah karena keyakinan"], ["Afektif", "Menangis karena kehilangan orang tua"], ["Tradisional", "Mengikuti upacara adat karena kebiasaan turun-temurun"]]}}, {"h": "Syarat dan faktor interaksi", "li": ["Syarat: <b>kontak sosial<\/b> dan komunikasi.", "Faktor: imitasi (meniru), sugesti (menerima pandangan tanpa kritik), identifikasi (ingin sama), simpati (tertarik), empati (merasakan keadaan orang lain)."]}, {"h": "Bentuk interaksi", "li": ["Asosiatif: kerja sama, akomodasi, asimilasi (melebur menjadi budaya baru), akulturasi (budaya asing diterima tanpa menghilangkan budaya asli).", "Disosiatif: persaingan, kontravensi (antara persaingan dan pertentangan, misalnya fitnah, penghasutan), pertentangan/konflik.", "Contoh akulturasi: Masjid Menara Kudus memadukan unsur Islam dan Hindu."]}], "traps": ["Akulturasi mempertahankan unsur budaya asli; asimilasi melebur budaya-budaya menjadi budaya baru.", "Sugesti berarti menerima tanpa sikap kritis; identifikasi berarti ingin menjadi sama dengan pihak lain."]}, {"code": "DAS-03", "title": "Nilai, norma, sosialisasi, dan kepribadian", "scope": "Norma, agen, tahap", "src": "Kelas X", "tier": 1, "sum": "Nilai dan tingkatan norma, proses sosialisasi beserta agen dan tahapnya, serta pembentukan kepribadian.", "blocks": [{"h": "Tingkatan norma", "table": {"cols": ["Norma", "Kekuatan", "Sanksi bila dilanggar"], "rows": [["Cara (usage)", "Paling lemah", "Celaan ringan"], ["Kebiasaan (folkways)", "Lebih kuat", "Teguran"], ["Tata kelakuan (mores)", "Kuat, berkaitan dengan moral", "Dikucilkan"], ["Adat istiadat (custom)", "Sangat kuat", "Sanksi adat berat"], ["Hukum", "Tertulis dan formal", "Pidana atau denda oleh negara"]]}}, {"h": "Sosialisasi", "li": ["Sosialisasi primer dalam keluarga; sekunder di luar keluarga (sekolah, tempat kerja).", "Agen: keluarga, sekolah, teman sebaya, media massa.", "Tahap menurut <b>George Herbert Mead<\/b>: persiapan (preparatory), meniru (play), siap bertindak (game), penerimaan norma kolektif (generalized other).", "Charles H. Cooley: looking-glass self, diri terbentuk dari bayangan penilaian orang lain."]}, {"h": "Kepribadian", "li": ["Faktor: warisan biologis, lingkungan fisik, kebudayaan, pengalaman kelompok, pengalaman unik."]}], "traps": ["Sosialisasi primer terjadi dalam keluarga, bukan di sekolah.", "Pada tahap play, anak meniru peran orang lain; pada tahap game, anak memahami peran banyak orang sekaligus."]}, {"code": "DAS-04", "title": "Lembaga sosial", "scope": "Jenis, fungsi", "src": "Kelas X", "tier": 2, "sum": "Lembaga sosial sebagai sistem norma untuk memenuhi kebutuhan pokok, jenisnya, dan fungsi manifes serta laten.", "blocks": [{"h": "Jenis lembaga", "table": {"cols": ["Lembaga", "Fungsi pokok"], "rows": [["Keluarga", "Reproduksi, sosialisasi, afeksi, ekonomi"], ["Pendidikan", "Mewariskan pengetahuan dan keterampilan"], ["Ekonomi", "Produksi, distribusi, konsumsi"], ["Politik", "Menjaga ketertiban dan mengatur kekuasaan"], ["Agama", "Pedoman hidup dan hubungan dengan Tuhan"]]}}, {"h": "Fungsi", "li": ["Robert K. Merton: fungsi manifes (disadari dan diharapkan) dan fungsi laten (tidak disadari).", "Contoh fungsi laten sekolah: tempat mencari teman atau jodoh."]}]}, {"code": "DAS-05", "title": "Gejala sosial dan penyimpangan", "scope": "Gejala, penyimpangan, teori", "src": "Kelas X", "tier": 2, "sum": "Ragam gejala sosial di masyarakat, bentuk perilaku menyimpang, dan teori penyebab penyimpangan.", "blocks": [{"h": "Gejala dan penyimpangan", "li": ["Gejala sosial: fenomena yang timbul dari interaksi manusia, misalnya kemiskinan, kenakalan remaja, perubahan gaya hidup.", "Penyimpangan primer bersifat sementara; sekunder dilakukan berulang sehingga melekat pada pelaku.", "Penyimpangan individu dan kelompok; positif (inovatif) dan negatif."]}, {"h": "Teori penyimpangan", "table": {"cols": ["Teori", "Tokoh", "Isi"], "rows": [["Asosiasi diferensial", "Edwin H. Sutherland", "Penyimpangan dipelajari dari pergaulan"], ["Labeling", "Edwin M. Lemert", "Cap dari masyarakat mendorong penyimpangan sekunder"], ["Anomi", "Robert K. Merton", "Tujuan dan cara tidak sesuai: konformitas, inovasi, ritualisme, pengasingan diri, pemberontakan"]]}}]}, {"code": "DAS-06", "title": "Pengendalian sosial", "scope": "Sifat, cara, lembaga", "src": "Kelas X", "tier": 2, "sum": "Cara masyarakat menjaga anggotanya patuh pada nilai dan norma: sifat, cara, dan lembaga pengendalian sosial.", "blocks": [{"h": "Sifat dan cara", "li": ["Preventif (sebelum terjadi), represif (sesudah terjadi), dan kuratif atau rehabilitatif.", "Persuasif (membujuk) dan koersif (memaksa, misalnya kompulsi dan pervasi).", "Lembaga: polisi, pengadilan, tokoh adat, tokoh agama, keluarga.", "Bentuk informal: gosip, teguran, pengucilan; formal: sanksi hukum."]}]}]}, {"id": "PEN", "name": "Penelitian sosial", "short": "Penelitian", "note": "Jenis, langkah, sampel, pengumpulan data, dan laporan penelitian sosial.", "topics": [{"code": "PEN-01", "title": "Jenis dan langkah penelitian sosial", "scope": "Kuantitatif, kualitatif, langkah", "src": "Kelas X–XI", "tier": 1, "sum": "Pendekatan kuantitatif dan kualitatif, jenis penelitian menurut tujuan, serta langkah penelitian dari masalah sampai laporan.", "blocks": [{"h": "Pendekatan", "table": {"cols": ["Aspek", "Kuantitatif", "Kualitatif"], "rows": [["Tujuan", "Menguji hipotesis, mengukur hubungan", "Memahami makna dan proses"], ["Data", "Angka", "Kata, gambar, catatan lapangan"], ["Teknik", "Kuesioner, statistik", "Wawancara mendalam, observasi partisipan"], ["Sampel", "Besar dan mewakili", "Kecil dan dipilih sesuai tujuan"]]}}, {"h": "Jenis menurut tujuan", "li": ["Eksploratif: menjajaki gejala baru; deskriptif: menggambarkan; eksplanatif: menjelaskan sebab-akibat."]}, {"h": "Langkah", "li": ["Menentukan topik dan merumuskan masalah, tujuan, kajian pustaka, <b>hipotesis<\/b>, menentukan sampel, mengumpulkan data, mengolah dan menganalisis, menyimpulkan, menulis laporan.", "Hipotesis adalah jawaban sementara yang diuji dengan data; variabel bebas memengaruhi variabel terikat."]}], "traps": ["Penelitian kualitatif tidak berangkat dari hipotesis untuk diuji; hipotesis adalah ciri penelitian kuantitatif.", "Variabel bebas memengaruhi, variabel terikat dipengaruhi."]}, {"code": "PEN-02", "title": "Sampel, pengumpulan, dan pengolahan data", "scope": "Sampling, teknik, analisis", "src": "Kelas X–XI", "tier": 1, "sum": "Populasi dan teknik sampel, teknik pengumpulan data primer dan sekunder, pengolahan data, serta penyusunan laporan.", "blocks": [{"h": "Teknik sampel", "table": {"cols": ["Jenis", "Teknik"], "rows": [["Probabilitas", "Acak sederhana, sistematis, berstrata, klaster"], ["Nonprobabilitas", "Purposive (sesuai tujuan), bola salju (snowball), aksidental, kuota"]]}}, {"h": "Pengumpulan data", "li": ["Data primer: observasi, wawancara, kuesioner (angket), eksperimen.", "Data sekunder: dokumen, statistik BPS, arsip, hasil penelitian lain.", "Kuesioner tertutup memberi pilihan jawaban; terbuka membebaskan jawaban."]}, {"h": "Pengolahan dan laporan", "li": ["Kuantitatif: penyuntingan, pengodean, tabulasi, analisis statistik.", "Kualitatif: reduksi data, penyajian data, penarikan kesimpulan.", "Laporan: pendahuluan, kajian pustaka, metode, hasil dan pembahasan, kesimpulan, daftar pustaka."]}], "traps": ["Teknik bola salju dipakai saat responden sulit dijangkau: responden pertama menunjuk responden berikutnya.", "Data dari BPS adalah data sekunder bagi peneliti, karena tidak dikumpulkan sendiri."]}]}, {"id": "KEL", "name": "Kelompok sosial dan keberagaman", "short": "Kelompok", "note": "Kelompok sosial, permasalahan akibat pengelompokan, dan masyarakat multikultural.", "topics": [{"code": "KEL-01", "title": "Kelompok sosial", "scope": "Jenis, ciri, dinamika", "src": "Kelas XI", "tier": 1, "sum": "Syarat dan jenis kelompok sosial menurut para tokoh, serta dinamika kelompok.", "blocks": [{"h": "Jenis kelompok", "table": {"cols": ["Tokoh", "Jenis"], "rows": [["Ferdinand Tönnies", "Gemeinschaft (paguyuban: darah, tempat, ideologi) dan Gesellschaft (patembayan)"], ["Charles H. Cooley", "Kelompok primer (akrab, tatap muka) dan sekunder (formal, impersonal)"], ["W. G. Sumner", "In-group dan out-group"], ["Robert K. Merton", "Kelompok keanggotaan (membership) dan acuan (reference group)"], ["Émile Durkheim", "Solidaritas mekanik (masyarakat sederhana) dan organik (pembagian kerja)"]]}}, {"h": "Syarat dan dinamika", "li": ["Syarat kelompok: kesadaran sebagai bagian kelompok, hubungan timbal balik, faktor pengikat, struktur dan norma.", "Kelompok formal punya aturan dan struktur resmi; informal terbentuk tanpa aturan resmi.", "Dinamika kelompok: perubahan struktur dan pola interaksi karena konflik, pergantian anggota, atau perubahan situasi."]}], "traps": ["Solidaritas organik muncul dari pembagian kerja yang kompleks di masyarakat modern; mekanik dari kesamaan di masyarakat sederhana.", "Paguyuban (Gemeinschaft) berdasarkan ikatan batin; patembayan (Gesellschaft) berdasarkan kepentingan dan kontrak."]}, {"code": "KEL-02", "title": "Permasalahan akibat pengelompokan", "scope": "Primordialisme, etnosentrisme, diskriminasi", "src": "Kelas XI", "tier": 1, "sum": "Masalah sosial yang muncul dari pengelompokan, seperti primordialisme, etnosentrisme, stereotip, prasangka, dan diskriminasi.", "blocks": [{"h": "Istilah", "table": {"cols": ["Istilah", "Arti"], "rows": [["Primordialisme", "Ikatan berlebihan pada hal yang dibawa sejak lahir (suku, agama, daerah)"], ["Etnosentrisme", "Menilai budaya lain dengan ukuran budaya sendiri dan menganggapnya lebih rendah"], ["Stereotip", "Gambaran atau anggapan umum yang melekat pada suatu kelompok"], ["Prasangka", "Sikap negatif sebelum mengenal, biasanya tanpa dasar"], ["Diskriminasi", "Perlakuan berbeda yang tidak adil kepada kelompok tertentu"]]}}, {"h": "Lainnya", "li": ["Politik aliran: kelompok politik berbasis ideologi atau agama; Clifford Geertz membagi masyarakat Jawa menjadi santri, abangan, priayi.", "Upaya: dialog antarkelompok, pendidikan multikultural, penegakan hukum yang adil."]}], "traps": ["Prasangka adalah sikap (dalam pikiran); diskriminasi adalah tindakan nyata.", "Etnosentrisme menilai kelompok lain, sedangkan primordialisme menekankan ikatan pada kelompok sendiri."]}, {"code": "KEL-03", "title": "Masyarakat multikultural", "scope": "Kemajemukan, diferensiasi", "src": "Kelas X–XI", "tier": 2, "sum": "Kemajemukan horizontal dan vertikal, penyebab masyarakat Indonesia majemuk, serta sikap menghadapi keberagaman.", "blocks": [{"h": "Kemajemukan", "li": ["Horizontal (<b>diferensiasi sosial<\/b>, tidak bertingkat): suku, agama, ras, jenis kelamin, profesi.", "Vertikal (stratifikasi, bertingkat): kekayaan, kekuasaan, pendidikan.", "Penyebab kemajemukan Indonesia: wilayah kepulauan, letak strategis, perbedaan kondisi alam, sejarah.", "Multikulturalisme: mengakui dan menghargai kesetaraan budaya-budaya yang berbeda."]}]}]}, {"id": "KES", "name": "Kesetaraan dan ketidaksetaraan", "short": "Kesetaraan", "note": "Stratifikasi, mobilitas, ketimpangan sosial, dan upaya mewujudkan kesetaraan.", "topics": [{"code": "KES-01", "title": "Stratifikasi dan mobilitas sosial", "scope": "Lapisan, dasar, mobilitas", "src": "Kelas XI", "tier": 1, "sum": "Pelapisan sosial: dasar, sifat, dan dampaknya, serta jenis, saluran, dan dampak mobilitas sosial.", "blocks": [{"h": "Stratifikasi", "li": ["Dasar: kekayaan, kekuasaan, kehormatan, ilmu pengetahuan.", "Sifat: <b>tertutup<\/b> (kasta), terbuka (berdasar usaha), campuran.", "Status ascribed (bawaan lahir), achieved (diraih), assigned (diberikan)."]}, {"h": "Mobilitas", "li": ["Vertikal naik dan turun; horizontal (pindah status sederajat).", "Antargenerasi (anak petani menjadi dokter) dan intragenerasi (dalam satu generasi).", "Saluran mobilitas (Pitirim Sorokin): pendidikan, angkatan bersenjata, lembaga keagamaan, organisasi politik dan ekonomi, perkawinan."]}], "traps": ["Sistem kasta adalah stratifikasi tertutup; mobilitas vertikal hampir tidak mungkin.", "Pindah kerja dengan status setara adalah mobilitas horizontal, bukan vertikal."]}, {"code": "KES-02", "title": "Ketimpangan sosial dan kesetaraan", "scope": "Dimensi, faktor, upaya", "src": "Kelas XI–XII", "tier": 1, "sum": "Bentuk dan dimensi ketimpangan sosial, faktor penyebabnya, dampaknya, serta upaya mewujudkan kesetaraan.", "blocks": [{"h": "Bentuk dan faktor", "li": ["Dimensi: ekonomi (pendapatan, aset), sosial (akses pendidikan, kesehatan), wilayah (desa–kota, Jawa–luar Jawa), gender.", "Faktor internal: pendidikan, keterampilan; faktor eksternal: struktur ekonomi, kebijakan, diskriminasi.", "Kemiskinan struktural disebabkan struktur sosial yang menghambat akses; kemiskinan kultural oleh nilai dan kebiasaan."]}, {"h": "Dampak dan upaya", "li": ["Dampak: kecemburuan sosial, konflik, kriminalitas, mobilitas tertutup.", "Upaya: pemerataan pendidikan, jaminan sosial, kebijakan afirmasi, pemberdayaan masyarakat, penegakan hak asasi manusia."]}], "traps": ["Kemiskinan struktural disebabkan sistem dan kebijakan, bukan oleh sikap malas individu."]}]}, {"id": "KON", "name": "Konflik dan integrasi", "short": "Konflik", "note": "Konflik sosial, kekerasan, akomodasi, dan integrasi sosial.", "topics": [{"code": "KON-01", "title": "Konflik sosial", "scope": "Penyebab, bentuk, teori, dampak", "src": "Kelas XI", "tier": 1, "sum": "Penyebab, bentuk, dan dampak konflik sosial, teori konflik, serta hubungan konflik dan kekerasan.", "blocks": [{"h": "Penyebab dan bentuk", "li": ["Penyebab: perbedaan individu, kebudayaan, kepentingan, dan perubahan sosial yang cepat.", "Bentuk: pribadi, antarkelas, rasial, politik, internasional; vertikal (atas–bawah) dan horizontal (setara)."]}, {"h": "Teori", "table": {"cols": ["Tokoh", "Gagasan"], "rows": [["Karl Marx", "Konflik kelas antara pemilik modal (borjuis) dan buruh (proletar)"], ["Ralf Dahrendorf", "Konflik karena distribusi wewenang yang tidak merata"], ["Lewis A. Coser", "Konflik punya fungsi positif; konflik realistis dan nonrealistis"]]}}, {"h": "Dampak", "li": ["Positif: solidaritas dalam kelompok meningkat, mendorong perubahan, memperjelas aturan.", "Negatif: retaknya persatuan, kerusakan harta, korban jiwa, dominasi pihak yang menang."]}], "traps": ["Menurut Coser, konflik juga dapat berfungsi positif, misalnya memperkuat solidaritas kelompok."]}, {"code": "KON-02", "title": "Akomodasi dan penyelesaian konflik", "scope": "Bentuk akomodasi", "src": "Kelas XI", "tier": 1, "sum": "Bentuk akomodasi untuk meredakan konflik, termasuk peran pihak ketiga.", "blocks": [{"h": "Bentuk akomodasi", "table": {"cols": ["Bentuk", "Ciri"], "rows": [["Koersi", "Paksaan oleh pihak yang lebih kuat"], ["Kompromi", "Saling mengurangi tuntutan"], ["Arbitrase", "Pihak ketiga memberi keputusan yang mengikat"], ["Mediasi", "Pihak ketiga netral hanya menengahi, tanpa wewenang memutus"], ["Konsiliasi", "Mempertemukan keinginan pihak yang berselisih lewat lembaga"], ["Ajudikasi", "Penyelesaian di pengadilan"], ["Stalemate", "Kekuatan seimbang sehingga konflik berhenti dengan sendirinya"], ["Toleransi", "Saling menghargai tanpa persetujuan resmi"]]}}], "traps": ["Arbitrase menghasilkan keputusan yang mengikat dari pihak ketiga; mediator tidak berwenang memutus."]}, {"code": "KON-03", "title": "Integrasi dan harmoni sosial", "scope": "Integrasi, tahap, upaya", "src": "Kelas XI", "tier": 2, "sum": "Bentuk dan syarat integrasi sosial, tahap-tahapnya, serta upaya membangun harmoni di masyarakat majemuk.", "blocks": [{"h": "Integrasi", "li": ["Bentuk: normatif (karena norma bersama), fungsional (karena saling bergantung), koersif (karena paksaan).", "Tahap: akomodasi, kerja sama, koordinasi, asimilasi.", "Syarat: anggota merasa kebutuhannya terpenuhi, ada konsensus nilai dan norma, norma berlaku cukup lama dan konsisten.", "Upaya harmoni: dialog lintas kelompok, kegiatan bersama, pendidikan multikultural, semboyan Bhinneka Tunggal Ika."]}]}]}, {"id": "PER", "name": "Perubahan sosial dan globalisasi", "short": "Perubahan", "note": "Perubahan sosial, globalisasi dan dampaknya, serta pemberdayaan komunitas.", "topics": [{"code": "PER-01", "title": "Perubahan sosial", "scope": "Bentuk, faktor, teori", "src": "Kelas XII", "tier": 1, "sum": "Bentuk perubahan sosial, faktor pendorong dan penghambat, teori perubahan, serta modernisasi.", "blocks": [{"h": "Bentuk", "li": ["Evolusi (lambat) dan revolusi (cepat, menyangkut sendi pokok).", "Kecil dan besar; direncanakan (planned) dan tidak direncanakan; progres dan regres."]}, {"h": "Teori", "table": {"cols": ["Teori", "Tokoh", "Isi"], "rows": [["Evolusi", "Auguste Comte, Herbert Spencer", "Masyarakat berkembang bertahap dari sederhana ke kompleks"], ["Siklus", "Oswald Spengler, Pitirim Sorokin", "Perubahan berputar seperti lingkaran"], ["Fungsional", "William F. Ogburn", "Ketertinggalan budaya (cultural lag): budaya material berubah lebih cepat"], ["Konflik", "Karl Marx, Ralf Dahrendorf", "Konflik mendorong perubahan"]]}}, {"h": "Faktor dan modernisasi", "li": ["Pendorong: kontak dengan budaya lain, pendidikan maju, toleransi, sistem stratifikasi terbuka, ketidakpuasan.", "Penghambat: masyarakat terisolasi, sikap tradisional, kepentingan yang tertanam kuat, prasangka terhadap hal baru.", "<b>Modernisasi<\/b> mengubah cara hidup menjadi lebih rasional dan maju; westernisasi meniru budaya Barat secara berlebihan."]}], "traps": ["Cultural lag adalah ketertinggalan budaya nonmaterial dari budaya material, misalnya pemakaian ponsel tanpa etika bermedia.", "Modernisasi tidak sama dengan westernisasi."]}, {"code": "PER-02", "title": "Globalisasi dan dampaknya", "scope": "Pengertian, dimensi, sikap kritis", "src": "Kelas XII", "tier": 1, "sum": "Pengertian dan dimensi globalisasi, dampak positif dan negatifnya, serta sikap kritis terhadap arus global.", "blocks": [{"h": "Pengertian dan dimensi", "li": ["Anthony Giddens: intensifikasi hubungan sosial seluruh dunia sehingga peristiwa di satu tempat dipengaruhi peristiwa di tempat jauh.", "Arjun Appadurai: lima arus (scapes) globalisasi: ethnoscape (manusia), technoscape (teknologi), financescape (modal), mediascape (informasi), ideoscape (gagasan)."]}, {"h": "Dampak", "li": ["Positif: akses informasi, teknologi, pasar lebih luas, pertukaran budaya.", "Negatif: konsumerisme, individualisme, memudarnya budaya lokal, kesenjangan digital.", "Glokalisasi: produk global disesuaikan dengan budaya lokal."]}, {"h": "Sikap kritis", "li": ["Menyaring budaya asing (filter) dengan nilai Pancasila, memperkuat identitas lokal, literasi digital."]}], "traps": ["Appadurai membagi globalisasi menjadi lima scapes; ethnoscape adalah arus perpindahan manusia, bukan arus budaya etnis."]}, {"code": "PER-03", "title": "Masalah sosial akibat globalisasi", "scope": "Gaya hidup, ketimpangan digital", "src": "Kelas XII", "tier": 2, "sum": "Masalah sosial yang muncul dari globalisasi dan teknologi digital, serta cara menanganinya.", "blocks": [{"h": "Contoh masalah", "li": ["Gaya hidup konsumtif dan hedonis, individualisme, lunturnya kearifan lokal.", "Kesenjangan digital antarwilayah dan antarkelompok.", "Penyebaran hoaks, perundungan siber, kecanduan gawai.", "Penanganan: literasi digital, regulasi, penguatan komunitas dan keluarga."]}]}, {"code": "PER-04", "title": "Pemberdayaan komunitas berbasis kearifan lokal", "scope": "Kearifan lokal, tahap pemberdayaan", "src": "Kelas XII", "tier": 3, "sum": "Kearifan lokal sebagai modal sosial dan tahap pemberdayaan komunitas untuk menghadapi perubahan sosial.", "blocks": [{"h": "Konsep dan tahap", "li": ["Kearifan lokal: pengetahuan dan nilai masyarakat setempat untuk mengelola hidup dan lingkungan, misalnya subak di Bali, sasi di Maluku.", "Pemberdayaan: meningkatkan kemampuan komunitas agar mandiri menyelesaikan masalahnya.", "Tahap: identifikasi masalah dan potensi, perencanaan bersama, pelaksanaan, evaluasi."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Kelas X Kurikulum Merdeka membahas sosiologi di dalam IPS. Nomor dan judul bab kelas XI dan XII berbeda antarsumber.", "Penyimpangan dan pengendalian sosial berasal dari kurikulum sebelumnya; tetap berguna untuk subelemen TKA \"ragam gejala sosial\".", "Penelitian sosial muncul di kelas X dan XI, dan menjadi subelemen paling sering di TKA 2025 (6 dari 30 soal).", "Pembagian bentuk akomodasi dan norma bisa sedikit berbeda antarbuku; ikuti istilah buku sekolah."]}, {"title": "Rujukan", "items": ["Buku teks Sosiologi Kurikulum Merdeka kelas XI dan XII (Kemendikbudristek). Daftar bab dicocokkan lewat ringkasan Ruangguru, Mamikos, Tirto, dan Detik karena PDF resmi tidak dapat dibuka dari lingkungan kerja.", "Elemen dan subelemen soal TKA 2025 Sosiologi (data/tka/tka-sosiologi-pilihan-2025.json)."]}]};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead;
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    if(!re){ card.hidden = false; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>
