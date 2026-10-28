@@ -26,6 +26,9 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank-kimia.html` | Short-answer question bank for Kimia (210 questions, about a fifth with everyday-context items). |
 | `docs/bank-biologi.html` | Short-answer question bank for Biologi (214 questions, about a fifth with everyday-context items). |
 | `docs/bank-matematika.html` | Short-answer question bank for Matematika (233 questions, about a fifth with everyday-context items). |
+| `docs/bank-informatika.html` | Short-answer question bank for Informatika (203 questions, about a fifth with everyday-context items). |
+| `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (159 questions, about a fifth with everyday-context items). |
+| `docs/bank-pjok.html` | Short-answer question bank for PJOK (197 questions, about a fifth with everyday-context items). |
 | `docs/bank-ekonomi.html` | Short-answer question bank for Ekonomi (215 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-geografi.html` | Short-answer question bank for Geografi (164 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/bank-sosiologi.html` | Short-answer question bank for Sosiologi (156 questions, about a fifth to a quarter with everyday-context items). |
@@ -54,6 +57,7 @@ The rules for content, questions, and the agent workflow are in [`specs/`](specs
 data/topics.json        domains, weights, topic codes and titles
 data/questions.csv      the question bank (source of truth; edit this)
 data/maps/<id>.json     one knowledge map per subject; becomes docs/peta-<id>.html
+data/subjects.json      roster of all school subjects; build.py prints each one's status
 data/modules/<id>.json  one learning module per file; becomes docs/modul-<id>.html (specs/module-spec.md)
 print/                  printable PDF modules and their sources; print/<id>.pdf becomes docs/modul-<id>.pdf (print/README.md)
 data/tka/<id>.json      one transcribed TKA exam paper per file; all feed docs/tka.html (specs/tka-spec.md)

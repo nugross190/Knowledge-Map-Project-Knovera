@@ -1,0 +1,204 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+BK-01-001,BK-01,1,Sebutkan empat fondasi berpikir komputasional.,"Dekomposisi, pengenalan pola, abstraksi, algoritma",,
+BK-01-002,BK-01,1,Memecah masalah besar menjadi bagian-bagian kecil disebut…,Dekomposisi,,
+BK-01-003,BK-01,1,Membuang detail yang tidak penting dan menyimpan informasi yang diperlukan saja disebut…,Abstraksi,,
+BK-01-004,BK-01,1,Mencari kesamaan atau keteraturan antarbagian masalah disebut…,Pengenalan pola,,
+BK-01-005,BK-01,2,Peta jalur KRL yang tidak menggambar jarak sebenarnya antarstasiun adalah contoh fondasi…,Abstraksi,Hanya urutan stasiun dan percabangan yang disimpan.,
+BK-01-006,BK-01,2,Apakah berpikir komputasional selalu membutuhkan komputer?,Tidak; resep masakan dan petunjuk arah juga algoritma,,
+BK-01-007,BK-01,2,"Panitia pentas seni sekolah membagi persiapan menjadi urusan panggung, konsumsi, tiket, dan dokumentasi. Fondasi berpikir komputasional apa yang dipakai?",Dekomposisi,,pentas seni
+BK-01-008,BK-01,2,"Petugas posyandu memperhatikan bahwa setiap bulan antrean paling panjang terjadi pukul 08.00–09.00, lalu menambah petugas pada jam itu. Fondasi apa yang dipakai untuk menemukan jam ramai itu?",Pengenalan pola,,posyandu
+BK-02-001,BK-02,1,Pencarian yang memeriksa data satu per satu dari awal disebut…,Pencarian beruntun (sequential/linear search),,
+BK-02-002,BK-02,1,Syarat agar pencarian biner dapat dipakai adalah…,Data sudah terurut,,
+BK-02-003,BK-02,1,Algoritma pengurutan yang membandingkan dan menukar dua elemen bersebelahan disebut…,Bubble sort,,
+BK-02-004,BK-02,2,"Pada 1.000 data terurut, berapa perbandingan paling banyak yang dibutuhkan pencarian biner?",10,2¹⁰ = 1.024 ≥ 1.000.,
+BK-02-005,BK-02,2,Algoritma pengurutan yang memilih elemen terkecil dari sisa data lalu menaruhnya di depan disebut…,Selection sort,,
+BK-02-006,BK-02,2,"Algoritma pengurutan yang mirip menyusun kartu di tangan, menyisipkan tiap elemen ke posisi yang tepat, disebut…",Insertion sort,,
+BK-02-007,BK-02,3,"Data 5, 3, 8, 1 diurutkan naik dengan bubble sort. Bagaimana susunan data setelah putaran pertama selesai?","3, 5, 1, 8","5↔3, 5 dan 8 tetap, 8↔1; elemen terbesar sampai di ujung.",
+BK-02-008,BK-02,2,"Kasir warung memberi kembalian Rp7.000 dengan selalu memilih pecahan terbesar lebih dulu (Rp5.000, lalu Rp2.000). Strategi apa ini?",Greedy,,warung
+BK-02-009,BK-02,2,Petugas perpustakaan mencari buku di rak yang sudah diurutkan menurut nomor panggil dengan membuka bagian tengah rak lalu membuang separuh rak. Strategi pencarian apa yang dipakai?,Pencarian biner,,perpustakaan
+BK-03-001,BK-03,1,Struktur data yang bersifat LIFO adalah…,Tumpukan (stack),,
+BK-03-002,BK-03,1,Struktur data yang bersifat FIFO adalah…,Antrean (queue),,
+BK-03-003,BK-03,2,Operasi menambah dan mengambil elemen pada stack disebut…,Push dan pop,,
+BK-03-004,BK-03,2,Struktur data berupa simpul yang dihubungkan sisi disebut…,Graf,,
+BK-03-005,BK-03,2,Struktur folder di komputer paling cocok dimodelkan dengan struktur data…,Pohon (tree),,
+BK-03-006,BK-03,2,Antrean pembeli di loket stasiun dilayani menurut urutan datang. Struktur data apa yang meniru sistem ini?,Queue (FIFO),,stasiun
+TIK-01-001,TIK-01,1,Rumus lembar kerja selalu diawali tanda…,Sama dengan (=),,
+TIK-01-002,TIK-01,1,Fitur pengolah kata untuk membuat banyak surat bernama berbeda dari satu dokumen dan satu sumber data disebut…,Mail merge,,
+TIK-01-003,TIK-01,1,Referensi sel yang tidak berubah saat rumus disalin ditulis…,$A$1 (referensi absolut),,
+TIK-01-004,TIK-01,2,"Sel A1 sampai A5 berisi 2, 4, 6, 8, 10. Apa hasil =AVERAGE(A1:A5)?",6,,
+TIK-01-005,TIK-01,2,"Sel C2 berisi 70. Apa hasil =IF(C2>=75;""Tuntas"";""Remedial"")?",Remedial,,
+TIK-01-006,TIK-01,2,Rumus =A1*$B$1 di sel C1 disalin ke C2. Rumus di C2 menjadi…,=A2*$B$1,A1 relatif bergeser; $B$1 tetap.,
+TIK-01-007,TIK-01,2,Fungsi untuk menghitung banyak sel yang memenuhi syarat tertentu adalah…,COUNTIF,,
+TIK-01-008,TIK-01,3,Apa beda COUNT dan COUNTA?,COUNT menghitung sel berisi angka; COUNTA menghitung semua sel yang tidak kosong,,
+TIK-01-009,TIK-01,2,Bendahara kas kelas mencatat iuran 30 siswa di kolom B dan ingin menandai otomatis siapa yang belum membayar Rp10.000. Fungsi lembar kerja apa yang paling cocok?,IF,,kas kelas
+TIK-01-010,TIK-01,2,"Pengurus koperasi sekolah menyalin rumus harga × tarif pajak ke banyak baris, dan sel tarif pajak harus tetap. Jenis referensi apa yang dipakai untuk sel tarif?",Referensi absolut ($),,koperasi
+TIK-02-001,TIK-02,1,Operator pencarian untuk mencari frasa persis adalah…,"Tanda kutip ""...""",,
+TIK-02-002,TIK-02,1,Operator pencarian untuk membatasi hasil pada satu domain adalah…,site:,,
+TIK-02-003,TIK-02,2,Lisensi Creative Commons BY mewajibkan pemakai…,Mencantumkan nama pencipta,,
+TIK-02-004,TIK-02,2,Lisensi Creative Commons NC berarti…,Nonkomersial (tidak boleh untuk tujuan komersial),,
+TIK-02-005,TIK-02,2,Apakah konten di internet tanpa keterangan lisensi boleh dipakai bebas?,Tidak; tetap dilindungi hak cipta,,
+TIK-02-006,TIK-02,2,"Pesan berantai di grup WhatsApp warga berjudul provokatif, tanpa sumber, dan meminta segera disebarkan. Ciri-ciri ini menandakan pesan itu kemungkinan…",Hoaks,,grup warga
+SK-01-001,SK-01,1,Bagian CPU yang melakukan operasi aritmetika dan logika adalah…,ALU (Arithmetic Logic Unit),,
+SK-01-002,SK-01,1,Bagian CPU yang mengatur urutan dan aliran instruksi adalah…,CU (Control Unit),,
+SK-01-003,SK-01,1,Memori utama yang isinya hilang saat listrik padam adalah…,RAM,RAM bersifat volatil.,
+SK-01-004,SK-01,2,Arsitektur yang menyimpan program dan data bersama di memori disebut arsitektur…,Von Neumann,,
+SK-01-005,SK-01,2,Sebutkan tiga tahap siklus instruksi CPU.,"Fetch, decode, execute",,
+SK-01-006,SK-01,2,"Urutkan dari yang paling cepat: RAM, register, HDD, cache.","Register, cache, RAM, HDD",,
+SK-01-007,SK-01,2,Memori yang tidak volatil dan berisi firmware adalah…,ROM,,
+SK-01-008,SK-01,2,Listrik di sebuah warnet padam saat petugas sedang mengetik laporan yang belum disimpan. Ketikannya hilang karena data itu berada di…,RAM (memori volatil),,warnet
+SK-02-001,SK-02,1,1 byte terdiri atas berapa bit?,8,,
+SK-02-002,SK-02,1,Bilangan biner 1101 sama dengan berapa dalam desimal?,13,8 + 4 + 0 + 1.,
+SK-02-003,SK-02,1,Digit heksadesimal F bernilai…,15,,
+SK-02-004,SK-02,2,Bilangan desimal 255 dalam heksadesimal adalah…,FF,,
+SK-02-005,SK-02,2,Bilangan desimal 64 dalam oktal adalah…,100,64 = 8².,
+SK-02-006,SK-02,2,Berapa banyak nilai berbeda yang dapat dinyatakan dengan 8 bit?,256,2⁸.,
+SK-02-007,SK-02,2,Kode ASCII untuk huruf A adalah…,65,,
+SK-02-008,SK-02,3,Ubah bilangan desimal 25 ke biner.,11001,16 + 8 + 1.,
+SK-02-009,SK-02,2,Satu digit heksadesimal setara dengan berapa bit?,4,,
+SK-03-001,SK-03,1,Gerbang yang keluarannya 1 hanya bila kedua masukannya 1 adalah…,AND,,
+SK-03-002,SK-03,1,Gerbang yang membalik nilai masukan adalah…,NOT,,
+SK-03-003,SK-03,1,Gerbang yang bernilai 1 hanya bila kedua masukan berbeda adalah…,XOR,,
+SK-03-004,SK-03,2,Apa keluaran gerbang NAND bila masukannya 1 dan 1?,0,,
+SK-03-005,SK-03,2,Apa keluaran gerbang NOR bila masukannya 0 dan 0?,1,,
+SK-03-006,SK-03,2,Rangkaian dengan 3 masukan memiliki berapa baris tabel kebenaran?,8,2³.,
+SK-03-007,SK-03,3,Masukan A = 1 dan B = 0. Apa keluaran (A AND B) OR (NOT B)?,1,0 OR 1.,
+SK-03-008,SK-03,2,Lampu teras dinyalakan oleh dua sakelar: menyala bila sakelar 1 ATAU sakelar 2 dalam posisi hidup. Logika ini sama dengan gerbang…,OR,,lampu teras
+SK-03-009,SK-03,2,Pintu brankas toko emas hanya terbuka bila kunci fisik diputar DAN kode PIN benar. Logika ini sama dengan gerbang…,AND,,toko emas
+SK-04-001,SK-04,1,Sebutkan dua contoh sistem operasi ponsel.,Android dan iOS,,
+SK-04-002,SK-04,1,Proses menyalakan komputer sampai sistem operasi siap disebut…,Booting,,
+SK-04-003,SK-04,2,Pemeriksaan perangkat keras oleh BIOS/UEFI saat komputer dinyalakan disebut…,POST (Power On Self Test),,
+SK-04-004,SK-04,2,"Penerjemah yang menjalankan program baris demi baris, seperti pada Python, disebut…",Interpreter,,
+SK-04-005,SK-04,2,Antivirus dan pengompres berkas termasuk jenis perangkat lunak…,Utilitas (perangkat lunak sistem),,
+SK-04-006,SK-04,2,Menghidupkan ulang (restart) komputer yang sudah menyala disebut…,Warm boot,,
+JKI-01-001,JKI-01,1,Jaringan yang mencakup satu gedung atau sekolah disebut…,LAN,,
+JKI-01-002,JKI-01,1,Topologi yang semua perangkatnya terhubung ke satu pusat disebut topologi…,Star,,
+JKI-01-003,JKI-01,1,Media transmisi kabel yang paling cepat dan memakai cahaya adalah…,Serat optik,,
+JKI-01-004,JKI-01,2,Perangkat yang menghubungkan jaringan yang berbeda berdasarkan alamat IP adalah…,Router,,
+JKI-01-005,JKI-01,2,Perangkat yang menghubungkan perangkat dalam satu LAN berdasarkan alamat MAC adalah…,Switch,,
+JKI-01-006,JKI-01,2,Kelemahan utama topologi bus adalah…,"Bila kabel utama putus, seluruh jaringan mati",,
+JKI-01-007,JKI-01,2,Jaringan yang menghubungkan antarkota atau antarnegara disebut…,WAN,,
+JKI-01-008,JKI-01,3,Mengapa topologi mesh lebih tahan gangguan tetapi lebih mahal?,"Setiap perangkat terhubung ke banyak perangkat, sehingga ada jalur cadangan tetapi butuh banyak kabel",,
+JKI-01-009,JKI-01,2,"Laboratorium komputer sekolah: semua komputer tersambung ke satu switch di meja guru. Ketika switch itu rusak, semua komputer putus. Topologi apa ini?",Star,,lab sekolah
+JKI-01-010,JKI-01,2,Warung kopi memasang perangkat yang memancarkan Wi-Fi agar pengunjung bisa terhubung tanpa kabel. Perangkat ini disebut…,Access point,,warung kopi
+JKI-02-001,JKI-02,1,Berapa lapisan model OSI?,7,,
+JKI-02-002,JKI-02,1,Protokol yang menerjemahkan nama domain menjadi alamat IP adalah…,DNS,,
+JKI-02-003,JKI-02,1,Panjang alamat IPv4 adalah…,32 bit,,
+JKI-02-004,JKI-02,2,Protokol yang memberi alamat IP otomatis kepada perangkat adalah…,DHCP,,
+JKI-02-005,JKI-02,2,Port standar HTTPS adalah…,443,,
+JKI-02-006,JKI-02,2,Protokol transport yang menjamin data sampai utuh dan berurutan adalah…,TCP,,
+JKI-02-007,JKI-02,2,Panjang alamat IPv6 adalah…,128 bit,,
+JKI-02-008,JKI-02,3,Sebutkan lapisan model OSI dari bawah ke atas.,"Physical, Data Link, Network, Transport, Session, Presentation, Application",,
+JKI-02-009,JKI-02,2,"Saat siaran langsung pertandingan bola di aplikasi, gambar sesekali patah tetapi tidak berhenti untuk mengulang data yang hilang. Protokol transport apa yang cocok untuk siaran seperti ini?",UDP,,siaran bola
+JKI-03-001,JKI-03,1,Program jahat yang menggandakan diri sendiri lewat jaringan tanpa berkas inang disebut…,Worm,,
+JKI-03-002,JKI-03,1,Program jahat yang mengenkripsi data lalu meminta tebusan disebut…,Ransomware,,
+JKI-03-003,JKI-03,1,Enkripsi yang memakai satu kunci yang sama untuk mengenkripsi dan mendekripsi disebut…,Enkripsi simetris,,
+JKI-03-004,JKI-03,2,"Pada enkripsi asimetris, pesan untuk Rina dienkripsi dengan kunci…",Kunci publik Rina,Hanya kunci privat Rina yang dapat membukanya.,
+JKI-03-005,JKI-03,2,Program jahat yang menyamar sebagai program berguna disebut…,Trojan,,
+JKI-03-006,JKI-03,2,Autentikasi yang menggabungkan kata sandi dan kode di ponsel disebut…,Autentikasi dua faktor (2FA),,
+JKI-03-007,JKI-03,2,Perangkat atau program yang menyaring lalu lintas jaringan menurut aturan disebut…,Firewall,,
+JKI-03-008,JKI-03,2,Pesan SMS mengaku dari bank dan meminta kode OTP yang baru masuk ke ponsel. Jenis serangan apa ini?,Phishing,,SMS bank
+JKI-03-009,JKI-03,3,"Kantor kelurahan menyimpan data warga di satu komputer saja. Menurut aturan cadangan 3-2-1, berapa salinan, berapa jenis media, dan berapa salinan di luar lokasi yang dianjurkan?","3 salinan, 2 media berbeda, 1 di luar lokasi",,kantor kelurahan
+AD-01-001,AD-01,1,Fakta mentah yang belum diolah disebut…,Data,,
+AD-01-002,AD-01,1,Data yang dikumpulkan sendiri melalui survei atau observasi disebut data…,Primer,,
+AD-01-003,AD-01,1,"Data berupa kategori atau deskripsi, bukan angka, disebut data…",Kualitatif,,
+AD-01-004,AD-01,2,"Membuang duplikat, menyeragamkan format, dan menangani data kosong termasuk tahap…",Pembersihan data,,
+AD-01-005,AD-01,2,Data yang diambil dari BPS untuk penelitian siswa termasuk data…,Sekunder,,
+AD-01-006,AD-01,2,"Catatan suhu harian adalah data; kesimpulan ""minggu ini lebih panas dari minggu lalu"" adalah…",Informasi,,
+AD-01-007,AD-01,2,"Ketua RT mendata warga lewat formulir; ada yang menulis tanggal ""5/3/2008"", ada yang ""5 Maret 2008"". Tahap pengolahan data apa yang diperlukan sebelum dianalisis?",Pembersihan data (menyeragamkan format),,pendataan RT
+AD-01-008,AD-01,2,Pengurus masjid mencatat jumlah jamaah salat Jumat setiap pekan dengan menghitung sendiri. Jenis data menurut sumbernya adalah…,Data primer,,masjid
+AD-02-001,AD-02,1,Grafik yang paling cocok untuk menunjukkan perubahan dari waktu ke waktu adalah…,Grafik garis,,
+AD-02-002,AD-02,1,Grafik yang paling cocok untuk menunjukkan bagian dari keseluruhan adalah…,Grafik lingkaran,,
+AD-02-003,AD-02,2,Grafik yang dipakai untuk melihat hubungan dua variabel adalah…,Diagram pencar,,
+AD-02-004,AD-02,2,Fitur lembar kerja untuk merangkum data besar menurut kategori disebut…,Tabel pivot,,
+AD-02-005,AD-02,3,Mengapa sumbu grafik batang yang tidak dimulai dari nol dapat menyesatkan?,Perbedaan antarbatang tampak lebih besar daripada sebenarnya,,
+AD-02-006,AD-02,2,"Pedagang buah ingin membandingkan penjualan mangga, jeruk, dan pisang bulan ini. Grafik apa yang paling cocok?",Grafik batang,,pedagang buah
+AD-03-001,AD-03,1,Kolom yang nilainya unik dan tidak boleh kosong untuk setiap baris disebut…,Primary key,,
+AD-03-002,AD-03,1,"Dalam basis data, satu baris tabel disebut…",Record,,
+AD-03-003,AD-03,2,Kolom yang merujuk primary key tabel lain disebut…,Foreign key,,
+AD-03-004,AD-03,2,Perintah SQL untuk mengambil data adalah…,SELECT,,
+AD-03-005,AD-03,2,Mengapa nama siswa kurang tepat dijadikan primary key?,"Nama bisa kembar, sedangkan primary key harus unik",,
+AD-03-006,AD-03,2,Satu kelas memiliki banyak siswa. Relasi antara tabel kelas dan tabel siswa adalah…,Satu ke banyak,,
+AD-03-007,AD-03,3,"Tulis perintah SQL untuk menampilkan nama siswa yang nilainya minimal 75, urut dari nilai tertinggi.",SELECT nama FROM siswa WHERE nilai >= 75 ORDER BY nilai DESC;,,
+AD-04-001,AD-04,1,Sebutkan karakteristik 3V big data.,"Volume, velocity, variety",,
+AD-04-002,AD-04,2,Pembelajaran mesin yang belajar dari data berlabel disebut…,Supervised learning,,
+AD-04-003,AD-04,2,Pembelajaran mesin yang mengelompokkan data tanpa label disebut…,Unsupervised learning (clustering),,
+AD-04-004,AD-04,2,Pembelajaran mesin yang belajar dari hadiah dan hukuman disebut…,Reinforcement learning,,
+AD-04-005,AD-04,2,Aplikasi surel memisahkan pesan spam setelah dilatih dengan ribuan surel yang sudah ditandai spam atau bukan. Jenis pembelajaran mesinnya adalah…,Supervised learning,,surel
+AP-01-001,AP-01,1,Simbol diagram alir untuk keputusan adalah…,Belah ketupat,,
+AP-01-002,AP-01,1,Simbol diagram alir untuk masukan dan keluaran adalah…,Jajaran genjang,,
+AP-01-003,AP-01,1,Simbol diagram alir untuk mulai dan selesai adalah…,Oval (terminator),,
+AP-01-004,AP-01,2,Ciri algoritma yang berarti algoritma pasti berhenti disebut…,Berhingga (finite),,
+AP-01-005,AP-01,2,Tulisan mirip program tanpa aturan bahasa tertentu disebut…,Pseudocode,,
+AP-01-006,AP-01,2,Simbol persegi panjang dalam diagram alir menyatakan…,Proses,,
+AP-01-007,AP-01,2,"Langkah memasak mi instan ditulis sebagai diagram alir. Langkah ""apakah air sudah mendidih?"" digambar dengan simbol…",Belah ketupat (keputusan),,dapur
+AP-01-008,AP-01,3,"Mengapa langkah ""masukkan garam secukupnya"" kurang memenuhi ciri algoritma?",Tidak jelas atau ambigu; algoritma menuntut langkah yang pasti,,
+AP-02-001,AP-02,1,Tipe data Python untuk bilangan bulat adalah…,int,,
+AP-02-002,AP-02,1,Tipe data Python untuk nilai True dan False adalah…,bool,,
+AP-02-003,AP-02,1,Berapa hasil 7 // 2 di Python?,3,,
+AP-02-004,AP-02,2,Berapa hasil 7 % 2 di Python?,1,,
+AP-02-005,AP-02,2,Berapa hasil 2 ** 3 di Python?,8,,
+AP-02-006,AP-02,2,Apa beda = dan == di Python?,= memberi nilai (penugasan); == membandingkan,,
+AP-02-007,AP-02,2,Mengapa umur = input() lalu umur + 1 menghasilkan galat?,input() menghasilkan teks (str); perlu diubah dengan int(),,
+AP-02-008,AP-02,3,Ekspresi apa yang bernilai True bila bilangan n genap?,n % 2 == 0,,
+AP-02-009,AP-02,2,Program kasir kantin menghitung kembalian dari uang Rp20.000 untuk belanja Rp13.500. Tipe data apa yang tepat untuk harga yang memuat angka di belakang koma desimal?,float,,kantin
+AP-03-001,AP-03,1,"Bilangan apa saja yang dihasilkan range(1, 5)?","1, 2, 3, 4",,
+AP-03-002,AP-03,1,Perintah untuk menghentikan perulangan adalah…,break,,
+AP-03-003,AP-03,2,"Bilangan apa saja yang dihasilkan range(0, 10, 2)?","0, 2, 4, 6, 8",,
+AP-03-004,AP-03,2,Perulangan yang berjalan selama syaratnya benar adalah…,while,,
+AP-03-005,AP-03,2,Berapa kali print dijalankan oleh: for i in range(3): for j in range(2): print(i)?,6,3 × 2.,
+AP-03-006,AP-03,2,Perintah yang melompat ke putaran berikutnya tanpa menyelesaikan putaran sekarang adalah…,continue,,
+AP-03-007,AP-03,3,"Kode: if n >= 60: print(""C"") elif n >= 90: print(""A""). Apa keluarannya untuk n = 95, dan mengapa?",C; syarat n >= 60 diperiksa lebih dulu dan sudah benar,,
+AP-03-008,AP-03,3,"Berapa nilai s setelah: s = 0; for i in range(1, 6): s = s + i?",15,1 + 2 + 3 + 4 + 5.,
+AP-03-009,AP-03,2,Tukang parkir menghitung tarif: Rp2.000 untuk jam pertama dan Rp1.000 untuk tiap jam berikutnya. Struktur kontrol apa yang dibutuhkan untuk membedakan jam pertama dan jam berikutnya?,Percabangan (if-else),,parkir
+AP-04-001,AP-04,1,Kata kunci Python untuk membuat fungsi adalah…,def,,
+AP-04-002,AP-04,1,Indeks elemen pertama list di Python adalah…,0,,
+AP-04-003,AP-04,2,"data = [5, 8, 2]. Berapa nilai data[-1]?",2,,
+AP-04-004,AP-04,2,Fungsi untuk mengetahui banyak elemen list adalah…,len(),,
+AP-04-005,AP-04,2,"teks = ""INFORMATIKA"". Apa hasil teks[1:4]?",NFO,"Indeks 1, 2, 3.",
+AP-04-006,AP-04,2,Apa beda return dan print dalam fungsi?,return mengembalikan nilai ke pemanggil; print hanya menampilkan ke layar,,
+AP-04-007,AP-04,2,Metode list untuk menambah elemen di akhir adalah…,append(),,
+AP-05-001,AP-05,1,Notasi kompleksitas pencarian biner adalah…,O(log n),,
+AP-05-002,AP-05,2,Notasi kompleksitas bubble sort adalah…,O(n²),,
+AP-05-003,AP-05,2,Notasi kompleksitas pencarian beruntun adalah…,O(n),,
+AP-05-004,AP-05,2,Mengambil elemen larik dengan indeks memiliki kompleksitas…,O(1),,
+AP-05-005,AP-05,3,"Jika data menjadi dua kali lipat, kira-kira berapa kali lipat langkah algoritma O(n²)?",4 kali,(2n)² = 4n².,
+DSI-01-001,DSI-01,1,Tokoh yang merancang Analytical Engine adalah…,Charles Babbage,,
+DSI-01-002,DSI-01,1,Tokoh yang disebut pemrogram pertama karena menulis algoritma untuk Analytical Engine adalah…,Ada Lovelace,,
+DSI-01-003,DSI-01,2,Teknologi utama komputer generasi pertama adalah…,Tabung vakum,,
+DSI-01-004,DSI-01,2,Teknologi utama komputer generasi kedua adalah…,Transistor,,
+DSI-01-005,DSI-01,2,"Mikroprosesor pertama, Intel 4004, diperkenalkan pada tahun…",1971,,
+DSI-01-006,DSI-01,3,Tokoh yang mengemukakan model teoretis komputasi yang dikenal sebagai mesin Turing pada 1936 adalah…,Alan Turing,,
+DSI-02-001,DSI-02,1,UU ITE pertama adalah UU nomor dan tahun berapa?,UU No. 11 Tahun 2008,,
+DSI-02-002,DSI-02,1,UU Pelindungan Data Pribadi adalah UU nomor dan tahun berapa?,UU No. 27 Tahun 2022,,
+DSI-02-003,DSI-02,1,Perangkat lunak yang kode sumbernya terbuka dan boleh diubah disebut…,Open source,,
+DSI-02-004,DSI-02,2,Perangkat lunak gratis tetapi kode sumbernya tertutup disebut…,Freeware,,
+DSI-02-005,DSI-02,2,Apakah hak cipta harus didaftarkan agar berlaku?,Tidak; hak cipta muncul otomatis saat karya diwujudkan,,
+DSI-02-006,DSI-02,2,Berapa lama hak cipta program komputer berlaku menurut UU No. 28 Tahun 2014?,50 tahun sejak pertama kali diumumkan,,
+DSI-02-007,DSI-02,2,"UU ITE diubah dua kali, dengan UU nomor berapa saja?",UU No. 19 Tahun 2016 dan UU No. 1 Tahun 2024,,
+DSI-02-008,DSI-02,2,Memakai karya tulis orang lain tanpa menyebut sumbernya disebut…,Plagiarisme,,
+DSI-02-009,DSI-02,2,"Sebuah toko daring membocorkan nama, alamat, dan nomor telepon pembelinya. Undang-undang apa yang terutama mengatur pelindungan data seperti itu?",UU Pelindungan Data Pribadi (UU No. 27 Tahun 2022),,toko daring
+DSI-02-010,DSI-02,2,Kantor desa memakai LibreOffice yang kode sumbernya terbuka dan boleh diubah. Jenis lisensi perangkat lunak ini adalah…,Open source,,kantor desa
+DSI-03-001,DSI-03,1,Perbedaan akses dan kemampuan memakai teknologi antarkelompok masyarakat disebut…,Kesenjangan digital (digital divide),,
+DSI-03-002,DSI-03,2,Profesi yang bertugas menjaga jaringan dan sistem dari serangan siber disebut…,Ahli keamanan siber,,
+DSI-03-003,DSI-03,2,Profesi yang merancang tampilan dan pengalaman pemakai aplikasi disebut…,Desainer UI/UX,,
+DSI-03-004,DSI-03,2,Sebutkan dua dampak negatif teknologi informasi bagi masyarakat.,"Contoh: hoaks, perundungan siber, kecanduan gawai, pelanggaran privasi (dua di antaranya)",,
+DSI-03-005,DSI-03,2,"Di satu desa sinyal internet hanya ada di balai desa, sedangkan di kota hampir setiap rumah terhubung. Istilah untuk perbedaan akses ini adalah…",Kesenjangan digital,,sinyal desa
+DSI-04-001,DSI-04,1,Model pengembangan yang tahapnya berurutan satu per satu disebut…,Waterfall,,
+DSI-04-002,DSI-04,2,Model pengembangan dengan siklus pendek berulang dan umpan balik pengguna disebut…,Agile,,
+DSI-04-003,DSI-04,2,Versi awal produk untuk diuji pengguna sebelum dibuat penuh disebut…,Prototipe,,
+DSI-04-004,DSI-04,2,Tahap pertama siklus pengembangan perangkat lunak adalah…,Analisis kebutuhan,,
+DSI-04-005,DSI-04,2,"Tim siswa membuat aplikasi pencatat sampah bank sampah RW, lalu meminta pengurus mencobanya setiap minggu dan memperbaikinya sedikit demi sedikit. Model pengembangan apa yang dipakai?",Agile,,bank sampah
+BK-02-010,BK-02,3,Daftar 1.024 nama penerima bantuan di kantor desa sudah diurutkan menurut abjad. Paling banyak berapa kali petugas membandingkan nama bila memakai pencarian biner?,10,2¹⁰ = 1.024.,kantor desa
+BK-03-007,BK-03,2,Tumpukan piring bersih di warung makan: piring yang terakhir ditaruh diambil paling dulu. Struktur data apa yang sesuai?,Stack (LIFO),,warung makan
+SK-02-010,SK-02,3,Kamera CCTV di pos ronda menyimpan setiap piksel warna dengan 24 bit. Berapa banyak warna berbeda yang dapat dinyatakan?,16.777.216,2²⁴.,pos ronda
+SK-03-010,SK-03,3,"Alarm gudang beras berbunyi bila pintu terbuka ATAU jendela terbuka, tetapi hanya saat sakelar alarm hidup. Tulis ekspresi logikanya dengan P (pintu), J (jendela), S (sakelar).",S AND (P OR J),,gudang beras
+JKI-02-010,JKI-02,2,"Di rumah, laptop dan ponsel mendapat alamat 192.168.1.x dari router. Alamat jenis apa ini?",Alamat IP privat (hanya berlaku di jaringan lokal),,Wi-Fi rumah
+JKI-02-011,JKI-02,2,"Warga mengetik alamat situs kelurahan di peramban, lalu komputer harus mencari alamat IP-nya lebih dulu. Layanan apa yang menjawab pencarian itu?",DNS,,situs kelurahan
+JKI-03-010,JKI-03,2,"Akun media sosial OSIS dibobol karena kata sandinya ""osis123"" dipakai juga di akun lain. Sebutkan dua ciri kata sandi yang lebih kuat.","Panjang, campuran huruf-angka-simbol, dan berbeda untuk tiap akun (dua di antaranya)",,akun OSIS
+AD-02-007,AD-02,3,"Grafik penjualan es teh di kantin memakai sumbu yang dimulai dari 90 gelas, sehingga kenaikan dari 95 ke 100 gelas tampak berlipat. Apa yang membuat grafik ini menyesatkan?","Sumbu tidak dimulai dari nol, sehingga perbedaan tampak jauh lebih besar",,kantin
+AD-03-008,AD-03,2,Koperasi sekolah mencatat anggota dan transaksi di dua tabel; setiap transaksi menyimpan nomor anggota. Kolom nomor anggota di tabel transaksi berperan sebagai…,Foreign key,,koperasi
+AP-02-010,AP-02,2,Program angkot menghitung sisa penumpang: 13 penumpang dibagi ke mobil berkapasitas 4. Operator Python apa yang memberi banyak penumpang yang tersisa?,% (modulo); 13 % 4 = 1,,angkot
+AP-03-010,AP-03,3,Petugas karcis menjalankan: tiket = 0; while tiket < 5: tiket = tiket + 2. Berapa nilai tiket saat perulangan berhenti?,6,"0, 2, 4, lalu 6.",loket karcis
+AP-04-008,AP-04,2,"Program toko kelontong menyimpan harga = [3000, 5000, 2000]. Fungsi bawaan apa yang menjumlahkan semua harga?",sum(); hasilnya 10000,,toko kelontong
+AP-05-006,AP-05,3,"Aplikasi data penduduk desa mencari NIK dengan pencarian beruntun. Bila penduduk bertambah dari 1.000 menjadi 2.000, kira-kira berapa kali lipat waktu pencarian terburuk?",2 kali lipat (O(n)),,data desa
+DSI-02-011,DSI-02,3,"Panitia lomba memakai foto kegiatan dari situs berita untuk spanduk tanpa izin dan tanpa menyebut sumber. Hak apa yang dilanggar, dan UU mana yang mengaturnya?",Hak cipta; UU No. 28 Tahun 2014,,spanduk lomba

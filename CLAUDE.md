@@ -29,12 +29,16 @@ For a new subject map, the `new-subject` skill (`.claude/skills/new-subject/SKIL
 ## Commands
 
 ```bash
-python scripts/build.py                   # validate data, print lint warnings, rebuild docs/
+python scripts/build.py                   # validate data, print lint warnings and the subject status table, rebuild docs/
 python -m unittest discover -s tests      # tests
 python scripts/build.py --artifact        # also write build/*.fragment.html for claude.ai copies
 ```
 
 Python 3 standard library only; no dependencies to install.
+
+## Progress
+
+`data/subjects.json` lists every subject in the school's roster (grades X–XII) with its map id, Tingkat Lanjut parent, and TKA papers. `build.py` prints a status line per subject: map size, bank size and konteks share, tags, TKA papers, or "belum ada peta". Add a subject to the roster before building its map (the build fails on a map that is not listed), and end every content task by reporting the status table to the owner.
 
 ## Hard rules
 
@@ -50,6 +54,7 @@ Python 3 standard library only; no dependencies to install.
 
 ```
 data/maps/<id>.json      subject maps (source of truth)
+data/subjects.json       roster of all subjects; drives the status table build.py prints
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
 data/questions/<id>.csv  subject question banks, one per map (feeds docs/bank-<id>.html)

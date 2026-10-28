@@ -1,0 +1,160 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+KWU-01-001,KWU-01,1,Orang yang menciptakan dan mengelola usaha sendiri dengan berani mengambil risiko disebut…,Wirausaha,,
+KWU-01-002,KWU-01,1,Orang yang berinovasi di dalam perusahaan tempatnya bekerja disebut…,Intrapreneur,,
+KWU-01-003,KWU-01,1,Kemampuan menghasilkan ide baru disebut…,Kreatif,,
+KWU-01-004,KWU-01,2,Apa beda kreatif dan inovatif?,Kreatif menemukan ide baru; inovatif mewujudkan ide itu menjadi produk atau cara baru,,
+KWU-01-005,KWU-01,2,Risiko seperti apa yang diambil wirausaha?,"Risiko terukur (moderat), sudah diperhitungkan",,
+KWU-01-006,KWU-01,2,Sebutkan tiga ciri wirausaha menurut Meredith.,"Contoh: percaya diri, berorientasi tugas dan hasil, berani mengambil risiko, kepemimpinan, orisinal, berorientasi masa depan (tiga di antaranya)",,
+KWU-01-007,KWU-01,2,Bagaimana wirausaha memandang kegagalan?,Sebagai bahan evaluasi untuk memperbaiki usaha,,
+KWU-01-008,KWU-01,2,"Seorang perajin bambu menemukan ide lampu hias dari sisa potongan bambu, lalu benar-benar memproduksi dan menjualnya di pasar seni. Tahap mewujudkan ide menjadi produk disebut…",Inovasi (inovatif),,perajin bambu
+KWU-01-009,KWU-01,3,Pedagang pecel lele meminjam modal untuk membuka cabang kedua setelah menghitung jumlah pembeli di lokasi baru dan biaya sewanya. Ciri wirausaha apa yang tampak dari cara ia mengambil keputusan?,Berani mengambil risiko terukur,,pecel lele
+KWU-02-001,KWU-02,1,"Metode menemukan ide usaha dengan mengamati, meniru, dan memodifikasi produk yang ada disebut…",ATM,,
+KWU-02-002,KWU-02,1,Kepanjangan SWOT adalah…,"Strengths, weaknesses, opportunities, threats",,
+KWU-02-003,KWU-02,1,Unsur SWOT yang berasal dari dalam usaha adalah…,"Kekuatan dan kelemahan (strengths, weaknesses)",,
+KWU-02-004,KWU-02,2,Unsur SWOT yang berasal dari luar usaha adalah…,"Peluang dan ancaman (opportunities, threats)",,
+KWU-02-005,KWU-02,2,Kapan sebuah ide usaha menjadi peluang usaha?,Bila ada pasar yang mau membeli dan usaha itu dapat dijalankan,,
+KWU-02-006,KWU-02,2,Sebutkan dua sumber ide usaha.,"Contoh: masalah sehari-hari, kebutuhan konsumen, hobi atau keahlian, potensi bahan lokal, tren pasar (dua di antaranya)",,
+KWU-02-007,KWU-02,2,"Usaha keripik singkong di desa wisata: harga minyak goreng naik. Dalam analisis SWOT, kenaikan harga ini termasuk…",Ancaman (threat),,desa wisata
+KWU-02-008,KWU-02,2,"Usaha jasa cuci sepatu dekat kampus: banyak mahasiswa memakai sepatu kanvas yang cepat kotor. Dalam analisis SWOT, keadaan ini termasuk…",Peluang (opportunity),,jasa cuci sepatu
+KWU-02-009,KWU-02,3,Usaha batik rumahan punya pembatik terampil tetapi belum punya toko daring. Masukkan kedua hal itu ke unsur SWOT yang tepat.,Pembatik terampil: kekuatan; belum punya toko daring: kelemahan,Keduanya faktor internal.,batik rumahan
+KWU-03-001,KWU-03,1,Berapa blok dalam model bisnis kanvas?,9,,
+KWU-03-002,KWU-03,1,"Blok model bisnis kanvas yang menjawab ""untuk siapa produk dibuat"" adalah…",Segmen pelanggan,,
+KWU-03-003,KWU-03,1,Blok yang menjelaskan masalah yang diselesaikan dan keunggulan produk adalah…,Proposisi nilai,,
+KWU-03-004,KWU-03,2,"Blok model bisnis kanvas yang menjawab ""dari mana uang masuk"" adalah…",Arus pendapatan,,
+KWU-03-005,KWU-03,2,"Penilaian apakah usaha layak dari aspek pasar, teknis, keuangan, hukum, dan lingkungan disebut…",Studi kelayakan,,
+KWU-03-006,KWU-03,2,Sebutkan tiga bagian umum proposal usaha.,"Contoh: ringkasan, deskripsi usaha, analisis pasar, rencana produksi, rencana pemasaran, rencana keuangan (tiga di antaranya)",,
+KWU-03-007,KWU-03,2,"Usaha kopi keliling menjual lewat gerobak motor dan pesanan WhatsApp. Dalam model bisnis kanvas, gerobak dan WhatsApp masuk blok…",Saluran (channels),,kopi keliling
+KWU-03-008,KWU-03,2,"Usaha tahu bulat membeli kedelai dari koperasi petani setempat. Dalam model bisnis kanvas, koperasi itu masuk blok…",Kemitraan utama,,tahu bulat
+KWU-03-009,KWU-03,3,"Usaha laundry kiloan menawarkan ""selesai 6 jam, diantar ke kos"". Pernyataan ini termasuk blok model bisnis kanvas apa, dan mengapa bukan arus pendapatan?","Proposisi nilai; ia menjelaskan keunggulan bagi pelanggan, bukan sumber uang masuk",,laundry kiloan
+KWU-04-001,KWU-04,1,Biaya yang tidak berubah walau jumlah produksi berubah disebut…,Biaya tetap,,
+KWU-04-002,KWU-04,1,Bahan baku dan kemasan termasuk biaya…,Variabel,,
+KWU-04-003,KWU-04,1,Rumus BEP dalam unit adalah…,Biaya tetap ÷ (harga jual per unit − biaya variabel per unit),,
+KWU-04-004,KWU-04,2,HPP per unit Rp8.000 dan markup 25%. Berapa harga jualnya?,Rp10.000,"8.000 × 1,25.",
+KWU-04-005,KWU-04,2,Total biaya produksi Rp600.000 untuk 200 bungkus. Berapa HPP per bungkus?,Rp3.000,,
+KWU-04-006,KWU-04,2,"Biaya tetap Rp600.000, harga jual Rp10.000, biaya variabel Rp6.000 per unit. Berapa BEP unit?",150 unit,600.000 ÷ 4.000.,
+KWU-04-007,KWU-04,2,"Dari soal sebelumnya, berapa BEP dalam rupiah?",Rp1.500.000,150 × 10.000.,
+KWU-04-008,KWU-04,3,"Biaya tetap Rp1.200.000, harga jual Rp15.000, biaya variabel Rp9.000. Berapa laba bila terjual 300 unit?",Rp600.000,300 × 6.000 − 1.200.000.,
+KWU-04-009,KWU-04,2,"Usaha kue bolu menyewa dapur Rp500.000 per bulan, dan biaya bahan Rp7.000 per bolu. Mana biaya tetap dan mana biaya variabel?",Sewa dapur: biaya tetap; bahan: biaya variabel,,kue bolu
+KWU-04-010,KWU-04,3,"Penjual es kelapa membayar sewa lapak Rp300.000 per bulan, biaya bahan Rp4.000 per gelas, dan menjual Rp7.000 per gelas. Berapa gelas harus terjual sebulan agar balik modal?",100 gelas,300.000 ÷ 3.000.,es kelapa
+KWU-04-011,KWU-04,3,"Kerajinan anyaman pandan: HPP Rp20.000 per tas, dijual Rp25.000. Berapa persen markup dari HPP?",25%,5.000 ÷ 20.000.,anyaman pandan
+KWU-05-001,KWU-05,1,Sebutkan unsur bauran pemasaran 4P.,"Product, price, place, promotion",,
+KWU-05-002,KWU-05,1,Kepanjangan STP dalam pemasaran adalah…,"Segmentasi, targeting, positioning",,
+KWU-05-003,KWU-05,2,Membagi pasar menurut usia dan pendapatan termasuk segmentasi…,Demografis,,
+KWU-05-004,KWU-05,2,Unsur place dalam 4P berarti…,Saluran distribusi (cara produk sampai ke konsumen),,
+KWU-05-005,KWU-05,2,"Untuk usaha jasa, bauran 4P diperluas menjadi 7P dengan menambah…","People, process, physical evidence",,
+KWU-05-006,KWU-05,2,Citra produk di benak konsumen disebut…,Positioning,,
+KWU-05-007,KWU-05,2,Penjual sambal kemasan memberi diskon 10% untuk pembelian tiga botol. Unsur 4P apa yang dipakai?,Price (dan promosi penjualan),Diskon menyentuh harga; ada buku yang memasukkannya ke promosi.,sambal kemasan
+KWU-05-008,KWU-05,2,Usaha keripik pedas memilih anak muda 15–25 tahun yang suka tantangan rasa sebagai sasaran. Langkah memilih segmen ini disebut…,Targeting,,keripik pedas
+KWU-05-009,KWU-05,3,"Pengusaha bengkel motor menyebut usahanya ""bengkel cepat untuk ojek daring"". Termasuk langkah STP apa pernyataan ini, dan mengapa?",Positioning; menetapkan citra usaha di benak konsumen sasaran,,bengkel motor
+KWU-06-001,KWU-06,1,Rumus laba dalam laporan laba rugi adalah…,Pendapatan − beban,,
+KWU-06-002,KWU-06,2,Laporan yang mencatat uang masuk dan uang keluar disebut…,Laporan arus kas,,
+KWU-06-003,KWU-06,2,Pendapatan sebulan Rp5.000.000 dan beban Rp3.800.000. Berapa labanya?,Rp1.200.000,,
+KWU-06-004,KWU-06,2,Mengapa uang usaha dan uang pribadi harus dipisah?,Agar keuntungan sebenarnya terlihat,,
+KWU-06-005,KWU-06,3,Bagaimana usaha bisa untung di laporan laba rugi tetapi kekurangan kas?,"Banyak penjualan belum dibayar (pembeli berutang), sehingga uang belum masuk",,
+KWU-06-006,KWU-06,2,"Warung sembako mencatat penjualan Rp12.000.000 dan beban (pembelian barang, listrik, gaji) Rp10.500.000 dalam sebulan. Berapa labanya?",Rp1.500.000,,warung sembako
+KWU-07-001,KWU-07,1,Nomor izin berusaha yang diurus lewat sistem OSS disebut…,NIB (Nomor Induk Berusaha),,
+KWU-07-002,KWU-07,1,Lembaga yang menerbitkan sertifikat halal adalah…,BPJPH,,
+KWU-07-003,KWU-07,2,Izin untuk pangan olahan industri rumah tangga disebut…,SPP-IRT (PIRT),,
+KWU-07-004,KWU-07,2,Berapa lama perlindungan merek terdaftar menurut UU No. 20 Tahun 2016?,10 tahun dan dapat diperpanjang,,
+KWU-07-005,KWU-07,2,Apakah merek harus didaftarkan agar dilindungi?,"Ya, merek dilindungi setelah didaftarkan ke DJKI",,
+KWU-07-006,KWU-07,2,HKI yang melindungi invensi teknologi adalah…,Paten,,
+KWU-07-007,KWU-07,2,Usaha rumahan kue kering ingin menjual produknya di toko oleh-oleh. Izin pangan apa yang biasanya diurus untuk produk seperti ini?,SPP-IRT (PIRT),,kue kering
+KWU-07-008,KWU-07,3,"Dua usaha bakso di kota yang sama memakai nama dagang yang mirip. Hak apa yang menentukan siapa yang berhak atas nama itu, dan apa syaratnya?",Hak merek; yang lebih dulu mendaftarkan merek ke DJKI,,bakso
+KWU-08-001,KWU-08,1,Menjual produk tanpa menyimpan stok sendiri disebut…,Dropship,,
+KWU-08-002,KWU-08,1,Standar kode QR pembayaran yang ditetapkan Bank Indonesia disebut…,QRIS,,
+KWU-08-003,KWU-08,2,Sebutkan dua hal yang perlu diperhatikan saat berjualan di lokapasar.,"Contoh: foto dan deskripsi jujur, respons cepat, ulasan pelanggan, biaya layanan platform, keamanan akun (dua di antaranya)",,
+KWU-08-004,KWU-08,2,Sebutkan dua bentuk pembayaran nontunai.,"Contoh: transfer bank, dompet digital, QRIS (dua di antaranya)",,
+KWU-08-005,KWU-08,2,Pedagang buah di pasar menempelkan satu kode QR yang bisa dibayar dari aplikasi bank dan dompet digital mana pun. Kode ini disebut…,QRIS,,pasar buah
+KRJ-01-001,KRJ-01,1,Bahan perintang warna pada batik adalah…,Malam (lilin),,
+KRJ-01-002,KRJ-01,1,Alat untuk membatik tulis adalah…,Canting,,
+KRJ-01-003,KRJ-01,1,Teknik menyilangkan bahan lungsin dan pakan disebut…,Anyam,,
+KRJ-01-004,KRJ-01,2,Rotan dan eceng gondok termasuk bahan alam…,Nabati,,
+KRJ-01-005,KRJ-01,2,Kerajinan yang dibuat untuk keindahan disebut kerajinan fungsi…,Hias,,
+KRJ-01-006,KRJ-01,2,Teknik membuat hiasan dari simpul tali disebut…,Makrame,,
+KRJ-01-007,KRJ-01,2,Apakah kain bermotif batik hasil mesin cetak (printing) termasuk batik secara teknik?,"Tidak, karena tidak memakai malam sebagai perintang warna",,
+KRJ-01-008,KRJ-01,2,Perajin di Kasongan membentuk tanah liat dengan tangan menjadi guci. Tanah liat termasuk bahan alam…,Mineral,,Kasongan
+KRJ-01-009,KRJ-01,2,Perajin batik di kampung batik memakai cap tembaga untuk membuat motif berulang dengan cepat. Jenis batik ini disebut…,Batik cap,,kampung batik
+KRJ-02-001,KRJ-02,1,Sebutkan tiga unsur desain.,"Contoh: garis, bidang, bentuk, warna, tekstur, ruang (tiga di antaranya)",,
+KRJ-02-002,KRJ-02,2,Sebutkan tiga prinsip desain.,"Contoh: kesatuan, keseimbangan, irama, proporsi, kontras (tiga di antaranya)",,
+KRJ-02-003,KRJ-02,2,Produk yang nyaman dan aman dipakai sesuai ukuran tubuh disebut…,Ergonomis,,
+KRJ-02-004,KRJ-02,2,Model awal produk yang dibuat untuk diuji sebelum diproduksi disebut…,Purwarupa (prototipe),,
+KRJ-02-005,KRJ-02,2,Perajin tas anyaman mengubah ukuran pegangan tas agar pas di tangan dan tidak melukai. Pertimbangan desain ini disebut…,Ergonomis,,tas anyaman
+KRJ-03-001,KRJ-03,1,Kepanjangan 3R adalah…,"Reduce, reuse, recycle",,
+KRJ-03-002,KRJ-03,1,Sabut kelapa dan kulit jagung termasuk limbah…,Organik,,
+KRJ-03-003,KRJ-03,2,"Plastik, kaleng, dan kaca termasuk limbah…",Anorganik,,
+KRJ-03-004,KRJ-03,2,Tempurung kelapa termasuk limbah keras atau lunak?,Keras,,
+KRJ-03-005,KRJ-03,2,Bank sampah RW mengolah bungkus kopi saset menjadi tas. Prinsip 3R apa yang dipakai?,Recycle (daur ulang),,bank sampah
+RKY-01-001,RKY-01,1,Kepanjangan TTG adalah…,Teknologi tepat guna,,
+RKY-01-002,RKY-01,1,Sebutkan dua ciri teknologi tepat guna.,"Contoh: sesuai kebutuhan, mudah dibuat dan dirawat, murah, memakai bahan lokal, ramah lingkungan (dua di antaranya)",,
+RKY-01-003,RKY-01,2,Pompa yang menaikkan air tanpa listrik dengan memanfaatkan tekanan aliran air disebut…,Pompa hidram,,
+RKY-01-004,RKY-01,2,Apakah teknologi tepat guna harus canggih?,Tidak; yang penting sesuai masalah dan kemampuan pemakainya,,
+RKY-01-005,RKY-01,2,Sebutkan tahap pertama merancang produk rekayasa.,Identifikasi masalah,,
+RKY-01-006,RKY-01,2,Petani di desa berbukit memakai alat perontok padi dari kayu dan besi bekas yang bisa diperbaiki tukang las setempat. Alat seperti ini disebut…,Teknologi tepat guna,,perontok padi
+RKY-01-007,RKY-01,3,"Warga desa memilih penyaring air dari pasir, ijuk, dan arang daripada mesin penjernih impor. Sebutkan dua ciri TTG yang terpenuhi.","Contoh: murah, memakai bahan lokal, mudah dibuat dan dirawat (dua di antaranya)",,air bersih
+RKY-02-001,RKY-02,1,Komponen yang menghambat arus listrik adalah…,Resistor,,
+RKY-02-002,RKY-02,1,Komponen yang mengalirkan arus hanya satu arah adalah…,Dioda,,
+RKY-02-003,RKY-02,2,Kaki LED yang lebih panjang adalah…,Anoda (+),,
+RKY-02-004,RKY-02,2,Gelang warna merah pada resistor bernilai…,2,,
+RKY-02-005,RKY-02,2,Gelang toleransi emas pada resistor berarti…,±5%,,
+RKY-02-006,RKY-02,3,Berapa nilai resistor bergelang cokelat-hitam-merah-emas?,1.000 Ω (1 kΩ) ±5%,10 × 10².,
+RKY-02-007,RKY-02,3,Berapa nilai resistor bergelang kuning-ungu-cokelat-emas?,470 Ω ±5%,47 × 10¹.,
+RKY-02-008,RKY-02,2,Tukang servis di pasar elektronik mengganti komponen yang menyimpan muatan sementara pada adaptor. Komponen ini disebut…,Kapasitor,,servis elektronik
+RKY-03-001,RKY-03,1,Alat yang mengubah cahaya matahari menjadi listrik adalah…,Panel surya (fotovoltaik),,
+RKY-03-002,RKY-03,1,Gas utama yang dihasilkan biogas adalah…,Metana,,
+RKY-03-003,RKY-03,2,Pembangkit listrik kecil dari aliran sungai disebut…,PLTMH (mikrohidro),,
+RKY-03-004,RKY-03,2,Biogas dibuat dengan memfermentasi kotoran ternak dalam keadaan…,Tanpa oksigen (anaerob),,
+RKY-03-005,RKY-03,2,"Peternak sapi di desa mengalirkan kotoran ke tangki tertutup, dan gasnya dipakai untuk kompor. Sumber energi apa ini?",Biogas (biomassa),,peternak sapi
+RKY-03-006,RKY-03,2,Pos ronda di dusun tanpa jaringan PLN memakai lampu dari panel surya. Di mana listrik disimpan agar lampu menyala malam hari?,Aki atau baterai (lewat pengatur pengisian),,pos ronda
+RKY-04-001,RKY-04,1,Model awal untuk diuji fungsi dan tampilannya disebut…,Purwarupa (prototipe),,
+RKY-04-002,RKY-04,2,"Gambar yang memuat ukuran, bahan, dan pandangan depan-samping-atas disebut…",Gambar kerja,,
+RKY-04-003,RKY-04,2,Apa yang harus dilakukan sebelum merangkai komponen listrik?,Mematikan sumber listrik,,
+RKY-04-004,RKY-04,2,Sebutkan tiga pandangan dalam gambar kerja.,"Depan, samping, atas",,
+RKY-04-005,RKY-04,2,Siswa SMK merancang rak sepatu dan membuat model kecil dari kardus untuk dicoba sebelum memotong kayu. Model ini disebut…,Purwarupa (prototipe),,rak sepatu
+BUD-01-001,BUD-01,1,Menanam tanpa tanah dengan larutan nutrisi disebut…,Hidroponik,,
+BUD-01-002,BUD-01,1,Nutrisi hidroponik yang umum disebut…,AB mix,,
+BUD-01-003,BUD-01,2,Sistem hidroponik yang mengalirkan lapisan tipis nutrisi terus-menerus di talang disebut…,NFT,,
+BUD-01-004,BUD-01,2,Sistem hidroponik yang mengalirkan nutrisi ke akar lewat sumbu kain disebut…,Sistem sumbu (wick),,
+BUD-01-005,BUD-01,2,Pengendalian hama yang mengutamakan cara alami dan memakai pestisida kimia sebagai pilihan terakhir disebut…,Pengendalian hama terpadu,,
+BUD-01-006,BUD-01,2,Apakah hidroponik memakai media tanam?,"Ya, media penopang seperti rockwool atau sekam bakar; yang ditiadakan adalah tanah",,
+BUD-01-007,BUD-01,2,Sebutkan urutan tahap budi daya tanaman dari awal.,"Persiapan, penyemaian, penanaman, pemeliharaan, panen, pascapanen",,
+BUD-01-008,BUD-01,2,Warga gang sempit menanam kangkung di atas styrofoam yang mengapung pada bak berisi larutan nutrisi. Sistem hidroponik ini disebut…,Rakit apung,,kebun gang
+BUD-01-009,BUD-01,3,"Kelompok tani hidroponik memakai pipa yang menggenangi akar dengan larutan nutrisi lebih dalam agar tanaman tetap aman saat listrik padam sebentar. Sistem apa ini, dan mengapa lebih tahan pemadaman dibanding NFT?",DFT; akar tetap terendam genangan nutrisi saat pompa berhenti,,kelompok tani
+BUD-02-001,BUD-02,1,Perbanyakan tanaman dengan biji disebut perbanyakan…,Generatif,,
+BUD-02-002,BUD-02,1,Perbanyakan dengan memotong batang lalu menanamnya disebut…,Stek,,
+BUD-02-003,BUD-02,2,Menumbuhkan akar pada cabang yang masih menempel di pohon induk disebut…,Cangkok,,
+BUD-02-004,BUD-02,2,Menempelkan mata tunas ke batang tanaman lain disebut…,Okulasi,,
+BUD-02-005,BUD-02,2,Teknik yang menghasilkan banyak bibit seragam dari potongan jaringan kecil di media steril disebut…,Kultur jaringan,,
+BUD-02-006,BUD-02,2,Sebutkan satu kelebihan perbanyakan vegetatif.,"Sifat bibit sama dengan induk, atau lebih cepat berbuah",,
+BUD-02-007,BUD-02,2,Jahe dan kunyit diperbanyak secara alami dengan…,Rimpang,,
+BUD-02-008,BUD-02,2,Penjual bibit mangga di pinggir jalan menempelkan mata tunas mangga unggul ke batang bawah mangga lokal. Teknik ini disebut…,Okulasi,,bibit mangga
+BUD-02-009,BUD-02,3,Petani jambu ingin bibit yang buahnya sama persis dengan pohon induk dan cepat berbuah. Mengapa ia memilih cangkok daripada menanam biji?,Cangkok (vegetatif) mewarisi sifat induk dan cepat berbuah; biji (generatif) sifatnya bisa berbeda,,kebun jambu
+BUD-03-001,BUD-03,1,Ayam yang dipelihara untuk diambil telurnya disebut ayam…,Petelur (layer),,
+BUD-03-002,BUD-03,1,Ayam yang dipelihara untuk diambil dagingnya disebut ayam…,Pedaging (broiler),,
+BUD-03-003,BUD-03,2,Sebutkan dua faktor kualitas air yang memengaruhi budi daya ikan.,"Contoh: suhu, pH, oksigen (dua di antaranya)",,
+BUD-03-004,BUD-03,2,Penyakit tetelo pada unggas disebut juga…,Newcastle Disease (ND),,
+BUD-03-005,BUD-03,2,Warga memelihara lele di ember sambil menanam kangkung di atasnya. Cara ini disebut…,Budikdamber,,budikdamber
+PGL-01-001,PGL-01,1,Kapang yang dipakai membuat tempe adalah…,Rhizopus,,
+PGL-01-002,PGL-01,1,Merebus dan mengukus termasuk teknik pengolahan panas…,Basah,,
+PGL-01-003,PGL-01,1,Menggoreng dan memanggang termasuk teknik pengolahan panas…,Kering,,
+PGL-01-004,PGL-01,2,Bakteri yang dipakai membuat yoghurt adalah…,Lactobacillus bulgaricus dan Streptococcus thermophilus,,
+PGL-01-005,PGL-01,2,Menyangrai termasuk teknik panas basah atau kering?,Kering,,
+PGL-01-006,PGL-01,2,Mikroorganisme utama dalam ragi tapai adalah…,Saccharomyces cerevisiae (bersama kapang),,
+PGL-01-007,PGL-01,2,Pembuat tempe di Malang membungkus kedelai rebus yang sudah diberi ragi dengan daun pisang lalu mendiamkannya dua hari. Proses ini disebut…,Fermentasi,,pembuat tempe
+PGL-01-008,PGL-01,2,Penjual kue tradisional mematangkan kue lapis dengan uap air panas. Teknik pengolahan ini disebut…,Mengukus (panas basah),,kue tradisional
+PGL-02-001,PGL-02,1,Pemanasan pangan di bawah 100 °C untuk membunuh sebagian mikroba disebut…,Pasteurisasi,,
+PGL-02-002,PGL-02,1,Sterilisasi umumnya dilakukan pada suhu sekitar…,121 °C,,
+PGL-02-003,PGL-02,1,Sebutkan dua bahan berbahaya yang dilarang untuk mengawetkan pangan.,Formalin dan boraks,,
+PGL-02-004,PGL-02,2,Manisan dan selai diawetkan dengan bahan…,Gula,,
+PGL-02-005,PGL-02,2,Mengapa susu pasteurisasi tetap perlu disimpan dingin?,Pasteurisasi tidak membunuh semua mikroba,,
+PGL-02-006,PGL-02,2,Pengawetan dengan pengasapan termasuk cara…,Pengeringan (fisik),,
+PGL-02-007,PGL-02,2,Pewarna tekstil yang dilarang dipakai pada pangan adalah…,Rhodamin B (dan kuning metanil),,
+PGL-02-008,PGL-02,2,Nelayan di pesisir menjemur ikan yang sudah digarami di para-para bambu. Cara pengawetan apa yang dipakai?,Penggaraman dan pengeringan,,nelayan
+PGL-02-009,PGL-02,3,"Pedagang mi basah di pasar menjual mi yang tetap kenyal dan tidak basi berhari-hari tanpa didinginkan. Bahan berbahaya apa yang patut dicurigai, dan mengapa mi seharusnya cepat rusak?",Formalin atau boraks; mi basah berkadar air tinggi sehingga mudah rusak oleh mikroba,,pasar
+PGL-03-001,PGL-03,1,Kemasan yang bersentuhan langsung dengan pangan disebut kemasan…,Primer,,
+PGL-03-002,PGL-03,1,Sebutkan tiga isi pokok label pangan.,"Contoh: nama produk, daftar bahan, berat bersih, nama dan alamat produsen, tanggal kedaluwarsa, nomor izin edar (tiga di antaranya)",,
+PGL-03-003,PGL-03,2,"Kemasan untuk distribusi, misalnya kardus besar berisi banyak dus, disebut kemasan…",Tersier,,
+PGL-03-004,PGL-03,2,Mencegah bahan mentah mencemari bahan matang disebut mencegah…,Kontaminasi silang,,
+PGL-03-005,PGL-03,2,Plastik yang aman bersentuhan dengan pangan disebut plastik…,Food grade,,
+PGL-03-006,PGL-03,2,Sebutkan dua kebiasaan higiene saat mengolah pangan.,"Contoh: cuci tangan, penutup kepala, celemek, alat bersih (dua di antaranya)",,
+PGL-03-007,PGL-03,2,"Penjual keripik di pasar oleh-oleh memasukkan keripik ke plastik, lalu 20 plastik ke dalam satu dus. Dus itu termasuk kemasan…",Sekunder,,pasar oleh-oleh
+PGL-03-008,PGL-03,3,"Pembuat sambal rumahan memakai talenan yang sama untuk ayam mentah dan tomat tanpa dicuci. Risiko apa yang muncul, dan bagaimana mencegahnya?",Kontaminasi silang; pisahkan atau cuci alat untuk bahan mentah dan bahan siap makan,,sambal rumahan
