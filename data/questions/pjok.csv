@@ -1,0 +1,198 @@
+id,simpul,tingkat,soal,jawaban,catatan,konteks
+PBB-01-001,PBB-01,1,Berapa jumlah pemain satu regu sepak bola di lapangan?,"11, termasuk penjaga gawang",,
+PBB-01-002,PBB-01,1,Berapa lama waktu normal pertandingan sepak bola?,2 × 45 menit,,
+PBB-01-003,PBB-01,1,Berapa jarak titik penalti dari garis gawang?,11 m,,
+PBB-01-004,PBB-01,2,Berapa ukuran gawang sepak bola?,"Lebar 7,32 m, tinggi 2,44 m",,
+PBB-01-005,PBB-01,2,Bagian kaki yang dipakai untuk umpan pendek yang akurat adalah…,Kaki bagian dalam,,
+PBB-01-006,PBB-01,2,Bagian kaki yang dipakai untuk tendangan keras dan jauh adalah…,Punggung kaki,,
+PBB-01-007,PBB-01,2,Bagaimana lemparan ke dalam yang sah?,"Dua tangan dari belakang kepala, kedua kaki tetap menyentuh tanah",,
+PBB-01-008,PBB-01,2,Dari situasi apa saja pemain tidak bisa offside secara langsung?,"Tendangan gawang, lemparan ke dalam, tendangan sudut",,
+PBB-01-009,PBB-01,3,Kapan pemain berada dalam posisi offside?,Saat berada di setengah lapangan lawan dan lebih dekat ke garis gawang lawan daripada bola dan pemain lawan kedua terakhir ketika bola dimainkan rekannya,,
+PBB-01-010,PBB-01,2,"Pada turnamen antarkampung, penyerang menerima bola langsung dari lemparan ke dalam saat berdiri di belakang semua bek lawan. Apakah ia offside?",Tidak; tidak ada offside langsung dari lemparan ke dalam,,tarkam
+PBB-01-011,PBB-01,3,"Di laga liga desa, penyerang berdiri di posisi offside saat rekan menendang, tetapi ia tidak menyentuh bola dan tidak mengganggu lawan. Apakah wasit harus menghukumnya?",Tidak; posisi offside baru pelanggaran bila ia ikut aktif bermain,,liga desa
+PBB-02-001,PBB-02,1,Berapa jumlah pemain satu regu bola voli di lapangan?,6,,
+PBB-02-002,PBB-02,1,Berapa ukuran lapangan bola voli?,18 m × 9 m,,
+PBB-02-003,PBB-02,1,Berapa tinggi net bola voli putra?,"2,43 m",,
+PBB-02-004,PBB-02,2,Berapa tinggi net bola voli putri?,"2,24 m",,
+PBB-02-005,PBB-02,2,Berapa sentuhan paling banyak per regu sebelum bola diseberangkan?,"3, tidak termasuk blok",,
+PBB-02-006,PBB-02,2,Set penentu (kelima) bola voli dimainkan sampai poin berapa?,"15, selisih minimal 2",,
+PBB-02-007,PBB-02,2,Teknik untuk menerima servis dengan kedua lengan dirapatkan disebut…,Passing bawah,,
+PBB-02-008,PBB-02,2,Ke arah mana pemain berotasi saat regunya merebut hak servis?,Searah jarum jam,,
+PBB-02-009,PBB-02,2,Sebutkan dua hal yang tidak boleh dilakukan libero.,"Contoh: servis, blok, smash di atas net (dua di antaranya)",,
+PBB-02-010,PBB-02,2,"Pada pertandingan voli antar-RT, regu A sedang servis dan mendapat poin lagi. Apakah regu A harus berotasi?",Tidak; rotasi dilakukan saat merebut hak servis dari lawan,,voli antar-RT
+PBB-02-011,PBB-02,3,"Pemain bertahan di turnamen voli kecamatan memakai kaus berbeda dan sering masuk-keluar menggantikan pemain belakang. Apa sebutan pemain ini, dan mengapa ia tidak boleh melakukan servis?",Libero; aturan membatasinya sebagai pemain bertahan saja,,voli kecamatan
+PBB-03-001,PBB-03,1,Berapa jumlah pemain satu regu bola basket di lapangan?,5,,
+PBB-03-002,PBB-03,1,Berapa tinggi ring basket?,"3,05 m",,
+PBB-03-003,PBB-03,1,Berapa nilai lemparan bebas dalam bola basket?,1,,
+PBB-03-004,PBB-03,2,Berapa lama pertandingan basket menurut aturan FIBA?,4 × 10 menit,,
+PBB-03-005,PBB-03,2,Berapa jarak garis tiga angka menurut FIBA?,"6,75 m",,
+PBB-03-006,PBB-03,2,Berjalan sambil memegang bola tanpa menggiring disebut…,Traveling,,
+PBB-03-007,PBB-03,2,Berapa batas waktu tim untuk melakukan tembakan?,24 detik,,
+PBB-03-008,PBB-03,2,Tembakan dekat keranjang setelah dua langkah disebut…,Lay up,,
+PBB-03-009,PBB-03,2,Berapa pelanggaran pribadi yang membuat pemain harus keluar menurut FIBA?,5,,
+PBB-03-010,PBB-03,2,"Di pertandingan basket antarsekolah, seorang pemain berhenti menggiring lalu menggiring lagi. Pelanggaran apa ini?",Double dribble,,antarsekolah
+PBB-03-011,PBB-03,3,"Penonton liga basket sekolah heran mengapa tiap kuarter hanya 10 menit, padahal di siaran NBA 12 menit. Jelaskan perbedaannya.",Liga sekolah memakai aturan FIBA (4 × 10 menit); NBA memakai aturan liganya sendiri (4 × 12 menit),,liga sekolah
+PBB-04-001,PBB-04,1,Berapa jumlah pemain satu regu bola tangan?,7 (6 pemain lapangan dan 1 penjaga gawang),,
+PBB-04-002,PBB-04,1,Berapa lama pertandingan bola tangan?,2 × 30 menit,,
+PBB-04-003,PBB-04,2,Berapa lama paling lama pemain bola tangan boleh memegang bola?,3 detik,,
+PBB-04-004,PBB-04,2,Berapa langkah paling banyak sambil memegang bola dalam bola tangan?,3 langkah,,
+PBB-04-005,PBB-04,2,Hukuman berat dalam bola tangan berupa lemparan dari jarak…,7 m,,
+PBB-04-006,PBB-04,2,Berapa ukuran gawang bola tangan?,"Lebar 3 m, tinggi 2 m",,
+PBK-01-001,PBK-01,1,Satu gim bulu tangkis dimainkan sampai poin berapa?,"21, selisih 2",,
+PBK-01-002,PBK-01,1,Pukulan menukik keras ke bidang lawan disebut…,Smash,,
+PBK-01-003,PBK-01,1,Pukulan yang menjatuhkan kok dekat net lawan disebut…,Dropshot,,
+PBK-01-004,PBK-01,2,"Pada skor 29–29, bagaimana gim ditentukan?",Poin ke-30 menentukan pemenang,,
+PBK-01-005,PBK-01,2,Berapa tinggi batas kok saat servis menurut aturan BWF sejak 2018?,"Seluruh kok di bawah 1,15 m dari lantai",,
+PBK-01-006,PBK-01,2,Berapa ukuran lapangan bulu tangkis untuk ganda?,"13,40 m × 6,10 m",,
+PBK-01-007,PBK-01,2,Pukulan tinggi ke belakang lapangan lawan disebut…,Lob,,
+PBK-01-008,PBK-01,2,Pegangan raket seperti berjabat tangan disebut pegangan…,Forehand,,
+PBK-01-009,PBK-01,3,Mengapa lapangan servis tunggal lebih panjang dan lebih sempit daripada ganda?,Garis servis tunggal memakai garis belakang terluar tetapi garis samping dalam; ganda memakai garis servis belakang yang lebih pendek dan garis samping luar,,
+PBK-01-010,PBK-01,2,"Pada pertandingan bulu tangkis tujuhbelasan di lapangan kampung, wasit menegur servis yang dipukul setinggi dada. Berapa batas tinggi servis menurut aturan BWF yang berlaku sekarang?","1,15 m dari lantai",,tujuhbelasan
+PBK-02-001,PBK-02,1,Satu gim tenis meja dimainkan sampai poin berapa?,"11, selisih 2",,
+PBK-02-002,PBK-02,1,Pegangan bet tenis meja seperti memegang pena disebut…,Penhold,,
+PBK-02-003,PBK-02,2,Berapa tinggi minimal lambungan bola saat servis tenis meja?,16 cm,,
+PBK-02-004,PBK-02,2,Setiap berapa poin servis tenis meja berganti?,Setiap 2 poin; setiap 1 poin saat skor 10–10,,
+PBK-02-005,PBK-02,2,Berapa tinggi meja tenis meja?,76 cm,,
+PBK-02-006,PBK-02,2,Berapa diameter bola tenis meja?,40 mm,,
+PBK-02-007,PBK-02,2,"Di lomba tenis meja kantor kecamatan, skor 10–10. Bagaimana pergantian servis sesudahnya?",Servis berganti setiap 1 poin,,lomba kecamatan
+ATL-01-001,ATL-01,1,Start yang dipakai lari jarak pendek adalah…,Start jongkok,,
+ATL-01-002,ATL-01,1,Sebutkan nomor lari jarak pendek.,"100 m, 200 m, 400 m",,
+ATL-01-003,ATL-01,1,Berapa jarak lari maraton?,"42,195 km",,
+ATL-01-004,ATL-01,2,Start yang dipakai lari jarak menengah dan jauh adalah…,Start berdiri,,
+ATL-01-005,ATL-01,2,Urutan aba-aba start jongkok adalah…,"Bersedia, siap, ya (atau bunyi pistol)",,
+ATL-01-006,ATL-01,2,Cara menerima tongkat estafet tanpa melihat (nonvisual) dipakai pada nomor…,4 × 100 m,,
+ATL-01-007,ATL-01,2,Sebutkan dua teknik pemberian tongkat estafet.,Dari bawah ke atas (upsweep) dan dari atas ke bawah (downsweep),,
+ATL-01-008,ATL-01,2,Berapa panjang zona pergantian estafet 4 × 100 m menurut World Athletics sejak 2018?,30 m,,
+ATL-01-009,ATL-01,2,Variasi start jongkok yang jarak lutut ke kaki depannya paling dekat disebut…,Start pendek (bunch),,
+ATL-01-010,ATL-01,2,"Pada lomba estafet tujuhbelasan, tongkat diserahkan di luar zona pergantian, walau timnya paling cepat. Apa akibatnya?",Tim didiskualifikasi,,tujuhbelasan
+ATL-01-011,ATL-01,3,"Di lomba lari 800 m tingkat kabupaten, pelari memakai start berdiri, sedangkan di 100 m memakai start jongkok. Mengapa?",Start jongkok memberi tolakan paling cepat untuk jarak pendek; pada jarak menengah keuntungan itu kecil dibanding pengaturan tenaga,,lomba kabupaten
+ATL-02-001,ATL-02,1,Sebutkan empat tahap lompat jauh.,"Awalan, tolakan, melayang, mendarat",,
+ATL-02-002,ATL-02,1,Lompat jangkit terdiri atas…,"Jingkat (hop), langkah (step), lompat (jump)",,
+ATL-02-003,ATL-02,2,Gaya lompat tinggi yang melewati mistar dengan punggung disebut…,Flop (Fosbury flop),,
+ATL-02-004,ATL-02,2,Dari mana jarak lompat jauh diukur?,Dari batas papan tumpu ke bekas pendaratan terdekat dengan papan tumpu,,
+ATL-02-005,ATL-02,2,Sebutkan dua gaya melayang lompat jauh.,"Contoh: jongkok, menggantung, berjalan di udara (dua di antaranya)",,
+ATL-02-006,ATL-02,2,"Pada jingkat (hop) lompat jangkit, pendaratan memakai kaki…",Yang sama dengan kaki tolakan,,
+ATL-02-007,ATL-02,2,Gaya lompat tinggi guling perut disebut juga…,Straddle,,
+ATL-02-008,ATL-02,2,"Pada pekan olahraga sekolah, siswa menolak 20 cm sebelum papan tumpu lalu mendarat 4,50 m dari papan. Berapa jarak yang dicatat?","4,50 m; diukur dari batas papan tumpu",,porseni
+ATL-02-009,ATL-02,3,Mengapa pelompat jauh di kejuaraan pelajar berusaha menolak tepat di batas papan tumpu?,"Jarak diukur dari batas papan, sehingga tolakan sebelum batas membuang jarak",,kejuaraan pelajar
+ATL-03-001,ATL-03,1,Gerakan tolak peluru adalah mendorong atau melempar?,Mendorong (menolak) dari bahu,,
+ATL-03-002,ATL-03,1,Berapa berat peluru senior putra?,"7,26 kg",,
+ATL-03-003,ATL-03,2,Berapa diameter lingkaran tolak peluru?,"2,135 m",,
+ATL-03-004,ATL-03,2,Gaya tolak peluru membelakangi arah tolakan disebut gaya…,O'Brien,,
+ATL-03-005,ATL-03,2,Berapa berat lembing senior putra?,800 g,,
+ATL-03-006,ATL-03,2,Berapa berat cakram senior putri?,1 kg,,
+ATL-03-007,ATL-03,2,"Di kejuaraan atletik pelajar, peserta melempar peluru dengan ayunan lengan seperti melempar bola kasti. Bagaimana keputusan juri?",Tidak sah; peluru harus ditolak dari bahu,,kejuaraan pelajar
+SEN-01-001,SEN-01,1,Senam yang dilakukan di atas matras tanpa alat bantu disebut…,Senam lantai,,
+SEN-01-002,SEN-01,1,Gerakan berguling ke samping bertumpu pada kedua tangan bergantian disebut…,Meroda (radschlag),,
+SEN-01-003,SEN-01,2,Bagian tubuh yang menyentuh matras saat guling depan adalah…,Tengkuk,,
+SEN-01-004,SEN-01,2,Gerakan melenting ke belakang membentuk busur dengan tumpuan tangan dan kaki disebut…,Kayang,,
+SEN-01-005,SEN-01,2,Teman yang membantu menjaga keselamatan saat berlatih gerakan baru disebut…,Spotter,,
+SEN-01-006,SEN-01,2,Berdiri dengan tumpuan kedua tangan disebut…,Handstand,,
+SEN-01-007,SEN-01,2,"Saat guling depan, dagu diletakkan di mana?",Dirapatkan ke dada,,
+SEN-01-008,SEN-01,3,Mengapa ubun-ubun tidak boleh menjadi tumpuan saat guling depan?,Leher dapat cedera; tumpuan yang benar adalah tengkuk dengan dagu dirapatkan ke dada,,
+SEN-01-009,SEN-01,2,"Di sanggar senam desa, anak-anak berlatih meroda di lantai semen tanpa alas. Perlengkapan apa yang wajib disiapkan?",Matras,,sanggar senam
+SEN-02-001,SEN-02,1,Hitungan umum aktivitas gerak berirama adalah…,2 × 8,,
+SEN-02-002,SEN-02,1,Senam aerobik yang satu kakinya selalu menapak lantai disebut…,Low impact,,
+SEN-02-003,SEN-02,2,Senam aerobik yang ada gerakan melompat disebut…,High impact,,
+SEN-02-004,SEN-02,2,Sebutkan tiga unsur gerak berirama.,"Kelenturan, kesinambungan gerak, ketepatan irama",,
+SEN-02-005,SEN-02,2,Sebutkan urutan bagian sesi senam.,"Pemanasan, inti, pendinginan",,
+SEN-02-006,SEN-02,2,Senam pagi lansia di balai RW dipilih tanpa gerakan melompat agar aman bagi sendi. Jenis aerobik apa yang cocok?,Low impact,,balai RW
+SEN-03-001,SEN-03,1,Organisasi induk pencak silat Indonesia adalah…,IPSI (Ikatan Pencak Silat Indonesia),,
+SEN-03-002,SEN-03,2,IPSI didirikan pada tanggal dan di kota…,18 Mei 1948 di Surakarta,,
+SEN-03-003,SEN-03,2,Kapan tradisi pencak silat ditetapkan UNESCO sebagai Warisan Budaya Takbenda?,12 Desember 2019,,
+SEN-03-004,SEN-03,2,Sebutkan empat aspek pencak silat.,"Mental spiritual, seni budaya, bela diri, olahraga",,
+SEN-03-005,SEN-03,2,Sebutkan tiga teknik dasar pencak silat.,"Contoh: kuda-kuda, sikap pasang, pola langkah, pukulan, tendangan, tangkisan, elakan (tiga di antaranya)",,
+SEN-03-006,SEN-03,2,"Pada upacara adat di kampung, pesilat menampilkan jurus yang indah diiringi kendang tanpa bertarung. Aspek pencak silat yang paling menonjol adalah…",Seni budaya,,upacara adat
+AIR-01-001,AIR-01,1,Sebutkan empat gaya renang resmi.,"Bebas, dada, punggung, kupu-kupu",,
+AIR-01-002,AIR-01,1,Gaya renang yang start-nya dari dalam air adalah…,Gaya punggung,,
+AIR-01-003,AIR-01,1,Berapa panjang kolam renang ukuran olimpiade?,50 m,,
+AIR-01-004,AIR-01,2,Gaya renang dengan tendangan kaki seperti katak adalah…,Gaya dada,,
+AIR-01-005,AIR-01,2,Urutan gaya ganti perorangan adalah…,"Kupu-kupu, punggung, dada, bebas",,
+AIR-01-006,AIR-01,2,Urutan gaya ganti estafet adalah…,"Punggung, dada, kupu-kupu, bebas",,
+AIR-01-007,AIR-01,2,Bagaimana pernapasan pada gaya bebas?,Dengan menoleh ke samping,,
+AIR-01-008,AIR-01,3,Mengapa gaya punggung berada di urutan pertama pada estafet gaya ganti?,"Start gaya punggung dari dalam air, sehingga tidak dapat menyambung setelah perenang lain menyentuh dinding",,
+AIR-01-009,AIR-01,2,"Di kolam renang kabupaten, lomba gaya ganti perorangan 200 m dimulai. Gaya apa yang dipakai perenang pada 50 m pertama?",Kupu-kupu,,kolam kabupaten
+AIR-02-001,AIR-02,1,Berapa perbandingan kompresi dada dan napas bantuan pada RJP dewasa?,30 : 2,,
+AIR-02-002,AIR-02,2,Berapa kedalaman kompresi dada pada RJP dewasa?,5–6 cm,,
+AIR-02-003,AIR-02,2,Berapa kecepatan kompresi dada pada RJP?,100–120 kali per menit,,
+AIR-02-004,AIR-02,2,Apa urutan pertolongan orang tenggelam dari yang paling aman?,"Raih, lempar, dayung, baru berenang menolong",,
+AIR-02-005,AIR-02,2,"Anak hanyut di sungai dekat jembatan desa, dan warga di tepi sungai memegang galah bambu. Cara menolong apa yang paling aman lebih dulu?",Meraih dengan galah dari tepi,,sungai desa
+AIR-02-006,AIR-02,3,Mengapa penolong yang tidak terlatih sebaiknya tidak langsung berenang mendekati korban tenggelam?,Korban yang panik dapat menarik penolong ikut tenggelam; pertolongan dari darat lebih aman,,
+KBG-01-001,KBG-01,1,Sebutkan dua komponen kebugaran terkait kesehatan.,"Contoh: daya tahan jantung-paru, kekuatan otot, daya tahan otot, kelenturan, komposisi tubuh (dua di antaranya)",,
+KBG-01-002,KBG-01,1,Kemampuan mengubah arah dengan cepat disebut…,Kelincahan,,
+KBG-01-003,KBG-01,1,Rumus indeks massa tubuh (IMT) adalah…,Berat badan (kg) ÷ tinggi badan² (m²),,
+KBG-01-004,KBG-01,2,"Berapa IMT orang dengan berat 60 kg dan tinggi 1,60 m?","≈ 23,4",,
+KBG-01-005,KBG-01,2,Komponen yang menggabungkan kekuatan dan kecepatan disebut…,Daya ledak (power),,
+KBG-01-006,KBG-01,2,Tes sit and reach mengukur komponen…,Kelenturan,,
+KBG-01-007,KBG-01,2,Lari bolak-balik (shuttle run) melatih komponen…,Kelincahan,,
+KBG-01-008,KBG-01,2,Apa beda kecepatan dan kelincahan?,Kecepatan: menempuh jarak dalam waktu sesingkat-singkatnya; kelincahan: mengubah arah dengan cepat,,
+KBG-01-009,KBG-01,3,"Berapa IMT orang dengan berat 72 kg dan tinggi 1,70 m, dan masuk kategori apa menurut WHO?","≈ 24,9; normal (batas atas)",,
+KBG-01-010,KBG-01,2,Pemain sepak bola kampung berlatih lari zig-zag di antara kerucut. Komponen kebugaran apa yang dilatih?,Kelincahan,,sepak bola kampung
+KBG-01-011,KBG-01,2,Penjaga gawang futsal berlatih melompat setinggi-tingginya dari posisi diam. Komponen apa yang dilatih?,Daya ledak (power),,futsal
+KBG-02-001,KBG-02,1,Kepanjangan FITT adalah…,"Frequency, intensity, time, type",,
+KBG-02-002,KBG-02,1,Rumus perkiraan denyut nadi maksimal adalah…,220 − usia,,
+KBG-02-003,KBG-02,2,Berapa denyut nadi maksimal perkiraan untuk usia 16 tahun?,204 kali per menit,,
+KBG-02-004,KBG-02,2,Prinsip latihan bahwa hasil latihan menurun bila latihan berhenti disebut…,Reversibel,,
+KBG-02-005,KBG-02,2,Prinsip memberi beban sedikit di atas kemampuan lalu menaikkannya bertahap disebut…,Beban lebih (overload) dan progresif,,
+KBG-02-006,KBG-02,2,Prinsip latihan yang sesuai dengan komponen yang ingin ditingkatkan disebut…,Spesifik,,
+KBG-02-007,KBG-02,2,Sebutkan tiga bagian setiap sesi latihan.,"Pemanasan, latihan inti, pendinginan",,
+KBG-02-008,KBG-02,3,Siswa berusia 17 tahun ingin berlatih di 70% denyut nadi maksimal. Berapa denyut nadi sasarannya?,≈ 142 kali per menit,"0,7 × (220 − 17) = 142,1.",
+KBG-02-009,KBG-02,2,Anggota klub lari pagi di alun-alun menambah jarak larinya 500 m setiap dua minggu. Prinsip latihan apa yang diterapkan?,Progresif (beban lebih bertahap),,klub lari
+KBG-02-010,KBG-02,2,Pemain voli yang dua bulan libur latihan merasa loncatannya menurun. Prinsip latihan apa yang menjelaskannya?,Reversibel,,libur latihan
+KBG-03-001,KBG-03,1,Tes Cooper berupa lari selama…,12 menit,,
+KBG-03-002,KBG-03,1,Tes multistage fitness test juga dikenal sebagai…,Bleep test,,
+KBG-03-003,KBG-03,2,Butir TKJI yang mengukur daya ledak otot tungkai adalah…,Loncat tegak,,
+KBG-03-004,KBG-03,2,Berapa jarak lari TKJI 16–19 tahun untuk putra?,1.200 m,,
+KBG-03-005,KBG-03,2,Berapa jarak lari TKJI 16–19 tahun untuk putri?,1.000 m,,
+KBG-03-006,KBG-03,2,Butir TKJI baring duduk 60 detik mengukur…,Kekuatan dan daya tahan otot perut,,
+KBG-03-007,KBG-03,2,Tes lari 12 menit dan bleep test mengukur komponen…,Daya tahan jantung-paru (VO₂ maks),,
+KES-01-001,KES-01,1,Kepanjangan RICE adalah…,"Rest, ice, compression, elevation",,
+KES-01-002,KES-01,1,Ligamen sendi yang teregang atau robek disebut…,Sprain (keseleo),,
+KES-01-003,KES-01,1,Otot atau tendon yang teregang atau robek disebut…,Strain,,
+KES-01-004,KES-01,2,Tulang yang bergeser dari sendinya disebut…,Dislokasi,,
+KES-01-005,KES-01,2,Cedera baru dikompres dengan air dingin atau panas?,Dingin,,
+KES-01-006,KES-01,2,Pertolongan pertama untuk dugaan patah tulang adalah…,Memasang bidai tanpa meluruskan paksa,,
+KES-01-007,KES-01,2,Otot yang berkontraksi terus tanpa kendali disebut…,Kram,,
+KES-01-008,KES-01,2,Pemain futsal di lapangan RW keseleo pergelangan kaki. Sebutkan empat langkah pertolongan pertama.,"Istirahatkan, kompres dingin, balut tekan, tinggikan (RICE)",,futsal RW
+KES-01-009,KES-01,3,Penonton pertandingan bola kampung mengusulkan memijat kaki pemain yang baru terkilir. Mengapa usul ini keliru?,Memijat cedera baru dapat menambah bengkak; cedera baru ditangani dengan RICE,,bola kampung
+KES-02-001,KES-02,1,Sebutkan tiga zat gizi makro.,"Karbohidrat, protein, lemak",,
+KES-02-002,KES-02,1,Pedoman gizi Kemenkes yang membagi piring makan disebut…,Isi Piringku,,
+KES-02-003,KES-02,2,"Menurut Isi Piringku, berapa bagian piring untuk sayur dan buah?",Setengah piring,,
+KES-02-004,KES-02,2,Vitamin dan mineral termasuk zat gizi…,Mikro,,
+KES-02-005,KES-02,2,Sebutkan tiga bahan yang perlu dibatasi dalam pola makan sehat.,"Gula, garam, lemak",,
+KES-02-006,KES-02,2,Kantin sekolah menyajikan nasi memenuhi hampir seluruh piring dengan sedikit lauk tanpa sayur. Bagian Isi Piringku apa yang kurang?,Sayur dan buah (seharusnya setengah piring),,kantin
+KES-03-001,KES-03,1,Kepanjangan NAPZA adalah…,"Narkotika, psikotropika, dan zat adiktif",,
+KES-03-002,KES-03,1,Undang-undang yang mengatur narkotika adalah…,UU No. 35 Tahun 2009,,
+KES-03-003,KES-03,2,Sabu (metamfetamin) termasuk narkotika golongan…,I,,
+KES-03-004,KES-03,2,Morfin termasuk narkotika golongan…,II,,
+KES-03-005,KES-03,2,Kodein termasuk narkotika golongan…,III,,
+KES-03-006,KES-03,2,"Narkotika golongan berapa yang hanya boleh dipakai untuk penelitian, tidak untuk pengobatan?",Golongan I,,
+KES-03-007,KES-03,2,Undang-undang yang mengatur psikotropika adalah…,UU No. 5 Tahun 1997,,
+KES-03-008,KES-03,2,Zat adiktif dalam rokok adalah…,Nikotin,,
+KES-03-009,KES-03,2,Mengapa pemakaian jarum suntik bergantian di kalangan pemakai narkoba berbahaya selain efek narkobanya?,Dapat menularkan HIV dan penyakit lain lewat darah,,
+KES-03-010,KES-03,2,"Remaja di sebuah gang menghirup uap lem untuk ""mabuk"". Lem termasuk kelompok NAPZA apa?",Zat adiktif (inhalan),,lem
+KES-04-001,KES-04,1,Virus yang menyerang sistem kekebalan tubuh adalah…,HIV,,
+KES-04-002,KES-04,2,Apa beda HIV dan AIDS?,HIV adalah virusnya; AIDS adalah kumpulan gejala pada tahap lanjut infeksi HIV,,
+KES-04-003,KES-04,2,Sebutkan dua cara penularan HIV.,"Contoh: darah (jarum suntik bergantian), hubungan seksual tanpa pelindung, air susu ibu (dua di antaranya)",,
+KES-04-004,KES-04,2,Apakah HIV menular lewat gigitan nyamuk?,Tidak,,
+KES-04-005,KES-04,2,Mengapa stigma terhadap orang dengan HIV merugikan upaya pencegahan?,Stigma membuat orang enggan memeriksakan diri,,
+KES-04-006,KES-04,2,Warga menolak berbagi gelas dengan tetangga yang hidup dengan HIV. Apakah HIV menular lewat berbagi alat makan?,Tidak,,warga
+PBB-01-012,PBB-01,1,Teknik membawa bola sambil berlari dengan kaki disebut…,Menggiring,,
+PBB-02-012,PBB-02,1,Teknik menyerang dengan memukul bola keras dari atas net disebut…,Smash (spike),,
+PBB-03-012,PBB-03,1,Operan bola basket yang dilakukan dari depan dada disebut…,Chest pass,,
+PBB-04-007,PBB-04,1,Berapa ukuran lapangan bola tangan?,40 m × 20 m,,
+PBK-02-008,PBK-02,1,Pegangan bet seperti berjabat tangan disebut…,Shakehand,,
+ATL-03-008,ATL-03,1,Berapa berat peluru senior putri?,4 kg,,
+AIR-01-010,AIR-01,1,Gaya renang yang kedua lengannya diayun bersamaan dan kakinya seperti ekor lumba-lumba adalah…,Kupu-kupu,,
+KES-04-007,KES-04,1,Kepanjangan HIV adalah…,Human Immunodeficiency Virus,,
+KBG-03-008,KBG-03,1,Kepanjangan TKJI adalah…,Tes Kebugaran Jasmani Indonesia,,
+PBB-04-008,PBB-04,2,"Di pertandingan bola tangan antarkelas, pemain berlari empat langkah sambil memegang bola. Pelanggaran apa ini?",Melangkah lebih dari 3 langkah sambil memegang bola,,antarkelas
+PBK-02-009,PBK-02,2,"Di pos ronda ada meja tenis meja. Saat servis, seorang warga memukul bola langsung dari tangan tanpa melambungkannya. Bagaimana servis yang sah?","Bola dilambungkan hampir tegak lurus dari telapak tangan terbuka minimal 16 cm, lalu dipukul memantul dulu di meja sendiri",,pos ronda
+ATL-02-010,ATL-02,2,"Di lomba lompat tinggi pekan olahraga desa, peserta melewati mistar dengan punggung menghadap mistar dan mendarat di matras busa. Gaya apa yang dipakai?",Flop (Fosbury flop),,pekan olahraga
+SEN-02-007,SEN-02,2,"Peserta senam irama hari Minggu di lapangan kecamatan mengikuti hitungan instruktur ""satu, dua, … delapan"" dua kali per rangkaian gerak. Pola hitungan ini disebut…",2 × 8,,senam Minggu
+SEN-03-007,SEN-03,3,"Atlet pencak silat dari perguruan di desa bertanding di kejuaraan nasional dengan wasit dan sistem nilai. Aspek pencak silat apa yang paling menonjol di sini, dan apa bedanya dengan pertunjukan jurus di upacara adat?","Olahraga; pertandingan menilai teknik dan poin, sedangkan pertunjukan adat menonjolkan seni budaya",,kejuaraan silat
+KBG-02-011,KBG-02,3,"Pelatih bola voli klub desa meminta pemainnya berlari 30 menit setiap hari agar smash lebih tinggi. Prinsip latihan apa yang kurang tepat, dan latihan apa yang lebih sesuai?","Spesifik; smash butuh daya ledak tungkai, misalnya latihan loncat",,klub voli desa
+KES-01-010,KES-01,2,"Pelari di lomba maraton kota tiba-tiba memegangi betisnya yang mengeras dan tidak bisa digerakkan, tanpa benturan. Gangguan apa ini?",Kram,,maraton kota
+KES-02-007,KES-02,2,"Penjual gorengan memakai minyak yang sama berulang kali, dan pembeli makan gorengan tiap hari. Zat gizi apa yang perlu dibatasi dari kebiasaan ini?",Lemak (dan garam),,gorengan
+KES-03-011,KES-03,3,"Warung dekat sekolah menjual rokok batangan kepada siswa. Zat adiktif utama apa yang membuat perokok sulit berhenti, dan termasuk kelompok NAPZA apa?",Nikotin; zat adiktif,,warung
+AIR-02-007,AIR-02,2,"Di kolam renang umum, pengunjung menemukan orang tidak sadar dan tidak bernapas di tepi kolam. Setelah memanggil bantuan, tindakan apa yang dilakukan?",RJP: 30 kompresi dada dan 2 napas bantuan,,kolam umum

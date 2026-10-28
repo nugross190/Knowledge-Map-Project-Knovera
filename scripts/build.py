@@ -616,6 +616,64 @@ def build(topics, rows, maps, artifact, tka=None, modules=None):
         print("Wrote build/*.fragment.html for " + ", ".join(ARTIFACT_URLS))
 
 
+def load_subjects():
+    path = ROOT / "data/subjects.json"
+    return json.loads(path.read_text(encoding="utf-8"))["subjects"] if path.exists() else []
+
+
+def validate_subjects(subjects, maps, tka):
+    """Return problems in data/subjects.json, the roster that the status report follows."""
+    errors, where, seen = [], "data/subjects.json", set()
+    for s in subjects:
+        sid = s.get("id", "?")
+        if sid in seen:
+            errors.append(f"{where}: duplicate id {sid}")
+        seen.add(sid)
+        if not s.get("name") or not s.get("kelompok"):
+            errors.append(f"{where}: {sid} needs 'name' and 'kelompok'")
+        if bool(s.get("map")) == bool(s.get("lanjut_of")):
+            errors.append(f"{where}: {sid} needs exactly one of 'map' or 'lanjut_of'")
+        if s.get("lanjut_of") and s["lanjut_of"] not in maps:
+            errors.append(f"{where}: {sid} is lanjut_of unknown map {s['lanjut_of']}")
+        for t in s.get("tka", []):
+            if t not in tka:
+                errors.append(f"{where}: {sid} lists unknown TKA bank {t}")
+    listed = {s.get("map") for s in subjects}
+    errors += [f"{where}: map {name} is not listed; add the subject to the roster" for name in maps if name not in listed]
+    used = {t for s in subjects for t in s.get("tka", [])}
+    errors += [f"{where}: TKA bank {name} is not listed under any subject" for name in tka if name not in used]
+    return errors
+
+
+def subject_status(subjects, maps, banks, tka):
+    """Return the per-subject progress lines that main() prints on every build."""
+    lines, done = [], 0
+    for s in subjects:
+        parts = []
+        if s.get("lanjut_of"):
+            m = maps[s["lanjut_of"]]
+            tagged = sum(bool(t.get("lanjut")) for d in m["domains"] for t in d["topics"])
+            parts.append(f"tag di peta {m['id']}: {tagged} simpul" if tagged else f"belum ada tag di peta {m['id']}")
+            done += bool(tagged)
+        elif s["map"] in maps:
+            m = maps[s["map"]]
+            parts.append(f"peta {sum(len(d['topics']) for d in m['domains'])} simpul")
+            rows = banks.get(s["map"])
+            if rows:
+                k = sum(bool(r["konteks"]) for r in rows)
+                parts.append(f"bank {len(rows)} soal ({k / len(rows):.0%} konteks)")
+            else:
+                parts.append("belum ada bank")
+            done += 1
+        else:
+            parts.append("belum ada peta" + (f" ({s['note']})" if s.get("note") else ""))
+        if s.get("tka"):
+            parts.append(f"TKA {len(s['tka'])} naskah")
+        lines.append(f"  {s['name'][:44]:<44} {' | '.join(parts)}")
+    head = f"Status mapel (data/subjects.json): {done} dari {len(subjects)} sudah tercakup"
+    return [head] + lines
+
+
 def main():
     topics, rows = load()
     maps = load_maps()
@@ -625,7 +683,8 @@ def main():
     errors = (validate(topics, rows) + [e for name, m in maps.items() for e in validate_map(name, m)]
               + [e for name, b in tka.items() for e in validate_tka(name, b)]
               + [e for name, mod in modules.items() for e in validate_module(name, mod, maps, tka_types)]
-              + validate_subject_banks(load_subject_banks(), maps))
+              + validate_subject_banks(load_subject_banks(), maps)
+              + validate_subjects(load_subjects(), maps, tka))
     if errors:
         print(f"{len(errors)} error(s) in data/:")
         print("\n".join("  " + e for e in errors))
@@ -652,6 +711,7 @@ def main():
               f"({sum('tka' in it for it in items)} setara TKA)")
         for w in lint_module(name, mod):
             print("  warning: " + w)
+    print("\n".join(subject_status(load_subjects(), maps, load_subject_banks(), tka)))
     build(topics, rows, maps, "--artifact" in sys.argv[1:], tka, modules)
 
 

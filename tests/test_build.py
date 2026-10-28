@@ -180,6 +180,31 @@ class MapsTest(unittest.TestCase):
             self.assertIn(f"<title>{m['title']}</title>", body)
 
 
+class SubjectsTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.subjects, cls.maps, cls.tka = build.load_subjects(), build.load_maps(), build.load_tka()
+
+    def test_roster_is_valid_and_complete(self):
+        self.assertEqual(build.validate_subjects(self.subjects, self.maps, self.tka), [])
+
+    def test_validator_catches_problems(self):
+        subjects = json.loads(json.dumps(self.subjects))
+        subjects.append(dict(subjects[0]))                                   # duplicate id
+        subjects[1] = dict(subjects[1], tka=["tka-tidak-ada"])               # unknown TKA bank
+        subjects = [s for s in subjects if s.get("map") != "fisika"]         # fisika map left out
+        errors = " | ".join(build.validate_subjects(subjects, self.maps, self.tka))
+        for needle in ("duplicate id", "unknown TKA bank", "map fisika is not listed", "tka-fisika-pilihan-2025 is not listed"):
+            self.assertIn(needle, errors)
+
+    def test_status_reports_every_subject(self):
+        lines = build.subject_status(self.subjects, self.maps, build.load_subject_banks(), self.tka)
+        self.assertEqual(len(lines), len(self.subjects) + 1)
+        text = "\n".join(lines)
+        self.assertIn("tag di peta matematika", text)
+        self.assertIn("bank", text)
+
+
 class TkaTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
