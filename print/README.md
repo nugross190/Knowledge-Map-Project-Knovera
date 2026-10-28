@@ -14,6 +14,8 @@ Printable (A4 PDF) versions of the learning modules, for students who work on pa
 
 Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X), `gerak-vertikal` (Gerak Vertikal, kelas X), `gerak-parabola` (Gerak Parabola, kelas X–XI), `eksponen-logaritma` (Eksponen dan Logaritma, Matematika kelas X), `vektor` (Vektor dan Operasinya, Matematika kelas X), `trigonometri` (Trigonometri, Matematika kelas X) and `fungsi-linear` (Fungsi Linear dan Persamaan Garis, Matematika kelas X).
 
+Draft among sequence (see the among generator spec, not yet in `specs/`): `jembatan-gerak-lurus` (Jembatan ke Gerak Lurus, Fisika kelas X), a bridge booklet for classes with weak prerequisites, Steps 0–3 plus a praxis card. It has its own `render.py` layout (codification, translation drill, three support levels, product before discussion) and reuses `modlib.CSS`.
+
 Content files list each multiple-choice item with its key first; at render time `kit.balance_keys` rotates the options so keys spread evenly over A–E and relabels the "pilihan salah" notes to match. Write those notes as letter groups followed by a colon ("B, C: …"); a letter used as a name (mobil A) is left alone. Only modules with an interactive page in `data/modules/` are copied to `docs/`.
 
 To rebuild after editing `content.py` (from the repository root):

@@ -1,0 +1,1137 @@
+{
+ "id": "geografi",
+ "subject": "Geografi",
+ "title": "Peta Materi Geografi SMA",
+ "lead": "Seluruh materi Geografi SMA, dari konsep dasar dan peta sampai wilayah dan pembangunan, disusun sebagai satu peta. Setiap simpul memuat konsep kunci, rumus hitungan, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
+ "blurb": "Konsep dasar, peta, penginderaan jauh dan SIG, dinamika geosfer, posisi Indonesia, kependudukan, bencana, serta wilayah dan pembangunan.",
+ "source_note": "Urutan mengikuti materi Geografi Kurikulum Merdeka: kelas X (di dalam IPS: konsep dasar, peta, penginderaan jauh, SIG, penelitian, bencana), kelas XI (posisi strategis dan sumber daya alam, keragaman hayati, lingkungan dan kependudukan, mitigasi bencana), kelas XII (wilayah, desa–kota, negara maju–berkembang, globalisasi). Dinamika litosfer, atmosfer, dan hidrosfer diambil dari buku sebelumnya karena masih diuji di TKA 2025. Cocokkan dengan buku sekolah.",
+ "path_title": "Alur prasyarat",
+ "path_note": "Urutan belajar yang disarankan: dari cara pandang dan alat geografi, ke gejala alam, ke Indonesia dan penduduknya, lalu wilayah dan hubungan antarnegara.",
+ "path": [
+  {
+   "label": "Dasar",
+   "title": "Konsep geografi",
+   "note": "Pendekatan, prinsip, konsep",
+   "to": "DAS-01"
+  },
+  {
+   "label": "Peta",
+   "title": "Peta dan skala",
+   "note": "Komponen, proyeksi, jarak",
+   "to": "DAS-02"
+  },
+  {
+   "label": "Citra",
+   "title": "Penginderaan jauh dan SIG",
+   "note": "Interpretasi, overlay",
+   "to": "DAS-03"
+  },
+  {
+   "label": "Bumi",
+   "title": "Litosfer",
+   "note": "Tenaga endogen dan eksogen",
+   "to": "GEO-01"
+  },
+  {
+   "label": "Udara",
+   "title": "Atmosfer dan iklim",
+   "note": "Lapisan, klasifikasi iklim",
+   "to": "GEO-03"
+  },
+  {
+   "label": "Indonesia",
+   "title": "Posisi strategis",
+   "note": "Astronomis, geologis",
+   "to": "IND-01"
+  },
+  {
+   "label": "Penduduk",
+   "title": "Dinamika penduduk",
+   "note": "Rumus dan piramida",
+   "to": "PEN-01"
+  },
+  {
+   "label": "Bencana",
+   "title": "Mitigasi bencana",
+   "note": "Prabencana sampai pemulihan",
+   "to": "BEN-02"
+  },
+  {
+   "label": "Wilayah",
+   "title": "Wilayah dan interaksi",
+   "note": "Gravitasi, titik henti",
+   "to": "WIL-01"
+  }
+ ],
+ "domains": [
+  {
+   "id": "DAS",
+   "name": "Dasar geografi dan alat spasial",
+   "short": "Dasar",
+   "note": "Konsep, pendekatan, peta, penginderaan jauh, SIG, dan penelitian geografi.",
+   "topics": [
+    {
+     "code": "DAS-01",
+     "title": "Konsep dasar geografi",
+     "scope": "Objek, pendekatan, prinsip, konsep esensial",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Objek kajian geografi, tiga pendekatan, empat prinsip, dan sepuluh konsep esensial beserta contoh penerapannya.",
+     "blocks": [
+      {
+       "h": "Objek dan pendekatan",
+       "li": [
+        "Objek material: geosfer (litosfer, atmosfer, hidrosfer, biosfer, antroposfer, pedosfer); objek formal: cara pandang keruangan, kelingkungan, kewilayahan.",
+        "Pendekatan: <b>keruangan</b> (persebaran dan lokasi), kelingkungan/ekologi (interaksi manusia–lingkungan), kompleks wilayah (gabungan keduanya)."
+       ]
+      },
+      {
+       "h": "Prinsip geografi",
+       "table": {
+        "cols": [
+         "Prinsip",
+         "Isi"
+        ],
+        "rows": [
+         [
+          "Persebaran",
+          "Gejala tersebar tidak merata di permukaan bumi"
+         ],
+         [
+          "Interelasi",
+          "Hubungan antargejala di suatu ruang"
+         ],
+         [
+          "Deskripsi",
+          "Menjelaskan gejala lebih jauh dengan data, peta, diagram"
+         ],
+         [
+          "Korologi",
+          "Gabungan ketiganya: persebaran, interelasi, dan deskripsi dalam satu ruang"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Konsep esensial",
+       "table": {
+        "cols": [
+         "Konsep",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Lokasi (absolut dan relatif)",
+          "Koordinat; dekat pelabuhan"
+         ],
+         [
+          "Jarak dan keterjangkauan",
+          "Desa terpencil sulit dijangkau kendaraan"
+         ],
+         [
+          "Pola dan morfologi",
+          "Permukiman memanjang mengikuti jalan atau sungai"
+         ],
+         [
+          "Aglomerasi",
+          "Industri mengelompok di kawasan industri"
+         ],
+         [
+          "Nilai kegunaan",
+          "Pantai bernilai bagi wisatawan dan nelayan secara berbeda"
+         ],
+         [
+          "Interaksi interdependensi",
+          "Desa memasok pangan, kota memasok barang industri"
+         ],
+         [
+          "Diferensiasi area",
+          "Dataran tinggi menanam sayur, dataran rendah padi"
+         ],
+         [
+          "Keterkaitan keruangan",
+          "Hutan gundul di hulu, banjir di hilir"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Lokasi absolut memakai garis lintang dan bujur; lokasi relatif bergantung pada daerah sekitarnya.",
+      "Aglomerasi adalah pengelompokan, sedangkan pola adalah bentuk sebaran (memanjang, memusat, tersebar)."
+     ]
+    },
+    {
+     "code": "DAS-02",
+     "title": "Peta dan pemetaan",
+     "scope": "Komponen, skala, proyeksi",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Komponen peta, jenis skala dan cara menghitung jarak sebenarnya, jenis peta, serta proyeksi peta.",
+     "blocks": [
+      {
+       "h": "Komponen dan jenis",
+       "li": [
+        "Komponen: judul, skala, legenda, orientasi (arah utara), simbol, sumber, tahun pembuatan, inset, garis astronomis, proyeksi.",
+        "Peta umum (topografi, korografi) dan peta tematik (curah hujan, kepadatan penduduk).",
+        "Simbol titik, garis, dan area; simbol kualitatif dan kuantitatif."
+       ]
+      },
+      {
+       "h": "Skala",
+       "li": [
+        "Skala numerik (1 : 50.000), skala garis (batang), skala verbal (1 cm = 0,5 km).",
+        "<b>Jarak sebenarnya = jarak di peta × penyebut skala</b>.",
+        "Contoh: 4 cm pada peta 1 : 250.000 = 1.000.000 cm = 10 km.",
+        "Skala besar (penyebut kecil, misalnya 1 : 5.000) lebih rinci untuk wilayah sempit."
+       ]
+      },
+      {
+       "h": "Proyeksi",
+       "table": {
+        "cols": [
+         "Bidang proyeksi",
+         "Ciri",
+         "Cocok untuk"
+        ],
+        "rows": [
+         [
+          "Bidang datar (azimutal)",
+          "Benar di titik singgung",
+          "Daerah kutub"
+         ],
+         [
+          "Silinder (Mercator)",
+          "Garis lintang dan bujur tegak lurus; daerah lintang tinggi tampak membesar",
+          "Daerah khatulistiwa, navigasi"
+         ],
+         [
+          "Kerucut",
+          "Benar di sepanjang garis singgung",
+          "Daerah lintang tengah"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Skala 1 : 5.000 lebih besar daripada 1 : 50.000; makin kecil penyebut, makin besar skala.",
+      "Ubah satuan dulu sebelum menjawab: 1 km = 100.000 cm."
+     ]
+    },
+    {
+     "code": "DAS-03",
+     "title": "Penginderaan jauh",
+     "scope": "Komponen, citra, interpretasi",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Cara memperoleh informasi tanpa menyentuh objek: komponen sistem, jenis citra, unsur interpretasi, dan pemanfaatannya.",
+     "blocks": [
+      {
+       "h": "Komponen",
+       "li": [
+        "Sumber tenaga (matahari pada sistem pasif, tenaga buatan seperti radar pada sistem aktif), atmosfer, interaksi dengan objek, sensor, wahana, perolehan data, pengguna.",
+        "Wahana: satelit (Landsat, SPOT), pesawat udara, dan pesawat nirawak (drone).",
+        "Citra foto (kamera) dan citra nonfoto (penyiam/scanner, radar)."
+       ]
+      },
+      {
+       "h": "Unsur interpretasi citra",
+       "table": {
+        "cols": [
+         "Unsur",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Rona dan warna",
+          "Air jernih gelap; awan cerah"
+         ],
+         [
+          "Bentuk dan ukuran",
+          "Stadion berbentuk oval; rumah lebih kecil dari pabrik"
+         ],
+         [
+          "Tekstur",
+          "Hutan kasar, sawah halus"
+         ],
+         [
+          "Pola",
+          "Perkebunan teratur; permukiman berjajar sepanjang jalan"
+         ],
+         [
+          "Bayangan",
+          "Membantu mengenali menara atau cerobong"
+         ],
+         [
+          "Situs dan asosiasi",
+          "Tambak di tepi pantai; stasiun bersama rel kereta"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Skala citra",
+       "li": [
+        "Skala foto udara = f : H (panjang fokus kamera : tinggi terbang di atas permukaan), dalam satuan yang sama.",
+        "Contoh: f = 15 cm, H = 3.000 m = 300.000 cm, skala 1 : 20.000."
+       ]
+      }
+     ],
+     "traps": [
+      "Radar termasuk sistem aktif karena memancarkan tenaganya sendiri, sehingga dapat merekam pada malam hari dan menembus awan.",
+      "Rona adalah tingkat kecerahan pada citra hitam-putih; warna dipakai pada citra berwarna."
+     ]
+    },
+    {
+     "code": "DAS-04",
+     "title": "Sistem informasi geografis",
+     "scope": "Komponen, data, analisis",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "SIG mengolah data bereferensi geografis: komponennya, jenis data spasial, tahap kerja, dan analisis seperti tumpang susun dan buffer.",
+     "blocks": [
+      {
+       "h": "Komponen dan data",
+       "li": [
+        "Komponen: perangkat keras, perangkat lunak, data, manusia (brainware), dan metode.",
+        "Data spasial: <b>vektor</b> (titik, garis, poligon) dan raster (piksel/sel); data atribut berupa tabel keterangan.",
+        "Subsistem: masukan data, penyimpanan dan manipulasi, analisis, keluaran."
+       ]
+      },
+      {
+       "h": "Analisis",
+       "li": [
+        "Tumpang susun (overlay): menggabungkan beberapa peta tematik, misalnya kesesuaian lahan dari peta lereng, tanah, dan curah hujan.",
+        "Buffer: membuat zona dengan jarak tertentu dari objek, misalnya sempadan sungai 50 m.",
+        "Query: memilih data berdasarkan syarat atribut; analisis jaringan untuk rute terpendek."
+       ]
+      }
+     ],
+     "traps": [
+      "Buffer membuat zona di sekitar objek; overlay menggabungkan beberapa lapisan peta."
+     ]
+    },
+    {
+     "code": "DAS-05",
+     "title": "Penelitian geografi",
+     "scope": "Langkah, sampel, data",
+     "src": "Kelas X",
+     "tier": 3,
+     "sum": "Langkah penelitian geografi, jenis data dan cara pengumpulannya, serta teknik pengambilan sampel wilayah.",
+     "blocks": [
+      {
+       "h": "Langkah dan data",
+       "li": [
+        "Langkah: merumuskan masalah, tujuan, kajian pustaka, hipotesis, mengumpulkan data, mengolah dan menganalisis, menyimpulkan.",
+        "Data primer (observasi lapangan, wawancara, kuesioner) dan sekunder (BPS, peta, citra).",
+        "Sampel wilayah: acak, sistematis, bertingkat (stratified), atau berdasarkan tujuan (purposive)."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "GEO",
+   "name": "Dinamika geosfer",
+   "short": "Geosfer",
+   "note": "Gejala litosfer, pedosfer, atmosfer, dan hidrosfer serta dampaknya bagi kehidupan.",
+   "topics": [
+    {
+     "code": "GEO-01",
+     "title": "Litosfer",
+     "scope": "Batuan, tenaga endogen dan eksogen",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Batuan penyusun litosfer, tenaga endogen (tektonisme, vulkanisme, seisme) dan eksogen (pelapukan, erosi, sedimentasi), serta bentuk muka bumi hasilnya.",
+     "blocks": [
+      {
+       "h": "Batuan",
+       "table": {
+        "cols": [
+         "Jenis",
+         "Terbentuk dari",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Beku",
+          "Pembekuan magma",
+          "Granit, basalt, obsidian"
+         ],
+         [
+          "Sedimen",
+          "Endapan hasil pelapukan dan erosi",
+          "Batu pasir, batu kapur, konglomerat"
+         ],
+         [
+          "Metamorf",
+          "Perubahan batuan karena suhu dan tekanan tinggi",
+          "Marmer (dari batu kapur), batu sabak"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Tenaga endogen",
+       "li": [
+        "Tektonisme: orogenesa (pembentukan pegunungan, cepat, wilayah sempit) dan epirogenesa (lambat, wilayah luas); hasilnya lipatan dan patahan (horst, graben).",
+        "Vulkanisme: intrusi magma (batolit, lakolit, sill, gang/dike, diatrema) dan ekstrusi; gunung strato, perisai, maar.",
+        "Seisme: gempa tektonik, vulkanik, runtuhan; hiposentrum di dalam bumi, episentrum di permukaan tepat di atasnya.",
+        "Gelombang gempa: primer (P, paling cepat), sekunder (S), dan permukaan (L)."
+       ]
+      },
+      {
+       "h": "Tenaga eksogen",
+       "li": [
+        "Pelapukan fisik (mekanis), kimia, dan biologis.",
+        "Erosi oleh air (ablasi), angin (deflasi/korasi), gletser (eksarasi), gelombang laut (abrasi).",
+        "Sedimentasi menghasilkan delta, gumuk pasir, tanggul alam, dan endapan lainnya."
+       ]
+      },
+      {
+       "h": "Rumus Laska",
+       "li": [
+        "<b>Δ = ((S − P) − 1′) × 1.000 km</b>; S − P dalam menit (selisih datangnya gelombang S dan P).",
+        "Contoh: selisih 3 menit 20 detik, Δ = (3′20″ − 1′) × 1.000 km = 2′20″ × 1.000 km ≈ 2.333 km."
+       ]
+      }
+     ],
+     "traps": [
+      "Episentrum ada di permukaan bumi; hiposentrum (fokus) ada di dalam bumi.",
+      "Abrasi adalah pengikisan oleh gelombang laut, sedangkan ablasi pengikisan oleh air mengalir."
+     ]
+    },
+    {
+     "code": "GEO-02",
+     "title": "Pedosfer",
+     "scope": "Pembentukan, profil, jenis tanah",
+     "src": "Kelas X",
+     "tier": 2,
+     "sum": "Faktor pembentuk tanah, profil tanah, jenis tanah di Indonesia, serta erosi tanah dan konservasinya.",
+     "blocks": [
+      {
+       "h": "Pembentukan dan profil",
+       "li": [
+        "Faktor pembentuk: bahan induk, iklim, organisme, topografi, waktu.",
+        "Profil tanah: horizon O (organik), A (topsoil), B (subsoil), C (bahan induk lapuk), R (batuan induk)."
+       ]
+      },
+      {
+       "h": "Jenis tanah",
+       "table": {
+        "cols": [
+         "Tanah",
+         "Asal dan sifat"
+        ],
+        "rows": [
+         [
+          "Aluvial",
+          "Endapan sungai; subur, banyak di dataran rendah"
+         ],
+         [
+          "Andosol (vulkanis)",
+          "Abu gunung api; sangat subur"
+         ],
+         [
+          "Latosol",
+          "Pelapukan batuan di daerah lembap; kemerahan"
+         ],
+         [
+          "Podzolik",
+          "Daerah curah hujan tinggi; kurang subur"
+         ],
+         [
+          "Organosol (gambut)",
+          "Bahan organik tergenang; asam"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Konservasi",
+       "li": [
+        "Metode mekanik: terasering, guludan, rorak, cek dam.",
+        "Metode vegetatif: penanaman sejajar kontur (contour strip cropping), reboisasi, rotasi tanaman, tanaman penutup tanah."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "GEO-03",
+     "title": "Atmosfer dan iklim",
+     "scope": "Lapisan, unsur cuaca, iklim",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Lapisan atmosfer, unsur cuaca dan iklim, angin muson, serta klasifikasi iklim Köppen, Schmidt–Ferguson, dan Oldeman.",
+     "blocks": [
+      {
+       "h": "Lapisan atmosfer",
+       "table": {
+        "cols": [
+         "Lapisan",
+         "Ketinggian kira-kira",
+         "Ciri"
+        ],
+        "rows": [
+         [
+          "Troposfer",
+          "0–12 km (8 km di kutub, 16–18 km di khatulistiwa)",
+          "Gejala cuaca; suhu turun dengan ketinggian"
+         ],
+         [
+          "Stratosfer",
+          "12–50 km",
+          "Lapisan ozon menyerap ultraviolet"
+         ],
+         [
+          "Mesosfer",
+          "50–80 km",
+          "Meteor terbakar; suhu terendah"
+         ],
+         [
+          "Termosfer",
+          "80–500 km",
+          "Ionosfer memantulkan gelombang radio"
+         ],
+         [
+          "Eksosfer",
+          "Di atas 500 km",
+          "Peralihan ke antariksa"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Suhu dan angin",
+       "li": [
+        "Rumus Braak: <b>T = 26,3 °C − 0,6 h</b>, h dalam ratusan meter (hektometer); suhu turun sekitar 0,6 °C tiap naik 100 m.",
+        "Contoh: kota pada 1.500 m: T = 26,3 − 0,6 × 15 = 17,3 °C.",
+        "Angin bertiup dari tekanan tinggi ke tekanan rendah; angin muson barat (Oktober–April) membawa hujan, muson timur (April–Oktober) kering di Indonesia."
+       ]
+      },
+      {
+       "h": "Klasifikasi iklim",
+       "table": {
+        "cols": [
+         "Sistem",
+         "Dasar",
+         "Catatan"
+        ],
+        "rows": [
+         [
+          "Köppen",
+          "Suhu dan curah hujan",
+          "A tropis, B kering, C sedang, D dingin, E kutub"
+         ],
+         [
+          "Schmidt–Ferguson",
+          "Q = rata-rata bulan kering : rata-rata bulan basah × 100%",
+          "Bulan kering &lt;60 mm, basah &gt;100 mm; tipe A–H"
+         ],
+         [
+          "Oldeman",
+          "Bulan basah berturut-turut",
+          "Bulan basah &gt;200 mm, kering &lt;100 mm; untuk pertanian"
+         ],
+         [
+          "Junghuhn",
+          "Ketinggian tempat",
+          "Zona panas, sedang, sejuk, dingin; tanaman khas"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Lapisan ozon ada di stratosfer, bukan troposfer.",
+      "Batas bulan basah dan kering Schmidt–Ferguson (100 dan 60 mm) berbeda dari Oldeman (200 dan 100 mm)."
+     ]
+    },
+    {
+     "code": "GEO-04",
+     "title": "Hidrosfer",
+     "scope": "Siklus air, DAS, air tanah, laut",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Siklus hidrologi, perairan darat (sungai, DAS, danau, air tanah, rawa), perairan laut, dan pelestariannya.",
+     "blocks": [
+      {
+       "h": "Siklus hidrologi",
+       "li": [
+        "Siklus pendek: penguapan dari laut, kondensasi, hujan langsung di laut.",
+        "Siklus sedang: uap terbawa angin ke darat, hujan di darat, mengalir kembali ke laut.",
+        "Siklus panjang: uap menjadi salju atau es di pegunungan, mencair, lalu mengalir ke laut."
+       ]
+      },
+      {
+       "h": "Perairan darat",
+       "li": [
+        "<b>Daerah aliran sungai (DAS)</b>: wilayah yang dibatasi punggung bukit, menampung dan mengalirkan air hujan ke sungai utama; bagian hulu, tengah, hilir.",
+        "Pola aliran: dendritik, radial sentrifugal (gunung), radial sentripetal (cekungan), trellis, rektangular, annular.",
+        "Air tanah: akuifer bebas dan tertekan; sumur artesis memancar karena akuifer tertekan.",
+        "Danau tektonik (Toba, Poso), vulkanik (Kelimutu), tekto-vulkanik, karst, buatan (waduk)."
+       ]
+      },
+      {
+       "h": "Laut",
+       "li": [
+        "Zona laut menurut kedalaman: litoral, neritik (sampai 200 m), batial, abisal.",
+        "Batas wilayah laut menurut UNCLOS 1982: laut teritorial 12 mil, zona tambahan 24 mil, ZEE 200 mil dari garis pangkal.",
+        "Arus laut, pasang surut (dipengaruhi gaya tarik Bulan dan Matahari), salinitas."
+       ]
+      }
+     ],
+     "traps": [
+      "ZEE 200 mil memberi hak berdaulat atas sumber daya, bukan kedaulatan penuh seperti laut teritorial.",
+      "Pola radial sentrifugal menyebar dari puncak gunung; sentripetal memusat ke cekungan."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "IND",
+   "name": "Indonesia: posisi dan sumber daya",
+   "short": "Indonesia",
+   "note": "Posisi strategis, potensi sumber daya alam, dan keragaman hayati Indonesia.",
+   "topics": [
+    {
+     "code": "IND-01",
+     "title": "Posisi strategis Indonesia",
+     "scope": "Astronomis, geografis, geologis",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Letak astronomis, geografis, dan geologis Indonesia serta pengaruhnya terhadap iklim, kekayaan alam, kerawanan bencana, dan hubungan internasional.",
+     "blocks": [
+      {
+       "h": "Letak",
+       "table": {
+        "cols": [
+         "Letak",
+         "Keterangan",
+         "Pengaruh"
+        ],
+        "rows": [
+         [
+          "Astronomis",
+          "Sekitar 6° LU–11° LS dan 95° BT–141° BT",
+          "Iklim tropis; tiga zona waktu WIB, WITA, WIT"
+         ],
+         [
+          "Geografis",
+          "Antara Benua Asia dan Australia, Samudra Hindia dan Pasifik",
+          "Jalur perdagangan dunia; iklim muson"
+         ],
+         [
+          "Geologis",
+          "Pertemuan Lempeng Indo-Australia, Eurasia, dan Pasifik",
+          "Banyak gunung api, tanah subur, rawan gempa dan tsunami"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Wilayah laut",
+       "li": [
+        "Wawasan Nusantara dan Deklarasi Djuanda (13 Desember 1957) menjadikan laut di antara pulau bagian wilayah Indonesia; diakui UNCLOS 1982.",
+        "Tiga <b>Alur Laut Kepulauan Indonesia (ALKI)</b> menjadi jalur pelayaran internasional (PP No. 37 Tahun 2002).",
+        "Selat Malaka termasuk jalur pelayaran tersibuk dunia."
+       ]
+      }
+     ],
+     "traps": [
+      "Letak astronomis menentukan iklim tropis; letak geografis menentukan muson dan jalur perdagangan.",
+      "Zona waktu Indonesia: WIB UTC+7, WITA UTC+8, WIT UTC+9."
+     ]
+    },
+    {
+     "code": "IND-02",
+     "title": "Potensi sumber daya alam",
+     "scope": "Persebaran dan pengelolaan",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Jenis sumber daya alam, persebarannya di Indonesia, dan prinsip pengelolaan berkelanjutan.",
+     "blocks": [
+      {
+       "h": "Jenis",
+       "li": [
+        "Menurut sifat: dapat diperbarui (hutan, ikan, air), tidak dapat diperbarui (minyak bumi, batu bara, mineral), tidak habis (sinar matahari, angin).",
+        "Menurut asal: hayati dan nonhayati; menurut penggunaan: bahan baku dan energi."
+       ]
+      },
+      {
+       "h": "Persebaran contoh",
+       "table": {
+        "cols": [
+         "Sumber daya",
+         "Contoh daerah"
+        ],
+        "rows": [
+         [
+          "Batu bara",
+          "Kalimantan Timur, Kalimantan Selatan, Sumatra Selatan"
+         ],
+         [
+          "Nikel",
+          "Sulawesi Tenggara, Sulawesi Tengah, Maluku Utara"
+         ],
+         [
+          "Timah",
+          "Kepulauan Bangka Belitung"
+         ],
+         [
+          "Tembaga dan emas",
+          "Papua (Grasberg), Nusa Tenggara Barat (Batu Hijau)"
+         ],
+         [
+          "Panas bumi",
+          "Jalur gunung api: Jawa Barat, Sumatra, Sulawesi Utara"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Pengelolaan",
+       "li": [
+        "Prinsip berkelanjutan: memenuhi kebutuhan kini tanpa mengorbankan generasi mendatang.",
+        "Hilirisasi: mengolah bahan mentah di dalam negeri untuk menambah nilai tambah.",
+        "Pasal 33 ayat (3) UUD 1945: bumi, air, dan kekayaan alam dikuasai negara untuk kemakmuran rakyat."
+       ]
+      }
+     ],
+     "traps": [
+      "Ikan dan hutan dapat diperbarui, tetapi bisa habis jika dieksploitasi melebihi daya pulihnya."
+     ]
+    },
+    {
+     "code": "IND-03",
+     "title": "Keragaman hayati",
+     "scope": "Flora, fauna, bioma",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Faktor persebaran flora dan fauna, wilayah fauna Indonesia dengan garis Wallace dan Weber, serta bioma dunia.",
+     "blocks": [
+      {
+       "h": "Faktor persebaran",
+       "li": [
+        "Klimatik (suhu, curah hujan, angin, kelembapan), edafik (tanah), fisiografik (ketinggian, relief), biotik (manusia, hewan)."
+       ]
+      },
+      {
+       "h": "Fauna Indonesia",
+       "table": {
+        "cols": [
+         "Wilayah",
+         "Batas",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Asiatis (barat)",
+          "Di barat garis Wallace",
+          "Harimau, gajah, badak, orang utan"
+         ],
+         [
+          "Peralihan (Wallacea)",
+          "Antara garis Wallace dan Weber",
+          "Anoa, babirusa, komodo, maleo"
+         ],
+         [
+          "Australis (timur)",
+          "Di timur garis Weber",
+          "Kanguru pohon, kasuari, cenderawasih"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Bioma",
+       "table": {
+        "cols": [
+         "Bioma",
+         "Ciri"
+        ],
+        "rows": [
+         [
+          "Hutan hujan tropis",
+          "Hujan tinggi sepanjang tahun, keanekaragaman tertinggi"
+         ],
+         [
+          "Sabana",
+          "Padang rumput dengan pohon jarang; NTT"
+         ],
+         [
+          "Gurun",
+          "Curah hujan sangat rendah"
+         ],
+         [
+          "Hutan gugur",
+          "Empat musim, daun gugur di musim dingin"
+         ],
+         [
+          "Taiga dan tundra",
+          "Konifer di lintang tinggi; tundra tanpa pohon"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Garis Wallace memisahkan Kalimantan–Sulawesi dan Bali–Lombok; garis Weber berada di timur Sulawesi dan Nusa Tenggara."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "PEN",
+   "name": "Kependudukan dan lingkungan",
+   "short": "Penduduk",
+   "note": "Dinamika dan kualitas penduduk, masalah kependudukan, dan lingkungan hidup.",
+   "topics": [
+    {
+     "code": "PEN-01",
+     "title": "Dinamika penduduk",
+     "scope": "Kelahiran, kematian, migrasi, komposisi",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Faktor dan rumus pertumbuhan penduduk, ukuran fertilitas dan mortalitas, migrasi, komposisi penduduk, dan piramida penduduk.",
+     "blocks": [
+      {
+       "h": "Rumus",
+       "li": [
+        "Pertumbuhan alami = kelahiran − kematian; pertumbuhan total = (L − M) + (I − E).",
+        "<b>CBR = jumlah kelahiran : jumlah penduduk × 1.000</b>; CDR sama dengan jumlah kematian.",
+        "Proyeksi geometrik: P<sub>t</sub> = P<sub>0</sub>(1 + r)<sup>t</sup>.",
+        "Rasio jenis kelamin = laki-laki : perempuan × 100.",
+        "<b>Rasio ketergantungan</b> = (penduduk 0–14 tahun + 65 tahun ke atas) : penduduk 15–64 tahun × 100."
+       ]
+      },
+      {
+       "h": "Piramida penduduk",
+       "table": {
+        "cols": [
+         "Bentuk",
+         "Ciri",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Ekspansif (limas)",
+          "Alas lebar, kelahiran tinggi, penduduk muda",
+          "Negara berkembang"
+         ],
+         [
+          "Stasioner (granat)",
+          "Kelahiran dan kematian rendah seimbang",
+          "Negara maju"
+         ],
+         [
+          "Konstriktif (batu nisan)",
+          "Alas menyempit, kelahiran sangat rendah",
+          "Jepang"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Migrasi dan kepadatan",
+       "li": [
+        "Migrasi: urbanisasi (desa ke kota), transmigrasi (antarpulau dalam negeri), emigrasi, imigrasi; faktor pendorong dan penarik.",
+        "Kepadatan aritmetik = jumlah penduduk : luas wilayah; kepadatan agraris = petani : luas lahan pertanian.",
+        "Bonus demografi: proporsi usia produktif besar sehingga rasio ketergantungan rendah."
+       ]
+      }
+     ],
+     "traps": [
+      "Rasio ketergantungan membagi usia nonproduktif dengan usia produktif, bukan sebaliknya.",
+      "Transmigrasi berpindah antarpulau di dalam negeri; urbanisasi dari desa ke kota."
+     ]
+    },
+    {
+     "code": "PEN-02",
+     "title": "Kualitas penduduk dan masalahnya",
+     "scope": "IPM, masalah, kebijakan",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Ukuran kualitas penduduk, masalah kependudukan di Indonesia, dan upaya mengatasinya.",
+     "blocks": [
+      {
+       "h": "Kualitas dan masalah",
+       "li": [
+        "Ukuran kualitas: pendidikan, kesehatan, pendapatan; dirangkum dalam Indeks Pembangunan Manusia (IPM).",
+        "Masalah: persebaran tidak merata (terpusat di Jawa), pertumbuhan tinggi, kualitas rendah, pengangguran, urbanisasi berlebihan.",
+        "Upaya: keluarga berencana, pemerataan pendidikan dan kesehatan, transmigrasi, pembangunan desa."
+       ]
+      },
+      {
+       "h": "Data",
+       "li": [
+        "Data penduduk dihimpun lewat sensus penduduk (terakhir 2020), survei (Susenas, Sakernas), dan registrasi.",
+        "Sebutkan tahun data bila mengutip jumlah atau kepadatan penduduk."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "PEN-03",
+     "title": "Lingkungan hidup dan pembangunan berkelanjutan",
+     "scope": "Kerusakan, pelestarian, SDGs",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Kerusakan lingkungan akibat alam dan manusia, upaya pelestarian, dan konsep pembangunan berkelanjutan.",
+     "blocks": [
+      {
+       "h": "Kerusakan dan pelestarian",
+       "li": [
+        "Penyebab manusia: pembalakan liar, alih fungsi lahan, pencemaran, penambangan tanpa reklamasi.",
+        "Pemanasan global karena gas rumah kaca (CO₂, CH₄) menaikkan suhu dan muka laut.",
+        "AMDAL wajib untuk usaha berdampak penting (UU No. 32 Tahun 2009).",
+        "Pembangunan berkelanjutan menyeimbangkan aspek ekonomi, sosial, dan lingkungan; SDGs berisi 17 tujuan (2015–2030)."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "BEN",
+   "name": "Bencana",
+   "short": "Bencana",
+   "note": "Jenis dan penyebab bencana serta mitigasi dan adaptasinya.",
+   "topics": [
+    {
+     "code": "BEN-01",
+     "title": "Jenis dan penyebab bencana",
+     "scope": "Geologis dan hidrometeorologis",
+     "src": "Kelas X–XI",
+     "tier": 1,
+     "sum": "Bencana geologis dan hidrometeorologis, penyebabnya, tanda-tandanya, serta ukuran kekuatan gempa dan status gunung api.",
+     "blocks": [
+      {
+       "h": "Jenis bencana alam",
+       "table": {
+        "cols": [
+         "Kelompok",
+         "Contoh",
+         "Penyebab utama"
+        ],
+        "rows": [
+         [
+          "Geologis",
+          "Gempa bumi, tsunami, letusan gunung api, tanah longsor",
+          "Tenaga endogen, lereng labil"
+         ],
+         [
+          "Hidrometeorologis",
+          "Banjir, kekeringan, puting beliung, gelombang ekstrem",
+          "Cuaca dan iklim, kerusakan DAS"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Ukuran dan tanda",
+       "li": [
+        "Magnitudo (skala Richter) mengukur energi gempa; intensitas (MMI) mengukur dampak yang dirasakan di suatu tempat.",
+        "Tanda tsunami: gempa kuat di laut, air laut surut tiba-tiba.",
+        "Status gunung api (PVMBG): Level I Normal, II Waspada, III Siaga, IV Awas.",
+        "UU No. 24 Tahun 2007 membagi bencana menjadi bencana alam, nonalam (wabah, gagal teknologi), dan sosial (konflik)."
+       ]
+      }
+     ],
+     "traps": [
+      "Magnitudo satu gempa hanya satu nilai; intensitasnya berbeda-beda di tiap tempat.",
+      "Status Awas (Level IV) lebih tinggi daripada Siaga (Level III)."
+     ]
+    },
+    {
+     "code": "BEN-02",
+     "title": "Mitigasi dan adaptasi bencana",
+     "scope": "Siklus penanggulangan, lembaga",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Tahap penanggulangan bencana, mitigasi struktural dan nonstruktural, lembaga yang terlibat, dan adaptasi masyarakat.",
+     "blocks": [
+      {
+       "h": "Siklus penanggulangan",
+       "li": [
+        "Prabencana: pencegahan, <b>mitigasi</b>, kesiapsiagaan, peringatan dini.",
+        "Saat bencana: tanggap darurat (evakuasi, pencarian, bantuan).",
+        "Pascabencana: rehabilitasi (memulihkan layanan) dan rekonstruksi (membangun kembali)."
+       ]
+      },
+      {
+       "h": "Mitigasi",
+       "li": [
+        "Struktural: bangunan tahan gempa, tanggul, sabo dam, sistem peringatan dini tsunami.",
+        "Nonstruktural: peta rawan bencana, tata ruang, pendidikan dan latihan evakuasi, peraturan.",
+        "Lembaga: BNPB di pusat, BPBD di daerah; BMKG untuk cuaca, iklim, dan gempa; PVMBG untuk gunung api.",
+        "Adaptasi: rumah panggung di daerah banjir, kearifan lokal seperti smong di Simeulue."
+       ]
+      }
+     ],
+     "traps": [
+      "Membangun kembali rumah termasuk rekonstruksi; memulihkan layanan dasar termasuk rehabilitasi.",
+      "Pelatihan evakuasi termasuk mitigasi nonstruktural."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "WIL",
+   "name": "Wilayah dan pembangunan",
+   "short": "Wilayah",
+   "note": "Konsep wilayah, desa dan kota, negara maju dan berkembang, serta globalisasi.",
+   "topics": [
+    {
+     "code": "WIL-01",
+     "title": "Wilayah dan interaksi keruangan",
+     "scope": "Wilayah, pusat pertumbuhan, interaksi",
+     "src": "Kelas XII",
+     "tier": 1,
+     "sum": "Jenis wilayah, teori pusat pertumbuhan, faktor interaksi wilayah, dan cara menghitung kekuatan interaksi serta titik henti.",
+     "blocks": [
+      {
+       "h": "Wilayah dan pusat pertumbuhan",
+       "li": [
+        "Wilayah formal (seragam: wilayah padi) dan fungsional (dihubungkan aktivitas: kota dan daerah sekitarnya).",
+        "Teori tempat sentral Christaller: pusat pelayanan membentuk jaringan heksagonal.",
+        "Teori kutub pertumbuhan Perroux: industri penggerak memicu pertumbuhan sekitarnya."
+       ]
+      },
+      {
+       "h": "Interaksi (Ullman)",
+       "li": [
+        "Saling melengkapi (complementarity), kesempatan berintervensi (intervening opportunity), kemudahan perpindahan (transferability)."
+       ]
+      },
+      {
+       "h": "Rumus",
+       "li": [
+        "<b>Gravitasi: I = k · P<sub>A</sub>P<sub>B</sub> / d²</b>; P jumlah penduduk, d jarak.",
+        "Titik henti (Reilly): D<sub>AB</sub> = d<sub>AB</sub> / (1 + √(P<sub>B</sub>/P<sub>A</sub>)), diukur dari kota A.",
+        "Contoh: d = 60 km, P<sub>A</sub> = 10.000, P<sub>B</sub> = 40.000; D = 60 / (1 + 2) = 20 km dari A.",
+        "Indeks konektivitas β = jumlah jalur (e) : jumlah simpul (v)."
+       ]
+      }
+     ],
+     "traps": [
+      "Titik henti lebih dekat ke kota yang penduduknya lebih sedikit.",
+      "Kesempatan berintervensi melemahkan interaksi dua wilayah karena ada wilayah ketiga yang memenuhi kebutuhan."
+     ]
+    },
+    {
+     "code": "WIL-02",
+     "title": "Desa dan kota",
+     "scope": "Ciri, struktur kota, interaksi",
+     "src": "Kelas XI–XII",
+     "tier": 1,
+     "sum": "Ciri desa dan kota, potensi desa, teori struktur ruang kota, serta dampak interaksi desa dan kota.",
+     "blocks": [
+      {
+       "h": "Desa",
+       "li": [
+        "Ciri: kepadatan rendah, mata pencaharian agraris, hubungan sosial erat.",
+        "Pola permukiman: memanjang (jalan, sungai, pantai), memusat (mata air, lembah), tersebar."
+       ]
+      },
+      {
+       "h": "Struktur ruang kota",
+       "table": {
+        "cols": [
+         "Teori",
+         "Tokoh",
+         "Bentuk"
+        ],
+        "rows": [
+         [
+          "Konsentris",
+          "E. W. Burgess",
+          "Lingkaran zona dari pusat (CBD) ke luar"
+         ],
+         [
+          "Sektoral",
+          "Homer Hoyt",
+          "Sektor memanjang mengikuti jalur transportasi"
+         ],
+         [
+          "Inti ganda",
+          "Harris dan Ullman",
+          "Beberapa pusat kegiatan"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Interaksi",
+       "li": [
+        "Dampak bagi desa: pengetahuan bertambah, tetapi tenaga kerja muda pergi ke kota.",
+        "Dampak bagi kota: pasokan pangan dan tenaga kerja, tetapi kepadatan dan permukiman kumuh."
+       ]
+      }
+     ],
+     "traps": [
+      "Teori sektoral (Hoyt) berbentuk sektor mengikuti jalur transportasi, bukan cincin seperti Burgess."
+     ]
+    },
+    {
+     "code": "WIL-03",
+     "title": "Negara maju dan berkembang",
+     "scope": "Ciri, interaksi",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Ciri negara maju dan berkembang menurut ekonomi dan demografi, serta bentuk interaksi dan kerja sama di antara keduanya.",
+     "blocks": [
+      {
+       "h": "Ciri dan interaksi",
+       "li": [
+        "Negara maju: pendapatan per kapita tinggi, sektor industri dan jasa dominan, pertumbuhan penduduk rendah, IPM tinggi.",
+        "Negara berkembang: sektor pertanian masih besar, pertumbuhan penduduk relatif tinggi, ketergantungan pada ekspor bahan mentah.",
+        "Bank Dunia mengelompokkan negara menurut pendapatan nasional bruto per kapita; batasnya diperbarui setiap tahun.",
+        "Interaksi: perdagangan, investasi, bantuan pembangunan, alih teknologi, migrasi tenaga kerja."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "WIL-04",
+     "title": "Globalisasi dan kerja sama antarwilayah",
+     "scope": "Dampak, kerja sama",
+     "src": "Kelas XII",
+     "tier": 3,
+     "sum": "Globalisasi dari sudut ruang: arus barang, orang, dan informasi antarwilayah, dampaknya, dan kerja sama yang diikuti Indonesia.",
+     "blocks": [
+      {
+       "h": "Dampak dan kerja sama",
+       "li": [
+        "Pendorong: kemajuan transportasi dan komunikasi, perdagangan bebas.",
+        "Dampak: pertukaran budaya dan teknologi, persaingan produk, ketimpangan antarwilayah.",
+        "Kerja sama: ASEAN, APEC, G20, serta kerja sama perbatasan dan subregional."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "Perlu diperhatikan",
+   "items": [
+    "Kelas X Kurikulum Merdeka membahas geografi di dalam IPS. Dinamika litosfer, pedosfer, atmosfer, dan hidrosfer berasal dari kurikulum sebelumnya tetapi masih muncul di TKA 2025.",
+    "Batas koordinat Indonesia ditulis berbeda antarbuku (misalnya 6° LU atau 6°08′ LU); ikuti buku sekolah.",
+    "Ketinggian lapisan atmosfer adalah perkiraan dan berbeda antarbuku.",
+    "Data penduduk, IPM, dan batas kelompok pendapatan negara berubah tiap tahun; sebutkan tahun data saat mengutip."
+   ]
+  },
+  {
+   "title": "Rujukan",
+   "items": [
+    "Buku teks Geografi Kurikulum Merdeka kelas XI dan XII (Kemendikbudristek). Daftar bab dicocokkan lewat ringkasan Mamikos, Ruangguru, dan Detik karena PDF resmi tidak dapat dibuka dari lingkungan kerja.",
+    "Elemen dan subelemen soal TKA 2025 Geografi (data/tka/tka-geografi-pilihan-2025.json).",
+    "UU No. 24 Tahun 2007 (Penanggulangan Bencana), UU No. 32 Tahun 2009 (Lingkungan Hidup), PP No. 37 Tahun 2002 (ALKI), UNCLOS 1982."
+   ]
+  }
+ ]
+}

@@ -441,8 +441,8 @@ def subject_cards(maps, topics, n_questions, tka=None, modules=None):
     n_topics = sum(len(d["topics"]) for d in sni)
     cards = [
         '<article class="subject" style="--c:var(--c-sejarah, var(--c-default))">'
-        '<span class="kind">Sejarah · ' + str(n_topics) + ' simpul · ' + str(n_questions) + ' soal</span>'
-        '<h2>Sejarah</h2>'
+        '<span class="kind">Lomba LCCM · ' + str(n_topics) + ' simpul · ' + str(n_questions) + ' soal</span>'
+        '<h2>Kit Lomba Sejarah</h2>'
         '<p>Perangkat lomba bergaya Lomba Cerdas Cermat Museum: sejarah nasional, kebudayaan, serta permuseuman dan cagar budaya.</p>'
         '<div class="chips">' + "".join(f'<span>{e(d["short"])} {d["weight"]}%</span>' for d in sni) + '</div>'
         '<nav class="links" aria-label="Sejarah">'

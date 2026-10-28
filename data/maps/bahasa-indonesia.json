@@ -1,0 +1,907 @@
+{
+ "id": "bahasa-indonesia",
+ "subject": "Bahasa Indonesia",
+ "title": "Peta Materi Bahasa Indonesia SMA",
+ "lead": "Seluruh materi Bahasa Indonesia SMA disusun sebagai satu peta: keterampilan membaca, jenis teks nonfiksi dan sastra, serta kaidah kebahasaan. Setiap simpul memuat struktur, ciri kebahasaan, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
+ "blurb": "Membaca kritis dan membaca data, teks nonfiksi dari laporan sampai surat lamaran, sastra, serta ejaan, kata, kalimat, dan paragraf.",
+ "source_note": "Disusun menurut keterampilan dan jenis teks, bukan nomor bab, karena urutan bab Bahasa Indonesia Kurikulum Merdeka berbeda antarbuku. Penempatan kelas mengikuti ringkasan umum: kelas X (laporan hasil observasi, anekdot, eksposisi, hikayat, negosiasi, debat, puisi), kelas XI (prosedur, eksplanasi, karya ilmiah, resensi, drama, cerpen), kelas XII (surat lamaran, novel sejarah, kritik dan esai, artikel opini). Domain membaca mengikuti tipe soal TKA 2025.",
+ "path_title": "Alur belajar",
+ "path_note": "Urutan belajar yang disarankan: kuasai cara membaca dulu, lalu kenali jenis teks, lalu kaidah bahasa yang sering diuji.",
+ "path": [
+  {
+   "label": "Gagasan",
+   "title": "Gagasan pokok",
+   "note": "Tersurat dan tersirat",
+   "to": "MBC-01"
+  },
+  {
+   "label": "Makna",
+   "title": "Makna kata",
+   "note": "Konteks, istilah, serapan",
+   "to": "MBC-02"
+  },
+  {
+   "label": "Nalar",
+   "title": "Fakta, opini, penalaran",
+   "note": "Deduktif, induktif",
+   "to": "MBC-04"
+  },
+  {
+   "label": "Data",
+   "title": "Membaca data",
+   "note": "Tabel dan grafik",
+   "to": "MBC-05"
+  },
+  {
+   "label": "Nonfiksi",
+   "title": "Eksposisi",
+   "note": "Tesis dan argumen",
+   "to": "NON-02"
+  },
+  {
+   "label": "Sastra",
+   "title": "Unsur intrinsik prosa",
+   "note": "Tokoh, alur, latar",
+   "to": "SAS-01"
+  },
+  {
+   "label": "Puisi",
+   "title": "Puisi dan majas",
+   "note": "Citraan, rima",
+   "to": "SAS-03"
+  },
+  {
+   "label": "Kalimat",
+   "title": "Kalimat efektif",
+   "note": "Subjek jelas, hemat",
+   "to": "KEB-02"
+  },
+  {
+   "label": "Ejaan",
+   "title": "EYD Edisi V",
+   "note": "Kapital, di-, pun",
+   "to": "KEB-03"
+  }
+ ],
+ "domains": [
+  {
+   "id": "MBC",
+   "name": "Membaca dan memahami teks",
+   "short": "Membaca",
+   "note": "Keterampilan membaca yang diuji TKA: gagasan, makna kata, hubungan, penalaran, dan data.",
+   "topics": [
+    {
+     "code": "MBC-01",
+     "title": "Gagasan pokok dan informasi",
+     "scope": "Pokok, pendukung, tersurat, tersirat",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Menemukan gagasan pokok dan gagasan pendukung, membedakan informasi tersurat dan tersirat, serta merangkum isi teks.",
+     "blocks": [
+      {
+       "h": "Gagasan",
+       "li": [
+        "<b>Gagasan pokok</b>: inti paragraf; biasanya ada di kalimat utama.",
+        "Gagasan pendukung (penjelas): contoh, data, alasan, atau rincian yang menjelaskan gagasan pokok.",
+        "Paragraf deduktif: kalimat utama di awal; induktif: di akhir; campuran: di awal dan akhir; deskriptif/naratif: tersebar."
+       ]
+      },
+      {
+       "h": "Informasi",
+       "li": [
+        "Tersurat: tertulis langsung di teks. Tersirat: disimpulkan dari isi teks tanpa ditulis langsung.",
+        "Jawaban harus dapat ditunjukkan dari kalimat di teks, bukan dari pengetahuan umum.",
+        "Waspadai pilihan yang melebih-lebihkan isi teks (\"selalu\", \"harus\", \"tidak pernah\")."
+       ]
+      },
+      {
+       "h": "Merangkum",
+       "li": [
+        "Ringkasan mempertahankan urutan dan sudut pandang penulis; ikhtisar boleh mengubah urutan.",
+        "Urutan peristiwa ditentukan oleh kejadian dalam cerita, bukan urutan penyebutannya di teks."
+       ]
+      }
+     ],
+     "traps": [
+      "Gagasan pendukung bukan pengulangan gagasan pokok; pilihan yang hanya menyatakan ulang gagasan pokok bukan gagasan penjelas.",
+      "Pernyataan yang benar menurut pengetahuan umum tetapi tidak ada di teks bukan jawaban yang tepat."
+     ]
+    },
+    {
+     "code": "MBC-02",
+     "title": "Makna kata dalam konteks",
+     "scope": "Konteks, relasi makna, serapan",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Menentukan makna kata dan istilah dari konteks, jenis makna dan relasi makna, serta kata serapan.",
+     "blocks": [
+      {
+       "h": "Makna",
+       "li": [
+        "Denotasi: makna sebenarnya; <b>konotasi</b>: makna tambahan atau kiasan (positif atau negatif).",
+        "Makna kata ditentukan oleh kalimat tempatnya muncul; satu kata bisa berbeda makna di teks lain.",
+        "Istilah: kata dengan makna khusus di bidang tertentu (inflasi, fotosintesis)."
+       ]
+      },
+      {
+       "h": "Relasi makna",
+       "table": {
+        "cols": [
+         "Relasi",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Sinonim",
+          "pandai – cerdas"
+         ],
+         [
+          "Antonim",
+          "naik – turun"
+         ],
+         [
+          "Homonim",
+          "bisa (racun) – bisa (dapat)"
+         ],
+         [
+          "Homofon",
+          "bank – bang"
+         ],
+         [
+          "Homograf",
+          "apel (buah) – apel (upacara)"
+         ],
+         [
+          "Polisemi",
+          "kepala (anggota tubuh, pemimpin, bagian atas)"
+         ],
+         [
+          "Hiponim",
+          "mawar, melati adalah hiponim dari bunga"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Kata serapan",
+       "li": [
+        "Adopsi (diambil utuh: internet), adaptasi (disesuaikan ejaannya: <i>strategy</i> → strategi), penerjemahan (<i>download</i> → unduh)."
+       ]
+      }
+     ],
+     "traps": [
+      "Homograf sama tulisan tetapi berbeda lafal atau makna; homofon sama bunyi tetapi berbeda tulisan.",
+      "Polisemi adalah satu kata dengan beberapa makna yang masih berhubungan; homonim maknanya tidak berhubungan."
+     ]
+    },
+    {
+     "code": "MBC-03",
+     "title": "Hubungan antarbagian dan simpulan",
+     "scope": "Sebab-akibat, prediksi, simpulan",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Mengenali hubungan sebab-akibat dan pertentangan antarbagian teks, menarik simpulan, dan memprediksi kelanjutan atau akibat.",
+     "blocks": [
+      {
+       "h": "Hubungan",
+       "li": [
+        "Sebab-akibat: ditandai karena, sebab, sehingga, akibatnya, oleh karena itu.",
+        "Pertentangan: tetapi, namun, sebaliknya, meskipun.",
+        "Perbandingan antarteks: cari kesamaan dan perbedaan pada topik, sudut pandang, data, dan simpulan."
+       ]
+      },
+      {
+       "h": "Simpulan dan prediksi",
+       "li": [
+        "Simpulan harus didukung seluruh teks, bukan satu kalimat saja, dan tidak melampaui data.",
+        "Prediksi berangkat dari watak tokoh, sebab yang sudah ada, dan pola dalam teks.",
+        "Nilai dan pesan diambil dari tindakan tokoh dan akibatnya, bukan dari judul saja."
+       ]
+      }
+     ],
+     "traps": [
+      "Simpulan yang lebih luas daripada isi teks (generalisasi berlebihan) bukan simpulan yang tepat."
+     ]
+    },
+    {
+     "code": "MBC-04",
+     "title": "Fakta, opini, dan penalaran",
+     "scope": "Fakta, opini, deduksi, induksi, sesat nalar",
+     "src": "Kelas X–XII",
+     "tier": 1,
+     "sum": "Membedakan fakta dan opini, mengenali penalaran deduktif dan induktif, silogisme, serta kesalahan nalar dalam argumen.",
+     "blocks": [
+      {
+       "h": "Fakta dan opini",
+       "li": [
+        "<b>Fakta</b>: dapat dibuktikan, sering memuat data, tempat, waktu.",
+        "Opini: pendapat atau penilaian; ditandai kata seperti menurut saya, sebaiknya, seharusnya, tampaknya, paling.",
+        "Opini dapat kuat jika didukung data dan sumber yang kredibel."
+       ]
+      },
+      {
+       "h": "Penalaran",
+       "table": {
+        "cols": [
+         "Jenis",
+         "Arah",
+         "Bentuk"
+        ],
+        "rows": [
+         [
+          "Deduktif",
+          "Umum → khusus",
+          "Silogisme: premis mayor, premis minor, simpulan; entimem (silogisme singkat)"
+         ],
+         [
+          "Induktif",
+          "Khusus → umum",
+          "Generalisasi, analogi, sebab-akibat"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Silogisme dan sesat nalar",
+       "li": [
+        "Contoh: Semua siswa wajib berseragam (mayor). Rani siswa (minor). Jadi, Rani wajib berseragam.",
+        "Generalisasi tergesa-gesa: menyimpulkan dari terlalu sedikit contoh.",
+        "Sebab salah (post hoc): menganggap yang terjadi lebih dulu pasti penyebab.",
+        "Menyerang pribadi (ad hominem): menolak pendapat karena orangnya, bukan argumennya."
+       ]
+      }
+     ],
+     "traps": [
+      "Pernyataan berisi angka belum tentu fakta; \"ini prestasi terbaik sepanjang masa\" tetap opini.",
+      "Dalam silogisme, simpulan hanya sah jika kedua premis benar dan istilah tengahnya dipakai dengan benar."
+     ]
+    },
+    {
+     "code": "MBC-05",
+     "title": "Membaca data dan teks gabungan",
+     "scope": "Tabel, grafik, infografik",
+     "src": "Kelas X–XII",
+     "tier": 1,
+     "sum": "Menafsirkan tabel, grafik, dan infografik dalam teks, mencocokkan pernyataan dengan data, dan menyimpulkan dari dua teks atau lebih.",
+     "blocks": [
+      {
+       "h": "Langkah",
+       "li": [
+        "Baca judul, satuan, dan keterangan sumbu atau kolom sebelum membaca angka.",
+        "Bandingkan dengan teliti: naik atau turun, terbesar atau terkecil, selisih, persentase.",
+        "Pernyataan benar hanya jika data mendukungnya secara langsung.",
+        "Jangan menarik kesimpulan sebab-akibat dari data yang hanya menunjukkan hubungan."
+       ]
+      },
+      {
+       "h": "Teks gabungan",
+       "li": [
+        "Wacana 1 dan Wacana 2 bisa saling melengkapi, menguatkan, atau bertentangan.",
+        "Tandai sudut pandang dan data tiap teks sebelum membandingkan."
+       ]
+      }
+     ],
+     "traps": [
+      "Persentase dan jumlah berbeda: persentase naik belum tentu jumlahnya naik jika totalnya turun."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "NON",
+   "name": "Teks nonfiksi",
+   "short": "Nonfiksi",
+   "note": "Struktur dan ciri kebahasaan teks nonfiksi dan teks fungsional.",
+   "topics": [
+    {
+     "code": "NON-01",
+     "title": "Teks laporan hasil observasi",
+     "scope": "Struktur, kebahasaan",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Teks yang memaparkan hasil pengamatan secara objektif dan umum, dengan struktur dan ciri kebahasaannya.",
+     "blocks": [
+      {
+       "h": "Struktur dan kebahasaan",
+       "li": [
+        "Struktur: <b>pernyataan umum</b> (definisi dan klasifikasi), deskripsi bagian atau aspek, simpulan atau manfaat (opsional).",
+        "Kebahasaan: kata benda umum, istilah teknis, kata kerja relasional (adalah, merupakan), kalimat definisi, objektif tanpa opini.",
+        "Berbeda dari teks deskripsi: laporan membahas hal umum satu kelas benda; deskripsi menggambarkan satu objek khusus."
+       ]
+      }
+     ],
+     "traps": [
+      "Laporan hasil observasi bersifat objektif; kalimat bernada penilaian pribadi tidak termasuk ciri teks ini."
+     ]
+    },
+    {
+     "code": "NON-02",
+     "title": "Teks eksposisi",
+     "scope": "Tesis, argumen, penegasan",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Teks yang memaparkan pendapat penulis disertai fakta dan data, dengan struktur tesis, argumentasi, dan penegasan ulang.",
+     "blocks": [
+      {
+       "h": "Struktur dan kebahasaan",
+       "li": [
+        "Struktur: <b>tesis</b> (pendapat), rangkaian argumen (fakta, data, contoh), penegasan ulang.",
+        "Kebahasaan: istilah teknis, kata kerja mental (berpendapat, menduga), konjungsi kausal dan temporal, data atau kutipan ahli.",
+        "Artikel opini dan editorial memakai struktur yang mirip: pernyataan pendapat, argumentasi, penegasan ulang."
+       ]
+      }
+     ],
+     "traps": [
+      "Penegasan ulang menegaskan kembali tesis, bukan menambahkan argumen baru."
+     ]
+    },
+    {
+     "code": "NON-03",
+     "title": "Negosiasi dan debat",
+     "scope": "Struktur negosiasi, unsur debat",
+     "src": "Kelas X",
+     "tier": 2,
+     "sum": "Struktur teks negosiasi untuk mencapai kesepakatan dan unsur debat untuk mempertahankan pendapat tentang sebuah mosi.",
+     "blocks": [
+      {
+       "h": "Negosiasi",
+       "li": [
+        "Struktur: orientasi, pengajuan, penawaran, persetujuan, penutup.",
+        "Kebahasaan: kalimat persuasif, kalimat bersyarat (jika … maka), bahasa santun."
+       ]
+      },
+      {
+       "h": "Debat",
+       "li": [
+        "Unsur: <b>mosi</b> (topik), tim afirmasi (setuju), tim oposisi (menolak), tim netral, moderator, juri.",
+        "Argumen yang baik: pernyataan, alasan, bukti, dan sanggahan terhadap argumen lawan."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "NON-04",
+     "title": "Teks prosedur dan eksplanasi",
+     "scope": "Langkah, sebab-akibat",
+     "src": "Kelas XI",
+     "tier": 1,
+     "sum": "Teks prosedur yang berisi langkah melakukan sesuatu dan teks eksplanasi yang menerangkan proses terjadinya fenomena.",
+     "blocks": [
+      {
+       "h": "Perbandingan",
+       "table": {
+        "cols": [
+         "Aspek",
+         "Prosedur",
+         "Eksplanasi"
+        ],
+        "rows": [
+         [
+          "Tujuan",
+          "Memandu melakukan sesuatu",
+          "Menjelaskan proses terjadinya fenomena"
+         ],
+         [
+          "Struktur",
+          "Tujuan, langkah-langkah, penutup",
+          "Identifikasi fenomena, rangkaian kejadian (sebab-akibat), ulasan"
+         ],
+         [
+          "Kebahasaan",
+          "Kalimat perintah, kata kerja material, konjungsi temporal (lalu, kemudian)",
+          "Konjungsi kausal (karena, sehingga) dan kronologis, istilah ilmiah, kalimat pasif"
+         ]
+        ]
+       }
+      }
+     ],
+     "traps": [
+      "Teks eksplanasi menjelaskan mengapa dan bagaimana sesuatu terjadi; teks prosedur menjelaskan cara membuat atau melakukan sesuatu."
+     ]
+    },
+    {
+     "code": "NON-05",
+     "title": "Karya ilmiah dan resensi",
+     "scope": "Sistematika, unsur resensi",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Sistematika karya ilmiah dan ciri bahasanya, serta unsur resensi buku atau film.",
+     "blocks": [
+      {
+       "h": "Karya ilmiah",
+       "li": [
+        "Sistematika: pendahuluan (latar belakang, rumusan masalah, tujuan), kajian teori, metode, hasil dan pembahasan, simpulan dan saran, daftar pustaka.",
+        "Bahasa: baku, objektif, lugas, memakai istilah, mencantumkan sumber kutipan."
+       ]
+      },
+      {
+       "h": "Resensi",
+       "li": [
+        "Unsur: identitas buku, sinopsis atau ikhtisar, kelebihan, kekurangan, penilaian dan rekomendasi.",
+        "Penilaian harus berdasar isi karya, bukan selera pribadi saja."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "NON-06",
+     "title": "Surat lamaran pekerjaan",
+     "scope": "Bagian surat, bahasa",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Bagian-bagian surat lamaran pekerjaan dan kaidah bahasanya.",
+     "blocks": [
+      {
+       "h": "Bagian dan kaidah",
+       "li": [
+        "Bagian: tempat dan tanggal, lampiran, perihal, alamat tujuan, salam pembuka, pembuka (sumber informasi lowongan), isi (identitas dan kualifikasi), penutup, salam penutup, tanda tangan dan nama.",
+        "Bahasa: baku, santun, ringkas, dan meyakinkan; ejaan yang benar.",
+        "Daftar riwayat hidup (CV) dilampirkan bersama surat lamaran."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "NON-07",
+     "title": "Kritik, esai, dan artikel opini",
+     "scope": "Ciri, perbedaan",
+     "src": "Kelas XII",
+     "tier": 2,
+     "sum": "Perbedaan kritik, esai, dan artikel opini, serta cara menilai argumen dalam ketiganya.",
+     "blocks": [
+      {
+       "h": "Perbandingan",
+       "table": {
+        "cols": [
+         "Jenis",
+         "Isi",
+         "Sifat"
+        ],
+        "rows": [
+         [
+          "Kritik",
+          "Penilaian atas karya (sastra, seni) dengan dasar dan bukti",
+          "Objektif, menimbang kelebihan dan kekurangan"
+         ],
+         [
+          "Esai",
+          "Pandangan pribadi penulis tentang suatu topik",
+          "Subjektif, bebas, reflektif"
+         ],
+         [
+          "Artikel opini/editorial",
+          "Pendapat tentang isu aktual; editorial mewakili sikap redaksi media",
+          "Argumentatif, didukung fakta"
+         ]
+        ]
+       }
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "SAS",
+   "name": "Teks sastra",
+   "short": "Sastra",
+   "note": "Prosa, hikayat, puisi, drama, anekdot, dan novel sejarah.",
+   "topics": [
+    {
+     "code": "SAS-01",
+     "title": "Unsur intrinsik dan ekstrinsik prosa",
+     "scope": "Cerpen, novel",
+     "src": "Kelas X–XII",
+     "tier": 1,
+     "sum": "Unsur intrinsik (tema, tokoh, alur, latar, sudut pandang, amanat, gaya bahasa) dan ekstrinsik cerpen dan novel.",
+     "blocks": [
+      {
+       "h": "Unsur intrinsik",
+       "table": {
+        "cols": [
+         "Unsur",
+         "Keterangan"
+        ],
+        "rows": [
+         [
+          "Tema",
+          "Gagasan dasar cerita"
+         ],
+         [
+          "Tokoh dan penokohan",
+          "Pelaku dan wataknya; ditunjukkan langsung (analitik) atau lewat tindakan, dialog, pikiran (dramatik)"
+         ],
+         [
+          "Alur",
+          "Rangkaian peristiwa: maju, mundur (sorot balik), campuran"
+         ],
+         [
+          "Latar",
+          "Tempat, waktu, suasana"
+         ],
+         [
+          "Sudut pandang",
+          "Orang pertama (aku) atau orang ketiga (dia, nama tokoh)"
+         ],
+         [
+          "Amanat",
+          "Pesan pengarang kepada pembaca"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Struktur dan unsur ekstrinsik",
+       "li": [
+        "Struktur cerpen: abstrak, orientasi, komplikasi, evaluasi, resolusi, koda.",
+        "Unsur ekstrinsik: latar belakang pengarang, nilai (moral, sosial, budaya, agama), keadaan masyarakat saat karya ditulis."
+       ]
+      }
+     ],
+     "traps": [
+      "Penokohan dramatik menunjukkan watak lewat tindakan atau dialog, bukan lewat penjelasan langsung pengarang.",
+      "Latar suasana (sedih, tegang) termasuk latar, bukan tema."
+     ]
+    },
+    {
+     "code": "SAS-02",
+     "title": "Hikayat dan cerita rakyat",
+     "scope": "Ciri, struktur, nilai",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Ciri hikayat sebagai prosa lama, strukturnya, nilai-nilai di dalamnya, dan perbandingannya dengan cerpen.",
+     "blocks": [
+      {
+       "h": "Ciri hikayat",
+       "li": [
+        "<b>Kemustahilan</b> (peristiwa tidak masuk akal), kesaktian tokoh, anonim, istanasentris, statis, memakai kata arkais (hatta, syahdan, sebermula).",
+        "Struktur: abstraksi, orientasi, komplikasi, evaluasi, resolusi, koda.",
+        "Nilai: agama, moral, budaya, sosial, pendidikan."
+       ]
+      },
+      {
+       "h": "Dibandingkan cerpen",
+       "li": [
+        "Hikayat: lisan lalu tertulis, anonim, tokoh raja dan bangsawan, kemustahilan.",
+        "Cerpen: modern, pengarang diketahui, tokoh orang biasa, peristiwa masuk akal."
+       ]
+      }
+     ],
+     "traps": [
+      "Kata syahdan dan hatta adalah penanda hikayat (kata arkais), bukan nama tokoh."
+     ]
+    },
+    {
+     "code": "SAS-03",
+     "title": "Puisi",
+     "scope": "Unsur fisik dan batin, majas, citraan",
+     "src": "Kelas X",
+     "tier": 1,
+     "sum": "Unsur fisik dan batin puisi, jenis majas dan citraan, serta rima dalam puisi lama dan baru.",
+     "blocks": [
+      {
+       "h": "Unsur",
+       "li": [
+        "Fisik: diksi, imaji (citraan), kata konkret, majas, rima, tipografi.",
+        "Batin: tema, rasa, nada, amanat.",
+        "Citraan: penglihatan, pendengaran, perabaan, penciuman, pengecapan, gerak."
+       ]
+      },
+      {
+       "h": "Majas",
+       "table": {
+        "cols": [
+         "Majas",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Personifikasi",
+          "Angin berbisik di telingaku"
+         ],
+         [
+          "Metafora",
+          "Dia kutu buku"
+         ],
+         [
+          "Simile (perumpamaan)",
+          "Wajahnya bagai bulan purnama"
+         ],
+         [
+          "Hiperbola",
+          "Tangisnya membanjiri seluruh kota"
+         ],
+         [
+          "Litotes",
+          "Mampirlah ke gubuk kami"
+         ],
+         [
+          "Ironi",
+          "Rapi sekali kamarmu, sampai sampah menumpuk"
+         ],
+         [
+          "Metonimia",
+          "Ayah mengendarai Honda"
+         ],
+         [
+          "Sinekdoke",
+          "Pars pro toto: batang hidungnya tidak tampak; totum pro parte: Indonesia juara"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Puisi lama",
+       "li": [
+        "Pantun: sampiran dan isi, rima a-b-a-b; syair: semua baris isi, rima a-a-a-a; gurindam: dua baris, rima a-a."
+       ]
+      }
+     ],
+     "traps": [
+      "Simile memakai kata pembanding (seperti, bagai, laksana); metafora tidak.",
+      "Litotes merendahkan diri; ironi menyindir dengan pernyataan yang berlawanan."
+     ]
+    },
+    {
+     "code": "SAS-04",
+     "title": "Drama",
+     "scope": "Unsur dan struktur",
+     "src": "Kelas XI",
+     "tier": 2,
+     "sum": "Unsur drama, struktur pementasan, dan perbedaan naskah drama dengan prosa.",
+     "blocks": [
+      {
+       "h": "Unsur dan struktur",
+       "li": [
+        "Unsur: tema, tokoh (protagonis, antagonis, tritagonis), dialog, alur, latar, petunjuk lakuan (dalam kurung), amanat.",
+        "Struktur: prolog, dialog (orientasi, komplikasi, resolusi), epilog.",
+        "Pementasan melibatkan sutradara, aktor, penata panggung, dan penonton."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "SAS-05",
+     "title": "Teks anekdot",
+     "scope": "Struktur, humor, kritik",
+     "src": "Kelas X",
+     "tier": 2,
+     "sum": "Cerita singkat lucu yang berisi sindiran atau kritik terhadap layanan publik atau perilaku, dengan strukturnya.",
+     "blocks": [
+      {
+       "h": "Struktur dan ciri",
+       "li": [
+        "Struktur: abstraksi, orientasi, krisis, reaksi, koda.",
+        "Ciri: lucu, mengandung sindiran atau kritik, sering tentang tokoh publik atau layanan umum.",
+        "Kebahasaan: kalimat retoris, konjungsi temporal, kalimat langsung."
+       ]
+      }
+     ]
+    },
+    {
+     "code": "SAS-06",
+     "title": "Novel dan cerita sejarah",
+     "scope": "Fakta sejarah, imajinasi",
+     "src": "Kelas XII",
+     "tier": 3,
+     "sum": "Novel atau cerita sejarah memadukan fakta sejarah dengan imajinasi pengarang; cara membedakannya dan menilai nilai di dalamnya.",
+     "blocks": [
+      {
+       "h": "Ciri",
+       "li": [
+        "Latar waktu dan tempat sejarah nyata; tokoh bisa nyata atau rekaan.",
+        "Struktur: orientasi, pengungkapan peristiwa, menuju konflik, puncak konflik, penyelesaian, koda.",
+        "Contoh: Bumi Manusia (Pramoedya Ananta Toer), berlatar akhir abad ke-19 sampai awal abad ke-20."
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "KEB",
+   "name": "Kaidah kebahasaan",
+   "short": "Kebahasaan",
+   "note": "Kata dan imbuhan, kalimat efektif, ejaan, dan paragraf.",
+   "topics": [
+    {
+     "code": "KEB-01",
+     "title": "Kata baku dan pembentukan kata",
+     "scope": "Imbuhan, kata baku, kata ulang",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Kata baku dan tidak baku, aturan imbuhan meN- dan peN-, serta kata ulang dan gabungan kata.",
+     "blocks": [
+      {
+       "h": "Kata baku",
+       "table": {
+        "cols": [
+         "Baku",
+         "Tidak baku"
+        ],
+        "rows": [
+         [
+          "apotek",
+          "apotik"
+         ],
+         [
+          "praktik",
+          "praktek"
+         ],
+         [
+          "risiko",
+          "resiko"
+         ],
+         [
+          "analisis",
+          "analisa"
+         ],
+         [
+          "jadwal",
+          "jadual"
+         ],
+         [
+          "izin",
+          "ijin"
+         ],
+         [
+          "objek",
+          "obyek"
+         ],
+         [
+          "karier",
+          "karir"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Imbuhan",
+       "li": [
+        "<b>meN- + k, p, t, s</b> di awal kata dasar: fonem luluh (kirim → mengirim, pukul → memukul, tulis → menulis, sapu → menyapu).",
+        "Kata dasar berawalan gugus konsonan tidak luluh: mengkritik, memproduksi, mentraktir.",
+        "Imbuhan yang sama dapat bermakna berbeda: ber- dapat berarti memakai (berbaju), mempunyai (beranak), melakukan (bersepeda)."
+       ]
+      },
+      {
+       "h": "Kata ulang dan gabungan kata",
+       "li": [
+        "Kata ulang ditulis dengan tanda hubung: anak-anak, sayur-mayur.",
+        "Gabungan kata ditulis terpisah: kerja sama, tanggung jawab; disambung bila mendapat awalan dan akhiran sekaligus: dikerjasamakan, pertanggungjawaban."
+       ]
+      }
+     ],
+     "traps": [
+      "Bentuk baku adalah mengkritik, bukan mengritik; gugus konsonan di awal kata tidak luluh.",
+      "\"Kerja sama\" ditulis terpisah; \"bekerja sama\" juga terpisah karena hanya mendapat awalan."
+     ]
+    },
+    {
+     "code": "KEB-02",
+     "title": "Kalimat efektif dan konjungsi",
+     "scope": "Syarat efektif, jenis konjungsi",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Syarat kalimat efektif, kalimat tunggal dan majemuk, serta pemakaian konjungsi intrakalimat dan antarkalimat.",
+     "blocks": [
+      {
+       "h": "Syarat kalimat efektif",
+       "li": [
+        "Kesepadanan: subjek dan predikat jelas; subjek tidak diawali preposisi (\"Di dalam rapat itu membahas …\" tidak efektif).",
+        "<b>Kehematan</b>: tanpa kata mubazir (\"para siswa-siswa\", \"sangat … sekali\", \"agar supaya\", \"naik ke atas\").",
+        "Keparalelan bentuk (pemeriksaan, pengukuran, pencatatan), kecermatan, kelogisan, kepaduan."
+       ]
+      },
+      {
+       "h": "Konjungsi",
+       "table": {
+        "cols": [
+         "Jenis",
+         "Contoh"
+        ],
+        "rows": [
+         [
+          "Koordinatif (setara)",
+          "dan, atau, tetapi"
+         ],
+         [
+          "Subordinatif (bertingkat)",
+          "karena, jika, ketika, sehingga, meskipun"
+         ],
+         [
+          "Korelatif",
+          "baik … maupun, tidak hanya … tetapi juga"
+         ],
+         [
+          "Antarkalimat",
+          "Oleh karena itu, Namun, Selain itu, Akan tetapi"
+         ]
+        ]
+       }
+      },
+      {
+       "h": "Kalimat majemuk",
+       "li": [
+        "Setara: klausa sederajat (dan, tetapi). Bertingkat: ada induk dan anak kalimat (karena, ketika).",
+        "Kalimat pasif: subjek dikenai pekerjaan (di-, ter-); sering dipakai dalam teks ilmiah dan eksplanasi."
+       ]
+      }
+     ],
+     "traps": [
+      "\"Namun\" adalah konjungsi antarkalimat, diletakkan di awal kalimat dan diikuti koma; di dalam kalimat dipakai \"tetapi\".",
+      "Kalimat yang diawali \"Bagi\", \"Di\", atau \"Dalam\" sering kehilangan subjek."
+     ]
+    },
+    {
+     "code": "KEB-03",
+     "title": "Ejaan dan tanda baca (EYD Edisi V)",
+     "scope": "Kapital, di-, pun, tanda baca",
+     "src": "Semua kelas",
+     "tier": 1,
+     "sum": "Kaidah ejaan menurut EYD Edisi V (2022): huruf kapital, penulisan kata depan dan imbuhan, partikel, angka, dan tanda baca.",
+     "blocks": [
+      {
+       "h": "Penulisan kata",
+       "li": [
+        "Kata depan <b>di</b> dan ke ditulis terpisah (di rumah, ke pasar); awalan di- ditulis serangkai (ditulis, dibaca).",
+        "Partikel pun ditulis terpisah (apa pun, satu kali pun), kecuali dalam kata padu: meskipun, walaupun, adapun, bagaimanapun, sekalipun (berarti meskipun).",
+        "Partikel -lah, -kah, -tah ditulis serangkai; partikel per (tiap) ditulis terpisah.",
+        "Angka di awal kalimat ditulis dengan huruf."
+       ]
+      },
+      {
+       "h": "Huruf kapital dan tanda baca",
+       "li": [
+        "Kapital untuk awal kalimat, nama orang, nama geografi (Sungai Musi), nama lembaga, gelar yang diikuti nama.",
+        "Nama arah mata angin tidak berkapital kecuali menjadi bagian nama geografi: berjalan ke selatan, tetapi Kalimantan Selatan.",
+        "Koma dipakai sebelum tetapi, melainkan, dan sedangkan; setelah ungkapan penghubung antarkalimat di awal kalimat.",
+        "EYD Edisi V ditetapkan Badan Pengembangan dan Pembinaan Bahasa pada 2022, menggantikan PUEBI (2015)."
+       ]
+      }
+     ],
+     "traps": [
+      "\"Di\" sebagai kata depan menunjukkan tempat atau waktu dan ditulis terpisah; jika diganti \"ke\" atau \"dari\" masih bermakna, berarti kata depan.",
+      "\"Meskipun\" ditulis serangkai, tetapi \"apa pun\" dan \"siapa pun\" ditulis terpisah."
+     ]
+    },
+    {
+     "code": "KEB-04",
+     "title": "Paragraf, kohesi, dan koherensi",
+     "scope": "Kalimat utama, kepaduan",
+     "src": "Semua kelas",
+     "tier": 2,
+     "sum": "Unsur paragraf, letak kalimat utama, alat kohesi, dan koherensi antarkalimat.",
+     "blocks": [
+      {
+       "h": "Paragraf",
+       "li": [
+        "Paragraf yang baik memiliki satu gagasan pokok (kesatuan), kohesi, dan koherensi.",
+        "Kohesi (kepaduan bentuk): pronomina (ia, mereka, hal itu), repetisi, sinonim, konjungsi.",
+        "Koherensi (kepaduan makna): kalimat-kalimat berhubungan logis dan berurutan.",
+        "Kalimat sumbang: kalimat yang tidak mendukung gagasan pokok paragraf."
+       ]
+      }
+     ]
+    }
+   ]
+  }
+ ],
+ "notes": [
+  {
+   "title": "Perlu diperhatikan",
+   "items": [
+    "Urutan dan judul bab Bahasa Indonesia Kurikulum Merdeka berbeda antarbuku; label kelas tiap simpul adalah perkiraan.",
+    "Kaidah ejaan mengikuti EYD Edisi V (2022). Buku yang lebih lama memakai PUEBI; sebagian kecil aturan berbeda.",
+    "Struktur teks (misalnya bagian anekdot atau hikayat) ditulis sedikit berbeda antarbuku; ikuti istilah buku sekolah.",
+    "Soal TKA selalu berbasis teks: jawaban harus dapat ditunjukkan dari teks, bukan dari pengetahuan umum."
+   ]
+  },
+  {
+   "title": "Rujukan",
+   "items": [
+    "Buku teks Bahasa Indonesia Kurikulum Merdeka kelas X–XII (Kemendikbudristek). Daftar bab dicocokkan lewat ringkasan Ruangguru, Mamikos, dan silabus sekolah karena PDF resmi tidak dapat dibuka dari lingkungan kerja.",
+    "Tipe soal TKA 2025 Bahasa Indonesia (specs/tka-templates/bahasa-indonesia.md).",
+    "Pedoman Umum Ejaan Bahasa Indonesia Edisi V (Badan Pengembangan dan Pembinaan Bahasa, 2022) dan KBBI untuk bentuk baku."
+   ]
+  }
+ ]
+}

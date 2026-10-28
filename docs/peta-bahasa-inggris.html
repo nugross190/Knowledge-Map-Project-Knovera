@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Peta Materi Bahasa Inggris SMA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
+  --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
+  --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
+  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
+  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
+  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
+  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
+  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:1120px;margin:0 auto;padding-inline:20px;padding-block:28px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(2rem,5vw,3.1rem);font-weight:700;letter-spacing:-.01em}
+h2{font-size:1.65rem;font-weight:700}
+h3{font-size:1.15rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+mark{background:var(--mark);color:inherit;border-radius:2px;padding:0 1px}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.lead{max-width:66ch;color:var(--muted);font-size:1.05rem;margin-top:12px}
+section{margin-top:44px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:8px 16px;margin-bottom:16px;border-bottom:2px solid var(--ink);padding-bottom:8px}
+.sec-head p{color:var(--muted);font-size:.95rem;max-width:62ch}
+
+.progress{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,140px),1fr));gap:8px;margin-top:22px}
+.pg{display:flex;flex-direction:column;gap:5px;text-decoration:none;min-width:0}
+.pg b{font-family:var(--f-label);font-size:.92rem;color:var(--c)}
+.pg .bar{height:10px;background:var(--sunk);border-radius:2px;overflow:hidden;position:relative}
+.pg .bar i{position:absolute;inset:0 auto 0 0;background:var(--c);width:0;transition:width .3s}
+.pg .bar::after{content:"";position:absolute;inset:0;border:1.5px solid var(--c);border-radius:2px}
+.pg span{font-size:.78rem;color:var(--muted);font-family:var(--f-label)}
+.pg:focus-visible{outline:2px solid var(--c);outline-offset:3px}
+
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:22px}
+.search{flex:1 1 260px;min-width:0;display:flex;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:6px;padding:0 12px}
+.search:focus-within{border-color:var(--ink)}
+.search input{flex:1;min-width:0;border:0;background:transparent;color:var(--ink);font:inherit;padding:10px 0;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:6px;cursor:pointer}
+.btn:hover{border-color:var(--ink)}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+#hits{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.overall{font-family:var(--f-label);font-size:.95rem;color:var(--muted);margin-top:10px}
+.overall b{color:var(--ink);font-variant-numeric:tabular-nums}
+
+.path-wrap{overflow-x:auto;padding-bottom:6px}
+.path{list-style:none;margin:0;padding:0;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(130px,1fr);min-width:max-content}
+.path li{border-top:2px solid var(--ink);padding:0 10px 0 0;position:relative}
+.path li::before{content:"";position:absolute;left:0;top:-7px;width:12px;height:12px;border-radius:50%;background:var(--ink)}
+.path button{all:unset;cursor:pointer;display:flex;flex-direction:column;gap:4px;padding-top:14px;max-width:16em}
+.path button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.path .lb{font-family:var(--f-mono);font-size:.74rem;color:var(--muted)}
+.path .nm{font-family:var(--f-label);font-weight:700;font-size:1rem;line-height:1.15}
+.path .an{font-size:.8rem;color:var(--muted);line-height:1.35}
+
+.map{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:14px}
+.mcol{border-top:4px solid var(--c);background:var(--surface);border-radius:0 0 8px 8px;padding:14px;min-width:0}
+.mcol h3{color:var(--c);display:flex;justify-content:space-between;gap:8px}
+.mcol ul{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.chip{display:flex;gap:10px;align-items:baseline;text-decoration:none;padding:6px 8px;border-radius:5px;background:var(--soft);font-size:.93rem;line-height:1.35}
+.chip:hover{outline:1.5px solid var(--c)}
+.chip:focus-visible{outline:2px solid var(--c)}
+.chip .mono{color:var(--c);flex:none}
+.chip.done{text-decoration:line-through;text-decoration-color:var(--muted);opacity:.72}
+.tier{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:3px;white-space:nowrap}
+.t1{background:var(--ink);color:var(--bg)}
+.t2{border:1.3px solid var(--ink)}
+.t3{border:1.3px dashed var(--muted);color:var(--muted)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
+
+.domain-head{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;border-bottom:2px solid var(--c);padding-bottom:8px;margin-bottom:14px}
+.domain-head h2{color:var(--c)}
+.domain-head .w{font-family:var(--f-mono);font-size:1rem;color:var(--c)}
+.domain-head p{color:var(--muted);font-size:.92rem;flex-basis:100%}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:0;scroll-margin-top:16px}
+.card + .card{margin-top:10px}
+.card-head{display:flex;gap:12px;align-items:flex-start;padding:14px 16px}
+.toggle{all:unset;cursor:pointer;flex:1;min-width:0;display:grid;grid-template-columns:auto 1fr;gap:2px 14px}
+.toggle:focus-visible{outline:2px solid var(--c);outline-offset:4px;border-radius:4px}
+.toggle .code{font-family:var(--f-mono);font-size:.8rem;color:var(--c);padding-top:4px;grid-row:span 3}
+.toggle .ttl{font-family:var(--f-label);font-size:1.22rem;font-weight:700;line-height:1.2;display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.toggle .meta{font-size:.82rem;color:var(--muted);font-family:var(--f-label);display:flex;flex-wrap:wrap;gap:4px 12px}
+.toggle .sum{font-size:.95rem;color:var(--muted);max-width:75ch}
+.caret{font-family:var(--f-mono);color:var(--muted);transition:transform .2s;display:inline-block}
+.card.open .caret{transform:rotate(90deg)}
+.done-box{flex:none;display:flex;align-items:center;gap:6px;font-family:var(--f-label);font-size:.85rem;color:var(--muted);cursor:pointer;padding-top:3px;user-select:none}
+.done-box input{width:18px;height:18px;accent-color:var(--ok);cursor:pointer}
+.card.is-done{border-color:color-mix(in srgb,var(--ok) 55%,var(--line))}
+.body{padding:2px 16px 18px 16px;border-top:1px dashed var(--line);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:18px 26px}
+.blk{min-width:0}
+.blk.wide{grid-column:1/-1}
+.blk h4{font-family:var(--f-label);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--c);margin:14px 0 6px}
+.blk ul{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:5px}
+.blk li{font-size:.95rem;line-height:1.55}
+.blk li::marker{color:var(--c)}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:6px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--soft);color:var(--ink);padding:7px 10px;white-space:nowrap}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.traps{grid-column:1/-1;background:var(--warn-soft);border-radius:6px;padding:12px 14px}
+.traps h4{color:var(--warn);margin-top:0}
+.traps li::marker{color:var(--warn)}
+
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
+.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
+
+@media (max-width:480px){
+  .wrap{padding-inline:16px}
+  .toggle{grid-template-columns:1fr}
+  .toggle .code{grid-row:auto;padding-top:0}
+  .card-head{flex-direction:column;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+</style>
+
+<div class="wrap">
+  <a class="home-link" href="index.html">← Semua mata pelajaran</a>
+  <header>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1 style="margin-top:8px" id="title"></h1>
+    <p class="lead" id="lead"></p>
+    <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
+    <div class="tools">
+      <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn" id="openAll" type="button">Buka semua</button>
+      <button class="btn" id="closeAll" type="button">Tutup semua</button>
+      <span id="hits" aria-live="polite"></span>
+    </div>
+    <p class="overall">Simpul yang sudah dikuasai: <b id="overall">0</b></p>
+  </header>
+
+  <section id="alur" aria-labelledby="h-alur" hidden>
+    <div class="sec-head"><h2 id="h-alur"></h2><p id="pathNote"></p></div>
+    <div class="path-wrap"><ol class="path" id="path"></ol></div>
+  </section>
+
+  <section id="peta" aria-labelledby="h-peta">
+    <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
+    <div class="map" id="map"></div>
+    <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span></div>
+  </section>
+
+  <div id="domains"></div>
+
+  <section id="catatan" aria-labelledby="h-catatan">
+    <div class="sec-head"><h2 id="h-catatan">Catatan</h2><p id="sourceNote"></p></div>
+    <div class="notes" id="notes"></div>
+  </section>
+
+  <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
+</div>
+
+<script>
+const MAP = {"id": "bahasa-inggris", "subject": "Bahasa Inggris", "title": "Peta Materi Bahasa Inggris SMA", "lead": "Seluruh materi Bahasa Inggris SMA disusun sebagai satu peta: keterampilan membaca, jenis teks beserta struktur dan ciri kebahasaannya, serta tata bahasa yang sering diuji. Penjelasan dalam bahasa Indonesia, contoh dalam bahasa Inggris. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Membaca untuk gagasan, detail, inferensi, dan evaluasi; jenis teks dari descriptive sampai discussion; tenses, passive, conditional, dan klausa.", "source_note": "Disusun menurut keterampilan, jenis teks, dan tata bahasa. Capaian Pembelajaran Bahasa Inggris Kurikulum Merdeka menyebut jenis teks tanpa mengikatnya pada kelas tertentu, dan buku tiap kelas disusun per tema; label kelas mengikuti kebiasaan umum dan hanya perkiraan. Domain membaca mengikuti tipe soal TKA 2025.", "path_title": "Alur belajar", "path_note": "Urutan belajar yang disarankan: strategi membaca dulu, lalu jenis teks dari yang paling sederhana, lalu tata bahasa yang menopangnya.", "path": [{"label": "Gagasan", "title": "Main idea", "note": "Topik dan gagasan utama", "to": "RDG-01"}, {"label": "Detail", "title": "Specific information", "note": "Scanning dan rujukan", "to": "RDG-02"}, {"label": "Inferensi", "title": "Inference dan purpose", "note": "Tersirat dan tujuan", "to": "RDG-04"}, {"label": "Evaluasi", "title": "Fact, opinion, argument", "note": "Menilai teks", "to": "RDG-05"}, {"label": "Cerita", "title": "Narrative dan recount", "note": "Orientasi sampai resolusi", "to": "TXT-02"}, {"label": "Argumen", "title": "Exposition", "note": "Analytical, hortatory", "to": "TXT-05"}, {"label": "Tenses", "title": "Tenses", "note": "Present, past, perfect", "to": "GRM-01"}, {"label": "Pasif", "title": "Passive voice", "note": "be + V3", "to": "GRM-02"}, {"label": "Syarat", "title": "Conditional sentences", "note": "Tipe 0–3", "to": "GRM-03"}], "domains": [{"id": "RDG", "name": "Keterampilan membaca", "short": "Membaca", "note": "Strategi membaca yang diuji TKA: gagasan, detail, makna, inferensi, dan evaluasi.", "topics": [{"code": "RDG-01", "title": "Topik dan gagasan utama", "scope": "Topic, main idea, summary", "src": "Semua kelas", "tier": 1, "sum": "Menentukan topik dan gagasan utama teks atau paragraf, serta memilih ringkasan yang tepat.", "blocks": [{"h": "Strategi", "li": ["<b>Skimming<\/b>: membaca cepat judul, kalimat pertama paragraf, dan kesimpulan untuk menangkap gagasan umum.", "Topik adalah apa yang dibahas (satu frasa); main idea adalah pernyataan penulis tentang topik itu (kalimat).", "Gagasan utama teks harus mencakup seluruh paragraf, bukan satu paragraf saja.", "Pertanyaan khas: \"What is the main idea of the text?\", \"What is the best title?\", \"What is paragraph 2 mainly about?\""]}], "traps": ["Pilihan yang benar tetapi hanya membahas satu detail bukan gagasan utama teks.", "Pilihan yang terlalu luas (melebihi isi teks) juga bukan gagasan utama."]}, {"code": "RDG-02", "title": "Informasi rinci dan rujukan", "scope": "Detail, reference, sequence", "src": "Semua kelas", "tier": 1, "sum": "Menemukan informasi tersurat, kata rujukan, dan urutan peristiwa dalam teks.", "blocks": [{"h": "Strategi", "li": ["<b>Scanning<\/b>: mencari kata kunci dari soal (nama, angka, tanggal) lalu membaca kalimat di sekitarnya.", "Jawaban benar biasanya parafrase kalimat di teks, bukan salinan kata per kata.", "Kata rujukan (reference): it, they, this, those, which merujuk ke kata benda sebelumnya; cocokkan jumlah (tunggal atau jamak).", "Soal \"Which statement is NOT true according to the text?\" menuntut memeriksa setiap pilihan."]}], "traps": ["\"They\" merujuk ke kata benda jamak; jika pilihan berupa kata benda tunggal, pilihan itu bukan rujukannya."]}, {"code": "RDG-03", "title": "Makna kata dalam konteks", "scope": "Synonym, contextual meaning", "src": "Semua kelas", "tier": 2, "sum": "Menebak makna kata atau frasa dari konteks kalimat, termasuk sinonim, antonim, dan ungkapan.", "blocks": [{"h": "Strategi", "li": ["Baca kalimat sebelum dan sesudahnya; ganti kata itu dengan setiap pilihan dan periksa apakah maknanya tetap.", "Petunjuk konteks: definisi (is, means), contoh (such as), pertentangan (but, however), sebab-akibat (because, so).", "Kata dapat bermakna berbeda dari arti yang paling umum: \"The company <i>launched<\/i> a new product\" berarti meluncurkan, bukan melempar."]}]}, {"code": "RDG-04", "title": "Inferensi, tujuan, dan prediksi", "scope": "Implied meaning, purpose, prediction", "src": "Semua kelas", "tier": 1, "sum": "Menyimpulkan informasi tersirat, tujuan penulis dan sasaran pembaca, hubungan sebab-akibat, pesan moral, dan prediksi kelanjutan.", "blocks": [{"h": "Inferensi dan tujuan", "li": ["Inferensi: kesimpulan yang tidak ditulis langsung tetapi didukung bukti dalam teks (\"What can be inferred …?\", \"It is implied that …\").", "<b>Tujuan teks<\/b> mengikuti jenis teks: to describe, to retell, to entertain, to persuade, to inform, to explain, to give instructions.", "Sasaran pembaca disimpulkan dari isi dan nada: undangan, pengumuman, iklan, surat."]}, {"h": "Sebab-akibat, pesan, prediksi", "li": ["Penanda sebab-akibat: because, since, due to, as a result, therefore, so.", "Pesan moral (moral value) diambil dari tindakan tokoh dan akibatnya.", "Prediksi atau pengandaian (\"If … had …, what would …?\") harus konsisten dengan watak tokoh dan alur."]}], "traps": ["Inferensi harus didukung teks; pilihan yang masuk akal tetapi tanpa bukti di teks bukan jawaban.", "Hortatory exposition bertujuan membujuk pembaca melakukan sesuatu; analytical exposition hanya meyakinkan bahwa sesuatu benar."]}, {"code": "RDG-05", "title": "Fakta, opini, dan evaluasi argumen", "scope": "Fact, opinion, credibility", "src": "Kelas XI–XII", "tier": 1, "sum": "Membedakan fakta dan opini, menilai kekuatan argumen dan kredibilitas sumber, serta memilih informasi tambahan yang memperkuat teks.", "blocks": [{"h": "Fakta dan opini", "li": ["Fakta dapat dibuktikan (data, tanggal, hasil penelitian).", "<b>Opini<\/b> ditandai I think, I believe, in my opinion, should, must, kata sifat penilaian (best, terrible, beautiful).", "Argumen kuat didukung data, contoh, dan sumber yang kredibel; argumen lemah hanya berdasarkan perasaan atau generalisasi."]}, {"h": "Menambah dan menilai", "li": ["Informasi tambahan yang tepat harus mendukung klaim yang sama, bukan klaim lain.", "Menilai kredibilitas: siapa sumbernya, apakah datanya terbaru, apakah ada kepentingan tertentu."]}], "traps": ["Kalimat dengan angka tetap bisa opini jika berisi penilaian (\"the best result ever\").", "Bukti yang benar tetapi mendukung argumen lain tidak memperkuat argumen penulis."]}]}, {"id": "TXT", "name": "Jenis teks", "short": "Jenis teks", "note": "Tujuan, struktur, dan ciri kebahasaan jenis-jenis teks bahasa Inggris.", "topics": [{"code": "TXT-01", "title": "Descriptive dan report text", "scope": "Identification, description", "src": "Kelas X", "tier": 1, "sum": "Teks yang menggambarkan satu benda, tempat, atau orang tertentu (descriptive) dan teks yang menggambarkan satu kelas benda secara umum (report).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Descriptive", "Report"], "rows": [["Tujuan", "Menggambarkan satu hal khusus", "Menyajikan informasi umum tentang satu kelas benda"], ["Struktur", "Identification, description", "General classification, description"], ["Kebahasaan", "Simple present, kata sifat, kata benda khusus (Borobudur Temple)", "Simple present, istilah ilmiah, kata benda umum (whales, volcanoes)"]]}}], "traps": ["Teks tentang \"Komodo dragons\" secara umum adalah report; teks tentang \"my cat Kitty\" adalah descriptive."]}, {"code": "TXT-02", "title": "Recount dan narrative text", "scope": "Orientation, events, complication", "src": "Kelas X", "tier": 1, "sum": "Teks yang menceritakan pengalaman masa lalu (recount) dan cerita yang memiliki konflik untuk menghibur (narrative).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Recount", "Narrative"], "rows": [["Tujuan", "Menceritakan kembali peristiwa", "Menghibur dengan cerita"], ["Struktur", "Orientation, events, reorientation", "Orientation, <b>complication<\/b>, resolution, (coda)"], ["Contoh", "My holiday in Bali, biografi", "Legenda, fabel, dongeng (Malin Kundang, The Mouse Deer)"], ["Kebahasaan", "Simple past, kata keterangan waktu, konjungsi temporal (then, after that)", "Simple past, dialog, kata kerja tindakan"]]}}], "traps": ["Ciri pembeda narrative adalah complication (konflik); recount tidak memiliki konflik yang harus diselesaikan.", "Coda berisi pesan moral; reorientation pada recount berisi kesan atau penutup pengalaman."]}, {"code": "TXT-03", "title": "Procedure text", "scope": "Goal, materials, steps", "src": "Kelas X–XI", "tier": 2, "sum": "Teks yang memberi petunjuk cara membuat atau melakukan sesuatu.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: goal (aim), materials atau ingredients, steps.", "Kebahasaan: kalimat perintah (imperative: Pour, Mix, Cut), konjungsi urutan (first, then, next, finally), kata keterangan cara (carefully).", "Contoh: how to make fried rice, how to operate a printer, manual book."]}]}, {"code": "TXT-04", "title": "Explanation text", "scope": "Phenomenon, sequence of explanation", "src": "Kelas XI", "tier": 1, "sum": "Teks yang menjelaskan proses terjadinya fenomena alam atau sosial.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: general statement, sequenced explanation (rangkaian sebab-akibat), closing (opsional).", "Kebahasaan: simple present, passive voice, konjungsi sebab-akibat dan urutan (because, as a result, then).", "Contoh: how rain is formed, how a tsunami happens, the water cycle."]}], "traps": ["Explanation text menjawab \"how\" atau \"why\" suatu fenomena terjadi; procedure text menjawab \"how to do\" sesuatu."]}, {"code": "TXT-05", "title": "Analytical dan hortatory exposition", "scope": "Thesis, arguments, recommendation", "src": "Kelas XI", "tier": 1, "sum": "Teks argumentatif yang meyakinkan pembaca (analytical) atau membujuk pembaca melakukan sesuatu (hortatory).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Analytical exposition", "Hortatory exposition"], "rows": [["Tujuan", "Meyakinkan bahwa sesuatu penting atau benar", "Membujuk pembaca melakukan atau tidak melakukan sesuatu"], ["Struktur", "Thesis, arguments, reiteration (conclusion)", "Thesis, arguments, <b>recommendation<\/b>"], ["Penanda", "In conclusion, therefore", "We should, it is advisable, must"]]}}], "traps": ["Pembeda hortatory adalah bagian recommendation berisi ajakan atau saran; analytical berakhir dengan reiteration."]}, {"code": "TXT-06", "title": "Discussion text", "scope": "Issue, pros, cons", "src": "Kelas XI–XII", "tier": 1, "sum": "Teks yang menyajikan isu dari dua sudut pandang sebelum memberi kesimpulan atau rekomendasi.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: issue, arguments for (supporting points), arguments against (contrasting points), conclusion atau recommendation.", "Kebahasaan: konjungsi pertentangan (however, on the other hand, whereas), modal (may, should), kata sifat pembanding."]}], "traps": ["Discussion text menyajikan dua sisi isu; exposition hanya membela satu sisi."]}, {"code": "TXT-07", "title": "News item", "scope": "Newsworthy event, background, sources", "src": "Kelas XII", "tier": 2, "sum": "Teks berita yang melaporkan peristiwa penting dan aktual.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: newsworthy event (ringkasan peristiwa), background events (rincian), sources (kutipan saksi atau pejabat).", "Kebahasaan: simple past, passive voice, reported speech, judul ringkas (headline), keterangan waktu dan tempat."]}]}, {"code": "TXT-08", "title": "Review text", "scope": "Orientation, evaluation, summary", "src": "Kelas XII", "tier": 3, "sum": "Teks yang menilai karya seperti film, buku, atau lagu.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: orientation (identitas karya), interpretive recount (ringkasan), evaluation (kelebihan dan kekurangan), evaluative summation.", "Kebahasaan: kata sifat penilaian (thrilling, boring), simple present, kalimat kompleks."]}]}, {"code": "TXT-09", "title": "Teks fungsional pendek", "scope": "Announcement, advertisement, letter", "src": "Kelas X–XII", "tier": 2, "sum": "Pengumuman, iklan, undangan, surat dan email, label, serta kartu ucapan: tujuan dan bagian-bagiannya.", "blocks": [{"h": "Jenis", "li": ["Announcement: what, when, where, who, dan contact person.", "Advertisement: menarik perhatian, informasi produk atau jasa, ajakan membeli.", "Invitation, greeting card, personal letter, email: pengirim, penerima, tujuan, ungkapan pembuka dan penutup.", "Soal khas: tujuan teks, informasi rinci (waktu, tempat, syarat), sasaran pembaca."]}]}]}, {"id": "GRM", "name": "Tata bahasa", "short": "Grammar", "note": "Tenses, kalimat pasif, pengandaian, modal, klausa, dan penghubung.", "topics": [{"code": "GRM-01", "title": "Tenses", "scope": "Present, past, perfect, future", "src": "Kelas X–XI", "tier": 1, "sum": "Bentuk dan pemakaian tenses yang paling sering muncul dalam teks, dengan penanda waktunya.", "blocks": [{"h": "Tenses utama", "table": {"cols": ["Tense", "Bentuk", "Penanda dan pemakaian"], "rows": [["Simple present", "S + V1(s/es)", "Fakta, kebiasaan: always, every day"], ["Present continuous", "S + am/is/are + V-ing", "Sedang berlangsung: now, at the moment"], ["Present perfect", "S + have/has + V3", "Sudah terjadi, masih relevan: already, since, for, just"], ["Simple past", "S + V2", "Lampau selesai: yesterday, last year, ago"], ["Past continuous", "S + was/were + V-ing", "Sedang berlangsung di masa lalu: when, while"], ["Past perfect", "S + had + V3", "Terjadi sebelum peristiwa lampau lain: before, after, by the time"], ["Simple future", "S + will + V1 / be going to + V1", "Akan datang: tomorrow, next week"]]}}], "traps": ["Since diikuti titik waktu (since 2020); for diikuti rentang waktu (for three years).", "Present perfect tidak dipakai dengan keterangan waktu lampau yang pasti seperti yesterday."]}, {"code": "GRM-02", "title": "Passive voice", "scope": "be + V3, by-phrase", "src": "Kelas XI", "tier": 1, "sum": "Mengubah kalimat aktif menjadi pasif pada berbagai tense dan kapan kalimat pasif dipakai.", "blocks": [{"h": "Bentuk", "li": ["Rumus umum: <b>S + be + V3 (+ by agent)<\/b>; bentuk \"be\" mengikuti tense kalimat aktifnya.", "Simple present: The room is cleaned every day. Simple past: The letter was written yesterday.", "Present perfect: The bridge has been repaired. Modal: The form must be filled in.", "Pasif dipakai bila pelaku tidak penting atau tidak diketahui; sering dalam explanation, news item, dan report."]}], "traps": ["Hanya kalimat dengan objek (kata kerja transitif) yang dapat dipasifkan.", "Bentuk be menyesuaikan subjek baru dalam kalimat pasif, bukan subjek kalimat aktif."]}, {"code": "GRM-03", "title": "Conditional sentences", "scope": "Tipe 0, 1, 2, 3", "src": "Kelas XI–XII", "tier": 1, "sum": "Empat tipe kalimat pengandaian, bentuknya, dan fakta yang tersirat di baliknya.", "blocks": [{"h": "Tipe", "table": {"cols": ["Tipe", "Bentuk", "Makna"], "rows": [["0", "If + simple present, simple present", "Kebenaran umum: If you heat ice, it melts."], ["1", "If + simple present, will + V1", "Mungkin terjadi: If it rains, I will stay home."], ["2", "If + simple past (were), would + V1", "Tidak nyata sekarang: If I were rich, I would travel. (Faktanya: saya tidak kaya.)"], ["3", "If + past perfect, would have + V3", "Tidak nyata di masa lalu: If she had studied, she would have passed. (Faktanya: ia tidak belajar, tidak lulus.)"]]}}, {"h": "Variasi", "li": ["Inversi: Had she studied, she would have passed = If she had studied ….", "Wish: I wish I were taller (sekarang), I wish I had come (lampau)."]}], "traps": ["Fakta dari kalimat tipe 2 berbentuk present dan berlawanan: If I had money → I don't have money.", "Pada tipe 2, be memakai \"were\" untuk semua subjek dalam bahasa baku."]}, {"code": "GRM-04", "title": "Modals", "scope": "Can, must, should, may", "src": "Kelas X–XI", "tier": 2, "sum": "Makna dan pemakaian modal untuk kemampuan, kewajiban, saran, izin, dan kemungkinan.", "blocks": [{"h": "Modal", "table": {"cols": ["Modal", "Makna", "Contoh"], "rows": [["can / could", "Kemampuan, izin", "She can swim."], ["must / have to", "Kewajiban", "You must wear a helmet."], ["should", "Saran", "You should see a doctor."], ["may / might", "Izin, kemungkinan", "It might rain later."], ["must have + V3", "Kesimpulan kuat tentang masa lalu", "The road is wet; it must have rained."]]}}]}, {"code": "GRM-05", "title": "Relative clauses", "scope": "Who, which, whose, where", "src": "Kelas XI", "tier": 2, "sum": "Klausa yang menerangkan kata benda dengan kata penghubung relatif.", "blocks": [{"h": "Pemakaian", "li": ["Who untuk orang (subjek), whom untuk orang (objek), which untuk benda, whose untuk kepemilikan, where untuk tempat, when untuk waktu.", "That dapat menggantikan who atau which pada klausa yang membatasi (defining).", "Contoh: The girl whose bag was stolen reported it to the police."]}]}, {"code": "GRM-06", "title": "Reported speech", "scope": "Statement, question, command", "src": "Kelas XII", "tier": 2, "sum": "Mengubah kalimat langsung menjadi tidak langsung, termasuk pergeseran tense, kata ganti, dan keterangan waktu.", "blocks": [{"h": "Aturan", "li": ["Jika kata kerja pelapor lampau (said, told), tense mundur satu langkah: am → was, will → would, V2 → had V3.", "Keterangan berubah: now → then, today → that day, tomorrow → the next day, here → there.", "Pertanyaan: memakai if/whether atau kata tanya, susunan kalimat berita: He asked where I lived.", "Perintah: told/asked + to + V1; larangan: not to + V1."]}]}, {"code": "GRM-07", "title": "Gerund, infinitive, dan causative", "scope": "V-ing, to V1, have/get", "src": "Kelas XI–XII", "tier": 3, "sum": "Kata kerja yang diikuti gerund atau to-infinitive, serta kalimat causative.", "blocks": [{"h": "Pemakaian", "li": ["Diikuti gerund: enjoy, avoid, finish, mind, suggest. Diikuti to-infinitive: want, decide, hope, plan, agree.", "Causative aktif: have someone do, get someone to do; pasif: have/get something done (I had my hair cut)."]}]}, {"code": "GRM-08", "title": "Penghubung dan kohesi", "scope": "Conjunctions, transitions", "src": "Semua kelas", "tier": 2, "sum": "Kata penghubung dan transisi yang menandai hubungan antargagasan dalam teks.", "blocks": [{"h": "Penanda", "table": {"cols": ["Hubungan", "Contoh"], "rows": [["Penambahan", "and, moreover, furthermore, in addition"], ["Pertentangan", "but, however, although, whereas, on the other hand"], ["Sebab-akibat", "because, since, therefore, as a result, consequently"], ["Urutan", "first, then, after that, finally"], ["Contoh", "for example, such as, for instance"]]}}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Capaian Pembelajaran Kurikulum Merdeka tidak mengikat jenis teks pada kelas tertentu; label kelas adalah perkiraan.", "Nama bagian struktur teks berbeda sedikit antarbuku (misalnya reiteration atau conclusion); maknanya sama.", "Soal TKA 2025 Bahasa Inggris berupa pemahaman bacaan; tata bahasa diuji lewat pemahaman teks, bukan soal tata bahasa terpisah."]}, {"title": "Rujukan", "items": ["Capaian Pembelajaran dan buku teks Bahasa Inggris Kurikulum Merdeka (Kemendikbudristek); daftar materi dicocokkan lewat ringkasan daring karena PDF resmi tidak dapat dibuka dari lingkungan kerja.", "Tipe soal TKA 2025 Bahasa Inggris (specs/tka-templates/bahasa-inggris.md)."]}]};
+const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
+const KEY = "peta-" + MAP.id + "-v1";
+let done = new Set();
+try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
+function save(){ try { localStorage.setItem(KEY, JSON.stringify([...done])); } catch(e) {} }
+const $ = id => document.getElementById(id);
+// The text faces lack most Unicode superscript/subscript digits, so turn runs of them into <sup>/<sub>.
+const SUP = "⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺", SUB = "₀₁₂₃₄₅₆₇₈₉", PLAIN = "0123456789-+";
+function scripts(s){
+  return s.replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁻⁺]+/g, m => "<sup>" + [...m].map(c => PLAIN[SUP.indexOf(c)]).join("").replace("-", "−") + "</sup>")
+          .replace(/[₀₁₂₃₄₅₆₇₈₉]+/g, m => "<sub>" + [...m].map(c => PLAIN[SUB.indexOf(c)]).join("") + "</sub>");
+}
+(function walk(o){ for(const k in o){ if(typeof o[k] === "string") o[k] = scripts(o[k]); else if(o[k] && typeof o[k] === "object") walk(o[k]); } })(MAP);
+const byCode = {};
+MAP.domains.forEach((d,i) => { d.c = "var(--d" + (i % 7 + 1) + ")"; d.soft = "var(--s" + (i % 7 + 1) + ")"; d.topics.forEach(t => byCode[t.code] = {t, d}); });
+
+function hl(str, re){
+  if(!re) return str;
+  return str.split(/(<[^>]+>)/g).map(p => p.startsWith("<") ? p : p.replace(re, m => "<mark>" + m + "</mark>")).join("");
+}
+function plain(t){
+  const parts = [t.code, t.title, t.scope, t.src, t.sum];
+  t.blocks.forEach(b => { parts.push(b.h); (b.li||[]).forEach(x => parts.push(x)); if(b.table){ parts.push(b.table.cols.join(" ")); b.table.rows.forEach(r => parts.push(r.join(" "))); } });
+  (t.traps||[]).forEach(x => parts.push(x));
+  return parts.join(" ").replace(/<[^>]+>/g, " ");
+}
+function bodyHTML(t, re){
+  let h = "";
+  t.blocks.forEach(b => {
+    h += '<div class="blk' + (b.wide || (b.table && b.table.cols.length > 2) ? ' wide' : '') + '"><h4>' + hl(b.h, re) + '</h4>';
+    if(b.li) h += "<ul>" + b.li.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul>";
+    if(b.table) h += '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + hl(c, re) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    h += "</div>";
+  });
+  if(t.traps && t.traps.length) h += '<div class="traps"><h4>Jebakan soal</h4><ul>' + t.traps.map(x => "<li>" + hl(x, re) + "</li>").join("") + "</ul></div>";
+  return h;
+}
+
+function render(){
+  const total = Object.keys(byCode).length;
+  document.title = MAP.title;
+  $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
+  $("title").textContent = MAP.title;
+  $("lead").innerHTML = MAP.lead;
+  $("sourceNote").textContent = MAP.source_note || "";
+  $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
+  if(MAP.path && MAP.path.length){
+    $("alur").hidden = false;
+    $("h-alur").textContent = MAP.path_title || "Alur belajar";
+    $("pathNote").textContent = MAP.path_note || "";
+    $("path").innerHTML = MAP.path.map(e => '<li><button type="button" data-code="' + e.to + '"><span class="lb">' + e.label + '</span><span class="nm">' + e.title + '</span><span class="an">' + e.note + '</span></button></li>').join("");
+  }
+  const map = $("map"), host = $("domains");
+  MAP.domains.forEach(d => {
+    const col = document.createElement("div");
+    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+      d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span></a></li>').join("") + "</ul>";
+    map.appendChild(col);
+    const sec = document.createElement("section");
+    sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    d.topics.forEach(t => {
+      const a = document.createElement("article");
+      a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
+      a.innerHTML = '<div class="card-head"><button class="toggle" type="button" aria-expanded="false" aria-controls="b-' + t.code + '">' +
+        '<span class="code">' + t.code + '</span>' +
+        '<span class="ttl"><span class="caret" aria-hidden="true">›</span>' + t.title + ' <span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span></span>' +
+        '<span class="meta"><span>' + t.scope + '</span><span>' + t.src + '</span></span>' +
+        '<span class="sum">' + t.sum + '</span></button>' +
+        '<label class="done-box"><input type="checkbox" id="done-' + t.code + '"> Dikuasai</label></div>' +
+        '<div class="body" id="b-' + t.code + '" hidden>' + bodyHTML(t, null) + '</div>';
+      sec.appendChild(a);
+    });
+    host.appendChild(sec);
+  });
+  $("notes").innerHTML = (MAP.notes || []).map(n => '<div class="note"><h3>' + n.title + '</h3><ul>' + n.items.map(i => "<li>" + i + "</li>").join("") + "</ul></div>").join("");
+}
+function setOpen(card, open){
+  card.classList.toggle("open", open);
+  card.querySelector(".body").hidden = !open;
+  card.querySelector(".toggle").setAttribute("aria-expanded", open ? "true" : "false");
+}
+function goTo(code){
+  const card = $("t-" + code); if(!card) return;
+  card.hidden = false; setOpen(card, true);
+  card.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block:"start"});
+}
+function progress(){
+  let k = 0, n = 0;
+  MAP.domains.forEach(d => {
+    const dn = d.topics.filter(t => done.has(t.code)).length;
+    k += dn; n += d.topics.length;
+    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+  });
+  $("overall").textContent = k + " dari " + n;
+  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
+  document.querySelectorAll(".card").forEach(c => { const on = done.has(c.dataset.code); c.classList.toggle("is-done", on); c.querySelector('input[type="checkbox"]').checked = on; });
+}
+function search(q){
+  q = q.trim();
+  const re = q.length >= 2 ? new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi") : null;
+  let hits = 0;
+  document.querySelectorAll(".card").forEach(card => {
+    const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
+    if(!re){ card.hidden = false; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
+    const match = new RegExp(re.source, "i").test(plain(t));
+    card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
+    if(match) hits++;
+  });
+  $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+render();
+progress();
+document.addEventListener("click", e => {
+  const tg = e.target.closest(".toggle");
+  if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
+  const chip = e.target.closest("[data-code]");
+  if(chip && (chip.classList.contains("chip") || chip.tagName === "BUTTON")){ e.preventDefault(); goTo(chip.dataset.code); }
+});
+document.addEventListener("change", e => {
+  if(e.target.matches(".done-box input")){
+    const code = e.target.closest(".card").dataset.code;
+    e.target.checked ? done.add(code) : done.delete(code);
+    save(); progress();
+  }
+});
+let timer;
+$("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
+$("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
+$("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
+if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+</script>
