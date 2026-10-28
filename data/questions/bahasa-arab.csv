@@ -52,6 +52,7 @@ NHW-02-012,NHW-02,2,Di pondok pesantren ada dua orang guru perempuan baru. Bentu
 NHW-02-013,NHW-02,2,"Dalam acara wisuda santri, pembawa acara menyebut ""para guru laki-laki"". Bentuk jamak mudzakkar salim dari مُدَرِّسٌ adalah…",مُدَرِّسُوْنَ (mudarrisun),,wisuda santri
 NHW-02-014,NHW-02,1,Isim yang menunjukkan satu disebut…,Mufrad,,
 NHW-02-015,NHW-02,1,Isim yang menunjukkan banyak disebut…,Jamak,,
+NHW-02-016,NHW-02,2,"Di kantor pos, petugas mencatat dua surat. Bentuk mutsanna dari رِسَالَةٌ adalah…",رِسَالَتَانِ (risalatan),,kantor pos
 NHW-03-001,NHW-03,1,"Dhamir untuk ""saya"" adalah…",أَنَا (ana),,
 NHW-03-002,NHW-03,1,"Dhamir untuk ""kami"" adalah…",نَحْنُ (nahnu),,
 NHW-03-003,NHW-03,1,"Dhamir untuk ""dia (laki-laki)"" adalah…",هُوَ (huwa),,
@@ -86,6 +87,7 @@ NHW-05-007,NHW-05,2,Lengkapi dengan khabar yang sesuai: اَلطَّالِبَة
 NHW-05-008,NHW-05,3,Siswa menulis اَلْمَدْرَسَةُ كَبِيْرٌ. Apa kesalahannya?,"Mubtada' muannats, jadi khabar juga muannats: كَبِيْرَةٌ",,
 NHW-05-009,NHW-05,2,"Siswa menulis tentang pasar di dekat rumahnya: اَلسُّوْقُ ___ (ramai, مُزْدَحِمٌ). Bagian yang dilengkapi berfungsi sebagai…",Khabar,,pasar
 NHW-05-010,NHW-05,2,Siswa menulis kalimat tentang kelasnya: اَلْفَصْلُ نَظِيْفٌ (kelas itu bersih). Kata نَظِيْفٌ berfungsi sebagai…,Khabar,,kelas
+NHW-05-011,NHW-05,2,Siswa menulis tentang masjid kampungnya: اَلْمَسْجِدُ ___ (besar). Lengkapi dengan khabar yang sesuai.,كَبِيْرٌ,,masjid kampung
 NHW-06-001,NHW-06,1,Kata kerja lampau dalam bahasa Arab disebut…,Fi'il madhi,,
 NHW-06-002,NHW-06,1,Kata kerja sekarang atau akan datang disebut…,Fi'il mudhari',,
 NHW-06-003,NHW-06,2,Fi'il madhi كَتَبَ untuk هِيَ adalah…,كَتَبَتْ (katabat),,
@@ -99,6 +101,7 @@ NHW-06-010,NHW-06,3,تَكْتُبُ bisa untuk dua pelaku. Sebutkan keduanya.,�
 NHW-06-011,NHW-06,2,"Siswa bercerita di buku harian: ""Kemarin saya menulis surat."" Bentuk fi'il apa yang tepat untuk ""saya menulis"" di sini?",Fi'il madhi: كَتَبْتُ,,buku harian
 NHW-06-012,NHW-06,2,Ibu bercerita bahwa kakak sedang belajar. Fi'il mudhari' دَرَسَ untuk هُوَ adalah…,يَدْرُسُ (yadrusu),,rumah
 NHW-06-013,NHW-06,1,Fi'il madhi menyatakan perbuatan yang…,Sudah terjadi (lampau),,
+NHW-06-014,NHW-06,2,"Santri bercerita: ""Kami telah membaca Al-Qur'an."" Bentuk fi'il madhi قَرَأَ untuk نَحْنُ adalah…",قَرَأْنَا (qara'na),,pesantren
 NHW-07-001,NHW-07,1,Kata kerja perintah dalam bahasa Arab disebut…,Fi'il amr,,
 NHW-07-002,NHW-07,2,Fi'il amr dari كَتَبَ adalah…,اُكْتُبْ (uktub),,
 NHW-07-003,NHW-07,2,"Bentuk larangan ""jangan menulis"" adalah…",لَا تَكْتُبْ (la taktub),,
@@ -127,6 +130,7 @@ NHW-09-006,NHW-09,2,"Huruf jar untuk ""tentang"" adalah…",عَنْ ('an),,
 NHW-09-007,NHW-09,2,Siswa menulis ذَهَبْتُ إِلَى الْمَسْجِدِ. Mengapa الْمَسْجِدِ berharakat kasrah?,Didahului huruf jar إِلَى (majrur),,masjid
 NHW-09-008,NHW-09,2,Siswa menulis: أَنَا مِنْ ___ (dari Bandung). Bagaimana harakat isim sesudah مِنْ?,Majrur (kasrah),,Bandung
 NHW-09-009,NHW-09,1,Kata depan dalam bahasa Arab disebut…,Huruf jar,,
+NHW-09-010,NHW-09,2,"Ustazah berkata kepada santri, ""Bukumu ada di atas meja."" Huruf jar apa yang berarti ""di atas""?",عَلَى ('ala),,kelas
 MWD-01-001,MWD-01,1,Jawaban صَبَاحَ الْخَيْرِ adalah…,صَبَاحَ النُّوْرِ,,
 MWD-01-002,MWD-01,1,Arti شُكْرًا adalah…,Terima kasih,,
 MWD-01-003,MWD-01,1,Arti أَهْلًا وَسَهْلًا adalah…,Selamat datang,,
@@ -147,6 +151,7 @@ MWD-02-007,MWD-02,3,"Mengapa jam tiga disebut اَلسَّاعَةُ الثَّ�
 MWD-02-008,MWD-02,2,Penjual di pasar Arab menyebut harga خَمْسَةٌ رِيَالٍ. Berapa harganya?,Lima riyal,,pasar
 MWD-02-009,MWD-02,2,"Bel sekolah berbunyi pukul tujuh pagi. Dalam bahasa Arab ""jam tujuh"" disebut…",اَلسَّاعَةُ السَّابِعَةُ,,bel sekolah
 MWD-02-010,MWD-02,1,Angka 1 dalam bahasa Arab adalah…,وَاحِدٌ (wahid),,
+MWD-02-011,MWD-02,2,Penjual kurma di pasar menyebut harga عَشَرَةٌ رِيَالٍ. Berapa riyal harganya?,Sepuluh riyal,,pasar kurma
 MWD-03-001,MWD-03,1,Arti أَبٌ adalah…,Ayah,,
 MWD-03-002,MWD-03,1,Arti أُمٌّ adalah…,Ibu,,
 MWD-03-003,MWD-03,2,Arti مَطْبَخٌ adalah…,Dapur,,
@@ -159,6 +164,7 @@ MWD-04-003,MWD-04,2,Arti سَبُّوْرَةٌ adalah…,Papan tulis,,
 MWD-04-004,MWD-04,2,Arti أَسْتَيْقِظُ adalah…,Saya bangun (tidur),,
 MWD-04-005,MWD-04,2,Apa beda مَكْتَبٌ dan مَكْتَبَةٌ?,مَكْتَبٌ meja atau kantor; مَكْتَبَةٌ perpustakaan atau toko buku,,
 MWD-04-006,MWD-04,2,Siswa meminjam buku di ruang baca sekolah. Ruangan itu dalam bahasa Arab disebut…,مَكْتَبَةٌ (maktabah),,perpustakaan
+MWD-04-007,MWD-04,2,Siswa menunjuk papan tulis di kelas bahasa Arab. Dalam bahasa Arab papan tulis disebut…,سَبُّوْرَةٌ (sabburah),,kelas
 MWD-05-001,MWD-05,1,Hari Jumat dalam bahasa Arab adalah…,اَلْجُمُعَةُ (al-jumu'ah),,
 MWD-05-002,MWD-05,1,Hari Minggu dalam bahasa Arab adalah…,اَلْأَحَدُ (al-ahad),,
 MWD-05-003,MWD-05,2,Hari Senin dalam bahasa Arab adalah…,اَلْاِثْنَيْنِ (al-itsnain),,
@@ -175,6 +181,7 @@ MWD-06-005,MWD-06,2,Arti بَيْنَ adalah…,Di antara,,
 MWD-06-006,MWD-06,2,Tas berada di bawah meja. Lengkapi: اَلْحَقِيْبَةُ ___ الْمَكْتَبِ.,تَحْتَ,,kelas
 MWD-06-007,MWD-06,2,Kantin sekolah berada di antara masjid dan perpustakaan. Kata keterangan tempat apa yang dipakai?,بَيْنَ (baina),,kantin
 MWD-06-008,MWD-06,1,Arti بِجَانِبِ adalah…,Di samping,,
+MWD-06-009,MWD-06,2,"Kucing tidur di bawah kursi di serambi rumah. Kata keterangan tempat apa yang dipakai untuk ""di bawah""?",تَحْتَ (tahta),,serambi
 TSQ-01-001,TSQ-01,1,Bahasa Arab menjadi bahasa resmi PBB pada tahun…,1973,,
 TSQ-01-002,TSQ-01,2,Hari Bahasa Arab Sedunia diperingati setiap tanggal…,18 Desember,,
 TSQ-01-003,TSQ-01,2,Liga Arab beranggotakan berapa negara dan wilayah?,22,,

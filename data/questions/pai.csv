@@ -12,6 +12,7 @@ QH-01-010,QH-01,3,Apa beda qalqalah kubra dan sugra?,Kubra bila huruf qalqalah m
 QH-01-011,QH-01,2,"Dalam lomba tilawah di masjid kampung, juri mengoreksi peserta yang membaca ""min ba'di"" dengan nun yang jelas. Hukum apa yang seharusnya dipakai?",Iqlab (nun dibaca seperti mim),,lomba tilawah
 QH-01-012,QH-01,1,Ilmu tentang kaidah membaca Al-Qur'an dengan benar disebut…,Tajwid,,
 QH-01-013,QH-01,1,Huruf idgam bilagunnah adalah…,ل dan ر,,
+QH-01-014,QH-01,2,"Imam salat Tarawih di masjid kampung membaca ""min ba'di"" dengan nun yang dibaca seperti mim. Hukum tajwid apa yang dipakai?",Iqlab,,salat Tarawih
 QH-02-001,QH-02,1,Rangkaian orang yang meriwayatkan hadis disebut…,Sanad,,
 QH-02-002,QH-02,1,Isi atau teks hadis disebut…,Matan,,
 QH-02-003,QH-02,1,Sumber hukum Islam kedua setelah Al-Qur'an adalah…,Hadis (sunah),,
@@ -78,6 +79,7 @@ AQD-03-008,AQD-03,2,Sifat wajib rasul fatanah berarti…,Cerdas,,
 AQD-03-009,AQD-03,2,Pengurus koperasi masjid memilih bendahara yang terbukti tidak pernah menyalahgunakan uang titipan jamaah. Sifat rasul apa yang dijadikan teladan?,Amanah,,koperasi masjid
 AQD-03-010,AQD-03,2,Pedagang di pasar menimbang dengan tepat dan tidak menyembunyikan cacat barang. Sifat wajib rasul apa yang diteladani?,Siddiq (jujur),,pasar
 AQD-03-011,AQD-03,1,Kitab Injil diturunkan kepada…,Nabi Isa a.s.,,
+AQD-03-012,AQD-03,2,Kelompok pengajian remaja membahas kitab yang diturunkan kepada Nabi Daud a.s. Kitab apa itu?,Zabur,,pengajian remaja
 AQD-04-001,AQD-04,1,Kehancuran seluruh alam disebut kiamat…,Kubra,,
 AQD-04-002,AQD-04,1,Hari dibangkitkannya manusia dari kubur disebut…,Yaumul ba'as,,
 AQD-04-003,AQD-04,2,Alam antara kematian dan hari kebangkitan disebut…,Alam barzakh,,
@@ -99,6 +101,7 @@ AKH-01-007,AKH-01,2,Pedagang sukses yang hidup sederhana dan rutin menyumbang un
 AKH-01-008,AKH-01,2,Relawan dapur umum korban banjir memasak tanpa ingin namanya disebut. Sifat apa yang ditunjukkan?,Ikhlas,,dapur umum
 AKH-01-009,AKH-01,3,Atlet yang kalah di final pekan olahraga provinsi tetap menyalami lawan dan berlatih lebih giat. Dua sifat terpuji apa yang tampak?,Sabar dan etos kerja (fastabiqul khairat),,pekan olahraga
 AKH-01-010,AKH-01,1,Berserah diri kepada Allah setelah berusaha disebut…,Tawakal,,
+AKH-01-011,AKH-01,2,Penjual sayur di pasar tetap tersenyum dan melanjutkan berjualan walau dagangannya banyak yang busuk karena hujan deras. Sifat terpuji apa yang tampak?,Sabar,,pasar sayur
 AKH-02-001,AKH-02,1,Beramal agar dilihat orang disebut…,Riya',,
 AKH-02-002,AKH-02,1,Beramal agar didengar dan dipuji orang disebut…,Sum'ah,,
 AKH-02-003,AKH-02,1,Ingin nikmat orang lain hilang disebut…,Hasad,,
@@ -145,6 +148,7 @@ FIK-02-009,FIK-02,2,Seorang guru membeli motor lewat bank syariah: bank membeli 
 FIK-02-010,FIK-02,3,"Tiga warga menyetorkan modal bersama untuk membuka toko kelontong dan membagi keuntungan sesuai porsi modal. Akad apa ini, dan apa bedanya dengan mudarabah?","Musyarakah; semua pihak menyertakan modal, sedangkan pada mudarabah satu pihak modal dan satu pihak tenaga",,toko kelontong
 FIK-02-011,FIK-02,2,Penjual di pasar menjual karung beras yang isinya tidak boleh dilihat pembeli dan beratnya tidak disebut. Jual beli seperti ini mengandung…,Garar (ketidakjelasan),,pasar
 FIK-02-012,FIK-02,3,"Koperasi syariah menitipkan uang anggota dan boleh memakainya dengan izin, lalu mengembalikannya utuh kapan saja diminta. Akad apa ini, dan apa bedanya dengan mudarabah?",Wadi'ah (titipan); tidak ada bagi hasil usaha seperti mudarabah,,koperasi syariah
+FIK-02-013,FIK-02,2,"Koperasi pesantren menjual sepeda kepada santri dengan harga beli ditambah keuntungan yang disebutkan di awal, dibayar mencicil. Akad apa ini?",Murabahah,,koperasi pesantren
 FIK-03-001,FIK-03,1,Zakat fitrah per jiwa menurut ketentuan BAZNAS sebesar…,"2,5 kg atau 3,5 liter makanan pokok",,
 FIK-03-002,FIK-03,1,Kadar zakat mal emas adalah…,"2,5%",,
 FIK-03-003,FIK-03,1,Nisab zakat emas adalah…,85 gram,,
@@ -159,6 +163,7 @@ FIK-03-011,FIK-03,2,Seorang petani menyerahkan sebidang tanah untuk dibangun mad
 FIK-03-012,FIK-03,3,Keluarga di kampung terdiri atas 4 orang. Berapa kilogram beras zakat fitrah yang dikeluarkan menurut ketentuan BAZNAS?,10 kg,"4 × 2,5 kg.",zakat keluarga
 FIK-03-013,FIK-03,2,Pegawai yang dipekerjakan BAZNAS kota untuk mengumpulkan dan membagikan zakat termasuk asnaf…,Amil,,BAZNAS
 FIK-03-014,FIK-03,1,Zakat yang dibayar pada bulan Ramadan sebelum salat Idulfitri disebut…,Zakat fitrah,,
+FIK-03-015,FIK-03,2,Seorang dermawan menyerahkan sumur untuk dipakai warga selamanya dan sumur itu tidak boleh dijual. Ibadah apa ini?,Wakaf,,sumur warga
 FIK-04-001,FIK-04,1,Wukuf di Arafah dilakukan pada tanggal…,9 Zulhijah,,
 FIK-04-002,FIK-04,1,Rukun haji yang tidak ada dalam umrah adalah…,Wukuf di Arafah,,
 FIK-04-003,FIK-04,2,Sebutkan enam rukun haji.,"Ihram, wukuf di Arafah, tawaf ifadah, sai, tahalul (mencukur), tertib",,
@@ -227,6 +232,7 @@ SPI-04-004,SPI-04,2,Sebutkan tiga saluran penyebaran Islam di Nusantara.,"Contoh
 SPI-04-005,SPI-04,2,Berapa jumlah wali dalam Walisongo?,9,,
 SPI-04-006,SPI-04,2,Pertunjukan wayang kulit di alun-alun memakai lakon bernuansa Islam. Wali mana yang dikenal memakai wayang sebagai media dakwah?,Sunan Kalijaga,,wayang
 SPI-04-007,SPI-04,3,"Menara Masjid Kudus berbentuk seperti candi. Pendekatan dakwah apa yang tercermin, dan wali mana yang dikaitkan dengan Kudus?",Akulturasi budaya; Sunan Kudus,,Menara Kudus
+SPI-04-008,SPI-04,2,Rombongan ziarah sekolah mengunjungi makam wali di Gresik yang disebut sebagai wali pertama Walisongo. Siapa wali itu?,Maulana Malik Ibrahim,,ziarah
 SPI-05-001,SPI-05,1,Muhammadiyah didirikan oleh…,K.H. Ahmad Dahlan,,
 SPI-05-002,SPI-05,1,Nahdlatul Ulama didirikan oleh…,K.H. Hasyim Asy'ari,,
 SPI-05-003,SPI-05,2,Muhammadiyah berdiri pada tanggal dan di kota…,18 November 1912 di Yogyakarta,,

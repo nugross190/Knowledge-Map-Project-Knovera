@@ -24,6 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 FIELDS = ["id", "simpul", "tingkat", "soal", "jawaban", "catatan"]
 SUBJECT_FIELDS = FIELDS + ["konteks"]  # data/questions/<map id>.csv; konteks is optional (specs/question-spec.md §6)
 MIN_PER_TOPIC = 5
+MIN_KONTEKS_SHARE = 0.20  # question-spec 6: subject banks have about 20-30% konteks items
 MIN_LEVEL1_SHARE = 0.35   # question-spec 3: subject banks with konteks items run about 35-40% level 1
 HEAD = ('<!doctype html>\n<html lang="id">\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
@@ -703,6 +704,9 @@ def main():
               f"tingkat 1/2/3 = {levels['1']}/{levels['2']}/{levels['3']}")
         if thin:
             print(f"  warning: fewer than {MIN_PER_TOPIC} questions: " + ", ".join(thin))
+        konteks = sum(bool(r["konteks"]) for r in bank_rows) / len(bank_rows)
+        if konteks < MIN_KONTEKS_SHARE:
+            print(f"  warning: konteks is {konteks:.0%} (spec: at least {MIN_KONTEKS_SHARE:.0%})")
         if levels["1"] / len(bank_rows) < MIN_LEVEL1_SHARE:
             print(f"  warning: level 1 is {levels['1'] / len(bank_rows):.0%} (spec: at least {MIN_LEVEL1_SHARE:.0%})")
     for b in tka.values():

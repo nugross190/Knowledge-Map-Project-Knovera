@@ -15,6 +15,7 @@ BSN-01-013,BSN-01,2,"Di kantor kelurahan, petugas bertanya kepada warga yang leb
 BSN-01-014,BSN-01,1,Ragam bahasa Sunda untuk orang yang dihormati disebut…,Basa hormat (lemes),,
 BSN-01-015,BSN-01,1,"Kata hormat untuk ""saré"" bila dipakai untuk diri sendiri adalah…",Mondok,,
 BSN-01-016,BSN-01,1,"Kata hormat untuk ""datang"" bila dipakai untuk diri sendiri adalah…",Dongkap,,
+BSN-01-017,BSN-01,2,"Di acara arisan RT, seorang remaja menawari ibu-ibu makan: ""Mangga, Ibu, ___ heula."" Kata hormat apa untuk ""dahar"" yang tepat?",Tuang,,arisan
 BSN-02-001,BSN-02,1,Berapa jumlah aksara swara dalam Aksara Sunda Baku?,7,,
 BSN-02-002,BSN-02,1,Sebutkan aksara swara.,"a, é, i, o, u, e, eu",,
 BSN-02-003,BSN-02,1,Berapa jumlah aksara ngalagena dasar?,18,,
@@ -30,6 +31,7 @@ BSN-02-012,BSN-02,1,Aksara Sunda yang menyatakan konsonan disebut aksara…,Ngal
 BSN-02-013,BSN-02,2,"Gapura desa wisata di Kuningan menulis nama desa dengan aksara Sunda. Untuk menulis konsonan -ng di akhir suku kata, rarangkén apa yang dipakai?",Panyecek,,gapura desa
 BSN-02-014,BSN-02,1,Rarangkén yang menambah bunyi -r disebut…,Panglayar,,
 BSN-02-015,BSN-02,1,Rarangkén yang mengubah bunyi a menjadi eu disebut…,Paneuleung,,
+BSN-02-016,BSN-02,2,Gapura sekolah menulis nama sekolah dalam aksara Sunda. Rarangkén apa yang dipakai untuk mengubah bunyi a menjadi u?,Panyuku,,gapura sekolah
 BSN-03-001,BSN-03,1,Kata berimbuhan dalam bahasa Sunda disebut…,Kecap rundayan,,
 BSN-03-002,BSN-03,2,Rarangkén tengah yang menandai jamak adalah…,-ar- (atau -al-),,
 BSN-03-003,BSN-03,2,"Bentuk jamak dari ""budak"" adalah…",Barudak,,
@@ -109,6 +111,7 @@ SAS-05-007,SAS-05,2,Dongéng yang berisi pelajaran moral disebut…,Parabel,,
 SAS-05-008,SAS-05,2,Wisatawan di Lembang mendengar cerita Sangkuriang yang menendang perahu sampai tertelungkup menjadi gunung. Jenis dongéng apa ini?,Sasakala (Gunung Tangkuban Parahu),,Lembang
 SAS-05-009,SAS-05,3,Apa beda sasakala dan legenda?,Sasakala menjelaskan asal-usul tempat atau benda; legenda tentang tokoh yang dianggap pernah ada,,
 SAS-05-010,SAS-05,1,Dongéng yang tokohnya dianggap pernah ada disebut…,Legenda,,
+SAS-05-011,SAS-05,2,Nenek bercerita tentang Sakadang Kuya yang mengakali Sakadang Monyét. Jenis dongéng apa ini?,Fabel,,cerita nenek
 SAS-06-001,SAS-06,1,Orang yang membawakan carita pantun disebut…,Juru pantun,,
 SAS-06-002,SAS-06,1,Alat musik pengiring carita pantun adalah…,Kacapi,,
 SAS-06-003,SAS-06,2,Bagian pembuka carita pantun yang berupa doa disebut…,Rajah,,
@@ -139,6 +142,7 @@ TKS-01-008,TKS-01,2,"Radio komunitas di Garut menyiarkan banjir bandang di sebua
 TKS-01-009,TKS-01,3,"Siswa menulis warta tentang pasar kaget di alun-alun, lalu menambahkan kalimat ""Pasar ieu pikaresepeun pisan."" Mengapa kalimat itu kurang tepat dalam warta?",Berisi pendapat pribadi; warta harus faktual,,pasar kaget
 TKS-01-010,TKS-01,2,Mading sekolah memuat berita kerja bakti membersihkan selokan. Kalimat pertama yang memuat inti peristiwa disebut…,Lulugu,,mading
 TKS-01-011,TKS-01,1,Bahasa warta harus lugas dan tidak memuat…,Pendapat pribadi penulis,,
+TKS-01-012,TKS-01,1,"Unsur warta ""saha"" menjawab pertanyaan…",Siapa,,
 TKS-02-001,TKS-02,1,Pidato dalam bahasa Sunda disebut…,Biantara,,
 TKS-02-002,TKS-02,1,Pembawa acara dalam bahasa Sunda disebut…,Pangjejer acara (panata acara),,
 TKS-02-003,TKS-02,2,Sebutkan struktur biantara.,"Bubuka, eusi, panutup",,
@@ -148,6 +152,7 @@ TKS-02-006,TKS-02,2,"Bagian biantara yang berisi salam, puji syukur, dan penghor
 TKS-02-007,TKS-02,2,Ketua OSIS berpidato di acara perpisahan kelas XII hanya dengan melihat kartu kecil berisi poin-poin. Metode biantara apa yang dipakai?,Ekstemporan,,perpisahan
 TKS-02-008,TKS-02,3,"Pangjejer acara di hajatan pernikahan membuka acara dengan ""Assalamu'alaikum"" lalu langsung membacakan susunan acara. Bagian bubuka apa yang terlewat?",Puji syukur dan penghormatan kepada hadirin,,hajatan
 TKS-02-009,TKS-02,1,Bagian penutup biantara disebut…,Panutup,,
+TKS-02-010,TKS-02,2,"Ketua OSIS berpidato di acara perpisahan dengan susunan bubuka, eusi, dan panutup. Pidato dalam bahasa Sunda disebut…",Biantara,,perpisahan
 TKS-03-001,TKS-03,1,Diskusi dalam bahasa Sunda disebut…,Sawala,,
 TKS-03-002,TKS-03,1,Pemimpin sawala disebut…,Pupuhu,,
 TKS-03-003,TKS-03,2,Orang yang menyampaikan pendapat utama dalam sawala disebut…,Panyatur,,
@@ -171,6 +176,7 @@ BUD-01-006,BUD-01,2,Alat musik bambu Sunda yang dipukul adalah…,Calung,,
 BUD-01-007,BUD-01,2,"Di Saung Angklung Udjo, pengunjung diajak memainkan alat musik bambu dengan cara digoyang. Alat musik apa itu?",Angklung,,Saung Angklung
 BUD-01-008,BUD-01,1,Alat musik petik yang mengiringi tembang Cianjuran dan carita pantun adalah…,Kacapi,,
 BUD-01-009,BUD-01,1,Angklung termasuk alat musik dari bahan…,Bambu,,
+BUD-01-010,BUD-01,2,Pertunjukan di alun-alun memakai boneka kayu yang dimainkan dalang dengan iringan gamelan Sunda. Kesenian apa ini?,Wayang golek,,alun-alun
 BUD-02-001,BUD-02,1,Upacara syukur atas hasil panen padi disebut…,Seren taun,,
 BUD-02-002,BUD-02,2,Kampung adat di Tasikmalaya yang mempertahankan rumah panggung adalah…,Kampung Naga,,
 BUD-02-003,BUD-02,2,Masyarakat adat Baduy disebut juga…,Urang Kanekes,,
@@ -179,6 +185,7 @@ BUD-02-005,BUD-02,2,Upacara tujuh bulan kehamilan disebut…,Tingkeban,,
 BUD-02-006,BUD-02,2,"Di Cigugur, Kuningan, warga mengarak hasil bumi dan menumbuk padi bersama setiap tahun. Upacara apa ini?",Seren taun,,Cigugur
 BUD-02-007,BUD-02,3,"Wisatawan di Kampung Naga dilarang memotret area tertentu dan mengikuti aturan warga. Apa istilah untuk aturan adat seperti ini pada masyarakat Baduy, dan apa tujuannya?",Pikukuh; menjaga adat dan kelestarian alam,,Kampung Naga
 BUD-02-008,BUD-02,1,Kampung Naga terletak di kabupaten…,Tasikmalaya,,
+BUD-02-009,BUD-02,2,Warga Kasepuhan Ciptagelar mengadakan upacara syukur hasil panen padi setiap tahun. Upacara apa ini?,Seren taun,,Ciptagelar
 BUD-03-001,BUD-03,1,Permainan engklek dalam bahasa Sunda disebut…,Sondah,,
 BUD-03-002,BUD-03,2,Permainan petak umpet dalam bahasa Sunda disebut…,Ucing sumput,,
 BUD-03-003,BUD-03,2,"Falsafah ""silih asah, silih asih, silih asuh"" berarti…","Saling mencerdaskan, saling mengasihi, saling membimbing",,
@@ -186,6 +193,7 @@ BUD-03-004,BUD-03,2,"Sebutkan empat cita-cita manusia Sunda ""cageur, bageur, be
 BUD-03-005,BUD-03,2,Kakak kelas mengajari adik kelas berlatih pidato sebelum lomba. Bagian falsafah Sunda apa yang paling tampak?,Silih asah (saling mencerdaskan),,latihan pidato
 BUD-03-006,BUD-03,1,Permainan anak tradisional dalam bahasa Sunda disebut…,Kaulinan barudak,,
 BUD-03-007,BUD-03,2,Sekelompok anak di halaman rumah melompat di kotak-kotak yang digambar di tanah dengan satu kaki. Permainan apa ini?,Sondah,,halaman rumah
+BUD-03-008,BUD-03,1,"Falsafah Sunda tentang saling mencerdaskan, saling mengasihi, dan saling membimbing adalah…","Silih asah, silih asih, silih asuh",,
 BUD-04-001,BUD-04,1,Raja Tarumanagara yang terkenal adalah…,Purnawarman,,
 BUD-04-002,BUD-04,2,Ibu kota Kerajaan Sunda (Pajajaran) adalah…,Pakuan (sekitar Bogor),,
 BUD-04-003,BUD-04,2,Prasasti Batutulis dibuat pada tahun…,1533,,
