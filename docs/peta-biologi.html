@@ -225,7 +225,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
-  $("lead").innerHTML = MAP.lead;
+  $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
   if(MAP.path && MAP.path.length){

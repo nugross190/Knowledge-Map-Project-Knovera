@@ -8,6 +8,7 @@
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --indigo:#2B3A78; --soga:#8A5526; --patina:#2C6B63;
   --indigo-soft:#E4E8F6; --soga-soft:#F3E9DF; --patina-soft:#DFEFEC;
+  --plum:#6E3466; --olive:#5B6A1E; --plum-soft:#F1E4EE; --olive-soft:#ECEFDD;
   --ok:#2C6B3F; --ok-soft:#E1F0E5; --bad:#A3361C; --bad-soft:#F8E6DF;
   --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
   --f-body:"Literata",Georgia,"Times New Roman",serif;
@@ -17,11 +18,13 @@
   --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
   --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
   --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
   --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
   --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
   --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
+  --plum:#D9A0CF; --olive:#C2D17A; --plum-soft:#33202F; --olive-soft:#2A2F18;
   --ok:#8FD3A2; --ok-soft:#1B3324; --bad:#F0A58A; --bad-soft:#3A221B; color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -104,6 +107,7 @@ select{min-width:0;width:min(320px,100%)}
 .qlist details summary:focus-visible{outline:2px solid var(--c);outline-offset:2px}
 .qlist .aa{font-weight:600}
 .qlist .xx{color:var(--muted);font-size:.92rem}
+.ktx{font-family:var(--f-label);font-size:.78rem;font-weight:600;padding:1px 8px;border-radius:9px;background:var(--sunk);color:var(--ink)}
 .mark-ok{color:var(--ok);font-family:var(--f-label);font-size:.8rem}
 .mark-bad{color:var(--bad);font-family:var(--f-label);font-size:.8rem}
 
@@ -141,8 +145,8 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
-    <h1 style="margin-top:8px">Bank Soal Lomba Sejarah</h1>
-    <p class="lead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
+    <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
+    <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
   </header>
 
   <div class="tabs" role="tablist" aria-label="Mode">
@@ -156,6 +160,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div class="fgroup"><label class="lbl" for="fTopic">Simpul</label><select id="fTopic"></select></div>
     <div class="fgroup"><span class="lbl">Tingkat</span><div class="seg" id="fLevel"></div></div>
     <label class="check" for="fWrong"><input type="checkbox" id="fWrong"> Hanya yang terakhir dijawab salah</label>
+    <label class="check" for="fCtx" id="ctxBox" hidden><input type="checkbox" id="fCtx"> Hanya soal konteks sehari-hari</label>
     <span id="poolInfo" aria-live="polite"></span>
   </div>
 
@@ -181,14 +186,19 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div id="progress"></div>
   </section>
 
-  <footer>Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
+  <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
 <script>
 /*__DATA__*/
-const COLORS = {SNI:["var(--indigo)","var(--indigo-soft)"], BUD:["var(--soga)","var(--soga-soft)"], MUS:["var(--patina)","var(--patina-soft)"]};
+const CFG = DATA.bank || {};
+const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
+const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
+  : {SNI:["var(--indigo)","var(--indigo-soft)"], BUD:["var(--soga)","var(--soga-soft)"], MUS:["var(--patina)","var(--patina-soft)"]};
 const LV = {1:"Mudah",2:"Sedang",3:"Sulit"};
-const KEY = "bank-soal-lomba-v1";
+const KEY = CFG.key || "bank-soal-lomba-v1";
+const MIX = CFG.mix || "Campuran 40/30/30";
+const WEIGHT_LABEL = CFG.weight_label || "penguasaan menurut bobot 40/30/30";
 const Q = DATA.questions;
 const DOMS = DATA.topics.domains;
 const MAP = DATA.topics.map_url;
@@ -199,7 +209,7 @@ let stats = {};
 try { stats = JSON.parse(localStorage.getItem(KEY) || "{}").stats || {}; } catch(e) {}
 function save(){ try { localStorage.setItem(KEY, JSON.stringify({stats})); } catch(e) {} }
 
-const state = {domain:"mix", topic:"", level:0, wrong:false, tab:"latihan", cur:null, revealed:false, recent:[], sRight:0, sTotal:0};
+const state = {domain:"mix", topic:"", level:0, wrong:false, ctx:false, tab:"latihan", cur:null, revealed:false, recent:[], sRight:0, sTotal:0};
 const $ = id => document.getElementById(id);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const mapHref = code => MAP + "#t-" + code;
@@ -209,7 +219,7 @@ function setColors(el, dom){ el.style.setProperty("--c", COLORS[dom][0]); el.sty
 /* ---------- filters ---------- */
 function buildFilters(){
   const fd = $("fDomain");
-  const opts = [["mix","Campuran 40/30/30",""]].concat(DOMS.map(d => [d.id, d.short + " " + d.weight + "%", COLORS[d.id][0]]));
+  const opts = [["mix",MIX,""]].concat(DOMS.map(d => [d.id, d.short + (CFG.key ? "" : " " + d.weight + "%"), COLORS[d.id][0]]));
   fd.innerHTML = opts.map(([v,l,c]) => '<button type="button" data-v="' + v + '"' + (c ? ' style="--c:' + c + '"' : '') + ' aria-pressed="' + (v === state.domain) + '">' + esc(l) + '</button>').join("");
   $("fLevel").innerHTML = [[0,"Semua"],[1,"Mudah"],[2,"Sedang"],[3,"Sulit"]].map(([v,l]) => '<button type="button" data-v="' + v + '" aria-pressed="' + (v === state.level) + '">' + l + '</button>').join("");
   fillTopics();
@@ -227,6 +237,7 @@ function pool(){
     else if(state.domain !== "mix" && DOM_OF[q.t] !== state.domain) return false;
     if(state.level && q.lv !== state.level) return false;
     if(state.wrong) { const s = stats[q.id]; if(!s || s.l !== 0) return false; }
+    if(state.ctx && !q.k) return false;
     return true;
   });
 }
@@ -279,13 +290,13 @@ function renderPractice(){
   const q = state.cur;
   if(!q){
     host.innerHTML = '<div class="empty"><h3 style="color:var(--ink)">Tidak ada soal untuk saringan ini.</h3><p style="margin-top:6px">' +
-      (state.wrong ? "Belum ada soal yang terakhir dijawab salah. Hapus centang “Hanya yang terakhir dijawab salah” untuk berlatih semua soal." : "Longgarkan saringan bidang, simpul, atau tingkat.") + '</p></div>';
+      (state.ctx && !state.wrong ? "Belum ada soal konteks untuk saringan ini. Hapus centang “Hanya soal konteks sehari-hari”." : state.wrong ? "Belum ada soal yang terakhir dijawab salah. Hapus centang “Hanya yang terakhir dijawab salah” untuk berlatih semua soal." : "Longgarkan saringan bidang, simpul, atau tingkat.") + '</p></div>';
     return;
   }
   const dom = DOM_OF[q.t];
   const s = stats[q.id];
   host.innerHTML = '<article class="qcard" aria-live="polite">' +
-    '<div class="qmeta"><a class="code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener" title="Buka simpul di Peta Materi">' + q.t + '</a><span>' + esc(TITLE[q.t]) + '</span><span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' +
+    '<div class="qmeta"><a class="code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener" title="Buka simpul di Peta Materi">' + q.t + '</a><span>' + esc(TITLE[q.t]) + '</span><span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? '<span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
     (s ? '<span>' + (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') + '</span>' : '<span>soal baru</span>') + '</div>' +
     ($("useTimer").checked ? '<div class="timer" aria-hidden="true"><i></i></div>' : '') +
     '<p class="qtext">' + esc(q.q) + '</p>' +
@@ -319,7 +330,7 @@ function grade(ok){
 /* ---------- list ---------- */
 function renderList(){
   const term = $("lSearch").value.trim().toLowerCase();
-  const list = pool().filter(q => !term || (q.q + " " + q.a + " " + q.x + " " + q.t).toLowerCase().includes(term));
+  const list = pool().filter(q => !term || (q.q + " " + q.a + " " + q.x + " " + q.t + " " + (q.k || "")).toLowerCase().includes(term));
   const host = $("list");
   if(!list.length){ host.innerHTML = '<div class="empty">Tidak ada soal yang cocok. Coba kata lain atau longgarkan saringan.</div>'; return; }
   const groups = {};
@@ -330,7 +341,7 @@ function renderList(){
       items.map(q => {
         const s = stats[q.id];
         const mk = s ? (s.l ? ' <span class="mark-ok">✓ terakhir benar</span>' : ' <span class="mark-bad">✗ terakhir salah</span>') : '';
-        return '<li><span class="n">' + q.id + '</span><div class="body"><span class="qq">' + esc(q.q) + ' <span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + mk + '</span>' +
+        return '<li><span class="n">' + q.id + '</span><div class="body"><span class="qq">' + esc(q.q) + ' <span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (q.k ? ' <span class="ktx">Konteks: ' + esc(q.k) + '</span>' : '') + mk + '</span>' +
           '<details><summary>Jawaban</summary><div class="aa">' + esc(q.a) + '</div>' + (q.x ? '<div class="xx">' + esc(q.x) + '</div>' : '') + '</details></div></li>';
       }).join("") + '</ol></div>';
   }).join("");
@@ -363,7 +374,7 @@ function renderProgress(){
     '<div class="sumrow">' +
       '<div class="stat"><b>' + tried + '</b><span>dari ' + Q.length + ' soal pernah dicoba</span></div>' +
       '<div class="stat"><b>' + (tried ? Math.round(lastRight / tried * 100) : 0) + '%</b><span>soal yang dicoba, terakhir dijawab benar</span></div>' +
-      '<div class="stat"><b>' + Math.round(weighted) + '%</b><span>penguasaan menurut bobot 40/30/30</span></div>' +
+      '<div class="stat"><b>' + Math.round(weighted) + '%</b><span>' + WEIGHT_LABEL + '</span></div>' +
       '<div class="stat"><b>' + attempts + '</b><span>total jawaban dinilai</span></div>' +
     '</div>' +
     (weak.length ? '<div class="weak"><h3>Perlu diulang</h3><ul>' + weak.map(r =>
@@ -399,6 +410,12 @@ function onFilterChange(){
   else renderProgress();
 }
 
+if(CFG.key){
+  document.title = CFG.title; $("bTitle").textContent = CFG.title; $("bLead").textContent = CFG.lead; $("bFoot").textContent = CFG.footer;
+  const a = document.createElement("a"); a.id = "mapLink"; a.href = MAP; a.textContent = "Buka " + CFG.map_title + " →";
+  $("bLead").append(" ", a);
+}
+if(Q.some(q => q.k)) $("ctxBox").hidden = false;
 $("qCount").textContent = Q.length;
 $("tCount").textContent = Object.keys(TITLE).length;
 $("mapLink").href = MAP;
@@ -421,6 +438,7 @@ $("fLevel").addEventListener("click", e => {
 });
 $("fTopic").addEventListener("change", e => { state.topic = e.target.value; onFilterChange(); });
 $("fWrong").addEventListener("change", e => { state.wrong = e.target.checked; onFilterChange(); });
+$("fCtx").addEventListener("change", e => { state.ctx = e.target.checked; onFilterChange(); });
 $("useTimer").addEventListener("change", () => { if(state.tab === "latihan" && !state.revealed){ renderPractice(); startTimer(); } else stopTimer(); });
 $("timerSec").addEventListener("change", () => { if($("useTimer").checked && !state.revealed){ renderPractice(); startTimer(); } });
 $("practice").addEventListener("click", e => {
@@ -434,7 +452,7 @@ $("hideAll").addEventListener("click", () => document.querySelectorAll("#list de
 $("progress").addEventListener("click", e => {
   const drill = e.target.closest("[data-drill]");
   if(drill){
-    state.domain = "mix"; state.topic = drill.dataset.drill; state.level = 0; state.wrong = false; $("fWrong").checked = false;
+    state.domain = "mix"; state.topic = drill.dataset.drill; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo(); showTab("latihan"); next(); window.scrollTo({top:0}); return;
   }
   if(e.target.id === "resetAsk"){ confirmReset = true; renderProgress(); }

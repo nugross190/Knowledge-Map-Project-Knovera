@@ -2,6 +2,7 @@
 import json
 import sys
 import unittest
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -70,6 +71,51 @@ class PagesTest(unittest.TestCase):
         self.assertIn(build.ARTIFACT_URLS["peta.html"], hosted["bank.html"])
         self.assertIn(build.ARTIFACT_URLS["bank.html"], hosted["peta.html"])
         self.assertIn(build.PAGES_URL, hosted["peta-fisika.html"])
+
+
+class SubjectBanksTest(unittest.TestCase):
+    """data/questions/<map id>.csv (specs/question-spec.md)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.banks = build.load_subject_banks()
+        cls.maps = build.load_maps()
+
+    def test_banks_are_valid(self):
+        self.assertTrue(self.banks, "data/questions/ has no banks")
+        self.assertEqual(build.validate_subject_banks(self.banks, self.maps), [])
+
+    def test_every_topic_has_enough_questions(self):
+        for name, rows in self.banks.items():
+            per_topic = Counter(r["simpul"] for r in rows)
+            for d in self.maps[name]["domains"]:
+                for t in d["topics"]:
+                    self.assertGreaterEqual(per_topic[t["code"]], build.MIN_PER_TOPIC, f"{name}: {t['code']}")
+
+    def test_rejects_bank_without_map(self):
+        rows = next(iter(self.banks.values()))[:1]
+        self.assertTrue(any("no map" in e for e in build.validate_subject_banks({"tidak-ada": rows}, self.maps)))
+
+    def test_rejects_unknown_topic(self):
+        name, rows = next(iter(self.banks.items()))
+        bad = dict(rows[0], id="XXX-01-001", simpul="XXX-01")
+        self.assertTrue(any("unknown simpul" in e for e in build.validate_subject_banks({name: rows + [bad]}, self.maps)))
+
+    def test_konteks_items_are_marked_and_html_free(self):
+        for name, rows in self.banks.items():
+            self.assertTrue(any(r["konteks"] for r in rows), f"{name} has no konteks items")
+            for r in rows:
+                self.assertNotRegex(r["soal"] + r["jawaban"] + r["catatan"], r"<[a-z/]", f"{name} {r['id']}: the bank page shows text, not HTML")
+
+    def test_bank_pages_are_built_and_linked(self):
+        pages = build.bank_pages(self.banks, self.maps, {})
+        map_pages = build.map_pages(self.maps, {}, self.banks)
+        for name in self.banks:
+            body = pages[f"bank-{name}.html"]
+            self.assertNotIn("/*__DATA__*/", body)
+            self.assertIn(f'"key": "bank-soal-{name}-v1"', body)
+            self.assertIn(f'"map_url": "peta-{name}.html"', body)
+            self.assertIn(f'bank-{name}.html', map_pages[f"peta-{name}.html"])
 
 
 class MapsTest(unittest.TestCase):
