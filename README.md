@@ -21,6 +21,9 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/peta-sejarah.html` | Knowledge map for school and TKA history (24 topics), from historical method to Reformasi, plus world history. Separate from the LCCM kit (`peta.html`). |
 | `docs/peta-pai.html` | Knowledge map for Pendidikan Agama Islam dan Budi Pekerti (26 topics), organised by its five curriculum elements. |
 | `docs/peta-bahasa-sunda.html` | Knowledge map for Bahasa Sunda (20 topics): language, literature, nonliterary texts, and Sundanese culture. |
+| `docs/peta-seni-musik.html` | Knowledge map for Seni Musik (20 topics): theory, instruments, Indonesian and world music, singing and creating. |
+| `docs/peta-seni-tari.html` | Knowledge map for Seni Tari (20 topics): dance elements, Indonesian dances, dancers, choreography and staging. |
+| `docs/peta-seni-rupa.html` | Knowledge map for Seni Rupa (20 topics): elements and principles, 2D and 3D techniques, movements and artists, exhibitions. |
 | `docs/peta-informatika.html` | Knowledge map for Informatika (25 topics), organised by its curriculum elements, from computational thinking to digital law. |
 | `docs/peta-pkwu.html` | Knowledge map for Prakarya dan Kewirausahaan (21 topics): entrepreneurship core plus crafts, engineering, cultivation, and food processing. |
 | `docs/peta-pjok.html` | Knowledge map for PJOK (21 topics): ball games, athletics, gymnastics, swimming, fitness, and health. |
@@ -30,6 +33,9 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank-matematika.html` | Short-answer question bank for Matematika (233 questions, about a fifth with everyday-context items). |
 | `docs/bank-pai.html` | Short-answer question bank for PAI dan Budi Pekerti (222 questions, about a fifth with everyday-context items). |
 | `docs/bank-bahasa-sunda.html` | Short-answer question bank for Bahasa Sunda (179 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-musik.html` | Short-answer question bank for Seni Musik (160 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-tari.html` | Short-answer question bank for Seni Tari (149 questions, about a fifth with everyday-context items). |
+| `docs/bank-seni-rupa.html` | Short-answer question bank for Seni Rupa (157 questions, about a fifth with everyday-context items). |
 | `docs/bank-informatika.html` | Short-answer question bank for Informatika (203 questions, about a fifth with everyday-context items). |
 | `docs/bank-pkwu.html` | Short-answer question bank for Prakarya dan Kewirausahaan (159 questions, about a fifth with everyday-context items). |
 | `docs/bank-pjok.html` | Short-answer question bank for PJOK (197 questions, about a fifth with everyday-context items). |
