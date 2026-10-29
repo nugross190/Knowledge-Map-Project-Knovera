@@ -593,7 +593,7 @@ def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None,
         tools.append(
             f'<article class="tool"><span class="ico">{icon_svg(icons["tka"])}</span><h3>Latihan TKA</h3>'
             f'<p>Soal TKA SMA 2025 dari {len(tka)} naskah, {n_items} soal, dengan kunci usulan yang belum resmi.</p>'
-            '<nav class="tlinks" aria-label="Latihan TKA"><a class="btn primary" href="tka.html">Latihan soal</a></nav></article>')
+            '<nav class="tlinks" aria-label="Latihan TKA"><a class="btn primary" href="tka.html">Latihan soal</a><a class="btn" href="tka.html?mode=geser">Mode geser</a></nav></article>')
     for mod in (modules or {}).values():
         n_items = sum(len(st["soal"]) for st in mod["tahap"])
         tools.append(
