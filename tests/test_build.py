@@ -194,6 +194,14 @@ class MapsTest(unittest.TestCase):
         self.assertTrue(payload["icon"])
         self.assertIn('id="grades"', page)
 
+    def test_bank_pages_have_swipe_mode(self):
+        topics, rows = build.load()
+        pages = {**build.bank_pages(build.load_subject_banks(), self.maps, {}), "bank.html": build.pages(topics, rows, {})["bank.html"]}
+        for name, page in pages.items():
+            for needle in ('id="storyOpen"', 'id="feed"', 'get("mode") === "geser"', "function storyGrade"):
+                self.assertIn(needle, page, name)
+        self.assertIn("MAP.bank + '?mode=geser\"", build.map_pages(self.maps, {})["peta-fisika.html"])
+
     def test_map_pages_have_story_mode(self):
         for name, page in build.map_pages(self.maps, {}).items():
             for needle in ('id="storyOpen"', 'id="story"', 'id="feed"', 'params.get("mode") === "geser"'):
