@@ -4,7 +4,7 @@
   "title": "Peta Materi Fisika SMA",
   "lead": "Seluruh materi Fisika SMA, dari pengukuran sampai fisika inti, disusun sebagai satu peta. Setiap simpul memuat konsep, rumus inti, tokoh, dan jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.",
   "blurb": "Dari pengukuran dan mekanika sampai listrik-magnet dan fisika modern, lengkap dengan rumus, konstanta, dan alur prasyarat.",
-  "source_note": "Urutan mengikuti buku Fisika Kurikulum Merdeka: Fase E (kelas X, sebagian dalam IPA terpadu) dan Fase F (kelas XI–XII, mata pelajaran pilihan). Pembagian kelas per simpul adalah urutan yang umum dipakai; cocokkan dengan buku sekolah.",
+  "source_note": "Pembagian kelas mengikuti pemetaan materi Fisika SMA berdasarkan Capaian Pembelajaran 2025 (Keputusan Kepala BSKAP No. 046/H/KR/2025): Fase E di kelas X, Fase F di kelas XI–XII. Pembagian Fase F ke kelas XI dan XII dapat berbeda antarsekolah; cocokkan dengan buku sekolah.",
   "path_title": "Alur prasyarat",
   "path_note": "Urutan belajar yang disarankan. Setiap langkah memakai alat dari langkah sebelumnya: vektor untuk gerak, gerak untuk gaya, gaya untuk energi, dan seterusnya.",
   "path": [
@@ -177,7 +177,7 @@
           "code": "DAS-02",
           "title": "Vektor",
           "scope": "Resultan, komponen, perkalian",
-          "src": "Kelas X–XI",
+          "src": "Kelas X",
           "tier": 1,
           "sum": "Cara menjumlahkan besaran yang punya arah. Dipakai di gerak, gaya, medan listrik, dan medan magnet.",
           "blocks": [
@@ -340,7 +340,7 @@
           "code": "MEK-01",
           "title": "Gerak lurus",
           "scope": "GLB, GLBB, gerak vertikal",
-          "src": "Kelas X–XI",
+          "src": "Kelas X",
           "tier": 1,
           "sum": "Persamaan gerak dengan kecepatan tetap dan percepatan tetap, serta cara membaca grafiknya.",
           "blocks": [
@@ -380,7 +380,7 @@
           "code": "MEK-02",
           "title": "Gerak parabola dan gerak melingkar",
           "scope": "Gerak dua dimensi",
-          "src": "Kelas XI",
+          "src": "Kelas X",
           "tier": 1,
           "sum": "Gerak parabola sebagai gabungan GLB dan GLBB; gerak melingkar dengan kecepatan sudut dan percepatan sentripetal.",
           "blocks": [
@@ -412,7 +412,7 @@
           "code": "MEK-03",
           "title": "Hukum Newton tentang gerak",
           "scope": "Dinamika partikel",
-          "src": "Kelas X–XI",
+          "src": "Kelas X",
           "tier": 1,
           "sum": "Tiga hukum Newton dan penerapannya: gaya gesek, bidang miring, katrol, lift, dan gaya sentripetal.",
           "blocks": [
@@ -446,7 +446,7 @@
           "code": "MEK-04",
           "title": "Gravitasi dan hukum Kepler",
           "scope": "Gravitasi universal",
-          "src": "Kelas X–XI",
+          "src": "Kelas X",
           "tier": 2,
           "sum": "Hukum gravitasi Newton, percepatan gravitasi di berbagai ketinggian, orbit satelit, dan tiga hukum Kepler.",
           "blocks": [
@@ -475,7 +475,7 @@
           "code": "MEK-05",
           "title": "Usaha dan energi",
           "scope": "Usaha, energi, daya",
-          "src": "Kelas X–XI",
+          "src": "Kelas X",
           "tier": 1,
           "sum": "Usaha oleh gaya, energi kinetik dan potensial, teorema usaha–energi, kekekalan energi mekanik, dan daya.",
           "blocks": [
@@ -965,7 +965,7 @@
           "code": "GEL-04",
           "title": "Optika geometri dan alat optik",
           "scope": "Cermin, lensa, mata, lup, mikroskop, teropong",
-          "src": "Kelas XI",
+          "src": "Kelas XII",
           "tier": 1,
           "sum": "Pemantulan dan pembiasan, rumus cermin dan lensa, cacat mata dan kacamata, serta perbesaran alat optik.",
           "blocks": [
@@ -1412,13 +1412,14 @@
       "title": "Perlu diperhatikan",
       "items": [
         "Rumus ditulis dalam bentuk yang lazim di buku SMA Indonesia. Aturan tanda (cermin, lensa, Doppler, usaha gas) berbeda antarbuku; ikuti konvensi buku sekolah.",
-        "Pembagian kelas per simpul adalah urutan umum. Di Kurikulum Merdeka, kelas X membahas fisika dalam IPA dan topik seperti pengukuran, energi terbarukan, dan perubahan iklim; mekanika lanjut sampai fisika modern dibahas di kelas XI–XII sebagai mata pelajaran pilihan.",
+        "Menurut pemetaan CP 2025, kelas X membahas pengukuran, vektor, kinematika, dinamika dan gravitasi, usaha dan energi, serta energi terbarukan. Pada CP sebelumnya (2022–2024) vektor sampai usaha dan energi termasuk Fase F (kelas XI–XII), dan buku teks yang disusun untuk CP itu masih memakai urutan lama.",
         "Konstanta di DAS-03 memakai pembulatan yang umum di soal; bila soal memberi nilai lain, pakai nilai dari soal."
       ]
     },
     {
       "title": "Rujukan",
       "items": [
+        "Capaian Pembelajaran: Keputusan Kepala BSKAP No. 046/H/KR/2025 (ditetapkan 16 Juli 2025), yang mencabut No. 032/H/KR/2024. Pembagian materi per kelas dari pemetaan CP Fisika Fase E–F yang dipakai sekolah.",
         "Buku teks Fisika Kurikulum Merdeka kelas XI dan XII (Kemendikbudristek, SIBI).",
         "Nilai konstanta: CODATA dan definisi SI 2019 (BIPM), dibulatkan seperti di buku sekolah."
       ]
