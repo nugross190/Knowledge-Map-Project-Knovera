@@ -348,7 +348,7 @@ function fillGrades(){
       '<span class="d">' + (k ? k + " dikuasai" : "") + '</span></a>';
   };
   $("dlgGrades").innerHTML = Object.entries(s.grades).map(([g, codes]) => row(g, codes)).join("") + row("", s.codes);
-  $("dlgFoot").innerHTML = s.bank ? '<a class="btn" href="' + s.bank + '">Bank soal ' + s.name + '</a>' : "";
+  $("dlgFoot").innerHTML = s.bank ? '<a class="btn" href="' + s.bank + (view === "geser" ? "?mode=geser" : "") + '">Bank soal ' + s.name + '</a>' : "";
 }
 document.addEventListener("click", e => {
   const card = e.target.closest(".sub");

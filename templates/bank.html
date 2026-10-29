@@ -124,6 +124,48 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
+   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
+   On wide screens it is a phone-sized column. */
+.bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
+.bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
+.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.story-btn svg{width:18px;height:18px}
+.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
+.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
+.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
+.st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
+.st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
+.st-topic{font-weight:600}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
+.st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
+.st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
+.st-ans{border-top:2px dashed var(--line);padding-top:12px;display:flex;flex-direction:column;gap:6px}
+.st-ans .lbl{color:var(--c)}
+.st-ans .a{font-size:1.25rem;font-weight:700;line-height:1.35}
+.st-ans .x{color:var(--muted);font-size:.98rem}
+.st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
+.st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
+.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-size:1.6rem;font-weight:800}
+body.story-open{overflow:hidden}
+@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 </style>
@@ -134,6 +176,8 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
+    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+      <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
   <div class="tabs" role="tablist" aria-label="Mode">
@@ -172,6 +216,11 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section class="panel" id="p-kemajuan" role="tabpanel" aria-labelledby="tab-kemajuan" hidden>
     <div id="progress"></div>
   </section>
+
+  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
+    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
+    <div class="st-feed" id="feed" tabindex="-1"></div>
+  </div>
 
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
@@ -447,6 +496,16 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
+  if(story.on){
+    const k = e.key.toLowerCase(), sl = storyCurrent();
+    if(k === "escape"){ e.preventDefault(); closeStory(); }
+    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+    else if(k === "b") storyGrade(sl, true);
+    else if(k === "s") storyGrade(sl, false);
+    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
+    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    return;
+  }
   if(state.tab !== "latihan" || !state.cur) return;
   if(e.target.closest("input, select, textarea") || e.metaKey || e.ctrlKey || e.altKey) return;
   const k = e.key.toLowerCase();
@@ -455,6 +514,107 @@ document.addEventListener("keydown", e => {
   else if(state.revealed && k === "s"){ grade(false); }
   else if(k === "l"){ next(); }
 });
+/* ---------- swipe mode ---------- */
+// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
+// and records answers in the same stats. More cards are added as the student nears the end.
+const story = {on:false, n:0, right:0, total:0};
+function storySlide(q){
+  const s = stats[q.id], i = ++story.n;
+  return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
+      '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
+    '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
+      '<p class="st-q">' + esc(q.q) + '</p><span class="st-tap">Ketuk untuk lihat jawaban</span></div></div>' +
+    '<div class="st-grade" hidden><button class="btn ok" type="button" data-act="right">✓ Benar</button><button class="btn bad" type="button" data-act="wrong">✗ Salah</button></div>' +
+    '<div class="st-foot"><span>Geser ↑ untuk lewati</span><span>Spasi · B · S</span></div>' +
+    '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
+      '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
+}
+function addSlides(k){
+  const feed = $("feed"), end = feed.querySelector(".st-end");
+  let html = "";
+  for(let i = 0; i < k; i++){
+    const q = pickNext(); if(!q) break;
+    state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
+    html += storySlide(q);
+  }
+  if(!html && !feed.querySelector(".slide")){
+    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
+    return;
+  }
+  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
+  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+}
+function storyCurrent(){
+  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
+  return el && el.classList.contains("slide") ? el : null;
+}
+function storyReveal(sl){
+  if(!sl || sl.dataset.open) return;
+  const q = Q.find(x => x.id === sl.dataset.id);
+  sl.dataset.open = "1";
+  sl.querySelector(".st-tap").remove();
+  sl.querySelector(".st-body").insertAdjacentHTML("beforeend", '<div class="st-ans"><span class="lbl">Jawaban</span><span class="a">' + esc(q.a) + '</span>' + (q.x ? '<span class="x">' + esc(q.x) + '</span>' : '') + '</div>');
+  sl.querySelector(".st-grade").hidden = false;
+  sl.querySelector('[data-act="right"]').focus({preventScroll:true});
+}
+function storyGrade(sl, ok){
+  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
+  ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
+  sl.dataset.done = ok ? "1" : "0";
+  story.total++; if(ok) story.right++;
+  state.sTotal++; if(ok) state.sRight++;
+  $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
+  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
+  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
+  setTimeout(() => storyMove(1), 350);
+}
+function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
+function setMode(on){
+  const url = new URL(location.href);
+  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+  try { history.replaceState(null, "", url); } catch(e) {}
+}
+function openStory(){
+  stopTimer();
+  story.on = true; story.n = 0; story.right = 0; story.total = 0;
+  $("feed").innerHTML = "";
+  addSlides(10);
+  $("story").hidden = false; document.body.classList.add("story-open");
+  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
+  setMode(true);
+}
+function closeStory(){
+  story.on = false;
+  $("story").hidden = true; document.body.classList.remove("story-open");
+  setMode(false); updatePoolInfo();
+  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
+}
+$("storyOpen").addEventListener("click", openStory);
+$("storyClose").addEventListener("click", closeStory);
+$("feed").addEventListener("scroll", () => {
+  const feed = $("feed");
+  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
+}, {passive:true});
+$("feed").addEventListener("click", e => {
+  const act = e.target.closest("[data-act]"); if(!act) return;
+  const sl = act.closest(".slide");
+  if(act.dataset.act === "reveal") storyReveal(sl);
+  if(act.dataset.act === "right") storyGrade(sl, true);
+  if(act.dataset.act === "wrong") storyGrade(sl, false);
+  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "drill"){
+    const q = Q.find(x => x.id === sl.dataset.id);
+    state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
+    buildFilters(); updatePoolInfo();
+    while(sl.nextElementSibling) sl.nextElementSibling.remove();
+    addSlides(10); storyMove(1);
+  }
+});
 const h = location.hash.slice(1);
 if(["latihan","daftar","kemajuan"].includes(h)) showTab(h);
+if(new URLSearchParams(location.search).get("mode") === "geser") openStory();
 </script>
