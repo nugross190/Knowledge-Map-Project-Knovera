@@ -144,18 +144,42 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 .empty-note{color:var(--muted);font-size:.95rem}
-.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
 
-/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
-   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
 .st-feed::-webkit-scrollbar{display:none}
-.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
   padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
 .slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Story mode slides: segment bars, the topic's domain, tier and grades, its title, then one part of the topic per tap. */
 .bars{display:flex;gap:4px;padding-right:44px}
 .bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
 .bars i.on{background:var(--ink)}
@@ -163,29 +187,16 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
 .st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
 .slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;-webkit-tap-highlight-color:transparent;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.slide .st-card{margin-right:56px}
 .st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
 .st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
 .st-card.trap .st-label{color:var(--warn)}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body{padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
 .st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
 .st-body li::marker{color:var(--c)}
 .st-body .st-sum{font-size:1.2rem;line-height:1.45}
 .st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
 .st-body .tbl{margin-top:4px;font-size:.92rem}
-.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.st-foot b{white-space:nowrap;color:var(--ink)}
-.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
-.st-end h2{font-size:1.8rem;font-weight:800}
-.st-end .btn{text-decoration:none}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
@@ -282,7 +293,7 @@ footer{border-top:2px solid var(--stroke)}
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
-      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+      <button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -311,22 +322,124 @@ footer{border-top:2px solid var(--stroke)}
     <div class="notes" id="notes"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu simpul per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const MAP = {"id": "seni-tari", "subject": "Seni Tari", "title": "Peta Materi Seni Tari SMA", "lead": "Seluruh materi Seni Tari SMA, dari unsur dan jenis tari sampai tari Nusantara, tokoh, koreografi, dan pergelaran, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur tari, ruang-waktu-tenaga, jenis tari, tata rias dan panggung, tari Nusantara, tokoh tari, koreografi, pergelaran, dan apresiasi.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Tari SMA: dasar tari, tari Nusantara, tokoh, serta berkarya dan apresiasi. Label kelas hanya perkiraan karena buku menyusun materi per proyek.", "domains": [{"id": "UNT", "name": "Unsur dan dasar tari", "short": "Dasar tari", "note": "Unsur utama dan pendukung tari, aspek gerak, jenis gerak, dan jenis tari.", "topics": [{"code": "UNT-01", "title": "Unsur utama tari", "scope": "Wiraga, wirama, wirasa", "src": "Kelas X", "tier": 1, "sum": "Tari dinilai dari tiga unsur utama: wiraga (gerak), wirama (irama), dan wirasa (penjiwaan).", "blocks": [{"h": "Unsur", "li": ["<b>Wiraga<\/b>: kemampuan gerak tubuh, termasuk hafalan dan ketepatan gerak.", "Wirama: kesesuaian gerak dengan irama dan tempo iringan.", "Wirasa: penjiwaan atau ekspresi yang sesuai dengan maksud tari.", "Sebagian buku menambah wirupa: kesesuaian rias dan busana dengan karakter tari."]}], "traps": ["Wirama berkaitan dengan irama; wirasa berkaitan dengan penghayatan. Keduanya sering tertukar."], "grades": ["X"]}, {"code": "UNT-02", "title": "Ruang, waktu, dan tenaga", "scope": "Level, arah, tempo, intensitas", "src": "Kelas X", "tier": 1, "sum": "Setiap gerak tari mengolah tiga aspek: ruang, waktu, dan tenaga.", "blocks": [{"h": "Aspek gerak", "table": {"cols": ["Aspek", "Unsur yang diolah"], "rows": [["Ruang", "Level (rendah, sedang, tinggi), arah hadap, jangkauan, pola lantai"], ["Waktu", "Tempo (cepat, lambat), ritme, durasi"], ["Tenaga", "Intensitas (kuat, lemah), aksen (tekanan), kualitas gerak"]]}}, {"h": "Contoh", "li": ["<b>Level rendah<\/b>: gerak duduk atau jongkok, seperti pada Tari Saman."]}], "traps": ["Level adalah tinggi rendah posisi tubuh penari, bukan tingkat kesulitan gerak."], "grades": ["X"]}, {"code": "UNT-03", "title": "Jenis gerak tari", "scope": "Maknawi, murni, stilisasi, distorsi", "src": "Kelas X", "tier": 1, "sum": "Gerak tari dibedakan menurut maksudnya (maknawi atau murni) dan menurut cara mengolah gerak sehari-hari (stilisasi atau distorsi).", "blocks": [{"h": "Jenis", "li": ["<b>Gerak maknawi<\/b>: gerak yang mengandung arti, misalnya gerak menyisir rambut atau berdandan.", "Gerak murni: gerak yang hanya mementingkan keindahan, tanpa maksud tertentu.", "Stilisasi: gerak sehari-hari diperhalus atau diperindah.", "Distorsi: gerak sehari-hari diubah bentuknya (dipatahkan atau dirombak).", "Gerak lokomotor berpindah tempat; nonlokomotor dilakukan di tempat."]}], "traps": ["Gerak maknawi punya maksud; gerak murni hanya mengutamakan keindahan."], "grades": ["X"]}, {"code": "UNT-04", "title": "Jenis tari", "scope": "Menurut jumlah penari, fungsi, garapan", "src": "Kelas X", "tier": 1, "sum": "Tari digolongkan menurut jumlah penari, fungsi, dan pola garapannya.", "blocks": [{"h": "Penggolongan", "table": {"cols": ["Dasar", "Jenis"], "rows": [["Jumlah penari", "Tunggal, berpasangan, kelompok (massal)"], ["Fungsi", "Upacara (ritual), hiburan atau pergaulan, pertunjukan (tontonan), penyambutan"], ["Pola garapan", "Tradisional (klasik atau istana, dan kerakyatan) dan kreasi baru"]]}}, {"h": "Catatan", "li": ["<b>Tari kreasi baru<\/b> dikembangkan dari tari tradisional dengan bebas, misalnya Jaipongan.", "Tari klasik tumbuh di lingkungan istana dengan aturan baku; tari kerakyatan tumbuh di masyarakat dan lebih sederhana."]}], "traps": ["Tari kreasi baru tetap bisa berakar pada tari tradisional; yang membedakan adalah kebebasan garapannya."], "grades": ["X"]}, {"code": "UNT-05", "title": "Tata rias, busana, dan properti", "scope": "Rias karakter, properti tari", "src": "Kelas X–XI", "tier": 2, "sum": "Unsur pendukung yang memperjelas karakter tari: tata rias, tata busana, dan properti.", "blocks": [{"h": "Unsur pendukung", "li": ["Tata rias korektif mempercantik wajah; rias karakter mengubah wajah sesuai tokoh (raksasa, binatang, orang tua).", "Tata busana disesuaikan dengan tema, karakter, dan keleluasaan gerak.", "<b>Properti<\/b>: benda yang dipakai penari, misalnya kipas (Pakarena), piring (Tari Piring), selendang, atau topeng."]}], "grades": ["X", "XI"]}, {"code": "UNT-06", "title": "Iringan, pola lantai, dan panggung", "scope": "Iringan internal-eksternal, panggung", "src": "Kelas X–XI", "tier": 1, "sum": "Iringan, pola lantai, dan bentuk panggung menentukan suasana dan cara tari dinikmati penonton.", "blocks": [{"h": "Iringan dan pola lantai", "li": ["<b>Iringan internal<\/b> dihasilkan penari sendiri (tepukan, hentakan, nyanyian, seperti Tari Saman); iringan eksternal berasal dari luar penari (gamelan, musik rekaman).", "Pola lantai: garis yang dilalui penari di panggung; garis lurus berkesan tegas dan kuat, garis lengkung berkesan lembut."]}, {"h": "Panggung", "table": {"cols": ["Bentuk", "Ciri"], "rows": [["Prosenium", "Penonton menyaksikan dari satu arah (depan)"], ["Arena", "Penonton mengelilingi pertunjukan, dari tiga atau empat sisi"], ["Pendapa", "Panggung terbuka tradisional Jawa beratap, berlantai lebih tinggi"]]}}], "traps": ["Tari Saman memakai iringan internal (tepukan dan nyanyian penari), bukan alat musik."], "grades": ["X", "XI"]}]}, {"id": "NUS", "name": "Tari Nusantara", "short": "Tari Nusantara", "note": "Tari tradisional dan kreasi dari berbagai daerah di Indonesia.", "topics": [{"code": "NUS-01", "title": "Tari dari Sumatra", "scope": "Saman, Piring, Tor-tor, Zapin", "src": "Kelas X–XII", "tier": 1, "sum": "Tari-tari Sumatra yang paling sering dibahas beserta asal dan cirinya.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Saman", "Gayo, Aceh", "Duduk berbanjar, tepuk dada dan paha, tanpa alat musik; UNESCO 2011"], ["Ratoh Jaroe", "Aceh", "Mirip Saman, dibawakan penari perempuan dengan iringan rapai"], ["Tari Piring", "Sumatra Barat", "Penari membawa piring di telapak tangan"], ["Tor-tor", "Batak, Sumatra Utara", "Diiringi gondang, untuk upacara adat"], ["Zapin", "Melayu Riau", "Pengaruh Arab, langkah kaki lincah"], ["Serampang Dua Belas", "Melayu Deli, Sumatra Utara", "Tari pergaulan dengan 12 ragam gerak"]]}}], "traps": ["Tari yang dibawakan penari perempuan dengan iringan rapai biasanya Ratoh Jaroe, bukan Saman."], "grades": ["X", "XI", "XII"]}, {"code": "NUS-02", "title": "Tari dari Jawa", "scope": "Bedhaya, Serimpi, Reog, Gambyong", "src": "Kelas X–XII", "tier": 1, "sum": "Tari Jawa meliputi tari klasik keraton dan tari kerakyatan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Bedhaya Ketawang", "Keraton Surakarta", "Tari sakral, sembilan penari perempuan"], ["Serimpi", "Keraton Yogyakarta dan Surakarta", "Tari klasik, empat penari perempuan"], ["Gambyong", "Jawa Tengah", "Tari pergaulan dan penyambutan"], ["Reog Ponorogo", "Jawa Timur", "Topeng dadak merak, warok, jathil"], ["Gandrung", "Banyuwangi, Jawa Timur", "Tari pergaulan penyambutan"]]}}], "traps": ["Bedhaya Ketawang ditarikan sembilan penari; Serimpi empat penari."], "grades": ["X", "XI", "XII"]}, {"code": "NUS-03", "title": "Tari dari Bali", "scope": "Kecak, Pendet, Legong, Barong", "src": "Kelas X–XII", "tier": 1, "sum": "Tari Bali erat dengan upacara agama Hindu dan banyak dipentaskan untuk wisatawan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Ciri"], "rows": [["Kecak", "Puluhan penari laki-laki bersuara \"cak\" tanpa gamelan, mengisahkan Ramayana"], ["Pendet", "Awalnya tari pemujaan, kemudian menjadi tari penyambutan"], ["Legong", "Tari klasik penari perempuan dengan gerak mata dan jari yang rumit"], ["Barong", "Pertarungan Barong (kebaikan) dan Rangda (keburukan)"]]}}, {"h": "Catatan", "li": ["<b>Tari Kecak<\/b> dikembangkan pada 1930-an oleh I Wayan Limbak bersama pelukis Jerman Walter Spies.", "UNESCO menetapkan tiga genre tari tradisional Bali sebagai Warisan Budaya Takbenda pada 2015."]}], "traps": ["Tari Kecak tidak diiringi gamelan; iringannya suara \"cak\" para penari."], "grades": ["X", "XI", "XII"]}, {"code": "NUS-04", "title": "Tari Sunda dan Betawi", "scope": "Jaipongan, Merak, Topeng, Yapong", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari Jawa Barat dan Jakarta, baik tradisional maupun kreasi baru.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Keterangan"], "rows": [["Jaipongan", "Tari kreasi Jawa Barat yang dikembangkan Gugum Gumbira pada 1970-an"], ["Tari Merak", "Tari kreasi Sunda karya Raden Tjetje Somantri (1955)"], ["Topeng Cirebon", "Tari bertopeng dengan beberapa karakter, dari Cirebon"], ["Yapong", "Tari kreasi Betawi karya Bagong Kussudiardja (1977)"], ["Cokek", "Tari pergaulan Betawi dengan pengaruh Tionghoa"]]}}], "grades": ["X", "XI", "XII"]}, {"code": "NUS-05", "title": "Tari dari Kalimantan dan Sulawesi", "scope": "Gantar, Hudoq, Pakarena, Kabasaran", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari Kalimantan dan Sulawesi yang berkaitan dengan pertanian, penyambutan, dan peperangan.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Gantar", "Dayak, Kalimantan Timur", "Tari pergaulan dengan tongkat dan bambu"], ["Hudoq", "Dayak, Kalimantan Timur", "Tari bertopeng untuk upacara masa tanam"], ["Pakarena", "Gowa, Sulawesi Selatan", "Gerak lembut dengan kipas"], ["Kabasaran", "Minahasa, Sulawesi Utara", "Tari perang dengan pedang dan tombak"]]}}], "grades": ["X", "XI", "XII"]}, {"code": "NUS-06", "title": "Tari dari Maluku, Nusa Tenggara, dan Papua", "scope": "Cakalele, Lenso, Caci, Yospan", "src": "Kelas X–XII", "tier": 2, "sum": "Tari dari wilayah timur Indonesia yang berkaitan dengan peperangan, pergaulan, dan upacara adat.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Daerah", "Ciri"], "rows": [["Cakalele", "Maluku", "Tari perang dengan parang dan salawaku (perisai)"], ["Lenso", "Maluku dan Minahasa", "Tari pergaulan dengan saputangan"], ["Caci", "Manggarai, NTT", "Tarung cambuk dan perisai dalam upacara adat"], ["Yospan", "Papua", "Tari pergaulan yang lincah dan riang"]]}}], "grades": ["X", "XI", "XII"]}]}, {"id": "TOK", "name": "Tokoh tari", "short": "Tokoh", "note": "Tokoh tari Indonesia dan tari dari berbagai negara.", "topics": [{"code": "TOK-01", "title": "Tokoh tari Indonesia", "scope": "Koreografer dan karyanya", "src": "Kelas XI–XII", "tier": 2, "sum": "Koreografer Indonesia yang karyanya sering dibahas di buku sekolah.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Karya atau peran"], "rows": [["Bagong Kussudiardja", "Koreografer Yogyakarta; Tari Yapong; mendirikan padepokan seni"], ["Gugum Gumbira", "Pengembang Jaipongan"], ["Raden Tjetje Somantri", "Pencipta Tari Merak dan tari kreasi Sunda"], ["Guru Sauti", "Pencipta Tari Serampang Dua Belas"], ["I Wayan Limbak", "Pengembang Tari Kecak"], ["Sardono W. Kusumo", "Koreografer tari kontemporer"], ["Didik Nini Thowok", "Penari dan koreografer, dikenal dengan tari lintas gender"]]}}], "grades": ["XI", "XII"]}, {"code": "TOK-02", "title": "Tari mancanegara", "scope": "Balet, flamenco, hula", "src": "Kelas XII", "tier": 3, "sum": "Tari dari berbagai negara sebagai bahan perbandingan dengan tari Nusantara.", "blocks": [{"h": "Tari", "table": {"cols": ["Tari", "Asal", "Ciri"], "rows": [["Balet", "Berkembang di istana Prancis, lalu Rusia", "Gerak berjinjit (en pointe), teknik baku"], ["Flamenco", "Andalusia, Spanyol", "Hentakan kaki, tepukan tangan, iringan gitar"], ["Hula", "Hawaii", "Gerak pinggul dan tangan yang bercerita"], ["Bharatanatyam", "India Selatan", "Tari klasik dengan gerak tangan (mudra) dan ekspresi wajah"], ["Tango", "Argentina", "Tari berpasangan"]]}}], "grades": ["XII"]}]}, {"id": "KRY", "name": "Berkarya dan apresiasi", "short": "Berkarya", "note": "Proses koreografi, pengembangan gerak, olah tubuh, pergelaran, apresiasi, dan notasi tari.", "topics": [{"code": "KRY-01", "title": "Proses koreografi", "scope": "Eksplorasi, improvisasi, komposisi", "src": "Kelas X–XII", "tier": 1, "sum": "Membuat tari melalui tiga tahap: eksplorasi, improvisasi, dan komposisi (pembentukan).", "blocks": [{"h": "Tahap", "li": ["<b>Eksplorasi<\/b>: menjajaki gagasan dan kemungkinan gerak dari sumber inspirasi (alam, kegiatan sehari-hari, cerita).", "Improvisasi: mencoba gerak secara spontan untuk menemukan gerak baru.", "Komposisi (pembentukan): menyusun gerak terpilih menjadi tarian utuh dengan iringan dan pola lantai.", "Koreografer adalah penata tari; koreografi adalah karya atau ilmu menata tari."]}], "traps": ["Urutan tahapnya eksplorasi, improvisasi, lalu komposisi."], "grades": ["X", "XI", "XII"]}, {"code": "KRY-02", "title": "Pengembangan motif gerak", "scope": "Pengulangan, variasi, kontras", "src": "Kelas XI", "tier": 2, "sum": "Motif gerak (satuan gerak terkecil yang bermakna) dikembangkan agar tari tidak monoton.", "blocks": [{"h": "Cara", "li": ["Pengulangan (repetisi), variasi (mengubah level, arah, atau tempo), kontras (perbedaan tajam), dan transisi (gerak penghubung).", "<b>Motif gerak<\/b> dapat dikembangkan dari gerak tradisional menjadi tari kreasi."]}], "grades": ["XI"]}, {"code": "KRY-03", "title": "Olah tubuh", "scope": "Pemanasan, kelenturan, keselamatan", "src": "Kelas X", "tier": 2, "sum": "Latihan fisik untuk menyiapkan tubuh penari agar lentur, kuat, dan terhindar dari cedera.", "blocks": [{"h": "Olah tubuh", "li": ["Tahap: pemanasan, latihan inti (kelenturan, kekuatan, keseimbangan), pendinginan.", "<b>Pemanasan<\/b> menaikkan suhu otot dan mencegah cedera.", "Latihan kelenturan meliputi peregangan leher, bahu, pinggang, dan kaki."]}], "grades": ["X"]}, {"code": "KRY-04", "title": "Pergelaran tari", "scope": "Tahap, kepanitiaan", "src": "Kelas XI–XII", "tier": 2, "sum": "Menyelenggarakan pergelaran tari dari perencanaan sampai evaluasi.", "blocks": [{"h": "Tahap dan peran", "li": ["Perencanaan (tema, waktu, tempat, anggaran), persiapan (latihan, gladi), pelaksanaan, evaluasi.", "<b>Gladi resik<\/b>: latihan terakhir lengkap dengan kostum, rias, dan tata panggung, sesuai urutan pertunjukan.", "Peran: sutradara atau pimpinan produksi, penata tari, penata musik, penata rias dan busana, penata cahaya, stage manager."]}], "grades": ["XI", "XII"]}, {"code": "KRY-05", "title": "Apresiasi dan kritik tari", "scope": "Tahap kritik Feldman", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi tari adalah menghayati dan menilai pertunjukan tari; kritik menyampaikan penilaian itu dengan alasan.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terlihat (jumlah penari, busana, gerak, iringan).", "Analisis formal: menguraikan unsur tari dan hubungannya.", "Interpretasi: menafsirkan makna dan pesan tari.", "Evaluasi: menilai kualitas tari dengan alasan."]}], "traps": ["Menilai bagus atau tidak termasuk tahap evaluasi, bukan deskripsi."], "grades": ["X", "XI", "XII"]}, {"code": "KRY-06", "title": "Notasi dan dokumentasi tari", "scope": "Labanotation, rekaman", "src": "Kelas XII", "tier": 3, "sum": "Tari dicatat dengan simbol atau direkam agar dapat dipelajari ulang dan dilestarikan.", "blocks": [{"h": "Pencatatan", "li": ["<b>Labanotation<\/b>: sistem simbol pencatat gerak yang dikembangkan Rudolf Laban.", "Dokumentasi lain: deskripsi tertulis, foto, dan rekaman video.", "Dokumentasi membantu pelestarian tari tradisional yang diwariskan secara lisan."]}], "grades": ["XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Tari Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Sebagian buku menambah wirupa sebagai unsur keempat tari.", "Tari Saman dan Ratoh Jaroe sering tertukar dalam pertunjukan sekolah; perbedaannya dicatat di NUS-01.", "Tahun penciptaan tari kreasi (Merak 1955, Yapong 1977) mengikuti sumber umum; cocokkan dengan buku sekolah."]}, {"title": "Rujukan", "items": ["Buku Seni Tari SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "UNESCO: Tari Saman (2011, daftar yang memerlukan pelindungan mendesak) dan tiga genre tari tradisional Bali (2015)."]}], "icon": "<path d=\"M24 40 6 22a25 25 0 0 1 36 0z\"/><path d=\"M24 40 12 14M24 40V10M24 40 36 14\"/><circle cx=\"24\" cy=\"40\" r=\"2.5\" fill=\"currentColor\"/>", "bank": "bank-seni-tari.html"};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
 // Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
 const params = new URLSearchParams(location.search);
 let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
-let onlyLanjut = params.get("lanjut") === "1";
+const hasLanjut = MAP.domains.some(d => d.topics.some(t => t.lanjut));
+let onlyLanjut = hasLanjut && params.get("lanjut") === "1";
 const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
@@ -405,7 +518,7 @@ function render(){
     });
     host.appendChild(sec);
   });
-  if(Object.values(byCode).some(x => x.t.lanjut)){
+  if(hasLanjut){
     $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
     if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
   }
@@ -462,11 +575,10 @@ function remember(){
   const url = new URL(location.href);
   kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
   onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
-  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
+  try { history.replaceState(history.state, "", url); } catch(e) {}
   try {
     const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
-    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: feed.isOpen, t: Date.now()});
     localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
   } catch(e) {}
 }
@@ -476,8 +588,12 @@ function applyFilters(){
   search($("q").value); progress(); remember();
 }
 
-// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
-let storyOn = false;
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen, in the shared swipe feed.
+// Closing it (×, Esc, "Di peta") opens the topic that was on screen in the map.
+const feed = makeFeed($("feed"), {
+  onSide: step,
+  onClose(slide){ remember(); if(slide && slide.dataset.code) goTo(slide.dataset.code); },
+});
 const parts = t => {
   const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
   t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
@@ -516,37 +632,25 @@ function openStory(code){
   const list = [];
   MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
   if(!list.length) return;
-  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
-    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+  const mastered = list.filter(([t]) => done.has(t.code)).length;
+  feed.open(list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + mastered + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
     (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '?mode=geser">Latihan bank soal</a>' : '') +
-    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
-  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
-  $("story").hidden = false; document.body.classList.add("story-open");
-  storyOn = true; remember();
-  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
-  $("feed").scrollTop = start ? start.offsetTop : 0;
-  $("feed").focus({preventScroll:true});
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>',
+    Math.max(0, list.findIndex(([t]) => t.code === code)));
+  feed.scroller.querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  remember();
 }
-function closeStory(){
-  const cur = currentSlide();
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  storyOn = false; remember();
-  if(cur) goTo(cur.dataset.code);
-}
-function currentSlide(){
-  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
-  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
-}
+// ← and → (and taps on the left or right of a slide) step through the topic's parts, then on to the next topic.
 function step(dir){
-  const sl = currentSlide();
-  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
-  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
-  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
-  showPart(sl, i);
+  const sl = feed.current();
+  const n = sl && sl.classList.contains("slide") ? sl.querySelectorAll(".bars i").length : 0;
+  const i = n ? +sl.dataset.part + dir : -1;
+  if(i >= 0 && i < n) showPart(sl, i);
+  else feed.move(dir);
 }
-$("storyOpen").addEventListener("click", () => openStory());
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", () => openStory());
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]");
   if(act){
     const sl = act.closest(".slide");
@@ -555,9 +659,8 @@ $("feed").addEventListener("click", e => {
       on ? done.add(code) : done.delete(code); save(); progress();
       act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
     }
-    if(act.dataset.act === "map") closeStory();
-    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
-    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    if(act.dataset.act === "map" || act.dataset.act === "close") feed.close();
+    if(act.dataset.act === "top") feed.go(0);
     return;
   }
   // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
@@ -565,13 +668,6 @@ $("feed").addEventListener("click", e => {
   const sl = e.target.closest(".slide"); if(!sl) return;
   const box = sl.getBoundingClientRect();
   step(e.clientX - box.left < box.width / 3 ? -1 : 1);
-});
-document.addEventListener("keydown", e => {
-  if($("story").hidden) return;
-  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
-  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
-  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
-  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
 });
 
 render();
@@ -597,5 +693,5 @@ $("openAll").addEventListener("click", () => document.querySelectorAll(".card:no
 $("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
 $("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !feed.isOpen) goTo(location.hash.slice(3));
 </script>

@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-sosiologi.html", "domains": [{"id": "DAS", "name": "Dasar sosiologi", "short": "Dasar", "weight": 30.0, "topics": {"DAS-01": "Sosiologi sebagai ilmu", "DAS-02": "Tindakan dan interaksi sosial", "DAS-03": "Nilai, norma, sosialisasi, dan kepribadian", "DAS-04": "Lembaga sosial", "DAS-05": "Gejala sosial dan penyimpangan", "DAS-06": "Pengendalian sosial"}}, {"id": "PEN", "name": "Penelitian sosial", "short": "Penelitian", "weight": 10.0, "topics": {"PEN-01": "Jenis dan langkah penelitian sosial", "PEN-02": "Sampel, pengumpulan, dan pengolahan data"}}, {"id": "KEL", "name": "Kelompok sosial dan keberagaman", "short": "Kelompok", "weight": 15.0, "topics": {"KEL-01": "Kelompok sosial", "KEL-02": "Permasalahan akibat pengelompokan", "KEL-03": "Masyarakat multikultural"}}, {"id": "KES", "name": "Kesetaraan dan ketidaksetaraan", "short": "Kesetaraan", "weight": 10.0, "topics": {"KES-01": "Stratifikasi dan mobilitas sosial", "KES-02": "Ketimpangan sosial dan kesetaraan"}}, {"id": "KON", "name": "Konflik dan integrasi", "short": "Konflik", "weight": 15.0, "topics": {"KON-01": "Konflik sosial", "KON-02": "Akomodasi dan penyelesaian konflik", "KON-03": "Integrasi dan harmoni sosial"}}, {"id": "PER", "name": "Perubahan sosial dan globalisasi", "short": "Perubahan", "weight": 20.0, "topics": {"PER-01": "Perubahan sosial", "PER-02": "Globalisasi dan dampaknya", "PER-03": "Masalah sosial akibat globalisasi", "PER-04": "Pemberdayaan komunitas berbasis kearifan lokal"}}]}, "questions": [{"id": "DAS-01-001", "t": "DAS-01", "lv": 1, "q": "Tokoh yang disebut bapak sosiologi dan memperkenalkan istilah sosiologi adalah…", "a": "Auguste Comte", "x": ""}, {"id": "DAS-01-002", "t": "DAS-01", "lv": 1, "q": "Bapak sosiologi Indonesia adalah…", "a": "Selo Soemardjan", "x": ""}, {"id": "DAS-01-003", "t": "DAS-01", "lv": 1, "q": "Sifat sosiologi yang tidak menilai baik-buruknya suatu gejala disebut…", "a": "Nonetis", "x": ""}, {"id": "DAS-01-004", "t": "DAS-01", "lv": 1, "q": "Sifat sosiologi yang berdasarkan pengamatan, bukan spekulasi, disebut…", "a": "Empiris", "x": ""}, {"id": "DAS-01-005", "t": "DAS-01", "lv": 2, "q": "Tokoh sosiologi yang memperkenalkan konsep fakta sosial adalah…", "a": "Émile Durkheim", "x": ""}, {"id": "DAS-01-006", "t": "DAS-01", "lv": 2, "q": "Hukum tiga tahap Auguste Comte terdiri atas tahap teologis, metafisik, dan…", "a": "Positif", "x": ""}, {"id": "DAS-01-007", "t": "DAS-01", "lv": 2, "q": "Paradigma sosiologi yang menekankan makna tindakan menurut pelakunya disebut paradigma…", "a": "Definisi sosial", "x": ""}, {"id": "DAS-01-008", "t": "DAS-01", "lv": 3, "q": "Tokoh sosiologi yang menekankan konflik kelas antara borjuis dan proletar adalah…", "a": "Karl Marx", "x": ""}, {"id": "DAS-01-009", "t": "DAS-01", "lv": 2, "q": "Seorang siswa mengamati antrean BBM di SPBU dan mencatat siapa yang mengantre tanpa menilai apakah antrean itu baik atau buruk. Sifat sosiologi yang ia terapkan adalah…", "a": "Nonetis", "x": "", "k": "SPBU"}, {"id": "DAS-02-001", "t": "DAS-02", "lv": 1, "q": "Dua syarat terjadinya interaksi sosial adalah kontak sosial dan…", "a": "Komunikasi", "x": ""}, {"id": "DAS-02-002", "t": "DAS-02", "lv": 1, "q": "Bentuk interaksi yang mengarah pada persatuan disebut interaksi…", "a": "Asosiatif", "x": ""}, {"id": "DAS-02-003", "t": "DAS-02", "lv": 1, "q": "Bentuk interaksi yang mengarah pada persaingan dan pertentangan disebut interaksi…", "a": "Disosiatif", "x": ""}, {"id": "DAS-02-004", "t": "DAS-02", "lv": 1, "q": "Perpaduan dua budaya tanpa menghilangkan unsur budaya asli disebut…", "a": "Akulturasi", "x": ""}, {"id": "DAS-02-005", "t": "DAS-02", "lv": 2, "q": "Faktor interaksi berupa menerima pandangan orang lain tanpa sikap kritis disebut…", "a": "Sugesti", "x": ""}, {"id": "DAS-02-006", "t": "DAS-02", "lv": 2, "q": "Tipe tindakan sosial Weber yang dilakukan karena kebiasaan turun-temurun disebut tindakan…", "a": "Tradisional", "x": ""}, {"id": "DAS-02-007", "t": "DAS-02", "lv": 2, "q": "Bentuk interaksi di antara persaingan dan pertentangan, misalnya fitnah dan penghasutan, disebut…", "a": "Kontravensi", "x": ""}, {"id": "DAS-02-008", "t": "DAS-02", "lv": 3, "q": "Contoh akulturasi berupa menara masjid berbentuk seperti candi terdapat di…", "a": "Masjid Menara Kudus", "x": ""}, {"id": "DAS-02-009", "t": "DAS-02", "lv": 1, "q": "Pedagang di pasar memilih menjual payung saat musim hujan setelah menimbang peluang untung. Tipe tindakan sosial Weber ini disebut tindakan…", "a": "Rasional instrumental", "x": "", "k": "pasar"}, {"id": "DAS-02-010", "t": "DAS-02", "lv": 2, "q": "Warga sebuah kampung ikut upacara sedekah bumi setiap tahun karena sudah menjadi kebiasaan sejak nenek moyang. Tipe tindakan sosial Weber ini disebut tindakan…", "a": "Tradisional", "x": "", "k": "kampung adat"}, {"id": "DAS-03-001", "t": "DAS-03", "lv": 1, "q": "Sosialisasi yang terjadi dalam keluarga disebut sosialisasi…", "a": "Primer", "x": ""}, {"id": "DAS-03-002", "t": "DAS-03", "lv": 1, "q": "Norma yang tertulis dan sanksinya ditetapkan negara disebut norma…", "a": "Hukum", "x": ""}, {"id": "DAS-03-003", "t": "DAS-03", "lv": 1, "q": "Tokoh yang membagi tahap sosialisasi menjadi preparatory, play, game, dan generalized other adalah…", "a": "George Herbert Mead", "x": ""}, {"id": "DAS-03-004", "t": "DAS-03", "lv": 2, "q": "Norma yang paling lemah, sanksinya hanya celaan ringan, disebut…", "a": "Cara (usage)", "x": ""}, {"id": "DAS-03-005", "t": "DAS-03", "lv": 2, "q": "Norma yang berkaitan dengan moral, pelanggarnya dapat dikucilkan, disebut…", "a": "Tata kelakuan (mores)", "x": ""}, {"id": "DAS-03-006", "t": "DAS-03", "lv": 3, "q": "Konsep looking-glass self dikemukakan oleh…", "a": "Charles H. Cooley", "x": ""}, {"id": "DAS-03-007", "t": "DAS-03", "lv": 2, "q": "Tahap sosialisasi ketika anak meniru peran orang tua atau guru disebut tahap…", "a": "Play (meniru)", "x": ""}, {"id": "DAS-03-008", "t": "DAS-03", "lv": 1, "q": "Remaja di sebuah kampung mulai berpakaian dan berbicara seperti teman-teman sebayanya. Agen sosialisasi yang berperan di sini adalah…", "a": "Teman sebaya", "x": "", "k": "kampung"}, {"id": "DAS-03-009", "t": "DAS-03", "lv": 2, "q": "Anak yang ikut sepak bola antarkampung memahami peran semua pemain sekaligus, bukan hanya perannya sendiri. Tahap sosialisasi menurut Mead ini disebut tahap…", "a": "Game (siap bertindak)", "x": "", "k": "sepak bola"}, {"id": "DAS-04-001", "t": "DAS-04", "lv": 1, "q": "Lembaga sosial yang berfungsi mewariskan pengetahuan dan keterampilan adalah lembaga…", "a": "Pendidikan", "x": ""}, {"id": "DAS-04-002", "t": "DAS-04", "lv": 1, "q": "Fungsi lembaga yang disadari dan diharapkan disebut fungsi…", "a": "Manifes", "x": ""}, {"id": "DAS-04-003", "t": "DAS-04", "lv": 1, "q": "Fungsi lembaga yang tidak disadari, misalnya sekolah sebagai tempat mencari teman, disebut fungsi…", "a": "Laten", "x": ""}, {"id": "DAS-04-004", "t": "DAS-04", "lv": 2, "q": "Tokoh yang membedakan fungsi manifes dan laten adalah…", "a": "Robert K. Merton", "x": ""}, {"id": "DAS-04-005", "t": "DAS-04", "lv": 2, "q": "Pasar desa menjadi tempat jual-beli dan juga tempat warga bertukar kabar. Fungsi tempat bertukar kabar ini adalah fungsi…", "a": "Laten", "x": "", "k": "pasar"}, {"id": "DAS-05-001", "t": "DAS-05", "lv": 1, "q": "Seorang siswa sekali menyontek saat ulangan, lalu tidak pernah mengulanginya. Penyimpangan sementara seperti ini disebut penyimpangan…", "a": "Primer", "x": "", "k": "sekolah"}, {"id": "DAS-05-002", "t": "DAS-05", "lv": 2, "q": "Teori bahwa penyimpangan dipelajari dari pergaulan dikemukakan oleh…", "a": "Edwin H. Sutherland (asosiasi diferensial)", "x": ""}, {"id": "DAS-05-003", "t": "DAS-05", "lv": 2, "q": "Teori bahwa cap dari masyarakat mendorong penyimpangan sekunder disebut teori…", "a": "Labeling", "x": ""}, {"id": "DAS-05-004", "t": "DAS-05", "lv": 2, "q": "Teori anomi tentang ketidaksesuaian tujuan dan cara dikemukakan oleh…", "a": "Robert K. Merton", "x": ""}, {"id": "DAS-05-005", "t": "DAS-05", "lv": 2, "q": "Seorang remaja yang pernah sekali tertangkap mencuri terus dicap pencuri oleh tetangga, lalu benar-benar mengulanginya. Teori penyimpangan yang menjelaskan ini adalah teori…", "a": "Labeling", "x": "", "k": "kampung"}, {"id": "DAS-06-001", "t": "DAS-06", "lv": 1, "q": "Pengendalian sosial yang dilakukan sebelum pelanggaran terjadi disebut pengendalian…", "a": "Preventif", "x": ""}, {"id": "DAS-06-002", "t": "DAS-06", "lv": 1, "q": "Pengendalian sosial yang dilakukan sesudah pelanggaran terjadi disebut pengendalian…", "a": "Represif", "x": ""}, {"id": "DAS-06-003", "t": "DAS-06", "lv": 2, "q": "Guru BK mengajak bicara siswa yang sering terlambat dan membujuknya agar datang tepat waktu. Cara pengendalian sosial ini disebut…", "a": "Persuasif", "x": "", "k": "sekolah"}, {"id": "DAS-06-004", "t": "DAS-06", "lv": 2, "q": "Sebutkan satu bentuk pengendalian sosial informal.", "a": "Satu di antara: gosip, teguran, pengucilan", "x": ""}, {"id": "DAS-06-005", "t": "DAS-06", "lv": 2, "q": "Pengurus RT memasang papan larangan membuang sampah ke sungai sebelum musim hujan. Sifat pengendalian sosial ini adalah…", "a": "Preventif", "x": "", "k": "sungai"}, {"id": "PEN-01-001", "t": "PEN-01", "lv": 1, "q": "Penelitian yang datanya berupa angka dan menguji hipotesis disebut penelitian…", "a": "Kuantitatif", "x": ""}, {"id": "PEN-01-002", "t": "PEN-01", "lv": 1, "q": "Penelitian yang berusaha memahami makna dan proses, dengan data berupa kata dan catatan lapangan, disebut penelitian…", "a": "Kualitatif", "x": ""}, {"id": "PEN-01-003", "t": "PEN-01", "lv": 1, "q": "Jawaban sementara yang diuji dengan data disebut…", "a": "Hipotesis", "x": ""}, {"id": "PEN-01-004", "t": "PEN-01", "lv": 2, "q": "Penelitian yang bertujuan menjajaki gejala yang belum banyak diketahui disebut penelitian…", "a": "Eksploratif", "x": ""}, {"id": "PEN-01-005", "t": "PEN-01", "lv": 2, "q": "Penelitian yang bertujuan menjelaskan hubungan sebab-akibat disebut penelitian…", "a": "Eksplanatif", "x": ""}, {"id": "PEN-01-006", "t": "PEN-01", "lv": 2, "q": "Variabel yang memengaruhi variabel lain disebut variabel…", "a": "Bebas", "x": ""}, {"id": "PEN-01-007", "t": "PEN-01", "lv": 2, "q": "Langkah penelitian sesudah merumuskan masalah dan tujuan adalah…", "a": "Kajian pustaka", "x": ""}, {"id": "PEN-01-008", "t": "PEN-01", "lv": 3, "q": "Penelitian yang menggambarkan suatu keadaan apa adanya disebut penelitian…", "a": "Deskriptif", "x": ""}, {"id": "PEN-01-009", "t": "PEN-01", "lv": 2, "q": "Siswa ingin tahu apakah lama memakai media sosial memengaruhi jam tidur teman sekelasnya. Dalam penelitian ini, lama memakai media sosial adalah variabel…", "a": "Bebas", "x": "Jam tidur adalah variabel terikat.", "k": "media sosial"}, {"id": "PEN-01-010", "t": "PEN-01", "lv": 2, "q": "Siswa tinggal beberapa minggu bersama nelayan untuk memahami cara mereka memaknai laut. Pendekatan penelitian ini adalah…", "a": "Kualitatif", "x": "", "k": "nelayan"}, {"id": "PEN-02-001", "t": "PEN-02", "lv": 1, "q": "Data yang dikumpulkan sendiri oleh peneliti disebut data…", "a": "Primer", "x": ""}, {"id": "PEN-02-002", "t": "PEN-02", "lv": 1, "q": "Data statistik dari BPS bagi seorang peneliti termasuk data…", "a": "Sekunder", "x": ""}, {"id": "PEN-02-003", "t": "PEN-02", "lv": 1, "q": "Siswa membagikan lembar berisi 10 pertanyaan pilihan kepada 50 pedagang pasar untuk diisi sendiri. Alat pengumpul data ini disebut…", "a": "Kuesioner (angket)", "x": "", "k": "pasar"}, {"id": "PEN-02-004", "t": "PEN-02", "lv": 2, "q": "Teknik sampel ketika responden pertama menunjuk responden berikutnya disebut teknik…", "a": "Bola salju (snowball)", "x": ""}, {"id": "PEN-02-005", "t": "PEN-02", "lv": 2, "q": "Teknik sampel yang memilih responden sesuai tujuan penelitian disebut teknik…", "a": "Purposive", "x": ""}, {"id": "PEN-02-006", "t": "PEN-02", "lv": 2, "q": "Tiga tahap pengolahan data kualitatif adalah reduksi data, penyajian data, dan…", "a": "Penarikan kesimpulan", "x": ""}, {"id": "PEN-02-007", "t": "PEN-02", "lv": 3, "q": "Teknik sampel probabilitas yang membagi populasi menjadi kelompok-kelompok lalu memilih beberapa kelompok disebut…", "a": "Klaster", "x": ""}, {"id": "PEN-02-008", "t": "PEN-02", "lv": 2, "q": "Peneliti ingin mewawancarai pedagang kaki lima yang sudah pindah lokasi, tetapi sulit menemukan mereka, sehingga meminta setiap pedagang menunjukkan pedagang lain. Teknik sampel ini disebut…", "a": "Bola salju (snowball)", "x": "", "k": "pedagang kaki lima"}, {"id": "PEN-02-009", "t": "PEN-02", "lv": 2, "q": "Siswa memilih 30 warga secara acak dari daftar seluruh warga RW-nya untuk diwawancarai. Teknik sampel ini disebut…", "a": "Acak sederhana", "x": "", "k": "RW"}, {"id": "KEL-01-001", "t": "KEL-01", "lv": 1, "q": "Kelompok berdasarkan ikatan batin yang erat, misalnya keluarga, menurut Tönnies disebut…", "a": "Gemeinschaft (paguyuban)", "x": ""}, {"id": "KEL-01-002", "t": "KEL-01", "lv": 1, "q": "Kelompok berdasarkan kepentingan dan kontrak, menurut Tönnies disebut…", "a": "Gesellschaft (patembayan)", "x": ""}, {"id": "KEL-01-003", "t": "KEL-01", "lv": 1, "q": "Kelompok kecil yang akrab dan bertatap muka, menurut Cooley disebut kelompok…", "a": "Primer", "x": ""}, {"id": "KEL-01-004", "t": "KEL-01", "lv": 3, "q": "Pembagian kelompok in-group dan out-group dikemukakan oleh…", "a": "W. G. Sumner", "x": ""}, {"id": "KEL-01-005", "t": "KEL-01", "lv": 2, "q": "Kelompok yang dijadikan acuan seseorang dalam bersikap disebut…", "a": "Kelompok acuan (reference group)", "x": ""}, {"id": "KEL-01-006", "t": "KEL-01", "lv": 2, "q": "Solidaritas yang muncul dari pembagian kerja yang kompleks di masyarakat modern disebut solidaritas…", "a": "Organik", "x": ""}, {"id": "KEL-01-007", "t": "KEL-01", "lv": 2, "q": "Solidaritas pada masyarakat sederhana yang anggotanya punya pekerjaan dan nilai serupa disebut solidaritas…", "a": "Mekanik", "x": ""}, {"id": "KEL-01-008", "t": "KEL-01", "lv": 3, "q": "Perubahan struktur dan pola interaksi kelompok karena konflik atau pergantian anggota disebut…", "a": "Dinamika kelompok", "x": ""}, {"id": "KEL-01-009", "t": "KEL-01", "lv": 1, "q": "Warga satu kampung saling membantu tanpa diminta saat ada hajatan karena merasa satu keluarga besar. Bentuk kelompok menurut Tönnies ini adalah…", "a": "Gemeinschaft (paguyuban)", "x": "", "k": "kampung"}, {"id": "KEL-01-010", "t": "KEL-01", "lv": 2, "q": "Di sebuah kota, tukang listrik, pedagang, dan guru saling membutuhkan karena pekerjaan mereka berbeda-beda. Bentuk solidaritas menurut Durkheim ini adalah…", "a": "Organik", "x": "", "k": "kota"}, {"id": "KEL-02-001", "t": "KEL-02", "lv": 1, "q": "Menilai budaya lain dengan ukuran budaya sendiri dan menganggapnya lebih rendah disebut…", "a": "Etnosentrisme", "x": ""}, {"id": "KEL-02-002", "t": "KEL-02", "lv": 1, "q": "Perlakuan berbeda yang tidak adil kepada kelompok tertentu disebut…", "a": "Diskriminasi", "x": ""}, {"id": "KEL-02-003", "t": "KEL-02", "lv": 1, "q": "Gambaran umum yang melekat pada suatu kelompok disebut…", "a": "Stereotip", "x": ""}, {"id": "KEL-02-004", "t": "KEL-02", "lv": 1, "q": "Ikatan berlebihan pada hal yang dibawa sejak lahir, seperti suku dan daerah, disebut…", "a": "Primordialisme", "x": ""}, {"id": "KEL-02-005", "t": "KEL-02", "lv": 1, "q": "Sikap negatif terhadap kelompok lain sebelum mengenalnya disebut…", "a": "Prasangka", "x": ""}, {"id": "KEL-02-006", "t": "KEL-02", "lv": 3, "q": "Tokoh yang membagi masyarakat Jawa menjadi santri, abangan, dan priayi adalah…", "a": "Clifford Geertz", "x": ""}, {"id": "KEL-02-007", "t": "KEL-02", "lv": 3, "q": "Kelompok politik yang berbasis ideologi atau agama disebut…", "a": "Politik aliran", "x": ""}, {"id": "KEL-02-008", "t": "KEL-02", "lv": 2, "q": "Sebuah iklan lowongan kerja hanya menerima pelamar dari suku tertentu. Gejala sosial yang tergambar adalah…", "a": "Diskriminasi", "x": "", "k": "lowongan kerja"}, {"id": "KEL-02-009", "t": "KEL-02", "lv": 2, "q": "Seorang pendatang langsung dianggap pelit oleh tetangga hanya karena berasal dari daerah tertentu, sebelum mereka mengenalnya. Konsep yang tergambar adalah…", "a": "Stereotip", "x": "", "k": "kampung"}, {"id": "KEL-03-001", "t": "KEL-03", "lv": 1, "q": "Kemajemukan yang tidak bertingkat, seperti suku dan agama, disebut…", "a": "Diferensiasi sosial", "x": ""}, {"id": "KEL-03-002", "t": "KEL-03", "lv": 1, "q": "Kemajemukan yang bertingkat, seperti kekayaan dan kekuasaan, disebut…", "a": "Stratifikasi sosial", "x": ""}, {"id": "KEL-03-003", "t": "KEL-03", "lv": 2, "q": "Sekolah mengadakan pekan budaya; setiap kelas menampilkan budaya daerah yang berbeda dan semuanya dihargai setara. Sikap yang dikembangkan disebut…", "a": "Multikulturalisme", "x": "", "k": "sekolah"}, {"id": "KEL-03-004", "t": "KEL-03", "lv": 2, "q": "Sebutkan satu penyebab kemajemukan masyarakat Indonesia.", "a": "Satu di antara: wilayah kepulauan, letak strategis, perbedaan kondisi alam, sejarah", "x": ""}, {"id": "KEL-03-005", "t": "KEL-03", "lv": 2, "q": "Dalam satu kelas ada siswa dari suku Batak, Jawa, Bugis, dan Tionghoa. Kemajemukan ini termasuk diferensiasi atau stratifikasi sosial?", "a": "Diferensiasi sosial", "x": "", "k": "kelas"}, {"id": "KES-01-001", "t": "KES-01", "lv": 1, "q": "Sistem pelapisan yang tidak memungkinkan perpindahan lapisan, seperti kasta, disebut stratifikasi…", "a": "Tertutup", "x": ""}, {"id": "KES-01-002", "t": "KES-01", "lv": 1, "q": "Perpindahan status sosial ke lapisan yang lebih tinggi atau lebih rendah disebut mobilitas…", "a": "Vertikal", "x": ""}, {"id": "KES-01-003", "t": "KES-01", "lv": 1, "q": "Status yang diperoleh karena usaha sendiri disebut…", "a": "Achieved status", "x": ""}, {"id": "KES-01-004", "t": "KES-01", "lv": 2, "q": "Status yang diperoleh sejak lahir disebut…", "a": "Ascribed status", "x": ""}, {"id": "KES-01-005", "t": "KES-01", "lv": 2, "q": "Mobilitas yang terjadi dari generasi orang tua ke generasi anak disebut mobilitas…", "a": "Antargenerasi", "x": ""}, {"id": "KES-01-006", "t": "KES-01", "lv": 2, "q": "Tokoh yang menyebut saluran mobilitas sosial, seperti pendidikan dan angkatan bersenjata, adalah…", "a": "Pitirim Sorokin", "x": ""}, {"id": "KES-01-007", "t": "KES-01", "lv": 2, "q": "Sebutkan dua dasar stratifikasi sosial.", "a": "Dua di antara: kekayaan, kekuasaan, kehormatan, ilmu pengetahuan", "x": ""}, {"id": "KES-01-008", "t": "KES-01", "lv": 3, "q": "Status yang diberikan kepada seseorang karena jasanya, misalnya gelar pahlawan, disebut…", "a": "Assigned status", "x": ""}, {"id": "KES-01-009", "t": "KES-01", "lv": 1, "q": "Anak seorang petani menjadi dokter setelah kuliah dengan beasiswa. Mobilitas sosial yang tergambar adalah mobilitas vertikal…", "a": "Naik (antargenerasi)", "x": "", "k": "beasiswa"}, {"id": "KES-01-010", "t": "KES-01", "lv": 2, "q": "Seorang guru pindah tugas dari sekolah di desa ke sekolah di kota dengan jabatan yang sama. Mobilitas sosial ini disebut mobilitas…", "a": "Horizontal", "x": "", "k": "sekolah"}, {"id": "KES-02-001", "t": "KES-02", "lv": 1, "q": "Kemiskinan yang disebabkan struktur sosial yang menghambat akses disebut kemiskinan…", "a": "Struktural", "x": ""}, {"id": "KES-02-002", "t": "KES-02", "lv": 2, "q": "Kemiskinan yang dikaitkan dengan nilai dan kebiasaan disebut kemiskinan…", "a": "Kultural", "x": ""}, {"id": "KES-02-003", "t": "KES-02", "lv": 2, "q": "Sebutkan satu dimensi ketimpangan sosial.", "a": "Satu di antara: ekonomi, sosial (pendidikan, kesehatan), wilayah, gender", "x": ""}, {"id": "KES-02-004", "t": "KES-02", "lv": 2, "q": "Sebutkan satu upaya mewujudkan kesetaraan sosial.", "a": "Satu di antara: pemerataan pendidikan, jaminan sosial, kebijakan afirmasi, pemberdayaan masyarakat, penegakan HAM", "x": ""}, {"id": "KES-02-005", "t": "KES-02", "lv": 2, "q": "Sebutkan satu dampak ketimpangan sosial.", "a": "Satu di antara: kecemburuan sosial, konflik, kriminalitas, mobilitas tertutup", "x": ""}, {"id": "KES-02-006", "t": "KES-02", "lv": 3, "q": "Ketimpangan antara desa dan kota atau antara Jawa dan luar Jawa termasuk dimensi ketimpangan…", "a": "Wilayah", "x": ""}, {"id": "KES-02-007", "t": "KES-02", "lv": 1, "q": "Sebuah desa terpencil belum punya SMA sehingga lulusan SMP harus menempuh jarak jauh untuk bersekolah. Ketimpangan yang tergambar adalah ketimpangan akses…", "a": "Pendidikan", "x": "", "k": "akses sekolah"}, {"id": "KES-02-008", "t": "KES-02", "lv": 2, "q": "Di sebuah kota, peraturan menyediakan kuota kursi sekolah negeri untuk siswa dari daerah yang belum punya sekolah. Upaya kesetaraan seperti ini disebut kebijakan…", "a": "Afirmasi", "x": "", "k": "akses sekolah"}, {"id": "KON-01-001", "t": "KON-01", "lv": 1, "q": "Tokoh yang memandang konflik kelas antara pemilik modal dan buruh adalah…", "a": "Karl Marx", "x": ""}, {"id": "KON-01-002", "t": "KON-01", "lv": 1, "q": "Tokoh yang menyatakan konflik juga punya fungsi positif adalah…", "a": "Lewis A. Coser", "x": ""}, {"id": "KON-01-003", "t": "KON-01", "lv": 2, "q": "Tokoh yang menjelaskan konflik karena distribusi wewenang yang tidak merata adalah…", "a": "Ralf Dahrendorf", "x": ""}, {"id": "KON-01-004", "t": "KON-01", "lv": 2, "q": "Konflik antara pihak atasan dan bawahan disebut konflik…", "a": "Vertikal", "x": ""}, {"id": "KON-01-005", "t": "KON-01", "lv": 2, "q": "Konflik antarpihak yang setara disebut konflik…", "a": "Horizontal", "x": ""}, {"id": "KON-01-006", "t": "KON-01", "lv": 2, "q": "Sebutkan satu dampak positif konflik.", "a": "Satu di antara: solidaritas dalam kelompok meningkat, mendorong perubahan, memperjelas aturan", "x": ""}, {"id": "KON-01-007", "t": "KON-01", "lv": 3, "q": "Coser membedakan konflik menjadi konflik realistis dan…", "a": "Nonrealistis", "x": ""}, {"id": "KON-01-008", "t": "KON-01", "lv": 1, "q": "Warga dua desa bertikai soal batas lahan pertanian. Karena kedudukan kedua pihak setara, konflik ini disebut konflik…", "a": "Horizontal", "x": "", "k": "lahan desa"}, {"id": "KON-01-009", "t": "KON-01", "lv": 2, "q": "Serikat buruh sebuah pabrik berunjuk rasa menuntut perubahan aturan jam kerja kepada pimpinan perusahaan. Konflik ini disebut konflik…", "a": "Vertikal", "x": "", "k": "pabrik"}, {"id": "KON-02-001", "t": "KON-02", "lv": 1, "q": "Akomodasi dengan saling mengurangi tuntutan disebut…", "a": "Kompromi", "x": ""}, {"id": "KON-02-002", "t": "KON-02", "lv": 1, "q": "Akomodasi dengan pihak ketiga yang memberi keputusan mengikat disebut…", "a": "Arbitrase", "x": ""}, {"id": "KON-02-003", "t": "KON-02", "lv": 1, "q": "Akomodasi dengan pihak ketiga netral yang hanya menengahi disebut…", "a": "Mediasi", "x": ""}, {"id": "KON-02-004", "t": "KON-02", "lv": 2, "q": "Penyelesaian konflik melalui pengadilan disebut…", "a": "Ajudikasi", "x": ""}, {"id": "KON-02-005", "t": "KON-02", "lv": 2, "q": "Akomodasi karena paksaan oleh pihak yang lebih kuat disebut…", "a": "Koersi", "x": ""}, {"id": "KON-02-006", "t": "KON-02", "lv": 2, "q": "Konflik berhenti dengan sendirinya karena kekuatan kedua pihak seimbang disebut…", "a": "Stalemate", "x": ""}, {"id": "KON-02-007", "t": "KON-02", "lv": 3, "q": "Akomodasi yang mempertemukan keinginan pihak-pihak yang berselisih melalui lembaga disebut…", "a": "Konsiliasi", "x": ""}, {"id": "KON-02-008", "t": "KON-02", "lv": 1, "q": "Dua kelompok pemuda kampung yang berselisih dipertemukan kepala desa; ia hanya menengahi dan keputusan tetap di tangan kedua kelompok. Bentuk akomodasi ini disebut…", "a": "Mediasi", "x": "", "k": "kampung"}, {"id": "KON-02-009", "t": "KON-02", "lv": 2, "q": "Sengketa tanah warga dengan sebuah perusahaan diselesaikan lewat putusan pengadilan negeri. Bentuk akomodasi ini disebut…", "a": "Ajudikasi", "x": "", "k": "sengketa tanah"}, {"id": "KON-03-001", "t": "KON-03", "lv": 1, "q": "Warga kompleks yang berbeda suku dan agama hidup rukun karena sepakat menjalankan aturan bersama tentang ronda dan kebersihan. Integrasi ini disebut integrasi…", "a": "Normatif", "x": "", "k": "perumahan"}, {"id": "KON-03-002", "t": "KON-03", "lv": 2, "q": "Integrasi karena masyarakat saling bergantung disebut integrasi…", "a": "Fungsional", "x": ""}, {"id": "KON-03-003", "t": "KON-03", "lv": 2, "q": "Integrasi karena paksaan disebut integrasi…", "a": "Koersif", "x": ""}, {"id": "KON-03-004", "t": "KON-03", "lv": 2, "q": "Tahap terakhir proses integrasi adalah…", "a": "Asimilasi", "x": ""}, {"id": "KON-03-005", "t": "KON-03", "lv": 2, "q": "Warga dari berbagai suku di sebuah perumahan rutin bergotong royong membersihkan selokan bersama. Upaya ini membangun…", "a": "Integrasi (harmoni) sosial", "x": "", "k": "perumahan"}, {"id": "PER-01-001", "t": "PER-01", "lv": 1, "q": "Perubahan sosial yang berlangsung lambat disebut…", "a": "Evolusi", "x": ""}, {"id": "PER-01-002", "t": "PER-01", "lv": 1, "q": "Perubahan sosial yang berlangsung cepat dan menyangkut sendi pokok kehidupan disebut…", "a": "Revolusi", "x": ""}, {"id": "PER-01-003", "t": "PER-01", "lv": 1, "q": "Ketertinggalan budaya nonmaterial dari budaya material disebut…", "a": "Cultural lag", "x": ""}, {"id": "PER-01-004", "t": "PER-01", "lv": 2, "q": "Konsep cultural lag dikemukakan oleh…", "a": "William F. Ogburn", "x": ""}, {"id": "PER-01-005", "t": "PER-01", "lv": 2, "q": "Teori siklus perubahan sosial dikemukakan antara lain oleh…", "a": "Oswald Spengler atau Pitirim Sorokin", "x": ""}, {"id": "PER-01-006", "t": "PER-01", "lv": 1, "q": "Perubahan cara hidup menjadi lebih rasional dan maju disebut…", "a": "Modernisasi", "x": ""}, {"id": "PER-01-007", "t": "PER-01", "lv": 2, "q": "Meniru budaya Barat secara berlebihan disebut…", "a": "Westernisasi", "x": ""}, {"id": "PER-01-008", "t": "PER-01", "lv": 3, "q": "Sebutkan satu faktor penghambat perubahan sosial.", "a": "Satu di antara: masyarakat terisolasi, sikap tradisional, kepentingan yang tertanam kuat, prasangka terhadap hal baru", "x": ""}, {"id": "PER-01-009", "t": "PER-01", "lv": 1, "q": "Warga desa sudah memakai ponsel pintar, tetapi aturan bersama tentang berbagi kabar bohong di grup obrolan belum terbentuk. Gejala ini disebut…", "a": "Cultural lag", "x": "", "k": "media sosial"}, {"id": "PER-01-010", "t": "PER-01", "lv": 2, "q": "Pemerintah membangun irigasi dan menyuluh petani agar beralih ke bibit unggul. Perubahan ini termasuk perubahan yang direncanakan atau tidak direncanakan?", "a": "Direncanakan (planned)", "x": "", "k": "sawah"}, {"id": "PER-02-001", "t": "PER-02", "lv": 1, "q": "Tokoh yang mendefinisikan globalisasi sebagai intensifikasi hubungan sosial seluruh dunia adalah…", "a": "Anthony Giddens", "x": ""}, {"id": "PER-02-002", "t": "PER-02", "lv": 1, "q": "Produk global yang disesuaikan dengan budaya lokal disebut…", "a": "Glokalisasi", "x": ""}, {"id": "PER-02-003", "t": "PER-02", "lv": 2, "q": "Tokoh yang membagi globalisasi menjadi lima scapes adalah…", "a": "Arjun Appadurai", "x": ""}, {"id": "PER-02-004", "t": "PER-02", "lv": 2, "q": "Scape Appadurai tentang arus perpindahan manusia disebut…", "a": "Ethnoscape", "x": ""}, {"id": "PER-02-005", "t": "PER-02", "lv": 3, "q": "Scape Appadurai tentang arus informasi melalui media disebut…", "a": "Mediascape", "x": ""}, {"id": "PER-02-006", "t": "PER-02", "lv": 2, "q": "Sebutkan satu dampak negatif globalisasi.", "a": "Satu di antara: konsumerisme, individualisme, memudarnya budaya lokal, kesenjangan digital", "x": ""}, {"id": "PER-02-007", "t": "PER-02", "lv": 3, "q": "Scape Appadurai tentang arus modal disebut…", "a": "Financescape", "x": ""}, {"id": "PER-02-008", "t": "PER-02", "lv": 1, "q": "Restoran cepat saji asing di Indonesia menjual menu nasi dan sambal. Gejala ini disebut…", "a": "Glokalisasi", "x": "", "k": "restoran"}, {"id": "PER-02-009", "t": "PER-02", "lv": 2, "q": "Pekerja dari Indonesia bekerja di Malaysia, sedangkan wisatawan asing berlibur ke Bali. Arus manusia lintas negara ini termasuk scape…", "a": "Ethnoscape", "x": "", "k": "pekerja migran"}, {"id": "PER-03-001", "t": "PER-03", "lv": 1, "q": "Gaya hidup yang menjadikan kesenangan sebagai tujuan utama disebut…", "a": "Hedonisme", "x": ""}, {"id": "PER-03-002", "t": "PER-03", "lv": 2, "q": "Perbedaan akses internet antarwilayah dan antarkelompok disebut…", "a": "Kesenjangan digital", "x": ""}, {"id": "PER-03-003", "t": "PER-03", "lv": 2, "q": "Sebelum meneruskan pesan berantai tentang bencana, seorang siswa memeriksa sumbernya di situs resmi. Kemampuan yang ia pakai disebut…", "a": "Literasi digital", "x": "", "k": "media sosial"}, {"id": "PER-03-004", "t": "PER-03", "lv": 2, "q": "Kabar bohong yang disebarkan di media sosial disebut…", "a": "Hoaks", "x": ""}, {"id": "PER-03-005", "t": "PER-03", "lv": 2, "q": "Sekolah di sebuah desa kesulitan belajar daring karena sinyal internet lemah, sedangkan sekolah di kota lancar. Masalah ini disebut…", "a": "Kesenjangan digital", "x": "", "k": "akses internet"}, {"id": "PER-04-001", "t": "PER-04", "lv": 1, "q": "Pengetahuan dan nilai masyarakat setempat untuk mengelola hidup dan lingkungan disebut…", "a": "Kearifan lokal", "x": ""}, {"id": "PER-04-002", "t": "PER-04", "lv": 2, "q": "Sistem pengairan sawah tradisional di Bali disebut…", "a": "Subak", "x": ""}, {"id": "PER-04-003", "t": "PER-04", "lv": 2, "q": "Tradisi larangan mengambil hasil alam dalam waktu tertentu di Maluku disebut…", "a": "Sasi", "x": ""}, {"id": "PER-04-004", "t": "PER-04", "lv": 2, "q": "Tahap pertama pemberdayaan komunitas adalah…", "a": "Identifikasi masalah dan potensi", "x": ""}, {"id": "PER-04-005", "t": "PER-04", "lv": 2, "q": "Warga desa pesisir bersama-sama melarang menangkap ikan di teluk selama tiga bulan agar ikan berkembang biak. Upaya ini termasuk pemberdayaan komunitas berbasis…", "a": "Kearifan lokal", "x": "", "k": "nelayan"}], "bank": {"key": "bank-soal-sosiologi-v1", "title": "Bank Soal Sosiologi", "map_title": "Peta Materi Sosiologi SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Sosiologi. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Sosiologi dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

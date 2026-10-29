@@ -11,14 +11,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build  # noqa: E402  (reuses the TKA bank validator)
 
-ROOT = Path(__file__).resolve().parent.parent
-GEN = ROOT / "data/tka-generated"
-
-
-def load_types():
-    """Map each type code to its declared formats and examples."""
-    types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
-    return {t["kode"]: t for subject in types.values() for t in subject["types"]}
+GEN = build.ROOT / "data/tka-generated"
+load_types = build.load_tka_types  # each type code → its declared formats and examples
 
 
 def check(path, types):

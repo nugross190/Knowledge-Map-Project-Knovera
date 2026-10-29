@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-seni-musik.html", "domains": [{"id": "UNS", "name": "Unsur dan teori musik", "short": "Teori", "weight": 30.0, "topics": {"UNS-01": "Unsur musik", "UNS-02": "Notasi musik", "UNS-03": "Tangga nada", "UNS-04": "Interval dan akor", "UNS-05": "Tempo dan dinamika", "UNS-06": "Bentuk lagu"}}, {"id": "ALT", "name": "Alat musik", "short": "Alat musik", "weight": 15.0, "topics": {"ALT-01": "Klasifikasi alat musik", "ALT-02": "Alat musik Nusantara", "ALT-03": "Ansambel musik"}}, {"id": "MNU", "name": "Musik Nusantara dan dunia", "short": "Ragam musik", "weight": 25.0, "topics": {"MNU-01": "Lagu daerah", "MNU-02": "Gamelan", "MNU-03": "Musik populer Indonesia", "MNU-04": "Sejarah musik Barat", "MNU-05": "Lagu nasional"}}, {"id": "KRY", "name": "Bernyanyi, berkarya, dan apresiasi", "short": "Berkarya", "weight": 30.0, "topics": {"KRY-01": "Teknik vokal", "KRY-02": "Aransemen dan komposisi", "KRY-03": "Pertunjukan musik", "KRY-04": "Teknologi musik", "KRY-05": "Apresiasi dan kritik musik", "KRY-06": "Hak cipta lagu"}}]}, "questions": [{"id": "UNS-01-001", "t": "UNS-01", "lv": 1, "q": "Pola panjang pendek bunyi dan diam yang teratur disebut…", "a": "Irama (ritme)", "x": ""}, {"id": "UNS-01-002", "t": "UNS-01", "lv": 1, "q": "Rangkaian nada yang berurutan dan bermakna disebut…", "a": "Melodi", "x": ""}, {"id": "UNS-01-003", "t": "UNS-01", "lv": 1, "q": "Paduan beberapa nada yang dibunyikan bersamaan disebut…", "a": "Harmoni", "x": ""}, {"id": "UNS-01-004", "t": "UNS-01", "lv": 2, "q": "Ciri khas bunyi yang membedakan suara biola dan suling disebut…", "a": "Timbre (warna bunyi)", "x": ""}, {"id": "UNS-01-005", "t": "UNS-01", "lv": 2, "q": "Keras lembutnya bunyi disebut…", "a": "Dinamika", "x": ""}, {"id": "UNS-01-006", "t": "UNS-01", "lv": 2, "q": "Cepat lambatnya lagu disebut…", "a": "Tempo", "x": ""}, {"id": "UNS-01-007", "t": "UNS-01", "lv": 2, "q": "Apa beda irama dan melodi?", "a": "Irama tentang panjang pendek bunyi; melodi tentang tinggi rendah nada yang berurutan", "x": ""}, {"id": "UNS-01-008", "t": "UNS-01", "lv": 2, "q": "Di acara pengajian, peserta mengenali suara rebana dan suling walau tidak melihat alatnya. Unsur musik apa yang membuat keduanya dapat dibedakan?", "a": "Timbre (warna bunyi)", "x": "", "k": "pengajian"}, {"id": "UNS-01-009", "t": "UNS-01", "lv": 2, "q": "Kelompok kasidah di kampung menyanyikan satu lagu bersama-sama dalam suara satu, dua, dan tiga yang dibunyikan serentak. Unsur musik apa yang muncul dari paduan suara itu?", "a": "Harmoni", "x": "", "k": "kasidah"}, {"id": "UNS-01-010", "t": "UNS-01", "lv": 1, "q": "Penghayatan musik yang tampak lewat tempo, dinamika, dan warna bunyi disebut…", "a": "Ekspresi", "x": ""}, {"id": "UNS-01-011", "t": "UNS-01", "lv": 2, "q": "Penonton konser kampus memperhatikan bahwa lagu mengeras perlahan menjelang akhir. Unsur musik apa yang berubah?", "a": "Dinamika", "x": "", "k": "konser kampus"}, {"id": "UNS-02-001", "t": "UNS-02", "lv": 1, "q": "Not seperempat dalam birama 4/4 bernilai berapa ketuk?", "a": "1", "x": ""}, {"id": "UNS-02-002", "t": "UNS-02", "lv": 1, "q": "Not penuh bernilai berapa ketuk?", "a": "4", "x": ""}, {"id": "UNS-02-003", "t": "UNS-02", "lv": 1, "q": "Dalam not angka, angka 0 berarti…", "a": "Tanda diam (istirahat)", "x": ""}, {"id": "UNS-02-004", "t": "UNS-02", "lv": 2, "q": "Berapa ketuk not setengah bertitik?", "a": "3", "x": ""}, {"id": "UNS-02-005", "t": "UNS-02", "lv": 2, "q": "Birama 3/4 berarti…", "a": "Setiap birama berisi 3 ketuk dengan not seperempat sebagai satu ketuk", "x": ""}, {"id": "UNS-02-006", "t": "UNS-02", "lv": 2, "q": "Kunci yang dipakai untuk nada rendah adalah…", "a": "Kunci F (bas)", "x": ""}, {"id": "UNS-02-007", "t": "UNS-02", "lv": 2, "q": "Dalam not angka, titik di atas angka berarti…", "a": "Nada satu oktaf lebih tinggi", "x": ""}, {"id": "UNS-02-008", "t": "UNS-02", "lv": 2, "q": "Dalam not angka, satu garis di atas angka berarti nilainya…", "a": "Setengah ketuk", "x": ""}, {"id": "UNS-02-009", "t": "UNS-02", "lv": 3, "q": "Satu birama 4/4 berisi not setengah dan dua not seperdelapan. Berapa ketuk lagi yang diperlukan agar birama penuh?", "a": "1 ketuk", "x": "2 + ½ + ½ = 3."}, {"id": "UNS-02-010", "t": "UNS-02", "lv": 2, "q": "Pelatih paduan suara sekolah membagikan partitur bertanda birama 6/8 untuk lagu berirama mengayun. Berapa ketuk per birama dan not apa yang bernilai satu ketuk?", "a": "6 ketuk; not seperdelapan", "x": "", "k": "paduan suara"}, {"id": "UNS-02-011", "t": "UNS-02", "lv": 3, "q": "Satu birama 3/4 berisi not seperempat bertitik. Berapa ketuk lagi yang diperlukan agar birama penuh?", "a": "1½ ketuk", "x": "1 + ½ = 1½; 3 − 1½."}, {"id": "UNS-02-012", "t": "UNS-02", "lv": 1, "q": "Kunci yang dipakai untuk nada tinggi adalah…", "a": "Kunci G (treble)", "x": ""}, {"id": "UNS-02-013", "t": "UNS-02", "lv": 2, "q": "Pemain suling di sanggar membaca partitur angka dan melihat titik di atas angka 1. Bagaimana nada itu dimainkan?", "a": "Satu oktaf lebih tinggi", "x": "", "k": "sanggar"}, {"id": "UNS-03-001", "t": "UNS-03", "lv": 1, "q": "Susunan jarak tangga nada diatonis mayor adalah…", "a": "1 – 1 – ½ – 1 – 1 – 1 – ½", "x": ""}, {"id": "UNS-03-002", "t": "UNS-03", "lv": 1, "q": "Tangga nada yang terdiri atas lima nada pokok disebut…", "a": "Pentatonis", "x": ""}, {"id": "UNS-03-003", "t": "UNS-03", "lv": 1, "q": "Tangga nada minor asli biasanya diawali dan diakhiri nada…", "a": "La", "x": ""}, {"id": "UNS-03-004", "t": "UNS-03", "lv": 2, "q": "Susunan jarak tangga nada minor asli adalah…", "a": "1 – ½ – 1 – 1 – ½ – 1 – 1", "x": ""}, {"id": "UNS-03-005", "t": "UNS-03", "lv": 2, "q": "Di antara nada mana saja jarak ½ pada tangga nada mayor?", "a": "Mi–fa (3–4) dan si–do (7–8)", "x": ""}, {"id": "UNS-03-006", "t": "UNS-03", "lv": 2, "q": "Laras gamelan dengan lima nada berjarak hampir sama disebut…", "a": "Slendro", "x": ""}, {"id": "UNS-03-007", "t": "UNS-03", "lv": 2, "q": "Laras gamelan dengan tujuh nada berjarak tidak sama disebut…", "a": "Pelog", "x": ""}, {"id": "UNS-03-008", "t": "UNS-03", "lv": 1, "q": "Tangga nada yang memakai jarak setengah di seluruhnya disebut…", "a": "Kromatis", "x": ""}, {"id": "UNS-03-009", "t": "UNS-03", "lv": 2, "q": "Paduan suara sekolah memilih lagu berkesan sedih dan syahdu untuk mengenang guru yang wafat. Lagu berkesan seperti ini umumnya memakai tangga nada…", "a": "Minor", "x": "", "k": "mengenang guru"}, {"id": "UNS-03-010", "t": "UNS-03", "lv": 3, "q": "Tangga nada C mayor tidak memakai tanda kres atau mol. Mengapa jarak ½ jatuh tepat di E–F dan B–C?", "a": "Karena pada tuts piano tidak ada tuts hitam di antara E–F dan B–C, sesuai pola mayor 1–1–½–1–1–1–½", "x": ""}, {"id": "UNS-03-011", "t": "UNS-03", "lv": 1, "q": "Tangga nada diatonis mayor berkesan…", "a": "Gembira, bersemangat", "x": ""}, {"id": "UNS-04-001", "t": "UNS-04", "lv": 1, "q": "Gabungan tiga nada atau lebih yang dibunyikan bersamaan disebut…", "a": "Akor", "x": ""}, {"id": "UNS-04-002", "t": "UNS-04", "lv": 2, "q": "Akor I pada tangga nada C mayor terdiri atas nada…", "a": "C – E – G (do-mi-sol)", "x": ""}, {"id": "UNS-04-003", "t": "UNS-04", "lv": 2, "q": "Akor IV pada C mayor adalah…", "a": "F (F-A-C)", "x": ""}, {"id": "UNS-04-004", "t": "UNS-04", "lv": 2, "q": "Akor V pada C mayor adalah…", "a": "G (G-B-D)", "x": ""}, {"id": "UNS-04-005", "t": "UNS-04", "lv": 1, "q": "Jarak dua nada disebut…", "a": "Interval", "x": ""}, {"id": "UNS-04-006", "t": "UNS-04", "lv": 2, "q": "Gitaris di pos ronda mengiringi lagu C mayor hanya dengan akor C, F, dan G. Ketiga akor ini disebut akor…", "a": "Akor pokok (I, IV, V)", "x": "", "k": "pos ronda"}, {"id": "UNS-04-007", "t": "UNS-04", "lv": 3, "q": "Lagu dalam G mayor diakhiri dengan akor D lalu G. Akor apa D dan G dalam G mayor, dan apa nama akhiran ini?", "a": "D akor V, G akor I; kadens V–I", "x": ""}, {"id": "UNS-04-008", "t": "UNS-04", "lv": 1, "q": "Akor pokok tangga nada mayor adalah akor…", "a": "I, IV, dan V", "x": ""}, {"id": "UNS-05-001", "t": "UNS-05", "lv": 1, "q": "Istilah tempo untuk \"cepat\" adalah…", "a": "Allegro", "x": ""}, {"id": "UNS-05-002", "t": "UNS-05", "lv": 1, "q": "Tanda dinamika f (forte) berarti…", "a": "Keras", "x": ""}, {"id": "UNS-05-003", "t": "UNS-05", "lv": 1, "q": "Tanda dinamika p (piano) berarti…", "a": "Lembut", "x": ""}, {"id": "UNS-05-004", "t": "UNS-05", "lv": 2, "q": "Istilah tempo andante berarti…", "a": "Sedang, seperti orang berjalan", "x": ""}, {"id": "UNS-05-005", "t": "UNS-05", "lv": 2, "q": "Istilah untuk makin keras secara bertahap adalah…", "a": "Crescendo", "x": ""}, {"id": "UNS-05-006", "t": "UNS-05", "lv": 2, "q": "Istilah tempo largo berarti…", "a": "Sangat lambat", "x": ""}, {"id": "UNS-05-007", "t": "UNS-05", "lv": 2, "q": "Tanda ff berarti…", "a": "Sangat keras (fortissimo)", "x": ""}, {"id": "UNS-05-008", "t": "UNS-05", "lv": 2, "q": "Mana yang lebih cepat: andante atau allegro?", "a": "Allegro", "x": ""}, {"id": "UNS-05-009", "t": "UNS-05", "lv": 2, "q": "Dirigen paduan suara di upacara sekolah memberi isyarat agar suara makin lama makin lembut di akhir lagu. Istilahnya adalah…", "a": "Decrescendo", "x": "", "k": "upacara"}, {"id": "UNS-05-010", "t": "UNS-05", "lv": 3, "q": "Partitur lagu daerah bertanda moderato dengan dinamika mp lalu crescendo ke f. Jelaskan cara menyanyikannya.", "a": "Tempo sedang, mulai agak lembut lalu makin keras sampai keras", "x": ""}, {"id": "UNS-05-011", "t": "UNS-05", "lv": 1, "q": "Tanda mf berarti…", "a": "Agak keras (mezzo forte)", "x": ""}, {"id": "UNS-05-012", "t": "UNS-05", "lv": 2, "q": "Dirigen paduan suara gereja menulis \"andante\" di awal partitur. Seberapa cepat lagu dinyanyikan?", "a": "Sedang, seperti orang berjalan", "x": "", "k": "paduan suara"}, {"id": "UNS-06-001", "t": "UNS-06", "lv": 1, "q": "Bentuk lagu A–B disebut lagu…", "a": "Dua bagian", "x": ""}, {"id": "UNS-06-002", "t": "UNS-06", "lv": 1, "q": "Frase yang diakhiri nada yang terasa belum selesai disebut frase…", "a": "Tanya (antecedens)", "x": ""}, {"id": "UNS-06-003", "t": "UNS-06", "lv": 1, "q": "Frase yang diakhiri nada yang terasa selesai disebut frase…", "a": "Jawab (konsekuens)", "x": ""}, {"id": "UNS-06-004", "t": "UNS-06", "lv": 2, "q": "Bentuk A–B–A–C–A disebut…", "a": "Rondo", "x": ""}, {"id": "UNS-06-005", "t": "UNS-06", "lv": 2, "q": "Siswa menulis lagu untuk Hari Kartini: kalimat pertama diulang dua kali, lalu muncul kalimat kedua yang berbeda dan lagu selesai. Jika setiap kalimat satu bagian, bentuk lagu apa ini?", "a": "Lagu dua bagian (A–B)", "x": "", "k": "Hari Kartini"}, {"id": "UNS-06-006", "t": "UNS-06", "lv": 1, "q": "Bentuk lagu A–B–A disebut lagu…", "a": "Tiga bagian", "x": ""}, {"id": "ALT-01-001", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari badan alat itu sendiri disebut…", "a": "Idiofon", "x": ""}, {"id": "ALT-01-002", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari dawai disebut…", "a": "Kordofon", "x": ""}, {"id": "ALT-01-003", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari selaput yang ditegangkan disebut…", "a": "Membranofon", "x": ""}, {"id": "ALT-01-004", "t": "ALT-01", "lv": 2, "q": "Suling termasuk golongan…", "a": "Aerofon", "x": ""}, {"id": "ALT-01-005", "t": "ALT-01", "lv": 2, "q": "Kendang termasuk golongan…", "a": "Membranofon", "x": ""}, {"id": "ALT-01-006", "t": "ALT-01", "lv": 2, "q": "Angklung termasuk golongan menurut sumber bunyinya…", "a": "Idiofon", "x": ""}, {"id": "ALT-01-007", "t": "ALT-01", "lv": 2, "q": "Alat musik yang memainkan akor, seperti gitar dan piano, disebut alat musik…", "a": "Harmonis", "x": ""}, {"id": "ALT-01-008", "t": "ALT-01", "lv": 2, "q": "Synthesizer termasuk golongan…", "a": "Elektrofon", "x": ""}, {"id": "ALT-01-009", "t": "ALT-01", "lv": 2, "q": "Grup marching band sekolah memakai snare drum, bass drum, dan simbal untuk mengatur irama. Alat-alat ini termasuk alat musik…", "a": "Ritmis", "x": "", "k": "marching band"}, {"id": "ALT-01-010", "t": "ALT-01", "lv": 3, "q": "Pengamen di bus memainkan ukulele dan tamborin. Golongkan keduanya menurut sumber bunyi.", "a": "Ukulele: kordofon; tamborin: membranofon (selaputnya) sekaligus idiofon (kerincingnya)", "x": "", "k": "pengamen"}, {"id": "ALT-01-011", "t": "ALT-01", "lv": 1, "q": "Alat musik yang sumber bunyinya dari getaran udara disebut…", "a": "Aerofon", "x": ""}, {"id": "ALT-01-012", "t": "ALT-01", "lv": 2, "q": "Penjual mainan di pasar malam menjual kentongan bambu yang berbunyi bila dipukul badannya. Termasuk golongan apa menurut sumber bunyi?", "a": "Idiofon", "x": "", "k": "pasar malam"}, {"id": "ALT-02-001", "t": "ALT-02", "lv": 1, "q": "Sasando berasal dari…", "a": "Pulau Rote, NTT", "x": ""}, {"id": "ALT-02-002", "t": "ALT-02", "lv": 1, "q": "Kolintang berasal dari…", "a": "Minahasa, Sulawesi Utara", "x": ""}, {"id": "ALT-02-003", "t": "ALT-02", "lv": 1, "q": "Cara memainkan sasando adalah…", "a": "Dipetik", "x": ""}, {"id": "ALT-02-004", "t": "ALT-02", "lv": 2, "q": "Talempong berasal dari…", "a": "Sumatra Barat", "x": ""}, {"id": "ALT-02-005", "t": "ALT-02", "lv": 2, "q": "Gordang sambilan berasal dari…", "a": "Mandailing, Sumatra Utara", "x": ""}, {"id": "ALT-02-006", "t": "ALT-02", "lv": 2, "q": "Sape adalah alat musik petik dari…", "a": "Dayak, Kalimantan", "x": ""}, {"id": "ALT-02-007", "t": "ALT-02", "lv": 2, "q": "Alat musik tiup bambu dari Sumatra Barat adalah…", "a": "Saluang", "x": ""}, {"id": "ALT-02-008", "t": "ALT-02", "lv": 2, "q": "Tifa berasal dari…", "a": "Papua dan Maluku", "x": ""}, {"id": "ALT-02-009", "t": "ALT-02", "lv": 2, "q": "Wisatawan di Kupang membeli suvenir alat musik dari daun lontar berdawai. Alat musik apa ini?", "a": "Sasando", "x": "", "k": "Kupang"}, {"id": "ALT-02-010", "t": "ALT-02", "lv": 2, "q": "Pada festival budaya Minahasa di Manado, ansambel memainkan alat musik bilah kayu yang dipukul. Alat musik apa ini?", "a": "Kolintang", "x": "", "k": "festival Manado"}, {"id": "ALT-02-011", "t": "ALT-02", "lv": 2, "q": "Pemusik di Padang memainkan alat musik tiup bambu sambil bernyanyi di acara adat. Alat musik apa ini?", "a": "Saluang", "x": "", "k": "Padang"}, {"id": "ALT-02-012", "t": "ALT-02", "lv": 1, "q": "Kolintang dimainkan dengan cara…", "a": "Dipukul", "x": ""}, {"id": "ALT-03-001", "t": "ALT-03", "lv": 1, "q": "Permainan musik bersama disebut…", "a": "Ansambel", "x": ""}, {"id": "ALT-03-002", "t": "ALT-03", "lv": 2, "q": "Pemimpin orkestra disebut…", "a": "Konduktor (dirigen)", "x": ""}, {"id": "ALT-03-003", "t": "ALT-03", "lv": 2, "q": "Ansambel yang memakai satu jenis alat musik disebut ansambel…", "a": "Sejenis", "x": ""}, {"id": "ALT-03-004", "t": "ALT-03", "lv": 2, "q": "Sebutkan empat kelompok alat dalam orkestra.", "a": "Gesek, tiup kayu, tiup logam, perkusi", "x": ""}, {"id": "ALT-03-005", "t": "ALT-03", "lv": 2, "q": "Semua pemain memainkan melodi yang sama disebut…", "a": "Unisono", "x": ""}, {"id": "ALT-03-006", "t": "ALT-03", "lv": 2, "q": "Kelompok musik karang taruna memakai gitar, kendang, suling, dan keyboard. Jenis ansambel ini adalah…", "a": "Ansambel campuran", "x": "", "k": "karang taruna"}, {"id": "ALT-03-007", "t": "ALT-03", "lv": 2, "q": "Orkestra kota tampil di alun-alun: biola, cello, klarinet, trompet, dan timpani. Kelompok mana yang diisi klarinet?", "a": "Tiup kayu", "x": "", "k": "orkestra kota"}, {"id": "ALT-03-008", "t": "ALT-03", "lv": 1, "q": "Ansambel besar dengan kelompok gesek, tiup, dan perkusi disebut…", "a": "Orkestra", "x": ""}, {"id": "MNU-01-001", "t": "MNU-01", "lv": 1, "q": "Lagu Bungong Jeumpa berasal dari…", "a": "Aceh", "x": ""}, {"id": "MNU-01-002", "t": "MNU-01", "lv": 1, "q": "Lagu Ampar-Ampar Pisang berasal dari…", "a": "Kalimantan Selatan", "x": ""}, {"id": "MNU-01-003", "t": "MNU-01", "lv": 1, "q": "Lagu Manuk Dadali berasal dari…", "a": "Jawa Barat", "x": ""}, {"id": "MNU-01-004", "t": "MNU-01", "lv": 2, "q": "Lagu Yamko Rambe Yamko berasal dari…", "a": "Papua", "x": ""}, {"id": "MNU-01-005", "t": "MNU-01", "lv": 2, "q": "Lagu Soleram berasal dari…", "a": "Riau", "x": ""}, {"id": "MNU-01-006", "t": "MNU-01", "lv": 2, "q": "Lagu Sinanggar Tullo berasal dari…", "a": "Sumatra Utara (Batak Toba)", "x": ""}, {"id": "MNU-01-007", "t": "MNU-01", "lv": 2, "q": "Lagu Rasa Sayange berasal dari…", "a": "Maluku", "x": ""}, {"id": "MNU-01-008", "t": "MNU-01", "lv": 2, "q": "Mengapa banyak lagu daerah disebut anonim?", "a": "Penciptanya tidak diketahui karena diwariskan secara lisan", "x": ""}, {"id": "MNU-01-009", "t": "MNU-01", "lv": 2, "q": "Lagu Gundul-Gundul Pacul berasal dari…", "a": "Jawa Tengah", "x": ""}, {"id": "MNU-01-010", "t": "MNU-01", "lv": 2, "q": "Pada lomba paduan suara antarsekolah, satu tim membawakan lagu berbahasa Banjar tentang pohon pisang. Lagu apa ini?", "a": "Ampar-Ampar Pisang", "x": "", "k": "lomba paduan suara"}, {"id": "MNU-01-011", "t": "MNU-01", "lv": 1, "q": "Lagu daerah yang penciptanya tidak diketahui disebut lagu…", "a": "Anonim", "x": ""}, {"id": "MNU-02-001", "t": "MNU-02", "lv": 1, "q": "Gamelan ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada tahun…", "a": "2021", "x": ""}, {"id": "MNU-02-002", "t": "MNU-02", "lv": 2, "q": "Instrumen gamelan yang mengatur irama adalah…", "a": "Kendang", "x": ""}, {"id": "MNU-02-003", "t": "MNU-02", "lv": 1, "q": "Sebutkan dua laras gamelan.", "a": "Slendro dan pelog", "x": ""}, {"id": "MNU-02-004", "t": "MNU-02", "lv": 2, "q": "Gamelan Bali yang dikenal bertempo cepat dan dinamis adalah…", "a": "Gong kebyar", "x": ""}, {"id": "MNU-02-005", "t": "MNU-02", "lv": 2, "q": "Instrumen gesek dalam gamelan Jawa adalah…", "a": "Rebab", "x": ""}, {"id": "MNU-02-006", "t": "MNU-02", "lv": 2, "q": "Pertunjukan wayang kulit di balai desa diiringi gamelan yang memakai tujuh nada berjarak tidak sama. Laras apa ini?", "a": "Pelog", "x": "", "k": "wayang kulit"}, {"id": "MNU-02-007", "t": "MNU-02", "lv": 3, "q": "Mengapa lagu gamelan berlaras slendro sulit dimainkan dengan piano biasa?", "a": "Jarak nada slendro hampir sama dan tidak sesuai jarak nada diatonis piano", "x": ""}, {"id": "MNU-02-008", "t": "MNU-02", "lv": 1, "q": "Ansambel musik tradisional Jawa, Bali, dan Sunda disebut…", "a": "Gamelan", "x": ""}, {"id": "MNU-02-009", "t": "MNU-02", "lv": 2, "q": "Pengrawit di sanggar karawitan memainkan instrumen yang mengatur cepat lambat irama gamelan. Instrumen apa?", "a": "Kendang", "x": "", "k": "sanggar karawitan"}, {"id": "MNU-03-001", "t": "MNU-03", "lv": 1, "q": "Penyanyi yang dijuluki Raja Dangdut adalah…", "a": "Rhoma Irama", "x": ""}, {"id": "MNU-03-002", "t": "MNU-03", "lv": 2, "q": "Keroncong berakar dari musik bangsa…", "a": "Portugis", "x": ""}, {"id": "MNU-03-003", "t": "MNU-03", "lv": 2, "q": "Kampung di Jakarta yang menjadi tempat berkembangnya keroncong adalah…", "a": "Kampung Tugu", "x": ""}, {"id": "MNU-03-004", "t": "MNU-03", "lv": 2, "q": "Musik yang memadukan gamelan Jawa dengan alat musik modern disebut…", "a": "Campursari", "x": ""}, {"id": "MNU-03-005", "t": "MNU-03", "lv": 2, "q": "Alat musik khas keroncong yang mirip ukulele disebut…", "a": "Cak dan cuk", "x": ""}, {"id": "MNU-03-006", "t": "MNU-03", "lv": 2, "q": "Grup musik di acara hajatan memainkan lagu dengan iringan kendang, suling bambu, dan gitar listrik berirama khas Melayu-India. Jenis musik apa ini?", "a": "Dangdut", "x": "", "k": "hajatan"}, {"id": "MNU-03-007", "t": "MNU-03", "lv": 2, "q": "Grup musik di Kampung Tugu memainkan lagu dengan ukulele, cello dipetik, dan biola dalam irama khas. Jenis musik apa ini?", "a": "Keroncong", "x": "", "k": "Kampung Tugu"}, {"id": "MNU-04-001", "t": "MNU-04", "lv": 1, "q": "Periode musik Barat sekitar 1600–1750 disebut…", "a": "Barok", "x": ""}, {"id": "MNU-04-002", "t": "MNU-04", "lv": 2, "q": "Komponis Barok yang terkenal adalah…", "a": "J.S. Bach (juga Handel, Vivaldi)", "x": ""}, {"id": "MNU-04-003", "t": "MNU-04", "lv": 2, "q": "Mozart termasuk komponis periode…", "a": "Klasik", "x": ""}, {"id": "MNU-04-004", "t": "MNU-04", "lv": 2, "q": "Chopin termasuk komponis periode…", "a": "Romantik", "x": ""}, {"id": "MNU-04-005", "t": "MNU-04", "lv": 1, "q": "Komponis yang disebut tokoh peralihan Klasik ke Romantik adalah…", "a": "Beethoven", "x": ""}, {"id": "MNU-04-006", "t": "MNU-04", "lv": 3, "q": "Urutkan periode musik Barat dari yang paling awal.", "a": "Barok, Klasik, Romantik, Modern", "x": ""}, {"id": "MNU-04-007", "t": "MNU-04", "lv": 2, "q": "Kelompok musik gereja di kota memainkan karya Bach saat perayaan. Bach termasuk komponis periode…", "a": "Barok", "x": "", "k": "gereja"}, {"id": "MNU-04-008", "t": "MNU-04", "lv": 1, "q": "Periode musik Barat sekitar 1750–1820 disebut…", "a": "Klasik", "x": ""}, {"id": "MNU-05-001", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Indonesia Raya adalah…", "a": "W.R. Supratman", "x": ""}, {"id": "MNU-05-002", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Rayuan Pulau Kelapa adalah…", "a": "Ismail Marzuki", "x": ""}, {"id": "MNU-05-003", "t": "MNU-05", "lv": 1, "q": "Pencipta lagu Bagimu Negeri adalah…", "a": "Kusbini", "x": ""}, {"id": "MNU-05-004", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Maju Tak Gentar adalah…", "a": "Cornel Simanjuntak", "x": ""}, {"id": "MNU-05-005", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Garuda Pancasila adalah…", "a": "Sudharnoto", "x": ""}, {"id": "MNU-05-006", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Hari Merdeka (17 Agustus) adalah…", "a": "H. Mutahar", "x": ""}, {"id": "MNU-05-007", "t": "MNU-05", "lv": 2, "q": "Pencipta lagu Bangun Pemudi Pemuda adalah…", "a": "A. Simanjuntak", "x": ""}, {"id": "MNU-05-008", "t": "MNU-05", "lv": 2, "q": "Bagaimana cara membawakan lagu nasional bertempo mars?", "a": "Dengan semangat (maestoso atau marcia)", "x": ""}, {"id": "MNU-05-009", "t": "MNU-05", "lv": 2, "q": "Paduan suara upacara 17 Agustus menyanyikan lagu ciptaan Ismail Marzuki tentang keindahan tanah air yang \"tetap dipuja-puja bangsa\". Lagu apa ini?", "a": "Indonesia Pusaka", "x": "", "k": "tujuh belasan"}, {"id": "MNU-05-010", "t": "MNU-05", "lv": 2, "q": "Paduan suara upacara Hari Pahlawan menyanyikan lagu ciptaan Cornel Simanjuntak yang bersemangat tentang maju tanpa gentar. Judul lagunya?", "a": "Maju Tak Gentar", "x": "", "k": "Hari Pahlawan"}, {"id": "KRY-01-001", "t": "KRY-01", "lv": 1, "q": "Teknik pernapasan yang paling dianjurkan untuk bernyanyi adalah…", "a": "Pernapasan diafragma", "x": ""}, {"id": "KRY-01-002", "t": "KRY-01", "lv": 1, "q": "Jenis suara perempuan yang tinggi disebut…", "a": "Sopran", "x": ""}, {"id": "KRY-01-003", "t": "KRY-01", "lv": 1, "q": "Jenis suara laki-laki yang rendah disebut…", "a": "Bas", "x": ""}, {"id": "KRY-01-004", "t": "KRY-01", "lv": 1, "q": "Kejelasan pengucapan kata saat bernyanyi disebut…", "a": "Artikulasi", "x": ""}, {"id": "KRY-01-005", "t": "KRY-01", "lv": 1, "q": "Ketepatan tinggi rendah nada saat bernyanyi disebut…", "a": "Intonasi", "x": ""}, {"id": "KRY-01-006", "t": "KRY-01", "lv": 2, "q": "Pemenggalan kalimat lagu disebut…", "a": "Phrasering", "x": ""}, {"id": "KRY-01-007", "t": "KRY-01", "lv": 2, "q": "Jenis suara perempuan yang rendah disebut…", "a": "Alto", "x": ""}, {"id": "KRY-01-008", "t": "KRY-01", "lv": 2, "q": "Jenis suara laki-laki yang tinggi disebut…", "a": "Tenor", "x": ""}, {"id": "KRY-01-009", "t": "KRY-01", "lv": 3, "q": "Peserta lomba menyanyi kehabisan napas di tengah kalimat lagu. Dua teknik apa yang perlu diperbaiki?", "a": "Pernapasan (diafragma) dan phrasering", "x": "", "k": "lomba menyanyi"}, {"id": "KRY-01-010", "t": "KRY-01", "lv": 2, "q": "Juri lomba qasidah menilai peserta yang liriknya tidak terdengar jelas. Aspek teknik vokal apa yang kurang?", "a": "Artikulasi", "x": "", "k": "lomba qasidah"}, {"id": "KRY-02-001", "t": "KRY-02", "lv": 1, "q": "Mengubah atau menata lagu yang sudah ada disebut…", "a": "Aransemen", "x": ""}, {"id": "KRY-02-002", "t": "KRY-02", "lv": 1, "q": "Menciptakan lagu baru disebut…", "a": "Komposisi", "x": ""}, {"id": "KRY-02-003", "t": "KRY-02", "lv": 1, "q": "Potongan melodi pendek yang menjadi bahan pengembangan lagu disebut…", "a": "Motif", "x": ""}, {"id": "KRY-02-004", "t": "KRY-02", "lv": 2, "q": "Mengulang motif pada nada yang lebih tinggi atau rendah disebut…", "a": "Sekuens", "x": ""}, {"id": "KRY-02-005", "t": "KRY-02", "lv": 2, "q": "Band sekolah membawakan lagu daerah Rasa Sayange dengan irama reggae. Kegiatan ini disebut…", "a": "Aransemen", "x": "", "k": "band sekolah"}, {"id": "KRY-02-006", "t": "KRY-02", "lv": 3, "q": "Untuk perpisahan sekolah, siswa menambah suara dua dan mengganti iringan piano dengan angklung pada lagu \"Kemesraan\". Mengapa ini disebut aransemen, bukan komposisi?", "a": "Lagunya sudah ada; yang diubah penataan suara dan alatnya, bukan diciptakan baru", "x": "", "k": "perpisahan"}, {"id": "KRY-03-001", "t": "KRY-03", "lv": 1, "q": "Sebutkan empat tahap penyelenggaraan pertunjukan musik.", "a": "Perencanaan, persiapan, pelaksanaan, evaluasi", "x": ""}, {"id": "KRY-03-002", "t": "KRY-03", "lv": 1, "q": "Orang yang mengatur mikrofon dan pengeras suara disebut…", "a": "Penata suara", "x": ""}, {"id": "KRY-03-003", "t": "KRY-03", "lv": 2, "q": "Sebutkan tiga seksi kepanitiaan pertunjukan.", "a": "Contoh: acara, dekorasi, publikasi, konsumsi, keamanan (tiga di antaranya)", "x": ""}, {"id": "KRY-03-004", "t": "KRY-03", "lv": 2, "q": "Hal yang ditentukan pada tahap perencanaan pertunjukan adalah…", "a": "Tema, waktu, tempat, anggaran", "x": ""}, {"id": "KRY-03-005", "t": "KRY-03", "lv": 2, "q": "OSIS menyiapkan pentas seni akhir tahun dan membagikan poster di media sosial dua minggu sebelumnya. Tugas ini dikerjakan seksi…", "a": "Publikasi", "x": "", "k": "pentas seni"}, {"id": "KRY-03-006", "t": "KRY-03", "lv": 3, "q": "Saat gladi pentas seni di aula, suara vokal tenggelam oleh drum. Siapa yang bertugas memperbaikinya dan apa yang diatur?", "a": "Penata suara; keseimbangan volume mikrofon dan pengeras suara", "x": "", "k": "gladi pentas"}, {"id": "KRY-03-007", "t": "KRY-03", "lv": 2, "q": "Panitia pentas seni OSIS menyiapkan tema, tempat, dan anggaran sebulan sebelumnya. Tahap apa ini?", "a": "Perencanaan", "x": "", "k": "pentas seni"}, {"id": "KRY-04-001", "t": "KRY-04", "lv": 1, "q": "Perangkat lunak untuk merekam dan menyunting musik disebut…", "a": "DAW (Digital Audio Workstation)", "x": ""}, {"id": "KRY-04-002", "t": "KRY-04", "lv": 1, "q": "Protokol yang mengirim data nada antara alat musik elektronik dan komputer adalah…", "a": "MIDI", "x": ""}, {"id": "KRY-04-003", "t": "KRY-04", "lv": 2, "q": "Apakah MIDI mengirim suara rekaman?", "a": "Tidak, MIDI mengirim data nada (perintah), bukan suara", "x": ""}, {"id": "KRY-04-004", "t": "KRY-04", "lv": 2, "q": "Siswa merekam lagu ciptaannya di laptop dengan perangkat lunak rekaman, lalu mengunggahnya ke platform digital. Perangkat lunak itu termasuk…", "a": "DAW", "x": "", "k": "rekaman lagu"}, {"id": "KRY-04-005", "t": "KRY-04", "lv": 2, "q": "Apa yang diperlukan untuk memutar lagu orang lain di kafe untuk tujuan komersial?", "a": "Izin dan pembayaran royalti", "x": ""}, {"id": "KRY-05-001", "t": "KRY-05", "lv": 1, "q": "Tahap kritik yang menyebut apa yang terdengar disebut…", "a": "Deskripsi", "x": ""}, {"id": "KRY-05-002", "t": "KRY-05", "lv": 1, "q": "Tahap kritik yang menilai kualitas karya disebut…", "a": "Evaluasi", "x": ""}, {"id": "KRY-05-003", "t": "KRY-05", "lv": 2, "q": "Sebutkan empat tahap kritik Feldman.", "a": "Deskripsi, analisis formal, interpretasi, evaluasi", "x": ""}, {"id": "KRY-05-004", "t": "KRY-05", "lv": 2, "q": "Tahap kritik yang menafsirkan makna dan suasana lagu disebut…", "a": "Interpretasi", "x": ""}, {"id": "KRY-05-005", "t": "KRY-05", "lv": 2, "q": "Tahap kritik yang menguraikan unsur musik dan hubungannya disebut…", "a": "Analisis formal", "x": ""}, {"id": "KRY-05-006", "t": "KRY-05", "lv": 1, "q": "Kegiatan menghayati dan menilai karya musik disebut…", "a": "Apresiasi", "x": ""}, {"id": "KRY-05-007", "t": "KRY-05", "lv": 2, "q": "Penonton konser kampus menulis \"Penyanyinya memakai gitar akustik dan tempo lagunya lambat.\" Tahap kritik apa ini?", "a": "Deskripsi", "x": "", "k": "konser kampus"}, {"id": "KRY-05-008", "t": "KRY-05", "lv": 3, "q": "Pengulas musik di koran menulis, \"Lagu ini kurang berhasil karena liriknya tidak sejalan dengan suasana melodinya.\" Tahap kritik apa ini, dan apa yang membuatnya berbeda dari deskripsi?", "a": "Evaluasi; ia menilai kualitas dengan alasan, sedangkan deskripsi hanya menyebut apa yang ada", "x": "", "k": "koran"}, {"id": "KRY-06-001", "t": "KRY-06", "lv": 1, "q": "Berapa lama hak cipta lagu berlaku menurut UU No. 28 Tahun 2014?", "a": "Seumur hidup pencipta ditambah 70 tahun", "x": ""}, {"id": "KRY-06-002", "t": "KRY-06", "lv": 2, "q": "Lembaga yang menghimpun royalti lagu untuk layanan publik komersial adalah…", "a": "LMKN (Lembaga Manajemen Kolektif Nasional)", "x": ""}, {"id": "KRY-06-003", "t": "KRY-06", "lv": 2, "q": "Peraturan pemerintah tentang royalti lagu dan musik adalah…", "a": "PP No. 56 Tahun 2021", "x": ""}, {"id": "KRY-06-004", "t": "KRY-06", "lv": 2, "q": "Hak pencipta agar namanya dicantumkan disebut hak…", "a": "Moral", "x": ""}, {"id": "KRY-06-005", "t": "KRY-06", "lv": 2, "q": "Hotel di kota memutar lagu-lagu Indonesia di lobi setiap hari. Kewajiban apa yang timbul menurut PP No. 56 Tahun 2021?", "a": "Membayar royalti melalui LMKN", "x": "", "k": "hotel"}, {"id": "KRY-06-006", "t": "KRY-06", "lv": 3, "q": "Siswa mengunggah video menyanyikan lagu orang lain dan menulis nama pencipta di keterangan, tetapi videonya dimonetisasi. Hak apa yang sudah dihormati dan apa yang masih perlu izin?", "a": "Hak moral sudah (nama dicantumkan); pemakaian komersial (hak ekonomi) perlu izin", "x": "", "k": "video daring"}], "bank": {"key": "bank-soal-seni-musik-v1", "title": "Bank Soal Seni Musik", "map_title": "Peta Materi Seni Musik SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Seni Musik. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Seni Musik dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

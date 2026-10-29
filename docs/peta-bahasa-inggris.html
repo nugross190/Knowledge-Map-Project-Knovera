@@ -144,18 +144,42 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 .empty-note{color:var(--muted);font-size:.95rem}
-.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
 
-/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
-   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
 .st-feed::-webkit-scrollbar{display:none}
-.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
   padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
 .slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Story mode slides: segment bars, the topic's domain, tier and grades, its title, then one part of the topic per tap. */
 .bars{display:flex;gap:4px;padding-right:44px}
 .bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
 .bars i.on{background:var(--ink)}
@@ -163,29 +187,16 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
 .st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
 .slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;-webkit-tap-highlight-color:transparent;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.slide .st-card{margin-right:56px}
 .st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
 .st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
 .st-card.trap .st-label{color:var(--warn)}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body{padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
 .st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
 .st-body li::marker{color:var(--c)}
 .st-body .st-sum{font-size:1.2rem;line-height:1.45}
 .st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
 .st-body .tbl{margin-top:4px;font-size:.92rem}
-.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.st-foot b{white-space:nowrap;color:var(--ink)}
-.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
-.st-end h2{font-size:1.8rem;font-weight:800}
-.st-end .btn{text-decoration:none}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
@@ -282,7 +293,7 @@ footer{border-top:2px solid var(--stroke)}
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
-      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+      <button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -311,22 +322,124 @@ footer{border-top:2px solid var(--stroke)}
     <div class="notes" id="notes"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu simpul per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const MAP = {"id": "bahasa-inggris", "subject": "Bahasa Inggris", "title": "Peta Materi Bahasa Inggris SMA", "lead": "Seluruh materi Bahasa Inggris SMA disusun sebagai satu peta: keterampilan membaca, jenis teks beserta struktur dan ciri kebahasaannya, serta tata bahasa yang sering diuji. Penjelasan dalam bahasa Indonesia, contoh dalam bahasa Inggris. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Membaca untuk gagasan, detail, inferensi, dan evaluasi; jenis teks dari descriptive sampai discussion; tenses, passive, conditional, dan klausa.", "source_note": "Disusun menurut keterampilan, jenis teks, dan tata bahasa. Capaian Pembelajaran Bahasa Inggris Kurikulum Merdeka menyebut jenis teks tanpa mengikatnya pada kelas tertentu, dan buku tiap kelas disusun per tema; label kelas mengikuti kebiasaan umum dan hanya perkiraan. Domain membaca mengikuti tipe soal TKA 2025.", "lanjut_note": "Tanda Lanjut menandai simpul yang menjadi fokus TKA 2025 Bahasa Inggris mapel pilihan (Tingkat Lanjut): exposition dan discussion text berkalimat kompleks, kredibilitas informasi, serta fakta dan opini. TKA mapel wajib lebih banyak memakai narrative, procedure, dan descriptive text.", "path_title": "Alur belajar", "path_note": "Urutan belajar yang disarankan: strategi membaca dulu, lalu jenis teks dari yang paling sederhana, lalu tata bahasa yang menopangnya.", "path": [{"label": "Gagasan", "title": "Main idea", "note": "Topik dan gagasan utama", "to": "RDG-01"}, {"label": "Detail", "title": "Specific information", "note": "Scanning dan rujukan", "to": "RDG-02"}, {"label": "Inferensi", "title": "Inference dan purpose", "note": "Tersirat dan tujuan", "to": "RDG-04"}, {"label": "Evaluasi", "title": "Fact, opinion, argument", "note": "Menilai teks", "to": "RDG-05"}, {"label": "Cerita", "title": "Narrative dan recount", "note": "Orientasi sampai resolusi", "to": "TXT-02"}, {"label": "Argumen", "title": "Exposition", "note": "Analytical, hortatory", "to": "TXT-05"}, {"label": "Tenses", "title": "Tenses", "note": "Present, past, perfect", "to": "GRM-01"}, {"label": "Pasif", "title": "Passive voice", "note": "be + V3", "to": "GRM-02"}, {"label": "Syarat", "title": "Conditional sentences", "note": "Tipe 0–3", "to": "GRM-03"}], "domains": [{"id": "RDG", "name": "Keterampilan membaca", "short": "Membaca", "note": "Strategi membaca yang diuji TKA: gagasan, detail, makna, inferensi, dan evaluasi.", "topics": [{"code": "RDG-01", "title": "Topik dan gagasan utama", "scope": "Topic, main idea, summary", "src": "Semua kelas", "tier": 1, "sum": "Menentukan topik dan gagasan utama teks atau paragraf, serta memilih ringkasan yang tepat.", "blocks": [{"h": "Strategi", "li": ["<b>Skimming<\/b>: membaca cepat judul, kalimat pertama paragraf, dan kesimpulan untuk menangkap gagasan umum.", "Topik adalah apa yang dibahas (satu frasa); main idea adalah pernyataan penulis tentang topik itu (kalimat).", "Gagasan utama teks harus mencakup seluruh paragraf, bukan satu paragraf saja.", "Pertanyaan khas: \"What is the main idea of the text?\", \"What is the best title?\", \"What is paragraph 2 mainly about?\""]}], "traps": ["Pilihan yang benar tetapi hanya membahas satu detail bukan gagasan utama teks.", "Pilihan yang terlalu luas (melebihi isi teks) juga bukan gagasan utama."], "grades": ["X", "XI", "XII"]}, {"code": "RDG-02", "title": "Informasi rinci dan rujukan", "scope": "Detail, reference, sequence", "src": "Semua kelas", "tier": 1, "sum": "Menemukan informasi tersurat, kata rujukan, dan urutan peristiwa dalam teks.", "blocks": [{"h": "Strategi", "li": ["<b>Scanning<\/b>: mencari kata kunci dari soal (nama, angka, tanggal) lalu membaca kalimat di sekitarnya.", "Jawaban benar biasanya parafrase kalimat di teks, bukan salinan kata per kata.", "Kata rujukan (reference): it, they, this, those, which merujuk ke kata benda sebelumnya; cocokkan jumlah (tunggal atau jamak).", "Soal \"Which statement is NOT true according to the text?\" menuntut memeriksa setiap pilihan."]}], "traps": ["\"They\" merujuk ke kata benda jamak; jika pilihan berupa kata benda tunggal, pilihan itu bukan rujukannya."], "grades": ["X", "XI", "XII"]}, {"code": "RDG-03", "title": "Makna kata dalam konteks", "scope": "Synonym, contextual meaning", "src": "Semua kelas", "tier": 2, "sum": "Menebak makna kata atau frasa dari konteks kalimat, termasuk sinonim, antonim, dan ungkapan.", "blocks": [{"h": "Strategi", "li": ["Baca kalimat sebelum dan sesudahnya; ganti kata itu dengan setiap pilihan dan periksa apakah maknanya tetap.", "Petunjuk konteks: definisi (is, means), contoh (such as), pertentangan (but, however), sebab-akibat (because, so).", "Kata dapat bermakna berbeda dari arti yang paling umum: \"The company <i>launched<\/i> a new product\" berarti meluncurkan, bukan melempar."]}], "grades": ["X", "XI", "XII"]}, {"code": "RDG-04", "title": "Inferensi, tujuan, dan prediksi", "scope": "Implied meaning, purpose, prediction", "src": "Semua kelas", "tier": 1, "sum": "Menyimpulkan informasi tersirat, tujuan penulis dan sasaran pembaca, hubungan sebab-akibat, pesan moral, dan prediksi kelanjutan.", "blocks": [{"h": "Inferensi dan tujuan", "li": ["Inferensi: kesimpulan yang tidak ditulis langsung tetapi didukung bukti dalam teks (\"What can be inferred …?\", \"It is implied that …\").", "<b>Tujuan teks<\/b> mengikuti jenis teks: to describe, to retell, to entertain, to persuade, to inform, to explain, to give instructions.", "Sasaran pembaca disimpulkan dari isi dan nada: undangan, pengumuman, iklan, surat."]}, {"h": "Sebab-akibat, pesan, prediksi", "li": ["Penanda sebab-akibat: because, since, due to, as a result, therefore, so.", "Pesan moral (moral value) diambil dari tindakan tokoh dan akibatnya.", "Prediksi atau pengandaian (\"If … had …, what would …?\") harus konsisten dengan watak tokoh dan alur."]}], "traps": ["Inferensi harus didukung teks; pilihan yang masuk akal tetapi tanpa bukti di teks bukan jawaban.", "Hortatory exposition bertujuan membujuk pembaca melakukan sesuatu; analytical exposition hanya meyakinkan bahwa sesuatu benar."], "grades": ["X", "XI", "XII"]}, {"code": "RDG-05", "title": "Fakta, opini, dan evaluasi argumen", "scope": "Fact, opinion, credibility", "src": "Kelas XI–XII", "tier": 1, "lanjut": true, "sum": "Membedakan fakta dan opini, menilai kekuatan argumen dan kredibilitas sumber, serta memilih informasi tambahan yang memperkuat teks.", "blocks": [{"h": "Fakta dan opini", "li": ["Fakta dapat dibuktikan (data, tanggal, hasil penelitian).", "<b>Opini<\/b> ditandai I think, I believe, in my opinion, should, must, kata sifat penilaian (best, terrible, beautiful).", "Argumen kuat didukung data, contoh, dan sumber yang kredibel; argumen lemah hanya berdasarkan perasaan atau generalisasi."]}, {"h": "Menambah dan menilai", "li": ["Informasi tambahan yang tepat harus mendukung klaim yang sama, bukan klaim lain.", "Menilai kredibilitas: siapa sumbernya, apakah datanya terbaru, apakah ada kepentingan tertentu."]}], "traps": ["Kalimat dengan angka tetap bisa opini jika berisi penilaian (\"the best result ever\").", "Bukti yang benar tetapi mendukung argumen lain tidak memperkuat argumen penulis."], "grades": ["XI", "XII"]}]}, {"id": "TXT", "name": "Jenis teks", "short": "Jenis teks", "note": "Tujuan, struktur, dan ciri kebahasaan jenis-jenis teks bahasa Inggris.", "topics": [{"code": "TXT-01", "title": "Descriptive dan report text", "scope": "Identification, description", "src": "Kelas X", "tier": 1, "sum": "Teks yang menggambarkan satu benda, tempat, atau orang tertentu (descriptive) dan teks yang menggambarkan satu kelas benda secara umum (report).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Descriptive", "Report"], "rows": [["Tujuan", "Menggambarkan satu hal khusus", "Menyajikan informasi umum tentang satu kelas benda"], ["Struktur", "Identification, description", "General classification, description"], ["Kebahasaan", "Simple present, kata sifat, kata benda khusus (Borobudur Temple)", "Simple present, istilah ilmiah, kata benda umum (whales, volcanoes)"]]}}], "traps": ["Teks tentang \"Komodo dragons\" secara umum adalah report; teks tentang \"my cat Kitty\" adalah descriptive."], "grades": ["X"]}, {"code": "TXT-02", "title": "Recount dan narrative text", "scope": "Orientation, events, complication", "src": "Kelas X", "tier": 1, "sum": "Teks yang menceritakan pengalaman masa lalu (recount) dan cerita yang memiliki konflik untuk menghibur (narrative).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Recount", "Narrative"], "rows": [["Tujuan", "Menceritakan kembali peristiwa", "Menghibur dengan cerita"], ["Struktur", "Orientation, events, reorientation", "Orientation, <b>complication<\/b>, resolution, (coda)"], ["Contoh", "My holiday in Bali, biografi", "Legenda, fabel, dongeng (Malin Kundang, The Mouse Deer)"], ["Kebahasaan", "Simple past, kata keterangan waktu, konjungsi temporal (then, after that)", "Simple past, dialog, kata kerja tindakan"]]}}], "traps": ["Ciri pembeda narrative adalah complication (konflik); recount tidak memiliki konflik yang harus diselesaikan.", "Coda berisi pesan moral; reorientation pada recount berisi kesan atau penutup pengalaman."], "grades": ["X"]}, {"code": "TXT-03", "title": "Procedure text", "scope": "Goal, materials, steps", "src": "Kelas X–XI", "tier": 2, "sum": "Teks yang memberi petunjuk cara membuat atau melakukan sesuatu.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: goal (aim), materials atau ingredients, steps.", "Kebahasaan: kalimat perintah (imperative: Pour, Mix, Cut), konjungsi urutan (first, then, next, finally), kata keterangan cara (carefully).", "Contoh: how to make fried rice, how to operate a printer, manual book."]}], "grades": ["X", "XI"]}, {"code": "TXT-04", "title": "Explanation text", "scope": "Phenomenon, sequence of explanation", "src": "Kelas XI", "tier": 1, "sum": "Teks yang menjelaskan proses terjadinya fenomena alam atau sosial.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: general statement, sequenced explanation (rangkaian sebab-akibat), closing (opsional).", "Kebahasaan: simple present, passive voice, konjungsi sebab-akibat dan urutan (because, as a result, then).", "Contoh: how rain is formed, how a tsunami happens, the water cycle."]}], "traps": ["Explanation text menjawab \"how\" atau \"why\" suatu fenomena terjadi; procedure text menjawab \"how to do\" sesuatu."], "grades": ["XI"]}, {"code": "TXT-05", "title": "Analytical dan hortatory exposition", "scope": "Thesis, arguments, recommendation", "src": "Kelas XI", "tier": 1, "lanjut": true, "sum": "Teks argumentatif yang meyakinkan pembaca (analytical) atau membujuk pembaca melakukan sesuatu (hortatory).", "blocks": [{"h": "Perbandingan", "table": {"cols": ["Aspek", "Analytical exposition", "Hortatory exposition"], "rows": [["Tujuan", "Meyakinkan bahwa sesuatu penting atau benar", "Membujuk pembaca melakukan atau tidak melakukan sesuatu"], ["Struktur", "Thesis, arguments, reiteration (conclusion)", "Thesis, arguments, <b>recommendation<\/b>"], ["Penanda", "In conclusion, therefore", "We should, it is advisable, must"]]}}], "traps": ["Pembeda hortatory adalah bagian recommendation berisi ajakan atau saran; analytical berakhir dengan reiteration."], "grades": ["XI"]}, {"code": "TXT-06", "title": "Discussion text", "scope": "Issue, pros, cons", "src": "Kelas XI–XII", "tier": 1, "lanjut": true, "sum": "Teks yang menyajikan isu dari dua sudut pandang sebelum memberi kesimpulan atau rekomendasi.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: issue, arguments for (supporting points), arguments against (contrasting points), conclusion atau recommendation.", "Kebahasaan: konjungsi pertentangan (however, on the other hand, whereas), modal (may, should), kata sifat pembanding."]}], "traps": ["Discussion text menyajikan dua sisi isu; exposition hanya membela satu sisi."], "grades": ["XI", "XII"]}, {"code": "TXT-07", "title": "News item", "scope": "Newsworthy event, background, sources", "src": "Kelas XII", "tier": 2, "sum": "Teks berita yang melaporkan peristiwa penting dan aktual.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: newsworthy event (ringkasan peristiwa), background events (rincian), sources (kutipan saksi atau pejabat).", "Kebahasaan: simple past, passive voice, reported speech, judul ringkas (headline), keterangan waktu dan tempat."]}], "grades": ["XII"]}, {"code": "TXT-08", "title": "Review text", "scope": "Orientation, evaluation, summary", "src": "Kelas XII", "tier": 3, "sum": "Teks yang menilai karya seperti film, buku, atau lagu.", "blocks": [{"h": "Struktur dan kebahasaan", "li": ["Struktur: orientation (identitas karya), interpretive recount (ringkasan), evaluation (kelebihan dan kekurangan), evaluative summation.", "Kebahasaan: kata sifat penilaian (thrilling, boring), simple present, kalimat kompleks."]}], "grades": ["XII"]}, {"code": "TXT-09", "title": "Teks fungsional pendek", "scope": "Announcement, advertisement, letter", "src": "Kelas X–XII", "tier": 2, "sum": "Pengumuman, iklan, undangan, surat dan email, label, serta kartu ucapan: tujuan dan bagian-bagiannya.", "blocks": [{"h": "Jenis", "li": ["Announcement: what, when, where, who, dan contact person.", "Advertisement: menarik perhatian, informasi produk atau jasa, ajakan membeli.", "Invitation, greeting card, personal letter, email: pengirim, penerima, tujuan, ungkapan pembuka dan penutup.", "Soal khas: tujuan teks, informasi rinci (waktu, tempat, syarat), sasaran pembaca."]}], "grades": ["X", "XI", "XII"]}]}, {"id": "GRM", "name": "Tata bahasa", "short": "Grammar", "note": "Tenses, kalimat pasif, pengandaian, modal, klausa, dan penghubung.", "topics": [{"code": "GRM-01", "title": "Tenses", "scope": "Present, past, perfect, future", "src": "Kelas X–XI", "tier": 1, "sum": "Bentuk dan pemakaian tenses yang paling sering muncul dalam teks, dengan penanda waktunya.", "blocks": [{"h": "Tenses utama", "table": {"cols": ["Tense", "Bentuk", "Penanda dan pemakaian"], "rows": [["Simple present", "S + V1(s/es)", "Fakta, kebiasaan: always, every day"], ["Present continuous", "S + am/is/are + V-ing", "Sedang berlangsung: now, at the moment"], ["Present perfect", "S + have/has + V3", "Sudah terjadi, masih relevan: already, since, for, just"], ["Simple past", "S + V2", "Lampau selesai: yesterday, last year, ago"], ["Past continuous", "S + was/were + V-ing", "Sedang berlangsung di masa lalu: when, while"], ["Past perfect", "S + had + V3", "Terjadi sebelum peristiwa lampau lain: before, after, by the time"], ["Simple future", "S + will + V1 / be going to + V1", "Akan datang: tomorrow, next week"]]}}], "traps": ["Since diikuti titik waktu (since 2020); for diikuti rentang waktu (for three years).", "Present perfect tidak dipakai dengan keterangan waktu lampau yang pasti seperti yesterday."], "grades": ["X", "XI"]}, {"code": "GRM-02", "title": "Passive voice", "scope": "be + V3, by-phrase", "src": "Kelas XI", "tier": 1, "sum": "Mengubah kalimat aktif menjadi pasif pada berbagai tense dan kapan kalimat pasif dipakai.", "blocks": [{"h": "Bentuk", "li": ["Rumus umum: <b>S + be + V3 (+ by agent)<\/b>; bentuk \"be\" mengikuti tense kalimat aktifnya.", "Simple present: The room is cleaned every day. Simple past: The letter was written yesterday.", "Present perfect: The bridge has been repaired. Modal: The form must be filled in.", "Pasif dipakai bila pelaku tidak penting atau tidak diketahui; sering dalam explanation, news item, dan report."]}], "traps": ["Hanya kalimat dengan objek (kata kerja transitif) yang dapat dipasifkan.", "Bentuk be menyesuaikan subjek baru dalam kalimat pasif, bukan subjek kalimat aktif."], "grades": ["XI"]}, {"code": "GRM-03", "title": "Conditional sentences", "scope": "Tipe 0, 1, 2, 3", "src": "Kelas XI–XII", "tier": 1, "sum": "Empat tipe kalimat pengandaian, bentuknya, dan fakta yang tersirat di baliknya.", "blocks": [{"h": "Tipe", "table": {"cols": ["Tipe", "Bentuk", "Makna"], "rows": [["0", "If + simple present, simple present", "Kebenaran umum: If you heat ice, it melts."], ["1", "If + simple present, will + V1", "Mungkin terjadi: If it rains, I will stay home."], ["2", "If + simple past (were), would + V1", "Tidak nyata sekarang: If I were rich, I would travel. (Faktanya: saya tidak kaya.)"], ["3", "If + past perfect, would have + V3", "Tidak nyata di masa lalu: If she had studied, she would have passed. (Faktanya: ia tidak belajar, tidak lulus.)"]]}}, {"h": "Variasi", "li": ["Inversi: Had she studied, she would have passed = If she had studied ….", "Wish: I wish I were taller (sekarang), I wish I had come (lampau)."]}], "traps": ["Fakta dari kalimat tipe 2 berbentuk present dan berlawanan: If I had money → I don't have money.", "Pada tipe 2, be memakai \"were\" untuk semua subjek dalam bahasa baku."], "grades": ["XI", "XII"]}, {"code": "GRM-04", "title": "Modals", "scope": "Can, must, should, may", "src": "Kelas X–XI", "tier": 2, "sum": "Makna dan pemakaian modal untuk kemampuan, kewajiban, saran, izin, dan kemungkinan.", "blocks": [{"h": "Modal", "table": {"cols": ["Modal", "Makna", "Contoh"], "rows": [["can / could", "Kemampuan, izin", "She can swim."], ["must / have to", "Kewajiban", "You must wear a helmet."], ["should", "Saran", "You should see a doctor."], ["may / might", "Izin, kemungkinan", "It might rain later."], ["must have + V3", "Kesimpulan kuat tentang masa lalu", "The road is wet; it must have rained."]]}}], "grades": ["X", "XI"]}, {"code": "GRM-05", "title": "Relative clauses", "scope": "Who, which, whose, where", "src": "Kelas XI", "tier": 2, "sum": "Klausa yang menerangkan kata benda dengan kata penghubung relatif.", "blocks": [{"h": "Pemakaian", "li": ["Who untuk orang (subjek), whom untuk orang (objek), which untuk benda, whose untuk kepemilikan, where untuk tempat, when untuk waktu.", "That dapat menggantikan who atau which pada klausa yang membatasi (defining).", "Contoh: The girl whose bag was stolen reported it to the police."]}], "grades": ["XI"]}, {"code": "GRM-06", "title": "Reported speech", "scope": "Statement, question, command", "src": "Kelas XII", "tier": 2, "sum": "Mengubah kalimat langsung menjadi tidak langsung, termasuk pergeseran tense, kata ganti, dan keterangan waktu.", "blocks": [{"h": "Aturan", "li": ["Jika kata kerja pelapor lampau (said, told), tense mundur satu langkah: am → was, will → would, V2 → had V3.", "Keterangan berubah: now → then, today → that day, tomorrow → the next day, here → there.", "Pertanyaan: memakai if/whether atau kata tanya, susunan kalimat berita: He asked where I lived.", "Perintah: told/asked + to + V1; larangan: not to + V1."]}], "grades": ["XII"]}, {"code": "GRM-07", "title": "Gerund, infinitive, dan causative", "scope": "V-ing, to V1, have/get", "src": "Kelas XI–XII", "tier": 3, "sum": "Kata kerja yang diikuti gerund atau to-infinitive, serta kalimat causative.", "blocks": [{"h": "Pemakaian", "li": ["Diikuti gerund: enjoy, avoid, finish, mind, suggest. Diikuti to-infinitive: want, decide, hope, plan, agree.", "Causative aktif: have someone do, get someone to do; pasif: have/get something done (I had my hair cut)."]}], "grades": ["XI", "XII"]}, {"code": "GRM-08", "title": "Penghubung dan kohesi", "scope": "Conjunctions, transitions", "src": "Semua kelas", "tier": 2, "sum": "Kata penghubung dan transisi yang menandai hubungan antargagasan dalam teks.", "blocks": [{"h": "Penanda", "table": {"cols": ["Hubungan", "Contoh"], "rows": [["Penambahan", "and, moreover, furthermore, in addition"], ["Pertentangan", "but, however, although, whereas, on the other hand"], ["Sebab-akibat", "because, since, therefore, as a result, consequently"], ["Urutan", "first, then, after that, finally"], ["Contoh", "for example, such as, for instance"]]}}], "grades": ["X", "XI", "XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Capaian Pembelajaran Kurikulum Merdeka tidak mengikat jenis teks pada kelas tertentu; label kelas adalah perkiraan.", "Nama bagian struktur teks berbeda sedikit antarbuku (misalnya reiteration atau conclusion); maknanya sama.", "Soal TKA 2025 Bahasa Inggris berupa pemahaman bacaan; tata bahasa diuji lewat pemahaman teks, bukan soal tata bahasa terpisah."]}, {"title": "Rujukan", "items": ["Capaian Pembelajaran dan buku teks Bahasa Inggris Kurikulum Merdeka (Kemendikbudristek); daftar materi dicocokkan lewat ringkasan daring karena PDF resmi tidak dapat dibuka dari lingkungan kerja.", "Tipe soal TKA 2025 Bahasa Inggris (specs/tka-templates/bahasa-inggris.md)."]}], "icon": "<path d=\"M6 9h24v15H16l-6 5v-5H6z\"/><path d=\"M42 21H34v-3M42 21v14h-4v5l-6-5H20v-7\"/><path d=\"M12 20l4-8 4 8M13.5 17h5\"/>", "bank": "bank-bahasa-inggris.html"};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
 // Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
 const params = new URLSearchParams(location.search);
 let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
-let onlyLanjut = params.get("lanjut") === "1";
+const hasLanjut = MAP.domains.some(d => d.topics.some(t => t.lanjut));
+let onlyLanjut = hasLanjut && params.get("lanjut") === "1";
 const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
@@ -405,7 +518,7 @@ function render(){
     });
     host.appendChild(sec);
   });
-  if(Object.values(byCode).some(x => x.t.lanjut)){
+  if(hasLanjut){
     $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
     if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
   }
@@ -462,11 +575,10 @@ function remember(){
   const url = new URL(location.href);
   kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
   onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
-  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
+  try { history.replaceState(history.state, "", url); } catch(e) {}
   try {
     const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
-    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: feed.isOpen, t: Date.now()});
     localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
   } catch(e) {}
 }
@@ -476,8 +588,12 @@ function applyFilters(){
   search($("q").value); progress(); remember();
 }
 
-// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
-let storyOn = false;
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen, in the shared swipe feed.
+// Closing it (×, Esc, "Di peta") opens the topic that was on screen in the map.
+const feed = makeFeed($("feed"), {
+  onSide: step,
+  onClose(slide){ remember(); if(slide && slide.dataset.code) goTo(slide.dataset.code); },
+});
 const parts = t => {
   const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
   t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
@@ -516,37 +632,25 @@ function openStory(code){
   const list = [];
   MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
   if(!list.length) return;
-  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
-    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+  const mastered = list.filter(([t]) => done.has(t.code)).length;
+  feed.open(list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + mastered + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
     (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '?mode=geser">Latihan bank soal</a>' : '') +
-    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
-  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
-  $("story").hidden = false; document.body.classList.add("story-open");
-  storyOn = true; remember();
-  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
-  $("feed").scrollTop = start ? start.offsetTop : 0;
-  $("feed").focus({preventScroll:true});
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>',
+    Math.max(0, list.findIndex(([t]) => t.code === code)));
+  feed.scroller.querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  remember();
 }
-function closeStory(){
-  const cur = currentSlide();
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  storyOn = false; remember();
-  if(cur) goTo(cur.dataset.code);
-}
-function currentSlide(){
-  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
-  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
-}
+// ← and → (and taps on the left or right of a slide) step through the topic's parts, then on to the next topic.
 function step(dir){
-  const sl = currentSlide();
-  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
-  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
-  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
-  showPart(sl, i);
+  const sl = feed.current();
+  const n = sl && sl.classList.contains("slide") ? sl.querySelectorAll(".bars i").length : 0;
+  const i = n ? +sl.dataset.part + dir : -1;
+  if(i >= 0 && i < n) showPart(sl, i);
+  else feed.move(dir);
 }
-$("storyOpen").addEventListener("click", () => openStory());
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", () => openStory());
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]");
   if(act){
     const sl = act.closest(".slide");
@@ -555,9 +659,8 @@ $("feed").addEventListener("click", e => {
       on ? done.add(code) : done.delete(code); save(); progress();
       act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
     }
-    if(act.dataset.act === "map") closeStory();
-    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
-    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    if(act.dataset.act === "map" || act.dataset.act === "close") feed.close();
+    if(act.dataset.act === "top") feed.go(0);
     return;
   }
   // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
@@ -565,13 +668,6 @@ $("feed").addEventListener("click", e => {
   const sl = e.target.closest(".slide"); if(!sl) return;
   const box = sl.getBoundingClientRect();
   step(e.clientX - box.left < box.width / 3 ? -1 : 1);
-});
-document.addEventListener("keydown", e => {
-  if($("story").hidden) return;
-  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
-  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
-  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
-  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
 });
 
 render();
@@ -597,5 +693,5 @@ $("openAll").addEventListener("click", () => document.querySelectorAll(".card:no
 $("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
 $("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !feed.isOpen) goTo(location.hash.slice(3));
 </script>

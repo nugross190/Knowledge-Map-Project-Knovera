@@ -352,7 +352,9 @@ document.documentElement.classList.add("js");
 const $ = id => document.getElementById(id);
 const FASE = {X: "Fase E", XI: "Fase F", XII: "Fase F"};
 function read(key, fallback){ try { const v = JSON.parse(localStorage.getItem(key)); return v == null ? fallback : v; } catch(e) { return fallback; } }
-const doneOf = map => new Set(read("peta-" + map + "-v1", []));
+// Saved lists come back as arrays even if the stored value was damaged, so one bad entry cannot stop the page.
+const readList = key => { const v = read(key, []); return Array.isArray(v) ? v : []; };
+const doneOf = map => new Set(readList("peta-" + map + "-v1"));
 const pageUrl = (s, kelas, geser) => {
   const q = [kelas ? "kelas=" + kelas : "", geser ? "mode=geser" : ""].filter(Boolean).join("&");
   return s.href + (q ? (s.href.includes("?") ? "&" : "?") + q : "");
@@ -378,7 +380,7 @@ function pick(tab, focus){
   try { localStorage.setItem("knovera-tab", JSON.stringify(tab.id)); } catch(e) {}
 }
 document.querySelector(".tabs").hidden = false;
-pick($(read("knovera-tab", "") ) || tabs[0]);
+pick(tabs.find(t => t.id === read("knovera-tab", "")) || tabs[0]);
 document.querySelector(".tabs").addEventListener("click", e => { const t = e.target.closest(".gtab"); if(t) pick(t); });
 document.querySelector(".tabs").addEventListener("keydown", e => {
   const i = tabs.indexOf(document.activeElement), step = {ArrowRight: 1, ArrowLeft: -1}[e.key];
@@ -389,7 +391,7 @@ document.querySelector(".tabs").addEventListener("keydown", e => {
 });
 
 // Progress on every card, from the map's saved checklist.
-const recent = read("knovera-recent", []);
+const recent = readList("knovera-recent").filter(r => r && typeof r.map === "string");
 document.querySelectorAll(".sub").forEach(card => {
   const s = HOME.subjects[card.dataset.sid], done = doneOf(s.map);
   const k = s.codes.filter(c => done.has(c)).length;
@@ -433,7 +435,8 @@ function fillGrades(){
 }
 document.addEventListener("click", e => {
   const card = e.target.closest(".sub");
-  if(!card || !dlg.showModal) return;
+  // Ctrl/⌘/Shift-click keeps the browser's own "open in a new tab or window"; a plain click opens the grade chooser.
+  if(!card || !dlg.showModal || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
   e.preventDefault();
   current = HOME.subjects[card.dataset.sid];
   $("dlgIcon").innerHTML = card.querySelector(".ico").innerHTML;

@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-ekonomi.html", "domains": [{"id": "DAS", "name": "Konsep dasar ilmu ekonomi", "short": "Konsep dasar", "weight": 10.714285714285714, "topics": {"DAS-01": "Ilmu ekonomi dan kelangkaan", "DAS-02": "Masalah pokok dan sistem ekonomi", "DAS-03": "Kegiatan dan pelaku ekonomi"}}, {"id": "PAS", "name": "Pasar dan harga", "short": "Pasar", "weight": 14.285714285714286, "topics": {"PAS-01": "Permintaan dan penawaran", "PAS-02": "Keseimbangan pasar", "PAS-03": "Elastisitas", "PAS-04": "Bentuk pasar"}}, {"id": "KEU", "name": "Uang dan lembaga keuangan", "short": "Keuangan", "weight": 14.285714285714286, "topics": {"KEU-01": "Uang dan sistem pembayaran", "KEU-02": "Bank Indonesia dan OJK", "KEU-03": "Bank dan lembaga keuangan bukan bank", "KEU-04": "Pasar modal"}}, {"id": "PEL", "name": "Badan usaha dan koperasi", "short": "Badan usaha", "weight": 7.142857142857143, "topics": {"PEL-01": "Badan usaha", "PEL-02": "Koperasi"}}, {"id": "MAK", "name": "Ekonomi makro", "short": "Makro", "weight": 21.428571428571427, "topics": {"MAK-01": "Pendapatan nasional", "MAK-02": "Kesenjangan ekonomi", "MAK-03": "Ketenagakerjaan", "MAK-04": "Indeks harga dan inflasi", "MAK-05": "Pertumbuhan dan pembangunan ekonomi", "MAK-06": "Ekonomi digital"}}, {"id": "KEB", "name": "Kebijakan ekonomi pemerintah", "short": "Kebijakan", "weight": 10.714285714285714, "topics": {"KEB-01": "Kebijakan moneter", "KEB-02": "Kebijakan fiskal dan APBN", "KEB-03": "Perpajakan"}}, {"id": "INT", "name": "Ekonomi internasional", "short": "Internasional", "weight": 10.714285714285714, "topics": {"INT-01": "Perdagangan internasional", "INT-02": "Kurs dan neraca pembayaran", "INT-03": "Kerja sama ekonomi internasional"}}, {"id": "AKT", "name": "Akuntansi dasar", "short": "Akuntansi", "weight": 10.714285714285714, "topics": {"AKT-01": "Persamaan dasar akuntansi", "AKT-02": "Siklus akuntansi perusahaan jasa", "AKT-03": "Laporan keuangan"}}]}, "questions": [{"id": "DAS-01-001", "t": "DAS-01", "lv": 1, "q": "Nilai alternatif terbaik yang dikorbankan karena memilih suatu pilihan disebut…", "a": "Biaya peluang", "x": ""}, {"id": "DAS-01-002", "t": "DAS-01", "lv": 1, "q": "Keadaan ketika alat pemuas kebutuhan terbatas dibanding kebutuhan manusia yang tidak terbatas disebut…", "a": "Kelangkaan", "x": ""}, {"id": "DAS-01-003", "t": "DAS-01", "lv": 1, "q": "Menyusun kebutuhan dari yang paling mendesak sampai yang bisa ditunda disebut menyusun…", "a": "Skala prioritas", "x": ""}, {"id": "DAS-01-004", "t": "DAS-01", "lv": 2, "q": "Barang yang tersedia melimpah dan dapat diperoleh tanpa pengorbanan, seperti udara, disebut…", "a": "Barang bebas", "x": ""}, {"id": "DAS-01-005", "t": "DAS-01", "lv": 2, "q": "Pada kurva kemungkinan produksi, titik yang terletak di dalam kurva menunjukkan produksi yang…", "a": "Tidak efisien", "x": "Sumber daya belum dipakai penuh."}, {"id": "DAS-01-006", "t": "DAS-01", "lv": 2, "q": "Cabang ilmu ekonomi yang mempelajari perekonomian secara keseluruhan, seperti inflasi dan pengangguran nasional, disebut…", "a": "Ekonomi makro", "x": ""}, {"id": "DAS-01-007", "t": "DAS-01", "lv": 2, "q": "Seorang pelajar dapat memilih ikut les sore, bekerja paruh waktu di bengkel dengan upah Rp70.000,00 per sore, atau berjualan di bazar sekolah dengan untung Rp50.000,00. Jika ia memilih les, berapa biaya peluangnya?", "a": "Rp70.000,00", "x": "Hanya alternatif terbaik yang dilepas, bukan jumlah keduanya (Rp120.000,00).", "k": "kerja paruh waktu"}, {"id": "DAS-01-008", "t": "DAS-01", "lv": 1, "q": "Saat kemarau, petani sebuah desa harus memilih memakai air waduk yang terbatas untuk sawah padi atau kolam ikan. Masalah ekonomi yang memaksa mereka memilih disebut…", "a": "Kelangkaan", "x": "", "k": "sawah"}, {"id": "DAS-01-009", "t": "DAS-01", "lv": 1, "q": "Pemerintah desa punya dana terbatas dan harus memilih memperbaiki jalan atau membangun posyandu lebih dulu. Menyusun urutan kebutuhan dari yang paling mendesak seperti ini disebut…", "a": "Skala prioritas", "x": "", "k": "rapat desa"}, {"id": "DAS-02-001", "t": "DAS-02", "lv": 1, "q": "Tiga masalah pokok ekonomi modern adalah apa, bagaimana, dan…?", "a": "Untuk siapa barang diproduksi", "x": ""}, {"id": "DAS-02-002", "t": "DAS-02", "lv": 1, "q": "Sistem ekonomi yang keputusan ekonominya ditentukan pemerintah disebut sistem ekonomi…", "a": "Komando (terpusat)", "x": ""}, {"id": "DAS-02-003", "t": "DAS-02", "lv": 1, "q": "Demokrasi ekonomi Indonesia berlandaskan UUD 1945 Pasal…", "a": "Pasal 33", "x": ""}, {"id": "DAS-02-004", "t": "DAS-02", "lv": 2, "q": "Sistem ekonomi pasar disebut juga sistem ekonomi…", "a": "Liberal", "x": ""}, {"id": "DAS-02-005", "t": "DAS-02", "lv": 2, "q": "Sebutkan tiga pelaku utama perekonomian Indonesia menurut demokrasi ekonomi.", "a": "BUMN/BUMD, swasta (BUMS), dan koperasi", "x": ""}, {"id": "DAS-02-006", "t": "DAS-02", "lv": 3, "q": "Dalam demokrasi ekonomi, keadaan ketika negara terlalu dominan sehingga mematikan inisiatif masyarakat disebut…", "a": "Etatisme", "x": ""}, {"id": "DAS-02-007", "t": "DAS-02", "lv": 2, "q": "Di sebuah kampung adat, cara bertani dan pembagian hasil panen ditentukan aturan turun-temurun yang dijaga tetua adat. Sistem ekonomi yang tergambar adalah…", "a": "Tradisional", "x": "", "k": "kampung adat"}, {"id": "DAS-02-008", "t": "DAS-02", "lv": 2, "q": "Di pasar induk, harga sayur naik-turun mengikuti banyaknya pembeli dan pasokan tanpa ditetapkan pemerintah. Mekanisme yang bekerja di sini adalah ciri sistem ekonomi…", "a": "Pasar", "x": "Indonesia secara keseluruhan memakai sistem campuran.", "k": "pasar"}, {"id": "DAS-02-009", "t": "DAS-02", "lv": 1, "q": "Di sebuah kampung nelayan pada masa lalu, ikan ditukar langsung dengan beras tanpa memakai uang. Tukar-menukar barang dengan barang ini disebut…", "a": "Barter", "x": "", "k": "nelayan"}, {"id": "DAS-03-001", "t": "DAS-03", "lv": 1, "q": "Balas jasa untuk faktor produksi modal adalah…", "a": "Bunga", "x": ""}, {"id": "DAS-03-002", "t": "DAS-03", "lv": 1, "q": "Balas jasa untuk faktor produksi kewirausahaan adalah…", "a": "Laba", "x": ""}, {"id": "DAS-03-003", "t": "DAS-03", "lv": 1, "q": "Dalam diagram arus melingkar tiga sektor, pelaku yang ditambahkan dibanding model dua sektor adalah…", "a": "Pemerintah", "x": ""}, {"id": "DAS-03-004", "t": "DAS-03", "lv": 2, "q": "Menyimpan beras untuk dijual saat paceklik menambah nilai guna…", "a": "Waktu (time utility)", "x": ""}, {"id": "DAS-03-005", "t": "DAS-03", "lv": 2, "q": "Nelayan membawa ikan dari pelabuhan kecil ke pasar kota yang lebih ramai sehingga ikan lebih berharga di sana. Nilai guna yang bertambah adalah nilai guna…", "a": "Tempat (place utility)", "x": "", "k": "nelayan"}, {"id": "DAS-03-006", "t": "DAS-03", "lv": 2, "q": "Sekelompok warga desa mengolah singkong menjadi keripik sehingga harganya lebih tinggi. Nilai guna yang bertambah adalah nilai guna…", "a": "Bentuk (form utility)", "x": "", "k": "UMKM"}, {"id": "PAS-01-001", "t": "PAS-01", "lv": 1, "q": "Menurut hukum permintaan, jika harga naik, jumlah yang diminta…, ceteris paribus.", "a": "Turun", "x": ""}, {"id": "PAS-01-002", "t": "PAS-01", "lv": 1, "q": "Menurut hukum penawaran, jika harga naik, jumlah yang ditawarkan…, ceteris paribus.", "a": "Naik", "x": ""}, {"id": "PAS-01-003", "t": "PAS-01", "lv": 1, "q": "Perubahan harga barang itu sendiri membuat titik … sepanjang kurva permintaan, bukan menggeser kurva.", "a": "Bergerak", "x": ""}, {"id": "PAS-01-004", "t": "PAS-01", "lv": 2, "q": "Jika biaya produksi naik, kurva penawaran bergeser ke…", "a": "Kiri", "x": ""}, {"id": "PAS-01-005", "t": "PAS-01", "lv": 2, "q": "Barang yang saling melengkapi, seperti bensin dan mobil, disebut barang…", "a": "Komplementer", "x": ""}, {"id": "PAS-01-006", "t": "PAS-01", "lv": 3, "q": "Fungsi permintaan Qd = 100 − 2P. Berapa jumlah yang diminta jika P = 15?", "a": "70", "x": "100 − 2 × 15."}, {"id": "PAS-01-007", "t": "PAS-01", "lv": 2, "q": "Harga teh di warung naik tajam, lalu banyak pelanggan beralih memesan kopi. Teh dan kopi dalam peristiwa ini disebut barang…", "a": "Substitusi", "x": "", "k": "warung"}, {"id": "PAS-01-008", "t": "PAS-01", "lv": 2, "q": "Menjelang Lebaran, permintaan baju baru di pasar naik pada setiap tingkat harga. Kurva permintaan baju bergeser ke…", "a": "Kanan", "x": "", "k": "pasar"}, {"id": "PAS-02-001", "t": "PAS-02", "lv": 1, "q": "Harga keseimbangan terjadi ketika jumlah yang diminta … jumlah yang ditawarkan.", "a": "Sama dengan (Qd = Qs)", "x": ""}, {"id": "PAS-02-002", "t": "PAS-02", "lv": 1, "q": "Jika harga berada di atas harga keseimbangan, terjadi kelebihan…", "a": "Penawaran (surplus)", "x": ""}, {"id": "PAS-02-003", "t": "PAS-02", "lv": 2, "q": "Qd = 100 − 2P dan Qs = −20 + 4P. Berapa harga keseimbangannya?", "a": "20", "x": "100 − 2P = −20 + 4P, jadi 6P = 120."}, {"id": "PAS-02-004", "t": "PAS-02", "lv": 2, "q": "Qd = 100 − 2P dan Qs = −20 + 4P. Berapa jumlah keseimbangannya?", "a": "60", "x": "P = 20, Q = 100 − 40."}, {"id": "PAS-02-005", "t": "PAS-02", "lv": 2, "q": "Subsidi per unit menggeser kurva penawaran ke…", "a": "Kanan", "x": ""}, {"id": "PAS-02-006", "t": "PAS-02", "lv": 3, "q": "Qd = 100 − 2P dan Qs = −20 + 4P. Pemerintah mengenakan pajak Rp3 per unit. Berapa harga keseimbangan baru?", "a": "22", "x": "Qs' = −20 + 4(P − 3) = −32 + 4P; 100 − 2P = −32 + 4P."}, {"id": "PAS-02-007", "t": "PAS-02", "lv": 3, "q": "Setelah pajak Rp3 per unit, jumlah keseimbangan menjadi 56 unit. Berapa penerimaan pajak pemerintah?", "a": "Rp168", "x": "3 × 56."}, {"id": "PAS-02-008", "t": "PAS-02", "lv": 1, "q": "Pemerintah memberi subsidi pupuk sehingga biaya produksi petani turun. Harga beras di pasar cenderung…", "a": "Turun", "x": "Penawaran bergeser ke kanan.", "k": "sawah"}, {"id": "PAS-03-001", "t": "PAS-03", "lv": 1, "q": "Permintaan dengan koefisien elastisitas lebih dari 1 disebut…", "a": "Elastis", "x": ""}, {"id": "PAS-03-002", "t": "PAS-03", "lv": 1, "q": "Kurva permintaan yang tegak lurus menunjukkan permintaan…", "a": "Inelastis sempurna (E = 0)", "x": ""}, {"id": "PAS-03-003", "t": "PAS-03", "lv": 2, "q": "Harga naik 20% dan jumlah yang diminta turun 10%. Berapa koefisien elastisitas permintaannya?", "a": "0,5", "x": "10% : 20%."}, {"id": "PAS-03-004", "t": "PAS-03", "lv": 2, "q": "Permintaan beras, bensin, dan obat cenderung elastis atau inelastis?", "a": "Inelastis", "x": ""}, {"id": "PAS-03-005", "t": "PAS-03", "lv": 3, "q": "Harga seikat kangkung di pasar naik dari Rp4.000 ke Rp5.000 dan penjualan turun dari 200 ikat ke 150 ikat. Berapa koefisien elastisitas permintaannya?", "a": "1 (uniter)", "x": "Harga naik 25%, jumlah turun 25%.", "k": "pasar"}, {"id": "PAS-04-001", "t": "PAS-04", "lv": 1, "q": "Pasar dengan satu penjual dan tanpa barang pengganti yang dekat disebut…", "a": "Monopoli", "x": ""}, {"id": "PAS-04-002", "t": "PAS-04", "lv": 1, "q": "Pasar dengan sangat banyak penjual barang homogen, masing-masing hanya menerima harga pasar, disebut pasar…", "a": "Persaingan sempurna", "x": ""}, {"id": "PAS-04-003", "t": "PAS-04", "lv": 1, "q": "Lembaga yang mengawasi persaingan usaha di Indonesia adalah…", "a": "KPPU (Komisi Pengawas Persaingan Usaha)", "x": ""}, {"id": "PAS-04-004", "t": "PAS-04", "lv": 3, "q": "Larangan praktik monopoli dan persaingan usaha tidak sehat diatur dalam UU Nomor … Tahun 1999.", "a": "5", "x": ""}, {"id": "PAS-04-005", "t": "PAS-04", "lv": 2, "q": "Di sebuah daerah hanya ada satu pabrik gula yang membeli tebu dari ratusan petani, sehingga pabrik dapat menentukan harga beli tebu. Bentuk pasar ini disebut…", "a": "Monopsoni", "x": "", "k": "petani tebu"}, {"id": "PAS-04-006", "t": "PAS-04", "lv": 2, "q": "Di satu jalan ada banyak warung bakso dengan rasa dan merek berbeda-beda. Bentuk pasarnya adalah…", "a": "Persaingan monopolistik", "x": "", "k": "warung"}, {"id": "PAS-04-007", "t": "PAS-04", "lv": 2, "q": "Pasokan semen di sebuah provinsi dikuasai tiga perusahaan besar yang saling memperhatikan harga satu sama lain. Bentuk pasarnya adalah…", "a": "Oligopoli", "x": "", "k": "bahan bangunan"}, {"id": "KEU-01-001", "t": "KEU-01", "lv": 1, "q": "Uang kertas dan uang logam yang diedarkan Bank Indonesia disebut uang…", "a": "Kartal", "x": ""}, {"id": "KEU-01-002", "t": "KEU-01", "lv": 1, "q": "Sebutkan dua fungsi asli uang.", "a": "Alat tukar dan satuan hitung", "x": ""}, {"id": "KEU-01-003", "t": "KEU-01", "lv": 1, "q": "M1 terdiri atas uang kartal dan uang…", "a": "Giral", "x": ""}, {"id": "KEU-01-004", "t": "KEU-01", "lv": 2, "q": "Deposito berjangka dan tabungan termasuk M1 atau M2?", "a": "M2 (uang kuasi)", "x": ""}, {"id": "KEU-01-005", "t": "KEU-01", "lv": 2, "q": "Nilai yang tertulis pada selembar uang disebut nilai…", "a": "Nominal", "x": "Nilai bahan pembuatnya disebut nilai intrinsik."}, {"id": "KEU-01-006", "t": "KEU-01", "lv": 3, "q": "Fungsi uang yang memungkinkan utang dibayar di kemudian hari disebut…", "a": "Standar pembayaran tertunda", "x": ""}, {"id": "KEU-01-007", "t": "KEU-01", "lv": 3, "q": "Standar kode QR pembayaran nasional dari Bank Indonesia disebut…", "a": "QRIS", "x": "Wajib bagi penyedia pembayaran berbasis QR sejak 1 Januari 2020."}, {"id": "KEU-01-008", "t": "KEU-01", "lv": 1, "q": "Pedagang sayur di pasar memajang kode QR sehingga pembeli dapat membayar lewat ponsel. Pembayaran ini termasuk pembayaran tunai atau nontunai?", "a": "Nontunai", "x": "", "k": "pasar"}, {"id": "KEU-02-001", "t": "KEU-02", "lv": 1, "q": "Bank sentral Republik Indonesia adalah…", "a": "Bank Indonesia", "x": ""}, {"id": "KEU-02-002", "t": "KEU-02", "lv": 1, "q": "Lembaga yang mengatur dan mengawasi perbankan, pasar modal, dan IKNB adalah…", "a": "Otoritas Jasa Keuangan (OJK)", "x": ""}, {"id": "KEU-02-003", "t": "KEU-02", "lv": 1, "q": "Lembaga yang menjamin simpanan nasabah bank adalah…", "a": "Lembaga Penjamin Simpanan (LPS)", "x": ""}, {"id": "KEU-02-004", "t": "KEU-02", "lv": 1, "q": "Satu-satunya lembaga yang berwenang mengeluarkan dan mengedarkan rupiah adalah…", "a": "Bank Indonesia", "x": ""}, {"id": "KEU-02-005", "t": "KEU-02", "lv": 1, "q": "Menurut UU P2SK (2023), salah satu tujuan Bank Indonesia adalah mencapai stabilitas nilai…", "a": "Rupiah", "x": "Dua lainnya: stabilitas sistem pembayaran dan turut menjaga stabilitas sistem keuangan."}, {"id": "KEU-02-006", "t": "KEU-02", "lv": 3, "q": "Berapa batas penjaminan LPS per nasabah per bank yang berlaku pada 2025?", "a": "Rp2 miliar", "x": "Berlaku sejak 2008."}, {"id": "KEU-02-007", "t": "KEU-02", "lv": 3, "q": "Sejak tanggal berapa pengawasan bank berpindah dari Bank Indonesia ke OJK?", "a": "31 Desember 2013", "x": ""}, {"id": "KEU-02-008", "t": "KEU-02", "lv": 2, "q": "Sebuah aplikasi menawarkan pinjaman cepat kepada warga kampung lewat pesan singkat. Lembaga yang mendaftarkan dan mengawasi pinjaman daring yang legal adalah…", "a": "OJK", "x": "Cek daftar penyelenggara berizin di situs OJK.", "k": "pinjaman daring"}, {"id": "KEU-03-001", "t": "KEU-03", "lv": 1, "q": "Fungsi bank menghimpun dana masyarakat dan menyalurkannya sebagai kredit disebut fungsi…", "a": "Perantara keuangan (financial intermediary)", "x": ""}, {"id": "KEU-03-002", "t": "KEU-03", "lv": 2, "q": "Sejak UU P2SK 2023, singkatan BPR adalah…", "a": "Bank Perekonomian Rakyat", "x": "Sebelumnya Bank Perkreditan Rakyat."}, {"id": "KEU-03-003", "t": "KEU-03", "lv": 2, "q": "Akad bank syariah berupa jual beli dengan margin yang disepakati disebut…", "a": "Murabahah", "x": ""}, {"id": "KEU-03-004", "t": "KEU-03", "lv": 2, "q": "Akad bank syariah berupa titipan disebut…", "a": "Wadiah", "x": ""}, {"id": "KEU-03-005", "t": "KEU-03", "lv": 2, "q": "Pedagang pasar menyerahkan emas sebagai jaminan untuk mendapat pinjaman modal dalam sehari. Lembaga keuangan bukan bank yang memberi layanan ini adalah…", "a": "Pegadaian", "x": "", "k": "pasar"}, {"id": "KEU-03-006", "t": "KEU-03", "lv": 2, "q": "Kelompok tani meminjam modal dari bank syariah; bank menyediakan seluruh modal dan petani mengelola usahanya, lalu hasilnya dibagi. Akad ini disebut…", "a": "Mudharabah", "x": "", "k": "kelompok tani"}, {"id": "KEU-04-001", "t": "KEU-04", "lv": 1, "q": "Bukti kepemilikan sebagian perusahaan disebut…", "a": "Saham", "x": ""}, {"id": "KEU-04-002", "t": "KEU-04", "lv": 1, "q": "Surat utang jangka panjang yang memberi bunga berupa kupon disebut…", "a": "Obligasi", "x": ""}, {"id": "KEU-04-003", "t": "KEU-04", "lv": 2, "q": "Pasar tempat efek dijual pertama kali melalui penawaran umum perdana (IPO) disebut pasar…", "a": "Perdana", "x": ""}, {"id": "KEU-04-004", "t": "KEU-04", "lv": 2, "q": "Keuntungan pemegang saham berupa pembagian laba perusahaan disebut…", "a": "Dividen", "x": "Keuntungan dari selisih harga jual-beli disebut capital gain."}, {"id": "KEU-04-005", "t": "KEU-04", "lv": 2, "q": "Lembaga penyelenggara perdagangan efek di Indonesia adalah…", "a": "Bursa Efek Indonesia (BEI)", "x": ""}, {"id": "KEU-04-006", "t": "KEU-04", "lv": 2, "q": "Sebuah perusahaan makanan lokal menjual sahamnya kepada publik untuk pertama kali agar bisa membangun pabrik baru. Penjualan pertama ini terjadi di pasar…", "a": "Perdana", "x": "", "k": "perusahaan lokal"}, {"id": "PEL-01-001", "t": "PEL-01", "lv": 1, "q": "BUMN yang modalnya berbentuk saham dengan paling sedikit 51% milik negara disebut…", "a": "Persero", "x": ""}, {"id": "PEL-01-002", "t": "PEL-01", "lv": 1, "q": "BUMN yang seluruh modalnya milik negara dan tidak terbagi atas saham disebut…", "a": "Perum", "x": ""}, {"id": "PEL-01-003", "t": "PEL-01", "lv": 1, "q": "Tujuan utama Persero adalah…", "a": "Mengejar keuntungan", "x": ""}, {"id": "PEL-01-004", "t": "PEL-01", "lv": 2, "q": "Dalam CV, sekutu yang tanggung jawabnya terbatas pada modal yang disetor disebut sekutu…", "a": "Pasif (komanditer)", "x": ""}, {"id": "PEL-01-005", "t": "PEL-01", "lv": 2, "q": "Badan usaha swasta yang semua sekutunya bertanggung jawab tidak terbatas disebut…", "a": "Firma", "x": ""}, {"id": "PEL-01-006", "t": "PEL-01", "lv": 2, "q": "Badan usaha yang modalnya terdiri atas saham dan tanggung jawab pemegang sahamnya terbatas pada modal disebut…", "a": "Perseroan terbatas (PT)", "x": ""}, {"id": "PEL-01-007", "t": "PEL-01", "lv": 3, "q": "UU yang mengubah UU BUMN dan membentuk BPI Danantara pada 2025 adalah UU Nomor … Tahun 2025.", "a": "1", "x": ""}, {"id": "PEL-01-008", "t": "PEL-01", "lv": 1, "q": "Air bersih di sebuah kota dikelola perusahaan air minum milik pemerintah kota. Bentuk badan usaha ini adalah…", "a": "BUMD", "x": "", "k": "air bersih"}, {"id": "PEL-01-009", "t": "PEL-01", "lv": 2, "q": "Tiga orang mendirikan bengkel; dua orang mengelola dan bertanggung jawab penuh, satu orang hanya menyetor modal. Bentuk badan usaha yang cocok adalah…", "a": "CV (persekutuan komanditer)", "x": "", "k": "bengkel"}, {"id": "PEL-02-001", "t": "PEL-02", "lv": 1, "q": "Asas koperasi Indonesia adalah…", "a": "Kekeluargaan", "x": ""}, {"id": "PEL-02-002", "t": "PEL-02", "lv": 1, "q": "Bapak Koperasi Indonesia adalah…", "a": "Mohammad Hatta", "x": ""}, {"id": "PEL-02-003", "t": "PEL-02", "lv": 1, "q": "Kekuasaan tertinggi dalam koperasi ada pada…", "a": "Rapat anggota", "x": ""}, {"id": "PEL-02-004", "t": "PEL-02", "lv": 2, "q": "Simpanan yang dibayar sekali saat masuk menjadi anggota koperasi disebut simpanan…", "a": "Pokok", "x": ""}, {"id": "PEL-02-005", "t": "PEL-02", "lv": 2, "q": "Simpanan koperasi yang dibayar berkala dalam jumlah tertentu disebut simpanan…", "a": "Wajib", "x": ""}, {"id": "PEL-02-006", "t": "PEL-02", "lv": 2, "q": "Hari Koperasi Indonesia diperingati setiap tanggal…", "a": "12 Juli", "x": ""}, {"id": "PEL-02-007", "t": "PEL-02", "lv": 3, "q": "Perkoperasian diatur dalam UU Nomor … Tahun 1992.", "a": "25", "x": ""}, {"id": "PEL-02-008", "t": "PEL-02", "lv": 3, "q": "Koperasi sekolah mempunyai SHU Rp20.000.000,00; 30% untuk jasa modal. Simpanan seorang anggota Rp500.000,00 dari total simpanan Rp50.000.000,00. Berapa jasa modal yang ia terima?", "a": "Rp60.000,00", "x": "(500.000 : 50.000.000) × 6.000.000.", "k": "koperasi sekolah"}, {"id": "PEL-02-009", "t": "PEL-02", "lv": 2, "q": "Anggota koperasi nelayan yang paling banyak menjual ikan lewat koperasi mendapat bagian SHU lebih besar. Bagian SHU yang dihitung dari transaksi anggota disebut…", "a": "Jasa usaha (jasa anggota)", "x": "Bagian yang dihitung dari simpanan disebut jasa modal.", "k": "nelayan"}, {"id": "MAK-01-001", "t": "MAK-01", "lv": 1, "q": "Rumus pendapatan nasional dengan pendekatan pengeluaran adalah Y = …", "a": "C + I + G + (X − M)", "x": ""}, {"id": "MAK-01-002", "t": "MAK-01", "lv": 1, "q": "Nilai barang dan jasa akhir yang dihasilkan di wilayah suatu negara, oleh warga negara maupun asing, disebut…", "a": "Produk domestik bruto (PDB)", "x": ""}, {"id": "MAK-01-003", "t": "MAK-01", "lv": 1, "q": "PNB = PDB + …", "a": "Pendapatan neto faktor luar negeri", "x": ""}, {"id": "MAK-01-004", "t": "MAK-01", "lv": 1, "q": "PDB yang dihitung dengan harga konstan tahun dasar disebut PDB…", "a": "Riil", "x": ""}, {"id": "MAK-01-005", "t": "MAK-01", "lv": 1, "q": "Pendapatan perseorangan dikurangi pajak langsung disebut…", "a": "Pendapatan disposabel (disposable income)", "x": ""}, {"id": "MAK-01-006", "t": "MAK-01", "lv": 3, "q": "C = 500, I = 200, G = 150, X = 100, dan M = 80 (triliun rupiah). Berapa pendapatan nasionalnya?", "a": "Rp870 triliun", "x": "500 + 200 + 150 + (100 − 80)."}, {"id": "MAK-01-007", "t": "MAK-01", "lv": 3, "q": "Pendapatan nasional Rp1.000 triliun dan jumlah penduduk 250 juta jiwa. Berapa pendapatan per kapitanya?", "a": "Rp4 juta", "x": ""}, {"id": "MAK-01-008", "t": "MAK-01", "lv": 2, "q": "Seorang perawat asal Indonesia bekerja di Jepang. Pendapatannya dihitung dalam PDB Indonesia atau PNB Indonesia?", "a": "PNB Indonesia", "x": "Pendapatan itu masuk PDB Jepang.", "k": "pekerja migran"}, {"id": "MAK-01-009", "t": "MAK-01", "lv": 2, "q": "Pabrik milik perusahaan asing di Batam memproduksi barang elektronik. Nilai produksinya dihitung dalam PDB Indonesia atau tidak?", "a": "Ya, masuk PDB Indonesia", "x": "PDB dihitung menurut wilayah, bukan kepemilikan.", "k": "pabrik"}, {"id": "MAK-02-001", "t": "MAK-02", "lv": 1, "q": "Rasio Gini bernilai 0 berarti pendapatan terbagi…", "a": "Merata sempurna", "x": ""}, {"id": "MAK-02-002", "t": "MAK-02", "lv": 1, "q": "Kurva yang membandingkan distribusi pendapatan dengan garis kemerataan sempurna disebut kurva…", "a": "Lorenz", "x": ""}, {"id": "MAK-02-003", "t": "MAK-02", "lv": 2, "q": "Menurut kategori umum, rasio Gini 0,4–0,5 menunjukkan ketimpangan…", "a": "Sedang", "x": ""}, {"id": "MAK-02-004", "t": "MAK-02", "lv": 3, "q": "Menurut kriteria Bank Dunia, jika 40% penduduk termiskin menerima kurang dari 12% pendapatan, ketimpangannya…", "a": "Tinggi", "x": ""}, {"id": "MAK-02-005", "t": "MAK-02", "lv": 2, "q": "Lembaga yang menerbitkan data rasio Gini dan kemiskinan Indonesia dua kali setahun adalah…", "a": "Badan Pusat Statistik (BPS)", "x": ""}, {"id": "MAK-02-006", "t": "MAK-02", "lv": 1, "q": "Di sebuah kota, perumahan mewah berdiri di sebelah permukiman padat di bantaran sungai. Ukuran BPS untuk ketimpangan pendapatan seperti ini adalah…", "a": "Rasio Gini", "x": "", "k": "kota"}, {"id": "MAK-03-001", "t": "MAK-03", "lv": 1, "q": "Menurut BPS, penduduk usia kerja adalah penduduk berusia … tahun ke atas.", "a": "15", "x": ""}, {"id": "MAK-03-002", "t": "MAK-03", "lv": 1, "q": "Tingkat pengangguran terbuka dihitung dari jumlah pengangguran dibagi…, dikali 100%.", "a": "Angkatan kerja", "x": ""}, {"id": "MAK-03-003", "t": "MAK-03", "lv": 2, "q": "Pengangguran karena masa pindah kerja atau mencari kerja yang lebih cocok disebut pengangguran…", "a": "Friksional", "x": ""}, {"id": "MAK-03-004", "t": "MAK-03", "lv": 2, "q": "Pengangguran karena resesi atau turunnya permintaan agregat disebut pengangguran…", "a": "Siklis (konjungtur)", "x": ""}, {"id": "MAK-03-005", "t": "MAK-03", "lv": 2, "q": "Pelajar dan ibu rumah tangga termasuk angkatan kerja atau bukan angkatan kerja?", "a": "Bukan angkatan kerja", "x": ""}, {"id": "MAK-03-006", "t": "MAK-03", "lv": 3, "q": "Angkatan kerja 200 orang, 10 orang di antaranya menganggur. Berapa tingkat pengangguran terbukanya?", "a": "5%", "x": "10 : 200 × 100%."}, {"id": "MAK-03-007", "t": "MAK-03", "lv": 2, "q": "Setelah panen selesai, banyak buruh tani di sebuah desa tidak bekerja sampai musim tanam berikutnya. Jenis pengangguran ini disebut…", "a": "Pengangguran musiman", "x": "", "k": "sawah"}, {"id": "MAK-03-008", "t": "MAK-03", "lv": 2, "q": "Sebuah pabrik garmen memasang mesin jahit otomatis sehingga sebagian penjahit tidak lagi dibutuhkan. Jenis pengangguran yang muncul disebut…", "a": "Pengangguran teknologi", "x": "", "k": "pabrik"}, {"id": "MAK-03-009", "t": "MAK-03", "lv": 2, "q": "Lulusan SMK jurusan mesin sulit mendapat kerja karena pabrik di daerahnya kini membutuhkan tenaga ahli digital. Jenis pengangguran ini disebut…", "a": "Struktural", "x": "", "k": "pabrik"}, {"id": "MAK-04-001", "t": "MAK-04", "lv": 1, "q": "Kenaikan harga barang secara umum dan terus-menerus disebut…", "a": "Inflasi", "x": ""}, {"id": "MAK-04-002", "t": "MAK-04", "lv": 1, "q": "Penurunan harga umum secara terus-menerus disebut…", "a": "Deflasi", "x": ""}, {"id": "MAK-04-003", "t": "MAK-04", "lv": 2, "q": "IHK naik dari 120 menjadi 126. Berapa laju inflasinya?", "a": "5%", "x": "6 : 120 × 100%."}, {"id": "MAK-04-004", "t": "MAK-04", "lv": 2, "q": "Inflasi lebih dari 100% per tahun disebut…", "a": "Hiperinflasi", "x": ""}, {"id": "MAK-04-005", "t": "MAK-04", "lv": 2, "q": "Sebutkan satu kelompok yang justru diuntungkan oleh inflasi.", "a": "Satu di antara: debitur, pemilik aset riil", "x": ""}, {"id": "MAK-04-006", "t": "MAK-04", "lv": 3, "q": "Indeks harga yang memakai kuantitas tahun dasar sebagai bobot disebut indeks…", "a": "Laspeyres", "x": "Indeks Paasche memakai kuantitas tahun berjalan."}, {"id": "MAK-04-007", "t": "MAK-04", "lv": 1, "q": "Menjelang Lebaran, permintaan daging dan cabai di pasar melonjak sehingga harganya naik. Jenis inflasi menurut penyebabnya adalah…", "a": "Demand-pull inflation", "x": "", "k": "pasar"}, {"id": "MAK-04-008", "t": "MAK-04", "lv": 2, "q": "Harga BBM naik sehingga ongkos angkut sayur ke pasar naik dan harga sayur ikut naik. Jenis inflasi menurut penyebabnya adalah…", "a": "Cost-push inflation", "x": "", "k": "angkutan"}, {"id": "MAK-05-001", "t": "MAK-05", "lv": 1, "q": "Pertumbuhan ekonomi diukur dari kenaikan PDB…", "a": "Riil", "x": ""}, {"id": "MAK-05-002", "t": "MAK-05", "lv": 1, "q": "Indeks Pembangunan Manusia disusun oleh lembaga PBB bernama…", "a": "UNDP", "x": "Di Indonesia dihitung BPS."}, {"id": "MAK-05-003", "t": "MAK-05", "lv": 2, "q": "Sebutkan tiga dimensi Indeks Pembangunan Manusia.", "a": "Umur panjang dan hidup sehat, pengetahuan, standar hidup layak", "x": ""}, {"id": "MAK-05-004", "t": "MAK-05", "lv": 2, "q": "Tokoh yang membagi pertumbuhan ekonomi menjadi lima tahap, dari masyarakat tradisional sampai konsumsi massa tinggi, adalah…", "a": "W. W. Rostow", "x": ""}, {"id": "MAK-05-005", "t": "MAK-05", "lv": 2, "q": "Tokoh yang menekankan inovasi para wirausaha sebagai pendorong pertumbuhan adalah…", "a": "Joseph Schumpeter", "x": ""}, {"id": "MAK-05-006", "t": "MAK-05", "lv": 3, "q": "PDB riil naik dari Rp1.000 triliun menjadi Rp1.050 triliun. Berapa laju pertumbuhan ekonominya?", "a": "5%", "x": ""}, {"id": "MAK-05-007", "t": "MAK-05", "lv": 3, "q": "Teori pertumbuhan yang menekankan investasi, tabungan, dan ICOR adalah teori…", "a": "Harrod–Domar", "x": ""}, {"id": "MAK-05-008", "t": "MAK-05", "lv": 2, "q": "Sebuah kabupaten membangun jalan dan pasar sehingga hasil produksinya naik, tetapi struktur ekonomi dan layanan pendidikan belum berubah. Keadaan ini baru memenuhi pengertian pertumbuhan atau pembangunan ekonomi?", "a": "Pertumbuhan ekonomi", "x": "Pembangunan mencakup perubahan struktur dan kesejahteraan.", "k": "pembangunan daerah"}, {"id": "MAK-05-009", "t": "MAK-05", "lv": 1, "q": "Sebuah desa membangun sekolah dan puskesmas sehingga harapan hidup dan lama sekolah warganya naik. Indeks yang mencatat kemajuan seperti ini adalah…", "a": "Indeks Pembangunan Manusia (IPM)", "x": "", "k": "desa"}, {"id": "MAK-06-001", "t": "MAK-06", "lv": 1, "q": "Perdagangan barang dan jasa melalui internet disebut…", "a": "Perdagangan elektronik (e-commerce)", "x": ""}, {"id": "MAK-06-002", "t": "MAK-06", "lv": 1, "q": "Layanan keuangan berbasis teknologi, seperti pembayaran digital, disebut…", "a": "Teknologi finansial (fintech)", "x": ""}, {"id": "MAK-06-003", "t": "MAK-06", "lv": 2, "q": "Pengemudi ojek daring mendapat order lewat aplikasi tanpa ikatan kerja tetap. Pola kerja lepas jangka pendek seperti ini disebut…", "a": "Gig economy", "x": "", "k": "ojek daring"}, {"id": "MAK-06-004", "t": "MAK-06", "lv": 2, "q": "Sebutkan satu tantangan ekonomi digital di Indonesia.", "a": "Satu di antara: kesenjangan akses internet, keamanan data, persaingan produk impor, pekerja tanpa jaminan sosial", "x": ""}, {"id": "MAK-06-005", "t": "MAK-06", "lv": 2, "q": "Penjual keripik di sebuah desa kini menerima pesanan dari kota lain lewat marketplace. Dampak positif ekonomi digital yang tergambar adalah…", "a": "Pasar UMKM lebih luas", "x": "", "k": "UMKM"}, {"id": "KEB-01-001", "t": "KEB-01", "lv": 1, "q": "Kebijakan moneter di Indonesia dijalankan oleh…", "a": "Bank Indonesia", "x": ""}, {"id": "KEB-01-002", "t": "KEB-01", "lv": 1, "q": "Kebijakan moneter yang menambah jumlah uang beredar untuk mendorong kegiatan ekonomi disebut kebijakan…", "a": "Ekspansif", "x": ""}, {"id": "KEB-01-003", "t": "KEB-01", "lv": 2, "q": "Saat inflasi tinggi, dalam operasi pasar terbuka Bank Indonesia … surat berharga.", "a": "Menjual", "x": ""}, {"id": "KEB-01-004", "t": "KEB-01", "lv": 2, "q": "Saat ekonomi lesu, rasio giro wajib minimum diubah dengan cara…", "a": "Diturunkan", "x": ""}, {"id": "KEB-01-005", "t": "KEB-01", "lv": 2, "q": "Imbauan Bank Indonesia kepada bank untuk menahan atau menyalurkan kredit disebut…", "a": "Imbauan moral (moral suasion)", "x": ""}, {"id": "KEB-01-006", "t": "KEB-01", "lv": 3, "q": "Kebijakan moneter yang mengatur kredit untuk sektor tertentu disebut kebijakan moneter…", "a": "Selektif (kualitatif)", "x": ""}, {"id": "KEB-01-007", "t": "KEB-01", "lv": 1, "q": "Harga-harga di pasar naik cepat selama beberapa bulan, lalu Bank Indonesia menaikkan suku bunga kebijakan. Arah kebijakan moneter ini disebut…", "a": "Kontraktif", "x": "", "k": "pasar"}, {"id": "KEB-01-008", "t": "KEB-01", "lv": 2, "q": "Usaha kecil sulit mendapat modal saat ekonomi lesu, lalu Bank Indonesia menurunkan suku bunga kebijakan agar kredit lebih murah. Arah kebijakan ini disebut…", "a": "Ekspansif", "x": "", "k": "UMKM"}, {"id": "KEB-02-001", "t": "KEB-02", "lv": 1, "q": "Kebijakan pemerintah lewat penerimaan dan belanja negara disebut kebijakan…", "a": "Fiskal", "x": ""}, {"id": "KEB-02-002", "t": "KEB-02", "lv": 1, "q": "APBN ditetapkan dengan…", "a": "Undang-undang", "x": ""}, {"id": "KEB-02-003", "t": "KEB-02", "lv": 1, "q": "APBD ditetapkan dengan…", "a": "Peraturan daerah", "x": ""}, {"id": "KEB-02-004", "t": "KEB-02", "lv": 1, "q": "Menurut penjelasan UU Nomor 17 Tahun 2003, defisit APBN paling tinggi … dari PDB.", "a": "3%", "x": ""}, {"id": "KEB-02-005", "t": "KEB-02", "lv": 2, "q": "Penerimaan negara di luar perpajakan dan hibah disebut…", "a": "Penerimaan negara bukan pajak (PNBP)", "x": ""}, {"id": "KEB-02-006", "t": "KEB-02", "lv": 2, "q": "Fungsi APBN untuk mengurangi kesenjangan pendapatan disebut fungsi…", "a": "Distribusi", "x": ""}, {"id": "KEB-02-007", "t": "KEB-02", "lv": 3, "q": "Pajak daerah dan retribusi daerah termasuk kelompok pendapatan daerah yang disebut…", "a": "Pendapatan asli daerah (PAD)", "x": ""}, {"id": "KEB-02-008", "t": "KEB-02", "lv": 1, "q": "Saat ekonomi lesu, pemerintah menambah belanja pembangunan jalan desa sehingga anggaran menjadi defisit. Arah kebijakan fiskal ini disebut…", "a": "Ekspansif", "x": "", "k": "jalan desa"}, {"id": "KEB-03-001", "t": "KEB-03", "lv": 1, "q": "Fungsi pajak sebagai sumber penerimaan negara disebut fungsi…", "a": "Budgeter", "x": ""}, {"id": "KEB-03-002", "t": "KEB-03", "lv": 1, "q": "Fungsi pajak untuk mengatur, misalnya cukai rokok yang tinggi, disebut fungsi…", "a": "Regulerend (mengatur)", "x": ""}, {"id": "KEB-03-003", "t": "KEB-03", "lv": 2, "q": "PPh termasuk pajak langsung atau tidak langsung?", "a": "Langsung", "x": ""}, {"id": "KEB-03-004", "t": "KEB-03", "lv": 2, "q": "PPN termasuk pajak pusat atau pajak daerah?", "a": "Pajak pusat", "x": ""}, {"id": "KEB-03-005", "t": "KEB-03", "lv": 2, "q": "Tarif pajak yang persentasenya naik seiring bertambahnya dasar pajak disebut tarif…", "a": "Progresif", "x": ""}, {"id": "KEB-03-006", "t": "KEB-03", "lv": 3, "q": "Menurut UU HPP 2021, tarif PPh orang pribadi untuk penghasilan kena pajak sampai Rp60 juta setahun adalah…", "a": "5%", "x": ""}, {"id": "KEB-03-007", "t": "KEB-03", "lv": 3, "q": "Menurut PMK 131/2024, berapa tarif PPN efektif untuk barang yang bukan barang mewah pada 2025?", "a": "11%", "x": "Tarif 12% dikalikan dasar 11/12; barang mewah kena 12% penuh."}, {"id": "KEB-03-008", "t": "KEB-03", "lv": 2, "q": "Pemerintah kota memungut karcis parkir di pasar dan memberi tempat parkir sebagai imbalannya langsung. Pungutan ini disebut…", "a": "Retribusi", "x": "", "k": "pasar"}, {"id": "KEB-03-009", "t": "KEB-03", "lv": 2, "q": "Sebuah rumah makan di kawasan wisata menambahkan pajak restoran pada tagihan pembeli. Pajak restoran termasuk pajak pusat atau pajak daerah?", "a": "Pajak daerah", "x": "", "k": "pariwisata"}, {"id": "INT-01-001", "t": "INT-01", "lv": 1, "q": "Teori keunggulan absolut dikemukakan oleh…", "a": "Adam Smith", "x": ""}, {"id": "INT-01-002", "t": "INT-01", "lv": 1, "q": "Teori keunggulan komparatif dikemukakan oleh…", "a": "David Ricardo", "x": ""}, {"id": "INT-01-003", "t": "INT-01", "lv": 1, "q": "Menjual barang di luar negeri lebih murah daripada di dalam negeri disebut…", "a": "Dumping", "x": ""}, {"id": "INT-01-004", "t": "INT-01", "lv": 2, "q": "Pembatasan jumlah barang yang boleh diimpor disebut…", "a": "Kuota", "x": ""}, {"id": "INT-01-005", "t": "INT-01", "lv": 2, "q": "Teori bahwa negara mengekspor barang yang memakai faktor produksi yang melimpah dikemukakan oleh…", "a": "Heckscher dan Ohlin", "x": ""}, {"id": "INT-01-006", "t": "INT-01", "lv": 3, "q": "Bea masuk yang dikenakan untuk melawan dumping disebut bea masuk…", "a": "Antidumping", "x": ""}, {"id": "INT-01-007", "t": "INT-01", "lv": 3, "q": "Negara A dapat membuat kain dan beras lebih efisien daripada Negara B, tetapi keunggulannya paling besar pada kain. Menurut teori keunggulan komparatif, Negara A sebaiknya berspesialisasi pada…", "a": "Kain", "x": ""}, {"id": "INT-01-008", "t": "INT-01", "lv": 2, "q": "Petani bawang di sebuah daerah sulit bersaing karena bawang impor masuk dengan harga murah. Pemerintah lalu mengenakan bea masuk atas bawang impor. Kebijakan proteksi ini disebut…", "a": "Tarif (bea masuk)", "x": "", "k": "petani bawang"}, {"id": "INT-02-001", "t": "INT-02", "lv": 1, "q": "Sistem kurs yang dipakai Indonesia sejak 14 Agustus 1997 adalah…", "a": "Mengambang bebas", "x": ""}, {"id": "INT-02-002", "t": "INT-02", "lv": 1, "q": "Kurs tengah dihitung dengan rumus…", "a": "(Kurs jual + kurs beli) : 2", "x": ""}, {"id": "INT-02-003", "t": "INT-02", "lv": 1, "q": "Saat membeli valas dari nasabah, bank memakai kurs…", "a": "Beli", "x": ""}, {"id": "INT-02-004", "t": "INT-02", "lv": 2, "q": "Neraca yang hanya mencatat ekspor dan impor barang disebut neraca…", "a": "Perdagangan", "x": ""}, {"id": "INT-02-005", "t": "INT-02", "lv": 2, "q": "Selisih neraca pembayaran tercermin pada perubahan…", "a": "Cadangan devisa", "x": ""}, {"id": "INT-02-006", "t": "INT-02", "lv": 2, "q": "Rupiah dikatakan terdepresiasi jika…", "a": "Diperlukan lebih banyak rupiah untuk membeli satu unit valas", "x": ""}, {"id": "INT-02-007", "t": "INT-02", "lv": 3, "q": "Kurs jual Rp16.200 dan kurs beli Rp16.000 per dolar AS. Berapa kurs tengahnya?", "a": "Rp16.100", "x": ""}, {"id": "INT-02-008", "t": "INT-02", "lv": 2, "q": "Seorang pekerja migran pulang membawa 100 dolar AS dan menukarnya di bank yang memasang kurs beli Rp16.000 dan kurs jual Rp16.200. Berapa rupiah yang ia terima?", "a": "Rp1.600.000", "x": "Bank membeli dolar darinya, jadi memakai kurs beli.", "k": "pekerja migran"}, {"id": "INT-02-009", "t": "INT-02", "lv": 2, "q": "Rupiah melemah terhadap dolar sehingga harga gandum impor naik dan harga roti di toko ikut naik. Melemahnya nilai rupiah ini disebut…", "a": "Depresiasi", "x": "", "k": "toko roti"}, {"id": "INT-03-001", "t": "INT-03", "lv": 1, "q": "Organisasi perdagangan dunia yang berdiri pada 1995 adalah…", "a": "WTO", "x": ""}, {"id": "INT-03-002", "t": "INT-03", "lv": 2, "q": "Masyarakat Ekonomi ASEAN mulai berlaku pada tahun…", "a": "2015", "x": ""}, {"id": "INT-03-003", "t": "INT-03", "lv": 2, "q": "Kerja sama ekonomi antara dua negara, misalnya Indonesia–Jepang (IJEPA), disebut kerja sama…", "a": "Bilateral", "x": ""}, {"id": "INT-03-004", "t": "INT-03", "lv": 2, "q": "Kerja sama ekonomi yang melibatkan banyak negara dari berbagai kawasan, seperti WTO, disebut kerja sama…", "a": "Multilateral", "x": ""}, {"id": "INT-03-005", "t": "INT-03", "lv": 3, "q": "Pada bulan dan tahun berapa Indonesia menjadi anggota penuh BRICS?", "a": "Januari 2025", "x": ""}, {"id": "INT-03-006", "t": "INT-03", "lv": 2, "q": "Kopi dari petani Indonesia dapat masuk ke negara ASEAN lain dengan bea masuk rendah karena kesepakatan kawasan. Bentuk kerja sama ini disebut kerja sama…", "a": "Regional", "x": "", "k": "petani kopi"}, {"id": "AKT-01-001", "t": "AKT-01", "lv": 1, "q": "Persamaan dasar akuntansi adalah…", "a": "Harta = Utang + Modal", "x": ""}, {"id": "AKT-01-002", "t": "AKT-01", "lv": 1, "q": "Pengambilan harta perusahaan oleh pemilik untuk keperluan pribadi disebut…", "a": "Prive", "x": ""}, {"id": "AKT-01-003", "t": "AKT-01", "lv": 1, "q": "Pendapatan berpengaruh menambah atau mengurangi modal?", "a": "Menambah", "x": ""}, {"id": "AKT-01-004", "t": "AKT-01", "lv": 1, "q": "Membeli peralatan secara kredit menambah harta dan menambah…", "a": "Utang", "x": ""}, {"id": "AKT-01-005", "t": "AKT-01", "lv": 1, "q": "Membayar gaji karyawan mengurangi kas dan mengurangi…", "a": "Modal (sebagai beban)", "x": ""}, {"id": "AKT-01-006", "t": "AKT-01", "lv": 3, "q": "Harta sebuah usaha Rp50 juta dan utangnya Rp15 juta. Berapa modalnya?", "a": "Rp35 juta", "x": ""}, {"id": "AKT-01-007", "t": "AKT-01", "lv": 1, "q": "Pemilik usaha laundry di dekat sekolah mengambil Rp500.000,00 dari kas usaha untuk keperluan pribadi. Transaksi ini dicatat sebagai…", "a": "Prive", "x": "", "k": "usaha laundry"}, {"id": "AKT-01-008", "t": "AKT-01", "lv": 2, "q": "Usaha fotokopi membeli mesin baru secara tunai seharga Rp5 juta. Apakah modal usaha berubah?", "a": "Tidak", "x": "Kas berkurang dan peralatan bertambah dengan jumlah sama.", "k": "fotokopi"}, {"id": "AKT-02-001", "t": "AKT-02", "lv": 1, "q": "Tahap siklus akuntansi yang menghasilkan laporan laba rugi dan neraca disebut tahap…", "a": "Pelaporan", "x": ""}, {"id": "AKT-02-002", "t": "AKT-02", "lv": 2, "q": "Pemilik toko kelontong mencatat penjualan harian di jurnal, lalu setiap minggu memindahkannya ke buku besar. Kegiatan memindahkan ini disebut…", "a": "Posting", "x": "", "k": "toko kelontong"}, {"id": "AKT-02-003", "t": "AKT-02", "lv": 1, "q": "Saldo normal akun harta adalah…", "a": "Debit", "x": ""}, {"id": "AKT-02-004", "t": "AKT-02", "lv": 1, "q": "Saldo normal akun pendapatan adalah…", "a": "Kredit", "x": ""}, {"id": "AKT-02-005", "t": "AKT-02", "lv": 1, "q": "Saldo normal akun prive adalah…", "a": "Debit", "x": ""}, {"id": "AKT-02-006", "t": "AKT-02", "lv": 1, "q": "Bukti transaksi, jurnal umum, dan posting termasuk tahap…", "a": "Pencatatan", "x": ""}, {"id": "AKT-02-007", "t": "AKT-02", "lv": 2, "q": "Jurnal yang dibuat akhir periode untuk menutup akun pendapatan, beban, dan prive disebut…", "a": "Jurnal penutup", "x": ""}, {"id": "AKT-02-008", "t": "AKT-02", "lv": 3, "q": "Perlengkapan awal Rp3 juta dan sisa akhir periode Rp1 juta. Berapa beban perlengkapan dalam jurnal penyesuaian?", "a": "Rp2 juta", "x": "Yang dicatat adalah bagian yang terpakai."}, {"id": "AKT-02-009", "t": "AKT-02", "lv": 2, "q": "Usaha katering menerima pembayaran di muka untuk pesanan tiga bulan. Pada akhir bulan pertama, sepertiga pesanan sudah dikirim. Jurnal akhir periode yang diperlukan disebut…", "a": "Jurnal penyesuaian (pendapatan diterima di muka)", "x": "", "k": "katering"}, {"id": "AKT-03-001", "t": "AKT-03", "lv": 1, "q": "Laba bersih = pendapatan − …", "a": "Beban", "x": ""}, {"id": "AKT-03-002", "t": "AKT-03", "lv": 1, "q": "Modal akhir = modal awal + laba bersih − …", "a": "Prive", "x": ""}, {"id": "AKT-03-003", "t": "AKT-03", "lv": 2, "q": "Laporan yang menyajikan harta, utang, dan modal akhir disebut…", "a": "Neraca (laporan posisi keuangan)", "x": ""}, {"id": "AKT-03-004", "t": "AKT-03", "lv": 2, "q": "Standar akuntansi untuk entitas mikro, kecil, dan menengah disebut SAK…", "a": "EMKM", "x": ""}, {"id": "AKT-03-005", "t": "AKT-03", "lv": 3, "q": "Usaha warung kopi punya modal awal Rp20 juta, laba bersih Rp5 juta, dan prive Rp1 juta. Berapa modal akhirnya?", "a": "Rp24 juta", "x": "", "k": "warung"}, {"id": "AKT-03-006", "t": "AKT-03", "lv": 2, "q": "Usaha cuci motor mencatat pendapatan Rp8 juta dan beban Rp5 juta dalam sebulan. Berapa laba bersihnya?", "a": "Rp3 juta", "x": "", "k": "cuci motor"}], "bank": {"key": "bank-soal-ekonomi-v1", "title": "Bank Soal Ekonomi", "map_title": "Peta Materi Ekonomi SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Ekonomi. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Ekonomi dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

@@ -144,18 +144,42 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 .empty-note{color:var(--muted);font-size:.95rem}
-.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
 
-/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
-   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
 .st-feed::-webkit-scrollbar{display:none}
-.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
   padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
 .slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Story mode slides: segment bars, the topic's domain, tier and grades, its title, then one part of the topic per tap. */
 .bars{display:flex;gap:4px;padding-right:44px}
 .bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
 .bars i.on{background:var(--ink)}
@@ -163,29 +187,16 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
 .st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
 .slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;-webkit-tap-highlight-color:transparent;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.slide .st-card{margin-right:56px}
 .st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
 .st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
 .st-card.trap .st-label{color:var(--warn)}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body{padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
 .st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
 .st-body li::marker{color:var(--c)}
 .st-body .st-sum{font-size:1.2rem;line-height:1.45}
 .st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
 .st-body .tbl{margin-top:4px;font-size:.92rem}
-.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.st-foot b{white-space:nowrap;color:var(--ink)}
-.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
-.st-end h2{font-size:1.8rem;font-weight:800}
-.st-end .btn{text-decoration:none}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
@@ -282,7 +293,7 @@ footer{border-top:2px solid var(--stroke)}
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
-      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+      <button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -311,22 +322,124 @@ footer{border-top:2px solid var(--stroke)}
     <div class="notes" id="notes"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu simpul per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const MAP = {"id": "ppkn", "subject": "Pendidikan Pancasila", "title": "Peta Materi Pendidikan Pancasila SMA", "lead": "Seluruh materi Pendidikan Pancasila (PPKn) SMA, disusun menurut empat elemennya: Pancasila, UUD NRI Tahun 1945, Bhinneka Tunggal Ika, dan NKRI. Setiap simpul memuat konsep kunci, pasal penting, dan jebakan soal. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Pancasila, UUD NRI Tahun 1945 dan lembaga negara, hak dan kewajiban, Bhinneka Tunggal Ika, Wawasan Nusantara, pertahanan, dan pemilu.", "source_note": "Disusun menurut empat elemen Pendidikan Pancasila Kurikulum Merdeka, yang juga menjadi elemen TKA 2025; judul simpul mengikuti subelemen TKA. Topik tersebar di kelas X–XII dan penempatan kelas berbeda antarsumber; label kelas adalah perkiraan. Cocokkan dengan buku sekolah.", "path_title": "Alur belajar", "path_note": "Urutan belajar yang disarankan: dari dasar negara, ke konstitusi dan lembaga negara, ke hak dan kewajiban, lalu persatuan dan keutuhan negara.", "path": [{"label": "Lahir", "title": "Perumusan Pancasila", "note": "BPUPK, Piagam Jakarta, PPKI", "to": "PAN-01"}, {"label": "Dasar", "title": "Pancasila sebagai dasar negara", "note": "Sumber segala sumber hukum", "to": "PAN-02"}, {"label": "Konstitusi", "title": "UUD NRI Tahun 1945", "note": "Amandemen dan sistematika", "to": "UUD-01"}, {"label": "Lembaga", "title": "Lembaga negara", "note": "Wewenang menurut UUD", "to": "UUD-02"}, {"label": "Daerah", "title": "Pusat dan daerah", "note": "Otonomi daerah", "to": "UUD-03"}, {"label": "Hak", "title": "Hak dan kewajiban", "note": "Pasal 27–34", "to": "UUD-04"}, {"label": "Hukum", "title": "Penegakan hukum", "note": "Lembaga dan hierarki", "to": "UUD-06"}, {"label": "Bineka", "title": "Bhinneka Tunggal Ika", "note": "Makna dan integrasi", "to": "BTI-01"}, {"label": "Nusantara", "title": "Wawasan Nusantara", "note": "Djuanda, astagatra", "to": "NKR-02"}, {"label": "Pemilu", "title": "Demokrasi dan pemilu", "note": "Asas dan pemilih pemula", "to": "NKR-05"}], "domains": [{"id": "PAN", "name": "Pancasila", "short": "Pancasila", "note": "Perumusan, kedudukan, makna sila, dan hak asasi manusia dalam perspektif Pancasila.", "topics": [{"code": "PAN-01", "title": "Perumusan dan pengesahan Pancasila", "scope": "BPUPK, Panitia Sembilan, PPKI", "src": "Kelas X", "tier": 1, "sum": "Sidang BPUPK, usulan dasar negara, Piagam Jakarta, perubahan sila pertama, dan pengesahan Pancasila oleh PPKI pada 18 Agustus 1945.", "blocks": [{"h": "Urutan peristiwa (1945)", "table": {"cols": ["Tanggal", "Peristiwa"], "rows": [["29 Mei–1 Juni", "Sidang pertama BPUPK membahas dasar negara"], ["1 Juni", "Soekarno berpidato dan menamai dasar negara Pancasila; diperingati sebagai Hari Lahir Pancasila"], ["22 Juni", "Panitia Sembilan menyusun Piagam Jakarta"], ["10–17 Juli", "Sidang kedua BPUPK membahas rancangan UUD"], ["18 Agustus", "PPKI mengesahkan UUD, termasuk Pembukaan yang memuat Pancasila"]]}}, {"h": "Usulan dan perubahan", "li": ["Pengusul dasar negara pada sidang pertama: Mohammad Yamin (29 Mei), Soepomo (31 Mei), Soekarno (1 Juni).", "Soekarno juga menawarkan Trisila dan Ekasila (gotong royong).", "Sila pertama Piagam Jakarta \"Ketuhanan dengan kewajiban menjalankan syariat Islam bagi pemeluk-pemeluknya\" diubah menjadi <b>Ketuhanan Yang Maha Esa<\/b> pada 18 Agustus 1945.", "Perubahan itu disepakati demi persatuan setelah keberatan wakil dari Indonesia bagian timur, disampaikan lewat Mohammad Hatta."]}], "traps": ["Pancasila disahkan PPKI pada 18 Agustus 1945, bukan pada 1 Juni; 1 Juni adalah Hari Lahir Pancasila.", "Piagam Jakarta disusun Panitia Sembilan, bukan PPKI."], "grades": ["X"]}, {"code": "PAN-02", "title": "Pancasila sebagai dasar negara", "scope": "Sumber hukum, kedudukan", "src": "Kelas X", "tier": 1, "sum": "Kedudukan Pancasila sebagai dasar negara dan sumber segala sumber hukum, serta letaknya dalam Pembukaan UUD NRI Tahun 1945.", "blocks": [{"h": "Kedudukan", "li": ["Pancasila tercantum dalam alinea keempat Pembukaan UUD NRI Tahun 1945.", "Pancasila adalah <b>sumber segala sumber hukum negara<\/b> (UU No. 12 Tahun 2011, Pasal 2).", "Sebagai norma dasar negara (staatsfundamentalnorm), semua peraturan tidak boleh bertentangan dengan Pancasila.", "Fungsi lain: pandangan hidup bangsa, jiwa bangsa, kepribadian bangsa, perjanjian luhur, dan pemersatu bangsa."]}], "traps": ["Pancasila tercantum di Pembukaan alinea keempat, bukan di batang tubuh atau pasal-pasal UUD."], "grades": ["X"]}, {"code": "PAN-03", "title": "Pancasila sebagai ideologi negara", "scope": "Ideologi terbuka, nilai", "src": "Kelas X–XI", "tier": 1, "sum": "Pancasila sebagai ideologi terbuka, tiga tingkat nilainya, dan perbandingannya dengan ideologi lain.", "blocks": [{"h": "Ideologi terbuka", "li": ["Ideologi terbuka: nilai dasarnya tetap, penjabarannya dapat menyesuaikan zaman.", "Tingkat nilai: <b>nilai dasar<\/b> (tetap, sila-sila), nilai instrumental (penjabaran dalam aturan dan kebijakan), nilai praksis (pelaksanaan sehari-hari).", "Dimensi ideologi (Alfian): realitas, idealitas, fleksibilitas."]}, {"h": "Perbandingan ideologi", "table": {"cols": ["Ideologi", "Pusat perhatian"], "rows": [["Liberalisme", "Kebebasan individu"], ["Komunisme", "Kepemilikan kolektif, peniadaan kelas"], ["Pancasila", "Keseimbangan individu dan masyarakat, berketuhanan, kekeluargaan"]]}}], "traps": ["Yang dapat berubah dalam ideologi terbuka adalah nilai instrumental dan praksis, bukan nilai dasarnya."], "grades": ["X", "XI"]}, {"code": "PAN-04", "title": "Makna dan penerapan sila-sila Pancasila", "scope": "Hubungan sila, keseharian, global", "src": "Kelas X–XII", "tier": 2, "sum": "Hubungan antarsila yang bulat dan utuh, contoh penerapan tiap sila dalam keseharian, dan Pancasila dalam kehidupan global.", "blocks": [{"h": "Hubungan dan penerapan", "li": ["Sila-sila bersifat hierarkis piramidal (sila pertama mendasari yang lain) dan saling mengisi serta mengualifikasi.", "Contoh: menghormati teman yang beribadah (sila 1), membela korban perundungan (sila 2), memakai produk dalam negeri (sila 3), musyawarah di kelas (sila 4), tidak menyontek demi keadilan (sila 5).", "Dalam kehidupan global: bekerja sama tanpa kehilangan identitas, menyaring budaya asing dengan nilai Pancasila."]}], "grades": ["X", "XI", "XII"]}, {"code": "PAN-05", "title": "Hak asasi manusia dalam perspektif Pancasila", "scope": "Dasar hukum, lembaga, pelanggaran", "src": "Kelas XI", "tier": 1, "sum": "Konsep HAM dalam Pancasila, dasar hukumnya, hak yang tidak dapat dikurangi, pembatasan HAM, dan lembaga penegak HAM.", "blocks": [{"h": "Dasar hukum", "li": ["UUD NRI Tahun 1945 Pasal 28A–28J; UU No. 39 Tahun 1999 tentang HAM; UU No. 26 Tahun 2000 tentang Pengadilan HAM.", "Pasal 28I ayat (1): hak yang <b>tidak dapat dikurangi<\/b> dalam keadaan apa pun, antara lain hak hidup, tidak disiksa, beragama, tidak diperbudak, tidak dituntut atas hukum yang berlaku surut.", "Pasal 28J: setiap orang wajib menghormati HAM orang lain; HAM dapat dibatasi dengan undang-undang."]}, {"h": "Pelanggaran dan lembaga", "li": ["Pelanggaran HAM berat (UU No. 26 Tahun 2000): genosida dan kejahatan terhadap kemanusiaan.", "Lembaga: Komnas HAM, Pengadilan HAM, Komnas Perempuan, KPAI, LPSK.", "Dalam perspektif Pancasila, hak asasi berjalan bersama kewajiban asasi."]}], "traps": ["Pelanggaran HAM berat menurut UU No. 26 Tahun 2000 hanya genosida dan kejahatan terhadap kemanusiaan.", "HAM boleh dibatasi undang-undang (Pasal 28J), kecuali hak dalam Pasal 28I ayat (1)."], "grades": ["XI"]}]}, {"id": "UUD", "name": "Undang-Undang Dasar NRI Tahun 1945", "short": "UUD 1945", "note": "Konstitusi, lembaga negara, pusat dan daerah, hak dan kewajiban, serta penegakan hukum.", "topics": [{"code": "UUD-01", "title": "Konstitusi dan amandemen UUD", "scope": "Kedudukan, sistematika, amandemen", "src": "Kelas X", "tier": 1, "sum": "Kedudukan UUD NRI Tahun 1945 sebagai hukum dasar, empat kali amandemen, kesepakatan dasar perubahannya, dan sistematika sesudah amandemen.", "blocks": [{"h": "Amandemen", "li": ["Diubah MPR empat kali: 1999, 2000, 2001, 2002.", "Kesepakatan dasar: tidak mengubah Pembukaan, tetap NKRI, mempertegas sistem <b>presidensial<\/b>, Penjelasan ditiadakan dan isi normatifnya masuk ke pasal, perubahan dengan cara adendum.", "Sistematika sesudah amandemen: Pembukaan dan Pasal-pasal (Penjelasan tidak ada lagi).", "Pasal 37 ayat (5): khusus bentuk NKRI tidak dapat dilakukan perubahan."]}, {"h": "Kedudukan", "li": ["UUD adalah hukum dasar tertulis dan berada di puncak hierarki peraturan perundang-undangan.", "Konstitusi yang pernah berlaku: UUD 1945 (1945–1949), Konstitusi RIS (1949–1950), UUDS 1950 (1950–1959), UUD 1945 lagi sejak Dekret Presiden 5 Juli 1959."]}], "traps": ["Pembukaan UUD tidak diubah dalam amandemen; yang diubah adalah pasal-pasal.", "Sesudah amandemen tidak ada lagi bagian Penjelasan."], "grades": ["X"]}, {"code": "UUD-02", "title": "Lembaga negara menurut UUD", "scope": "MPR sampai BPK", "src": "Kelas X–XI", "tier": 1, "sum": "Kewenangan lembaga-lembaga negara menurut UUD NRI Tahun 1945 sesudah amandemen.", "blocks": [{"h": "Kewenangan", "table": {"cols": ["Lembaga", "Wewenang utama", "Pasal"], "rows": [["MPR", "Mengubah dan menetapkan UUD; melantik serta dapat memberhentikan presiden/wakil presiden", "3, 7B"], ["DPR", "Fungsi legislasi, anggaran, pengawasan; hak interpelasi, angket, menyatakan pendapat", "20A"], ["DPD", "Mengajukan dan ikut membahas RUU terkait otonomi daerah, hubungan pusat–daerah, sumber daya alam", "22D"], ["Presiden", "Kepala negara dan kepala pemerintahan; menjabat 5 tahun, dapat dipilih sekali lagi", "4, 7"], ["MA", "Mengadili kasasi; menguji peraturan di bawah UU terhadap UU", "24A"], ["MK", "Menguji UU terhadap UUD; sengketa kewenangan lembaga, pembubaran partai, perselisihan hasil pemilu", "24C"], ["KY", "Mengusulkan pengangkatan hakim agung; menjaga kehormatan hakim", "24B"], ["BPK", "Memeriksa pengelolaan dan tanggung jawab keuangan negara", "23E"]]}}, {"h": "Catatan", "li": ["Sesudah amandemen MPR bukan lagi lembaga tertinggi; semua lembaga negara sejajar dan saling mengawasi (checks and balances).", "Hakim konstitusi berjumlah 9 orang: 3 diajukan MA, 3 DPR, 3 Presiden."]}], "traps": ["MK menguji undang-undang terhadap UUD; MA menguji peraturan di bawah undang-undang terhadap undang-undang.", "Komisi Yudisial tidak mengadili perkara; tugasnya mengusulkan hakim agung dan menjaga perilaku hakim."], "grades": ["X", "XI"]}, {"code": "UUD-03", "title": "Hubungan pemerintah pusat dan daerah", "scope": "Otonomi, asas, urusan", "src": "Kelas XI", "tier": 1, "sum": "Otonomi daerah menurut Pasal 18 UUD dan UU No. 23 Tahun 2014: asas penyelenggaraan, pembagian urusan, dan daerah khusus atau istimewa.", "blocks": [{"h": "Asas", "li": ["<b>Desentralisasi<\/b>: penyerahan urusan pemerintahan dari pusat kepada daerah otonom.", "Dekonsentrasi: pelimpahan sebagian urusan kepada gubernur sebagai wakil pemerintah pusat.", "Tugas pembantuan: penugasan dari pusat kepada daerah untuk melaksanakan sebagian urusan pusat."]}, {"h": "Urusan pemerintahan", "li": ["Urusan absolut (hanya pusat): politik luar negeri, pertahanan, keamanan, yustisi, moneter dan fiskal nasional, agama.", "Urusan konkuren dibagi antara pusat, provinsi, dan kabupaten/kota: wajib (pelayanan dasar dan nonpelayanan dasar) dan pilihan.", "Pasal 18B: negara mengakui daerah khusus atau istimewa, misalnya Aceh, Papua, dan Daerah Istimewa Yogyakarta."]}], "traps": ["Dekonsentrasi adalah pelimpahan kepada gubernur sebagai wakil pusat, bukan penyerahan urusan kepada daerah.", "Agama termasuk urusan absolut pemerintah pusat, tidak diserahkan kepada daerah."], "grades": ["XI"]}, {"code": "UUD-04", "title": "Hak dan kewajiban warga negara", "scope": "Pasal 26–34, kewarganegaraan", "src": "Kelas X–XII", "tier": 1, "sum": "Hak dan kewajiban warga negara dalam UUD, siapa warga negara Indonesia, dan asas kewarganegaraan.", "blocks": [{"h": "Pasal penting", "table": {"cols": ["Pasal", "Isi"], "rows": [["27 ayat (1)", "Persamaan kedudukan dalam hukum dan pemerintahan, wajib menjunjung keduanya"], ["27 ayat (3)", "Hak dan kewajiban ikut serta dalam upaya pembelaan negara"], ["28E", "Kebebasan beragama, berserikat, berkumpul, mengeluarkan pendapat"], ["30 ayat (1)", "Hak dan kewajiban ikut serta dalam pertahanan dan keamanan negara"], ["31", "Hak mendapat pendidikan; wajib mengikuti pendidikan dasar; anggaran pendidikan paling sedikit 20%"], ["33", "Perekonomian sebagai usaha bersama berdasar asas kekeluargaan"], ["34", "Fakir miskin dan anak telantar dipelihara negara"]]}}, {"h": "Kewarganegaraan", "li": ["Pasal 26: warga negara adalah orang Indonesia asli dan bangsa lain yang disahkan undang-undang.", "UU No. 12 Tahun 2006: asas ius sanguinis (keturunan), ius soli terbatas, kewarganegaraan tunggal, dan kewarganegaraan ganda terbatas untuk anak.", "Apatride: tidak berkewarganegaraan; bipatride: berkewarganegaraan ganda."]}], "traps": ["Bela negara adalah hak sekaligus kewajiban (Pasal 27 ayat 3 dan Pasal 30 ayat 1).", "Indonesia pada dasarnya memakai asas ius sanguinis; ius soli hanya terbatas."], "grades": ["X", "XI", "XII"]}, {"code": "UUD-05", "title": "Pelanggaran hak dan pengingkaran kewajiban", "scope": "Kasus, faktor, penanganan", "src": "Kelas XII", "tier": 2, "sum": "Bentuk pelanggaran hak dan pengingkaran kewajiban warga negara, faktor penyebabnya, dan upaya generasi muda mengatasinya.", "blocks": [{"h": "Bentuk dan faktor", "li": ["Pelanggaran hak: diskriminasi, perundungan, menghalangi orang beribadah, mempekerjakan anak.", "Pengingkaran kewajiban: tidak membayar pajak, melanggar lalu lintas, merusak fasilitas umum, tidak ikut menjaga kebersihan.", "Faktor: sikap egois, rendahnya kesadaran hukum, sikap tidak toleran, lemahnya penegakan hukum, pengaruh teknologi."]}, {"h": "Penanganan", "li": ["Preventif: pendidikan, sosialisasi aturan, keteladanan.", "Represif: penegakan hukum dan sanksi.", "Generasi solutif: menganalisis kasus, menyusun solusi berbasis data, dan melaporkan pelanggaran lewat jalur resmi."]}], "traps": ["Pengingkaran kewajiban berbeda dari pelanggaran hak: yang pertama tidak melakukan yang diwajibkan, yang kedua merampas hak orang lain."], "grades": ["XII"]}, {"code": "UUD-06", "title": "Perlindungan dan penegakan hukum", "scope": "Lembaga penegak, hierarki, budaya taat hukum", "src": "Kelas X–XI", "tier": 1, "sum": "Lembaga penegak hukum, empat lingkungan peradilan, hierarki peraturan perundang-undangan, dan budaya taat hukum.", "blocks": [{"h": "Hierarki peraturan (UU No. 12 Tahun 2011, Pasal 7)", "li": ["UUD NRI Tahun 1945 → Ketetapan MPR → UU/Perppu → Peraturan Pemerintah → Peraturan Presiden → Perda Provinsi → Perda Kabupaten/Kota.", "Peraturan yang lebih rendah tidak boleh bertentangan dengan yang lebih tinggi."]}, {"h": "Lembaga dan peradilan", "li": ["Penegak hukum: kepolisian (penyelidikan, penyidikan), kejaksaan (penuntutan), hakim (mengadili), advokat, KPK.", "Empat lingkungan peradilan di bawah MA: umum, agama, militer, tata usaha negara (Pasal 24 ayat 2).", "Indonesia adalah negara hukum (Pasal 1 ayat 3)."]}, {"h": "Budaya taat hukum", "li": ["Penyebab pelanggaran: tidak tahu aturan, sengaja mencari untung, aturan dianggap tidak adil, penegakan lemah.", "Membangun taat hukum: keteladanan, pendidikan hukum, sanksi yang konsisten."]}], "traps": ["Perppu sederajat dengan undang-undang dalam hierarki, bukan dengan Peraturan Pemerintah.", "Penuntutan dilakukan jaksa; polisi melakukan penyelidikan dan penyidikan."], "grades": ["X", "XI"]}]}, {"id": "BTI", "name": "Bhinneka Tunggal Ika", "short": "Kebinekaan", "note": "Makna semboyan, kebinekaan sebagai modal sosial, integrasi nasional, dan ancamannya.", "topics": [{"code": "BTI-01", "title": "Makna Bhinneka Tunggal Ika", "scope": "Asal, lambang negara", "src": "Kelas X", "tier": 1, "sum": "Asal semboyan Bhinneka Tunggal Ika, kedudukannya pada lambang negara, dan maknanya bagi bangsa yang majemuk.", "blocks": [{"h": "Asal dan kedudukan", "li": ["Berasal dari <b>Kakawin Sutasoma<\/b> karya Mpu Tantular pada masa Majapahit: \"Bhinneka tunggal ika tan hana dharma mangrwa\".", "Arti: berbeda-beda tetapi tetap satu; tidak ada kebenaran yang mendua.", "Ditulis pada pita yang dicengkeram Garuda Pancasila; diatur dalam UU No. 24 Tahun 2009 (bendera, bahasa, lambang negara, lagu kebangsaan).", "Pasal 36A UUD: lambang negara Garuda Pancasila dengan semboyan Bhinneka Tunggal Ika."]}], "traps": ["Bhinneka Tunggal Ika berasal dari Kakawin Sutasoma (Mpu Tantular), bukan Negarakertagama (Mpu Prapanca)."], "grades": ["X"]}, {"code": "BTI-02", "title": "Kebinekaan sebagai modal sosial", "scope": "Keragaman, pembangunan nasional", "src": "Kelas X", "tier": 2, "sum": "Bentuk keragaman bangsa Indonesia, cara mengelolanya, dan perannya sebagai modal sosial pembangunan nasional.", "blocks": [{"h": "Keragaman dan pengelolaan", "li": ["Keragaman suku, agama, ras, budaya, bahasa daerah, dan golongan.", "Modal sosial: kepercayaan, jaringan, dan norma bersama yang memudahkan kerja sama.", "Mengelola kebinekaan: toleransi, dialog, kerja sama lintas kelompok, adil terhadap semua kelompok.", "Kebinekaan yang dikelola baik menjadi kekuatan ekonomi kreatif, pariwisata, dan diplomasi budaya."]}], "traps": ["Kebinekaan menjadi modal sosial hanya jika dikelola; tanpa pengelolaan dapat memicu konflik."], "grades": ["X"]}, {"code": "BTI-03", "title": "Integrasi nasional", "scope": "Pendorong, penghambat, sejarah", "src": "Kelas X–XI", "tier": 1, "sum": "Pengertian integrasi nasional, faktor pendorong dan penghambatnya, serta tonggak sejarah persatuan bangsa.", "blocks": [{"h": "Faktor", "li": ["Pendorong: sejarah penjajahan yang sama, Sumpah Pemuda, bahasa Indonesia, Pancasila, semboyan Bhinneka Tunggal Ika.", "Penghambat: wilayah luas dan terpisah laut, primordialisme dan etnosentrisme, kesenjangan antardaerah, pengaruh asing."]}, {"h": "Tonggak sejarah", "li": ["Sumpah Pemuda pada Kongres Pemuda II, <b>28 Oktober 1928<\/b>: satu tanah air, satu bangsa, menjunjung bahasa persatuan.", "Proklamasi 17 Agustus 1945; kembali ke negara kesatuan pada 17 Agustus 1950."]}], "traps": ["Sumpah Pemuda menyatakan menjunjung bahasa persatuan, bukan berbahasa satu."], "grades": ["X", "XI"]}, {"code": "BTI-04", "title": "Ancaman terhadap kebinekaan", "scope": "SARA, intoleransi, hoaks", "src": "Kelas X–XI", "tier": 2, "sum": "Bentuk ancaman terhadap persatuan dalam keberagaman dan cara menangkalnya.", "blocks": [{"h": "Bentuk dan penangkal", "li": ["Ancaman: konflik SARA, intoleransi, radikalisme dan terorisme, separatisme, hoaks dan ujaran kebencian di media sosial.", "Penangkal: literasi digital, memeriksa sumber sebelum menyebarkan, dialog antarumat, penegakan hukum.", "Ujaran kebencian dan hoaks di ruang digital dapat dijerat UU Informasi dan Transaksi Elektronik."]}], "grades": ["X", "XI"]}]}, {"id": "NKR", "name": "Negara Kesatuan Republik Indonesia", "short": "NKRI", "note": "Bentuk negara, Wawasan Nusantara, pertahanan dan keamanan, peran warga negara, dan pemilu.", "topics": [{"code": "NKR-01", "title": "Bentuk negara kesatuan", "scope": "Pasal 1, sejarah, kedaulatan", "src": "Kelas X–XI", "tier": 2, "sum": "Indonesia sebagai negara kesatuan berbentuk republik, sejarah singkat bentuk negara, dan kedaulatan rakyat.", "blocks": [{"h": "Bentuk dan sejarah", "li": ["Pasal 1 ayat (1): negara kesatuan berbentuk republik; ayat (2): kedaulatan di tangan rakyat dan dilaksanakan menurut UUD.", "Bentuk serikat (RIS) berlaku 27 Desember 1949–17 Agustus 1950, lalu kembali ke negara kesatuan.", "Negara kesatuan: satu pemerintah pusat yang berdaulat; daerah diberi otonomi tetapi tidak berdaulat sendiri."]}], "grades": ["X", "XI"]}, {"code": "NKR-02", "title": "Wawasan Nusantara", "scope": "Konsep, Djuanda, astagatra", "src": "Kelas X–XII", "tier": 1, "sum": "Wawasan Nusantara sebagai cara pandang bangsa tentang diri dan wilayahnya, dasar hukumnya, dan aspek astagatra.", "blocks": [{"h": "Konsep dan sejarah", "li": ["Cara pandang bangsa Indonesia tentang diri dan lingkungannya yang beragam dan strategis, mengutamakan persatuan wilayah dan bangsa.", "<b>Deklarasi Djuanda<\/b> 13 Desember 1957: laut di antara pulau adalah bagian wilayah Indonesia; diakui UNCLOS 1982 dan diratifikasi lewat UU No. 17 Tahun 1985.", "Perwujudan: kesatuan politik, ekonomi, sosial budaya, dan pertahanan keamanan."]}, {"h": "Astagatra", "table": {"cols": ["Kelompok", "Aspek"], "rows": [["Trigatra (alamiah)", "Letak geografis, kekayaan alam, kependudukan"], ["Pancagatra (sosial)", "Ideologi, politik, ekonomi, sosial budaya, pertahanan keamanan"]]}}], "traps": ["Trigatra adalah aspek alamiah; pancagatra adalah aspek sosial. Ideologi termasuk pancagatra."], "grades": ["X", "XI", "XII"]}, {"code": "NKR-03", "title": "Sistem pertahanan dan keamanan negara", "scope": "Sishankamrata, TNI, Polri", "src": "Kelas X–XII", "tier": 1, "sum": "Sistem pertahanan dan keamanan rakyat semesta, peran TNI dan Polri, komponen pertahanan, serta bentuk ancaman.", "blocks": [{"h": "Sistem", "li": ["Pasal 30 ayat (2): <b>sistem pertahanan dan keamanan rakyat semesta<\/b> (sishankamrata), TNI dan Polri sebagai kekuatan utama, rakyat sebagai kekuatan pendukung.", "TNI (Angkatan Darat, Laut, Udara) bertugas mempertahankan, melindungi, dan memelihara keutuhan negara.", "Polri menjaga keamanan dan ketertiban masyarakat, melindungi, mengayomi, melayani, dan menegakkan hukum.", "Komponen pertahanan (UU No. 23 Tahun 2019): utama (TNI), cadangan, dan pendukung."]}, {"h": "Ancaman", "li": ["Ancaman militer: agresi, pelanggaran wilayah, pemberontakan bersenjata, terorisme bersenjata.", "Ancaman nonmiliter: ideologi, politik, ekonomi, sosial budaya, teknologi dan informasi, keselamatan umum (bencana, wabah)."]}], "traps": ["Menjaga keamanan dan ketertiban masyarakat adalah tugas Polri; pertahanan negara adalah tugas TNI."], "grades": ["X", "XI", "XII"]}, {"code": "NKR-04", "title": "Menjaga keutuhan NKRI", "scope": "Bela negara, peran warga negara", "src": "Kelas X–XII", "tier": 2, "sum": "Bentuk bela negara dan peran warga negara, termasuk pelajar, dalam menjaga keutuhan dan kedaulatan NKRI.", "blocks": [{"h": "Bela negara", "li": ["Dasar: Pasal 27 ayat (3) dan Pasal 30 ayat (1) UUD.", "Nilai dasar bela negara: cinta tanah air, sadar berbangsa dan bernegara, setia pada Pancasila, rela berkorban, kemampuan awal bela negara.", "Bentuk bagi pelajar: belajar sungguh-sungguh, menaati aturan, menjaga toleransi, memakai produk dalam negeri, tidak menyebarkan hoaks.", "Bela negara tidak hanya dengan senjata (fisik) tetapi juga nonfisik."]}], "traps": ["Bela negara mencakup bentuk nonfisik; tidak hanya menjadi anggota TNI."], "grades": ["X", "XI", "XII"]}, {"code": "NKR-05", "title": "Demokrasi dan pemilih pemula", "scope": "Asas pemilu, penyelenggara, partisipasi", "src": "Kelas X–XII", "tier": 1, "sum": "Demokrasi Pancasila, asas dan penyelenggara pemilu, syarat pemilih, dan peran pemilih pemula.", "blocks": [{"h": "Pemilu", "li": ["Asas pemilu (Pasal 22E): <b>langsung, umum, bebas, rahasia, jujur, adil<\/b> (luber jurdil).", "Penyelenggara (UU No. 7 Tahun 2017): KPU, Bawaslu, dan DKPP.", "Pemilih: WNI berusia 17 tahun atau sudah/pernah kawin pada hari pemungutan suara.", "Pemilu serentak terakhir 14 Februari 2024; pilkada serentak 27 November 2024."]}, {"h": "Perkembangan", "li": ["Putusan MK No. 135/PUU-XXII/2024 (dibacakan 26 Juni 2025) memisahkan pemilu nasional dan pemilu daerah mulai 2029; pengaturannya menunggu revisi undang-undang.", "Peran pemilih pemula: mengecek daftar pemilih, mengenali calon dan programnya, menolak politik uang, melawan hoaks."]}], "traps": ["Bawaslu mengawasi pemilu; DKPP memeriksa pelanggaran kode etik penyelenggara.", "Asas rahasia berarti pilihan pemilih tidak diketahui orang lain, bukan bahwa hasil pemilu dirahasiakan."], "grades": ["X", "XI", "XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Kurikulum Merdeka memakai nama BPUPK; buku lain memakai BPUPKI. Keduanya merujuk badan yang sama.", "Penempatan kelas tiap simpul adalah perkiraan; buku kelas X–XII membahas tema yang sama dari sudut berbeda.", "Aturan pemilu sedang berubah setelah Putusan MK No. 135/PUU-XXII/2024; cek undang-undang terbaru.", "Status ibu kota negara (Jakarta dan IKN) bergantung pada keputusan presiden yang belum terbit per 2025; peta ini tidak memuatnya."]}, {"title": "Rujukan", "items": ["Buku teks Pendidikan Pancasila Kurikulum Merdeka kelas X–XII (Kemendikbudristek). Judul bab dicocokkan lewat cuplikan buku, modul ajar, dan program tahunan sekolah karena PDF resmi tidak dapat dibuka dari lingkungan kerja.", "Elemen dan subelemen soal TKA 2025 PPKn (data/tka/tka-ppkn-pilihan-2025.json).", "UUD NRI Tahun 1945; UU No. 12 Tahun 2011; UU No. 23 Tahun 2014; UU No. 39 Tahun 1999; UU No. 26 Tahun 2000; UU No. 12 Tahun 2006; UU No. 7 Tahun 2017; UU No. 24 Tahun 2009; UU No. 23 Tahun 2019; pemberitaan Putusan MK No. 135/PUU-XXII/2024 (Tirto, Metro TV, Juni 2025)."]}], "icon": "<path d=\"M24 5 40 11v12c0 10-7 17-16 20C15 40 8 33 8 23V11z\"/><path d=\"m24 15 2.6 5.4 5.9.8-4.3 4.1 1 5.9L24 28.4l-5.2 2.8 1-5.9-4.3-4.1 5.9-.8z\"/>", "bank": "bank-ppkn.html"};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
 // Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
 const params = new URLSearchParams(location.search);
 let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
-let onlyLanjut = params.get("lanjut") === "1";
+const hasLanjut = MAP.domains.some(d => d.topics.some(t => t.lanjut));
+let onlyLanjut = hasLanjut && params.get("lanjut") === "1";
 const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
@@ -405,7 +518,7 @@ function render(){
     });
     host.appendChild(sec);
   });
-  if(Object.values(byCode).some(x => x.t.lanjut)){
+  if(hasLanjut){
     $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
     if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
   }
@@ -462,11 +575,10 @@ function remember(){
   const url = new URL(location.href);
   kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
   onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
-  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
+  try { history.replaceState(history.state, "", url); } catch(e) {}
   try {
     const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
-    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: feed.isOpen, t: Date.now()});
     localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
   } catch(e) {}
 }
@@ -476,8 +588,12 @@ function applyFilters(){
   search($("q").value); progress(); remember();
 }
 
-// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
-let storyOn = false;
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen, in the shared swipe feed.
+// Closing it (×, Esc, "Di peta") opens the topic that was on screen in the map.
+const feed = makeFeed($("feed"), {
+  onSide: step,
+  onClose(slide){ remember(); if(slide && slide.dataset.code) goTo(slide.dataset.code); },
+});
 const parts = t => {
   const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
   t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
@@ -516,37 +632,25 @@ function openStory(code){
   const list = [];
   MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
   if(!list.length) return;
-  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
-    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+  const mastered = list.filter(([t]) => done.has(t.code)).length;
+  feed.open(list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + mastered + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
     (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '?mode=geser">Latihan bank soal</a>' : '') +
-    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
-  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
-  $("story").hidden = false; document.body.classList.add("story-open");
-  storyOn = true; remember();
-  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
-  $("feed").scrollTop = start ? start.offsetTop : 0;
-  $("feed").focus({preventScroll:true});
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>',
+    Math.max(0, list.findIndex(([t]) => t.code === code)));
+  feed.scroller.querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  remember();
 }
-function closeStory(){
-  const cur = currentSlide();
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  storyOn = false; remember();
-  if(cur) goTo(cur.dataset.code);
-}
-function currentSlide(){
-  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
-  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
-}
+// ← and → (and taps on the left or right of a slide) step through the topic's parts, then on to the next topic.
 function step(dir){
-  const sl = currentSlide();
-  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
-  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
-  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
-  showPart(sl, i);
+  const sl = feed.current();
+  const n = sl && sl.classList.contains("slide") ? sl.querySelectorAll(".bars i").length : 0;
+  const i = n ? +sl.dataset.part + dir : -1;
+  if(i >= 0 && i < n) showPart(sl, i);
+  else feed.move(dir);
 }
-$("storyOpen").addEventListener("click", () => openStory());
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", () => openStory());
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]");
   if(act){
     const sl = act.closest(".slide");
@@ -555,9 +659,8 @@ $("feed").addEventListener("click", e => {
       on ? done.add(code) : done.delete(code); save(); progress();
       act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
     }
-    if(act.dataset.act === "map") closeStory();
-    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
-    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    if(act.dataset.act === "map" || act.dataset.act === "close") feed.close();
+    if(act.dataset.act === "top") feed.go(0);
     return;
   }
   // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
@@ -565,13 +668,6 @@ $("feed").addEventListener("click", e => {
   const sl = e.target.closest(".slide"); if(!sl) return;
   const box = sl.getBoundingClientRect();
   step(e.clientX - box.left < box.width / 3 ? -1 : 1);
-});
-document.addEventListener("keydown", e => {
-  if($("story").hidden) return;
-  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
-  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
-  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
-  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
 });
 
 render();
@@ -597,5 +693,5 @@ $("openAll").addEventListener("click", () => document.querySelectorAll(".card:no
 $("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
 $("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !feed.isOpen) goTo(location.hash.slice(3));
 </script>

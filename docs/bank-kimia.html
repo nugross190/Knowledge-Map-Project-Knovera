@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-kimia.html", "domains": [{"id": "STR", "name": "Struktur materi", "short": "Struktur", "weight": 23.076923076923077, "topics": {"STR-01": "Hakikat ilmu kimia dan kimia hijau", "STR-02": "Struktur atom dan partikel penyusunnya", "STR-03": "Konfigurasi elektron dan bilangan kuantum", "STR-04": "Sistem periodik unsur", "STR-05": "Ikatan kimia", "STR-06": "Bentuk molekul dan gaya antarmolekul"}}, {"id": "STO", "name": "Reaksi dan stoikiometri", "short": "Stoikiometri", "weight": 19.23076923076923, "topics": {"STO-01": "Tata nama senyawa dan persamaan reaksi", "STO-02": "Hukum dasar kimia", "STO-03": "Konsep mol dan stoikiometri", "STO-04": "Reaksi redoks", "STO-05": "Larutan elektrolit dan nonelektrolit"}}, {"id": "ENE", "name": "Energi, laju, dan kesetimbangan", "short": "Energi & laju", "weight": 11.538461538461538, "topics": {"ENE-01": "Termokimia", "ENE-02": "Laju reaksi", "ENE-03": "Kesetimbangan kimia"}}, {"id": "LAR", "name": "Larutan", "short": "Larutan", "weight": 23.076923076923077, "topics": {"LAR-01": "Asam, basa, dan pH", "LAR-02": "Larutan penyangga", "LAR-03": "Hidrolisis garam", "LAR-04": "Kelarutan dan hasil kali kelarutan", "LAR-05": "Sifat koligatif larutan", "LAR-06": "Sistem koloid"}}, {"id": "ELK", "name": "Elektrokimia", "short": "Elektrokimia", "weight": 7.6923076923076925, "topics": {"ELK-01": "Sel volta dan korosi", "ELK-02": "Elektrolisis dan hukum Faraday"}}, {"id": "ORG", "name": "Kimia karbon dan makromolekul", "short": "Organik", "weight": 15.384615384615385, "topics": {"ORG-01": "Hidrokarbon dan minyak bumi", "ORG-02": "Gugus fungsi senyawa karbon", "ORG-03": "Benzena dan turunannya", "ORG-04": "Makromolekul"}}]}, "questions": [{"id": "STR-01-001", "t": "STR-01", "lv": 1, "q": "Merancang proses dan produk kimia yang mengurangi atau menghilangkan zat berbahaya disebut…", "a": "Kimia hijau", "x": ""}, {"id": "STR-01-002", "t": "STR-01", "lv": 2, "q": "Dua belas prinsip kimia hijau dirumuskan oleh Paul Anastas dan…", "a": "John Warner", "x": ""}, {"id": "STR-01-003", "t": "STR-01", "lv": 2, "q": "Langkah metode ilmiah sesudah merumuskan masalah adalah…", "a": "Merumuskan hipotesis", "x": ""}, {"id": "STR-01-004", "t": "STR-01", "lv": 2, "q": "Menurut prinsip kimia hijau, mencegah limbah lebih baik daripada…", "a": "Mengolahnya", "x": ""}, {"id": "STR-01-005", "t": "STR-01", "lv": 2, "q": "Botol pembersih lantai di toko memuat simbol tangan dan logam yang terkikis cairan. Simbol bahaya ini berarti bahan…", "a": "Korosif", "x": "", "k": "label bahan kimia"}, {"id": "STR-02-001", "t": "STR-02", "lv": 1, "q": "Partikel atom bermuatan negatif adalah…", "a": "Elektron", "x": ""}, {"id": "STR-02-002", "t": "STR-02", "lv": 1, "q": "Penemu neutron (1932) adalah…", "a": "James Chadwick", "x": ""}, {"id": "STR-02-003", "t": "STR-02", "lv": 1, "q": "Atom-atom dengan nomor atom sama tetapi nomor massa berbeda disebut…", "a": "Isotop", "x": ""}, {"id": "STR-02-004", "t": "STR-02", "lv": 1, "q": "Penemu elektron melalui percobaan sinar katode adalah…", "a": "J. J. Thomson", "x": ""}, {"id": "STR-02-005", "t": "STR-02", "lv": 1, "q": "Atom-atom dengan nomor massa sama disebut…", "a": "Isobar", "x": ""}, {"id": "STR-02-006", "t": "STR-02", "lv": 2, "q": "Atom ²³₁₁Na memiliki berapa neutron?", "a": "12", "x": "23 − 11."}, {"id": "STR-02-007", "t": "STR-02", "lv": 2, "q": "Berapa jumlah elektron pada ion Na⁺ (nomor atom 11)?", "a": "10", "x": "Ion positif kehilangan elektron."}, {"id": "STR-02-008", "t": "STR-02", "lv": 3, "q": "Berapa jumlah elektron pada ion S²⁻ (nomor atom 16)?", "a": "18", "x": ""}, {"id": "STR-02-009", "t": "STR-02", "lv": 2, "q": "Arkeolog memakai karbon-14, sedangkan sebagian besar karbon di alam adalah karbon-12. Hubungan ¹²C dan ¹⁴C disebut…", "a": "Isotop", "x": "", "k": "situs purbakala"}, {"id": "STR-03-001", "t": "STR-03", "lv": 1, "q": "Aturan bahwa elektron mengisi orbital dari energi terendah disebut aturan…", "a": "Aufbau", "x": ""}, {"id": "STR-03-002", "t": "STR-03", "lv": 1, "q": "Aturan bahwa elektron mengisi orbital satu per satu sebelum berpasangan disebut aturan…", "a": "Hund", "x": ""}, {"id": "STR-03-003", "t": "STR-03", "lv": 1, "q": "Satu orbital dapat berisi paling banyak … elektron.", "a": "2", "x": ""}, {"id": "STR-03-004", "t": "STR-03", "lv": 2, "q": "Bilangan kuantum yang menyatakan subkulit adalah bilangan kuantum…", "a": "Azimut (l)", "x": ""}, {"id": "STR-03-005", "t": "STR-03", "lv": 2, "q": "Konfigurasi elektron atom klor (Z = 17) adalah…", "a": "1s² 2s² 2p⁶ 3s² 3p⁵", "x": ""}, {"id": "STR-03-006", "t": "STR-03", "lv": 2, "q": "Unsur dengan Z = 17 terletak pada golongan dan periode…", "a": "VIIA, periode 3", "x": ""}, {"id": "STR-03-007", "t": "STR-03", "lv": 2, "q": "Konfigurasi elektron yang berakhir pada subkulit d menunjukkan unsur golongan…", "a": "B (transisi)", "x": ""}, {"id": "STR-03-008", "t": "STR-03", "lv": 3, "q": "Konfigurasi elektron kromium (Cr) adalah…", "a": "[Ar] 3d⁵ 4s¹", "x": "Subkulit d setengah penuh lebih stabil."}, {"id": "STR-03-009", "t": "STR-03", "lv": 3, "q": "Konfigurasi ion Fe²⁺ adalah…", "a": "[Ar] 3d⁶", "x": "Elektron 4s dilepas lebih dulu."}, {"id": "STR-04-001", "t": "STR-04", "lv": 1, "q": "Golongan VIIA disebut golongan…", "a": "Halogen", "x": ""}, {"id": "STR-04-002", "t": "STR-04", "lv": 1, "q": "Golongan VIIIA disebut golongan…", "a": "Gas mulia", "x": ""}, {"id": "STR-04-003", "t": "STR-04", "lv": 1, "q": "Unsur dengan keelektronegatifan tertinggi adalah…", "a": "Fluor (F)", "x": ""}, {"id": "STR-04-004", "t": "STR-04", "lv": 2, "q": "Dalam satu golongan dari atas ke bawah, jari-jari atom…", "a": "Bertambah", "x": ""}, {"id": "STR-04-005", "t": "STR-04", "lv": 2, "q": "Dalam satu periode dari kiri ke kanan, energi ionisasi cenderung…", "a": "Bertambah", "x": ""}, {"id": "STR-04-006", "t": "STR-04", "lv": 1, "q": "Tabel periodik modern disusun berdasarkan kenaikan nomor atom oleh…", "a": "Moseley", "x": ""}, {"id": "STR-04-007", "t": "STR-04", "lv": 2, "q": "Hukum oktaf dikemukakan oleh…", "a": "Newlands", "x": ""}, {"id": "STR-04-008", "t": "STR-04", "lv": 3, "q": "Unsur ekasilikon yang diramalkan Mendeleev kini dikenal sebagai…", "a": "Germanium", "x": ""}, {"id": "STR-04-009", "t": "STR-04", "lv": 2, "q": "Lampu papan reklame berisi gas yang hampir tidak bereaksi dengan unsur lain, seperti neon. Gas ini termasuk golongan…", "a": "Gas mulia (VIIIA)", "x": "", "k": "papan reklame"}, {"id": "STR-04-010", "t": "STR-04", "lv": 2, "q": "Petugas laboratorium sekolah menyusun unsur di tabel periodik menurut kenaikan nomor atom. Penyusunan ini dikemukakan oleh…", "a": "Moseley", "x": "", "k": "laboratorium"}, {"id": "STR-05-001", "t": "STR-05", "lv": 1, "q": "Ikatan yang terbentuk dari serah-terima elektron antara logam dan nonlogam disebut ikatan…", "a": "Ion", "x": ""}, {"id": "STR-05-002", "t": "STR-05", "lv": 1, "q": "Ikatan dari pemakaian bersama pasangan elektron antara nonlogam disebut ikatan…", "a": "Kovalen", "x": ""}, {"id": "STR-05-003", "t": "STR-05", "lv": 1, "q": "Kecenderungan atom mencapai 8 elektron valensi disebut aturan…", "a": "Oktet", "x": ""}, {"id": "STR-05-004", "t": "STR-05", "lv": 1, "q": "Ikatan yang pasangan elektronnya hanya disumbang satu atom, seperti pada NH₄⁺, disebut ikatan…", "a": "Kovalen koordinasi", "x": ""}, {"id": "STR-05-005", "t": "STR-05", "lv": 2, "q": "Molekul CO₂ bersifat polar atau nonpolar?", "a": "Nonpolar", "x": "Bentuknya linear dan simetris."}, {"id": "STR-05-006", "t": "STR-05", "lv": 1, "q": "Ikatan yang berupa lautan elektron sehingga bahannya dapat ditempa disebut ikatan…", "a": "Logam", "x": ""}, {"id": "STR-05-007", "t": "STR-05", "lv": 3, "q": "Senyawa yang atom pusatnya hanya memiliki 6 elektron sehingga tidak memenuhi oktet adalah…", "a": "BF₃", "x": ""}, {"id": "STR-05-008", "t": "STR-05", "lv": 1, "q": "Garam dapur (NaCl) yang dilarutkan dalam air menghantarkan listrik. Jenis ikatan dalam NaCl adalah…", "a": "Ion", "x": "", "k": "dapur"}, {"id": "STR-05-009", "t": "STR-05", "lv": 2, "q": "Pandai besi menempa besi panas menjadi parang tanpa membuatnya pecah. Sifat dapat ditempa ini disebabkan oleh ikatan…", "a": "Logam", "x": "", "k": "pandai besi"}, {"id": "STR-05-010", "t": "STR-05", "lv": 2, "q": "Kabel listrik di rumah dibuat dari tembaga yang dapat ditempa dan menghantarkan listrik karena ikatannya berupa lautan elektron. Ikatan apa ini?", "a": "Ikatan logam", "x": "", "k": "kabel listrik"}, {"id": "STR-06-001", "t": "STR-06", "lv": 1, "q": "Bentuk molekul H₂O adalah…", "a": "Bentuk V (bengkok)", "x": ""}, {"id": "STR-06-002", "t": "STR-06", "lv": 2, "q": "Bentuk molekul CH₄ adalah…", "a": "Tetrahedral", "x": ""}, {"id": "STR-06-003", "t": "STR-06", "lv": 2, "q": "Bentuk molekul NH₃ adalah…", "a": "Piramida segitiga", "x": ""}, {"id": "STR-06-004", "t": "STR-06", "lv": 1, "q": "Gaya antarmolekul yang paling kuat di antara gaya London, dipol-dipol, dan ikatan hidrogen adalah…", "a": "Ikatan hidrogen", "x": ""}, {"id": "STR-06-005", "t": "STR-06", "lv": 3, "q": "Hibridisasi atom pusat pada molekul SF₆ adalah…", "a": "sp³d²", "x": ""}, {"id": "STR-06-006", "t": "STR-06", "lv": 2, "q": "Air mendidih pada 100 °C, jauh lebih tinggi daripada senyawa sejenis bermassa kecil. Penyebab utamanya adalah…", "a": "Ikatan hidrogen", "x": "", "k": "dapur"}, {"id": "STO-01-001", "t": "STO-01", "lv": 1, "q": "Nama senyawa NaCl adalah…", "a": "Natrium klorida", "x": ""}, {"id": "STO-01-002", "t": "STO-01", "lv": 1, "q": "Nama senyawa FeCl₃ adalah…", "a": "Besi(III) klorida", "x": ""}, {"id": "STO-01-003", "t": "STO-01", "lv": 2, "q": "Nama senyawa N₂O₅ adalah…", "a": "Dinitrogen pentaoksida", "x": ""}, {"id": "STO-01-004", "t": "STO-01", "lv": 2, "q": "Dalam menyetarakan persamaan reaksi, yang boleh diubah hanya…", "a": "Koefisien", "x": ""}, {"id": "STO-01-005", "t": "STO-01", "lv": 2, "q": "Lambang wujud (aq) dalam persamaan reaksi berarti…", "a": "Larutan dalam air", "x": ""}, {"id": "STO-01-006", "t": "STO-01", "lv": 2, "q": "Cuka dapur mengandung asam asetat. Nama lain asam asetat menurut IUPAC adalah…", "a": "Asam etanoat", "x": "", "k": "dapur"}, {"id": "STO-02-001", "t": "STO-02", "lv": 1, "q": "Hukum kekekalan massa dikemukakan oleh…", "a": "Lavoisier", "x": ""}, {"id": "STO-02-002", "t": "STO-02", "lv": 1, "q": "Hukum perbandingan tetap dikemukakan oleh…", "a": "Proust", "x": ""}, {"id": "STO-02-003", "t": "STO-02", "lv": 2, "q": "Hukum kelipatan perbandingan dikemukakan oleh…", "a": "Dalton", "x": ""}, {"id": "STO-02-004", "t": "STO-02", "lv": 2, "q": "Hukum perbandingan volume gas dikemukakan oleh…", "a": "Gay-Lussac", "x": ""}, {"id": "STO-02-005", "t": "STO-02", "lv": 1, "q": "Pada suhu dan tekanan sama, gas bervolume sama mengandung jumlah molekul sama. Ini adalah hipotesis…", "a": "Avogadro", "x": ""}, {"id": "STO-02-006", "t": "STO-02", "lv": 3, "q": "Karbon dan oksigen membentuk CO dan CO₂. Hukum yang menjelaskan perbandingan massa oksigennya 1 : 2 adalah hukum…", "a": "Kelipatan perbandingan (Dalton)", "x": ""}, {"id": "STO-02-007", "t": "STO-02", "lv": 2, "q": "Kayu yang dibakar di tungku tampak menjadi abu yang jauh lebih ringan. Massa yang “hilang” sebenarnya berubah menjadi gas. Hukum yang tetap berlaku adalah hukum…", "a": "Kekekalan massa (Lavoisier)", "x": "", "k": "tungku"}, {"id": "STO-02-008", "t": "STO-02", "lv": 1, "q": "Air dari mata air pegunungan maupun air laut yang disuling selalu tersusun dari hidrogen dan oksigen dengan perbandingan massa yang sama. Hukum yang tergambar adalah hukum…", "a": "Perbandingan tetap (Proust)", "x": "", "k": "air minum"}, {"id": "STO-02-009", "t": "STO-02", "lv": 2, "q": "Tabung elpiji 3 kg di warung berisi gas propana dan butana. Pada suhu dan tekanan sama, volume yang sama dari dua gas berbeda berisi jumlah molekul yang…", "a": "Sama (hukum Avogadro)", "x": "", "k": "elpiji"}, {"id": "STO-03-001", "t": "STO-03", "lv": 1, "q": "Bilangan Avogadro bernilai…", "a": "6,02 × 10²³ partikel/mol", "x": ""}, {"id": "STO-03-002", "t": "STO-03", "lv": 1, "q": "Volume 1 mol gas pada STP (0 °C, 1 atm) adalah…", "a": "22,4 L", "x": ""}, {"id": "STO-03-003", "t": "STO-03", "lv": 1, "q": "Rumus jumlah mol dari massa adalah n = …", "a": "m/Mr", "x": ""}, {"id": "STO-03-004", "t": "STO-03", "lv": 2, "q": "Berapa mol 18 g air (Mr = 18)?", "a": "1 mol", "x": ""}, {"id": "STO-03-005", "t": "STO-03", "lv": 2, "q": "Berapa mol gas yang volumenya 11,2 L pada STP?", "a": "0,5 mol", "x": ""}, {"id": "STO-03-006", "t": "STO-03", "lv": 2, "q": "Sebanyak 0,2 mol zat dilarutkan dalam air sampai 500 mL. Berapa molaritasnya?", "a": "0,4 M", "x": ""}, {"id": "STO-03-007", "t": "STO-03", "lv": 1, "q": "Zat yang habis lebih dulu dalam reaksi disebut…", "a": "Pereaksi pembatas", "x": ""}, {"id": "STO-03-008", "t": "STO-03", "lv": 3, "q": "Senyawa berumus empiris CH₂ memiliki Mr 28. Rumus molekulnya adalah…", "a": "C₂H₄", "x": ""}, {"id": "STO-03-009", "t": "STO-03", "lv": 3, "q": "Berapa kadar karbon dalam CO₂ (Ar C = 12, O = 16)?", "a": "Sekitar 27,3%", "x": "12/44 × 100%."}, {"id": "STO-03-010", "t": "STO-03", "lv": 2, "q": "Satu sendok garam dapur berisi 0,1 mol NaCl. Berapa jumlah satuan NaCl di dalamnya?", "a": "6,02 × 10²²", "x": "", "k": "dapur"}, {"id": "STO-03-011", "t": "STO-03", "lv": 2, "q": "Penjual es teh melarutkan 0,5 mol gula dalam air sampai volumenya 1 L. Berapa molaritas larutan gula itu?", "a": "0,5 M", "x": "", "k": "warung"}, {"id": "STO-04-001", "t": "STO-04", "lv": 1, "q": "Pelepasan elektron disebut…", "a": "Oksidasi", "x": ""}, {"id": "STO-04-002", "t": "STO-04", "lv": 1, "q": "Zat yang mengalami oksidasi disebut…", "a": "Reduktor", "x": ""}, {"id": "STO-04-003", "t": "STO-04", "lv": 1, "q": "Bilangan oksidasi unsur bebas adalah…", "a": "0", "x": ""}, {"id": "STO-04-004", "t": "STO-04", "lv": 2, "q": "Bilangan oksidasi O dalam H₂O₂ adalah…", "a": "−1", "x": ""}, {"id": "STO-04-005", "t": "STO-04", "lv": 2, "q": "Bilangan oksidasi H dalam NaH adalah…", "a": "−1", "x": ""}, {"id": "STO-04-006", "t": "STO-04", "lv": 2, "q": "Bilangan oksidasi S dalam H₂SO₄ adalah…", "a": "+6", "x": ""}, {"id": "STO-04-007", "t": "STO-04", "lv": 3, "q": "Bilangan oksidasi Mn dalam KMnO₄ adalah…", "a": "+7", "x": ""}, {"id": "STO-04-008", "t": "STO-04", "lv": 3, "q": "Reaksi ketika satu zat mengalami oksidasi dan reduksi sekaligus disebut…", "a": "Autoredoks (disproporsionasi)", "x": ""}, {"id": "STO-04-009", "t": "STO-04", "lv": 2, "q": "Pagar besi di depan rumah berkarat karena bereaksi dengan oksigen dan air. Dalam reaksi ini besi mengalami…", "a": "Oksidasi", "x": "", "k": "karat pagar"}, {"id": "STO-05-001", "t": "STO-05", "lv": 1, "q": "Larutan yang menghantarkan listrik disebut larutan…", "a": "Elektrolit", "x": ""}, {"id": "STO-05-002", "t": "STO-05", "lv": 1, "q": "Larutan gula termasuk elektrolit atau nonelektrolit?", "a": "Nonelektrolit", "x": ""}, {"id": "STO-05-003", "t": "STO-05", "lv": 2, "q": "Derajat ionisasi elektrolit kuat adalah…", "a": "1", "x": ""}, {"id": "STO-05-004", "t": "STO-05", "lv": 2, "q": "Larutan asam asetat menyalakan lampu dengan redup. Larutan ini termasuk elektrolit…", "a": "Lemah", "x": ""}, {"id": "STO-05-005", "t": "STO-05", "lv": 2, "q": "Minuman isotonik mengandung ion natrium dan kalium yang membantu tubuh mengganti cairan. Larutan bermuatan ion seperti ini disebut larutan…", "a": "Elektrolit", "x": "", "k": "minuman isotonik"}, {"id": "ENE-01-001", "t": "ENE-01", "lv": 1, "q": "Reaksi yang melepas kalor ke lingkungan disebut reaksi…", "a": "Eksoterm", "x": ""}, {"id": "ENE-01-002", "t": "ENE-01", "lv": 1, "q": "Tanda ΔH pada reaksi endoterm adalah…", "a": "Positif", "x": ""}, {"id": "ENE-01-003", "t": "ENE-01", "lv": 1, "q": "Perubahan entalpi pembentukan standar unsur dalam bentuk paling stabil bernilai…", "a": "0", "x": ""}, {"id": "ENE-01-004", "t": "ENE-01", "lv": 1, "q": "Hukum yang menyatakan ΔH reaksi hanya bergantung pada keadaan awal dan akhir adalah hukum…", "a": "Hess", "x": ""}, {"id": "ENE-01-005", "t": "ENE-01", "lv": 2, "q": "Jika persamaan reaksi dibalik, tanda ΔH…", "a": "Ikut berbalik", "x": ""}, {"id": "ENE-01-006", "t": "ENE-01", "lv": 2, "q": "Rumus ΔH dari energi ikatan adalah energi ikatan yang diputus dikurangi…", "a": "Energi ikatan yang dibentuk", "x": ""}, {"id": "ENE-01-007", "t": "ENE-01", "lv": 3, "q": "Kalorimeter berisi 100 g air naik suhunya 10 °C (c = 4,2 J/g·°C). Berapa kalor yang diserap air?", "a": "4.200 J", "x": ""}, {"id": "ENE-01-008", "t": "ENE-01", "lv": 3, "q": "Kalor 4.200 J dilepas oleh 0,1 mol zat yang bereaksi. Berapa ΔH reaksi per mol?", "a": "−42 kJ/mol", "x": "ΔH = −q/n."}, {"id": "ENE-01-009", "t": "ENE-01", "lv": 1, "q": "Kompres dingin instan terasa dingin di kulit karena reaksi di dalamnya menyerap kalor. Reaksi ini termasuk reaksi…", "a": "Endoterm", "x": "", "k": "P3K"}, {"id": "ENE-01-010", "t": "ENE-01", "lv": 2, "q": "Kompor gas memanaskan panci karena pembakaran gas melepas kalor. Reaksi pembakaran ini memiliki ΔH bertanda…", "a": "Negatif (eksoterm)", "x": "", "k": "dapur"}, {"id": "ENE-02-001", "t": "ENE-02", "lv": 1, "q": "Zat yang mempercepat reaksi tanpa ikut habis bereaksi disebut…", "a": "Katalis", "x": ""}, {"id": "ENE-02-002", "t": "ENE-02", "lv": 1, "q": "Katalis mempercepat reaksi dengan cara menurunkan…", "a": "Energi aktivasi", "x": ""}, {"id": "ENE-02-003", "t": "ENE-02", "lv": 2, "q": "Sebutkan dua faktor yang mempercepat laju reaksi.", "a": "Dua di antara: konsentrasi, luas permukaan, suhu, katalis", "x": ""}, {"id": "ENE-02-004", "t": "ENE-02", "lv": 2, "q": "Orde reaksi ditentukan dari…", "a": "Data percobaan", "x": ""}, {"id": "ENE-02-005", "t": "ENE-02", "lv": 2, "q": "Pada persamaan laju v = k[A]²[B], orde total reaksinya adalah…", "a": "3", "x": ""}, {"id": "ENE-02-006", "t": "ENE-02", "lv": 3, "q": "Laju reaksi menjadi 2 kali setiap kenaikan suhu 10 °C. Jika suhu dinaikkan 30 °C, laju menjadi … kali.", "a": "8", "x": ""}, {"id": "ENE-02-007", "t": "ENE-02", "lv": 1, "q": "Obat berbentuk serbuk bekerja lebih cepat daripada tablet utuh. Faktor laju reaksi yang berperan adalah…", "a": "Luas permukaan", "x": "", "k": "obat"}, {"id": "ENE-02-008", "t": "ENE-02", "lv": 2, "q": "Sayur yang disimpan di kulkas lebih lama membusuk karena laju reaksi pembusukan turun. Faktor yang berperan adalah…", "a": "Suhu", "x": "", "k": "kulkas"}, {"id": "ENE-03-001", "t": "ENE-03", "lv": 1, "q": "Asas yang menjelaskan pergeseran kesetimbangan bila diberi aksi disebut asas…", "a": "Le Chatelier", "x": ""}, {"id": "ENE-03-002", "t": "ENE-03", "lv": 1, "q": "Jika suhu dinaikkan, kesetimbangan bergeser ke arah reaksi…", "a": "Endoterm", "x": ""}, {"id": "ENE-03-003", "t": "ENE-03", "lv": 2, "q": "Jika tekanan dinaikkan, kesetimbangan bergeser ke ruas dengan jumlah mol gas…", "a": "Lebih kecil", "x": ""}, {"id": "ENE-03-004", "t": "ENE-03", "lv": 2, "q": "Satu-satunya faktor yang mengubah nilai tetapan kesetimbangan K adalah…", "a": "Suhu", "x": ""}, {"id": "ENE-03-005", "t": "ENE-03", "lv": 2, "q": "Proses industri pembuatan amonia disebut proses…", "a": "Haber-Bosch", "x": ""}, {"id": "ENE-03-006", "t": "ENE-03", "lv": 2, "q": "Katalis dalam proses kontak pembuatan asam sulfat adalah…", "a": "V₂O₅", "x": ""}, {"id": "ENE-03-007", "t": "ENE-03", "lv": 3, "q": "Dalam Kc, zat yang tidak dimasukkan ke rumus adalah zat…", "a": "Padat dan cair murni", "x": ""}, {"id": "ENE-03-008", "t": "ENE-03", "lv": 2, "q": "Pabrik pupuk urea membutuhkan amonia yang dibuat dari N₂ dan H₂. Proses industri pembuatan amonia ini disebut…", "a": "Proses Haber-Bosch", "x": "", "k": "pabrik pupuk"}, {"id": "ENE-03-009", "t": "ENE-03", "lv": 2, "q": "Botol minuman bersoda dibuka sehingga tekanan di dalamnya turun dan gas CO₂ keluar. Penurunan tekanan menggeser kesetimbangan ke ruas dengan jumlah mol gas yang…", "a": "Lebih besar", "x": "", "k": "minuman bersoda"}, {"id": "LAR-01-001", "t": "LAR-01", "lv": 1, "q": "Menurut Arrhenius, asam adalah zat yang dalam air menghasilkan ion…", "a": "H⁺", "x": ""}, {"id": "LAR-01-002", "t": "LAR-01", "lv": 1, "q": "Menurut Brønsted-Lowry, asam adalah donor…", "a": "Proton (H⁺)", "x": ""}, {"id": "LAR-01-003", "t": "LAR-01", "lv": 1, "q": "Pada 25 °C, pH + pOH = …", "a": "14", "x": ""}, {"id": "LAR-01-004", "t": "LAR-01", "lv": 2, "q": "Berapa pH larutan HCl 0,01 M?", "a": "2", "x": ""}, {"id": "LAR-01-005", "t": "LAR-01", "lv": 2, "q": "Berapa pH larutan NaOH 0,001 M?", "a": "11", "x": "pOH = 3."}, {"id": "LAR-01-006", "t": "LAR-01", "lv": 2, "q": "Indikator fenolftalein dalam basa berwarna…", "a": "Merah muda", "x": ""}, {"id": "LAR-01-007", "t": "LAR-01", "lv": 3, "q": "Berapa pH larutan CH₃COOH 0,1 M (Ka = 10⁻⁵)?", "a": "3", "x": "[H⁺] = √(10⁻⁵ × 0,1) = 10⁻³."}, {"id": "LAR-01-008", "t": "LAR-01", "lv": 3, "q": "Berapa pH larutan H₂SO₄ 0,005 M?", "a": "2", "x": "[H⁺] = 2 × 0,005 = 0,01."}, {"id": "LAR-01-009", "t": "LAR-01", "lv": 2, "q": "Volume NaOH 0,1 M yang tepat menetralkan 20 mL HCl 0,1 M adalah…", "a": "20 mL", "x": ""}, {"id": "LAR-01-010", "t": "LAR-01", "lv": 1, "q": "Air sabun membuat kertas lakmus merah berubah biru. Sifat air sabun adalah…", "a": "Basa", "x": "", "k": "sabun"}, {"id": "LAR-01-011", "t": "LAR-01", "lv": 2, "q": "Cuka dapur diencerkan 10 kali. Karena asam asetat asam lemah, pH-nya naik … 1 satuan.", "a": "Kurang dari", "x": "", "k": "dapur"}, {"id": "LAR-02-001", "t": "LAR-02", "lv": 1, "q": "Larutan yang pH-nya hampir tidak berubah bila ditambah sedikit asam atau basa disebut larutan…", "a": "Penyangga (buffer)", "x": ""}, {"id": "LAR-02-002", "t": "LAR-02", "lv": 1, "q": "Penyangga utama dalam darah adalah pasangan…", "a": "H₂CO₃/HCO₃⁻ (karbonat)", "x": ""}, {"id": "LAR-02-003", "t": "LAR-02", "lv": 2, "q": "Campuran CH₃COOH dan CH₃COONa membentuk penyangga…", "a": "Asam", "x": ""}, {"id": "LAR-02-004", "t": "LAR-02", "lv": 2, "q": "Campuran NH₃ dan NH₄Cl membentuk penyangga…", "a": "Basa", "x": ""}, {"id": "LAR-02-005", "t": "LAR-02", "lv": 2, "q": "Penyangga dalam cairan sel adalah penyangga…", "a": "Fosfat", "x": ""}, {"id": "LAR-02-006", "t": "LAR-02", "lv": 3, "q": "Campuran 0,1 mol CH₃COOH dan 0,1 mol CH₃COONa (Ka = 10⁻⁵). Berapa pH-nya?", "a": "5", "x": ""}, {"id": "LAR-02-007", "t": "LAR-02", "lv": 2, "q": "pH darah manusia dijaga sekitar…", "a": "7,4", "x": ""}, {"id": "LAR-02-008", "t": "LAR-02", "lv": 2, "q": "Cairan infus di puskesmas disiapkan agar pH-nya stabil saat masuk darah. Sistem penjaga pH alami dalam darah disebut…", "a": "Penyangga karbonat", "x": "", "k": "puskesmas"}, {"id": "LAR-03-001", "t": "LAR-03", "lv": 1, "q": "Garam dari asam kuat dan basa kuat, seperti NaCl, bersifat…", "a": "Netral", "x": ""}, {"id": "LAR-03-002", "t": "LAR-03", "lv": 1, "q": "Garam CH₃COONa bersifat…", "a": "Basa", "x": ""}, {"id": "LAR-03-003", "t": "LAR-03", "lv": 1, "q": "Garam NH₄Cl bersifat…", "a": "Asam", "x": ""}, {"id": "LAR-03-004", "t": "LAR-03", "lv": 2, "q": "Garam dari asam lemah dan basa lemah mengalami hidrolisis…", "a": "Total", "x": ""}, {"id": "LAR-03-005", "t": "LAR-03", "lv": 3, "q": "Sifat garam mengikuti komponen pembentuknya yang…", "a": "Kuat", "x": ""}, {"id": "LAR-03-006", "t": "LAR-03", "lv": 2, "q": "Petani menebar pupuk ZA, yaitu amonium sulfat dari asam kuat H₂SO₄ dan basa lemah NH₃. Larutan pupuk ini bersifat…", "a": "Asam", "x": "", "k": "pupuk"}, {"id": "LAR-04-001", "t": "LAR-04", "lv": 1, "q": "Rumus Ksp untuk AgCl adalah…", "a": "s²", "x": ""}, {"id": "LAR-04-002", "t": "LAR-04", "lv": 2, "q": "Rumus Ksp untuk Ag₂CrO₄ adalah…", "a": "4s³", "x": ""}, {"id": "LAR-04-003", "t": "LAR-04", "lv": 2, "q": "Adanya ion senama … kelarutan.", "a": "Memperkecil", "x": ""}, {"id": "LAR-04-004", "t": "LAR-04", "lv": 2, "q": "Jika Qc lebih besar daripada Ksp, maka…", "a": "Terbentuk endapan", "x": ""}, {"id": "LAR-04-005", "t": "LAR-04", "lv": 3, "q": "Kelarutan AgCl dalam air 10⁻⁵ mol/L. Berapa Ksp-nya?", "a": "10⁻¹⁰", "x": ""}, {"id": "LAR-04-006", "t": "LAR-04", "lv": 2, "q": "Kerak putih menempel di dasar panci perebus air karena ion-ion dalam air sadah melampaui batas kelarutannya. Terbentuknya padatan ketika Qc lebih besar daripada Ksp disebut…", "a": "Pengendapan", "x": "", "k": "dapur"}, {"id": "LAR-05-001", "t": "LAR-05", "lv": 1, "q": "Sifat larutan yang hanya bergantung pada jumlah partikel zat terlarut disebut sifat…", "a": "Koligatif", "x": ""}, {"id": "LAR-05-002", "t": "LAR-05", "lv": 1, "q": "Satuan molalitas adalah mol per…", "a": "Kilogram pelarut", "x": ""}, {"id": "LAR-05-003", "t": "LAR-05", "lv": 2, "q": "Faktor van't Hoff untuk larutan nonelektrolit adalah…", "a": "1", "x": ""}, {"id": "LAR-05-004", "t": "LAR-05", "lv": 2, "q": "Berapa kenaikan titik didih larutan urea 1 molal (Kb air = 0,52 °C/m)?", "a": "0,52 °C", "x": ""}, {"id": "LAR-05-005", "t": "LAR-05", "lv": 2, "q": "Berapa penurunan titik beku larutan glukosa 0,1 molal (Kf air = 1,86 °C/m)?", "a": "0,186 °C", "x": ""}, {"id": "LAR-05-006", "t": "LAR-05", "lv": 3, "q": "Berapa penurunan titik beku larutan NaCl 0,1 molal (Kf = 1,86 °C/m, i = 2)?", "a": "0,372 °C", "x": ""}, {"id": "LAR-05-007", "t": "LAR-05", "lv": 3, "q": "Penyulingan air laut menjadi air tawar dengan memberi tekanan melebihi tekanan osmotik disebut…", "a": "Osmosis balik", "x": ""}, {"id": "LAR-05-008", "t": "LAR-05", "lv": 2, "q": "Nelayan mengawetkan ikan dengan garam karena garam menarik air keluar dari sel mikroba. Sifat koligatif yang berperan adalah…", "a": "Tekanan osmotik", "x": "", "k": "ikan asin"}, {"id": "LAR-05-009", "t": "LAR-05", "lv": 2, "q": "Cairan infus harus memiliki tekanan osmotik sama dengan cairan darah. Larutan seperti ini disebut…", "a": "Isotonik", "x": "", "k": "puskesmas"}, {"id": "LAR-06-001", "t": "LAR-06", "lv": 1, "q": "Penghamburan cahaya oleh partikel koloid disebut efek…", "a": "Tyndall", "x": ""}, {"id": "LAR-06-002", "t": "LAR-06", "lv": 2, "q": "Koloid zat cair dalam zat cair disebut…", "a": "Emulsi", "x": ""}, {"id": "LAR-06-003", "t": "LAR-06", "lv": 2, "q": "Asap dari pembakaran sampah di halaman termasuk koloid jenis…", "a": "Aerosol padat", "x": "", "k": "pembakaran sampah"}, {"id": "LAR-06-004", "t": "LAR-06", "lv": 2, "q": "Busa sabun cuci piring (gas yang terdispersi dalam cairan) termasuk koloid jenis…", "a": "Buih", "x": "", "k": "dapur"}, {"id": "LAR-06-005", "t": "LAR-06", "lv": 2, "q": "Pemisahan ion dari koloid dengan selaput semipermeabel, seperti cuci darah, disebut…", "a": "Dialisis", "x": ""}, {"id": "LAR-06-006", "t": "LAR-06", "lv": 1, "q": "Santan kelapa dan susu sapi termasuk koloid jenis…", "a": "Emulsi", "x": "", "k": "dapur"}, {"id": "LAR-06-007", "t": "LAR-06", "lv": 2, "q": "Agar-agar yang sudah dingin dan kenyal termasuk koloid jenis…", "a": "Gel", "x": "", "k": "dapur"}, {"id": "LAR-06-008", "t": "LAR-06", "lv": 2, "q": "Berkas sinar matahari terlihat jelas menembus kabut pagi di kebun teh. Gejala ini disebut…", "a": "Efek Tyndall", "x": "", "k": "kebun teh"}, {"id": "ELK-01-001", "t": "ELK-01", "lv": 1, "q": "Di sel volta, anoda adalah tempat terjadinya…", "a": "Oksidasi", "x": ""}, {"id": "ELK-01-002", "t": "ELK-01", "lv": 1, "q": "Kutub katoda pada sel volta bermuatan…", "a": "Positif", "x": ""}, {"id": "ELK-01-003", "t": "ELK-01", "lv": 1, "q": "Rumus potensial sel standar adalah E°sel = …", "a": "E°katoda − E°anoda", "x": ""}, {"id": "ELK-01-004", "t": "ELK-01", "lv": 2, "q": "E° Zn = −0,76 V dan E° Cu = +0,34 V. Berapa E°sel Zn–Cu?", "a": "1,10 V", "x": ""}, {"id": "ELK-01-005", "t": "ELK-01", "lv": 2, "q": "Reaksi redoks berlangsung spontan bila E°sel…", "a": "Positif (lebih dari 0)", "x": ""}, {"id": "ELK-01-006", "t": "ELK-01", "lv": 2, "q": "Pelapisan besi dengan seng untuk mencegah karat disebut…", "a": "Galvanisasi", "x": ""}, {"id": "ELK-01-007", "t": "ELK-01", "lv": 3, "q": "Logam di sebelah kiri deret volta lebih mudah…", "a": "Teroksidasi", "x": ""}, {"id": "ELK-01-008", "t": "ELK-01", "lv": 2, "q": "Atap seng di rumah-rumah tidak cepat berkarat karena lembaran besinya dilapisi seng. Cara pencegahan korosi ini disebut…", "a": "Galvanisasi", "x": "", "k": "atap rumah"}, {"id": "ELK-01-009", "t": "ELK-01", "lv": 2, "q": "Pipa besi di dalam tanah dihubungkan dengan batang magnesium agar tidak berkarat. Cara ini disebut…", "a": "Proteksi katodik", "x": "", "k": "pipa air"}, {"id": "ELK-02-001", "t": "ELK-02", "lv": 1, "q": "Di sel elektrolisis, kutub anoda bermuatan…", "a": "Positif", "x": ""}, {"id": "ELK-02-002", "t": "ELK-02", "lv": 1, "q": "Pada elektrolisis, reduksi terjadi di…", "a": "Katoda", "x": ""}, {"id": "ELK-02-003", "t": "ELK-02", "lv": 2, "q": "Elektrolisis larutan NaCl menghasilkan gas … di katoda.", "a": "H₂", "x": ""}, {"id": "ELK-02-004", "t": "ELK-02", "lv": 2, "q": "Elektrolisis larutan yang mengandung ion halida menghasilkan … di anoda.", "a": "Gas halogen (X₂)", "x": ""}, {"id": "ELK-02-005", "t": "ELK-02", "lv": 1, "q": "Pada penyepuhan, benda yang akan dilapisi dipasang sebagai…", "a": "Katoda", "x": ""}, {"id": "ELK-02-006", "t": "ELK-02", "lv": 3, "q": "Arus 10 A dialirkan selama 9.650 s ke larutan CuSO₄ (Ar Cu = 64). Berapa massa tembaga yang mengendap?", "a": "32 g", "x": "(64/2 × 10 × 9.650)/96.500."}, {"id": "ELK-02-007", "t": "ELK-02", "lv": 3, "q": "Bilangan 96.500 dalam hukum Faraday menyatakan muatan listrik satu mol…", "a": "Elektron (1 faraday)", "x": ""}, {"id": "ELK-02-008", "t": "ELK-02", "lv": 1, "q": "Pengrajin perhiasan melapisi cincin tembaga dengan emas memakai arus listrik. Proses ini disebut…", "a": "Penyepuhan (elektrolisis)", "x": "", "k": "pengrajin perhiasan"}, {"id": "ORG-01-001", "t": "ORG-01", "lv": 1, "q": "Rumus umum alkana adalah…", "a": "CₙH₂ₙ₊₂", "x": ""}, {"id": "ORG-01-002", "t": "ORG-01", "lv": 1, "q": "Hidrokarbon dengan satu ikatan rangkap dua disebut…", "a": "Alkena", "x": ""}, {"id": "ORG-01-003", "t": "ORG-01", "lv": 2, "q": "Rumus molekul pentana adalah…", "a": "C₅H₁₂", "x": ""}, {"id": "ORG-01-004", "t": "ORG-01", "lv": 2, "q": "Minyak bumi dipisahkan dengan distilasi bertingkat berdasarkan perbedaan…", "a": "Titik didih", "x": ""}, {"id": "ORG-01-005", "t": "ORG-01", "lv": 2, "q": "Bilangan oktan isooktana adalah…", "a": "100", "x": ""}, {"id": "ORG-01-006", "t": "ORG-01", "lv": 3, "q": "Atom karbon yang terikat pada tiga atom karbon lain disebut atom C…", "a": "Tersier", "x": ""}, {"id": "ORG-01-007", "t": "ORG-01", "lv": 2, "q": "Mesin motor yang dihidupkan di garasi tertutup berbahaya karena pembakaran tidak sempurna menghasilkan gas beracun, yaitu…", "a": "CO (karbon monoksida)", "x": "", "k": "garasi"}, {"id": "ORG-01-008", "t": "ORG-01", "lv": 2, "q": "SPBU menjual bensin dengan angka 90, 92, dan 98. Angka itu menyatakan…", "a": "Bilangan oktan", "x": "", "k": "SPBU"}, {"id": "ORG-02-001", "t": "ORG-02", "lv": 1, "q": "Gugus fungsi alkohol adalah…", "a": "–OH", "x": ""}, {"id": "ORG-02-002", "t": "ORG-02", "lv": 1, "q": "Senyawa karbon dengan gugus –COOH disebut…", "a": "Asam karboksilat", "x": ""}, {"id": "ORG-02-003", "t": "ORG-02", "lv": 1, "q": "Senyawa dengan gugus –CHO disebut…", "a": "Aldehida", "x": ""}, {"id": "ORG-02-004", "t": "ORG-02", "lv": 1, "q": "Isomer fungsi dari alkohol adalah…", "a": "Eter", "x": ""}, {"id": "ORG-02-005", "t": "ORG-02", "lv": 1, "q": "Uji Tollens positif untuk senyawa…", "a": "Aldehida", "x": ""}, {"id": "ORG-02-006", "t": "ORG-02", "lv": 1, "q": "Reaksi asam karboksilat dengan alkohol menghasilkan ester dan air disebut…", "a": "Esterifikasi", "x": ""}, {"id": "ORG-02-007", "t": "ORG-02", "lv": 3, "q": "Nama IUPAC dari aseton adalah…", "a": "Propanon", "x": ""}, {"id": "ORG-02-008", "t": "ORG-02", "lv": 1, "q": "Penghapus kuteks umumnya mengandung aseton. Aseton termasuk golongan senyawa…", "a": "Keton", "x": "", "k": "kosmetik"}, {"id": "ORG-02-009", "t": "ORG-02", "lv": 2, "q": "Aroma buah pada perisa permen berasal dari senyawa yang dibuat dari asam karboksilat dan alkohol. Golongan senyawa itu adalah…", "a": "Ester", "x": "", "k": "permen"}, {"id": "ORG-03-001", "t": "ORG-03", "lv": 1, "q": "Tokoh yang mengusulkan struktur cincin benzena (1865) adalah…", "a": "Kekulé", "x": ""}, {"id": "ORG-03-002", "t": "ORG-03", "lv": 1, "q": "Benzena lebih mudah mengalami reaksi substitusi atau adisi?", "a": "Substitusi", "x": ""}, {"id": "ORG-03-003", "t": "ORG-03", "lv": 2, "q": "Nama lain metilbenzena adalah…", "a": "Toluena", "x": ""}, {"id": "ORG-03-004", "t": "ORG-03", "lv": 2, "q": "Posisi dua substituen 1,4 pada benzena disebut posisi…", "a": "Para", "x": ""}, {"id": "ORG-03-005", "t": "ORG-03", "lv": 3, "q": "Nama lain hidroksibenzena adalah…", "a": "Fenol", "x": ""}, {"id": "ORG-04-001", "t": "ORG-04", "lv": 1, "q": "Polimer yang terbentuk dari monomer berikatan rangkap melalui adisi, seperti plastik kantong, adalah…", "a": "Polietena", "x": ""}, {"id": "ORG-04-002", "t": "ORG-04", "lv": 1, "q": "Monomer protein adalah…", "a": "Asam amino", "x": ""}, {"id": "ORG-04-003", "t": "ORG-04", "lv": 2, "q": "Uji iodin pada amilum menghasilkan warna…", "a": "Biru tua", "x": ""}, {"id": "ORG-04-004", "t": "ORG-04", "lv": 2, "q": "Uji biuret untuk ikatan peptida menghasilkan warna…", "a": "Ungu", "x": ""}, {"id": "ORG-04-005", "t": "ORG-04", "lv": 2, "q": "Disakarida yang tersusun dari glukosa dan fruktosa adalah…", "a": "Sukrosa", "x": ""}, {"id": "ORG-04-006", "t": "ORG-04", "lv": 2, "q": "Reaksi lemak dengan basa kuat yang menghasilkan sabun disebut…", "a": "Saponifikasi", "x": ""}, {"id": "ORG-04-007", "t": "ORG-04", "lv": 3, "q": "Uji Benedict pada sukrosa memberi hasil…", "a": "Negatif (bukan gula pereduksi)", "x": ""}, {"id": "ORG-04-008", "t": "ORG-04", "lv": 2, "q": "Usaha rumahan membuat sabun dari minyak kelapa dan larutan basa kuat. Reaksi pembuatan sabun ini disebut…", "a": "Saponifikasi", "x": "", "k": "usaha sabun"}, {"id": "ORG-04-009", "t": "ORG-04", "lv": 2, "q": "Tali jaring nelayan dari nilon dibuat dengan polimerisasi yang melepas molekul air. Jenis polimerisasi ini adalah…", "a": "Kondensasi", "x": "", "k": "nelayan"}, {"id": "ORG-04-010", "t": "ORG-04", "lv": 2, "q": "Tahu dan tempe kaya protein. Ikatan yang menghubungkan asam-asam amino dalam protein disebut ikatan…", "a": "Peptida", "x": "", "k": "makanan"}], "bank": {"key": "bank-soal-kimia-v1", "title": "Bank Soal Kimia", "map_title": "Peta Materi Kimia SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Kimia. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Kimia dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-geografi.html", "domains": [{"id": "DAS", "name": "Dasar geografi dan alat spasial", "short": "Dasar", "weight": 23.80952380952381, "topics": {"DAS-01": "Konsep dasar geografi", "DAS-02": "Peta dan pemetaan", "DAS-03": "Penginderaan jauh", "DAS-04": "Sistem informasi geografis", "DAS-05": "Penelitian geografi"}}, {"id": "GEO", "name": "Dinamika geosfer", "short": "Geosfer", "weight": 19.047619047619047, "topics": {"GEO-01": "Litosfer", "GEO-02": "Pedosfer", "GEO-03": "Atmosfer dan iklim", "GEO-04": "Hidrosfer"}}, {"id": "IND", "name": "Indonesia: posisi dan sumber daya", "short": "Indonesia", "weight": 14.285714285714286, "topics": {"IND-01": "Posisi strategis Indonesia", "IND-02": "Potensi sumber daya alam", "IND-03": "Keragaman hayati"}}, {"id": "PEN", "name": "Kependudukan dan lingkungan", "short": "Penduduk", "weight": 14.285714285714286, "topics": {"PEN-01": "Dinamika penduduk", "PEN-02": "Kualitas penduduk dan masalahnya", "PEN-03": "Lingkungan hidup dan pembangunan berkelanjutan"}}, {"id": "BEN", "name": "Bencana", "short": "Bencana", "weight": 9.523809523809524, "topics": {"BEN-01": "Jenis dan penyebab bencana", "BEN-02": "Mitigasi dan adaptasi bencana"}}, {"id": "WIL", "name": "Wilayah dan pembangunan", "short": "Wilayah", "weight": 19.047619047619047, "topics": {"WIL-01": "Wilayah dan interaksi keruangan", "WIL-02": "Desa dan kota", "WIL-03": "Negara maju dan berkembang", "WIL-04": "Globalisasi dan kerja sama antarwilayah"}}]}, "questions": [{"id": "DAS-01-001", "t": "DAS-01", "lv": 1, "q": "Pendekatan geografi yang menekankan persebaran dan lokasi gejala disebut pendekatan…", "a": "Keruangan", "x": ""}, {"id": "DAS-01-002", "t": "DAS-01", "lv": 1, "q": "Pendekatan geografi yang menekankan interaksi manusia dengan lingkungannya disebut pendekatan…", "a": "Kelingkungan (ekologi)", "x": ""}, {"id": "DAS-01-003", "t": "DAS-01", "lv": 1, "q": "Pendekatan yang menggabungkan analisis keruangan dan kelingkungan disebut pendekatan…", "a": "Kompleks wilayah", "x": ""}, {"id": "DAS-01-004", "t": "DAS-01", "lv": 1, "q": "Lokasi yang ditentukan dengan garis lintang dan garis bujur disebut lokasi…", "a": "Absolut", "x": ""}, {"id": "DAS-01-005", "t": "DAS-01", "lv": 2, "q": "Prinsip geografi yang menggabungkan persebaran, interelasi, dan deskripsi dalam satu ruang disebut prinsip…", "a": "Korologi", "x": ""}, {"id": "DAS-01-006", "t": "DAS-01", "lv": 2, "q": "Konsep geografi tentang pengelompokan gejala di suatu tempat, misalnya industri di kawasan industri, disebut…", "a": "Aglomerasi", "x": ""}, {"id": "DAS-01-007", "t": "DAS-01", "lv": 1, "q": "Hutan di hulu sungai ditebang, lalu kampung di hilir sering banjir. Konsep esensial geografi yang tergambar adalah…", "a": "Keterkaitan keruangan", "x": "", "k": "banjir"}, {"id": "DAS-01-008", "t": "DAS-01", "lv": 2, "q": "Dataran tinggi di sebuah kabupaten ditanami sayur, sedangkan dataran rendahnya ditanami padi. Konsep esensial geografi yang tergambar adalah…", "a": "Diferensiasi area", "x": "", "k": "sawah"}, {"id": "DAS-02-001", "t": "DAS-02", "lv": 1, "q": "Jarak sebenarnya dihitung dengan mengalikan jarak di peta dengan…", "a": "Penyebut skala", "x": ""}, {"id": "DAS-02-002", "t": "DAS-02", "lv": 1, "q": "Guru meminta siswa membuat peta yang hanya menampilkan sebaran sekolah di kecamatan mereka. Peta yang menampilkan satu tema seperti ini disebut peta…", "a": "Tematik", "x": "", "k": "sekolah"}, {"id": "DAS-02-003", "t": "DAS-02", "lv": 1, "q": "Proyeksi peta yang cocok untuk daerah kutub adalah proyeksi…", "a": "Bidang datar (azimutal)", "x": ""}, {"id": "DAS-02-004", "t": "DAS-02", "lv": 2, "q": "Skala 1 : 5.000 dan 1 : 50.000, mana yang lebih besar?", "a": "1 : 5.000", "x": "Makin kecil penyebut, makin besar skala."}, {"id": "DAS-02-005", "t": "DAS-02", "lv": 2, "q": "Proyeksi silinder yang membuat daerah lintang tinggi tampak membesar dikenal sebagai proyeksi…", "a": "Mercator", "x": ""}, {"id": "DAS-02-006", "t": "DAS-02", "lv": 2, "q": "Komponen peta yang menunjukkan arah utara disebut…", "a": "Orientasi (petunjuk arah)", "x": ""}, {"id": "DAS-02-007", "t": "DAS-02", "lv": 3, "q": "Jarak dua kota pada peta berskala 1 : 250.000 adalah 4 cm. Berapa jarak sebenarnya?", "a": "10 km", "x": "4 × 250.000 = 1.000.000 cm."}, {"id": "DAS-02-008", "t": "DAS-02", "lv": 2, "q": "Pada peta desa berskala 1 : 10.000, jarak sekolah ke balai desa 5 cm. Berapa jarak sebenarnya dalam meter?", "a": "500 m", "x": "5 × 10.000 = 50.000 cm.", "k": "peta desa"}, {"id": "DAS-03-001", "t": "DAS-03", "lv": 1, "q": "Penginderaan jauh yang memakai tenaga dari matahari disebut sistem…", "a": "Pasif", "x": ""}, {"id": "DAS-03-002", "t": "DAS-03", "lv": 1, "q": "BMKG memakai radar cuaca yang memancarkan gelombangnya sendiri sehingga dapat memantau awan pada malam hari. Penginderaan jauh seperti ini disebut sistem…", "a": "Aktif", "x": "", "k": "cuaca"}, {"id": "DAS-03-003", "t": "DAS-03", "lv": 1, "q": "Unsur interpretasi citra yang menunjukkan tingkat kecerahan pada citra hitam-putih disebut…", "a": "Rona", "x": ""}, {"id": "DAS-03-004", "t": "DAS-03", "lv": 2, "q": "Unsur interpretasi yang membedakan hutan (kasar) dan sawah (halus) adalah…", "a": "Tekstur", "x": ""}, {"id": "DAS-03-005", "t": "DAS-03", "lv": 2, "q": "Skala foto udara dihitung dengan rumus…", "a": "f : H (panjang fokus : tinggi terbang)", "x": ""}, {"id": "DAS-03-006", "t": "DAS-03", "lv": 3, "q": "Foto udara dibuat dengan kamera berfokus 15 cm dari ketinggian 3.000 m. Berapa skalanya?", "a": "1 : 20.000", "x": "15 cm : 300.000 cm."}, {"id": "DAS-03-007", "t": "DAS-03", "lv": 2, "q": "Pada citra, deretan rumah tampak memanjang mengikuti jalan dan sungai. Unsur interpretasi yang dipakai untuk mengenalinya adalah…", "a": "Pola", "x": "", "k": "permukiman"}, {"id": "DAS-03-008", "t": "DAS-03", "lv": 2, "q": "Pada citra, tambak dikenali karena letaknya di tepi pantai. Unsur interpretasi yang dipakai adalah…", "a": "Situs", "x": "", "k": "pesisir"}, {"id": "DAS-04-001", "t": "DAS-04", "lv": 1, "q": "Data spasial berbentuk titik, garis, dan poligon disebut data…", "a": "Vektor", "x": ""}, {"id": "DAS-04-002", "t": "DAS-04", "lv": 1, "q": "Data spasial berbentuk sel atau piksel disebut data…", "a": "Raster", "x": ""}, {"id": "DAS-04-003", "t": "DAS-04", "lv": 1, "q": "Analisis SIG yang menggabungkan beberapa peta tematik disebut…", "a": "Tumpang susun (overlay)", "x": ""}, {"id": "DAS-04-004", "t": "DAS-04", "lv": 1, "q": "Analisis SIG yang membuat zona dengan jarak tertentu dari suatu objek disebut…", "a": "Buffer", "x": ""}, {"id": "DAS-04-005", "t": "DAS-04", "lv": 2, "q": "Komponen SIG berupa manusia yang mengoperasikan sistem disebut…", "a": "Brainware", "x": ""}, {"id": "DAS-04-006", "t": "DAS-04", "lv": 2, "q": "Pemerintah kabupaten ingin menentukan lahan yang cocok untuk kebun kopi dari peta lereng, peta tanah, dan peta curah hujan. Analisis SIG yang dipakai adalah…", "a": "Tumpang susun (overlay)", "x": "", "k": "kebun kopi"}, {"id": "DAS-04-007", "t": "DAS-04", "lv": 2, "q": "Dinas lingkungan menandai zona 50 m dari tepi sungai yang tidak boleh dibangun rumah. Analisis SIG yang dipakai adalah…", "a": "Buffer", "x": "", "k": "sungai"}, {"id": "DAS-04-008", "t": "DAS-04", "lv": 3, "q": "Kumpulan keterangan berbentuk tabel yang melekat pada data spasial disebut data…", "a": "Atribut", "x": ""}, {"id": "DAS-05-001", "t": "DAS-05", "lv": 1, "q": "Data yang dikumpulkan sendiri oleh peneliti lewat observasi atau wawancara disebut data…", "a": "Primer", "x": ""}, {"id": "DAS-05-002", "t": "DAS-05", "lv": 1, "q": "Data yang diambil dari BPS atau peta yang sudah ada disebut data…", "a": "Sekunder", "x": ""}, {"id": "DAS-05-003", "t": "DAS-05", "lv": 2, "q": "Teknik sampel wilayah yang dipilih sesuai tujuan penelitian disebut…", "a": "Purposive", "x": ""}, {"id": "DAS-05-004", "t": "DAS-05", "lv": 2, "q": "Jawaban sementara yang diuji dengan data dalam penelitian disebut…", "a": "Hipotesis", "x": ""}, {"id": "DAS-05-005", "t": "DAS-05", "lv": 2, "q": "Siswa meneliti kualitas air sumur di kampungnya dengan mengambil contoh air dan mengukurnya sendiri. Data yang dihasilkan adalah data…", "a": "Primer", "x": "", "k": "air sumur"}, {"id": "GEO-01-001", "t": "GEO-01", "lv": 1, "q": "Batuan yang terbentuk dari pembekuan magma disebut batuan…", "a": "Beku", "x": ""}, {"id": "GEO-01-002", "t": "GEO-01", "lv": 1, "q": "Batuan yang terbentuk dari endapan hasil pelapukan dan erosi disebut batuan…", "a": "Sedimen", "x": ""}, {"id": "GEO-01-003", "t": "GEO-01", "lv": 1, "q": "Marmer adalah batuan metamorf yang berasal dari batu…", "a": "Kapur", "x": ""}, {"id": "GEO-01-004", "t": "GEO-01", "lv": 1, "q": "Titik di permukaan bumi tepat di atas pusat gempa disebut…", "a": "Episentrum", "x": ""}, {"id": "GEO-01-005", "t": "GEO-01", "lv": 2, "q": "Gerak pembentukan pegunungan yang cepat dan meliputi wilayah sempit disebut…", "a": "Orogenesa", "x": ""}, {"id": "GEO-01-006", "t": "GEO-01", "lv": 2, "q": "Gelombang gempa yang paling cepat merambat adalah gelombang…", "a": "Primer (P)", "x": ""}, {"id": "GEO-01-007", "t": "GEO-01", "lv": 2, "q": "Pengikisan pantai oleh gelombang laut disebut…", "a": "Abrasi", "x": ""}, {"id": "GEO-01-008", "t": "GEO-01", "lv": 2, "q": "Magma yang menyusup di antara lapisan batuan dan membeku membentuk lempeng sejajar lapisan disebut…", "a": "Sill", "x": ""}, {"id": "GEO-01-009", "t": "GEO-01", "lv": 3, "q": "Selisih datangnya gelombang S dan P adalah 3 menit 20 detik. Berapa jarak episentrum menurut rumus Laska?", "a": "Sekitar 2.333 km", "x": "(3′20″ − 1′) × 1.000 km."}, {"id": "GEO-01-010", "t": "GEO-01", "lv": 3, "q": "Gunung api berbentuk kerucut berlapis-lapis, seperti kebanyakan gunung api di Jawa, disebut gunung api…", "a": "Strato", "x": ""}, {"id": "GEO-01-011", "t": "GEO-01", "lv": 2, "q": "Tebing di pantai selatan Jawa terus mundur karena terus dihantam ombak. Proses tenaga eksogen ini disebut…", "a": "Abrasi", "x": "", "k": "pesisir"}, {"id": "GEO-01-012", "t": "GEO-01", "lv": 2, "q": "Warga di lereng gunung menemukan batu hitam mengilap seperti kaca dari bekas letusan. Batuan beku luar yang mendingin sangat cepat ini disebut…", "a": "Obsidian", "x": "", "k": "gunung api"}, {"id": "GEO-02-001", "t": "GEO-02", "lv": 1, "q": "Kebun sayur di lereng gunung api sangat subur karena tanahnya terbentuk dari abu letusan. Jenis tanah ini disebut tanah…", "a": "Andosol (vulkanis)", "x": "", "k": "kebun sayur"}, {"id": "GEO-02-002", "t": "GEO-02", "lv": 1, "q": "Tanah hasil endapan sungai yang subur di dataran rendah disebut tanah…", "a": "Aluvial", "x": ""}, {"id": "GEO-02-003", "t": "GEO-02", "lv": 2, "q": "Horizon tanah lapisan atas yang kaya bahan organik dan dipakai bercocok tanam disebut horizon…", "a": "A (topsoil)", "x": ""}, {"id": "GEO-02-004", "t": "GEO-02", "lv": 2, "q": "Tanah dari bahan organik yang tergenang dan bersifat asam disebut tanah…", "a": "Organosol (gambut)", "x": ""}, {"id": "GEO-02-005", "t": "GEO-02", "lv": 2, "q": "Petani di lereng bukit membuat sawah bertingkat-tingkat agar tanah tidak hanyut. Metode konservasi mekanik ini disebut…", "a": "Terasering", "x": "", "k": "sawah"}, {"id": "GEO-03-001", "t": "GEO-03", "lv": 1, "q": "Awan, hujan, dan petir yang dialami warga sehari-hari terjadi di lapisan atmosfer paling bawah, yaitu…", "a": "Troposfer", "x": "", "k": "cuaca"}, {"id": "GEO-03-002", "t": "GEO-03", "lv": 1, "q": "Lapisan ozon yang menyerap ultraviolet berada di lapisan…", "a": "Stratosfer", "x": ""}, {"id": "GEO-03-003", "t": "GEO-03", "lv": 1, "q": "Lapisan atmosfer yang memantulkan gelombang radio adalah…", "a": "Ionosfer (termosfer)", "x": ""}, {"id": "GEO-03-004", "t": "GEO-03", "lv": 1, "q": "Angin selalu bertiup dari daerah bertekanan … ke daerah bertekanan rendah.", "a": "Tinggi", "x": ""}, {"id": "GEO-03-005", "t": "GEO-03", "lv": 1, "q": "Klasifikasi iklim yang membagi iklim menjadi A tropis, B kering, C sedang, D dingin, dan E kutub adalah klasifikasi…", "a": "Köppen", "x": ""}, {"id": "GEO-03-006", "t": "GEO-03", "lv": 2, "q": "Menurut Schmidt–Ferguson, bulan basah adalah bulan dengan curah hujan lebih dari … mm.", "a": "100", "x": ""}, {"id": "GEO-03-007", "t": "GEO-03", "lv": 1, "q": "Klasifikasi iklim yang dipakai untuk pertanian dengan batas bulan basah lebih dari 200 mm adalah klasifikasi…", "a": "Oldeman", "x": ""}, {"id": "GEO-03-008", "t": "GEO-03", "lv": 3, "q": "Menurut rumus Braak, berapa suhu rata-rata kota pada ketinggian 1.500 m?", "a": "17,3 °C", "x": "26,3 − 0,6 × 15."}, {"id": "GEO-03-009", "t": "GEO-03", "lv": 2, "q": "Di Indonesia, angin muson barat yang bertiup sekitar Oktober–April membawa musim…", "a": "Hujan", "x": ""}, {"id": "GEO-03-010", "t": "GEO-03", "lv": 1, "q": "Kota di pegunungan terasa lebih sejuk daripada kota di pantai. Menurut rumus Braak, suhu turun sekitar … °C setiap naik 100 m.", "a": "0,6", "x": "", "k": "pegunungan"}, {"id": "GEO-03-011", "t": "GEO-03", "lv": 2, "q": "Petani di Jawa mulai menanam padi sekitar Oktober, saat angin muson yang membawa hujan mulai bertiup. Angin muson ini adalah muson…", "a": "Barat", "x": "", "k": "sawah"}, {"id": "GEO-03-012", "t": "GEO-03", "lv": 3, "q": "Menurut Schmidt–Ferguson, nilai Q dihitung dari rata-rata bulan kering dibagi rata-rata…, dikali 100%.", "a": "Bulan basah", "x": ""}, {"id": "GEO-04-001", "t": "GEO-04", "lv": 1, "q": "Hujan yang turun di lereng-lereng bukit di sekitar sebuah kota akhirnya mengalir ke satu sungai besar. Wilayah tangkapan air seperti ini disebut…", "a": "Daerah aliran sungai (DAS)", "x": "", "k": "sungai"}, {"id": "GEO-04-002", "t": "GEO-04", "lv": 1, "q": "Lapisan batuan yang dapat menyimpan dan mengalirkan air tanah disebut…", "a": "Akuifer", "x": ""}, {"id": "GEO-04-003", "t": "GEO-04", "lv": 1, "q": "Lebar laut teritorial menurut UNCLOS 1982 adalah … mil laut dari garis pangkal.", "a": "12", "x": ""}, {"id": "GEO-04-004", "t": "GEO-04", "lv": 2, "q": "Lebar zona ekonomi eksklusif menurut UNCLOS 1982 adalah … mil laut.", "a": "200", "x": ""}, {"id": "GEO-04-005", "t": "GEO-04", "lv": 2, "q": "Pola aliran sungai yang menyebar dari puncak gunung disebut pola…", "a": "Radial sentrifugal", "x": ""}, {"id": "GEO-04-006", "t": "GEO-04", "lv": 2, "q": "Danau Toba terbentuk sebagai danau…", "a": "Tektonik-vulkanik (kaldera)", "x": ""}, {"id": "GEO-04-007", "t": "GEO-04", "lv": 2, "q": "Siklus hidrologi ketika uap air laut terkondensasi lalu turun sebagai hujan langsung di laut disebut siklus…", "a": "Pendek", "x": ""}, {"id": "GEO-04-008", "t": "GEO-04", "lv": 2, "q": "Sumur di sebuah desa memancarkan air tanpa dipompa karena airnya berasal dari akuifer yang tertekan. Sumur seperti ini disebut sumur…", "a": "Artesis", "x": "", "k": "air sumur"}, {"id": "GEO-04-009", "t": "GEO-04", "lv": 3, "q": "Zona laut dengan kedalaman sampai sekitar 200 m disebut zona…", "a": "Neritik", "x": ""}, {"id": "IND-01-001", "t": "IND-01", "lv": 1, "q": "Letak Indonesia di antara Benua Asia dan Australia serta Samudra Hindia dan Pasifik disebut letak…", "a": "Geografis", "x": ""}, {"id": "IND-01-002", "t": "IND-01", "lv": 1, "q": "Letak Indonesia di pertemuan Lempeng Indo-Australia, Eurasia, dan Pasifik disebut letak…", "a": "Geologis", "x": ""}, {"id": "IND-01-003", "t": "IND-01", "lv": 1, "q": "Letak astronomis Indonesia membuat iklimnya…", "a": "Tropis", "x": ""}, {"id": "IND-01-004", "t": "IND-01", "lv": 1, "q": "Deklarasi yang menjadikan laut di antara pulau-pulau bagian wilayah Indonesia adalah Deklarasi…", "a": "Djuanda", "x": ""}, {"id": "IND-01-005", "t": "IND-01", "lv": 2, "q": "Deklarasi Djuanda dicetuskan pada tanggal…", "a": "13 Desember 1957", "x": ""}, {"id": "IND-01-006", "t": "IND-01", "lv": 1, "q": "Jalur pelayaran internasional yang ditetapkan melalui perairan Indonesia disebut…", "a": "Alur Laut Kepulauan Indonesia (ALKI)", "x": ""}, {"id": "IND-01-007", "t": "IND-01", "lv": 2, "q": "Zona waktu WITA berselisih berapa jam dari UTC?", "a": "UTC+8", "x": ""}, {"id": "IND-01-008", "t": "IND-01", "lv": 3, "q": "ALKI diatur dalam PP Nomor … Tahun 2002.", "a": "37", "x": ""}, {"id": "IND-01-009", "t": "IND-01", "lv": 2, "q": "Indonesia banyak gunung api sehingga tanahnya subur tetapi rawan gempa. Letak yang menyebabkan keadaan ini adalah letak…", "a": "Geologis", "x": "", "k": "gunung api"}, {"id": "IND-01-010", "t": "IND-01", "lv": 2, "q": "Kapal-kapal dagang dunia ramai melintasi Selat Malaka. Letak yang membuat Indonesia berada di jalur perdagangan dunia adalah letak…", "a": "Geografis", "x": "", "k": "pelabuhan"}, {"id": "IND-02-001", "t": "IND-02", "lv": 1, "q": "Batu bara yang ditambang di Kalimantan Timur tidak akan terbentuk kembali dalam rentang waktu manusia. Sumber daya ini termasuk sumber daya…", "a": "Tidak dapat diperbarui", "x": "", "k": "tambang"}, {"id": "IND-02-002", "t": "IND-02", "lv": 1, "q": "Pengolahan bahan mentah di dalam negeri untuk menambah nilai tambah disebut…", "a": "Hilirisasi", "x": ""}, {"id": "IND-02-003", "t": "IND-02", "lv": 1, "q": "Provinsi penghasil timah utama di Indonesia adalah…", "a": "Kepulauan Bangka Belitung", "x": ""}, {"id": "IND-02-004", "t": "IND-02", "lv": 2, "q": "Daerah penghasil nikel utama di Indonesia terletak di pulau…", "a": "Sulawesi (dan Maluku Utara)", "x": ""}, {"id": "IND-02-005", "t": "IND-02", "lv": 2, "q": "Tambang tembaga dan emas Grasberg terletak di…", "a": "Papua", "x": ""}, {"id": "IND-02-006", "t": "IND-02", "lv": 2, "q": "Pasal UUD 1945 yang menyatakan bumi, air, dan kekayaan alam dikuasai negara untuk kemakmuran rakyat adalah Pasal…", "a": "33 ayat (3)", "x": ""}, {"id": "IND-02-007", "t": "IND-02", "lv": 2, "q": "Ikan di laut dapat diperbarui, tetapi tangkapan nelayan di sebuah teluk terus berkurang karena ditangkap melebihi daya pulihnya. Prinsip pengelolaan yang dilanggar adalah prinsip…", "a": "Berkelanjutan", "x": "", "k": "nelayan"}, {"id": "IND-02-008", "t": "IND-02", "lv": 3, "q": "Sumber daya alam yang tidak akan habis meskipun dipakai terus, seperti sinar matahari, disebut sumber daya…", "a": "Tidak habis", "x": ""}, {"id": "IND-03-001", "t": "IND-03", "lv": 1, "q": "Garis yang memisahkan fauna Asiatis dan fauna peralihan disebut garis…", "a": "Wallace", "x": ""}, {"id": "IND-03-002", "t": "IND-03", "lv": 1, "q": "Warga di Sulawesi mengenal anoa, hewan yang tidak ditemukan di Kalimantan maupun Papua. Anoa termasuk fauna…", "a": "Peralihan (Wallacea)", "x": "", "k": "satwa lokal"}, {"id": "IND-03-003", "t": "IND-03", "lv": 2, "q": "Garis Weber terletak di sebelah … Sulawesi dan Nusa Tenggara.", "a": "Timur", "x": ""}, {"id": "IND-03-004", "t": "IND-03", "lv": 2, "q": "Faktor persebaran flora dan fauna yang berasal dari tanah disebut faktor…", "a": "Edafik", "x": ""}, {"id": "IND-03-005", "t": "IND-03", "lv": 2, "q": "Padang rumput dengan pohon jarang, seperti di Nusa Tenggara Timur, disebut bioma…", "a": "Sabana", "x": "", "k": "savana NTT"}, {"id": "PEN-01-001", "t": "PEN-01", "lv": 1, "q": "Pertumbuhan penduduk alami dihitung dari kelahiran dikurangi…", "a": "Kematian", "x": ""}, {"id": "PEN-01-002", "t": "PEN-01", "lv": 1, "q": "Setelah lulus sekolah, banyak pemuda dari sebuah desa pindah ke kota untuk bekerja. Perpindahan dari desa ke kota ini disebut…", "a": "Urbanisasi", "x": "", "k": "urbanisasi"}, {"id": "PEN-01-003", "t": "PEN-01", "lv": 1, "q": "Perpindahan penduduk antarpulau di dalam negeri, terutama yang diatur pemerintah, disebut…", "a": "Transmigrasi", "x": ""}, {"id": "PEN-01-004", "t": "PEN-01", "lv": 1, "q": "Piramida penduduk dengan alas lebar karena kelahiran tinggi disebut piramida…", "a": "Ekspansif", "x": ""}, {"id": "PEN-01-005", "t": "PEN-01", "lv": 1, "q": "Rasio ketergantungan membandingkan penduduk usia 0–14 dan 65 tahun ke atas dengan penduduk usia…", "a": "15–64 tahun", "x": ""}, {"id": "PEN-01-006", "t": "PEN-01", "lv": 1, "q": "Angka kelahiran kasar (CBR) dihitung per … penduduk.", "a": "1.000", "x": ""}, {"id": "PEN-01-007", "t": "PEN-01", "lv": 3, "q": "Sebuah kecamatan berpenduduk 50.000 jiwa mencatat 1.000 kelahiran dalam setahun. Berapa CBR-nya?", "a": "20 per 1.000 penduduk", "x": ""}, {"id": "PEN-01-008", "t": "PEN-01", "lv": 3, "q": "Penduduk usia 0–14 tahun 300, usia 65 tahun ke atas 100, dan usia 15–64 tahun 800. Berapa rasio ketergantungannya?", "a": "50", "x": "(300 + 100) : 800 × 100."}, {"id": "PEN-01-009", "t": "PEN-01", "lv": 2, "q": "Banyak pemuda dari sebuah desa pindah ke kota karena di kota lebih banyak lapangan kerja. Faktor lapangan kerja di kota disebut faktor…", "a": "Penarik", "x": "", "k": "urbanisasi"}, {"id": "PEN-01-010", "t": "PEN-01", "lv": 2, "q": "Proporsi penduduk usia produktif sangat besar sehingga rasio ketergantungan rendah. Keadaan ini disebut…", "a": "Bonus demografi", "x": ""}, {"id": "PEN-02-001", "t": "PEN-02", "lv": 1, "q": "Ukuran kualitas penduduk yang merangkum pendidikan, kesehatan, dan pendapatan disebut…", "a": "Indeks Pembangunan Manusia (IPM)", "x": ""}, {"id": "PEN-02-002", "t": "PEN-02", "lv": 2, "q": "Sensus penduduk terakhir di Indonesia dilaksanakan pada tahun…", "a": "2020", "x": ""}, {"id": "PEN-02-003", "t": "PEN-02", "lv": 2, "q": "Pulau tempat penduduk Indonesia paling terpusat adalah…", "a": "Jawa", "x": ""}, {"id": "PEN-02-004", "t": "PEN-02", "lv": 2, "q": "Sebutkan satu upaya pemerintah menekan pertumbuhan penduduk.", "a": "Keluarga berencana (KB)", "x": ""}, {"id": "PEN-02-005", "t": "PEN-02", "lv": 2, "q": "Posyandu di sebuah desa memantau berat badan balita dan memberi imunisasi. Upaya ini bertujuan meningkatkan kualitas penduduk dari segi…", "a": "Kesehatan", "x": "", "k": "posyandu"}, {"id": "PEN-03-001", "t": "PEN-03", "lv": 1, "q": "Suhu rata-rata di banyak daerah terus naik karena gas rumah kaca di atmosfer bertambah. Gejala kenaikan suhu bumi ini disebut…", "a": "Pemanasan global", "x": "", "k": "cuaca"}, {"id": "PEN-03-002", "t": "PEN-03", "lv": 2, "q": "Kajian dampak lingkungan yang wajib bagi usaha berdampak penting disebut…", "a": "AMDAL", "x": ""}, {"id": "PEN-03-003", "t": "PEN-03", "lv": 2, "q": "SDGs berisi berapa tujuan?", "a": "17", "x": ""}, {"id": "PEN-03-004", "t": "PEN-03", "lv": 1, "q": "Pembangunan yang memenuhi kebutuhan kini tanpa mengorbankan generasi mendatang disebut pembangunan…", "a": "Berkelanjutan", "x": ""}, {"id": "PEN-03-005", "t": "PEN-03", "lv": 2, "q": "Bekas tambang pasir di sebuah desa dibiarkan menjadi lubang tanpa ditanami kembali. Kegiatan pemulihan lahan bekas tambang yang tidak dilakukan disebut…", "a": "Reklamasi", "x": "", "k": "tambang pasir"}, {"id": "BEN-01-001", "t": "BEN-01", "lv": 1, "q": "Kampung di bantaran sungai tergenang setiap musim hujan. Banjir termasuk kelompok bencana…", "a": "Hidrometeorologis", "x": "", "k": "banjir"}, {"id": "BEN-01-002", "t": "BEN-01", "lv": 1, "q": "Gempa bumi, tsunami, dan letusan gunung api termasuk bencana…", "a": "Geologis", "x": ""}, {"id": "BEN-01-003", "t": "BEN-01", "lv": 1, "q": "Ukuran energi yang dilepaskan gempa disebut…", "a": "Magnitudo", "x": ""}, {"id": "BEN-01-004", "t": "BEN-01", "lv": 1, "q": "Status gunung api tertinggi menurut PVMBG adalah Level IV yang disebut…", "a": "Awas", "x": ""}, {"id": "BEN-01-005", "t": "BEN-01", "lv": 2, "q": "Skala yang mengukur dampak gempa yang dirasakan di suatu tempat disebut skala…", "a": "MMI (intensitas)", "x": ""}, {"id": "BEN-01-006", "t": "BEN-01", "lv": 2, "q": "Undang-undang penanggulangan bencana adalah UU Nomor … Tahun 2007.", "a": "24", "x": ""}, {"id": "BEN-01-007", "t": "BEN-01", "lv": 2, "q": "Wabah penyakit termasuk bencana alam, nonalam, atau sosial menurut UU Nomor 24 Tahun 2007?", "a": "Nonalam", "x": ""}, {"id": "BEN-01-008", "t": "BEN-01", "lv": 2, "q": "Warga pesisir melihat air laut tiba-tiba surut jauh setelah gempa kuat. Bencana yang mungkin segera datang adalah…", "a": "Tsunami", "x": "", "k": "pesisir"}, {"id": "BEN-01-009", "t": "BEN-01", "lv": 3, "q": "Status gunung api Level III disebut…", "a": "Siaga", "x": ""}, {"id": "BEN-02-001", "t": "BEN-02", "lv": 1, "q": "Pemerintah membangun tanggul di sepanjang sungai sebelum musim hujan untuk mengurangi risiko banjir. Upaya sebelum bencana seperti ini disebut…", "a": "Mitigasi", "x": "", "k": "banjir"}, {"id": "BEN-02-002", "t": "BEN-02", "lv": 1, "q": "Lembaga penanggulangan bencana di tingkat pusat adalah…", "a": "BNPB", "x": ""}, {"id": "BEN-02-003", "t": "BEN-02", "lv": 1, "q": "Membangun kembali rumah dan fasilitas setelah bencana termasuk tahap…", "a": "Rekonstruksi", "x": ""}, {"id": "BEN-02-004", "t": "BEN-02", "lv": 2, "q": "Memulihkan layanan dasar setelah bencana termasuk tahap…", "a": "Rehabilitasi", "x": ""}, {"id": "BEN-02-005", "t": "BEN-02", "lv": 1, "q": "Pelatihan evakuasi termasuk mitigasi struktural atau nonstruktural?", "a": "Nonstruktural", "x": ""}, {"id": "BEN-02-006", "t": "BEN-02", "lv": 2, "q": "Lembaga yang memantau cuaca, iklim, dan gempa adalah…", "a": "BMKG", "x": ""}, {"id": "BEN-02-007", "t": "BEN-02", "lv": 2, "q": "Sekolah di daerah rawan gempa mengadakan latihan evakuasi setiap semester. Tahap penanggulangan bencana ini termasuk…", "a": "Prabencana (mitigasi dan kesiapsiagaan)", "x": "", "k": "sekolah"}, {"id": "BEN-02-008", "t": "BEN-02", "lv": 2, "q": "Warga di daerah langganan banjir membangun rumah panggung. Upaya menyesuaikan diri dengan bencana seperti ini disebut…", "a": "Adaptasi", "x": "", "k": "banjir"}, {"id": "BEN-02-009", "t": "BEN-02", "lv": 3, "q": "Kearifan lokal di Simeulue yang membantu warga selamat dari tsunami disebut…", "a": "Smong", "x": ""}, {"id": "WIL-01-001", "t": "WIL-01", "lv": 1, "q": "Wilayah yang dihubungkan oleh aktivitas, misalnya kota dan daerah sekitarnya, disebut wilayah…", "a": "Fungsional", "x": ""}, {"id": "WIL-01-002", "t": "WIL-01", "lv": 1, "q": "Teori tempat sentral dikemukakan oleh…", "a": "Walter Christaller", "x": ""}, {"id": "WIL-01-003", "t": "WIL-01", "lv": 1, "q": "Teori kutub pertumbuhan dikemukakan oleh…", "a": "François Perroux", "x": ""}, {"id": "WIL-01-004", "t": "WIL-01", "lv": 2, "q": "Faktor interaksi Ullman ketika ada wilayah ketiga yang memenuhi kebutuhan sehingga interaksi dua wilayah melemah disebut…", "a": "Kesempatan berintervensi (intervening opportunity)", "x": ""}, {"id": "WIL-01-005", "t": "WIL-01", "lv": 1, "q": "Dalam model gravitasi, kekuatan interaksi dua kota sebanding dengan hasil kali jumlah penduduknya dan berbanding terbalik dengan…", "a": "Kuadrat jarak (d²)", "x": ""}, {"id": "WIL-01-006", "t": "WIL-01", "lv": 3, "q": "Kota A berpenduduk 10.000 jiwa dan Kota B 40.000 jiwa, berjarak 60 km. Berapa jarak titik henti dari Kota A?", "a": "20 km", "x": "60 : (1 + √(40.000 : 10.000)) = 60 : 3."}, {"id": "WIL-01-007", "t": "WIL-01", "lv": 3, "q": "Indeks konektivitas β dihitung dari jumlah jalur dibagi…", "a": "Jumlah simpul", "x": ""}, {"id": "WIL-01-008", "t": "WIL-01", "lv": 2, "q": "Desa pegunungan memasok sayur ke kota, sedangkan kota memasok pupuk dan alat pertanian ke desa. Faktor interaksi Ullman yang tergambar adalah…", "a": "Saling melengkapi (complementarity)", "x": "", "k": "pasar sayur"}, {"id": "WIL-01-009", "t": "WIL-01", "lv": 2, "q": "Jalan baru yang mulus memperpendek waktu tempuh desa ke kota sehingga warga makin sering ke kota. Faktor interaksi Ullman yang meningkat adalah…", "a": "Kemudahan perpindahan (transferability)", "x": "", "k": "jalan desa"}, {"id": "WIL-02-001", "t": "WIL-02", "lv": 1, "q": "Teori struktur kota berbentuk lingkaran-lingkaran zona dari pusat kota dikemukakan oleh…", "a": "E. W. Burgess", "x": ""}, {"id": "WIL-02-002", "t": "WIL-02", "lv": 1, "q": "Teori struktur kota berbentuk sektor mengikuti jalur transportasi dikemukakan oleh…", "a": "Homer Hoyt", "x": ""}, {"id": "WIL-02-003", "t": "WIL-02", "lv": 1, "q": "Teori struktur kota dengan beberapa pusat kegiatan disebut teori…", "a": "Inti ganda (Harris dan Ullman)", "x": ""}, {"id": "WIL-02-004", "t": "WIL-02", "lv": 2, "q": "Pola permukiman desa yang memanjang biasanya mengikuti…", "a": "Jalan, sungai, atau garis pantai", "x": ""}, {"id": "WIL-02-005", "t": "WIL-02", "lv": 2, "q": "Pusat kegiatan bisnis di tengah kota disebut…", "a": "CBD (central business district)", "x": ""}, {"id": "WIL-02-006", "t": "WIL-02", "lv": 2, "q": "Rumah-rumah di sebuah desa mengumpul di sekitar mata air di lembah. Pola permukiman ini disebut pola…", "a": "Memusat", "x": "", "k": "mata air"}, {"id": "WIL-02-007", "t": "WIL-02", "lv": 2, "q": "Di sebuah kota, kawasan industri dan permukiman memanjang mengikuti rel kereta dan jalan raya dari pusat kota. Teori struktur kota yang paling sesuai adalah teori…", "a": "Sektoral (Hoyt)", "x": "", "k": "kota"}, {"id": "WIL-02-008", "t": "WIL-02", "lv": 2, "q": "Rumah-rumah di sebuah kampung nelayan berjajar mengikuti garis pantai. Pola permukiman ini disebut pola…", "a": "Memanjang", "x": "", "k": "nelayan"}, {"id": "WIL-02-009", "t": "WIL-02", "lv": 3, "q": "Sebutkan satu dampak interaksi desa–kota bagi desa.", "a": "Satu di antara: pengetahuan bertambah, tenaga kerja muda pindah ke kota", "x": ""}, {"id": "WIL-03-001", "t": "WIL-03", "lv": 1, "q": "Negara dengan sektor industri dan jasa dominan serta pertumbuhan penduduk rendah disebut negara…", "a": "Maju", "x": ""}, {"id": "WIL-03-002", "t": "WIL-03", "lv": 2, "q": "Lembaga yang mengelompokkan negara menurut pendapatan nasional bruto per kapita adalah…", "a": "Bank Dunia", "x": ""}, {"id": "WIL-03-003", "t": "WIL-03", "lv": 1, "q": "Negara yang masih bergantung pada ekspor bahan mentah dan sektor pertanian disebut negara…", "a": "Berkembang", "x": ""}, {"id": "WIL-03-004", "t": "WIL-03", "lv": 2, "q": "Sebutkan satu bentuk interaksi negara maju dan berkembang.", "a": "Satu di antara: perdagangan, investasi, bantuan pembangunan, alih teknologi, migrasi tenaga kerja", "x": ""}, {"id": "WIL-03-005", "t": "WIL-03", "lv": 2, "q": "Pabrik mobil dari Jepang dibangun di Karawang dan memakai tenaga kerja lokal. Bentuk interaksi negara maju dan berkembang ini adalah…", "a": "Investasi", "x": "", "k": "pabrik"}, {"id": "WIL-04-001", "t": "WIL-04", "lv": 1, "q": "Faktor pendorong utama globalisasi adalah kemajuan transportasi dan…", "a": "Komunikasi", "x": ""}, {"id": "WIL-04-002", "t": "WIL-04", "lv": 2, "q": "Sebutkan satu kerja sama kawasan Asia Tenggara yang diikuti Indonesia.", "a": "ASEAN", "x": ""}, {"id": "WIL-04-003", "t": "WIL-04", "lv": 2, "q": "Sebutkan satu dampak negatif globalisasi bagi wilayah.", "a": "Satu di antara: persaingan produk, ketimpangan antarwilayah", "x": ""}, {"id": "WIL-04-004", "t": "WIL-04", "lv": 2, "q": "Forum kerja sama negara-negara berekonomi besar yang diikuti Indonesia dan memakai angka 20 dalam namanya adalah…", "a": "G20", "x": ""}, {"id": "WIL-04-005", "t": "WIL-04", "lv": 2, "q": "Produk tenun dari sebuah kampung di NTT kini dipesan pembeli dari luar negeri lewat internet. Gejala yang tergambar adalah…", "a": "Globalisasi", "x": "", "k": "tenun"}], "bank": {"key": "bank-soal-geografi-v1", "title": "Bank Soal Geografi", "map_title": "Peta Materi Geografi SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Geografi. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Geografi dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

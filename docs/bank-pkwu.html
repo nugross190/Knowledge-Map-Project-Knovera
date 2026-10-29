@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-pkwu.html", "domains": [{"id": "KWU", "name": "Kewirausahaan", "short": "Kewirausahaan", "weight": 38.095238095238095, "topics": {"KWU-01": "Wirausaha dan karakternya", "KWU-02": "Ide dan peluang usaha", "KWU-03": "Perencanaan usaha", "KWU-04": "Biaya, harga jual, dan titik impas", "KWU-05": "Pemasaran", "KWU-06": "Laporan keuangan sederhana", "KWU-07": "Legalitas usaha dan HKI", "KWU-08": "Usaha digital"}}, {"id": "KRJ", "name": "Kerajinan", "short": "Kerajinan", "weight": 14.285714285714286, "topics": {"KRJ-01": "Bahan dan teknik kerajinan", "KRJ-02": "Desain produk kerajinan", "KRJ-03": "Kerajinan dari limbah"}}, {"id": "RKY", "name": "Rekayasa", "short": "Rekayasa", "weight": 19.047619047619047, "topics": {"RKY-01": "Rekayasa dan teknologi tepat guna", "RKY-02": "Elektronika dasar", "RKY-03": "Energi terbarukan", "RKY-04": "Gambar kerja dan purwarupa"}}, {"id": "BUD", "name": "Budi daya", "short": "Budi daya", "weight": 14.285714285714286, "topics": {"BUD-01": "Budi daya tanaman", "BUD-02": "Perbanyakan tanaman", "BUD-03": "Budi daya hewan"}}, {"id": "PGL", "name": "Pengolahan", "short": "Pengolahan", "weight": 14.285714285714286, "topics": {"PGL-01": "Teknik pengolahan pangan", "PGL-02": "Pengawetan pangan", "PGL-03": "Keamanan pangan dan kemasan"}}]}, "questions": [{"id": "KWU-01-001", "t": "KWU-01", "lv": 1, "q": "Orang yang menciptakan dan mengelola usaha sendiri dengan berani mengambil risiko disebut…", "a": "Wirausaha", "x": ""}, {"id": "KWU-01-002", "t": "KWU-01", "lv": 1, "q": "Orang yang berinovasi di dalam perusahaan tempatnya bekerja disebut…", "a": "Intrapreneur", "x": ""}, {"id": "KWU-01-003", "t": "KWU-01", "lv": 1, "q": "Kemampuan menghasilkan ide baru disebut…", "a": "Kreatif", "x": ""}, {"id": "KWU-01-004", "t": "KWU-01", "lv": 2, "q": "Apa beda kreatif dan inovatif?", "a": "Kreatif menemukan ide baru; inovatif mewujudkan ide itu menjadi produk atau cara baru", "x": ""}, {"id": "KWU-01-005", "t": "KWU-01", "lv": 2, "q": "Risiko seperti apa yang diambil wirausaha?", "a": "Risiko terukur (moderat), sudah diperhitungkan", "x": ""}, {"id": "KWU-01-006", "t": "KWU-01", "lv": 2, "q": "Sebutkan tiga ciri wirausaha menurut Meredith.", "a": "Contoh: percaya diri, berorientasi tugas dan hasil, berani mengambil risiko, kepemimpinan, orisinal, berorientasi masa depan (tiga di antaranya)", "x": ""}, {"id": "KWU-01-007", "t": "KWU-01", "lv": 2, "q": "Bagaimana wirausaha memandang kegagalan?", "a": "Sebagai bahan evaluasi untuk memperbaiki usaha", "x": ""}, {"id": "KWU-01-008", "t": "KWU-01", "lv": 2, "q": "Seorang perajin bambu menemukan ide lampu hias dari sisa potongan bambu, lalu benar-benar memproduksi dan menjualnya di pasar seni. Tahap mewujudkan ide menjadi produk disebut…", "a": "Inovasi (inovatif)", "x": "", "k": "perajin bambu"}, {"id": "KWU-01-009", "t": "KWU-01", "lv": 3, "q": "Pedagang pecel lele meminjam modal untuk membuka cabang kedua setelah menghitung jumlah pembeli di lokasi baru dan biaya sewanya. Ciri wirausaha apa yang tampak dari cara ia mengambil keputusan?", "a": "Berani mengambil risiko terukur", "x": "", "k": "pecel lele"}, {"id": "KWU-01-010", "t": "KWU-01", "lv": 1, "q": "Kemampuan mewujudkan ide menjadi produk atau cara baru disebut…", "a": "Inovatif", "x": ""}, {"id": "KWU-02-001", "t": "KWU-02", "lv": 1, "q": "Metode menemukan ide usaha dengan mengamati, meniru, dan memodifikasi produk yang ada disebut…", "a": "ATM", "x": ""}, {"id": "KWU-02-002", "t": "KWU-02", "lv": 1, "q": "Kepanjangan SWOT adalah…", "a": "Strengths, weaknesses, opportunities, threats", "x": ""}, {"id": "KWU-02-003", "t": "KWU-02", "lv": 1, "q": "Unsur SWOT yang berasal dari dalam usaha adalah…", "a": "Kekuatan dan kelemahan (strengths, weaknesses)", "x": ""}, {"id": "KWU-02-004", "t": "KWU-02", "lv": 2, "q": "Unsur SWOT yang berasal dari luar usaha adalah…", "a": "Peluang dan ancaman (opportunities, threats)", "x": ""}, {"id": "KWU-02-005", "t": "KWU-02", "lv": 2, "q": "Kapan sebuah ide usaha menjadi peluang usaha?", "a": "Bila ada pasar yang mau membeli dan usaha itu dapat dijalankan", "x": ""}, {"id": "KWU-02-006", "t": "KWU-02", "lv": 2, "q": "Sebutkan dua sumber ide usaha.", "a": "Contoh: masalah sehari-hari, kebutuhan konsumen, hobi atau keahlian, potensi bahan lokal, tren pasar (dua di antaranya)", "x": ""}, {"id": "KWU-02-007", "t": "KWU-02", "lv": 2, "q": "Usaha keripik singkong di desa wisata: harga minyak goreng naik. Dalam analisis SWOT, kenaikan harga ini termasuk…", "a": "Ancaman (threat)", "x": "", "k": "desa wisata"}, {"id": "KWU-02-008", "t": "KWU-02", "lv": 2, "q": "Usaha jasa cuci sepatu dekat kampus: banyak mahasiswa memakai sepatu kanvas yang cepat kotor. Dalam analisis SWOT, keadaan ini termasuk…", "a": "Peluang (opportunity)", "x": "", "k": "jasa cuci sepatu"}, {"id": "KWU-02-009", "t": "KWU-02", "lv": 3, "q": "Usaha batik rumahan punya pembatik terampil tetapi belum punya toko daring. Masukkan kedua hal itu ke unsur SWOT yang tepat.", "a": "Pembatik terampil: kekuatan; belum punya toko daring: kelemahan", "x": "Keduanya faktor internal.", "k": "batik rumahan"}, {"id": "KWU-02-010", "t": "KWU-02", "lv": 1, "q": "Analisis kekuatan, kelemahan, peluang, dan ancaman usaha disebut analisis…", "a": "SWOT", "x": ""}, {"id": "KWU-03-001", "t": "KWU-03", "lv": 1, "q": "Berapa blok dalam model bisnis kanvas?", "a": "9", "x": ""}, {"id": "KWU-03-002", "t": "KWU-03", "lv": 1, "q": "Blok model bisnis kanvas yang menjawab \"untuk siapa produk dibuat\" adalah…", "a": "Segmen pelanggan", "x": ""}, {"id": "KWU-03-003", "t": "KWU-03", "lv": 1, "q": "Blok yang menjelaskan masalah yang diselesaikan dan keunggulan produk adalah…", "a": "Proposisi nilai", "x": ""}, {"id": "KWU-03-004", "t": "KWU-03", "lv": 2, "q": "Blok model bisnis kanvas yang menjawab \"dari mana uang masuk\" adalah…", "a": "Arus pendapatan", "x": ""}, {"id": "KWU-03-005", "t": "KWU-03", "lv": 2, "q": "Penilaian apakah usaha layak dari aspek pasar, teknis, keuangan, hukum, dan lingkungan disebut…", "a": "Studi kelayakan", "x": ""}, {"id": "KWU-03-006", "t": "KWU-03", "lv": 2, "q": "Sebutkan tiga bagian umum proposal usaha.", "a": "Contoh: ringkasan, deskripsi usaha, analisis pasar, rencana produksi, rencana pemasaran, rencana keuangan (tiga di antaranya)", "x": ""}, {"id": "KWU-03-007", "t": "KWU-03", "lv": 2, "q": "Usaha kopi keliling menjual lewat gerobak motor dan pesanan WhatsApp. Dalam model bisnis kanvas, gerobak dan WhatsApp masuk blok…", "a": "Saluran (channels)", "x": "", "k": "kopi keliling"}, {"id": "KWU-03-008", "t": "KWU-03", "lv": 2, "q": "Usaha tahu bulat membeli kedelai dari koperasi petani setempat. Dalam model bisnis kanvas, koperasi itu masuk blok…", "a": "Kemitraan utama", "x": "", "k": "tahu bulat"}, {"id": "KWU-03-009", "t": "KWU-03", "lv": 3, "q": "Usaha laundry kiloan menawarkan \"selesai 6 jam, diantar ke kos\". Pernyataan ini termasuk blok model bisnis kanvas apa, dan mengapa bukan arus pendapatan?", "a": "Proposisi nilai; ia menjelaskan keunggulan bagi pelanggan, bukan sumber uang masuk", "x": "", "k": "laundry kiloan"}, {"id": "KWU-03-010", "t": "KWU-03", "lv": 1, "q": "Alat yang meringkas rencana usaha dalam sembilan blok disebut…", "a": "Model bisnis kanvas (Business Model Canvas)", "x": ""}, {"id": "KWU-04-001", "t": "KWU-04", "lv": 1, "q": "Biaya yang tidak berubah walau jumlah produksi berubah disebut…", "a": "Biaya tetap", "x": ""}, {"id": "KWU-04-002", "t": "KWU-04", "lv": 1, "q": "Bahan baku dan kemasan termasuk biaya…", "a": "Variabel", "x": ""}, {"id": "KWU-04-003", "t": "KWU-04", "lv": 1, "q": "Rumus BEP dalam unit adalah…", "a": "Biaya tetap ÷ (harga jual per unit − biaya variabel per unit)", "x": ""}, {"id": "KWU-04-004", "t": "KWU-04", "lv": 2, "q": "HPP per unit Rp8.000 dan markup 25%. Berapa harga jualnya?", "a": "Rp10.000", "x": "8.000 × 1,25."}, {"id": "KWU-04-005", "t": "KWU-04", "lv": 2, "q": "Total biaya produksi Rp600.000 untuk 200 bungkus. Berapa HPP per bungkus?", "a": "Rp3.000", "x": ""}, {"id": "KWU-04-006", "t": "KWU-04", "lv": 2, "q": "Biaya tetap Rp600.000, harga jual Rp10.000, biaya variabel Rp6.000 per unit. Berapa BEP unit?", "a": "150 unit", "x": "600.000 ÷ 4.000."}, {"id": "KWU-04-007", "t": "KWU-04", "lv": 2, "q": "Dari soal sebelumnya, berapa BEP dalam rupiah?", "a": "Rp1.500.000", "x": "150 × 10.000."}, {"id": "KWU-04-008", "t": "KWU-04", "lv": 3, "q": "Biaya tetap Rp1.200.000, harga jual Rp15.000, biaya variabel Rp9.000. Berapa laba bila terjual 300 unit?", "a": "Rp600.000", "x": "300 × 6.000 − 1.200.000."}, {"id": "KWU-04-009", "t": "KWU-04", "lv": 2, "q": "Usaha kue bolu menyewa dapur Rp500.000 per bulan, dan biaya bahan Rp7.000 per bolu. Mana biaya tetap dan mana biaya variabel?", "a": "Sewa dapur: biaya tetap; bahan: biaya variabel", "x": "", "k": "kue bolu"}, {"id": "KWU-04-010", "t": "KWU-04", "lv": 3, "q": "Penjual es kelapa membayar sewa lapak Rp300.000 per bulan, biaya bahan Rp4.000 per gelas, dan menjual Rp7.000 per gelas. Berapa gelas harus terjual sebulan agar balik modal?", "a": "100 gelas", "x": "300.000 ÷ 3.000.", "k": "es kelapa"}, {"id": "KWU-04-011", "t": "KWU-04", "lv": 3, "q": "Kerajinan anyaman pandan: HPP Rp20.000 per tas, dijual Rp25.000. Berapa persen markup dari HPP?", "a": "25%", "x": "5.000 ÷ 20.000.", "k": "anyaman pandan"}, {"id": "KWU-04-012", "t": "KWU-04", "lv": 1, "q": "Kepanjangan BEP adalah…", "a": "Break even point (titik impas)", "x": ""}, {"id": "KWU-04-013", "t": "KWU-04", "lv": 1, "q": "Kepanjangan HPP adalah…", "a": "Harga pokok produksi", "x": ""}, {"id": "KWU-05-001", "t": "KWU-05", "lv": 1, "q": "Sebutkan unsur bauran pemasaran 4P.", "a": "Product, price, place, promotion", "x": ""}, {"id": "KWU-05-002", "t": "KWU-05", "lv": 1, "q": "Kepanjangan STP dalam pemasaran adalah…", "a": "Segmentasi, targeting, positioning", "x": ""}, {"id": "KWU-05-003", "t": "KWU-05", "lv": 2, "q": "Membagi pasar menurut usia dan pendapatan termasuk segmentasi…", "a": "Demografis", "x": ""}, {"id": "KWU-05-004", "t": "KWU-05", "lv": 2, "q": "Unsur place dalam 4P berarti…", "a": "Saluran distribusi (cara produk sampai ke konsumen)", "x": ""}, {"id": "KWU-05-005", "t": "KWU-05", "lv": 2, "q": "Untuk usaha jasa, bauran 4P diperluas menjadi 7P dengan menambah…", "a": "People, process, physical evidence", "x": ""}, {"id": "KWU-05-006", "t": "KWU-05", "lv": 2, "q": "Citra produk di benak konsumen disebut…", "a": "Positioning", "x": ""}, {"id": "KWU-05-007", "t": "KWU-05", "lv": 2, "q": "Penjual sambal kemasan memberi diskon 10% untuk pembelian tiga botol. Unsur 4P apa yang dipakai?", "a": "Price (dan promosi penjualan)", "x": "Diskon menyentuh harga; ada buku yang memasukkannya ke promosi.", "k": "sambal kemasan"}, {"id": "KWU-05-008", "t": "KWU-05", "lv": 2, "q": "Usaha keripik pedas memilih anak muda 15–25 tahun yang suka tantangan rasa sebagai sasaran. Langkah memilih segmen ini disebut…", "a": "Targeting", "x": "", "k": "keripik pedas"}, {"id": "KWU-05-009", "t": "KWU-05", "lv": 3, "q": "Pengusaha bengkel motor menyebut usahanya \"bengkel cepat untuk ojek daring\". Termasuk langkah STP apa pernyataan ini, dan mengapa?", "a": "Positioning; menetapkan citra usaha di benak konsumen sasaran", "x": "", "k": "bengkel motor"}, {"id": "KWU-05-010", "t": "KWU-05", "lv": 1, "q": "Membagi pasar menjadi kelompok konsumen disebut…", "a": "Segmentasi", "x": ""}, {"id": "KWU-06-001", "t": "KWU-06", "lv": 1, "q": "Rumus laba dalam laporan laba rugi adalah…", "a": "Pendapatan − beban", "x": ""}, {"id": "KWU-06-002", "t": "KWU-06", "lv": 2, "q": "Laporan yang mencatat uang masuk dan uang keluar disebut…", "a": "Laporan arus kas", "x": ""}, {"id": "KWU-06-003", "t": "KWU-06", "lv": 2, "q": "Pendapatan sebulan Rp5.000.000 dan beban Rp3.800.000. Berapa labanya?", "a": "Rp1.200.000", "x": ""}, {"id": "KWU-06-004", "t": "KWU-06", "lv": 2, "q": "Mengapa uang usaha dan uang pribadi harus dipisah?", "a": "Agar keuntungan sebenarnya terlihat", "x": ""}, {"id": "KWU-06-005", "t": "KWU-06", "lv": 3, "q": "Bagaimana usaha bisa untung di laporan laba rugi tetapi kekurangan kas?", "a": "Banyak penjualan belum dibayar (pembeli berutang), sehingga uang belum masuk", "x": ""}, {"id": "KWU-06-006", "t": "KWU-06", "lv": 2, "q": "Warung sembako mencatat penjualan Rp12.000.000 dan beban (pembelian barang, listrik, gaji) Rp10.500.000 dalam sebulan. Berapa labanya?", "a": "Rp1.500.000", "x": "", "k": "warung sembako"}, {"id": "KWU-06-007", "t": "KWU-06", "lv": 1, "q": "Laporan yang menunjukkan laba atau rugi usaha disebut laporan…", "a": "Laba rugi", "x": ""}, {"id": "KWU-07-001", "t": "KWU-07", "lv": 1, "q": "Nomor izin berusaha yang diurus lewat sistem OSS disebut…", "a": "NIB (Nomor Induk Berusaha)", "x": ""}, {"id": "KWU-07-002", "t": "KWU-07", "lv": 1, "q": "Lembaga yang menerbitkan sertifikat halal adalah…", "a": "BPJPH", "x": ""}, {"id": "KWU-07-003", "t": "KWU-07", "lv": 2, "q": "Izin untuk pangan olahan industri rumah tangga disebut…", "a": "SPP-IRT (PIRT)", "x": ""}, {"id": "KWU-07-004", "t": "KWU-07", "lv": 2, "q": "Berapa lama perlindungan merek terdaftar menurut UU No. 20 Tahun 2016?", "a": "10 tahun dan dapat diperpanjang", "x": ""}, {"id": "KWU-07-005", "t": "KWU-07", "lv": 2, "q": "Apakah merek harus didaftarkan agar dilindungi?", "a": "Ya, merek dilindungi setelah didaftarkan ke DJKI", "x": ""}, {"id": "KWU-07-006", "t": "KWU-07", "lv": 2, "q": "HKI yang melindungi invensi teknologi adalah…", "a": "Paten", "x": ""}, {"id": "KWU-07-007", "t": "KWU-07", "lv": 2, "q": "Usaha rumahan kue kering ingin menjual produknya di toko oleh-oleh. Izin pangan apa yang biasanya diurus untuk produk seperti ini?", "a": "SPP-IRT (PIRT)", "x": "", "k": "kue kering"}, {"id": "KWU-07-008", "t": "KWU-07", "lv": 3, "q": "Dua usaha bakso di kota yang sama memakai nama dagang yang mirip. Hak apa yang menentukan siapa yang berhak atas nama itu, dan apa syaratnya?", "a": "Hak merek; yang lebih dulu mendaftarkan merek ke DJKI", "x": "", "k": "bakso"}, {"id": "KWU-07-009", "t": "KWU-07", "lv": 1, "q": "Kepanjangan NIB adalah…", "a": "Nomor Induk Berusaha", "x": ""}, {"id": "KWU-08-001", "t": "KWU-08", "lv": 1, "q": "Menjual produk tanpa menyimpan stok sendiri disebut…", "a": "Dropship", "x": ""}, {"id": "KWU-08-002", "t": "KWU-08", "lv": 1, "q": "Standar kode QR pembayaran yang ditetapkan Bank Indonesia disebut…", "a": "QRIS", "x": ""}, {"id": "KWU-08-003", "t": "KWU-08", "lv": 2, "q": "Sebutkan dua hal yang perlu diperhatikan saat berjualan di lokapasar.", "a": "Contoh: foto dan deskripsi jujur, respons cepat, ulasan pelanggan, biaya layanan platform, keamanan akun (dua di antaranya)", "x": ""}, {"id": "KWU-08-004", "t": "KWU-08", "lv": 2, "q": "Sebutkan dua bentuk pembayaran nontunai.", "a": "Contoh: transfer bank, dompet digital, QRIS (dua di antaranya)", "x": ""}, {"id": "KWU-08-005", "t": "KWU-08", "lv": 2, "q": "Pedagang buah di pasar menempelkan satu kode QR yang bisa dibayar dari aplikasi bank dan dompet digital mana pun. Kode ini disebut…", "a": "QRIS", "x": "", "k": "pasar buah"}, {"id": "KRJ-01-001", "t": "KRJ-01", "lv": 1, "q": "Bahan perintang warna pada batik adalah…", "a": "Malam (lilin)", "x": ""}, {"id": "KRJ-01-002", "t": "KRJ-01", "lv": 1, "q": "Alat untuk membatik tulis adalah…", "a": "Canting", "x": ""}, {"id": "KRJ-01-003", "t": "KRJ-01", "lv": 1, "q": "Teknik menyilangkan bahan lungsin dan pakan disebut…", "a": "Anyam", "x": ""}, {"id": "KRJ-01-004", "t": "KRJ-01", "lv": 2, "q": "Rotan dan eceng gondok termasuk bahan alam…", "a": "Nabati", "x": ""}, {"id": "KRJ-01-005", "t": "KRJ-01", "lv": 1, "q": "Kerajinan yang dibuat untuk keindahan disebut kerajinan fungsi…", "a": "Hias", "x": ""}, {"id": "KRJ-01-006", "t": "KRJ-01", "lv": 2, "q": "Teknik membuat hiasan dari simpul tali disebut…", "a": "Makrame", "x": ""}, {"id": "KRJ-01-007", "t": "KRJ-01", "lv": 2, "q": "Apakah kain bermotif batik hasil mesin cetak (printing) termasuk batik secara teknik?", "a": "Tidak, karena tidak memakai malam sebagai perintang warna", "x": ""}, {"id": "KRJ-01-008", "t": "KRJ-01", "lv": 2, "q": "Perajin di Kasongan membentuk tanah liat dengan tangan menjadi guci. Tanah liat termasuk bahan alam…", "a": "Mineral", "x": "", "k": "Kasongan"}, {"id": "KRJ-01-009", "t": "KRJ-01", "lv": 2, "q": "Perajin batik di kampung batik memakai cap tembaga untuk membuat motif berulang dengan cepat. Jenis batik ini disebut…", "a": "Batik cap", "x": "", "k": "kampung batik"}, {"id": "KRJ-02-001", "t": "KRJ-02", "lv": 1, "q": "Sebutkan tiga unsur desain.", "a": "Contoh: garis, bidang, bentuk, warna, tekstur, ruang (tiga di antaranya)", "x": ""}, {"id": "KRJ-02-002", "t": "KRJ-02", "lv": 2, "q": "Sebutkan tiga prinsip desain.", "a": "Contoh: kesatuan, keseimbangan, irama, proporsi, kontras (tiga di antaranya)", "x": ""}, {"id": "KRJ-02-003", "t": "KRJ-02", "lv": 2, "q": "Produk yang nyaman dan aman dipakai sesuai ukuran tubuh disebut…", "a": "Ergonomis", "x": ""}, {"id": "KRJ-02-004", "t": "KRJ-02", "lv": 2, "q": "Model awal produk yang dibuat untuk diuji sebelum diproduksi disebut…", "a": "Purwarupa (prototipe)", "x": ""}, {"id": "KRJ-02-005", "t": "KRJ-02", "lv": 2, "q": "Perajin tas anyaman mengubah ukuran pegangan tas agar pas di tangan dan tidak melukai. Pertimbangan desain ini disebut…", "a": "Ergonomis", "x": "", "k": "tas anyaman"}, {"id": "KRJ-03-001", "t": "KRJ-03", "lv": 1, "q": "Kepanjangan 3R adalah…", "a": "Reduce, reuse, recycle", "x": ""}, {"id": "KRJ-03-002", "t": "KRJ-03", "lv": 1, "q": "Sabut kelapa dan kulit jagung termasuk limbah…", "a": "Organik", "x": ""}, {"id": "KRJ-03-003", "t": "KRJ-03", "lv": 1, "q": "Plastik, kaleng, dan kaca termasuk limbah…", "a": "Anorganik", "x": ""}, {"id": "KRJ-03-004", "t": "KRJ-03", "lv": 2, "q": "Tempurung kelapa termasuk limbah keras atau lunak?", "a": "Keras", "x": ""}, {"id": "KRJ-03-005", "t": "KRJ-03", "lv": 2, "q": "Bank sampah RW mengolah bungkus kopi saset menjadi tas. Prinsip 3R apa yang dipakai?", "a": "Recycle (daur ulang)", "x": "", "k": "bank sampah"}, {"id": "RKY-01-001", "t": "RKY-01", "lv": 1, "q": "Kepanjangan TTG adalah…", "a": "Teknologi tepat guna", "x": ""}, {"id": "RKY-01-002", "t": "RKY-01", "lv": 1, "q": "Sebutkan dua ciri teknologi tepat guna.", "a": "Contoh: sesuai kebutuhan, mudah dibuat dan dirawat, murah, memakai bahan lokal, ramah lingkungan (dua di antaranya)", "x": ""}, {"id": "RKY-01-003", "t": "RKY-01", "lv": 2, "q": "Pompa yang menaikkan air tanpa listrik dengan memanfaatkan tekanan aliran air disebut…", "a": "Pompa hidram", "x": ""}, {"id": "RKY-01-004", "t": "RKY-01", "lv": 2, "q": "Apakah teknologi tepat guna harus canggih?", "a": "Tidak; yang penting sesuai masalah dan kemampuan pemakainya", "x": ""}, {"id": "RKY-01-005", "t": "RKY-01", "lv": 2, "q": "Sebutkan tahap pertama merancang produk rekayasa.", "a": "Identifikasi masalah", "x": ""}, {"id": "RKY-01-006", "t": "RKY-01", "lv": 2, "q": "Petani di desa berbukit memakai alat perontok padi dari kayu dan besi bekas yang bisa diperbaiki tukang las setempat. Alat seperti ini disebut…", "a": "Teknologi tepat guna", "x": "", "k": "perontok padi"}, {"id": "RKY-01-007", "t": "RKY-01", "lv": 3, "q": "Warga desa memilih penyaring air dari pasir, ijuk, dan arang daripada mesin penjernih impor. Sebutkan dua ciri TTG yang terpenuhi.", "a": "Contoh: murah, memakai bahan lokal, mudah dibuat dan dirawat (dua di antaranya)", "x": "", "k": "air bersih"}, {"id": "RKY-02-001", "t": "RKY-02", "lv": 1, "q": "Komponen yang menghambat arus listrik adalah…", "a": "Resistor", "x": ""}, {"id": "RKY-02-002", "t": "RKY-02", "lv": 1, "q": "Komponen yang mengalirkan arus hanya satu arah adalah…", "a": "Dioda", "x": ""}, {"id": "RKY-02-003", "t": "RKY-02", "lv": 2, "q": "Kaki LED yang lebih panjang adalah…", "a": "Anoda (+)", "x": ""}, {"id": "RKY-02-004", "t": "RKY-02", "lv": 2, "q": "Gelang warna merah pada resistor bernilai…", "a": "2", "x": ""}, {"id": "RKY-02-005", "t": "RKY-02", "lv": 2, "q": "Gelang toleransi emas pada resistor berarti…", "a": "±5%", "x": ""}, {"id": "RKY-02-006", "t": "RKY-02", "lv": 3, "q": "Berapa nilai resistor bergelang cokelat-hitam-merah-emas?", "a": "1.000 Ω (1 kΩ) ±5%", "x": "10 × 10²."}, {"id": "RKY-02-007", "t": "RKY-02", "lv": 3, "q": "Berapa nilai resistor bergelang kuning-ungu-cokelat-emas?", "a": "470 Ω ±5%", "x": "47 × 10¹."}, {"id": "RKY-02-008", "t": "RKY-02", "lv": 2, "q": "Tukang servis di pasar elektronik mengganti komponen yang menyimpan muatan sementara pada adaptor. Komponen ini disebut…", "a": "Kapasitor", "x": "", "k": "servis elektronik"}, {"id": "RKY-02-009", "t": "RKY-02", "lv": 1, "q": "Satuan hambatan listrik adalah…", "a": "Ohm (Ω)", "x": ""}, {"id": "RKY-03-001", "t": "RKY-03", "lv": 1, "q": "Alat yang mengubah cahaya matahari menjadi listrik adalah…", "a": "Panel surya (fotovoltaik)", "x": ""}, {"id": "RKY-03-002", "t": "RKY-03", "lv": 1, "q": "Gas utama yang dihasilkan biogas adalah…", "a": "Metana", "x": ""}, {"id": "RKY-03-003", "t": "RKY-03", "lv": 2, "q": "Pembangkit listrik kecil dari aliran sungai disebut…", "a": "PLTMH (mikrohidro)", "x": ""}, {"id": "RKY-03-004", "t": "RKY-03", "lv": 2, "q": "Biogas dibuat dengan memfermentasi kotoran ternak dalam keadaan…", "a": "Tanpa oksigen (anaerob)", "x": ""}, {"id": "RKY-03-005", "t": "RKY-03", "lv": 2, "q": "Peternak sapi di desa mengalirkan kotoran ke tangki tertutup, dan gasnya dipakai untuk kompor. Sumber energi apa ini?", "a": "Biogas (biomassa)", "x": "", "k": "peternak sapi"}, {"id": "RKY-03-006", "t": "RKY-03", "lv": 2, "q": "Pos ronda di dusun tanpa jaringan PLN memakai lampu dari panel surya. Di mana listrik disimpan agar lampu menyala malam hari?", "a": "Aki atau baterai (lewat pengatur pengisian)", "x": "", "k": "pos ronda"}, {"id": "RKY-03-007", "t": "RKY-03", "lv": 1, "q": "Energi yang tidak habis dalam waktu singkat disebut energi…", "a": "Terbarukan", "x": ""}, {"id": "RKY-04-001", "t": "RKY-04", "lv": 1, "q": "Model awal untuk diuji fungsi dan tampilannya disebut…", "a": "Purwarupa (prototipe)", "x": ""}, {"id": "RKY-04-002", "t": "RKY-04", "lv": 1, "q": "Gambar yang memuat ukuran, bahan, dan pandangan depan-samping-atas disebut…", "a": "Gambar kerja", "x": ""}, {"id": "RKY-04-003", "t": "RKY-04", "lv": 2, "q": "Apa yang harus dilakukan sebelum merangkai komponen listrik?", "a": "Mematikan sumber listrik", "x": ""}, {"id": "RKY-04-004", "t": "RKY-04", "lv": 2, "q": "Sebutkan tiga pandangan dalam gambar kerja.", "a": "Depan, samping, atas", "x": ""}, {"id": "RKY-04-005", "t": "RKY-04", "lv": 2, "q": "Siswa SMK merancang rak sepatu dan membuat model kecil dari kardus untuk dicoba sebelum memotong kayu. Model ini disebut…", "a": "Purwarupa (prototipe)", "x": "", "k": "rak sepatu"}, {"id": "BUD-01-001", "t": "BUD-01", "lv": 1, "q": "Menanam tanpa tanah dengan larutan nutrisi disebut…", "a": "Hidroponik", "x": ""}, {"id": "BUD-01-002", "t": "BUD-01", "lv": 1, "q": "Nutrisi hidroponik yang umum disebut…", "a": "AB mix", "x": ""}, {"id": "BUD-01-003", "t": "BUD-01", "lv": 2, "q": "Sistem hidroponik yang mengalirkan lapisan tipis nutrisi terus-menerus di talang disebut…", "a": "NFT", "x": ""}, {"id": "BUD-01-004", "t": "BUD-01", "lv": 2, "q": "Sistem hidroponik yang mengalirkan nutrisi ke akar lewat sumbu kain disebut…", "a": "Sistem sumbu (wick)", "x": ""}, {"id": "BUD-01-005", "t": "BUD-01", "lv": 2, "q": "Pengendalian hama yang mengutamakan cara alami dan memakai pestisida kimia sebagai pilihan terakhir disebut…", "a": "Pengendalian hama terpadu", "x": ""}, {"id": "BUD-01-006", "t": "BUD-01", "lv": 2, "q": "Apakah hidroponik memakai media tanam?", "a": "Ya, media penopang seperti rockwool atau sekam bakar; yang ditiadakan adalah tanah", "x": ""}, {"id": "BUD-01-007", "t": "BUD-01", "lv": 2, "q": "Sebutkan urutan tahap budi daya tanaman dari awal.", "a": "Persiapan, penyemaian, penanaman, pemeliharaan, panen, pascapanen", "x": ""}, {"id": "BUD-01-008", "t": "BUD-01", "lv": 2, "q": "Warga gang sempit menanam kangkung di atas styrofoam yang mengapung pada bak berisi larutan nutrisi. Sistem hidroponik ini disebut…", "a": "Rakit apung", "x": "", "k": "kebun gang"}, {"id": "BUD-01-009", "t": "BUD-01", "lv": 3, "q": "Kelompok tani hidroponik memakai pipa yang menggenangi akar dengan larutan nutrisi lebih dalam agar tanaman tetap aman saat listrik padam sebentar. Sistem apa ini, dan mengapa lebih tahan pemadaman dibanding NFT?", "a": "DFT; akar tetap terendam genangan nutrisi saat pompa berhenti", "x": "", "k": "kelompok tani"}, {"id": "BUD-02-001", "t": "BUD-02", "lv": 1, "q": "Perbanyakan tanaman dengan biji disebut perbanyakan…", "a": "Generatif", "x": ""}, {"id": "BUD-02-002", "t": "BUD-02", "lv": 1, "q": "Perbanyakan dengan memotong batang lalu menanamnya disebut…", "a": "Stek", "x": ""}, {"id": "BUD-02-003", "t": "BUD-02", "lv": 2, "q": "Menumbuhkan akar pada cabang yang masih menempel di pohon induk disebut…", "a": "Cangkok", "x": ""}, {"id": "BUD-02-004", "t": "BUD-02", "lv": 2, "q": "Menempelkan mata tunas ke batang tanaman lain disebut…", "a": "Okulasi", "x": ""}, {"id": "BUD-02-005", "t": "BUD-02", "lv": 2, "q": "Teknik yang menghasilkan banyak bibit seragam dari potongan jaringan kecil di media steril disebut…", "a": "Kultur jaringan", "x": ""}, {"id": "BUD-02-006", "t": "BUD-02", "lv": 2, "q": "Sebutkan satu kelebihan perbanyakan vegetatif.", "a": "Sifat bibit sama dengan induk, atau lebih cepat berbuah", "x": ""}, {"id": "BUD-02-007", "t": "BUD-02", "lv": 2, "q": "Jahe dan kunyit diperbanyak secara alami dengan…", "a": "Rimpang", "x": ""}, {"id": "BUD-02-008", "t": "BUD-02", "lv": 2, "q": "Penjual bibit mangga di pinggir jalan menempelkan mata tunas mangga unggul ke batang bawah mangga lokal. Teknik ini disebut…", "a": "Okulasi", "x": "", "k": "bibit mangga"}, {"id": "BUD-02-009", "t": "BUD-02", "lv": 3, "q": "Petani jambu ingin bibit yang buahnya sama persis dengan pohon induk dan cepat berbuah. Mengapa ia memilih cangkok daripada menanam biji?", "a": "Cangkok (vegetatif) mewarisi sifat induk dan cepat berbuah; biji (generatif) sifatnya bisa berbeda", "x": "", "k": "kebun jambu"}, {"id": "BUD-03-001", "t": "BUD-03", "lv": 1, "q": "Ayam yang dipelihara untuk diambil telurnya disebut ayam…", "a": "Petelur (layer)", "x": ""}, {"id": "BUD-03-002", "t": "BUD-03", "lv": 1, "q": "Ayam yang dipelihara untuk diambil dagingnya disebut ayam…", "a": "Pedaging (broiler)", "x": ""}, {"id": "BUD-03-003", "t": "BUD-03", "lv": 2, "q": "Sebutkan dua faktor kualitas air yang memengaruhi budi daya ikan.", "a": "Contoh: suhu, pH, oksigen (dua di antaranya)", "x": ""}, {"id": "BUD-03-004", "t": "BUD-03", "lv": 2, "q": "Penyakit tetelo pada unggas disebut juga…", "a": "Newcastle Disease (ND)", "x": ""}, {"id": "BUD-03-005", "t": "BUD-03", "lv": 2, "q": "Warga memelihara lele di ember sambil menanam kangkung di atasnya. Cara ini disebut…", "a": "Budikdamber", "x": "", "k": "budikdamber"}, {"id": "PGL-01-001", "t": "PGL-01", "lv": 1, "q": "Kapang yang dipakai membuat tempe adalah…", "a": "Rhizopus", "x": ""}, {"id": "PGL-01-002", "t": "PGL-01", "lv": 1, "q": "Merebus dan mengukus termasuk teknik pengolahan panas…", "a": "Basah", "x": ""}, {"id": "PGL-01-003", "t": "PGL-01", "lv": 1, "q": "Menggoreng dan memanggang termasuk teknik pengolahan panas…", "a": "Kering", "x": ""}, {"id": "PGL-01-004", "t": "PGL-01", "lv": 2, "q": "Bakteri yang dipakai membuat yoghurt adalah…", "a": "Lactobacillus bulgaricus dan Streptococcus thermophilus", "x": ""}, {"id": "PGL-01-005", "t": "PGL-01", "lv": 1, "q": "Menyangrai termasuk teknik panas basah atau kering?", "a": "Kering", "x": ""}, {"id": "PGL-01-006", "t": "PGL-01", "lv": 2, "q": "Mikroorganisme utama dalam ragi tapai adalah…", "a": "Saccharomyces cerevisiae (bersama kapang)", "x": ""}, {"id": "PGL-01-007", "t": "PGL-01", "lv": 2, "q": "Pembuat tempe di Malang membungkus kedelai rebus yang sudah diberi ragi dengan daun pisang lalu mendiamkannya dua hari. Proses ini disebut…", "a": "Fermentasi", "x": "", "k": "pembuat tempe"}, {"id": "PGL-01-008", "t": "PGL-01", "lv": 2, "q": "Penjual kue tradisional mematangkan kue lapis dengan uap air panas. Teknik pengolahan ini disebut…", "a": "Mengukus (panas basah)", "x": "", "k": "kue tradisional"}, {"id": "PGL-01-009", "t": "PGL-01", "lv": 1, "q": "Tapai dibuat dengan bantuan…", "a": "Ragi", "x": ""}, {"id": "PGL-02-001", "t": "PGL-02", "lv": 1, "q": "Pemanasan pangan di bawah 100 °C untuk membunuh sebagian mikroba disebut…", "a": "Pasteurisasi", "x": ""}, {"id": "PGL-02-002", "t": "PGL-02", "lv": 1, "q": "Sterilisasi umumnya dilakukan pada suhu sekitar…", "a": "121 °C", "x": ""}, {"id": "PGL-02-003", "t": "PGL-02", "lv": 1, "q": "Sebutkan dua bahan berbahaya yang dilarang untuk mengawetkan pangan.", "a": "Formalin dan boraks", "x": ""}, {"id": "PGL-02-004", "t": "PGL-02", "lv": 2, "q": "Manisan dan selai diawetkan dengan bahan…", "a": "Gula", "x": ""}, {"id": "PGL-02-005", "t": "PGL-02", "lv": 2, "q": "Mengapa susu pasteurisasi tetap perlu disimpan dingin?", "a": "Pasteurisasi tidak membunuh semua mikroba", "x": ""}, {"id": "PGL-02-006", "t": "PGL-02", "lv": 2, "q": "Pengawetan dengan pengasapan termasuk cara…", "a": "Pengeringan (fisik)", "x": ""}, {"id": "PGL-02-007", "t": "PGL-02", "lv": 2, "q": "Pewarna tekstil yang dilarang dipakai pada pangan adalah…", "a": "Rhodamin B (dan kuning metanil)", "x": ""}, {"id": "PGL-02-008", "t": "PGL-02", "lv": 2, "q": "Nelayan di pesisir menjemur ikan yang sudah digarami di para-para bambu. Cara pengawetan apa yang dipakai?", "a": "Penggaraman dan pengeringan", "x": "", "k": "nelayan"}, {"id": "PGL-02-009", "t": "PGL-02", "lv": 3, "q": "Pedagang mi basah di pasar menjual mi yang tetap kenyal dan tidak basi berhari-hari tanpa didinginkan. Bahan berbahaya apa yang patut dicurigai, dan mengapa mi seharusnya cepat rusak?", "a": "Formalin atau boraks; mi basah berkadar air tinggi sehingga mudah rusak oleh mikroba", "x": "", "k": "pasar"}, {"id": "PGL-03-001", "t": "PGL-03", "lv": 1, "q": "Kemasan yang bersentuhan langsung dengan pangan disebut kemasan…", "a": "Primer", "x": ""}, {"id": "PGL-03-002", "t": "PGL-03", "lv": 1, "q": "Sebutkan tiga isi pokok label pangan.", "a": "Contoh: nama produk, daftar bahan, berat bersih, nama dan alamat produsen, tanggal kedaluwarsa, nomor izin edar (tiga di antaranya)", "x": ""}, {"id": "PGL-03-003", "t": "PGL-03", "lv": 2, "q": "Kemasan untuk distribusi, misalnya kardus besar berisi banyak dus, disebut kemasan…", "a": "Tersier", "x": ""}, {"id": "PGL-03-004", "t": "PGL-03", "lv": 2, "q": "Mencegah bahan mentah mencemari bahan matang disebut mencegah…", "a": "Kontaminasi silang", "x": ""}, {"id": "PGL-03-005", "t": "PGL-03", "lv": 2, "q": "Plastik yang aman bersentuhan dengan pangan disebut plastik…", "a": "Food grade", "x": ""}, {"id": "PGL-03-006", "t": "PGL-03", "lv": 2, "q": "Sebutkan dua kebiasaan higiene saat mengolah pangan.", "a": "Contoh: cuci tangan, penutup kepala, celemek, alat bersih (dua di antaranya)", "x": ""}, {"id": "PGL-03-007", "t": "PGL-03", "lv": 2, "q": "Penjual keripik di pasar oleh-oleh memasukkan keripik ke plastik, lalu 20 plastik ke dalam satu dus. Dus itu termasuk kemasan…", "a": "Sekunder", "x": "", "k": "pasar oleh-oleh"}, {"id": "PGL-03-008", "t": "PGL-03", "lv": 3, "q": "Pembuat sambal rumahan memakai talenan yang sama untuk ayam mentah dan tomat tanpa dicuci. Risiko apa yang muncul, dan bagaimana mencegahnya?", "a": "Kontaminasi silang; pisahkan atau cuci alat untuk bahan mentah dan bahan siap makan", "x": "", "k": "sambal rumahan"}], "bank": {"key": "bank-soal-pkwu-v1", "title": "Bank Soal Prakarya dan Kewirausahaan", "map_title": "Peta Materi Prakarya dan Kewirausahaan", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Prakarya dan Kewirausahaan. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Prakarya dan Kewirausahaan dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

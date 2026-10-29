@@ -98,27 +98,15 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 @media (max-width:640px){#poolInfo{margin-left:0;flex-basis:100%}.qcard{padding:18px 16px 20px}
   .bs td:not(:first-child),.bs th:not(:first-child){width:auto;padding-inline:6px}.bs th{font-size:.8rem}}
 @media (max-width:480px){.wrap{padding-inline:16px}}
-/* Swipe mode ("Mode geser"): the filtered items of one paper as a full-screen vertical feed, one item per screen, in paper order.
-   Answer on the card and check it; the card then shows the verdict, the proposed key and its reasoning. Swipe up for the next item.
-   Long items (passages, tables) scroll inside the card. On wide screens it is a phone-sized column. */
+/*@include _feed.css*/
+/* Swipe mode ("Mode geser"): the chosen paper's items in paper order, one per screen. Answer on the card and check it;
+   the card then shows the verdict, the proposed key and its reasoning. Long items (passages, tables) scroll inside the card. */
 .tka-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:16px}
 .tka-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:520px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 14px calc(12px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-170px;top:-140px;border-radius:50%;background:var(--blue-soft,#D7EDFB);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--feed-w:520px}
 .st-top{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding-right:50px;font-family:var(--f-label);font-size:.82rem}
-.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px}
 .st-top .code{font-family:var(--f-mono)}
-.st-card{flex:1;min-height:0;margin-top:12px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;display:flex;flex-direction:column}
-.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:14px 16px 18px;display:flex;flex-direction:column;gap:12px}
+.st-body{padding:14px 16px 18px;display:flex;flex-direction:column;gap:12px}
 .st-body .stem{font-size:1.02rem}
 .st-body details.psg{border:2px solid var(--line);border-radius:12px;background:var(--sunk,#EEF3F9)}
 .st-body details.psg summary{cursor:pointer;font-family:var(--f-label);font-weight:600;font-size:.88rem;padding:8px 12px}
@@ -130,14 +118,8 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-body .bs input{width:22px;height:22px}
 .st-act{display:flex;gap:10px;margin-top:12px}
 .st-act .btn{flex:1;justify-content:center;padding:11px}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:10px;font-family:var(--f-label);font-size:.78rem;color:var(--muted)}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 248px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
-body.story-open{overflow:hidden}
 .mark-ok{color:var(--ok);font-weight:700}
 .mark-bad{color:var(--bad);font-weight:700}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 </style>
 
 <div class="wrap">
@@ -146,7 +128,7 @@ body.story-open{overflow:hidden}
     <div class="eyebrow" id="eyebrow">Latihan TKA 2025</div>
     <h1 style="margin-top:8px">Latihan Soal TKA 2025</h1>
     <p class="lead">Soal Tes Kemampuan Akademik (TKA) SMA/MA/SMK 2025 yang disalin dari berkas soal. Pilih mata pelajaran, jawab, lalu periksa dengan kunci.</p>
-    <div class="tka-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="tka-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar, urut seperti naskahnya: jawab, periksa, lalu geser ke atas untuk soal berikutnya. Memakai mapel dan bentuk soal yang dipilih.</p></div>
     <p class="warning"><b>Kunci di halaman ini adalah kunci usulan, bukan kunci resmi.</b> Setiap kunci diberi tingkat keyakinan dan alasan. Soal yang kuncinya berkeyakinan rendah atau yang sumbernya bermasalah perlu dicek guru. Gambar dan peta dari berkas asli diganti dengan uraian teks.</p>
   </header>
@@ -162,16 +144,17 @@ body.story-open{overflow:hidden}
   <div class="score" id="score"></div>
   <details class="notes" id="notes"><summary>Tentang berkas soal ini</summary><ul id="notesList"></ul></details>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer>Data dari <span class="mono">data/tka/</span> di repositori proyek. Jawaban yang sudah diperiksa tersimpan di peramban masing-masing.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 /*__TKA__*/
+/*@include _feed.js*/
 const FORMATS = {"pilihan-ganda": "Pilihan ganda", "pilihan-ganda-kompleks": "PG kompleks", "benar-salah": "Kategori"};
 const LETTERS = "ABCDEFGH";
 const KEY = "tka-latihan-v1";
@@ -386,6 +369,14 @@ document.addEventListener("click", e => {
 });
 
 /* ---------- swipe mode ---------- */
+// The chosen paper and format in the shared swipe feed, one item per screen in paper order, starting at the current
+// item. Closing it puts the number grid on the item that was on screen.
+const feed = makeFeed($("feed"), {
+  onClose(slide){
+    if (slide && slide.dataset.id) state.pos[bank().id] = Math.max(0, pool().findIndex(it => it.id === slide.dataset.id));
+    save(); render();
+  },
+});
 // `again` is true when the previous item used the same passage; it then starts folded.
 function slideHTML(b, it, i, n, again){
   const passage = it.passage ? (b.teks || []).find(t => t.id === it.passage) : null;
@@ -404,6 +395,12 @@ function slideHTML(b, it, i, n, again){
     <div class="st-foot"><span>${esc(b.mapel)} · nomor ${esc(it.nomor)}</span><span>Geser ↑ soal berikutnya</span></div>
   </article>`;
 }
+// Scroll the card's body, never the feed, so `el` shows: at the top of the card, or just into view.
+function showInCard(sl, el, atTop){
+  const body = sl.querySelector(".st-body"), box = body.getBoundingClientRect(), r = el.getBoundingClientRect();
+  const by = atTop ? r.top - box.top - 8 : Math.max(0, r.bottom - box.bottom + 8);
+  if (by) body.scrollBy({top: by, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+}
 function swipeCheck(sl, showOnly){
   const it = bank().soal.find(x => x.id === sl.dataset.id), res = sl.querySelector(".sw-result");
   const hasKey = it.kunci !== null && it.kunci !== undefined;
@@ -411,7 +408,7 @@ function swipeCheck(sl, showOnly){
   if (!showOnly && answer === null) {
     res.className = "sw-result result"; res.hidden = false;
     res.textContent = it.format === "benar-salah" ? "Isi setiap baris dulu." : "Pilih jawaban dulu.";
-    res.scrollIntoView({block: "nearest"});
+    showInCard(sl, res, false);
     return;
   }
   let verdict = "";
@@ -424,57 +421,32 @@ function swipeCheck(sl, showOnly){
   }
   if (hasKey) mark(it, answer, sl);
   res.innerHTML = resultHTML(it, verdict); res.hidden = false;
+  feed.scroller.focus({preventScroll: true});  // keep focus in the feed, not on a control that is about to be disabled
   sl.querySelectorAll("input").forEach(x => x.disabled = true);
   sl.querySelectorAll(".st-act button").forEach(x => x.disabled = true);
-  res.scrollIntoView({block: "start", behavior: "smooth"});
+  showInCard(sl, res, true);
+  updateEnd();
+}
+function updateEnd(){
+  const end = $("swEnd"), items = pool();
+  if (end) end.textContent = `${bank().mapel}: ${items.filter(it => state.results[it.id] === true).length} dari ${items.length} soal sesuai kunci usulan.`;
 }
 function openStory(){
   const b = bank(), items = pool();
   if (!items.length) return;
-  const start = Math.min(state.pos[b.id] || 0, items.length - 1);
-  const right = () => items.filter(it => state.results[it.id] === true).length;
-  $("feed").innerHTML = items.map((it, i) => slideHTML(b, it, i, items.length, i > 0 && it.passage && items[i - 1].passage === it.passage)).join("") +
-    `<div class="st-end"><h2>Naskah selesai</h2><p id="swEnd"></p><button class="btn primary" type="button" data-act="top">Ulangi dari nomor pertama</button><button class="btn" type="button" data-act="close">Kembali ke daftar nomor</button></div>`;
-  $("swEnd").textContent = `${b.mapel}: ${right()} dari ${items.length} soal sesuai kunci usulan.`;
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = $("feed").children[start].offsetTop;
-  $("feed").focus({preventScroll: true});
-  setMode(true);
+  feed.open(items.map((it, i) => slideHTML(b, it, i, items.length, i > 0 && it.passage && items[i - 1].passage === it.passage)).join("") +
+    `<div class="st-end"><h2>Naskah selesai</h2><p id="swEnd"></p><button class="btn primary" type="button" data-act="top">Ulangi dari nomor pertama</button><button class="btn" type="button" data-act="close">Kembali ke daftar nomor</button></div>`,
+    Math.min(state.pos[b.id] || 0, items.length - 1));
+  updateEnd();
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
-}
-function closeStory(){
-  const cur = storyCurrent(), items = pool();
-  if (cur) state.pos[bank().id] = Math.max(0, items.findIndex(it => it.id === cur.dataset.id));
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  save(); setMode(false); render();
-}
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if (!act) return;
   const sl = act.closest(".slide");
   if (act.dataset.act === "check") swipeCheck(sl, false);
   if (act.dataset.act === "show") swipeCheck(sl, true);
-  if (act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
-  if (act.dataset.act === "close") closeStory();
-});
-$("feed").addEventListener("scroll", () => {
-  const end = $("swEnd");
-  if (end) end.textContent = `${bank().mapel}: ${pool().filter(it => state.results[it.id] === true).length} dari ${pool().length} soal sesuai kunci usulan.`;
-}, {passive: true});
-document.addEventListener("keydown", e => {
-  if ($("story").hidden) return;
-  if (e.key === "Escape") { e.preventDefault(); closeStory(); }
-  if (e.target.closest("input, label")) return;
-  if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
+  if (act.dataset.act === "top") feed.go(0);
+  if (act.dataset.act === "close") feed.close();
 });
 
 if (BANKS.length) render();
