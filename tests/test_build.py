@@ -202,6 +202,13 @@ class MapsTest(unittest.TestCase):
                 self.assertIn(needle, page, name)
         self.assertIn("MAP.bank + '?mode=geser\"", build.map_pages(self.maps, {})["peta-fisika.html"])
 
+    def test_tka_page_has_swipe_mode(self):
+        topics, rows = build.load()
+        built = build.pages(topics, rows, {})
+        for needle in ('id="storyOpen"', 'id="feed"', 'get("mode") === "geser"', "function swipeCheck", 'optsHTML(it, "sw-"'):
+            self.assertIn(needle, built["tka.html"])
+        self.assertIn('href="tka.html?mode=geser"', built["index.html"])
+
     def test_map_pages_have_story_mode(self):
         for name, page in build.map_pages(self.maps, {}).items():
             for needle in ('id="storyOpen"', 'id="story"', 'id="feed"', 'params.get("mode") === "geser"'):
