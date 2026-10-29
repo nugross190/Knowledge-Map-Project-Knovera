@@ -6,29 +6,18 @@
 <title>Peta Materi Seni Musik SMA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+/* Layout: generic subject map, same catalogue look as the history map. Grade filter and domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json; each topic's grades come from its src (scripts/build.py). */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
   --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -93,7 +82,6 @@ section{margin-top:44px}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
 .lj{border:1.3px dotted var(--ink);font-style:italic}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.chip.off{opacity:.35}
 #lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
@@ -131,7 +119,7 @@ td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
 .traps li::marker{color:var(--warn)}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
 
@@ -142,16 +130,111 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .card-head{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.titlebar{display:flex;align-items:center;gap:16px;margin-top:8px}
+.subj-ico{flex:none;display:grid;place-items:center;width:60px;height:60px;border:2px solid var(--ink);border-radius:16px;background:var(--mark)}
+.subj-ico svg{width:38px;height:38px}
+.subj-ico:empty{display:none}
+.grade-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.grade-bar .lbl{font-family:var(--f-label);font-weight:600;font-size:.92rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg button{font:inherit;font-family:var(--f-label);font-weight:600;font-size:.92rem;border:0;background:transparent;color:var(--ink);padding:8px 14px;cursor:pointer;line-height:1.2}
+.seg button small{display:block;font-family:var(--f-body);font-weight:400;font-size:.72rem;opacity:.8}
+.seg button + button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.empty-note{color:var(--muted);font-size:.95rem}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
 </style>
 
 <div class="wrap">
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow" id="eyebrow"></div>
-    <h1 style="margin-top:8px" id="title"></h1>
+    <div class="titlebar"><span class="subj-ico" id="icon" aria-hidden="true"></span><h1 id="title"></h1></div>
     <p class="lead" id="lead"></p>
+    <div class="grade-bar"><span class="lbl" id="gradeLbl">Kelas</span>
+      <div class="seg" id="grades" role="group" aria-labelledby="gradeLbl">
+        <button type="button" data-kelas="" aria-pressed="true">Semua<small>X–XII</small></button>
+        <button type="button" data-kelas="X" aria-pressed="false">Kelas X<small>Fase E</small></button>
+        <button type="button" data-kelas="XI" aria-pressed="false">Kelas XI<small>Fase F</small></button>
+        <button type="button" data-kelas="XII" aria-pressed="false">Kelas XII<small>Fase F</small></button>
+      </div>
+    </div>
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
@@ -171,6 +254,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
+    <p class="empty-note" id="emptyNote" hidden>Tidak ada simpul untuk pilihan ini. Pilih Semua kelas.</p>
     <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
     <p id="lanjutNote" hidden></p>
   </section>
@@ -186,10 +270,14 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 </div>
 
 <script>
-const MAP = {"id": "seni-musik", "subject": "Seni Musik", "title": "Peta Materi Seni Musik SMA", "lead": "Seluruh materi Seni Musik SMA, dari unsur dan notasi musik sampai alat musik, musik Nusantara dan dunia, serta bernyanyi dan berkarya, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur musik, notasi, tangga nada, alat musik, lagu daerah dan nasional, gamelan, sejarah musik, bernyanyi, aransemen, dan apresiasi.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Musik SMA: teori, alat musik, musik Nusantara dan dunia, serta praktik berkarya dan apresiasi. Label kelas hanya perkiraan karena buku menyusun materi per proyek, bukan per topik.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: dari unsur dan notasi, ke tangga nada dan akor, ke alat dan ragam musik, lalu bernyanyi dan berkarya.", "path": [{"label": "Unsur", "title": "Unsur musik", "note": "Irama, melodi, harmoni", "to": "UNS-01"}, {"label": "Notasi", "title": "Not balok dan not angka", "note": "Nilai not, birama", "to": "UNS-02"}, {"label": "Tangga", "title": "Tangga nada", "note": "Mayor, minor, pentatonis", "to": "UNS-03"}, {"label": "Akor", "title": "Interval dan akor", "note": "Trinada I, IV, V", "to": "UNS-04"}, {"label": "Alat", "title": "Klasifikasi alat musik", "note": "Sumber bunyi", "to": "ALT-01"}, {"label": "Nusantara", "title": "Lagu daerah", "note": "Asal dan ciri", "to": "MNU-01"}, {"label": "Nyanyi", "title": "Teknik vokal", "note": "Napas, artikulasi", "to": "KRY-01"}, {"label": "Cipta", "title": "Aransemen", "note": "Motif, frase", "to": "KRY-02"}], "domains": [{"id": "UNS", "name": "Unsur dan teori musik", "short": "Teori", "note": "Unsur musik, notasi, tangga nada, akor, istilah tempo dan dinamika, serta bentuk lagu.", "topics": [{"code": "UNS-01", "title": "Unsur musik", "scope": "Irama, melodi, harmoni, timbre", "src": "Kelas X", "tier": 1, "sum": "Musik tersusun dari unsur pokok (irama, melodi, harmoni, bentuk) dan unsur ekspresi (tempo, dinamika, timbre).", "blocks": [{"h": "Unsur", "table": {"cols": ["Unsur", "Pengertian"], "rows": [["Irama (ritme)", "Pola panjang pendek bunyi dan diam yang teratur"], ["Melodi", "Rangkaian nada yang berurutan dan bermakna"], ["Harmoni", "Paduan beberapa nada yang dibunyikan bersamaan"], ["Tempo", "Cepat lambatnya lagu"], ["Dinamika", "Keras lembutnya bunyi"], ["Timbre (warna bunyi)", "Ciri khas bunyi yang membedakan suara atau alat musik"], ["Bentuk", "Susunan bagian-bagian lagu"]]}}, {"h": "Catatan", "li": ["<b>Ekspresi<\/b> adalah penghayatan musik yang tampak lewat tempo, dinamika, dan warna bunyi."]}], "traps": ["Irama berkaitan dengan panjang pendek bunyi; melodi berkaitan dengan tinggi rendah nada.", "Dinamika adalah keras lembut bunyi, bukan cepat lambat lagu (itu tempo)."]}, {"code": "UNS-02", "title": "Notasi musik", "scope": "Not balok, not angka, birama", "src": "Kelas X", "tier": 1, "sum": "Musik ditulis dengan not balok atau not angka; nilai not dan tanda birama menentukan jumlah ketukan.", "blocks": [{"h": "Nilai not (birama 4/4)", "table": {"cols": ["Not", "Ketukan", "Tanda istirahat setara"], "rows": [["Not penuh", "4", "Istirahat penuh"], ["Not setengah", "2", "Istirahat setengah"], ["Not seperempat", "1", "Istirahat seperempat"], ["Not seperdelapan", "½", "Istirahat seperdelapan"]]}}, {"h": "Birama dan kunci", "li": ["<b>Tanda birama 3/4<\/b>: tiap birama berisi 3 ketuk dengan not seperempat sebagai satu ketuk; 6/8: 6 ketuk not seperdelapan.", "Kunci G (treble) untuk nada tinggi; kunci F (bas) untuk nada rendah.", "Titik di belakang not balok menambah setengah nilai not itu: not setengah bertitik bernilai 3 ketuk."]}, {"h": "Not angka", "li": ["Angka 1–7 untuk do sampai si; 0 tanda diam; titik di atas angka berarti satu oktaf lebih tinggi, titik di bawah satu oktaf lebih rendah.", "Satu garis di atas angka berarti nilainya setengah ketuk; dua garis seperempat ketuk."]}], "traps": ["Not setengah bertitik bernilai 3 ketuk, bukan 2,5.", "Pada not angka, angka 0 adalah tanda diam, bukan nada."]}, {"code": "UNS-03", "title": "Tangga nada", "scope": "Diatonis mayor-minor, pentatonis", "src": "Kelas X", "tier": 1, "sum": "Tangga nada adalah susunan nada berurutan dengan jarak tertentu; dibedakan menjadi diatonis, pentatonis, dan kromatis.", "blocks": [{"h": "Diatonis", "li": ["<b>Mayor<\/b>: jarak 1 – 1 – ½ – 1 – 1 – 1 – ½; kesan gembira dan semangat; biasanya diawali dan diakhiri do.", "Minor asli: jarak 1 – ½ – 1 – 1 – ½ – 1 – 1; kesan sedih atau syahdu; biasanya diawali dan diakhiri la.", "Tangga nada kromatis memakai jarak setengah di seluruh tangga nada."]}, {"h": "Pentatonis", "li": ["Lima nada pokok; dipakai di musik tradisional, misalnya gamelan.", "Slendro: lima nada dengan jarak hampir sama; pelog: tujuh nada dengan jarak tidak sama, biasanya hanya lima yang dipakai dalam satu lagu."]}], "traps": ["Jarak ½ pada mayor terletak antara nada 3–4 (mi–fa) dan 7–8 (si–do)."]}, {"code": "UNS-04", "title": "Interval dan akor", "scope": "Interval, trinada, kadens", "src": "Kelas XI", "tier": 2, "sum": "Interval adalah jarak dua nada; akor adalah gabungan tiga nada atau lebih yang dibunyikan bersamaan.", "blocks": [{"h": "Interval dan akor", "li": ["Interval: prima, sekunda, terts, kwart, kwint, sekst, septim, oktaf.", "<b>Akor pokok<\/b> tangga nada mayor: I (do-mi-sol), IV (fa-la-do), V (sol-si-re).", "Pada C mayor: akor C (C-E-G), F (F-A-C), G (G-B-D).", "Kadens (akhiran lagu) umum: V ke I."]}]}, {"code": "UNS-05", "title": "Tempo dan dinamika", "scope": "Istilah dan tanda", "src": "Kelas X", "tier": 1, "sum": "Istilah berbahasa Italia untuk menunjukkan cepat lambat lagu dan keras lembut bunyi.", "blocks": [{"h": "Tempo", "table": {"cols": ["Istilah", "Arti"], "rows": [["Largo", "Sangat lambat"], ["Adagio", "Lambat"], ["Andante", "Sedang, seperti berjalan"], ["Moderato", "Sedang"], ["Allegro", "Cepat"], ["Presto", "Sangat cepat"]]}}, {"h": "Dinamika", "table": {"cols": ["Tanda", "Arti"], "rows": [["pp (pianissimo)", "Sangat lembut"], ["p (piano)", "Lembut"], ["mf (mezzo forte)", "Agak keras"], ["f (forte)", "Keras"], ["ff (fortissimo)", "Sangat keras"], ["Crescendo / decrescendo", "Makin keras / makin lembut"]]}}], "traps": ["Piano (p) dalam dinamika berarti lembut, bukan alat musik piano.", "Andante lebih lambat daripada allegro."]}, {"code": "UNS-06", "title": "Bentuk lagu", "scope": "Satu, dua, tiga bagian", "src": "Kelas XI", "tier": 2, "sum": "Lagu disusun dari frase tanya dan frase jawab yang membentuk kalimat musik dan bagian lagu.", "blocks": [{"h": "Bentuk", "li": ["Frase tanya (antecedens) diakhiri nada yang terasa belum selesai; frase jawab (konsekuens) diakhiri nada yang terasa selesai.", "<b>Lagu satu bagian<\/b> (A) berisi satu kalimat musik; dua bagian (A–B); tiga bagian (A–B–A atau A–B–C).", "Rondo: bagian utama diulang berselang-seling dengan bagian lain (A–B–A–C–A)."]}]}]}, {"id": "ALT", "name": "Alat musik", "short": "Alat musik", "note": "Penggolongan alat musik, alat musik Nusantara, dan bentuk ansambel.", "topics": [{"code": "ALT-01", "title": "Klasifikasi alat musik", "scope": "Idiofon sampai elektrofon", "src": "Kelas X", "tier": 1, "sum": "Alat musik digolongkan menurut sumber bunyinya (sistem Hornbostel–Sachs) atau menurut cara memainkannya.", "blocks": [{"h": "Menurut sumber bunyi", "table": {"cols": ["Golongan", "Sumber bunyi", "Contoh"], "rows": [["Idiofon", "Badan alat itu sendiri", "Angklung, kolintang, saron, triangle"], ["Membranofon", "Selaput (membran) yang ditegangkan", "Kendang, tifa, rebana, drum"], ["Kordofon", "Dawai (senar)", "Sasando, kecapi, gitar, biola"], ["Aerofon", "Getaran udara", "Suling, saluang, terompet, seruling"], ["Elektrofon", "Tenaga listrik", "Keyboard elektronik, synthesizer"]]}}, {"h": "Menurut cara memainkan", "li": ["Dipukul, dipetik, digesek, ditiup, digoyang (angklung), ditekan (piano)."]}, {"h": "Fungsi", "li": ["<b>Alat musik ritmis<\/b> mengatur irama (tanpa nada pasti); melodis memainkan melodi; harmonis memainkan akor (gitar, piano)."]}], "traps": ["Angklung termasuk idiofon (badan bambunya berbunyi), walau cara memainkannya digoyang."]}, {"code": "ALT-02", "title": "Alat musik Nusantara", "scope": "Asal daerah dan cara main", "src": "Kelas X–XII", "tier": 1, "sum": "Alat musik tradisional Indonesia beserta daerah asal dan cara memainkannya.", "blocks": [{"h": "Alat musik daerah", "table": {"cols": ["Alat musik", "Daerah", "Cara main"], "rows": [["Sasando", "Pulau Rote, NTT", "Dipetik"], ["Kolintang", "Minahasa, Sulawesi Utara", "Dipukul"], ["Talempong", "Sumatra Barat", "Dipukul"], ["Saluang", "Sumatra Barat", "Ditiup"], ["Gordang sambilan", "Mandailing, Sumatra Utara", "Dipukul"], ["Sape", "Dayak, Kalimantan", "Dipetik"], ["Tifa", "Papua dan Maluku", "Dipukul"], ["Angklung", "Jawa Barat", "Digoyang"]]}}], "traps": ["Sasando berasal dari Pulau Rote (NTT), kolintang dari Minahasa (Sulawesi Utara); keduanya sering tertukar dengan alat dari Maluku."]}, {"code": "ALT-03", "title": "Ansambel musik", "scope": "Ansambel sejenis dan campuran, orkestra", "src": "Kelas XI", "tier": 2, "sum": "Ansambel adalah permainan musik bersama; orkestra adalah ansambel besar dengan kelompok alat musik tertentu.", "blocks": [{"h": "Jenis", "li": ["Ansambel sejenis memakai satu jenis alat (misalnya ansambel recorder atau angklung); ansambel campuran memakai berbagai jenis.", "<b>Orkestra<\/b> terdiri atas kelompok gesek, tiup kayu, tiup logam, dan perkusi, dipimpin konduktor (dirigen).", "Unisono: semua pemain memainkan melodi yang sama."]}]}]}, {"id": "MNU", "name": "Musik Nusantara dan dunia", "short": "Ragam musik", "note": "Lagu daerah dan nasional, gamelan, musik populer Indonesia, dan sejarah musik Barat.", "topics": [{"code": "MNU-01", "title": "Lagu daerah", "scope": "Judul dan daerah asal", "src": "Kelas X–XII", "tier": 1, "sum": "Lagu daerah mencerminkan bahasa dan budaya daerahnya; soal sering menanyakan daerah asal sebuah lagu.", "blocks": [{"h": "Lagu daerah", "table": {"cols": ["Lagu", "Daerah"], "rows": [["Bungong Jeumpa", "Aceh"], ["Sinanggar Tullo", "Sumatra Utara (Batak Toba)"], ["Soleram", "Riau"], ["Manuk Dadali", "Jawa Barat"], ["Gundul-Gundul Pacul", "Jawa Tengah"], ["Ampar-Ampar Pisang", "Kalimantan Selatan"], ["Rasa Sayange", "Maluku"], ["Yamko Rambe Yamko", "Papua"]]}}, {"h": "Ciri", "li": ["<b>Lagu daerah<\/b> memakai bahasa daerah, sering berangka anonim (penciptanya tidak diketahui), dan diwariskan secara lisan."]}], "traps": ["Ampar-Ampar Pisang berasal dari Kalimantan Selatan, bukan Sumatra."]}, {"code": "MNU-02", "title": "Gamelan", "scope": "Laras, instrumen, UNESCO", "src": "Kelas X–XII", "tier": 2, "sum": "Gamelan adalah ansambel musik tradisional Jawa, Bali, dan Sunda yang memakai laras slendro dan pelog.", "blocks": [{"h": "Gamelan", "li": ["Instrumen: kendang (pengatur irama), saron, bonang, kenong, gong, gender, gambang, rebab, suling.", "<b>Gamelan ditetapkan UNESCO<\/b> sebagai Warisan Budaya Takbenda pada 2021.", "Gamelan Bali (misalnya gong kebyar) cenderung bertempo cepat dan dinamis; gamelan Jawa lebih lembut; gamelan Sunda dikenal dengan degung."]}, {"h": "Laras", "li": ["Slendro: lima nada dengan jarak hampir sama; pelog: tujuh nada dengan jarak tidak sama."]}]}, {"code": "MNU-03", "title": "Musik populer Indonesia", "scope": "Keroncong, dangdut, campursari", "src": "Kelas XI–XII", "tier": 2, "sum": "Ragam musik populer Indonesia lahir dari perpaduan budaya lokal dan pengaruh luar.", "blocks": [{"h": "Ragam", "li": ["<b>Keroncong<\/b> berakar dari musik Portugis yang berkembang di Kampung Tugu, Jakarta; alat khasnya ukulele (cak dan cuk), cello dipetik, dan biola.", "Dangdut berkembang pada 1970-an dengan pengaruh musik Melayu dan India; Rhoma Irama dijuluki Raja Dangdut.", "Campursari memadukan gamelan Jawa dengan alat musik modern.", "Pop, rock, dan jazz Indonesia berkembang bersama industri rekaman dan radio."]}]}, {"code": "MNU-04", "title": "Sejarah musik Barat", "scope": "Barok, Klasik, Romantik, Modern", "src": "Kelas XII", "tier": 2, "sum": "Periode musik Barat dan komponis pentingnya.", "blocks": [{"h": "Periode", "table": {"cols": ["Periode", "Kurun", "Komponis"], "rows": [["Barok", "sekitar 1600–1750", "J.S. Bach, Handel, Vivaldi"], ["Klasik", "sekitar 1750–1820", "Haydn, Mozart, Beethoven (awal)"], ["Romantik", "sekitar 1820–1900", "Chopin, Schubert, Tchaikovsky"], ["Modern", "abad ke-20", "Debussy, Stravinsky"]]}}, {"h": "Catatan", "li": ["<b>Beethoven<\/b> sering disebut tokoh peralihan dari Klasik ke Romantik."]}]}, {"code": "MNU-05", "title": "Lagu nasional", "scope": "Judul dan pencipta", "src": "Kelas X–XII", "tier": 1, "sum": "Lagu nasional membangkitkan semangat kebangsaan; soal sering menanyakan penciptanya.", "blocks": [{"h": "Lagu nasional", "table": {"cols": ["Lagu", "Pencipta"], "rows": [["Indonesia Raya", "W.R. Supratman"], ["Bagimu Negeri", "Kusbini"], ["Rayuan Pulau Kelapa", "Ismail Marzuki"], ["Indonesia Pusaka", "Ismail Marzuki"], ["Maju Tak Gentar", "Cornel Simanjuntak"], ["Garuda Pancasila", "Sudharnoto"], ["Hari Merdeka (17 Agustus)", "H. Mutahar"], ["Bangun Pemudi Pemuda", "A. Simanjuntak"]]}}, {"h": "Membawakan", "li": ["Lagu nasional bertempo mars dinyanyikan dengan semangat (maestoso atau marcia); lagu hymne dinyanyikan khidmat."]}], "traps": ["Maju Tak Gentar diciptakan Cornel Simanjuntak; Bangun Pemudi Pemuda diciptakan A. Simanjuntak. Keduanya berbeda orang."]}]}, {"id": "KRY", "name": "Bernyanyi, berkarya, dan apresiasi", "short": "Berkarya", "note": "Teknik vokal, aransemen, pertunjukan, teknologi musik, apresiasi, dan hak cipta lagu.", "topics": [{"code": "KRY-01", "title": "Teknik vokal", "scope": "Pernapasan, artikulasi, jenis suara", "src": "Kelas X", "tier": 1, "sum": "Bernyanyi yang baik membutuhkan pernapasan, sikap badan, artikulasi, intonasi, dan resonansi yang benar.", "blocks": [{"h": "Teknik", "li": ["<b>Pernapasan diafragma<\/b> (perut) paling dianjurkan karena menghasilkan napas panjang dan stabil.", "Artikulasi: kejelasan pengucapan kata; intonasi: ketepatan tinggi rendah nada; phrasering: pemenggalan kalimat lagu.", "Resonansi: memperindah suara dengan rongga kepala, mulut, dan dada."]}, {"h": "Jenis suara", "table": {"cols": ["Jenis", "Penyanyi"], "rows": [["Sopran", "Perempuan, tinggi"], ["Alto", "Perempuan, rendah"], ["Tenor", "Laki-laki, tinggi"], ["Bas", "Laki-laki, rendah"]]}}], "traps": ["Intonasi adalah ketepatan nada; artikulasi adalah kejelasan kata."]}, {"code": "KRY-02", "title": "Aransemen dan komposisi", "scope": "Motif, variasi, aransemen", "src": "Kelas XI–XII", "tier": 2, "sum": "Mengolah lagu yang sudah ada (aransemen) atau membuat lagu baru (komposisi) dengan mengembangkan motif dan frase.", "blocks": [{"h": "Konsep", "li": ["<b>Aransemen<\/b>: mengubah atau menata lagu yang sudah ada, misalnya menambah suara dua, mengganti alat, atau mengubah irama.", "Komposisi: menciptakan lagu baru, dimulai dari motif (potongan melodi pendek) yang dikembangkan.", "Pengembangan motif: pengulangan, sekuens (diulang pada nada lebih tinggi atau rendah), dan variasi irama."]}]}, {"code": "KRY-03", "title": "Pertunjukan musik", "scope": "Perencanaan dan kepanitiaan", "src": "Kelas XI–XII", "tier": 2, "sum": "Menyelenggarakan pertunjukan musik dari perencanaan sampai evaluasi.", "blocks": [{"h": "Tahap", "li": ["Perencanaan (tema, waktu, tempat, anggaran), persiapan (latihan, publikasi, tata suara dan panggung), pelaksanaan, evaluasi.", "Kepanitiaan: ketua, sekretaris, bendahara, seksi acara, dekorasi, publikasi, konsumsi, keamanan.", "<b>Penata suara<\/b> mengatur mikrofon dan pengeras suara agar bunyi seimbang."]}]}, {"code": "KRY-04", "title": "Teknologi musik", "scope": "Rekaman digital, MIDI", "src": "Kelas XII", "tier": 3, "sum": "Teknologi digital dipakai untuk merekam, mengolah, dan menyebarkan musik.", "blocks": [{"h": "Teknologi", "li": ["DAW (Digital Audio Workstation): perangkat lunak untuk merekam dan menyunting musik.", "<b>MIDI<\/b>: protokol yang mengirim data nada (bukan suara) antara alat musik elektronik dan komputer.", "Musik disebarkan lewat platform digital; pemutaran lagu orang lain untuk tujuan komersial memerlukan izin dan royalti."]}]}, {"code": "KRY-05", "title": "Apresiasi dan kritik musik", "scope": "Tahap apresiasi, kritik", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi adalah kegiatan menghayati dan menilai karya musik; kritik menyampaikan penilaian itu secara tertulis atau lisan.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terdengar (alat, tempo, lirik).", "Analisis formal: menguraikan unsur musik dan hubungannya.", "Interpretasi: menafsirkan makna dan suasana.", "Evaluasi: menilai kualitas karya dengan alasan."]}], "traps": ["Deskripsi hanya menyebut apa yang ada; penilaian baik-buruk termasuk tahap evaluasi."]}, {"code": "KRY-06", "title": "Hak cipta lagu", "scope": "Hak cipta, royalti", "src": "Kelas XII", "tier": 3, "sum": "Lagu dilindungi hak cipta; memakai lagu orang lain untuk tujuan komersial memerlukan izin dan pembayaran royalti.", "blocks": [{"h": "Ketentuan", "li": ["Hak cipta lagu berlaku seumur hidup pencipta ditambah 70 tahun setelah pencipta meninggal (UU No. 28 Tahun 2014).", "<b>Royalti<\/b> pemakaian lagu untuk layanan publik komersial dihimpun oleh Lembaga Manajemen Kolektif Nasional (LMKN) menurut PP No. 56 Tahun 2021.", "Mencantumkan nama pencipta saat membawakan lagu adalah bentuk penghargaan hak moral."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Musik Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Penggolongan sebagian alat musik berbeda antarbuku, misalnya angklung (idiofon menurut sumber bunyi, tetapi sering disebut alat musik digoyang).", "Batas tahun periode musik Barat hanya perkiraan dan sedikit berbeda antarsumber.", "Pencipta beberapa lagu nasional diperdebatkan; peta ini hanya memuat atribusi yang umum di buku sekolah."]}, {"title": "Rujukan", "items": ["Buku Seni Musik SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "Klasifikasi Hornbostel–Sachs (1914, golongan elektrofon ditambahkan kemudian).", "UNESCO: gamelan sebagai Warisan Budaya Takbenda (2021); UU No. 28 Tahun 2014 (Hak Cipta); PP No. 56 Tahun 2021 (royalti lagu dan musik)."]}], "bank": "bank-seni-musik.html"};
+const MAP = {"id": "seni-musik", "subject": "Seni Musik", "title": "Peta Materi Seni Musik SMA", "lead": "Seluruh materi Seni Musik SMA, dari unsur dan notasi musik sampai alat musik, musik Nusantara dan dunia, serta bernyanyi dan berkarya, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur musik, notasi, tangga nada, alat musik, lagu daerah dan nasional, gamelan, sejarah musik, bernyanyi, aransemen, dan apresiasi.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Musik SMA: teori, alat musik, musik Nusantara dan dunia, serta praktik berkarya dan apresiasi. Label kelas hanya perkiraan karena buku menyusun materi per proyek, bukan per topik.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: dari unsur dan notasi, ke tangga nada dan akor, ke alat dan ragam musik, lalu bernyanyi dan berkarya.", "path": [{"label": "Unsur", "title": "Unsur musik", "note": "Irama, melodi, harmoni", "to": "UNS-01"}, {"label": "Notasi", "title": "Not balok dan not angka", "note": "Nilai not, birama", "to": "UNS-02"}, {"label": "Tangga", "title": "Tangga nada", "note": "Mayor, minor, pentatonis", "to": "UNS-03"}, {"label": "Akor", "title": "Interval dan akor", "note": "Trinada I, IV, V", "to": "UNS-04"}, {"label": "Alat", "title": "Klasifikasi alat musik", "note": "Sumber bunyi", "to": "ALT-01"}, {"label": "Nusantara", "title": "Lagu daerah", "note": "Asal dan ciri", "to": "MNU-01"}, {"label": "Nyanyi", "title": "Teknik vokal", "note": "Napas, artikulasi", "to": "KRY-01"}, {"label": "Cipta", "title": "Aransemen", "note": "Motif, frase", "to": "KRY-02"}], "domains": [{"id": "UNS", "name": "Unsur dan teori musik", "short": "Teori", "note": "Unsur musik, notasi, tangga nada, akor, istilah tempo dan dinamika, serta bentuk lagu.", "topics": [{"code": "UNS-01", "title": "Unsur musik", "scope": "Irama, melodi, harmoni, timbre", "src": "Kelas X", "tier": 1, "sum": "Musik tersusun dari unsur pokok (irama, melodi, harmoni, bentuk) dan unsur ekspresi (tempo, dinamika, timbre).", "blocks": [{"h": "Unsur", "table": {"cols": ["Unsur", "Pengertian"], "rows": [["Irama (ritme)", "Pola panjang pendek bunyi dan diam yang teratur"], ["Melodi", "Rangkaian nada yang berurutan dan bermakna"], ["Harmoni", "Paduan beberapa nada yang dibunyikan bersamaan"], ["Tempo", "Cepat lambatnya lagu"], ["Dinamika", "Keras lembutnya bunyi"], ["Timbre (warna bunyi)", "Ciri khas bunyi yang membedakan suara atau alat musik"], ["Bentuk", "Susunan bagian-bagian lagu"]]}}, {"h": "Catatan", "li": ["<b>Ekspresi<\/b> adalah penghayatan musik yang tampak lewat tempo, dinamika, dan warna bunyi."]}], "traps": ["Irama berkaitan dengan panjang pendek bunyi; melodi berkaitan dengan tinggi rendah nada.", "Dinamika adalah keras lembut bunyi, bukan cepat lambat lagu (itu tempo)."], "grades": ["X"]}, {"code": "UNS-02", "title": "Notasi musik", "scope": "Not balok, not angka, birama", "src": "Kelas X", "tier": 1, "sum": "Musik ditulis dengan not balok atau not angka; nilai not dan tanda birama menentukan jumlah ketukan.", "blocks": [{"h": "Nilai not (birama 4/4)", "table": {"cols": ["Not", "Ketukan", "Tanda istirahat setara"], "rows": [["Not penuh", "4", "Istirahat penuh"], ["Not setengah", "2", "Istirahat setengah"], ["Not seperempat", "1", "Istirahat seperempat"], ["Not seperdelapan", "½", "Istirahat seperdelapan"]]}}, {"h": "Birama dan kunci", "li": ["<b>Tanda birama 3/4<\/b>: tiap birama berisi 3 ketuk dengan not seperempat sebagai satu ketuk; 6/8: 6 ketuk not seperdelapan.", "Kunci G (treble) untuk nada tinggi; kunci F (bas) untuk nada rendah.", "Titik di belakang not balok menambah setengah nilai not itu: not setengah bertitik bernilai 3 ketuk."]}, {"h": "Not angka", "li": ["Angka 1–7 untuk do sampai si; 0 tanda diam; titik di atas angka berarti satu oktaf lebih tinggi, titik di bawah satu oktaf lebih rendah.", "Satu garis di atas angka berarti nilainya setengah ketuk; dua garis seperempat ketuk."]}], "traps": ["Not setengah bertitik bernilai 3 ketuk, bukan 2,5.", "Pada not angka, angka 0 adalah tanda diam, bukan nada."], "grades": ["X"]}, {"code": "UNS-03", "title": "Tangga nada", "scope": "Diatonis mayor-minor, pentatonis", "src": "Kelas X", "tier": 1, "sum": "Tangga nada adalah susunan nada berurutan dengan jarak tertentu; dibedakan menjadi diatonis, pentatonis, dan kromatis.", "blocks": [{"h": "Diatonis", "li": ["<b>Mayor<\/b>: jarak 1 – 1 – ½ – 1 – 1 – 1 – ½; kesan gembira dan semangat; biasanya diawali dan diakhiri do.", "Minor asli: jarak 1 – ½ – 1 – 1 – ½ – 1 – 1; kesan sedih atau syahdu; biasanya diawali dan diakhiri la.", "Tangga nada kromatis memakai jarak setengah di seluruh tangga nada."]}, {"h": "Pentatonis", "li": ["Lima nada pokok; dipakai di musik tradisional, misalnya gamelan.", "Slendro: lima nada dengan jarak hampir sama; pelog: tujuh nada dengan jarak tidak sama, biasanya hanya lima yang dipakai dalam satu lagu."]}], "traps": ["Jarak ½ pada mayor terletak antara nada 3–4 (mi–fa) dan 7–8 (si–do)."], "grades": ["X"]}, {"code": "UNS-04", "title": "Interval dan akor", "scope": "Interval, trinada, kadens", "src": "Kelas XI", "tier": 2, "sum": "Interval adalah jarak dua nada; akor adalah gabungan tiga nada atau lebih yang dibunyikan bersamaan.", "blocks": [{"h": "Interval dan akor", "li": ["Interval: prima, sekunda, terts, kwart, kwint, sekst, septim, oktaf.", "<b>Akor pokok<\/b> tangga nada mayor: I (do-mi-sol), IV (fa-la-do), V (sol-si-re).", "Pada C mayor: akor C (C-E-G), F (F-A-C), G (G-B-D).", "Kadens (akhiran lagu) umum: V ke I."]}], "grades": ["XI"]}, {"code": "UNS-05", "title": "Tempo dan dinamika", "scope": "Istilah dan tanda", "src": "Kelas X", "tier": 1, "sum": "Istilah berbahasa Italia untuk menunjukkan cepat lambat lagu dan keras lembut bunyi.", "blocks": [{"h": "Tempo", "table": {"cols": ["Istilah", "Arti"], "rows": [["Largo", "Sangat lambat"], ["Adagio", "Lambat"], ["Andante", "Sedang, seperti berjalan"], ["Moderato", "Sedang"], ["Allegro", "Cepat"], ["Presto", "Sangat cepat"]]}}, {"h": "Dinamika", "table": {"cols": ["Tanda", "Arti"], "rows": [["pp (pianissimo)", "Sangat lembut"], ["p (piano)", "Lembut"], ["mf (mezzo forte)", "Agak keras"], ["f (forte)", "Keras"], ["ff (fortissimo)", "Sangat keras"], ["Crescendo / decrescendo", "Makin keras / makin lembut"]]}}], "traps": ["Piano (p) dalam dinamika berarti lembut, bukan alat musik piano.", "Andante lebih lambat daripada allegro."], "grades": ["X"]}, {"code": "UNS-06", "title": "Bentuk lagu", "scope": "Satu, dua, tiga bagian", "src": "Kelas XI", "tier": 2, "sum": "Lagu disusun dari frase tanya dan frase jawab yang membentuk kalimat musik dan bagian lagu.", "blocks": [{"h": "Bentuk", "li": ["Frase tanya (antecedens) diakhiri nada yang terasa belum selesai; frase jawab (konsekuens) diakhiri nada yang terasa selesai.", "<b>Lagu satu bagian<\/b> (A) berisi satu kalimat musik; dua bagian (A–B); tiga bagian (A–B–A atau A–B–C).", "Rondo: bagian utama diulang berselang-seling dengan bagian lain (A–B–A–C–A)."]}], "grades": ["XI"]}]}, {"id": "ALT", "name": "Alat musik", "short": "Alat musik", "note": "Penggolongan alat musik, alat musik Nusantara, dan bentuk ansambel.", "topics": [{"code": "ALT-01", "title": "Klasifikasi alat musik", "scope": "Idiofon sampai elektrofon", "src": "Kelas X", "tier": 1, "sum": "Alat musik digolongkan menurut sumber bunyinya (sistem Hornbostel–Sachs) atau menurut cara memainkannya.", "blocks": [{"h": "Menurut sumber bunyi", "table": {"cols": ["Golongan", "Sumber bunyi", "Contoh"], "rows": [["Idiofon", "Badan alat itu sendiri", "Angklung, kolintang, saron, triangle"], ["Membranofon", "Selaput (membran) yang ditegangkan", "Kendang, tifa, rebana, drum"], ["Kordofon", "Dawai (senar)", "Sasando, kecapi, gitar, biola"], ["Aerofon", "Getaran udara", "Suling, saluang, terompet, seruling"], ["Elektrofon", "Tenaga listrik", "Keyboard elektronik, synthesizer"]]}}, {"h": "Menurut cara memainkan", "li": ["Dipukul, dipetik, digesek, ditiup, digoyang (angklung), ditekan (piano)."]}, {"h": "Fungsi", "li": ["<b>Alat musik ritmis<\/b> mengatur irama (tanpa nada pasti); melodis memainkan melodi; harmonis memainkan akor (gitar, piano)."]}], "traps": ["Angklung termasuk idiofon (badan bambunya berbunyi), walau cara memainkannya digoyang."], "grades": ["X"]}, {"code": "ALT-02", "title": "Alat musik Nusantara", "scope": "Asal daerah dan cara main", "src": "Kelas X–XII", "tier": 1, "sum": "Alat musik tradisional Indonesia beserta daerah asal dan cara memainkannya.", "blocks": [{"h": "Alat musik daerah", "table": {"cols": ["Alat musik", "Daerah", "Cara main"], "rows": [["Sasando", "Pulau Rote, NTT", "Dipetik"], ["Kolintang", "Minahasa, Sulawesi Utara", "Dipukul"], ["Talempong", "Sumatra Barat", "Dipukul"], ["Saluang", "Sumatra Barat", "Ditiup"], ["Gordang sambilan", "Mandailing, Sumatra Utara", "Dipukul"], ["Sape", "Dayak, Kalimantan", "Dipetik"], ["Tifa", "Papua dan Maluku", "Dipukul"], ["Angklung", "Jawa Barat", "Digoyang"]]}}], "traps": ["Sasando berasal dari Pulau Rote (NTT), kolintang dari Minahasa (Sulawesi Utara); keduanya sering tertukar dengan alat dari Maluku."], "grades": ["X", "XI", "XII"]}, {"code": "ALT-03", "title": "Ansambel musik", "scope": "Ansambel sejenis dan campuran, orkestra", "src": "Kelas XI", "tier": 2, "sum": "Ansambel adalah permainan musik bersama; orkestra adalah ansambel besar dengan kelompok alat musik tertentu.", "blocks": [{"h": "Jenis", "li": ["Ansambel sejenis memakai satu jenis alat (misalnya ansambel recorder atau angklung); ansambel campuran memakai berbagai jenis.", "<b>Orkestra<\/b> terdiri atas kelompok gesek, tiup kayu, tiup logam, dan perkusi, dipimpin konduktor (dirigen).", "Unisono: semua pemain memainkan melodi yang sama."]}], "grades": ["XI"]}]}, {"id": "MNU", "name": "Musik Nusantara dan dunia", "short": "Ragam musik", "note": "Lagu daerah dan nasional, gamelan, musik populer Indonesia, dan sejarah musik Barat.", "topics": [{"code": "MNU-01", "title": "Lagu daerah", "scope": "Judul dan daerah asal", "src": "Kelas X–XII", "tier": 1, "sum": "Lagu daerah mencerminkan bahasa dan budaya daerahnya; soal sering menanyakan daerah asal sebuah lagu.", "blocks": [{"h": "Lagu daerah", "table": {"cols": ["Lagu", "Daerah"], "rows": [["Bungong Jeumpa", "Aceh"], ["Sinanggar Tullo", "Sumatra Utara (Batak Toba)"], ["Soleram", "Riau"], ["Manuk Dadali", "Jawa Barat"], ["Gundul-Gundul Pacul", "Jawa Tengah"], ["Ampar-Ampar Pisang", "Kalimantan Selatan"], ["Rasa Sayange", "Maluku"], ["Yamko Rambe Yamko", "Papua"]]}}, {"h": "Ciri", "li": ["<b>Lagu daerah<\/b> memakai bahasa daerah, sering berangka anonim (penciptanya tidak diketahui), dan diwariskan secara lisan."]}], "traps": ["Ampar-Ampar Pisang berasal dari Kalimantan Selatan, bukan Sumatra."], "grades": ["X", "XI", "XII"]}, {"code": "MNU-02", "title": "Gamelan", "scope": "Laras, instrumen, UNESCO", "src": "Kelas X–XII", "tier": 2, "sum": "Gamelan adalah ansambel musik tradisional Jawa, Bali, dan Sunda yang memakai laras slendro dan pelog.", "blocks": [{"h": "Gamelan", "li": ["Instrumen: kendang (pengatur irama), saron, bonang, kenong, gong, gender, gambang, rebab, suling.", "<b>Gamelan ditetapkan UNESCO<\/b> sebagai Warisan Budaya Takbenda pada 2021.", "Gamelan Bali (misalnya gong kebyar) cenderung bertempo cepat dan dinamis; gamelan Jawa lebih lembut; gamelan Sunda dikenal dengan degung."]}, {"h": "Laras", "li": ["Slendro: lima nada dengan jarak hampir sama; pelog: tujuh nada dengan jarak tidak sama."]}], "grades": ["X", "XI", "XII"]}, {"code": "MNU-03", "title": "Musik populer Indonesia", "scope": "Keroncong, dangdut, campursari", "src": "Kelas XI–XII", "tier": 2, "sum": "Ragam musik populer Indonesia lahir dari perpaduan budaya lokal dan pengaruh luar.", "blocks": [{"h": "Ragam", "li": ["<b>Keroncong<\/b> berakar dari musik Portugis yang berkembang di Kampung Tugu, Jakarta; alat khasnya ukulele (cak dan cuk), cello dipetik, dan biola.", "Dangdut berkembang pada 1970-an dengan pengaruh musik Melayu dan India; Rhoma Irama dijuluki Raja Dangdut.", "Campursari memadukan gamelan Jawa dengan alat musik modern.", "Pop, rock, dan jazz Indonesia berkembang bersama industri rekaman dan radio."]}], "grades": ["XI", "XII"]}, {"code": "MNU-04", "title": "Sejarah musik Barat", "scope": "Barok, Klasik, Romantik, Modern", "src": "Kelas XII", "tier": 2, "sum": "Periode musik Barat dan komponis pentingnya.", "blocks": [{"h": "Periode", "table": {"cols": ["Periode", "Kurun", "Komponis"], "rows": [["Barok", "sekitar 1600–1750", "J.S. Bach, Handel, Vivaldi"], ["Klasik", "sekitar 1750–1820", "Haydn, Mozart, Beethoven (awal)"], ["Romantik", "sekitar 1820–1900", "Chopin, Schubert, Tchaikovsky"], ["Modern", "abad ke-20", "Debussy, Stravinsky"]]}}, {"h": "Catatan", "li": ["<b>Beethoven<\/b> sering disebut tokoh peralihan dari Klasik ke Romantik."]}], "grades": ["XII"]}, {"code": "MNU-05", "title": "Lagu nasional", "scope": "Judul dan pencipta", "src": "Kelas X–XII", "tier": 1, "sum": "Lagu nasional membangkitkan semangat kebangsaan; soal sering menanyakan penciptanya.", "blocks": [{"h": "Lagu nasional", "table": {"cols": ["Lagu", "Pencipta"], "rows": [["Indonesia Raya", "W.R. Supratman"], ["Bagimu Negeri", "Kusbini"], ["Rayuan Pulau Kelapa", "Ismail Marzuki"], ["Indonesia Pusaka", "Ismail Marzuki"], ["Maju Tak Gentar", "Cornel Simanjuntak"], ["Garuda Pancasila", "Sudharnoto"], ["Hari Merdeka (17 Agustus)", "H. Mutahar"], ["Bangun Pemudi Pemuda", "A. Simanjuntak"]]}}, {"h": "Membawakan", "li": ["Lagu nasional bertempo mars dinyanyikan dengan semangat (maestoso atau marcia); lagu hymne dinyanyikan khidmat."]}], "traps": ["Maju Tak Gentar diciptakan Cornel Simanjuntak; Bangun Pemudi Pemuda diciptakan A. Simanjuntak. Keduanya berbeda orang."], "grades": ["X", "XI", "XII"]}]}, {"id": "KRY", "name": "Bernyanyi, berkarya, dan apresiasi", "short": "Berkarya", "note": "Teknik vokal, aransemen, pertunjukan, teknologi musik, apresiasi, dan hak cipta lagu.", "topics": [{"code": "KRY-01", "title": "Teknik vokal", "scope": "Pernapasan, artikulasi, jenis suara", "src": "Kelas X", "tier": 1, "sum": "Bernyanyi yang baik membutuhkan pernapasan, sikap badan, artikulasi, intonasi, dan resonansi yang benar.", "blocks": [{"h": "Teknik", "li": ["<b>Pernapasan diafragma<\/b> (perut) paling dianjurkan karena menghasilkan napas panjang dan stabil.", "Artikulasi: kejelasan pengucapan kata; intonasi: ketepatan tinggi rendah nada; phrasering: pemenggalan kalimat lagu.", "Resonansi: memperindah suara dengan rongga kepala, mulut, dan dada."]}, {"h": "Jenis suara", "table": {"cols": ["Jenis", "Penyanyi"], "rows": [["Sopran", "Perempuan, tinggi"], ["Alto", "Perempuan, rendah"], ["Tenor", "Laki-laki, tinggi"], ["Bas", "Laki-laki, rendah"]]}}], "traps": ["Intonasi adalah ketepatan nada; artikulasi adalah kejelasan kata."], "grades": ["X"]}, {"code": "KRY-02", "title": "Aransemen dan komposisi", "scope": "Motif, variasi, aransemen", "src": "Kelas XI–XII", "tier": 2, "sum": "Mengolah lagu yang sudah ada (aransemen) atau membuat lagu baru (komposisi) dengan mengembangkan motif dan frase.", "blocks": [{"h": "Konsep", "li": ["<b>Aransemen<\/b>: mengubah atau menata lagu yang sudah ada, misalnya menambah suara dua, mengganti alat, atau mengubah irama.", "Komposisi: menciptakan lagu baru, dimulai dari motif (potongan melodi pendek) yang dikembangkan.", "Pengembangan motif: pengulangan, sekuens (diulang pada nada lebih tinggi atau rendah), dan variasi irama."]}], "grades": ["XI", "XII"]}, {"code": "KRY-03", "title": "Pertunjukan musik", "scope": "Perencanaan dan kepanitiaan", "src": "Kelas XI–XII", "tier": 2, "sum": "Menyelenggarakan pertunjukan musik dari perencanaan sampai evaluasi.", "blocks": [{"h": "Tahap", "li": ["Perencanaan (tema, waktu, tempat, anggaran), persiapan (latihan, publikasi, tata suara dan panggung), pelaksanaan, evaluasi.", "Kepanitiaan: ketua, sekretaris, bendahara, seksi acara, dekorasi, publikasi, konsumsi, keamanan.", "<b>Penata suara<\/b> mengatur mikrofon dan pengeras suara agar bunyi seimbang."]}], "grades": ["XI", "XII"]}, {"code": "KRY-04", "title": "Teknologi musik", "scope": "Rekaman digital, MIDI", "src": "Kelas XII", "tier": 3, "sum": "Teknologi digital dipakai untuk merekam, mengolah, dan menyebarkan musik.", "blocks": [{"h": "Teknologi", "li": ["DAW (Digital Audio Workstation): perangkat lunak untuk merekam dan menyunting musik.", "<b>MIDI<\/b>: protokol yang mengirim data nada (bukan suara) antara alat musik elektronik dan komputer.", "Musik disebarkan lewat platform digital; pemutaran lagu orang lain untuk tujuan komersial memerlukan izin dan royalti."]}], "grades": ["XII"]}, {"code": "KRY-05", "title": "Apresiasi dan kritik musik", "scope": "Tahap apresiasi, kritik", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi adalah kegiatan menghayati dan menilai karya musik; kritik menyampaikan penilaian itu secara tertulis atau lisan.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terdengar (alat, tempo, lirik).", "Analisis formal: menguraikan unsur musik dan hubungannya.", "Interpretasi: menafsirkan makna dan suasana.", "Evaluasi: menilai kualitas karya dengan alasan."]}], "traps": ["Deskripsi hanya menyebut apa yang ada; penilaian baik-buruk termasuk tahap evaluasi."], "grades": ["X", "XI", "XII"]}, {"code": "KRY-06", "title": "Hak cipta lagu", "scope": "Hak cipta, royalti", "src": "Kelas XII", "tier": 3, "sum": "Lagu dilindungi hak cipta; memakai lagu orang lain untuk tujuan komersial memerlukan izin dan pembayaran royalti.", "blocks": [{"h": "Ketentuan", "li": ["Hak cipta lagu berlaku seumur hidup pencipta ditambah 70 tahun setelah pencipta meninggal (UU No. 28 Tahun 2014).", "<b>Royalti<\/b> pemakaian lagu untuk layanan publik komersial dihimpun oleh Lembaga Manajemen Kolektif Nasional (LMKN) menurut PP No. 56 Tahun 2021.", "Mencantumkan nama pencipta saat membawakan lagu adalah bentuk penghargaan hak moral."]}], "grades": ["XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Musik Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Penggolongan sebagian alat musik berbeda antarbuku, misalnya angklung (idiofon menurut sumber bunyi, tetapi sering disebut alat musik digoyang).", "Batas tahun periode musik Barat hanya perkiraan dan sedikit berbeda antarsumber.", "Pencipta beberapa lagu nasional diperdebatkan; peta ini hanya memuat atribusi yang umum di buku sekolah."]}, {"title": "Rujukan", "items": ["Buku Seni Musik SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "Klasifikasi Hornbostel–Sachs (1914, golongan elektrofon ditambahkan kemudian).", "UNESCO: gamelan sebagai Warisan Budaya Takbenda (2021); UU No. 28 Tahun 2014 (Hak Cipta); PP No. 56 Tahun 2021 (royalti lagu dan musik)."]}], "icon": "<path d=\"M18 36V10l20-4v26\"/><circle cx=\"13\" cy=\"36\" r=\"5\"/><circle cx=\"33\" cy=\"32\" r=\"5\"/><path d=\"M18 17l20-4\"/>", "bank": "bank-seni-musik.html"};
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
-let onlyLanjut = false;
+// Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
+const params = new URLSearchParams(location.search);
+let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
+let onlyLanjut = params.get("lanjut") === "1";
+const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -233,6 +321,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
+  if(MAP.icon) $("icon").innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + MAP.icon + '</svg>';
   $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
@@ -245,13 +334,13 @@ function render(){
   const map = $("map"), host = $("domains");
   MAP.domains.forEach(d => {
     const col = document.createElement("div");
-    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
-    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+    col.className = "mcol"; col.dataset.domain = d.id; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono" id="n-' + d.id + '">' + d.topics.length + '</span></h3><ul>' +
       d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
-    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w" id="w-' + d.id + '">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
     d.topics.forEach(t => {
       const a = document.createElement("article");
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
@@ -285,10 +374,11 @@ function goTo(code){
 function progress(){
   let k = 0, n = 0;
   MAP.domains.forEach(d => {
-    const dn = d.topics.filter(t => done.has(t.code)).length;
-    k += dn; n += d.topics.length;
-    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
-    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+    const ts = d.topics.filter(shown), dn = ts.filter(t => done.has(t.code)).length;
+    k += dn; n += ts.length;
+    $("bar-" + d.id).style.width = (ts.length ? dn / ts.length * 100 : 0) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + ts.length;
+    $("bar-" + d.id).closest(".pg").hidden = !ts.length;
   });
   $("overall").textContent = k + " dari " + n;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
@@ -300,18 +390,44 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    const keep = !onlyLanjut || t.lanjut;
+    const keep = shown(t);
     if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
     const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  document.querySelectorAll(".chip").forEach(c => c.parentNode.hidden = !shown(byCode[c.dataset.code].t));
+  MAP.domains.forEach(d => {
+    const k = d.topics.filter(shown).length;
+    document.querySelector('.mcol[data-domain="' + d.id + '"]').hidden = !k;
+    $("d-" + d.id).hidden = !k;
+    $("n-" + d.id).textContent = k; $("w-" + d.id).textContent = k + " simpul";
+  });
+  $("emptyNote").hidden = MAP.domains.some(d => d.topics.some(shown));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+// Remember this view for the home page's "Lanjutkan" button and recent list.
+function remember(){
+  const url = new URL(location.href);
+  kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
+  onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
+  try { history.replaceState(null, "", url); } catch(e) {}
+  try {
+    const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, t: Date.now()});
+    localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
+  } catch(e) {}
+}
+function applyFilters(){
+  document.querySelectorAll("#grades button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kelas === kelas)));
+  $("onlyLanjut").setAttribute("aria-pressed", String(onlyLanjut));
+  search($("q").value); progress(); remember();
 }
 
 render();
 progress();
+applyFilters();
 document.addEventListener("click", e => {
   const tg = e.target.closest(".toggle");
   if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
@@ -328,7 +444,8 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
-$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
+$("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
 if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
 </script>

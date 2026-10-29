@@ -1,29 +1,18 @@
 <title>__TITLE__</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+/* Layout: generic subject map, same catalogue look as the history map. Grade filter and domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json; each topic's grades come from its src (scripts/build.py). */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
   --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -88,7 +77,6 @@ section{margin-top:44px}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
 .lj{border:1.3px dotted var(--ink);font-style:italic}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.chip.off{opacity:.35}
 #lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
@@ -126,7 +114,7 @@ td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
 .traps li::marker{color:var(--warn)}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
 
@@ -137,6 +125,19 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .card-head{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.titlebar{display:flex;align-items:center;gap:16px;margin-top:8px}
+.subj-ico{flex:none;display:grid;place-items:center;width:60px;height:60px;border:2px solid var(--ink);border-radius:16px;background:var(--mark)}
+.subj-ico svg{width:38px;height:38px}
+.subj-ico:empty{display:none}
+.grade-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.grade-bar .lbl{font-family:var(--f-label);font-weight:600;font-size:.92rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg button{font:inherit;font-family:var(--f-label);font-weight:600;font-size:.92rem;border:0;background:transparent;color:var(--ink);padding:8px 14px;cursor:pointer;line-height:1.2}
+.seg button small{display:block;font-family:var(--f-body);font-weight:400;font-size:.72rem;opacity:.8}
+.seg button + button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.empty-note{color:var(--muted);font-size:.95rem}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 </style>
@@ -145,8 +146,16 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow" id="eyebrow"></div>
-    <h1 style="margin-top:8px" id="title"></h1>
+    <div class="titlebar"><span class="subj-ico" id="icon" aria-hidden="true"></span><h1 id="title"></h1></div>
     <p class="lead" id="lead"></p>
+    <div class="grade-bar"><span class="lbl" id="gradeLbl">Kelas</span>
+      <div class="seg" id="grades" role="group" aria-labelledby="gradeLbl">
+        <button type="button" data-kelas="" aria-pressed="true">Semua<small>X–XII</small></button>
+        <button type="button" data-kelas="X" aria-pressed="false">Kelas X<small>Fase E</small></button>
+        <button type="button" data-kelas="XI" aria-pressed="false">Kelas XI<small>Fase F</small></button>
+        <button type="button" data-kelas="XII" aria-pressed="false">Kelas XII<small>Fase F</small></button>
+      </div>
+    </div>
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
@@ -166,6 +175,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
+    <p class="empty-note" id="emptyNote" hidden>Tidak ada simpul untuk pilihan ini. Pilih Semua kelas.</p>
     <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
     <p id="lanjutNote" hidden></p>
   </section>
@@ -184,7 +194,11 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 /*__MAP__*/
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
-let onlyLanjut = false;
+// Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
+const params = new URLSearchParams(location.search);
+let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
+let onlyLanjut = params.get("lanjut") === "1";
+const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -228,6 +242,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
+  if(MAP.icon) $("icon").innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + MAP.icon + '</svg>';
   $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
@@ -240,13 +255,13 @@ function render(){
   const map = $("map"), host = $("domains");
   MAP.domains.forEach(d => {
     const col = document.createElement("div");
-    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
-    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+    col.className = "mcol"; col.dataset.domain = d.id; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono" id="n-' + d.id + '">' + d.topics.length + '</span></h3><ul>' +
       d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
-    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w" id="w-' + d.id + '">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
     d.topics.forEach(t => {
       const a = document.createElement("article");
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
@@ -280,10 +295,11 @@ function goTo(code){
 function progress(){
   let k = 0, n = 0;
   MAP.domains.forEach(d => {
-    const dn = d.topics.filter(t => done.has(t.code)).length;
-    k += dn; n += d.topics.length;
-    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
-    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+    const ts = d.topics.filter(shown), dn = ts.filter(t => done.has(t.code)).length;
+    k += dn; n += ts.length;
+    $("bar-" + d.id).style.width = (ts.length ? dn / ts.length * 100 : 0) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + ts.length;
+    $("bar-" + d.id).closest(".pg").hidden = !ts.length;
   });
   $("overall").textContent = k + " dari " + n;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
@@ -295,18 +311,44 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    const keep = !onlyLanjut || t.lanjut;
+    const keep = shown(t);
     if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
     const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  document.querySelectorAll(".chip").forEach(c => c.parentNode.hidden = !shown(byCode[c.dataset.code].t));
+  MAP.domains.forEach(d => {
+    const k = d.topics.filter(shown).length;
+    document.querySelector('.mcol[data-domain="' + d.id + '"]').hidden = !k;
+    $("d-" + d.id).hidden = !k;
+    $("n-" + d.id).textContent = k; $("w-" + d.id).textContent = k + " simpul";
+  });
+  $("emptyNote").hidden = MAP.domains.some(d => d.topics.some(shown));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
+}
+
+// Remember this view for the home page's "Lanjutkan" button and recent list.
+function remember(){
+  const url = new URL(location.href);
+  kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
+  onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
+  try { history.replaceState(null, "", url); } catch(e) {}
+  try {
+    const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, t: Date.now()});
+    localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
+  } catch(e) {}
+}
+function applyFilters(){
+  document.querySelectorAll("#grades button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kelas === kelas)));
+  $("onlyLanjut").setAttribute("aria-pressed", String(onlyLanjut));
+  search($("q").value); progress(); remember();
 }
 
 render();
 progress();
+applyFilters();
 document.addEventListener("click", e => {
   const tg = e.target.closest(".toggle");
   if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
@@ -323,7 +365,8 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
-$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
+$("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
 if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
 </script>

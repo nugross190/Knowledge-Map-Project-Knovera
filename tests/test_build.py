@@ -181,6 +181,24 @@ class MapsTest(unittest.TestCase):
         self.assertIn('id="onlyLanjut"', page)
         self.assertIn('"lanjut": true', page)
 
+    def test_grades_come_from_src(self):
+        m = json.loads(json.dumps(self.maps["fisika"]))
+        m["domains"][0]["topics"][0]["src"] = "Kelas 10"
+        self.assertIn("src 'Kelas 10' must be one of", " | ".join(build.validate_map("fisika", m)))
+        self.assertEqual(build.GRADE_LABELS["Kelas XI–XII"], ["XI", "XII"])
+        self.assertEqual(build.GRADE_LABELS["Semua kelas"], ["X", "XI", "XII"])
+        page = build.map_pages(self.maps, {})["peta-fisika.html"]
+        payload = json.loads(page.split("const MAP = ")[1].split(";\n")[0].replace("<\\/", "</"))
+        for t in (t for d in payload["domains"] for t in d["topics"]):
+            self.assertEqual(t["grades"], build.GRADE_LABELS[t["src"]], t["code"])
+        self.assertTrue(payload["icon"])
+        self.assertIn('id="grades"', page)
+
+    def test_every_map_has_an_icon(self):
+        icons = build.load_icons()
+        for name in self.maps:
+            self.assertIn(name, icons)
+
     def test_map_pages_render(self):
         pages = build.map_pages(self.maps, {})
         for m in self.maps.values():
@@ -205,6 +223,17 @@ class SubjectsTest(unittest.TestCase):
         subjects = [s for s in subjects if s.get("map") != "fisika"]         # fisika map left out
         errors = " | ".join(build.validate_subjects(subjects, self.maps, self.tka))
         for needle in ("duplicate id", "unknown TKA bank", "map fisika is not listed", "tka-fisika-pilihan-2025 is not listed"):
+            self.assertIn(needle, errors)
+
+    def test_validator_checks_groups(self):
+        subjects = json.loads(json.dumps(self.subjects))
+        subjects[0]["group"] = "olahraga"
+        subjects[1]["also"] = ["ips", "seni"]
+        subjects[2].pop("short")
+        lanjut = next(s for s in subjects if s.get("lanjut_of"))
+        lanjut["group"] = "umum"
+        errors = " | ".join(build.validate_subjects(subjects, self.maps, self.tka))
+        for needle in ("group must be one of", "bad extra group seni", "needs 'short'", "belongs in group 'lanjut'"):
             self.assertIn(needle, errors)
 
     def test_status_reports_every_subject(self):
@@ -353,6 +382,37 @@ class SiteTest(unittest.TestCase):
         self.assertIn('href="peta.html"', home)
         for m in maps.values():
             self.assertIn(f'href="peta-{m["id"]}.html"', home, m["id"])
+
+    def test_home_page_groups_subjects(self):
+        topics, rows = build.load()
+        home = build.pages(topics, rows, {})["index.html"]
+        self.assertNotIn("<!--__", home)
+        self.assertNotIn("__N_", home)
+        self.assertNotIn("/*__HOME__*/", home)
+        groups = build.load_groups()
+        self.assertEqual([g["id"] for g in groups], ["umum", "ipa", "ips", "bahasa", "lanjut"])
+        names = {g["id"]: g["name"] for g in groups}
+        panels = {g["id"]: home.split(f'id="panel-{g["id"]}"')[1].split('class="gpanel"')[0] for g in groups}
+        for s in build.load_subjects():
+            card = f'data-sid="{s["id"]}"'
+            self.assertIn(card, panels[s["group"]], s["id"])
+            self.assertNotIn('<span class="flag">', panels[s["group"]].split(card)[1].split("</a>")[0], s["id"])
+            for g in s.get("also", []):
+                self.assertIn(card, panels[g], s["id"])
+                self.assertIn(f'<span class="flag">{names[s["group"]]}</span>', panels[g].split(card)[1].split("</a>")[0])
+        self.assertIn('href="peta-matematika.html?lanjut=1"', panels["lanjut"])
+        data = json.loads(home.split("const HOME = ")[1].split(";\n")[0].replace("<\\/", "</"))
+        self.assertEqual(list(data["subjects"]["matematika-tingkat-lanjut"]["grades"]), ["XI", "XII"])
+        self.assertEqual(list(data["subjects"]["fisika"]["grades"]), ["X", "XI", "XII"])
+
+    def test_every_page_gets_the_light_theme(self):
+        topics, rows = build.load()
+        build.build(topics, rows, build.load_maps(), artifact=False)
+        for page in (build.ROOT / "docs").glob("*.html"):
+            body = page.read_text(encoding="utf-8")[len(build.HEAD):]
+            self.assertIn("Shared light theme", body, page.name)
+            self.assertNotIn("prefers-color-scheme: dark", body, page.name)
+            self.assertLess(body.index("Shared light theme"), body.index("</style>"), page.name)
 
     def test_subject_pages_link_home(self):
         topics, rows = build.load()

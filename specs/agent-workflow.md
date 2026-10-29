@@ -63,7 +63,7 @@ Output: a verification log in the pull request (which facts were re-checked, wha
 Output: a buildable, tested change.
 
 1. Nothing to add to the home page: the build creates a card for every file in `data/maps/`. Check that the card appears in `docs/index.html`.
-2. Add a row to the pages table in `README.md`, and make sure the subject is in `data/subjects.json` with its `map` id (the build fails on an unlisted map and prints every subject's status).
+2. Add a row to the pages table in `README.md`, and make sure the subject is in `data/subjects.json` with its `map` id, its home page tab (`group`: umum, ipa, ips, bahasa or lanjut, plus `also` for extra tabs) and card name (`short`); the build fails on an unlisted map and prints every subject's status. Add the subject's icon to `templates/_icons.json` (a 48×48 stroke drawing, keyed by map id).
 3. Run `python scripts/build.py && python -m unittest discover -s tests`. Both MUST pass. Commit the rebuilt `docs/`.
 
 ### Stage 6: Check in a browser
