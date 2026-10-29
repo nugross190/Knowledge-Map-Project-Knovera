@@ -1,23 +1,25 @@
-"""Validate the question bank and build the static pages in docs/.
+"""Validate the site data and build the static pages in docs/.
 
-Usage:  python scripts/build.py              # build docs/ for GitHub Pages
+Usage:  python scripts/build.py              # validate, print the report, and rebuild docs/
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
-Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/questions/*.csv, data/tka/*.json,
-        data/modules/*.json, data/tka-types.json, data/subjects.json, templates/*.html,
-        templates/_theme.css (the shared light theme, added to every page) and templates/_icons.json (subject icons)
-Writes: docs/questions.json, one docs/<name>.html per template (docs/tka.html carries the TKA banks),
-        one docs/peta-<id>.html per subject map (rendered through templates/_map.html),
-        one docs/bank-<id>.html per subject question bank (rendered through templates/bank.html),
-        one docs/modul-<id>.html per learning module (rendered through templates/_modul.html),
-        and docs/modul-<id>.pdf for every printable module in print/<id>.pdf
-Exits with status 1 (and writes nothing) if the data has errors.
+Reads:  data/topics.json and data/questions.csv (history kit), data/maps/*.json, data/questions/*.csv,
+        data/tka/*.json, data/tka-types.json, data/modules/*.json, data/subjects.json, print/<id>.pdf, and
+        templates/*.html with their shared parts: templates/_theme.css (added to every page), templates/_feed.css
+        and _feed.js (the swipe feed, where a template includes them) and templates/_icons.json (subject icons).
+Writes: docs/: one page per template, peta-<id>.html per map, bank-<id>.html per subject bank, modul-<id>.html (and
+        modul-<id>.pdf) per module, questions.json and .nojekyll. Only files whose content changed are rewritten,
+        and generated files that are no longer built are removed, so a second run changes nothing.
+Exits with status 1, writing nothing, if the data has errors.
 """
+import argparse
 import csv
+import functools
 import html
 import json
 import re
 import sys
 from collections import Counter
+from dataclasses import dataclass
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -44,12 +46,18 @@ ARTIFACT_URLS = {
     "simulasi.html": "https://claude.ai/artifact/VfVV7k9nBakQALRRybY526",
     "peta-fisika.html": "https://claude.ai/artifact/XxSteiwD99sQx37T8teYTh",
 }
-# Pages without a hosted copy are linked through the GitHub Pages site.
-PAGES_URL = "https://nugross190.github.io/Bank-LCCM-Sejarah/"
-HOSTED_LINKS = {**ARTIFACT_URLS, "index.html": PAGES_URL}
-# Path of the site under github.io ("/Bank-LCCM-Sejarah/"), for pages that need absolute links (404.html).
+# The GitHub Pages site; pages without a hosted copy are linked there. A project site moves with the repository
+# name and GitHub does not redirect the old address, so this must follow any rename of the repository.
+PAGES_URL = "https://nugross190.github.io/Knowledge-Map-Project-Knovera/"
+# Path of the site under github.io ("/Knowledge-Map-Project-Knovera/"), for pages that need absolute links (404.html).
 SITE_BASE = urlparse(PAGES_URL).path
+# A template pulls in a shared file from templates/ with /*@include _name.ext*/ (in its <style> or <script>).
+INCLUDE = re.compile(r"/\*@include (_[\w.-]+)\*/")
+# Suffixes of the files the build owns in its output folders; others (a CNAME, say) are never removed.
+GENERATED = (".html", ".pdf", ".json")
 
+
+# ---------- loading ----------
 
 def load():
     topics = json.loads((ROOT / "data/topics.json").read_text(encoding="utf-8"))
@@ -60,6 +68,81 @@ def load():
         rows = [{k: (v or "").strip() for k, v in r.items()} for r in reader]
     return topics, rows
 
+
+def load_maps():
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/maps").glob("*.json"))}
+
+
+def load_subject_banks():
+    """{map id: rows} for every data/questions/<map id>.csv."""
+    banks = {}
+    for path in sorted((ROOT / "data/questions").glob("*.csv")):
+        with open(path, newline="", encoding="utf-8-sig") as f:
+            reader = csv.DictReader(f)
+            if reader.fieldnames != SUBJECT_FIELDS:
+                sys.exit(f"{path.name} header must be exactly: {','.join(SUBJECT_FIELDS)}\nfound: {reader.fieldnames}")
+            banks[path.stem] = [{k: (v or "").strip() for k, v in r.items()} for r in reader]
+    return banks
+
+
+def load_tka():
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/tka").glob("*.json"))}
+
+
+def load_tka_types():
+    """{type code: type entry} from data/tka-types.json, across all subjects."""
+    types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
+    return {t["kode"]: t for s in types.values() for t in s["types"]}
+
+
+def load_modules():
+    folder = ROOT / "data/modules"
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))}
+
+
+def load_roster():
+    """data/subjects.json: the subject roster and the home page tabs."""
+    path = ROOT / "data/subjects.json"
+    return json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+
+
+def load_subjects():
+    return load_roster().get("subjects", [])
+
+
+def load_groups():
+    """The home page tabs (Umum, IPA, IPS, Bahasa, Tingkat Lanjut), in order, from data/subjects.json."""
+    return load_roster().get("groups", [])
+
+
+@functools.lru_cache(maxsize=None)
+def load_icons():
+    """Subject icons: inner SVG markup for a 48x48 stroke drawing, keyed by map id (templates/_icons.json)."""
+    return json.loads((ROOT / "templates/_icons.json").read_text(encoding="utf-8"))
+
+
+@dataclass
+class Site:
+    """Everything the build reads from data/, loaded once."""
+    topics: dict      # history kit: domains, weights, topic codes
+    rows: list        # history kit questions
+    maps: dict        # {map id: subject map}
+    banks: dict       # {map id: subject question rows}
+    tka: dict         # {bank id: TKA bank}
+    tka_types: dict   # {type code: TKA item type}
+    modules: dict     # {module id: learning module}
+    subjects: list    # the roster
+    groups: list      # the home page tabs
+
+
+def load_site():
+    topics, rows = load()
+    roster = load_roster()
+    return Site(topics, rows, load_maps(), load_subject_banks(), load_tka(), load_tka_types(), load_modules(),
+                roster.get("subjects", []), roster.get("groups", []))
+
+
+# ---------- validation ----------
 
 def validate(topics, rows):
     codes = {code for d in topics["domains"] for code in d["topics"]}
@@ -86,33 +169,6 @@ def validate(topics, rows):
     return errors
 
 
-def report(topics, rows):
-    per_topic = Counter(r["simpul"] for r in rows)
-    for d in topics["domains"]:
-        total = sum(per_topic[c] for c in d["topics"])
-        print(f"{d['id']}  {total:4d} soal  (bobot {d['weight']}%)")
-        for code, title in d["topics"].items():
-            flag = "  <- sedikit" if per_topic[code] < MIN_PER_TOPIC else ""
-            print(f"   {code}  {per_topic[code]:3d}  {title}{flag}")
-    print(f"Total {len(rows)} soal")
-
-
-def load_maps():
-    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/maps").glob("*.json"))}
-
-
-def load_subject_banks():
-    """{map id: rows} for every data/questions/<map id>.csv."""
-    banks = {}
-    for path in sorted((ROOT / "data/questions").glob("*.csv")):
-        with open(path, newline="", encoding="utf-8-sig") as f:
-            reader = csv.DictReader(f)
-            if reader.fieldnames != SUBJECT_FIELDS:
-                sys.exit(f"{path.name} header must be exactly: {','.join(SUBJECT_FIELDS)}\nfound: {reader.fieldnames}")
-            banks[path.stem] = [{k: (v or "").strip() for k, v in r.items()} for r in reader]
-    return banks
-
-
 def map_topics(m):
     """A subject map in the shape of data/topics.json, so the bank code can treat both alike.
     Domain weights are each domain's share of the map's topics."""
@@ -128,40 +184,11 @@ def validate_subject_banks(banks, maps):
         if name not in maps:
             errors.append(f"data/questions/{name}.csv: no map data/maps/{name}.json")
             continue
+        if not rows:
+            errors.append(f"data/questions/{name}.csv: no questions; add some or remove the file")
+            continue
         errors += [f"data/questions/{name}.csv " + e for e in validate(map_topics(maps[name]), rows)]
     return errors
-
-
-def question_json(rows):
-    out = []
-    for r in rows:
-        q = {"id": r["id"], "t": r["simpul"], "lv": int(r["tingkat"]), "q": r["soal"], "a": r["jawaban"], "x": r["catatan"]}
-        if r.get("konteks"):
-            q["k"] = r["konteks"]
-        out.append(q)
-    return out
-
-
-def bank_pages(banks, maps, links):
-    """Return {file name: page body} for every subject question bank."""
-    template = (ROOT / "templates/bank.html").read_text(encoding="utf-8")
-    out = {}
-    for name, rows in banks.items():
-        m = maps[name]
-        cfg = {"key": f"bank-soal-{name}-v1", "title": f"Bank Soal {m['subject']}", "map_title": m["title"],
-               "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul",
-               "lead": "Tanya-jawab singkat untuk mengulang " + m["subject"] + ". Setiap soal memakai kode simpul yang sama "
-                       "dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.",
-               "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi " + m["subject"] +
-                         " dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}
-        payload = json.dumps({"topics": map_topics(m), "questions": question_json(rows), "bank": cfg},
-                             ensure_ascii=False).replace("</", "<\\/")
-        body = template.replace("/*__DATA__*/", "const DATA = " + payload + ";")
-        body = body.replace("<title>Bank Soal Lomba Sejarah</title>", f"<title>{html.escape(cfg['title'])}</title>")
-        for link, target in links.items():
-            body = body.replace('href="' + link, 'href="' + target)
-        out[f"bank-{name}.html"] = body
-    return out
 
 
 def validate_map(name, m):
@@ -203,10 +230,6 @@ def validate_map(name, m):
         if step.get("to") not in codes:
             errors.append(f"{where}: path step '{step.get('title')}' points to unknown code {step.get('to')}")
     return errors
-
-
-def load_tka():
-    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/tka").glob("*.json"))}
 
 
 TKA_FORMATS = {"pilihan-ganda", "pilihan-ganda-kompleks", "benar-salah"}
@@ -286,17 +309,6 @@ def validate_tka(name, bank):
         if not (isinstance(it.get("halaman"), list) and it["halaman"] and all(type(h) is int for h in it["halaman"])):
             errors.append(f"{where}: {sid} halaman must be a non-empty list of page numbers")
     return errors
-
-
-def load_modules():
-    folder = ROOT / "data/modules"
-    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))}
-
-
-def load_tka_types():
-    """{type code: type entry} from data/tka-types.json, across all subjects."""
-    types = json.loads((ROOT / "data/tka-types.json").read_text(encoding="utf-8"))
-    return {t["kode"]: t for s in types.values() for t in s["types"]}
 
 
 MODULE_FORMATS = TKA_FORMATS | {"isian"}
@@ -474,221 +486,6 @@ def lint_map(name, m):
     return warnings
 
 
-def with_grades(m):
-    """Copy of a map with each topic's grades (["X", "XI"]) read from its src, for the page's grade filter."""
-    domains = [dict(d, topics=[dict(t, grades=GRADE_LABELS[t["src"]]) for t in d["topics"]]) for d in m["domains"]]
-    return dict(m, domains=domains, icon=load_icons().get(m["id"], ""))
-
-
-def load_icons():
-    """Subject icons: inner SVG markup for a 48x48 stroke drawing, keyed by map id (templates/_icons.json)."""
-    return json.loads((ROOT / "templates/_icons.json").read_text(encoding="utf-8"))
-
-
-def icon_svg(markup):
-    return ('<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" '
-            'stroke-linejoin="round" aria-hidden="true">' + markup + '</svg>')
-
-
-def map_pages(maps, links, banks=None):
-    """Return {file name: page body} for every subject map."""
-    template = (ROOT / "templates/_map.html").read_text(encoding="utf-8")
-    banks = banks if banks is not None else load_subject_banks()
-    out = {}
-    for m in maps.values():
-        m = with_grades(m)
-        if m["id"] in banks:
-            m = dict(m, bank=links.get(f"bank-{m['id']}.html", f"bank-{m['id']}.html"))
-        payload = json.dumps(m, ensure_ascii=False).replace("</", "<\\/")
-        body = template.replace("__TITLE__", m["title"]).replace("/*__MAP__*/", "const MAP = " + payload + ";")
-        for name, target in links.items():
-            body = body.replace('href="' + name, 'href="' + target)
-        out[f"peta-{m['id']}.html"] = body
-    return out
-
-
-def module_pdf(mod_id):
-    """Path of a module's printable PDF (print/<id>.pdf, made by print/print.mjs), or None."""
-    path = ROOT / "print" / f"{mod_id}.pdf"
-    return path if path.exists() else None
-
-
-def module_pages(modules, maps, links):
-    """Return {file name: page body} for every learning module."""
-    template = (ROOT / "templates/_modul.html").read_text(encoding="utf-8")
-    out = {}
-    for mod in modules.values():
-        data = dict(mod)
-        if module_pdf(mod["id"]):
-            # Hosted copies have no PDF next to them, so they link to the one on GitHub Pages.
-            data["pdf"] = (PAGES_URL if links else "") + f"modul-{mod['id']}.pdf"
-        if mod.get("map") in maps:
-            m = maps[mod["map"]]
-            data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
-            data["map_title"] = m["title"]
-            data["topics"] = {t["code"]: t["title"] for d in m["domains"] for t in d["topics"]}
-        payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
-        body = template.replace("__TITLE__", mod["title"]).replace("/*__MODULE__*/", "const MOD = " + payload + ";")
-        for name, target in links.items():
-            body = body.replace('href="' + name, 'href="' + target)
-        out[f"modul-{mod['id']}.html"] = body
-    return out
-
-
-def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None, subjects=None, groups=None):
-    """Return (html, data) for the home page: subject cards in one panel per group tab, and the tools section.
-
-    Every subject sits in its primary group's panel and in each panel listed under `also`, where it carries its
-    primary group's name as a flag. Tingkat Lanjut subjects open the parent map with only the tagged topics.
-    `data` feeds the page script: topic codes per grade (for the grade chooser and progress) and bank links.
-    """
-    e = html.escape
-    banks = banks or {}
-    subjects = subjects if subjects is not None else load_subjects()
-    groups = groups if groups is not None else load_groups()
-    icons = load_icons()
-    names = {g["id"]: g["name"] for g in groups}
-    data, panels = {}, {g["id"]: [] for g in groups}
-    for s in subjects:
-        mid = s.get("map") or s.get("lanjut_of")
-        if mid not in maps:
-            continue
-        m = maps[mid]
-        topics_ = [t for d in m["domains"] for t in d["topics"] if not s.get("lanjut_of") or t.get("lanjut")]
-        grades = ["XI", "XII"] if s.get("lanjut_of") else list(GRADES)
-        by_grade = {g: [t["code"] for t in topics_ if g in GRADE_LABELS[t["src"]]] for g in grades}
-        href = f"peta-{mid}.html" + ("?lanjut=1" if s.get("lanjut_of") else "")
-        data[s["id"]] = {"map": mid, "name": s["short"], "href": href, "lanjut": bool(s.get("lanjut_of")),
-                         "grades": by_grade, "codes": [t["code"] for t in topics_],
-                         "bank": f"bank-{mid}.html" if mid in banks and not s.get("lanjut_of") else ""}
-        n_bank = len(banks[mid]) if mid in banks and not s.get("lanjut_of") else 0
-        counts = " · ".join(f"{g} {len(c)}" for g, c in by_grade.items())
-        for gid in [s["group"]] + s.get("also", []):
-            flag = f'<span class="flag">{e(names[s["group"]])}</span>' if gid != s["group"] else ""
-            panels[gid].append(
-                f'<a class="sub" href="{e(href)}" data-sid="{e(s["id"])}">'
-                f'<span class="ico">{icon_svg(icons.get(mid, icons["modul"]))}</span>'
-                f'<span class="sname">{e(s["short"])}{flag}</span>'
-                f'<span class="smeta">{len(topics_)} simpul' + (f" · {n_bank} soal" if n_bank else "") + '</span>'
-                f'<span class="sgrades">Kelas {counts}</span>'
-                '<span class="sprog" hidden><i></i></span><span class="sdone" hidden></span></a>')
-    tabs = "".join(
-        f'<button class="gtab" type="button" role="tab" id="tab-{e(g["id"])}" aria-controls="panel-{e(g["id"])}" '
-        f'aria-selected="{"true" if i == 0 else "false"}">{e(g["name"])} <span>{len(panels[g["id"]])}</span></button>'
-        for i, g in enumerate(groups))
-    body = "".join(
-        f'<section class="gpanel" role="tabpanel" id="panel-{e(g["id"])}" aria-labelledby="tab-{e(g["id"])}">'
-        f'<h3 class="gname">{e(g["name"])}</h3><p class="gnote">{e(g["note"])}</p>'
-        f'<div class="subs">{"".join(panels[g["id"]])}</div></section>'
-        for g in groups)
-    sni = topics["domains"]
-    tools = [
-        f'<article class="tool"><span class="ico">{icon_svg(icons["lomba"])}</span><h3>Kit Lomba Sejarah</h3>'
-        f'<p>Perangkat Lomba Cerdas Cermat Museum: {sum(len(d["topics"]) for d in sni)} simpul, {n_questions} soal, '
-        'dan simulasi babak wajib serta rebutan.</p><nav class="tlinks" aria-label="Kit Lomba Sejarah">'
-        '<a class="btn primary" href="peta.html">Peta lomba</a><a class="btn" href="bank.html">Bank soal</a>'
-        '<a class="btn" href="simulasi.html">Simulasi babak</a></nav></article>']
-    if tka:
-        n_items = sum(len(b["soal"]) for b in tka.values())
-        tools.append(
-            f'<article class="tool"><span class="ico">{icon_svg(icons["tka"])}</span><h3>Latihan TKA</h3>'
-            f'<p>Soal TKA SMA 2025 dari {len(tka)} naskah, {n_items} soal, dengan kunci usulan yang belum resmi.</p>'
-            '<nav class="tlinks" aria-label="Latihan TKA"><a class="btn primary" href="tka.html">Latihan soal</a><a class="btn" href="tka.html?mode=geser">Mode geser</a></nav></article>')
-    for mod in (modules or {}).values():
-        n_items = sum(len(st["soal"]) for st in mod["tahap"])
-        tools.append(
-            f'<article class="tool"><span class="ico">{icon_svg(icons["modul"])}</span><h3>{e(mod["title"])}</h3>'
-            f'<p>Modul belajar {e(maps[mod["map"]]["subject"]) if mod.get("map") in maps else ""}: '
-            f'{len(mod["materi"])} materi dan {n_items} latihan bertahap sampai setara TKA.</p>'
-            f'<nav class="tlinks" aria-label="{e(mod["title"])}"><a class="btn primary" href="modul-{e(mod["id"])}.html">Buka modul</a></nav></article>')
-    stats = {"subjects": len(data), "topics": sum(len(d["topics"]) for m in maps.values() for d in m["domains"]),
-             "questions": sum(len(r) for r in banks.values()) + n_questions,
-             "tka": sum(len(b["soal"]) for b in (tka or {}).values())}
-    sections = {"tabs": tabs, "panels": body, "tools": "\n".join(tools)}
-    return sections, {"subjects": data, "stats": stats}
-
-
-def pages(topics, questions, links, maps=None, tka=None, modules=None):
-    """Return {file name: page body} for every template, with cross-page links resolved through `links`.
-
-    A template that contains /*__DATA__*/ gets the topics and questions injected there,
-    and one that contains /*__TKA__*/ gets the TKA banks.
-    Every href="<page>.html" that names a page in `links` is rewritten to its target.
-    """
-    data = dict(topics, map_url=links.get("peta.html", "peta.html"))
-    payload = json.dumps({"topics": data, "questions": questions}, ensure_ascii=False).replace("</", "<\\/")
-    tka = tka if tka is not None else load_tka()
-    tka_payload = json.dumps(list(tka.values()), ensure_ascii=False).replace("</", "<\\/")
-    out = {}
-    for path in sorted((ROOT / "templates").glob("*.html")):
-        if path.name.startswith("_"):  # shared templates, rendered by other steps
-            continue
-        body = path.read_text(encoding="utf-8")
-        body = body.replace("/*__DATA__*/", "const DATA = " + payload + ";")
-        body = body.replace("/*__TKA__*/", "const BANKS = " + tka_payload + ";")
-        body = body.replace("__SITE_BASE__", SITE_BASE)
-        if "<!--__TABS__-->" in body:
-            sections, home = home_sections(maps if maps is not None else load_maps(), topics, len(questions), tka,
-                                           modules if modules is not None else load_modules(), load_subject_banks())
-            for key, part in sections.items():
-                body = body.replace(f"<!--__{key.upper()}__-->", part)
-            for key, n in home["stats"].items():
-                body = body.replace(f"__N_{key.upper()}__", f"{n:,}".replace(",", "."))
-            body = body.replace("/*__HOME__*/", "const HOME = " + json.dumps(home, ensure_ascii=False).replace("</", "<\\/") + ";")
-        for name, target in links.items():
-            body = body.replace('href="' + name, 'href="' + target)
-        out[path.name] = body
-    return out
-
-
-def themed(body):
-    """Add the shared light theme (templates/_theme.css) at the end of the page's first <style> block."""
-    theme = (ROOT / "templates/_theme.css").read_text(encoding="utf-8")
-    return body.replace("</style>", theme + "</style>", 1)
-
-
-def build(topics, rows, maps, artifact, tka=None, modules=None):
-    questions = [
-        {"id": r["id"], "t": r["simpul"], "lv": int(r["tingkat"]), "q": r["soal"], "a": r["jawaban"], "x": r["catatan"]}
-        for r in rows
-    ]
-    modules = modules if modules is not None else load_modules()
-    docs = ROOT / "docs"
-    docs.mkdir(exist_ok=True)
-    (docs / "questions.json").write_text(json.dumps(questions, ensure_ascii=False, indent=1), encoding="utf-8")
-    banks = load_subject_banks()
-    built = {**pages(topics, questions, {}, maps, tka, modules), **map_pages(maps, {}, banks),
-             **bank_pages(banks, maps, {}), **module_pages(modules, maps, {})}
-    for name, body in built.items():
-        (docs / name).write_text(HEAD + themed(body), encoding="utf-8")
-    for mod_id in modules:
-        if module_pdf(mod_id):
-            (docs / f"modul-{mod_id}.pdf").write_bytes(module_pdf(mod_id).read_bytes())
-    # Tell GitHub Pages to publish docs/ as-is instead of running it through Jekyll.
-    (docs / ".nojekyll").write_text("", encoding="utf-8")
-    print("Wrote docs/questions.json, " + ", ".join("docs/" + n for n in built))
-    if artifact:
-        out = ROOT / "build"
-        out.mkdir(exist_ok=True)
-        hosted = {**pages(topics, questions, HOSTED_LINKS, maps, tka, modules), **map_pages(maps, HOSTED_LINKS),
-                  **module_pages(modules, maps, HOSTED_LINKS)}
-        for name, body in hosted.items():
-            if name in ARTIFACT_URLS:
-                (out / name.replace(".html", ".fragment.html")).write_text(themed(body), encoding="utf-8")
-        print("Wrote build/*.fragment.html for " + ", ".join(ARTIFACT_URLS))
-
-
-def load_subjects():
-    path = ROOT / "data/subjects.json"
-    return json.loads(path.read_text(encoding="utf-8"))["subjects"] if path.exists() else []
-
-
-def load_groups():
-    """The home page tabs (Umum, IPA, IPS, Bahasa, Tingkat Lanjut), in order, from data/subjects.json."""
-    path = ROOT / "data/subjects.json"
-    return json.loads(path.read_text(encoding="utf-8")).get("groups", []) if path.exists() else []
-
-
 def validate_subjects(subjects, maps, tka, groups=None):
     """Return problems in data/subjects.json, the roster that the status report follows."""
     errors, where, seen = [], "data/subjects.json", set()
@@ -723,6 +520,29 @@ def validate_subjects(subjects, maps, tka, groups=None):
     return errors
 
 
+def validate_site(site):
+    """Every problem in data/ that stops the build."""
+    return (validate(site.topics, site.rows)
+            + [e for name, m in site.maps.items() for e in validate_map(name, m)]
+            + [e for name, b in site.tka.items() for e in validate_tka(name, b)]
+            + [e for name, mod in site.modules.items() for e in validate_module(name, mod, site.maps, site.tka_types)]
+            + validate_subject_banks(site.banks, site.maps)
+            + validate_subjects(site.subjects, site.maps, site.tka, site.groups))
+
+
+# ---------- report ----------
+
+def report(topics, rows):
+    per_topic = Counter(r["simpul"] for r in rows)
+    for d in topics["domains"]:
+        total = sum(per_topic[c] for c in d["topics"])
+        print(f"{d['id']}  {total:4d} soal  (bobot {d['weight']}%)")
+        for code, title in d["topics"].items():
+            flag = "  <- sedikit" if per_topic[code] < MIN_PER_TOPIC else ""
+            print(f"   {code}  {per_topic[code]:3d}  {title}{flag}")
+    print(f"Total {len(rows)} soal")
+
+
 def subject_status(subjects, maps, banks, tka):
     """Return the per-subject progress lines that main() prints on every build."""
     lines, done = [], 0
@@ -752,51 +572,344 @@ def subject_status(subjects, maps, banks, tka):
     return [head] + lines
 
 
-def main():
-    topics, rows = load()
-    maps = load_maps()
-    tka = load_tka()
-    modules = load_modules()
-    tka_types = load_tka_types()
-    errors = (validate(topics, rows) + [e for name, m in maps.items() for e in validate_map(name, m)]
-              + [e for name, b in tka.items() for e in validate_tka(name, b)]
-              + [e for name, mod in modules.items() for e in validate_module(name, mod, maps, tka_types)]
-              + validate_subject_banks(load_subject_banks(), maps)
-              + validate_subjects(load_subjects(), maps, tka))
-    if errors:
-        print(f"{len(errors)} error(s) in data/:")
-        print("\n".join("  " + e for e in errors))
-        sys.exit(1)
-    report(topics, rows)
-    for name, m in maps.items():
+def print_report(site):
+    """The console report: question counts, lint warnings, bank, TKA and module summaries, and the subject status."""
+    report(site.topics, site.rows)
+    for name, m in site.maps.items():
         print(f"Peta {m['subject']}: {sum(len(d['topics']) for d in m['domains'])} simpul")
         for w in lint_map(name, m):
             print("  warning: " + w)
-    for name, bank_rows in load_subject_banks().items():
+    for name, bank_rows in site.banks.items():
         per_topic = Counter(r["simpul"] for r in bank_rows)
-        thin = [c for d in maps[name]["domains"] for c in (t["code"] for t in d["topics"]) if per_topic[c] < MIN_PER_TOPIC]
+        thin = [t["code"] for d in site.maps[name]["domains"] for t in d["topics"] if per_topic[t["code"]] < MIN_PER_TOPIC]
         levels = Counter(r["tingkat"] for r in bank_rows)
-        print(f"Bank {maps[name]['subject']}: {len(bank_rows)} soal, {sum(bool(r['konteks']) for r in bank_rows)} konteks, "
+        konteks = sum(bool(r["konteks"]) for r in bank_rows)
+        print(f"Bank {site.maps[name]['subject']}: {len(bank_rows)} soal, {konteks} konteks, "
               f"tingkat 1/2/3 = {levels['1']}/{levels['2']}/{levels['3']}")
         if thin:
             print(f"  warning: fewer than {MIN_PER_TOPIC} questions: " + ", ".join(thin))
-        konteks = sum(bool(r["konteks"]) for r in bank_rows) / len(bank_rows)
-        if konteks < MIN_KONTEKS_SHARE:
-            print(f"  warning: konteks is {konteks:.0%} (spec: at least {MIN_KONTEKS_SHARE:.0%})")
+        if konteks / len(bank_rows) < MIN_KONTEKS_SHARE:
+            print(f"  warning: konteks is {konteks / len(bank_rows):.0%} (spec: at least {MIN_KONTEKS_SHARE:.0%})")
         if levels["1"] / len(bank_rows) < MIN_LEVEL1_SHARE:
             print(f"  warning: level 1 is {levels['1'] / len(bank_rows):.0%} (spec: at least {MIN_LEVEL1_SHARE:.0%})")
-    for b in tka.values():
+    for b in site.tka.values():
         low = sum(it["keyakinan_kunci"] in ("rendah", "tidak ada") for it in b["soal"])
         print(f"TKA {b['mapel']}: {len(b['soal'])} soal, {low} dengan kunci berkeyakinan rendah atau tanpa kunci")
-    for name, mod in modules.items():
+    for name, mod in site.modules.items():
         items = [it for st in mod["tahap"] for it in st["soal"]]
         print(f"{mod['title']}: {len(mod['materi'])} materi, {len(mod['tahap'])} tahap, {len(items)} soal "
               f"({sum('tka' in it for it in items)} setara TKA)")
         for w in lint_module(name, mod):
             print("  warning: " + w)
-    print("\n".join(subject_status(load_subjects(), maps, load_subject_banks(), tka)))
-    build(topics, rows, maps, "--artifact" in sys.argv[1:], tka, modules)
+    print("\n".join(subject_status(site.subjects, site.maps, site.banks, site.tka)))
+
+
+# ---------- rendering ----------
+
+def script_json(value):
+    """`value` as JSON for a <script> block. "</" and "<!--" are escaped so no text in the data can end the script
+    early or switch the HTML parser into its comment-like script states; the JSON still parses to the same value."""
+    return json.dumps(value, ensure_ascii=False).replace("</", "<\\/").replace("<!--", "<\\u0021--")
+
+
+@functools.lru_cache(maxsize=None)
+def read_template(name):
+    """templates/<name> with its shared parts in place: each /*@include _file*/ marker replaced by templates/_file,
+    and the light theme (templates/_theme.css) at the end of the first <style> block, so it overrides the page's own."""
+    folder = ROOT / "templates"
+    text = (folder / name).read_text(encoding="utf-8")
+    text = INCLUDE.sub(lambda m: (folder / m.group(1)).read_text(encoding="utf-8"), text)
+    return text.replace("</style>", (folder / "_theme.css").read_text(encoding="utf-8") + "</style>", 1)
+
+
+def rewrite_links(body, links):
+    """Point every href="<file>" in a page at its target in `links`; local builds pass {} and keep file names.
+    Every key ends in its extension, so a key only matches an href to that file (plus any ?query or #fragment)."""
+    for name, target in links.items():
+        body = body.replace('href="' + name, 'href="' + target)
+    return body
+
+
+def module_pdf(mod_id):
+    """Path of a module's printable PDF (print/<id>.pdf, made by print/print.mjs), or None."""
+    path = ROOT / "print" / f"{mod_id}.pdf"
+    return path if path.exists() else None
+
+
+def page_names(site):
+    """The file name of every page and PDF the site publishes."""
+    names = [p.name for p in sorted((ROOT / "templates").glob("*.html")) if not p.name.startswith("_")]
+    names += [f"peta-{i}.html" for i in site.maps] + [f"bank-{i}.html" for i in site.banks]
+    names += [f"modul-{i}.html" for i in site.modules] + [f"modul-{i}.pdf" for i in site.modules if module_pdf(i)]
+    return names
+
+
+def hosted_links(site):
+    """Links for the claude.ai copies: a page with a hosted copy by its claude.ai URL, every other page and PDF on
+    the GitHub Pages site (the home page by the site's own address)."""
+    return {name: ARTIFACT_URLS.get(name) or (PAGES_URL if name == "index.html" else PAGES_URL + name)
+            for name in page_names(site)}
+
+
+def question_json(rows):
+    out = []
+    for r in rows:
+        q = {"id": r["id"], "t": r["simpul"], "lv": int(r["tingkat"]), "q": r["soal"], "a": r["jawaban"], "x": r["catatan"]}
+        if r.get("konteks"):
+            q["k"] = r["konteks"]
+        out.append(q)
+    return out
+
+
+def bank_pages(banks, maps, links):
+    """Return {file name: page body} for every subject question bank."""
+    template = read_template("bank.html")
+    out = {}
+    for name, rows in banks.items():
+        m = maps[name]
+        topics = dict(map_topics(m), map_url=links.get(f"peta-{name}.html", f"peta-{name}.html"))
+        cfg = {"key": f"bank-soal-{name}-v1", "title": f"Bank Soal {m['subject']}", "map_title": m["title"],
+               "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul",
+               "lead": "Tanya-jawab singkat untuk mengulang " + m["subject"] + ". Setiap soal memakai kode simpul yang sama "
+                       "dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.",
+               "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi " + m["subject"] +
+                         " dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}
+        payload = script_json({"topics": topics, "questions": question_json(rows), "bank": cfg})
+        body = template.replace("/*__DATA__*/", "const DATA = " + payload + ";")
+        body = body.replace("<title>Bank Soal Lomba Sejarah</title>", f"<title>{html.escape(cfg['title'])}</title>")
+        out[f"bank-{name}.html"] = rewrite_links(body, links)
+    return out
+
+
+def with_grades(m):
+    """Copy of a map with each topic's grades (["X", "XI"]) read from its src, for the page's grade filter."""
+    domains = [dict(d, topics=[dict(t, grades=GRADE_LABELS[t["src"]]) for t in d["topics"]]) for d in m["domains"]]
+    return dict(m, domains=domains, icon=load_icons().get(m["id"], ""))
+
+
+def icon_svg(markup):
+    return ('<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true">' + markup + '</svg>')
+
+
+def map_pages(maps, links, banks=None):
+    """Return {file name: page body} for every subject map."""
+    template = read_template("_map.html")
+    banks = banks if banks is not None else load_subject_banks()
+    out = {}
+    for m in maps.values():
+        m = with_grades(m)
+        if m["id"] in banks:
+            m = dict(m, bank=links.get(f"bank-{m['id']}.html", f"bank-{m['id']}.html"))
+        body = template.replace("__TITLE__", html.escape(m["title"], quote=False))
+        body = body.replace("/*__MAP__*/", "const MAP = " + script_json(m) + ";")
+        out[f"peta-{m['id']}.html"] = rewrite_links(body, links)
+    return out
+
+
+def module_pages(modules, maps, links, tka_types=None):
+    """Return {file name: page body} for every learning module."""
+    template = read_template("_modul.html")
+    tka_types = tka_types if tka_types is not None else load_tka_types()
+    out = {}
+    for mod in modules.values():
+        data = dict(mod)
+        pdf = f"modul-{mod['id']}.pdf"
+        if module_pdf(mod["id"]):
+            data["pdf"] = links.get(pdf, pdf)
+        if mod.get("map") in maps:
+            m = maps[mod["map"]]
+            data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
+            data["map_title"] = m["title"]
+            data["topics"] = {t["code"]: t["title"] for d in m["domains"] for t in d["topics"]}
+        # The level of each TKA type the module uses, from data/tka-types.json, for the "Setara TKA" badges.
+        used = sorted({it["tka"]["tipe"] for st in mod["tahap"] for it in st["soal"] if "tka" in it})
+        data["tka_levels"] = {code: tka_types[code]["level"] for code in used if code in tka_types}
+        body = template.replace("__TITLE__", html.escape(mod["title"], quote=False))
+        body = body.replace("/*__MODULE__*/", "const MOD = " + script_json(data) + ";")
+        out[f"modul-{mod['id']}.html"] = rewrite_links(body, links)
+    return out
+
+
+def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None, subjects=None, groups=None, links=None):
+    """Return (html, data) for the home page: subject cards in one panel per group tab, and the tools section.
+
+    Every subject sits in its primary group's panel and in each panel listed under `also`, where it carries its
+    primary group's name as a flag. Tingkat Lanjut subjects open the parent map with only the tagged topics.
+    `data` feeds the page script: topic codes per grade (for the grade chooser and progress) and bank links.
+    """
+    e = html.escape
+    banks = banks or {}
+    subjects = subjects if subjects is not None else load_subjects()
+    groups = groups if groups is not None else load_groups()
+    links = links or {}
+    icons = load_icons()
+    names = {g["id"]: g["name"] for g in groups}
+    data, panels = {}, {g["id"]: [] for g in groups}
+    for s in subjects:
+        mid = s.get("map") or s.get("lanjut_of")
+        if mid not in maps:
+            continue
+        m = maps[mid]
+        lanjut = bool(s.get("lanjut_of"))
+        topics_ = [t for d in m["domains"] for t in d["topics"] if not lanjut or t.get("lanjut")]
+        if not topics_:  # a Tingkat Lanjut subject whose parent map has no tagged topics yet
+            continue
+        grades = ["XI", "XII"] if lanjut else list(GRADES)
+        by_grade = {g: [t["code"] for t in topics_ if g in GRADE_LABELS[t["src"]]] for g in grades}
+        page = f"peta-{mid}.html"
+        href = links.get(page, page) + ("?lanjut=1" if lanjut else "")
+        has_bank = mid in banks and not lanjut
+        data[s["id"]] = {"map": mid, "name": s["short"], "href": href, "lanjut": lanjut,
+                         "grades": by_grade, "codes": [t["code"] for t in topics_],
+                         "bank": links.get(f"bank-{mid}.html", f"bank-{mid}.html") if has_bank else ""}
+        counts = " · ".join(f"{g} {len(c)}" for g, c in by_grade.items())
+        for gid in [s["group"]] + s.get("also", []):
+            flag = f'<span class="flag">{e(names[s["group"]])}</span>' if gid != s["group"] else ""
+            panels[gid].append(
+                f'<a class="sub" href="{e(href)}" data-sid="{e(s["id"])}">'
+                f'<span class="ico">{icon_svg(icons.get(mid, icons["modul"]))}</span>'
+                f'<span class="sname">{e(s["short"])}{flag}</span>'
+                f'<span class="smeta">{len(topics_)} simpul' + (f" · {len(banks[mid])} soal" if has_bank else "") + '</span>'
+                f'<span class="sgrades">Kelas {counts}</span>'
+                '<span class="sprog" hidden><i></i></span><span class="sdone" hidden></span></a>')
+    tabs = "".join(
+        f'<button class="gtab" type="button" role="tab" id="tab-{e(g["id"])}" aria-controls="panel-{e(g["id"])}" '
+        f'aria-selected="{"true" if i == 0 else "false"}">{e(g["name"])} <span>{len(panels[g["id"]])}</span></button>'
+        for i, g in enumerate(groups))
+    body = "".join(
+        f'<section class="gpanel" role="tabpanel" id="panel-{e(g["id"])}" aria-labelledby="tab-{e(g["id"])}">'
+        f'<h3 class="gname">{e(g["name"])}</h3><p class="gnote">{e(g["note"])}</p>'
+        f'<div class="subs">{"".join(panels[g["id"]])}</div></section>'
+        for g in groups)
+    sni = topics["domains"]
+    tools = [
+        f'<article class="tool"><span class="ico">{icon_svg(icons["lomba"])}</span><h3>Kit Lomba Sejarah</h3>'
+        f'<p>Perangkat Lomba Cerdas Cermat Museum: {sum(len(d["topics"]) for d in sni)} simpul, {n_questions} soal, '
+        'dan simulasi babak wajib serta rebutan.</p><nav class="tlinks" aria-label="Kit Lomba Sejarah">'
+        '<a class="btn primary" href="peta.html">Peta lomba</a><a class="btn" href="bank.html">Bank soal</a>'
+        '<a class="btn" href="simulasi.html">Simulasi babak</a></nav></article>']
+    if tka:
+        n_items = sum(len(b["soal"]) for b in tka.values())
+        tools.append(
+            f'<article class="tool"><span class="ico">{icon_svg(icons["tka"])}</span><h3>Latihan TKA</h3>'
+            f'<p>Soal TKA SMA 2025 dari {len(tka)} naskah, {n_items} soal, dengan kunci usulan yang belum resmi.</p>'
+            '<nav class="tlinks" aria-label="Latihan TKA"><a class="btn primary" href="tka.html">Latihan soal</a>'
+            '<a class="btn" href="tka.html?mode=geser">Mode geser</a></nav></article>')
+    for mod in (modules or {}).values():
+        n_items = sum(len(st["soal"]) for st in mod["tahap"])
+        tools.append(
+            f'<article class="tool"><span class="ico">{icon_svg(icons["modul"])}</span><h3>{e(mod["title"])}</h3>'
+            f'<p>Modul belajar {e(maps[mod["map"]]["subject"]) if mod.get("map") in maps else ""}: '
+            f'{len(mod["materi"])} materi dan {n_items} latihan bertahap sampai setara TKA.</p>'
+            f'<nav class="tlinks" aria-label="{e(mod["title"])}"><a class="btn primary" href="modul-{e(mod["id"])}.html">Buka modul</a></nav></article>')
+    stats = {"subjects": len(data), "topics": sum(len(d["topics"]) for m in maps.values() for d in m["domains"]),
+             "questions": sum(len(r) for r in banks.values()) + n_questions,
+             "tka": sum(len(b["soal"]) for b in (tka or {}).values())}
+    sections = {"tabs": tabs, "panels": body, "tools": "\n".join(tools)}
+    return sections, {"subjects": data, "stats": stats}
+
+
+def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=None, subjects=None, groups=None):
+    """Return {file name: page body} for every template, with cross-page links resolved through `links`.
+
+    A template that contains /*__DATA__*/ gets the history topics and questions injected there, one that contains
+    /*__TKA__*/ gets the TKA banks, and the home page (<!--__TABS__-->) gets its subject cards and data.
+    Data not passed in is loaded from data/.
+    """
+    maps = maps if maps is not None else load_maps()
+    tka = tka if tka is not None else load_tka()
+    modules = modules if modules is not None else load_modules()
+    banks = banks if banks is not None else load_subject_banks()
+    history = script_json({"topics": dict(topics, map_url=links.get("peta.html", "peta.html")), "questions": questions})
+    banks_json = script_json(list(tka.values()))
+    out = {}
+    for path in sorted((ROOT / "templates").glob("*.html")):
+        if path.name.startswith("_"):  # shared templates, rendered by other steps
+            continue
+        body = read_template(path.name)
+        body = body.replace("/*__DATA__*/", "const DATA = " + history + ";")
+        body = body.replace("/*__TKA__*/", "const BANKS = " + banks_json + ";")
+        body = body.replace("__SITE_BASE__", SITE_BASE)
+        if "<!--__TABS__-->" in body:
+            sections, home = home_sections(maps, topics, len(questions), tka, modules, banks, subjects, groups, links)
+            for key, part in sections.items():
+                body = body.replace(f"<!--__{key.upper()}__-->", part)
+            for key, n in home["stats"].items():
+                body = body.replace(f"__N_{key.upper()}__", f"{n:,}".replace(",", "."))
+            body = body.replace("/*__HOME__*/", "const HOME = " + script_json(home) + ";")
+        out[path.name] = rewrite_links(body, links)
+    return out
+
+
+def render_site(site, links):
+    """{file name: page body} for every page, with cross-page links resolved through `links` ({} for docs/)."""
+    return {**pages(site.topics, question_json(site.rows), links, site.maps, site.tka, site.modules, site.banks,
+                    site.subjects, site.groups),
+            **map_pages(site.maps, links, site.banks),
+            **bank_pages(site.banks, site.maps, links),
+            **module_pages(site.modules, site.maps, links, site.tka_types)}
+
+
+def site_files(site):
+    """{file name: content} for everything docs/ holds."""
+    files = {name: HEAD + body for name, body in render_site(site, {}).items()}
+    files["questions.json"] = json.dumps(question_json(site.rows), ensure_ascii=False, indent=1)
+    for mod_id in site.modules:
+        if module_pdf(mod_id):
+            files[f"modul-{mod_id}.pdf"] = module_pdf(mod_id).read_bytes()
+    files[".nojekyll"] = ""  # tells GitHub Pages to publish docs/ as-is instead of running it through Jekyll
+    return files
+
+
+# ---------- writing ----------
+
+def write_files(files, out):
+    """Write `files` ({name: str or bytes}) into the folder `out`: only files whose bytes changed are rewritten, and
+    generated files (GENERATED suffixes) that are not in `files` are removed. Returns (changed, removed) names."""
+    out.mkdir(parents=True, exist_ok=True)
+    changed = []
+    for name, content in files.items():
+        data = content.encode("utf-8") if isinstance(content, str) else content
+        path = out / name
+        if not path.is_file() or path.read_bytes() != data:
+            path.write_bytes(data)  # bytes, so the output is the same on every OS (no newline translation)
+            changed.append(name)
+    removed = sorted(p.name for p in out.iterdir() if p.is_file() and p.suffix in GENERATED and p.name not in files)
+    for name in removed:
+        (out / name).unlink()
+    return changed, removed
+
+
+def build(site, out=None, fragments=None):
+    """Write the site into `out` (default docs/) and, when `fragments` names a folder, the claude.ai copies of the
+    pages in ARTIFACT_URLS there as <name>.fragment.html. Returns {folder: (changed, removed)}."""
+    out = Path(out) if out else ROOT / "docs"
+    result = {out: write_files(site_files(site), out)}
+    if fragments:
+        hosted = render_site(site, hosted_links(site))
+        files = {name.replace(".html", ".fragment.html"): body for name, body in hosted.items() if name in ARTIFACT_URLS}
+        result[Path(fragments)] = write_files(files, Path(fragments))
+    return result
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description="Validate the site data, print the report, and rebuild docs/.")
+    parser.add_argument("--artifact", action="store_true", help="also write build/*.fragment.html for the claude.ai copies")
+    args = parser.parse_args(argv)
+    site = load_site()
+    errors = validate_site(site)
+    if errors:
+        print(f"{len(errors)} error(s) in data/:")
+        print("\n".join("  " + e for e in errors))
+        return 1
+    print_report(site)
+    for folder, (changed, removed) in build(site, fragments=ROOT / "build" if args.artifact else None).items():
+        shown = ": " + ", ".join(changed) if 0 < len(changed) <= 10 else ""
+        print(f"{folder.relative_to(ROOT)}/: {len(changed)} file(s) updated{shown}"
+              + (f"; removed {', '.join(removed)}" if removed else ""))
+    return 0
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

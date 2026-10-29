@@ -1,4 +1,4 @@
-name: Check question bank
+name: Check site
 
 on:
   push:
@@ -14,12 +14,15 @@ jobs:
           python-version: "3.12"
       - name: Validate data and rebuild pages
         run: python scripts/build.py
+      - name: Check generated TKA items
+        run: python scripts/check_generated.py
       - name: Run tests
         run: python -m unittest discover -s tests -v
       - name: Built pages are committed
         run: |
-          if ! git diff --quiet -- docs; then
+          # git status, unlike git diff, also lists pages the build added but nobody committed, and pages it removed.
+          if [ -n "$(git status --porcelain -- docs)" ]; then
             echo "::error::docs/ is out of date. Run 'python scripts/build.py' and commit the result."
-            git diff --stat -- docs
+            git status --short -- docs
             exit 1
           fi

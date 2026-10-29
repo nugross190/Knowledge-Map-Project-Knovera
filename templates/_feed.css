@@ -1,0 +1,33 @@
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}

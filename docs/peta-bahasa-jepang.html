@@ -144,18 +144,42 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
 .seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
 .empty-note{color:var(--muted);font-size:.95rem}
-.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
 
-/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
-   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
 .st-feed::-webkit-scrollbar{display:none}
-.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
   padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
 .slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Story mode slides: segment bars, the topic's domain, tier and grades, its title, then one part of the topic per tap. */
 .bars{display:flex;gap:4px;padding-right:44px}
 .bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
 .bars i.on{background:var(--ink)}
@@ -163,29 +187,16 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
 .st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
 .slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;-webkit-tap-highlight-color:transparent;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.slide .st-card{margin-right:56px}
 .st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
 .st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
 .st-card.trap .st-label{color:var(--warn)}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body{padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
 .st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
 .st-body li::marker{color:var(--c)}
 .st-body .st-sum{font-size:1.2rem;line-height:1.45}
 .st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
 .st-body .tbl{margin-top:4px;font-size:.92rem}
-.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.st-foot b{white-space:nowrap;color:var(--ink)}
-.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
-.st-end h2{font-size:1.8rem;font-weight:800}
-.st-end .btn{text-decoration:none}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
@@ -282,7 +293,7 @@ footer{border-top:2px solid var(--stroke)}
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
-      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+      <button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -311,22 +322,124 @@ footer{border-top:2px solid var(--stroke)}
     <div class="notes" id="notes"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu simpul per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const MAP = {"id": "bahasa-jepang", "subject": "Bahasa dan Sastra Jepang", "title": "Peta Materi Bahasa Jepang SMA", "lead": "Seluruh materi Bahasa Jepang SMA, dari hiragana, katakana, dan kanji dasar sampai partikel, bentuk kata kerja, ungkapan sehari-hari, dan budaya Jepang, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Jepang dan romaji. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Hiragana, katakana, kanji dasar, partikel, kalimat dasar, kata kerja dan kata sifat, bentuk te, bilangan, salam, waktu, dan budaya Jepang.", "source_note": "Bahasa dan Sastra Jepang adalah mapel pilihan kelas XI–XII. Cakupan peta setara tingkat dasar (sekitar JLPT N5), seperti buku pelajaran Bahasa Jepang SMA. Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Romaji memakai sistem Hepburn.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: huruf dulu, lalu salam dan perkenalan, partikel dan kalimat dasar, kemudian bentuk kata kerja dan kata sifat.", "path": [{"label": "Huruf", "title": "Hiragana dan katakana", "note": "46 huruf dasar", "to": "MOJ-01"}, {"label": "Salam", "title": "Aisatsu", "note": "Salam sehari-hari", "to": "KTM-01"}, {"label": "Kenalan", "title": "Perkenalan", "note": "Jikoshoukai, keluarga", "to": "KTM-02"}, {"label": "Kalimat", "title": "Kalimat dasar", "note": "A wa B desu", "to": "BNP-02"}, {"label": "Partikel", "title": "Partikel", "note": "wa, ga, o, ni, de", "to": "BNP-01"}, {"label": "Kerja", "title": "Bentuk -masu", "note": "Golongan kata kerja", "to": "BNP-03"}, {"label": "Sifat", "title": "Kata sifat i dan na", "note": "Negatif, lampau", "to": "BNP-04"}, {"label": "Te", "title": "Bentuk te", "note": "-te kudasai", "to": "BNP-05"}, {"label": "Kanji", "title": "Kanji dasar", "note": "On dan kun", "to": "MOJ-02"}], "domains": [{"id": "MOJ", "name": "Moji (huruf)", "short": "Huruf", "note": "Hiragana, katakana, kanji dasar, dan penulisan romaji.", "topics": [{"code": "MOJ-01", "title": "Hiragana dan katakana", "scope": "Huruf dasar, dakuten, huruf kecil", "src": "Kelas XI", "tier": 1, "sum": "Bahasa Jepang memakai dua huruf suku kata, hiragana dan katakana, masing-masing dengan 46 huruf dasar, ditambah tanda bunyi dan huruf kecil.", "blocks": [{"h": "Fungsi", "li": ["<b>Hiragana<\/b> untuk kata asli Jepang, partikel, dan akhiran kata kerja.", "Katakana untuk kata serapan asing, nama asing, dan bunyi tiruan, misalnya テレビ (terebi, televisi).", "Pada katakana, garis ー memanjangkan vokal: コーヒー (koohii, kopi)."]}, {"h": "Tanda dan huruf kecil", "table": {"cols": ["Tanda", "Fungsi", "Contoh"], "rows": [["Dakuten (゛)", "Membuat bunyi bersuara", "か ka → が ga"], ["Handakuten (゜)", "Mengubah h menjadi p", "は ha → ぱ pa"], ["Yōon (ゃ ゅ ょ kecil)", "Bunyi gabungan", "き + ゃ = きゃ kya"], ["Sokuon (っ kecil)", "Menggandakan konsonan berikutnya", "きって kitte (perangko)"]]}}], "traps": ["っ kecil tidak dibaca tsu, tetapi menggandakan konsonan berikutnya.", "Kata serapan seperti コンピューター (konpyuutaa) ditulis dengan katakana, bukan hiragana."], "grades": ["XI"]}, {"code": "MOJ-02", "title": "Kanji dasar", "scope": "Onyomi, kunyomi, kanji N5", "src": "Kelas XI–XII", "tier": 1, "sum": "Kanji adalah huruf bermakna dari Tiongkok yang punya bacaan onyomi (cara Tiongkok) dan kunyomi (cara Jepang).", "blocks": [{"h": "Kanji dasar", "table": {"cols": ["Kanji", "Arti", "Onyomi", "Kunyomi"], "rows": [["日", "hari, matahari", "nichi, jitsu", "hi, ka"], ["月", "bulan", "getsu, gatsu", "tsuki"], ["山", "gunung", "san", "yama"], ["人", "orang", "jin, nin", "hito"], ["大", "besar", "dai", "oo(kii)"], ["水", "air", "sui", "mizu"]]}}, {"h": "Bacaan", "li": ["<b>Onyomi<\/b> dipakai terutama pada gabungan kanji: 日本 nihon (Jepang), 富士山 Fujisan (Gunung Fuji).", "Kunyomi dipakai terutama bila kanji berdiri sendiri atau diikuti okurigana (akhiran hiragana): 大きい ookii.", "Angka kanji: 一 ichi, 二 ni, 三 san, 十 juu, 百 hyaku, 千 sen, 万 man."]}], "traps": ["Satu kanji bisa punya beberapa bacaan; bacaan yang dipakai bergantung pada kata gabungannya."], "grades": ["XI", "XII"]}, {"code": "MOJ-03", "title": "Romaji", "scope": "Sistem Hepburn", "src": "Kelas XI", "tier": 3, "sum": "Romaji adalah penulisan bahasa Jepang dengan huruf Latin; sistem yang paling umum adalah Hepburn.", "blocks": [{"h": "Hepburn", "li": ["し ditulis shi, ち chi, つ tsu, ふ fu, じ ji.", "<b>Partikel は dibaca wa<\/b>, を dibaca o, dan へ dibaca e, walau ditulis dengan huruf ha, wo, dan he.", "Vokal panjang ditulis dengan garis di atas (ō) atau huruf ganda (oo, uu)."]}], "grades": ["XI"]}]}, {"id": "BNP", "name": "Bunpou (tata bahasa)", "short": "Tata bahasa", "note": "Partikel, pola kalimat dasar, kata kerja, kata sifat, keberadaan, bilangan, dan kata tanya.", "topics": [{"code": "BNP-01", "title": "Partikel", "scope": "wa, ga, o, ni, de, e, to, mo, no, ka", "src": "Kelas XI", "tier": 1, "sum": "Partikel adalah kata kecil sesudah kata benda yang menunjukkan fungsinya dalam kalimat.", "blocks": [{"h": "Partikel", "table": {"cols": ["Partikel", "Fungsi", "Contoh"], "rows": [["は (wa)", "Penanda topik", "わたしは がくせいです。Saya pelajar."], ["が (ga)", "Penanda subjek, keberadaan", "ねこが います。Ada kucing."], ["を (o)", "Penanda objek", "パンを たべます。Makan roti."], ["に (ni)", "Tujuan, waktu, tempat keberadaan", "がっこうに いきます。Pergi ke sekolah."], ["で (de)", "Tempat kegiatan, alat", "としょかんで よみます。Membaca di perpustakaan."], ["へ (e)", "Arah", "うちへ かえります。Pulang ke rumah."], ["と (to)", "Dan, bersama", "ともだちと いきます。Pergi dengan teman."], ["も (mo)", "Juga", "わたしも がくせいです。Saya juga pelajar."], ["の (no)", "Kepemilikan", "わたしの ほん。Buku saya."], ["か (ka)", "Penanda kalimat tanya", "がくせいですか。Apakah pelajar?"]]}}], "traps": ["に menandai tempat keberadaan (います、あります); で menandai tempat kegiatan (たべます、よみます).", "を dipakai untuk objek kata kerja, bukan は."], "grades": ["XI"]}, {"code": "BNP-02", "title": "Kalimat dasar dan kata tunjuk", "scope": "A wa B desu, ko-so-a-do", "src": "Kelas XI", "tier": 1, "sum": "Pola kalimat benda A は B です beserta bentuk negatif, tanya, dan kata tunjuk ko-so-a-do.", "blocks": [{"h": "Pola kalimat", "li": ["<b>A は B です<\/b> (A wa B desu): A adalah B.", "Negatif: A は B じゃ ありません (ja arimasen) atau では ありません (dewa arimasen).", "Tanya: tambahkan か di akhir; jawab はい (hai, ya) atau いいえ (iie, tidak)."]}, {"h": "Kata tunjuk", "table": {"cols": ["Ko (dekat pembicara)", "So (dekat lawan bicara)", "A (jauh dari keduanya)", "Do (tanya)"], "rows": [["これ kore (ini)", "それ sore (itu)", "あれ are (itu, jauh)", "どれ dore (yang mana)"], ["この kono + benda", "その sono + benda", "あの ano + benda", "どの dono + benda"], ["ここ koko (di sini)", "そこ soko (di situ)", "あそこ asoko (di sana)", "どこ doko (di mana)"]]}}], "traps": ["これ berdiri sendiri, sedangkan この harus diikuti kata benda: これは ほんです / この ほん。"], "grades": ["XI"]}, {"code": "BNP-03", "title": "Kata kerja bentuk -masu", "scope": "Golongan I, II, III; waktu", "src": "Kelas XI", "tier": 1, "sum": "Kata kerja sopan berakhiran -masu berubah menjadi negatif, lampau, dan lampau negatif; kata kerja dibagi tiga golongan.", "blocks": [{"h": "Perubahan -masu", "table": {"cols": ["Bentuk", "Akhiran", "Contoh (たべる)"], "rows": [["Sekarang/akan datang", "-masu", "たべます tabemasu"], ["Negatif", "-masen", "たべません tabemasen"], ["Lampau", "-mashita", "たべました tabemashita"], ["Lampau negatif", "-masen deshita", "たべませんでした tabemasen deshita"]]}}, {"h": "Golongan kata kerja", "li": ["<b>Golongan I<\/b>: akhiran -u, misalnya いく iku (いきます), のむ nomu (のみます).", "Golongan II: akhiran -eru atau -iru, misalnya たべる taberu (たべます), みる miru (みます).", "Golongan III (tidak beraturan): する suru (します) dan くる kuru (きます)."]}], "traps": ["Bentuk -masu tidak membedakan sekarang dan akan datang; waktunya ditentukan keterangan waktu.", "かえる (kaeru, pulang) termasuk golongan I walau berakhiran -eru: かえります."], "grades": ["XI"]}, {"code": "BNP-04", "title": "Kata sifat i dan na", "scope": "Bentuk negatif dan lampau", "src": "Kelas XI", "tier": 1, "sum": "Kata sifat Jepang ada dua jenis, berakhiran -i dan -na, dengan cara perubahan yang berbeda.", "blocks": [{"h": "Perubahan", "table": {"cols": ["Bentuk", "Sifat-i (おおきい)", "Sifat-na (しずか)"], "rows": [["Positif", "おおきいです ookii desu", "しずかです shizuka desu"], ["Negatif", "おおきくないです ookikunai desu", "しずかじゃありません shizuka ja arimasen"], ["Lampau", "おおきかったです ookikatta desu", "しずかでした shizuka deshita"], ["Menerangkan benda", "おおきい いえ (rumah besar)", "しずかな へや (kamar sepi)"]]}}, {"h": "Pengecualian", "li": ["<b>いい (ii, baik)<\/b> berubah menjadi よくない (yokunai) dan よかった (yokatta).", "きれい (kirei, cantik/bersih) adalah sifat-na walau berakhiran i: きれいな はな."]}], "traps": ["きれい termasuk sifat-na, sehingga negatifnya きれいじゃありません, bukan きれくない."], "grades": ["XI"]}, {"code": "BNP-05", "title": "Bentuk te", "scope": "Aturan, -te kudasai, -te imasu", "src": "Kelas XII", "tier": 2, "sum": "Bentuk te dipakai untuk meminta, menyatakan kegiatan yang sedang berlangsung, dan merangkai kegiatan.", "blocks": [{"h": "Aturan golongan I", "table": {"cols": ["Akhiran kamus", "Bentuk te", "Contoh"], "rows": [["-u, -tsu, -ru", "-tte", "かう → かって, まつ → まって"], ["-mu, -bu, -nu", "-nde", "のむ → のんで, あそぶ → あそんで"], ["-ku", "-ite", "かく → かいて (kecuali いく → いって)"], ["-gu", "-ide", "およぐ → およいで"], ["-su", "-shite", "はなす → はなして"]]}}, {"h": "Pemakaian", "li": ["Golongan II: buang -ru, tambah -te (たべる → たべて); golongan III: する → して, くる → きて.", "<b>-te kudasai<\/b>: meminta dengan sopan, misalnya みて ください (tolong lihat).", "-te imasu: sedang melakukan, misalnya よんで います (sedang membaca)."]}], "traps": ["いく (iku) adalah pengecualian: bentuk te-nya いって, bukan いいて."], "grades": ["XII"]}, {"code": "BNP-06", "title": "Keberadaan", "scope": "Arimasu dan imasu", "src": "Kelas XI", "tier": 2, "sum": "Bahasa Jepang membedakan kata kerja keberadaan untuk benda mati dan makhluk hidup.", "blocks": [{"h": "Arimasu dan imasu", "li": ["<b>あります (arimasu)<\/b> untuk benda mati dan tumbuhan: つくえの うえに ほんが あります。", "います (imasu) untuk manusia dan hewan: きょうしつに せんせいが います。", "Pola: tempat に benda が あります/います."]}], "traps": ["Pohon memakai あります karena tidak bergerak sendiri, walau makhluk hidup."], "grades": ["XI"]}, {"code": "BNP-07", "title": "Bilangan dan kata bantu bilangan", "scope": "Angka, jam, josuushi", "src": "Kelas XI", "tier": 1, "sum": "Angka Jepang beserta perubahan bunyinya, cara menyebut jam, dan kata bantu bilangan untuk berbagai benda.", "blocks": [{"h": "Angka", "li": ["1 ichi, 2 ni, 3 san, 4 yon/shi, 5 go, 6 roku, 7 nana/shichi, 8 hachi, 9 kyuu/ku, 10 juu.", "<b>Perubahan bunyi<\/b>: 300 sanbyaku, 600 roppyaku, 800 happyaku, 3.000 sanzen, 8.000 hassen.", "Jam: 4 yoji, 7 shichiji, 9 kuji; menit: ippun, gofun, juppun."]}, {"h": "Kata bantu bilangan", "table": {"cols": ["Kata bantu", "Untuk", "Contoh"], "rows": [["~つ", "Benda umum", "ひとつ, ふたつ, みっつ"], ["~人 (nin)", "Orang", "ひとり, ふたり, さんにん"], ["~本 (hon)", "Benda panjang", "えんぴつ いっぽん"], ["~枚 (mai)", "Benda tipis datar", "かみ さんまい"], ["~冊 (satsu)", "Buku", "ほん にさつ"], ["~匹 (hiki)", "Hewan kecil", "ねこ いっぴき"]]}}], "traps": ["Satu orang dan dua orang adalah ひとり dan ふたり, bukan いちにん dan ににん."], "grades": ["XI"]}, {"code": "BNP-08", "title": "Kata tanya", "scope": "Nani, dare, doko, itsu, ikura", "src": "Kelas XI", "tier": 1, "sum": "Kata tanya dasar untuk menanyakan benda, orang, tempat, waktu, jumlah, harga, dan alasan.", "blocks": [{"h": "Kata tanya", "table": {"cols": ["Kata tanya", "Arti"], "rows": [["なん/なに (nan/nani)", "Apa"], ["だれ (dare)", "Siapa"], ["どこ (doko)", "Di mana"], ["いつ (itsu)", "Kapan"], ["いくら (ikura)", "Berapa harganya"], ["いくつ (ikutsu)", "Berapa buah, berapa umur"], ["どうして (doushite)", "Mengapa"], ["どう (dou)", "Bagaimana"]]}}], "traps": ["いくら menanyakan harga; いくつ menanyakan jumlah benda atau umur."], "grades": ["XI"]}]}, {"id": "KTM", "name": "Komunikasi dan tema sehari-hari", "short": "Komunikasi", "note": "Salam, perkenalan, keluarga, waktu, sekolah, belanja, dan letak benda.", "topics": [{"code": "KTM-01", "title": "Aisatsu (salam)", "scope": "Salam, terima kasih, minta maaf", "src": "Kelas XI", "tier": 1, "sum": "Ungkapan salam dan sopan santun yang dipakai sehari-hari di Jepang.", "blocks": [{"h": "Ungkapan", "table": {"cols": ["Ungkapan", "Arti dan pemakaian"], "rows": [["おはようございます", "Selamat pagi (sopan)"], ["こんにちは", "Selamat siang, halo"], ["こんばんは", "Selamat malam (saat bertemu)"], ["ありがとうございます", "Terima kasih"], ["すみません", "Maaf, permisi"], ["いただきます / ごちそうさまでした", "Sebelum makan / sesudah makan"], ["いってきます / いってらっしゃい", "Saat berangkat / jawaban yang ditinggal"], ["ただいま / おかえりなさい", "Saat pulang / jawaban yang di rumah"]]}}, {"h": "Perkenalan pertama", "li": ["<b>はじめまして<\/b> (hajimemashite) dipakai saat pertama kali bertemu, ditutup どうぞ よろしく おねがいします."]}], "traps": ["おやすみなさい adalah salam sebelum tidur, bukan salam bertemu di malam hari (itu こんばんは)."], "grades": ["XI"]}, {"code": "KTM-02", "title": "Perkenalan dan keluarga", "scope": "Jikoshoukai, sebutan keluarga", "src": "Kelas XI", "tier": 1, "sum": "Memperkenalkan diri dan menyebut anggota keluarga dengan bentuk yang benar untuk keluarga sendiri dan keluarga orang lain.", "blocks": [{"h": "Jikoshoukai", "li": ["はじめまして。わたしは アニ です。インドネシアから きました。こうこうせい です。どうぞ よろしく。", "Nama orang lain diberi さん (san); nama sendiri tidak."]}, {"h": "Keluarga", "table": {"cols": ["Arti", "Keluarga sendiri", "Keluarga orang lain"], "rows": [["Ayah", "ちち (chichi)", "おとうさん (otousan)"], ["Ibu", "はは (haha)", "おかあさん (okaasan)"], ["Kakak laki-laki", "あに (ani)", "おにいさん (oniisan)"], ["Kakak perempuan", "あね (ane)", "おねえさん (oneesan)"], ["Adik laki-laki", "おとうと (otouto)", "おとうとさん"], ["Adik perempuan", "いもうと (imouto)", "いもうとさん"]]}}], "traps": ["Saat bercerita tentang ayah sendiri kepada orang lain dipakai ちち, bukan おとうさん.", "さん tidak dipakai untuk nama sendiri."], "grades": ["XI"]}, {"code": "KTM-03", "title": "Hari, tanggal, dan waktu", "scope": "Youbi, tanggal khusus", "src": "Kelas XI–XII", "tier": 2, "sum": "Nama hari, cara menyebut tanggal yang banyak berbentuk khusus, dan keterangan waktu.", "blocks": [{"h": "Hari", "table": {"cols": ["Hari", "Bahasa Jepang"], "rows": [["Senin", "げつようび getsuyoubi"], ["Selasa", "かようび kayoubi"], ["Rabu", "すいようび suiyoubi"], ["Kamis", "もくようび mokuyoubi"], ["Jumat", "きんようび kin'youbi"], ["Sabtu", "どようび doyoubi"], ["Minggu", "にちようび nichiyoubi"]]}}, {"h": "Tanggal khusus", "li": ["<b>1 tsuitachi<\/b>, 2 futsuka, 3 mikka, 4 yokka, 5 itsuka, 6 muika, 7 nanoka, 8 youka, 9 kokonoka, 10 tooka, 20 hatsuka.", "Keterangan waktu: きのう (kemarin), きょう (hari ini), あした (besok)."]}], "traps": ["Tanggal 4 adalah よっか (yokka), sedangkan tanggal 8 adalah ようか (youka)."], "grades": ["XI", "XII"]}, {"code": "KTM-04", "title": "Kehidupan sekolah dan sehari-hari", "scope": "Kosakata sekolah, kegiatan harian", "src": "Kelas XI", "tier": 2, "sum": "Kosakata tentang sekolah dan kegiatan sehari-hari, dari bangun tidur sampai tidur.", "blocks": [{"h": "Kosakata", "li": ["がっこう gakkou (sekolah), せんせい sensei (guru), がくせい gakusei (pelajar), きょうしつ kyoushitsu (ruang kelas), としょかん toshokan (perpustakaan).", "Kegiatan: おきます (bangun), あさごはんを たべます, がっこうへ いきます, べんきょうします, かえります, ねます (tidur).", "<b>Kebiasaan<\/b> diurutkan dengan それから (sesudah itu)."]}], "grades": ["XI"]}, {"code": "KTM-05", "title": "Belanja dan makanan", "scope": "Ikura desu ka, o kudasai, yen", "src": "Kelas XII", "tier": 2, "sum": "Ungkapan berbelanja, menanyakan harga, dan memesan makanan.", "blocks": [{"h": "Ungkapan", "li": ["これは いくらですか。(Ini berapa harganya?)", "<b>~を ください<\/b>: minta (membeli) sesuatu, misalnya みずを ください.", "Mata uang Jepang: えん (yen); 100 えん dibaca hyaku en.", "Makanan: ごはん (nasi), パン (roti), さかな (ikan), やさい (sayur), おちゃ (teh hijau)."]}], "grades": ["XII"]}, {"code": "KTM-06", "title": "Letak dan arah", "scope": "Ue, shita, mae, ushiro, tonari", "src": "Kelas XI–XII", "tier": 2, "sum": "Kata penunjuk letak dipakai dengan pola benda の letak に.", "blocks": [{"h": "Letak", "table": {"cols": ["Kata", "Arti"], "rows": [["うえ ue", "Atas"], ["した shita", "Bawah"], ["まえ mae", "Depan"], ["うしろ ushiro", "Belakang"], ["なか naka", "Dalam"], ["となり tonari", "Sebelah"], ["みぎ / ひだり", "Kanan / kiri"]]}}, {"h": "Pola", "li": ["つくえの うえに ほんが あります。(Ada buku di atas meja.)"]}], "grades": ["XI", "XII"]}]}, {"id": "BDY", "name": "Budaya Jepang", "short": "Budaya", "note": "Etiket, perayaan, seni tradisional, dan pengenalan negara Jepang.", "topics": [{"code": "BDY-01", "title": "Etiket dan perayaan", "scope": "Ojigi, genkan, festival tahunan", "src": "Kelas XI–XII", "tier": 2, "sum": "Kebiasaan sopan santun dan perayaan tahunan yang sering muncul di buku pelajaran.", "blocks": [{"h": "Etiket", "li": ["<b>Ojigi<\/b> (membungkuk) dipakai untuk memberi salam, berterima kasih, dan meminta maaf.", "Sepatu dilepas di genkan (pintu masuk) sebelum masuk rumah.", "Keigo: bahasa hormat untuk atasan dan orang yang belum akrab."]}, {"h": "Perayaan", "table": {"cols": ["Perayaan", "Waktu", "Keterangan"], "rows": [["Oshougatsu", "Awal Januari", "Tahun Baru"], ["Hinamatsuri", "3 Maret", "Hari anak perempuan, memajang boneka hina"], ["Hanami", "Musim semi", "Menikmati bunga sakura"], ["Kodomo no Hi", "5 Mei", "Hari anak, memasang koinobori (bendera ikan koi)"], ["Tanabata", "7 Juli", "Menggantung kertas harapan di bambu"]]}}], "traps": ["Hinamatsuri (3 Maret) untuk anak perempuan; Kodomo no Hi (5 Mei) untuk anak-anak, dulu khusus anak laki-laki."], "grades": ["XI", "XII"]}, {"code": "BDY-02", "title": "Seni dan sastra tradisional", "scope": "Haiku, kabuki, origami, ikebana", "src": "Kelas XII", "tier": 2, "sum": "Seni dan sastra tradisional Jepang yang dikenal luas.", "blocks": [{"h": "Seni", "table": {"cols": ["Seni", "Keterangan"], "rows": [["Haiku", "Puisi pendek 5-7-5 suku kata; tokohnya Matsuo Bashō"], ["Kabuki", "Teater tradisional dengan rias dan kostum mencolok"], ["Noh", "Teater klasik bertopeng"], ["Origami", "Seni melipat kertas"], ["Ikebana", "Seni merangkai bunga"], ["Chanoyu (sadou)", "Upacara minum teh"]]}}], "traps": ["Haiku berpola 5-7-5 suku kata dalam tiga baris."], "grades": ["XII"]}, {"code": "BDY-03", "title": "Mengenal negara Jepang", "scope": "Pulau utama, ibu kota, Gunung Fuji", "src": "Kelas XI", "tier": 3, "sum": "Fakta dasar tentang negara Jepang yang sering menjadi bahan bacaan.", "blocks": [{"h": "Fakta", "li": ["Empat pulau utama: Honshu (terbesar), Hokkaido, Kyushu, Shikoku.", "Ibu kota: Tokyo; mata uang: yen.", "<b>Gunung Fuji<\/b> setinggi 3.776 m adalah gunung tertinggi di Jepang.", "Nama Jepang dalam bahasanya: 日本 (Nihon atau Nippon)."]}], "grades": ["XI"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Bahasa Jepang SMA berbeda antarpenerbit dalam urutan tema dan jumlah kanji; peta ini memuat pola dasar setara JLPT N5.", "Romaji memakai sistem Hepburn; sebagian buku memakai garis panjang (ō), sebagian huruf ganda (oo).", "Negatif kalimat benda ditulis じゃ ありません atau では ありません; keduanya benar, では lebih formal.", "Huruf Jepang pada halaman ini memakai fon perangkat; bila tampil sebagai kotak, perangkat belum memiliki fon Jepang."]}, {"title": "Rujukan", "items": ["Buku Bahasa Jepang SMA kelas XI–XII (beberapa penerbit) dan cakupan JLPT N5.", "Pola tata bahasa umum: partikel, bentuk -masu, kata sifat i dan na, bentuk te."]}], "icon": "<path d=\"M6 10c6 2 30 2 36 0M10 17h28M14 10v32M34 10v32M24 17v-6\"/>", "bank": "bank-bahasa-jepang.html"};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
 // Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
 const params = new URLSearchParams(location.search);
 let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
-let onlyLanjut = params.get("lanjut") === "1";
+const hasLanjut = MAP.domains.some(d => d.topics.some(t => t.lanjut));
+let onlyLanjut = hasLanjut && params.get("lanjut") === "1";
 const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
@@ -405,7 +518,7 @@ function render(){
     });
     host.appendChild(sec);
   });
-  if(Object.values(byCode).some(x => x.t.lanjut)){
+  if(hasLanjut){
     $("lanjutKey").hidden = false; $("onlyLanjut").hidden = false;
     if(MAP.lanjut_note){ $("lanjutNote").hidden = false; $("lanjutNote").textContent = MAP.lanjut_note; }
   }
@@ -462,11 +575,10 @@ function remember(){
   const url = new URL(location.href);
   kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
   onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
-  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
+  try { history.replaceState(history.state, "", url); } catch(e) {}
   try {
     const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
-    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: feed.isOpen, t: Date.now()});
     localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
   } catch(e) {}
 }
@@ -476,8 +588,12 @@ function applyFilters(){
   search($("q").value); progress(); remember();
 }
 
-// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
-let storyOn = false;
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen, in the shared swipe feed.
+// Closing it (×, Esc, "Di peta") opens the topic that was on screen in the map.
+const feed = makeFeed($("feed"), {
+  onSide: step,
+  onClose(slide){ remember(); if(slide && slide.dataset.code) goTo(slide.dataset.code); },
+});
 const parts = t => {
   const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
   t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
@@ -516,37 +632,25 @@ function openStory(code){
   const list = [];
   MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
   if(!list.length) return;
-  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
-    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+  const mastered = list.filter(([t]) => done.has(t.code)).length;
+  feed.open(list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + mastered + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
     (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '?mode=geser">Latihan bank soal</a>' : '') +
-    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
-  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
-  $("story").hidden = false; document.body.classList.add("story-open");
-  storyOn = true; remember();
-  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
-  $("feed").scrollTop = start ? start.offsetTop : 0;
-  $("feed").focus({preventScroll:true});
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>',
+    Math.max(0, list.findIndex(([t]) => t.code === code)));
+  feed.scroller.querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  remember();
 }
-function closeStory(){
-  const cur = currentSlide();
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  storyOn = false; remember();
-  if(cur) goTo(cur.dataset.code);
-}
-function currentSlide(){
-  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
-  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
-}
+// ← and → (and taps on the left or right of a slide) step through the topic's parts, then on to the next topic.
 function step(dir){
-  const sl = currentSlide();
-  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
-  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
-  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
-  showPart(sl, i);
+  const sl = feed.current();
+  const n = sl && sl.classList.contains("slide") ? sl.querySelectorAll(".bars i").length : 0;
+  const i = n ? +sl.dataset.part + dir : -1;
+  if(i >= 0 && i < n) showPart(sl, i);
+  else feed.move(dir);
 }
-$("storyOpen").addEventListener("click", () => openStory());
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", () => openStory());
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]");
   if(act){
     const sl = act.closest(".slide");
@@ -555,9 +659,8 @@ $("feed").addEventListener("click", e => {
       on ? done.add(code) : done.delete(code); save(); progress();
       act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
     }
-    if(act.dataset.act === "map") closeStory();
-    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
-    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    if(act.dataset.act === "map" || act.dataset.act === "close") feed.close();
+    if(act.dataset.act === "top") feed.go(0);
     return;
   }
   // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
@@ -565,13 +668,6 @@ $("feed").addEventListener("click", e => {
   const sl = e.target.closest(".slide"); if(!sl) return;
   const box = sl.getBoundingClientRect();
   step(e.clientX - box.left < box.width / 3 ? -1 : 1);
-});
-document.addEventListener("keydown", e => {
-  if($("story").hidden) return;
-  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
-  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
-  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
-  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
 });
 
 render();
@@ -597,5 +693,5 @@ $("openAll").addEventListener("click", () => document.querySelectorAll(".card:no
 $("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
 $("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !feed.isOpen) goTo(location.hash.slice(3));
 </script>

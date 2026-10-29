@@ -129,27 +129,51 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 }
 @media (max-width:480px){.wrap{padding-inline:16px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
-/* Swipe mode ("Mode geser"): a full-screen vertical feed of question cards, one per screen, loaded endlessly from the
-   current filters. Tap the card to reveal the answer, mark Benar or Salah, and the feed moves on; swipe up to skip.
-   On wide screens it is a phone-sized column. */
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.css; script: _feed.js).
+   A full-screen modal <dialog class="feed"> holds .st-feed, a vertical scroller whose children are equal-height
+   slides that snap one per screen. On wide screens the scroller is a phone-sized column, --feed-w wide.
+   Each page styles its own slide content; this file holds what the three feeds share. */
+.btn.feed-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
+.feed-btn svg{width:18px;height:18px}
+.feed{--feed-w:480px;position:fixed;inset:0;width:100%;height:100%;height:100dvh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:var(--ink);overflow:hidden}
+.feed[open]{display:flex;justify-content:center}
+.feed::backdrop{background:rgba(21,22,26,.88)}
+.st-feed{outline:none;position:relative;width:100%;max-width:var(--feed-w);height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.st-feed > *{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft,var(--blue-soft));z-index:0}
+.slide > *{position:relative;z-index:1}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin-top:14px;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;-webkit-tap-highlight-color:transparent}
+.slide[data-ok="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
+.slide[data-ok="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
+.st-body{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+.st-score{font-weight:700;border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:1px 10px;white-space:nowrap}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(var(--rail-bottom,64px) + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c,var(--ink));outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - var(--feed-w) / 2 + 12px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);color:var(--ink);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
+.st-end h2{font-family:var(--f-label);font-size:1.7rem;font-weight:800;margin:0}
+.st-end .btn{text-decoration:none}
+body.feed-open{overflow:hidden}
+@media (min-width:600px){.st-feed > *{border-inline:2px solid var(--ink)}}
+
+/* Swipe mode ("Mode geser"): question cards, endless, from the current filters. Tap the card to reveal the answer,
+   mark Benar or Salah and the feed moves on; swipe up to skip. */
 .bank-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:18px}
 .bank-cta p{font-size:.9rem;color:var(--muted);max-width:52ch}
-.btn.story-btn{background:var(--mark,#FFE27A);display:inline-flex;align-items:center;gap:8px}
-.story-btn svg{width:18px;height:18px}
-.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
-.st-feed{outline:none;position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
-.st-feed::-webkit-scrollbar{display:none}
-.slide,.st-end{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
-  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
-.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
-.slide > *{position:relative;z-index:1}
+.feed{--rail-bottom:120px}
 .st-top{display:flex;align-items:center;gap:10px;padding-right:52px;font-family:var(--f-label);font-weight:700;font-size:.9rem}
-.st-score{border:2px solid var(--ink);border-radius:999px;background:var(--surface);padding:2px 12px}
 .st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
 .st-code{font-family:var(--f-mono);font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:0 10px;text-decoration:none}
 .st-topic{font-weight:600}
-.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden;cursor:pointer;-webkit-tap-highlight-color:transparent}
-.st-body{flex:1;min-height:0;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:14px}
+.slide .st-card{margin-right:56px;cursor:pointer}
+.st-body{padding:18px;display:flex;flex-direction:column;gap:14px}
 .st-ktx{font-size:.9rem;color:var(--muted);font-family:var(--f-label)}
 .st-q{font-family:var(--f-label);font-weight:700;font-size:clamp(1.3rem,5.6vw,1.65rem);line-height:1.3}
 .st-tap{margin-top:auto;align-self:center;font-family:var(--f-label);font-weight:600;font-size:.9rem;border:2px dashed var(--ink);border-radius:999px;padding:6px 16px}
@@ -159,18 +183,6 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
 .st-ans .x{color:var(--muted);font-size:.98rem}
 .st-grade{display:flex;gap:10px;margin:12px 56px 0 0}
 .st-grade .btn{flex:1;justify-content:center;font-size:1.05rem;padding:12px}
-.slide[data-done="1"] .st-card{border-color:var(--ok);box-shadow:4px 4px 0 var(--ok)}
-.slide[data-done="0"] .st-card{border-color:var(--bad);box-shadow:4px 4px 0 var(--bad)}
-.st-foot{display:flex;justify-content:space-between;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
-.rail{position:absolute;right:12px;bottom:calc(120px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
-.rail a,.rail button{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
-.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
-.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
-.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
-.st-end{justify-content:center;align-items:center;gap:14px;text-align:center}
-.st-end h2{font-size:1.6rem;font-weight:800}
-body.story-open{overflow:hidden}
-@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -255,7 +267,7 @@ footer{border-top:2px solid var(--stroke)}
     <div class="eyebrow">Bank soal · <span id="qCount">0</span> soal · <span id="tCount">0</span> simpul</div>
     <h1 style="margin-top:8px" id="bTitle">Bank Soal Lomba Sejarah</h1>
     <p class="lead" id="bLead">Tanya-jawab singkat seperti babak cerdas cermat. Setiap soal punya kode simpul yang sama dengan <a id="mapLink" href="#" target="_blank" rel="noopener">Peta Materi Lomba Sejarah</a>, jadi kelemahan bisa langsung dipelajari ulang. Untuk latihan bergaya lomba dengan regu dan papan skor, pakai <a href="simulasi.html">Simulasi Babak LCCM</a>.</p>
-    <div class="bank-cta"><button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
+    <div class="bank-cta"><button class="btn feed-btn" id="feedOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <p>Satu soal satu layar: ketuk kartu untuk melihat jawaban, pilih Benar atau Salah, geser ke atas untuk soal berikutnya. Memakai saringan di bawah.</p></div>
   </header>
 
@@ -296,16 +308,117 @@ footer{border-top:2px solid var(--stroke)}
     <div id="progress"></div>
   </section>
 
-  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
-    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
-    <div class="st-feed" id="feed" tabindex="-1"></div>
-  </div>
-
   <footer id="bFoot">Hasil latihan tersimpan di peramban ini saja. Soal disusun dari buku ajar Sejarah Kurikulum Merdeka, peraturan, dan berita resmi; data per Oktober 2026. Angka tahunan (jumlah penetapan, daftar UNESCO) bisa berubah, jadi sebut tahunnya saat menjawab.</footer>
 </div>
 
+<dialog class="feed" id="feed" aria-label="Mode geser: satu soal per layar">
+  <button class="st-close" type="button" aria-label="Tutup mode geser">×</button>
+  <div class="st-feed" tabindex="-1"></div>
+</dialog>
+
 <script>
 const DATA = {"topics": {"map_url": "peta-sejarah.html", "domains": [{"id": "ILM", "name": "Ilmu sejarah", "short": "Ilmu sejarah", "weight": 12.5, "topics": {"ILM-01": "Konsep dasar ilmu sejarah", "ILM-02": "Sumber dan penelitian sejarah", "ILM-03": "Historiografi"}}, {"id": "PRA", "name": "Masa praaksara", "short": "Praaksara", "weight": 8.333333333333334, "topics": {"PRA-01": "Manusia purba dan kehidupan praaksara", "PRA-02": "Asal-usul nenek moyang dan Jalur Rempah"}}, {"id": "KER", "name": "Kerajaan Hindu-Buddha dan Islam", "short": "Kerajaan", "weight": 16.666666666666668, "topics": {"KER-01": "Masuknya Hindu-Buddha", "KER-02": "Kerajaan Hindu-Buddha", "KER-03": "Masuknya Islam", "KER-04": "Kerajaan Islam dan akulturasi"}}, {"id": "KOL", "name": "Kolonialisme dan perlawanan", "short": "Kolonialisme", "weight": 12.5, "topics": {"KOL-01": "Kedatangan bangsa Eropa", "KOL-02": "VOC dan pemerintahan kolonial", "KOL-03": "Perlawanan sebelum abad ke-20"}}, {"id": "PRG", "name": "Pergerakan nasional sampai proklamasi", "short": "Pergerakan", "weight": 12.5, "topics": {"PRG-01": "Pergerakan kebangsaan", "PRG-02": "Pendudukan Jepang", "PRG-03": "Menjelang dan sesudah proklamasi"}}, {"id": "REV", "name": "Revolusi sampai Demokrasi Terpimpin", "short": "Revolusi", "weight": 16.666666666666668, "topics": {"REV-01": "Mempertahankan kemerdekaan", "REV-02": "Pergolakan dalam negeri", "REV-03": "Demokrasi Liberal", "REV-04": "Demokrasi Terpimpin"}}, {"id": "ORB", "name": "Orde Baru dan Reformasi", "short": "Orde Baru", "weight": 8.333333333333334, "topics": {"ORB-01": "Orde Baru", "ORB-02": "Krisis dan Reformasi"}}, {"id": "DUN", "name": "Sejarah dunia", "short": "Dunia", "weight": 12.5, "topics": {"DUN-01": "Revolusi besar dunia", "DUN-02": "Perang Dunia I dan II", "DUN-03": "Perang Dingin dan dekolonisasi"}}]}, "questions": [{"id": "ILM-01-001", "t": "ILM-01", "lv": 1, "q": "Cara berpikir sejarah yang memanjang dalam waktu, melihat urutan perkembangan dari masa ke masa, disebut…", "a": "Diakronis", "x": ""}, {"id": "ILM-01-002", "t": "ILM-01", "lv": 1, "q": "Cara berpikir sejarah yang meluas dalam ruang, melihat keadaan pada satu waktu tertentu, disebut…", "a": "Sinkronis", "x": ""}, {"id": "ILM-01-003", "t": "ILM-01", "lv": 1, "q": "Tiga konsep dasar sejarah adalah manusia, ruang, dan…", "a": "Waktu", "x": ""}, {"id": "ILM-01-004", "t": "ILM-01", "lv": 1, "q": "Urutan peristiwa menurut waktu terjadinya disebut…", "a": "Kronologi", "x": ""}, {"id": "ILM-01-005", "t": "ILM-01", "lv": 2, "q": "Pembabakan waktu agar peristiwa sejarah mudah dipahami disebut…", "a": "Periodisasi", "x": ""}, {"id": "ILM-01-006", "t": "ILM-01", "lv": 2, "q": "Sejarah sebagai peristiwa bersifat objektif, sedangkan sejarah sebagai kisah bersifat…", "a": "Subjektif", "x": ""}, {"id": "ILM-01-007", "t": "ILM-01", "lv": 2, "q": "Hubungan sebab-akibat antarperistiwa sejarah disebut…", "a": "Kausalitas", "x": ""}, {"id": "ILM-01-008", "t": "ILM-01", "lv": 3, "q": "Kegunaan sejarah untuk memberi pelajaran dan teladan disebut kegunaan…", "a": "Edukatif", "x": ""}, {"id": "ILM-01-009", "t": "ILM-01", "lv": 1, "q": "Siswa menyusun linimasa perkembangan pasar di kotanya dari zaman kolonial sampai sekarang. Cara berpikir sejarah yang ia pakai adalah…", "a": "Diakronis", "x": "", "k": "pasar"}, {"id": "ILM-01-010", "t": "ILM-01", "lv": 2, "q": "Siswa menggambarkan keadaan kotanya pada tahun 1945 saja: siapa yang berkuasa, apa pekerjaan warga, dan bagaimana keadaan jalannya. Cara berpikir sejarah ini disebut…", "a": "Sinkronis", "x": "", "k": "kota"}, {"id": "ILM-02-001", "t": "ILM-02", "lv": 1, "q": "Tahap penelitian sejarah untuk mengumpulkan sumber disebut…", "a": "Heuristik", "x": ""}, {"id": "ILM-02-002", "t": "ILM-02", "lv": 1, "q": "Kritik sumber yang menguji keaslian fisik sumber disebut kritik…", "a": "Ekstern", "x": ""}, {"id": "ILM-02-003", "t": "ILM-02", "lv": 1, "q": "Kritik sumber yang menguji kebenaran isi sumber disebut kritik…", "a": "Intern", "x": ""}, {"id": "ILM-02-004", "t": "ILM-02", "lv": 1, "q": "Tahap terakhir penelitian sejarah, yaitu penulisan, disebut…", "a": "Historiografi", "x": ""}, {"id": "ILM-02-005", "t": "ILM-02", "lv": 2, "q": "Sumber dari pelaku atau saksi sezaman disebut sumber…", "a": "Primer", "x": ""}, {"id": "ILM-02-006", "t": "ILM-02", "lv": 2, "q": "Tahap penelitian sejarah yang menganalisis dan menyintesis fakta disebut…", "a": "Interpretasi", "x": ""}, {"id": "ILM-02-007", "t": "ILM-02", "lv": 2, "q": "Hasil wawancara dengan pelaku atau saksi sejarah termasuk sumber…", "a": "Lisan", "x": ""}, {"id": "ILM-02-008", "t": "ILM-02", "lv": 3, "q": "Kritik sumber disebut juga tahap…", "a": "Verifikasi", "x": ""}, {"id": "ILM-02-009", "t": "ILM-02", "lv": 1, "q": "Siswa mewawancarai seorang veteran tentang pertempuran di kampungnya pada 1946. Hasil wawancara ini termasuk sumber…", "a": "Lisan (primer)", "x": "", "k": "veteran"}, {"id": "ILM-02-010", "t": "ILM-02", "lv": 2, "q": "Siswa memeriksa jenis kertas dan tinta sebuah surat lama yang disimpan di rumah tetua desa untuk memastikan surat itu asli. Langkah ini disebut kritik…", "a": "Ekstern", "x": "", "k": "arsip desa"}, {"id": "ILM-03-001", "t": "ILM-03", "lv": 1, "q": "Historiografi yang istanasentris dan memuat mitos disebut historiografi…", "a": "Tradisional", "x": ""}, {"id": "ILM-03-002", "t": "ILM-03", "lv": 1, "q": "Historiografi yang menonjolkan peran Belanda disebut historiografi…", "a": "Kolonial (Neerlandosentris)", "x": ""}, {"id": "ILM-03-003", "t": "ILM-03", "lv": 1, "q": "Historiografi yang Indonesiasentris disebut historiografi…", "a": "Nasional", "x": ""}, {"id": "ILM-03-004", "t": "ILM-03", "lv": 3, "q": "Seminar Sejarah Nasional I yang mendorong historiografi nasional diselenggarakan pada tahun…", "a": "1957", "x": ""}, {"id": "ILM-03-005", "t": "ILM-03", "lv": 2, "q": "Siswa membaca salinan Babad Tanah Jawi di perpustakaan daerah; kisahnya berpusat pada raja-raja dan memuat mitos. Babad seperti ini termasuk historiografi…", "a": "Tradisional", "x": "", "k": "perpustakaan"}, {"id": "PRA-01-001", "t": "PRA-01", "lv": 1, "q": "Pithecanthropus erectus ditemukan di…", "a": "Trinil, Ngawi", "x": ""}, {"id": "PRA-01-002", "t": "PRA-01", "lv": 1, "q": "Penemu Pithecanthropus erectus adalah…", "a": "Eugene Dubois", "x": ""}, {"id": "PRA-01-003", "t": "PRA-01", "lv": 1, "q": "Zaman ketika manusia mulai bercocok tanam dan menetap disebut…", "a": "Neolitikum", "x": ""}, {"id": "PRA-01-004", "t": "PRA-01", "lv": 1, "q": "Bangunan batu tegak sebagai tanda peringatan arwah nenek moyang disebut…", "a": "Menhir", "x": ""}, {"id": "PRA-01-005", "t": "PRA-01", "lv": 2, "q": "Sampah dapur berupa tumpukan kulit kerang dari masa mesolitikum disebut…", "a": "Kjokkenmoddinger", "x": ""}, {"id": "PRA-01-006", "t": "PRA-01", "lv": 2, "q": "Gua tempat tinggal manusia masa mesolitikum disebut…", "a": "Abris sous roche", "x": ""}, {"id": "PRA-01-007", "t": "PRA-01", "lv": 2, "q": "Kepercayaan pada roh nenek moyang disebut…", "a": "Animisme", "x": ""}, {"id": "PRA-01-008", "t": "PRA-01", "lv": 2, "q": "Situs Manusia Purba Sangiran menjadi Warisan Dunia UNESCO pada tahun…", "a": "1996", "x": ""}, {"id": "PRA-01-009", "t": "PRA-01", "lv": 3, "q": "Homo soloensis ditemukan di…", "a": "Ngandong, Blora", "x": ""}, {"id": "PRA-01-010", "t": "PRA-01", "lv": 3, "q": "Teknik membuat alat logam dengan cetakan lilin disebut…", "a": "A cire perdue", "x": ""}, {"id": "PRA-01-011", "t": "PRA-01", "lv": 1, "q": "Di sebuah nagari di Sumatra Barat berdiri banyak batu tegak peninggalan masa lampau yang dipakai dalam pemujaan arwah nenek moyang. Benda megalitikum ini disebut…", "a": "Menhir", "x": "", "k": "situs lokal"}, {"id": "PRA-01-012", "t": "PRA-01", "lv": 2, "q": "Warga desa menemukan bejana perunggu besar berbentuk dandang terbalik saat menggali sawah. Benda zaman logam ini disebut…", "a": "Nekara", "x": "", "k": "sawah"}, {"id": "PRA-02-001", "t": "PRA-02", "lv": 1, "q": "Teori yang menyatakan nenek moyang bangsa Indonesia berasal dari Yunan dikemukakan oleh…", "a": "H. Kern", "x": ""}, {"id": "PRA-02-002", "t": "PRA-02", "lv": 1, "q": "Teori Out of Taiwan dikemukakan oleh…", "a": "Peter Bellwood", "x": ""}, {"id": "PRA-02-003", "t": "PRA-02", "lv": 2, "q": "Gelombang nenek moyang yang membawa budaya neolitikum disebut…", "a": "Proto Melayu", "x": ""}, {"id": "PRA-02-004", "t": "PRA-02", "lv": 2, "q": "Gelombang nenek moyang yang membawa budaya logam disebut…", "a": "Deutero Melayu", "x": ""}, {"id": "PRA-02-005", "t": "PRA-02", "lv": 2, "q": "Rempah yang paling dicari dari Maluku adalah cengkih dan…", "a": "Pala", "x": ""}, {"id": "PRA-02-006", "t": "PRA-02", "lv": 2, "q": "Siswa di Ternate melihat pohon cengkih tua di kebun keluarganya dan bertanya mengapa dulu bangsa Eropa datang ke daerahnya. Jalur perdagangan yang menghubungkan Maluku dengan dunia disebut…", "a": "Jalur Rempah", "x": "", "k": "kebun cengkih"}, {"id": "KER-01-001", "t": "KER-01", "lv": 1, "q": "Teori bahwa agama Hindu dibawa oleh pedagang disebut teori…", "a": "Waisya", "x": ""}, {"id": "KER-01-002", "t": "KER-01", "lv": 1, "q": "Teori bahwa orang Nusantara belajar ke India lalu menyebarkan Hindu-Buddha disebut teori…", "a": "Arus balik", "x": ""}, {"id": "KER-01-003", "t": "KER-01", "lv": 2, "q": "Teori Brahmana dikemukakan oleh…", "a": "J. C. van Leur", "x": ""}, {"id": "KER-01-004", "t": "KER-01", "lv": 2, "q": "Aksara yang dibawa pengaruh India dan dipakai pada prasasti awal adalah aksara…", "a": "Pallawa", "x": ""}, {"id": "KER-01-005", "t": "KER-01", "lv": 2, "q": "Pertunjukan wayang dengan cerita Mahabharata dan Ramayana di desa termasuk pengaruh budaya…", "a": "Hindu-Buddha (India)", "x": "", "k": "wayang"}, {"id": "KER-02-001", "t": "KER-02", "lv": 1, "q": "Kerajaan Hindu tertua di Indonesia adalah…", "a": "Kutai", "x": ""}, {"id": "KER-02-002", "t": "KER-02", "lv": 1, "q": "Sumber sejarah Kerajaan Kutai berupa tujuh prasasti…", "a": "Yupa", "x": ""}, {"id": "KER-02-003", "t": "KER-02", "lv": 1, "q": "Raja Tarumanegara yang terkenal adalah…", "a": "Purnawarman", "x": ""}, {"id": "KER-02-004", "t": "KER-02", "lv": 1, "q": "Patih Majapahit yang mengucapkan Sumpah Palapa adalah…", "a": "Gajah Mada", "x": ""}, {"id": "KER-02-005", "t": "KER-02", "lv": 2, "q": "Candi Borobudur dibangun oleh wangsa…", "a": "Syailendra", "x": ""}, {"id": "KER-02-006", "t": "KER-02", "lv": 2, "q": "Kerajaan maritim pusat agama Buddha pada abad ke-7 adalah…", "a": "Sriwijaya", "x": ""}, {"id": "KER-02-007", "t": "KER-02", "lv": 2, "q": "Ekspedisi Pamalayu dilakukan Kerajaan Singasari pada masa Raja…", "a": "Kertanegara", "x": ""}, {"id": "KER-02-008", "t": "KER-02", "lv": 2, "q": "Kitab Negarakertagama ditulis oleh…", "a": "Mpu Prapanca", "x": ""}, {"id": "KER-02-009", "t": "KER-02", "lv": 3, "q": "Prasasti Sriwijaya bertahun 682 M adalah prasasti…", "a": "Kedukan Bukit", "x": ""}, {"id": "KER-02-010", "t": "KER-02", "lv": 3, "q": "Pendiri Kerajaan Majapahit adalah…", "a": "Raden Wijaya", "x": ""}, {"id": "KER-02-011", "t": "KER-02", "lv": 1, "q": "Siswa berwisata ke candi Hindu besar di perbatasan Yogyakarta dan Jawa Tengah dengan relief Ramayana. Candi ini adalah…", "a": "Prambanan", "x": "", "k": "wisata candi"}, {"id": "KER-02-012", "t": "KER-02", "lv": 2, "q": "Sebuah jalan di banyak kota di Indonesia dinamai Jalan Gajah Mada. Tokoh itu adalah mahapatih dari kerajaan…", "a": "Majapahit", "x": "", "k": "nama jalan"}, {"id": "KER-02-013", "t": "KER-02", "lv": 2, "q": "Di Bogor terdapat prasasti batu bergambar sepasang telapak kaki raja Tarumanegara. Raja itu adalah…", "a": "Purnawarman", "x": "", "k": "prasasti"}, {"id": "KER-03-001", "t": "KER-03", "lv": 1, "q": "Teori masuknya Islam dari India yang dikemukakan Snouck Hurgronje disebut teori…", "a": "Gujarat", "x": ""}, {"id": "KER-03-002", "t": "KER-03", "lv": 1, "q": "Tokoh Indonesia pendukung teori Mekkah adalah…", "a": "Hamka", "x": ""}, {"id": "KER-03-003", "t": "KER-03", "lv": 1, "q": "Sebutkan dua saluran penyebaran Islam di Nusantara.", "a": "Dua di antara: perdagangan, perkawinan, tasawuf, pendidikan, kesenian, politik", "x": ""}, {"id": "KER-03-004", "t": "KER-03", "lv": 2, "q": "Teori Persia dikemukakan oleh…", "a": "Hoesein Djajadiningrat", "x": ""}, {"id": "KER-03-005", "t": "KER-03", "lv": 2, "q": "Teori Cina tentang masuknya Islam dikemukakan oleh…", "a": "Slamet Muljana", "x": ""}, {"id": "KER-03-006", "t": "KER-03", "lv": 2, "q": "Penyebar Islam di Jawa yang memakai pendekatan budaya dikenal sebagai…", "a": "Walisongo", "x": ""}, {"id": "KER-03-007", "t": "KER-03", "lv": 2, "q": "Lembaga pendidikan Islam tradisional yang menjadi saluran penyebaran Islam disebut…", "a": "Pesantren", "x": ""}, {"id": "KER-03-008", "t": "KER-03", "lv": 1, "q": "Pertunjukan wayang dan gamelan yang dulu dipakai sunan untuk berdakwah termasuk saluran penyebaran Islam melalui…", "a": "Kesenian", "x": "", "k": "wayang"}, {"id": "KER-04-001", "t": "KER-04", "lv": 1, "q": "Kerajaan Islam pertama di Indonesia adalah…", "a": "Samudra Pasai", "x": ""}, {"id": "KER-04-002", "t": "KER-04", "lv": 1, "q": "Pendiri Kerajaan Demak adalah…", "a": "Raden Patah", "x": ""}, {"id": "KER-04-003", "t": "KER-04", "lv": 1, "q": "Sultan Gowa yang melawan VOC adalah…", "a": "Sultan Hasanuddin", "x": ""}, {"id": "KER-04-004", "t": "KER-04", "lv": 1, "q": "Raja Mataram Islam yang menyerang VOC di Batavia pada 1628 dan 1629 adalah…", "a": "Sultan Agung", "x": ""}, {"id": "KER-04-005", "t": "KER-04", "lv": 2, "q": "Perjanjian yang merugikan Gowa pada 1667 adalah Perjanjian…", "a": "Bongaya", "x": ""}, {"id": "KER-04-006", "t": "KER-04", "lv": 2, "q": "Sultan Aceh yang membawa kerajaannya ke puncak kejayaan adalah…", "a": "Sultan Iskandar Muda", "x": ""}, {"id": "KER-04-007", "t": "KER-04", "lv": 2, "q": "Sultan Ternate yang mengusir Portugis pada 1575 adalah…", "a": "Sultan Baabullah", "x": ""}, {"id": "KER-04-008", "t": "KER-04", "lv": 3, "q": "Raja Samudra Pasai yang pertama memeluk Islam adalah…", "a": "Sultan Malik as-Saleh", "x": ""}, {"id": "KER-04-009", "t": "KER-04", "lv": 2, "q": "Masjid tua di sebuah kota berbentuk atap tumpang bersusun seperti bangunan pra-Islam, misalnya Masjid Agung Demak. Gejala perpaduan budaya ini disebut…", "a": "Akulturasi", "x": "", "k": "masjid tua"}, {"id": "KER-04-010", "t": "KER-04", "lv": 2, "q": "Sebuah universitas di Makassar dan bandara di kota itu dinamai menurut sultan Gowa yang melawan VOC. Tokoh itu adalah…", "a": "Sultan Hasanuddin", "x": "", "k": "nama tempat"}, {"id": "KOL-01-001", "t": "KOL-01", "lv": 1, "q": "Bangsa Eropa yang menguasai Malaka pada 1511 adalah…", "a": "Portugis", "x": ""}, {"id": "KOL-01-002", "t": "KOL-01", "lv": 1, "q": "Motif penjelajahan samudra bangsa Eropa dikenal sebagai gold, glory, dan…", "a": "Gospel", "x": ""}, {"id": "KOL-01-003", "t": "KOL-01", "lv": 1, "q": "Penjelajah Belanda yang pertama mendarat di Banten pada 1596 adalah…", "a": "Cornelis de Houtman", "x": ""}, {"id": "KOL-01-004", "t": "KOL-01", "lv": 2, "q": "Pemimpin Portugis yang menguasai Malaka adalah…", "a": "Alfonso de Albuquerque", "x": ""}, {"id": "KOL-01-005", "t": "KOL-01", "lv": 2, "q": "Perjanjian 1494 yang membagi wilayah penjelajahan Portugis dan Spanyol adalah Perjanjian…", "a": "Tordesillas", "x": ""}, {"id": "KOL-01-006", "t": "KOL-01", "lv": 2, "q": "Jatuhnya Konstantinopel ke Turki Usmani terjadi pada tahun…", "a": "1453", "x": ""}, {"id": "KOL-01-007", "t": "KOL-01", "lv": 3, "q": "Armada Spanyol pimpinan Magelhaens tiba di Maluku pada tahun…", "a": "1521", "x": ""}, {"id": "KOL-01-008", "t": "KOL-01", "lv": 2, "q": "Benteng peninggalan Portugis di Ternate dan Ambon menjadi tujuan wisata sejarah. Bangsa Eropa pertama yang datang ke Maluku adalah…", "a": "Portugis", "x": "", "k": "benteng"}, {"id": "KOL-01-009", "t": "KOL-01", "lv": 2, "q": "Di Banten Lama terdapat bekas pelabuhan tempat kapal-kapal Belanda pertama berlabuh pada 1596. Pemimpin rombongan itu adalah…", "a": "Cornelis de Houtman", "x": "", "k": "situs lokal"}, {"id": "KOL-02-001", "t": "KOL-02", "lv": 1, "q": "VOC didirikan pada tahun…", "a": "1602", "x": ""}, {"id": "KOL-02-002", "t": "KOL-02", "lv": 1, "q": "Gubernur jenderal yang membangun jalan raya Anyer–Panarukan adalah…", "a": "Herman Willem Daendels", "x": ""}, {"id": "KOL-02-003", "t": "KOL-02", "lv": 1, "q": "Tokoh yang menerapkan tanam paksa sejak 1830 adalah…", "a": "Van den Bosch", "x": ""}, {"id": "KOL-02-004", "t": "KOL-02", "lv": 1, "q": "Isi politik etis adalah irigasi, emigrasi, dan…", "a": "Edukasi", "x": ""}, {"id": "KOL-02-005", "t": "KOL-02", "lv": 2, "q": "Hak istimewa VOC seperti monopoli dan mencetak uang disebut hak…", "a": "Oktroi", "x": ""}, {"id": "KOL-02-006", "t": "KOL-02", "lv": 2, "q": "VOC dibubarkan pada tanggal…", "a": "31 Desember 1799", "x": ""}, {"id": "KOL-02-007", "t": "KOL-02", "lv": 2, "q": "Sistem sewa tanah (landrent) diterapkan oleh…", "a": "Thomas Stamford Raffles", "x": ""}, {"id": "KOL-02-008", "t": "KOL-02", "lv": 2, "q": "Novel yang mengkritik tanam paksa, Max Havelaar, ditulis oleh…", "a": "Multatuli", "x": ""}, {"id": "KOL-02-009", "t": "KOL-02", "lv": 3, "q": "UU yang membuka jalan bagi modal swasta masuk ke Hindia Belanda pada 1870 adalah UU…", "a": "Agraria", "x": ""}, {"id": "KOL-02-010", "t": "KOL-02", "lv": 1, "q": "Jalan pos yang melintasi banyak kota di pantai utara Jawa dibangun dengan kerja paksa pada awal abad ke-19. Jalan Anyer–Panarukan ini dibangun pada masa…", "a": "Daendels", "x": "", "k": "jalan raya"}, {"id": "KOL-02-011", "t": "KOL-02", "lv": 2, "q": "Di sebuah daerah di Jawa, perkebunan kopi dan tebu peninggalan kolonial masih bertahan. Sistem yang mewajibkan petani menanam tanaman ekspor sejak 1830 disebut…", "a": "Tanam paksa (cultuurstelsel)", "x": "", "k": "perkebunan"}, {"id": "KOL-03-001", "t": "KOL-03", "lv": 1, "q": "Pemimpin Perang Padri adalah…", "a": "Tuanku Imam Bonjol", "x": ""}, {"id": "KOL-03-002", "t": "KOL-03", "lv": 1, "q": "Perang Diponegoro berlangsung pada tahun…", "a": "1825–1830", "x": ""}, {"id": "KOL-03-003", "t": "KOL-03", "lv": 1, "q": "Pemimpin perlawanan rakyat Saparua, Maluku, pada 1817 adalah…", "a": "Pattimura", "x": ""}, {"id": "KOL-03-004", "t": "KOL-03", "lv": 2, "q": "Pemimpin Perang Banjar adalah…", "a": "Pangeran Antasari", "x": ""}, {"id": "KOL-03-005", "t": "KOL-03", "lv": 2, "q": "Strategi Belanda membangun benteng-benteng dalam Perang Diponegoro disebut…", "a": "Benteng stelsel", "x": ""}, {"id": "KOL-03-006", "t": "KOL-03", "lv": 2, "q": "Pemimpin perlawanan rakyat Batak melawan Belanda adalah…", "a": "Sisingamangaraja XII", "x": ""}, {"id": "KOL-03-007", "t": "KOL-03", "lv": 2, "q": "Taktik Belanda memecah belah persatuan lawan disebut…", "a": "Devide et impera", "x": ""}, {"id": "KOL-03-008", "t": "KOL-03", "lv": 3, "q": "Pemimpin perlawanan Jagaraga di Bali adalah…", "a": "I Gusti Ketut Jelantik", "x": ""}, {"id": "KOL-03-009", "t": "KOL-03", "lv": 2, "q": "Setiap 15 Mei, warga Maluku memperingati perlawanan rakyat Saparua tahun 1817. Pemimpin perlawanan itu adalah…", "a": "Pattimura", "x": "", "k": "peringatan daerah"}, {"id": "KOL-03-010", "t": "KOL-03", "lv": 2, "q": "Banyak jalan di kota-kota Indonesia dinamai menurut pahlawan perempuan Aceh yang melawan Belanda bersama Teuku Umar. Tokoh itu adalah…", "a": "Cut Nyak Dien", "x": "", "k": "nama jalan"}, {"id": "KOL-03-011", "t": "KOL-03", "lv": 2, "q": "Di Tegalrejo, Yogyakarta, bekas kediaman pemimpin Perang Jawa 1825–1830 kini menjadi museum. Pemimpin perang itu adalah…", "a": "Pangeran Diponegoro", "x": "", "k": "museum"}, {"id": "PRG-01-001", "t": "PRG-01", "lv": 1, "q": "Organisasi modern pertama di Indonesia adalah…", "a": "Budi Utomo", "x": ""}, {"id": "PRG-01-002", "t": "PRG-01", "lv": 1, "q": "Budi Utomo berdiri pada tanggal…", "a": "20 Mei 1908", "x": ""}, {"id": "PRG-01-003", "t": "PRG-01", "lv": 1, "q": "Sumpah Pemuda diikrarkan pada tanggal…", "a": "28 Oktober 1928", "x": ""}, {"id": "PRG-01-004", "t": "PRG-01", "lv": 1, "q": "Partai politik pertama di Indonesia adalah…", "a": "Indische Partij", "x": ""}, {"id": "PRG-01-005", "t": "PRG-01", "lv": 2, "q": "Pendiri Muhammadiyah adalah…", "a": "K. H. Ahmad Dahlan", "x": ""}, {"id": "PRG-01-006", "t": "PRG-01", "lv": 2, "q": "Pendiri Nahdlatul Ulama adalah…", "a": "K. H. Hasyim Asy'ari", "x": ""}, {"id": "PRG-01-007", "t": "PRG-01", "lv": 2, "q": "Tiga Serangkai pendiri Indische Partij adalah Douwes Dekker, Tjipto Mangoenkoesoemo, dan…", "a": "Soewardi Soerjaningrat (Ki Hadjar Dewantara)", "x": ""}, {"id": "PRG-01-008", "t": "PRG-01", "lv": 1, "q": "Strategi pergerakan yang menolak bekerja sama dengan Belanda disebut…", "a": "Nonkooperatif", "x": ""}, {"id": "PRG-01-009", "t": "PRG-01", "lv": 3, "q": "Kongres Perempuan Indonesia I diselenggarakan pada tanggal…", "a": "22 Desember 1928", "x": ""}, {"id": "PRG-01-010", "t": "PRG-01", "lv": 1, "q": "Setiap 20 Mei sekolah-sekolah mengadakan upacara memperingati berdirinya Budi Utomo. Hari peringatan ini disebut…", "a": "Hari Kebangkitan Nasional", "x": "", "k": "upacara sekolah"}, {"id": "PRG-01-011", "t": "PRG-01", "lv": 2, "q": "Banyak sekolah swasta bernama Taman Siswa masih berdiri hingga kini. Pendiri Taman Siswa (1922) adalah…", "a": "Ki Hadjar Dewantara", "x": "", "k": "sekolah"}, {"id": "PRG-01-012", "t": "PRG-01", "lv": 2, "q": "Banyak sekolah dan rumah sakit di kota-kota Indonesia dikelola organisasi yang didirikan di Yogyakarta pada 1912. Pendirinya adalah…", "a": "K. H. Ahmad Dahlan", "x": "", "k": "sekolah"}, {"id": "PRG-02-001", "t": "PRG-02", "lv": 1, "q": "Belanda menyerah kepada Jepang di Kalijati pada tanggal…", "a": "8 Maret 1942", "x": ""}, {"id": "PRG-02-002", "t": "PRG-02", "lv": 1, "q": "Organisasi militer bentukan Jepang yang menjadi cikal bakal TNI adalah…", "a": "PETA", "x": ""}, {"id": "PRG-02-003", "t": "PRG-02", "lv": 1, "q": "Kerja paksa pada masa pendudukan Jepang disebut…", "a": "Romusa", "x": ""}, {"id": "PRG-02-004", "t": "PRG-02", "lv": 2, "q": "Pemimpin pemberontakan PETA di Blitar adalah…", "a": "Supriyadi", "x": ""}, {"id": "PRG-02-005", "t": "PRG-02", "lv": 2, "q": "Pemimpin perlawanan Singaparna terhadap Jepang adalah…", "a": "K. H. Zainal Mustafa", "x": ""}, {"id": "PRG-02-006", "t": "PRG-02", "lv": 2, "q": "Organisasi bentukan Jepang yang dipimpin Empat Serangkai disebut…", "a": "Putera", "x": ""}, {"id": "PRG-02-007", "t": "PRG-02", "lv": 3, "q": "Pemberontakan PETA Blitar terjadi pada tanggal…", "a": "14 Februari 1945", "x": ""}, {"id": "PRG-02-008", "t": "PRG-02", "lv": 2, "q": "Seorang veteran bercerita bahwa pada zaman Jepang warga desanya dipaksa menyerahkan sebagian hasil panen padi. Kebijakan ini disebut…", "a": "Wajib serah padi", "x": "", "k": "cerita veteran"}, {"id": "PRG-02-009", "t": "PRG-02", "lv": 2, "q": "Di Blitar berdiri monumen yang mengenang pemberontakan tentara PETA terhadap Jepang pada 1945. Pemimpin pemberontakan itu adalah…", "a": "Supriyadi", "x": "", "k": "monumen"}, {"id": "PRG-03-001", "t": "PRG-03", "lv": 1, "q": "Teks proklamasi dibacakan pada tanggal…", "a": "17 Agustus 1945", "x": ""}, {"id": "PRG-03-002", "t": "PRG-03", "lv": 1, "q": "Teks proklamasi dirumuskan di rumah…", "a": "Laksamana Maeda", "x": ""}, {"id": "PRG-03-003", "t": "PRG-03", "lv": 1, "q": "Peristiwa dibawanya Soekarno-Hatta oleh golongan muda pada 16 Agustus 1945 disebut peristiwa…", "a": "Rengasdengklok", "x": ""}, {"id": "PRG-03-004", "t": "PRG-03", "lv": 2, "q": "Pengetik teks proklamasi adalah…", "a": "Sayuti Melik", "x": ""}, {"id": "PRG-03-005", "t": "PRG-03", "lv": 2, "q": "Proklamasi dibacakan di Jalan … Nomor 56, Jakarta.", "a": "Pegangsaan Timur", "x": ""}, {"id": "PRG-03-006", "t": "PRG-03", "lv": 2, "q": "BPUPK dibentuk pada tanggal…", "a": "29 April 1945", "x": ""}, {"id": "PRG-03-007", "t": "PRG-03", "lv": 2, "q": "Bom atom dijatuhkan di Hiroshima pada tanggal…", "a": "6 Agustus 1945", "x": ""}, {"id": "PRG-03-008", "t": "PRG-03", "lv": 3, "q": "Sebutkan dua tokoh golongan muda yang mendesak proklamasi segera.", "a": "Dua di antara: Wikana, Chaerul Saleh, Sukarni", "x": ""}, {"id": "PRG-03-009", "t": "PRG-03", "lv": 2, "q": "Rumah di Jalan Imam Bonjol, Jakarta, tempat naskah proklamasi dirumuskan, kini menjadi museum. Museum itu bernama…", "a": "Museum Perumusan Naskah Proklamasi", "x": "", "k": "museum"}, {"id": "PRG-03-010", "t": "PRG-03", "lv": 1, "q": "Setiap 17 Agustus warga mengadakan upacara dan lomba. Pada tanggal itu tahun 1945, teks proklamasi dibacakan di Jalan Pegangsaan Timur 56 oleh…", "a": "Soekarno, didampingi Mohammad Hatta", "x": "", "k": "upacara 17 Agustus"}, {"id": "REV-01-001", "t": "REV-01", "lv": 1, "q": "Pertempuran Surabaya yang diperingati sebagai Hari Pahlawan terjadi pada tanggal…", "a": "10 November 1945", "x": ""}, {"id": "REV-01-002", "t": "REV-01", "lv": 1, "q": "Perundingan yang menghasilkan pengakuan de facto RI atas Jawa, Sumatra, dan Madura adalah Perundingan…", "a": "Linggarjati", "x": ""}, {"id": "REV-01-003", "t": "REV-01", "lv": 1, "q": "Perundingan yang menghasilkan garis demarkasi Van Mook adalah Perundingan…", "a": "Renville", "x": ""}, {"id": "REV-01-004", "t": "REV-01", "lv": 1, "q": "Pengakuan kedaulatan kepada RIS diberikan pada tanggal…", "a": "27 Desember 1949", "x": ""}, {"id": "REV-01-005", "t": "REV-01", "lv": 2, "q": "Bandung Lautan Api terjadi pada tanggal…", "a": "24 Maret 1946", "x": ""}, {"id": "REV-01-006", "t": "REV-01", "lv": 2, "q": "Pemimpin Puputan Margarana adalah…", "a": "I Gusti Ngurah Rai", "x": ""}, {"id": "REV-01-007", "t": "REV-01", "lv": 2, "q": "Agresi Militer Belanda II terjadi pada tanggal…", "a": "19 Desember 1948", "x": ""}, {"id": "REV-01-008", "t": "REV-01", "lv": 2, "q": "Pemerintah darurat yang dibentuk saat Agresi Militer II dipimpin oleh…", "a": "Sjafruddin Prawiranegara", "x": ""}, {"id": "REV-01-009", "t": "REV-01", "lv": 3, "q": "Perundingan Roem–Royen ditandatangani pada tanggal…", "a": "7 Mei 1949", "x": ""}, {"id": "REV-01-010", "t": "REV-01", "lv": 3, "q": "Konferensi Meja Bundar berlangsung pada…", "a": "23 Agustus–2 November 1949", "x": ""}, {"id": "REV-01-011", "t": "REV-01", "lv": 1, "q": "Setiap 10 November, sekolah-sekolah memperingati pertempuran besar melawan Sekutu di sebuah kota. Kota itu adalah…", "a": "Surabaya", "x": "", "k": "upacara sekolah"}, {"id": "REV-01-012", "t": "REV-01", "lv": 2, "q": "Bandara di Bali bernama I Gusti Ngurah Rai. Tokoh ini gugur memimpin pertempuran yang disebut…", "a": "Puputan Margarana", "x": "", "k": "nama tempat"}, {"id": "REV-01-013", "t": "REV-01", "lv": 2, "q": "Monumen Palagan Ambarawa mengenang pertempuran melawan Sekutu yang dimenangkan pasukan Indonesia. Pertempuran itu berakhir pada tanggal…", "a": "15 Desember 1945", "x": "", "k": "monumen"}, {"id": "REV-02-001", "t": "REV-02", "lv": 1, "q": "Pemberontakan PKI Madiun terjadi pada tahun…", "a": "1948", "x": ""}, {"id": "REV-02-002", "t": "REV-02", "lv": 2, "q": "Pemimpin DI/TII di Jawa Barat adalah…", "a": "Kartosoewirjo", "x": ""}, {"id": "REV-02-003", "t": "REV-02", "lv": 2, "q": "Pemimpin APRA di Bandung adalah…", "a": "Westerling", "x": ""}, {"id": "REV-02-004", "t": "REV-02", "lv": 2, "q": "Pemimpin RMS adalah…", "a": "Soumokil", "x": ""}, {"id": "REV-02-005", "t": "REV-02", "lv": 3, "q": "Pemimpin PKI Madiun 1948 adalah Musso dan…", "a": "Amir Sjarifuddin", "x": ""}, {"id": "REV-02-006", "t": "REV-02", "lv": 2, "q": "Di Madiun berdiri monumen yang mengenang korban pemberontakan pada tahun 1948 yang dipimpin Musso. Pemberontakan itu dilakukan oleh…", "a": "PKI (PKI Madiun)", "x": "", "k": "monumen"}, {"id": "REV-03-001", "t": "REV-03", "lv": 1, "q": "Pemilu pertama di Indonesia diselenggarakan pada tahun…", "a": "1955", "x": ""}, {"id": "REV-03-002", "t": "REV-03", "lv": 1, "q": "Konferensi Asia Afrika diselenggarakan di kota…", "a": "Bandung", "x": ""}, {"id": "REV-03-003", "t": "REV-03", "lv": 1, "q": "Dekret Presiden yang mengakhiri Demokrasi Liberal dikeluarkan pada tanggal…", "a": "5 Juli 1959", "x": ""}, {"id": "REV-03-004", "t": "REV-03", "lv": 2, "q": "Konferensi Asia Afrika diselenggarakan pada masa kabinet…", "a": "Ali Sastroamidjojo I", "x": ""}, {"id": "REV-03-005", "t": "REV-03", "lv": 2, "q": "Pemilu 1955 diselenggarakan pada masa kabinet…", "a": "Burhanuddin Harahap", "x": ""}, {"id": "REV-03-006", "t": "REV-03", "lv": 2, "q": "Isi Dekret Presiden 5 Juli 1959 adalah membubarkan Konstituante, kembali ke UUD 1945, dan membentuk…", "a": "MPRS dan DPAS", "x": ""}, {"id": "REV-03-007", "t": "REV-03", "lv": 3, "q": "Konferensi Asia Afrika berlangsung pada tanggal…", "a": "18–24 April 1955", "x": ""}, {"id": "REV-03-008", "t": "REV-03", "lv": 2, "q": "Gedung Merdeka di Bandung kini menjadi museum yang mengenang pertemuan negara-negara Asia dan Afrika pada 1955. Hasil pertemuan itu dikenal sebagai…", "a": "Dasasila Bandung", "x": "", "k": "museum"}, {"id": "REV-03-009", "t": "REV-03", "lv": 1, "q": "Warga mencoblos di TPS untuk memilih wakil rakyat. Pemilu pertama Indonesia untuk memilih anggota DPR dan Konstituante diadakan pada tahun…", "a": "1955", "x": "", "k": "pemilu"}, {"id": "REV-04-001", "t": "REV-04", "lv": 1, "q": "Konsep persatuan nasionalis, agama, dan komunis pada masa Demokrasi Terpimpin disebut…", "a": "Nasakom", "x": ""}, {"id": "REV-04-002", "t": "REV-04", "lv": 2, "q": "Trikora untuk membebaskan Irian Barat diumumkan pada tanggal…", "a": "19 Desember 1961", "x": ""}, {"id": "REV-04-003", "t": "REV-04", "lv": 2, "q": "Komando untuk konfrontasi dengan Malaysia disebut…", "a": "Dwikora", "x": ""}, {"id": "REV-04-004", "t": "REV-04", "lv": 2, "q": "Indonesia keluar dari PBB pada bulan dan tahun…", "a": "Januari 1965", "x": ""}, {"id": "REV-04-005", "t": "REV-04", "lv": 2, "q": "Monumen Pembebasan Irian Barat di Lapangan Banteng, Jakarta, mengenang perjuangan yang dikomandoi melalui…", "a": "Trikora", "x": "", "k": "monumen"}, {"id": "ORB-01-001", "t": "ORB-01", "lv": 1, "q": "Surat perintah yang memberi Soeharto wewenang memulihkan keamanan pada 1966 disebut…", "a": "Supersemar", "x": ""}, {"id": "ORB-01-002", "t": "ORB-01", "lv": 1, "q": "Supersemar dikeluarkan pada tanggal…", "a": "11 Maret 1966", "x": ""}, {"id": "ORB-01-003", "t": "ORB-01", "lv": 1, "q": "Rencana pembangunan lima tahun pada masa Orde Baru disebut…", "a": "Repelita", "x": ""}, {"id": "ORB-01-004", "t": "ORB-01", "lv": 1, "q": "Tiga tuntutan rakyat 1966 disebut…", "a": "Tritura", "x": ""}, {"id": "ORB-01-005", "t": "ORB-01", "lv": 2, "q": "Fusi partai 1973 menghasilkan PPP, PDI, dan…", "a": "Golkar", "x": ""}, {"id": "ORB-01-006", "t": "ORB-01", "lv": 2, "q": "ASEAN didirikan pada tanggal…", "a": "8 Agustus 1967", "x": ""}, {"id": "ORB-01-007", "t": "ORB-01", "lv": 2, "q": "Indonesia mencapai swasembada beras pada tahun…", "a": "1984", "x": ""}, {"id": "ORB-01-008", "t": "ORB-01", "lv": 3, "q": "Peran ganda ABRI di bidang pertahanan dan sosial-politik disebut…", "a": "Dwifungsi ABRI", "x": ""}, {"id": "ORB-01-009", "t": "ORB-01", "lv": 2, "q": "Seorang mantan penyuluh pertanian bercerita bahwa pada 1970–1980-an ia mengajak petani memakai bibit unggul dan pupuk kimia. Program peningkatan hasil pertanian ini disebut…", "a": "Revolusi Hijau", "x": "", "k": "sawah"}, {"id": "ORB-02-001", "t": "ORB-02", "lv": 1, "q": "Soeharto mengundurkan diri pada tanggal…", "a": "21 Mei 1998", "x": ""}, {"id": "ORB-02-002", "t": "ORB-02", "lv": 1, "q": "Presiden pengganti Soeharto adalah…", "a": "B. J. Habibie", "x": ""}, {"id": "ORB-02-003", "t": "ORB-02", "lv": 2, "q": "Tragedi Trisakti terjadi pada tanggal…", "a": "12 Mei 1998", "x": ""}, {"id": "ORB-02-004", "t": "ORB-02", "lv": 2, "q": "Jajak pendapat Timor Timur dilaksanakan pada tanggal…", "a": "30 Agustus 1999", "x": ""}, {"id": "ORB-02-005", "t": "ORB-02", "lv": 2, "q": "Presiden pertama kali dipilih langsung oleh rakyat pada tahun…", "a": "2004", "x": ""}, {"id": "ORB-02-006", "t": "ORB-02", "lv": 2, "q": "Sebutkan dua agenda Reformasi.", "a": "Dua di antara: amandemen UUD, penghapusan dwifungsi ABRI, pemberantasan KKN, otonomi daerah, kebebasan pers, penegakan hukum", "x": ""}, {"id": "ORB-02-007", "t": "ORB-02", "lv": 3, "q": "Krisis moneter yang memicu jatuhnya Orde Baru dimulai pada tahun…", "a": "1997", "x": ""}, {"id": "ORB-02-008", "t": "ORB-02", "lv": 2, "q": "Kini warga dapat memilih langsung bupati dan gubernurnya, dan daerah mengatur banyak urusannya sendiri. Agenda Reformasi yang tergambar adalah…", "a": "Otonomi daerah", "x": "", "k": "pilkada"}, {"id": "ORB-02-009", "t": "ORB-02", "lv": 2, "q": "Setiap Mei, mahasiswa di Jakarta memperingati penembakan mahasiswa di sebuah kampus pada 1998. Tragedi itu disebut Tragedi…", "a": "Trisakti", "x": "", "k": "peringatan"}, {"id": "DUN-01-001", "t": "DUN-01", "lv": 1, "q": "Revolusi Prancis terjadi pada tahun…", "a": "1789", "x": ""}, {"id": "DUN-01-002", "t": "DUN-01", "lv": 2, "q": "Revolusi Industri bermula di negara…", "a": "Inggris", "x": ""}, {"id": "DUN-01-003", "t": "DUN-01", "lv": 2, "q": "Deklarasi kemerdekaan Amerika Serikat terjadi pada tahun…", "a": "1776", "x": ""}, {"id": "DUN-01-004", "t": "DUN-01", "lv": 2, "q": "Semboyan Revolusi Prancis adalah liberté, égalité, dan…", "a": "Fraternité", "x": ""}, {"id": "DUN-01-005", "t": "DUN-01", "lv": 3, "q": "Revolusi yang melahirkan negara komunis pertama terjadi pada 1917 di…", "a": "Rusia", "x": ""}, {"id": "DUN-02-001", "t": "DUN-02", "lv": 1, "q": "Perang Dunia II berlangsung pada tahun…", "a": "1939–1945", "x": ""}, {"id": "DUN-02-002", "t": "DUN-02", "lv": 2, "q": "Perang Dunia I dipicu terbunuhnya Franz Ferdinand di kota…", "a": "Sarajevo", "x": ""}, {"id": "DUN-02-003", "t": "DUN-02", "lv": 2, "q": "Organisasi internasional yang lahir setelah Perang Dunia I adalah…", "a": "Liga Bangsa-Bangsa", "x": ""}, {"id": "DUN-02-004", "t": "DUN-02", "lv": 2, "q": "Negara-negara Poros dalam Perang Dunia II adalah Jerman, Italia, dan…", "a": "Jepang", "x": ""}, {"id": "DUN-02-005", "t": "DUN-02", "lv": 3, "q": "Perang Dunia II dimulai dengan serangan Jerman ke…", "a": "Polandia", "x": ""}, {"id": "DUN-02-006", "t": "DUN-02", "lv": 2, "q": "Siswa menonton film dokumenter tentang bom atom yang menghancurkan dua kota Jepang pada Agustus 1945. Menyerahnya Jepang setelah itu membuka jalan bagi…", "a": "Proklamasi kemerdekaan Indonesia", "x": "", "k": "film dokumenter"}, {"id": "DUN-03-001", "t": "DUN-03", "lv": 1, "q": "Pakta pertahanan Blok Barat adalah…", "a": "NATO", "x": ""}, {"id": "DUN-03-002", "t": "DUN-03", "lv": 2, "q": "Pakta pertahanan Blok Timur adalah…", "a": "Pakta Warsawa", "x": ""}, {"id": "DUN-03-003", "t": "DUN-03", "lv": 2, "q": "KTT I Gerakan Non-Blok diselenggarakan di…", "a": "Beograd (1961)", "x": ""}, {"id": "DUN-03-004", "t": "DUN-03", "lv": 2, "q": "Perang Dingin berakhir dengan bubarnya Uni Soviet pada tahun…", "a": "1991", "x": ""}, {"id": "DUN-03-005", "t": "DUN-03", "lv": 3, "q": "Tembok Berlin runtuh pada tahun…", "a": "1989", "x": ""}, {"id": "DUN-03-006", "t": "DUN-03", "lv": 2, "q": "Jalan Asia Afrika di Bandung mengenang konferensi tahun 1955 yang ikut melahirkan gerakan negara-negara yang tidak memihak blok mana pun. Gerakan itu adalah…", "a": "Gerakan Non-Blok", "x": "", "k": "nama jalan"}, {"id": "PRG-01-013", "t": "PRG-01", "lv": 2, "q": "Pondok Pesantren Tebuireng di Jombang didirikan oleh ulama yang kemudian mendirikan Nahdlatul Ulama pada 1926. Ulama itu adalah…", "a": "K. H. Hasyim Asy'ari", "x": "", "k": "pesantren"}], "bank": {"key": "bank-soal-sejarah-v1", "title": "Bank Soal Sejarah", "map_title": "Peta Materi Sejarah SMA", "mix": "Campuran", "weight_label": "penguasaan rata-rata, berbobot jumlah simpul", "lead": "Tanya-jawab singkat untuk mengulang Sejarah. Setiap soal memakai kode simpul yang sama dengan peta materinya. Soal bertanda Konteks berangkat dari situasi sehari-hari di sekitar kita.", "footer": "Hasil latihan tersimpan di peramban ini saja. Soal disusun dari peta materi Sejarah dan sumber yang dicantumkan di sana; fakta bertahun disebut tahunnya."}};
+/* Swipe feed ("Mode geser"), shared by the map, bank and TKA pages (templates/_feed.js; styles: _feed.css).
+   makeFeed(dialog, handlers) drives a <dialog class="feed"> that holds a close button (.st-close) and a scroller
+   (.st-feed) whose children are equal-height slides snapping one per screen. The page fills the slides and handles
+   taps inside them. The feed opens the dialog as a modal (the page behind is inert; Esc or the Android back gesture
+   closes it), keeps ?mode=geser in the address while open, tracks the slide on screen, and moves between slides with
+   the arrow and Page keys; an arrow key scrolls a long card (.st-body) to its end before moving on.
+   handlers: onClose(slide) runs after closing, with the slide that was on screen; onSide(dir) gets ← (-1) and → (1);
+   onNearEnd() runs when the reader is within three slides of the end, so the page can add more. */
+function makeFeed(dialog, handlers = {}){
+  const scroller = dialog.querySelector(".st-feed");
+  const motion = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  const clamp = i => Math.max(0, Math.min(scroller.children.length - 1, i));
+  // Every slide is exactly one scroller tall (_feed.css), so the slide on screen follows from the scroll position.
+  const onScreen = () => clamp(Math.round(scroller.scrollTop / (scroller.clientHeight || 1)));
+  // While the feed scrolls by itself (a key, a button, a graded card), the next key counts from where that scroll is
+  // going, not from a half-way position, so quick presses add up. The goals end when the scrolling settles (no scroll
+  // event for 150 ms) or as soon as the reader takes over with a swipe, the wheel or another key.
+  let goal = null, settling = 0, lastSlide = null;
+  const cardGoal = new Map();  // card body → the scrollTop it is heading to
+  const at = () => goal === null ? onScreen() : goal;
+  function forget(){ clearTimeout(settling); goal = null; cardGoal.clear(); }
+  function settleLater(){ clearTimeout(settling); settling = setTimeout(forget, 150); }
+  function go(i, animate){
+    if(!scroller.children.length) return;
+    goal = clamp(i);
+    scroller.scrollTo({top: scroller.children[goal].offsetTop, behavior: animate ? motion() : "auto"});
+    settleLater();
+  }
+  function scrollCard(body, dir){
+    const end = body.scrollHeight - body.clientHeight;
+    const from = cardGoal.has(body) ? cardGoal.get(body) : body.scrollTop;
+    if(dir > 0 ? from >= end - 1 : from <= 0) return false;
+    const to = Math.max(0, Math.min(end, from + dir * body.clientHeight * 0.8));
+    cardGoal.set(body, to);
+    body.scrollTo({top: to, behavior: motion()});
+    settleLater();
+    return true;
+  }
+  function setMode(on){
+    const url = new URL(location.href);
+    on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+    try { history.replaceState(history.state, "", url); } catch(e) {}
+  }
+  const feed = {
+    scroller,
+    get isOpen(){ return dialog.open; },
+    current: () => scroller.children[at()] || null,
+    go: i => go(i, true),
+    move: dir => go(at() + dir, true),
+    open(html, start){
+      scroller.innerHTML = html;
+      if(!dialog.open) dialog.showModal ? dialog.showModal() : dialog.setAttribute("open", "");
+      document.body.classList.add("feed-open");
+      go(start || 0, false);
+      scroller.focus({preventScroll: true});  // not the close button, so Space never closes the feed
+      setMode(true);
+    },
+    close(){
+      if(!dialog.open) return;
+      lastSlide = feed.current();
+      if(dialog.close) dialog.close();
+      else { dialog.removeAttribute("open"); dialog.dispatchEvent(new Event("close")); }
+    },
+  };
+  // The slide on screen is read before the dialog hides (a hidden scroller reports scrollTop 0): in close(), or in the
+  // cancel event that Esc and the Android back gesture fire first.
+  dialog.addEventListener("cancel", () => { lastSlide = feed.current(); });
+  dialog.addEventListener("close", () => {
+    const slide = lastSlide;
+    lastSlide = null;
+    forget();
+    document.body.classList.remove("feed-open");
+    setMode(false);
+    if(handlers.onClose) handlers.onClose(slide);
+  });
+  dialog.querySelector(".st-close").addEventListener("click", feed.close);
+  dialog.addEventListener("pointerdown", forget);
+  dialog.addEventListener("wheel", forget, {passive: true});
+  // Capturing, so it also hears the cards: scroll events do not bubble, but they do pass through the capture phase.
+  scroller.addEventListener("scroll", e => {
+    if(goal !== null || cardGoal.size) settleLater();
+    if(e.target === scroller && handlers.onNearEnd && scroller.scrollTop + scroller.clientHeight * 3 >= scroller.scrollHeight) handlers.onNearEnd();
+  }, {capture: true, passive: true});
+  // On the document, not the dialog: when a focused button is disabled (after an answer is checked), focus falls
+  // back to <body>, outside the dialog, and the keys must still work.
+  document.addEventListener("keydown", e => {
+    if(!dialog.open || e.defaultPrevented) return;
+    const dir = {ArrowDown: 1, PageDown: 1, ArrowUp: -1, PageUp: -1}[e.key];
+    const side = {ArrowLeft: -1, ArrowRight: 1}[e.key];
+    if(e.altKey || e.ctrlKey || e.metaKey || e.target.closest("input, select, textarea") || !(dir || (side && handlers.onSide))){
+      forget();  // the reader's own key (Space, Home, a radio button's arrows): whatever it scrolls is theirs
+      return;
+    }
+    e.preventDefault();
+    if(side) return handlers.onSide(side);
+    const body = feed.current() && feed.current().querySelector(".st-body");
+    if(!(e.key.startsWith("Arrow") && body && scrollCard(body, dir))) feed.move(dir);
+  });
+  return feed;
+}
+
 const CFG = DATA.bank || {};
 const PALETTE = ["indigo","soga","patina","plum","olive"].map(c => ["var(--" + c + ")","var(--" + c + "-soft)"]);
 const COLORS = CFG.key ? Object.fromEntries(DATA.topics.domains.map((d,i) => [d.id, PALETTE[i % PALETTE.length]]))
@@ -575,14 +688,13 @@ $("progress").addEventListener("click", e => {
   else if(e.target.id === "resetYes"){ stats = {}; save(); confirmReset = false; state.sRight = state.sTotal = 0; $("sRight").textContent = 0; $("sTotal").textContent = 0; updatePoolInfo(); renderProgress(); }
 });
 document.addEventListener("keydown", e => {
-  if(story.on){
-    const k = e.key.toLowerCase(), sl = storyCurrent();
-    if(k === "escape"){ e.preventDefault(); closeStory(); }
-    else if(k === " " || k === "enter"){ if(!e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); } }
+  if(feed.isOpen){  // the shared feed handles Esc, the arrows and Page Up/Down
+    if(e.metaKey || e.ctrlKey || e.altKey) return;
+    const k = e.key.toLowerCase(), sl = feed.current();
+    if((k === " " || k === "enter") && !e.target.closest("button, a")){ e.preventDefault(); storyReveal(sl); }
     else if(k === "b") storyGrade(sl, true);
     else if(k === "s") storyGrade(sl, false);
-    else if(k === "arrowdown" || k === "l"){ e.preventDefault(); storyMove(1); }
-    else if(k === "arrowup"){ e.preventDefault(); storyMove(-1); }
+    else if(k === "l"){ e.preventDefault(); feed.move(1); }
     return;
   }
   if(state.tab !== "latihan" || !state.cur) return;
@@ -594,13 +706,18 @@ document.addEventListener("keydown", e => {
   else if(k === "l"){ next(); }
 });
 /* ---------- swipe mode ---------- */
-// The feed uses the same picker as Latihan (weighted toward questions last answered wrong, no recent repeats)
-// and records answers in the same stats. More cards are added as the student nears the end.
-const story = {on:false, n:0, right:0, total:0};
+// One question per screen in the shared swipe feed, picked like Latihan (weighted toward questions last answered
+// wrong, no recent repeats) and recorded in the same stats. More cards are dealt as the student nears the end.
+const sw = {n: 0, right: 0, total: 0};  // cards dealt, and the score, since the feed was opened
+const feed = makeFeed($("feed"), {
+  onNearEnd: () => addSlides(10),
+  onClose(){ updatePoolInfo(); if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList(); },
+});
+const isCard = sl => !!sl && sl.classList.contains("slide");
 function storySlide(q){
-  const s = stats[q.id], i = ++story.n;
+  const s = stats[q.id], i = ++sw.n;
   return '<article class="slide" data-id="' + q.id + '" data-dom="' + DOM_OF[q.t] + '">' +
-    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + story.right + '</b> / <b class="sc-t">' + story.total + '</b></span><span>Soal ' + i + '</span></div>' +
+    '<div class="st-top"><span class="st-score">✓ <b class="sc-r">' + sw.right + '</b> / <b class="sc-t">' + sw.total + '</b></span><span>Soal ' + i + '</span></div>' +
     '<div class="st-head"><a class="st-code" href="' + mapHref(q.t) + '" target="_blank" rel="noopener">' + q.t + '</a><span class="st-topic">' + esc(TITLE[q.t]) + '</span>' +
       '<span class="lv lv' + q.lv + '">' + LV[q.lv] + '</span>' + (s ? (s.l ? '<span class="mark-ok">terakhir benar</span>' : '<span class="mark-bad">terakhir salah</span>') : '') + '</div>' +
     '<div class="st-card" data-act="reveal"><div class="st-body">' + (q.k ? '<span class="st-ktx">Konteks: ' + esc(q.k) + '</span>' : '') +
@@ -610,27 +727,30 @@ function storySlide(q){
     '<div class="rail"><a href="' + mapHref(q.t) + '" target="_blank" rel="noopener"><span aria-hidden="true">▤</span>Di peta</a>' +
       '<button type="button" data-act="drill"><span aria-hidden="true">↻</span>Simpul ini</button></div></article>';
 }
-function addSlides(k){
-  const feed = $("feed"), end = feed.querySelector(".st-end");
+function slidesHTML(k){
   let html = "";
   for(let i = 0; i < k; i++){
     const q = pickNext(); if(!q) break;
     state.recent.push(q.id); if(state.recent.length > 25) state.recent.shift();
     html += storySlide(q);
   }
-  if(!html && !feed.querySelector(".slide")){
-    feed.innerHTML = '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p><button class="btn" type="button" data-act="close">Kembali</button></div>';
-    return;
-  }
-  end ? end.insertAdjacentHTML("beforebegin", html) : feed.insertAdjacentHTML("beforeend", html);
-  feed.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom));
+  return html;
 }
-function storyCurrent(){
-  const feed = $("feed"), el = feed.children[Math.round(feed.scrollTop / feed.clientHeight)];
-  return el && el.classList.contains("slide") ? el : null;
+function colorSlides(){ feed.scroller.querySelectorAll(".slide:not([style])").forEach(sl => setColors(sl, sl.dataset.dom)); }
+function addSlides(k){
+  if(!isCard(feed.scroller.firstElementChild)) return;  // the "no questions" card stays on its own
+  feed.scroller.insertAdjacentHTML("beforeend", slidesHTML(k));
+  colorSlides();
+}
+function openStory(){
+  stopTimer();
+  sw.n = sw.right = sw.total = 0;
+  feed.open(slidesHTML(10) || '<div class="st-end"><h2>Tidak ada soal</h2><p>Longgarkan saringan bidang, simpul, atau tingkat.</p>' +
+    '<button class="btn" type="button" data-act="close">Kembali</button></div>', 0);
+  colorSlides();
 }
 function storyReveal(sl){
-  if(!sl || sl.dataset.open) return;
+  if(!isCard(sl) || sl.dataset.open) return;
   const q = Q.find(x => x.id === sl.dataset.id);
   sl.dataset.open = "1";
   sl.querySelector(".st-tap").remove();
@@ -639,58 +759,33 @@ function storyReveal(sl){
   sl.querySelector('[data-act="right"]').focus({preventScroll:true});
 }
 function storyGrade(sl, ok){
-  if(!sl || !sl.dataset.open || sl.dataset.done) return;
+  if(!isCard(sl) || !sl.dataset.open || sl.dataset.ok) return;
   const q = Q.find(x => x.id === sl.dataset.id), s = stats[q.id] || {r:0, w:0, l:null};
   ok ? s.r++ : s.w++; s.l = ok ? 1 : 0; stats[q.id] = s; save();
-  sl.dataset.done = ok ? "1" : "0";
-  story.total++; if(ok) story.right++;
+  sl.dataset.ok = ok ? "1" : "0";
+  sw.total++; if(ok) sw.right++;
   state.sTotal++; if(ok) state.sRight++;
   $("sRight").textContent = state.sRight; $("sTotal").textContent = state.sTotal;
-  $("feed").querySelectorAll(".sc-r").forEach(b => b.textContent = story.right);
-  $("feed").querySelectorAll(".sc-t").forEach(b => b.textContent = story.total);
+  feed.scroller.querySelectorAll(".sc-r").forEach(b => b.textContent = sw.right);
+  feed.scroller.querySelectorAll(".sc-t").forEach(b => b.textContent = sw.total);
+  feed.scroller.focus({preventScroll:true});  // keep focus in the feed, not on a button that is about to be disabled
   sl.querySelectorAll(".st-grade button").forEach(b => b.disabled = true);
-  setTimeout(() => storyMove(1), 350);
+  setTimeout(() => feed.move(1), 350);
 }
-function storyMove(dir){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); }
-function setMode(on){
-  const url = new URL(location.href);
-  on ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
-  try { history.replaceState(null, "", url); } catch(e) {}
-}
-function openStory(){
-  stopTimer();
-  story.on = true; story.n = 0; story.right = 0; story.total = 0;
-  $("feed").innerHTML = "";
-  addSlides(10);
-  $("story").hidden = false; document.body.classList.add("story-open");
-  $("feed").scrollTop = 0; $("feed").focus({preventScroll:true});
-  setMode(true);
-}
-function closeStory(){
-  story.on = false;
-  $("story").hidden = true; document.body.classList.remove("story-open");
-  setMode(false); updatePoolInfo();
-  if(state.tab === "kemajuan") renderProgress(); else if(state.tab === "daftar") renderList();
-}
-$("storyOpen").addEventListener("click", openStory);
-$("storyClose").addEventListener("click", closeStory);
-$("feed").addEventListener("scroll", () => {
-  const feed = $("feed");
-  if(feed.scrollTop + feed.clientHeight * 3 >= feed.scrollHeight) addSlides(10);
-}, {passive:true});
-$("feed").addEventListener("click", e => {
+$("feedOpen").addEventListener("click", openStory);
+feed.scroller.addEventListener("click", e => {
   const act = e.target.closest("[data-act]"); if(!act) return;
   const sl = act.closest(".slide");
   if(act.dataset.act === "reveal") storyReveal(sl);
   if(act.dataset.act === "right") storyGrade(sl, true);
   if(act.dataset.act === "wrong") storyGrade(sl, false);
-  if(act.dataset.act === "close") closeStory();
+  if(act.dataset.act === "close") feed.close();
   if(act.dataset.act === "drill"){
     const q = Q.find(x => x.id === sl.dataset.id);
     state.domain = "mix"; state.topic = q.t; state.level = 0; state.wrong = false; $("fWrong").checked = false; state.ctx = false; $("fCtx").checked = false;
     buildFilters(); updatePoolInfo();
     while(sl.nextElementSibling) sl.nextElementSibling.remove();
-    addSlides(10); storyMove(1);
+    addSlides(10); feed.move(1);
   }
 });
 const h = location.hash.slice(1);

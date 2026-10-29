@@ -208,7 +208,6 @@ function scripts(s){
 
 const LETTERS = "ABCDEFGH";
 const FORMAT = {"isian":"Isian angka","pilihan-ganda":"Pilihan ganda","pilihan-ganda-kompleks":"Pilihan ganda kompleks","benar-salah":"Benar–salah"};
-const TKA_LEVEL = {"FIS-UKUR":1,"FIS-GRAF":2,"FIS-HITUNG":2,"FIS-KONSEP":2,"FIS-ANALISIS":3,"FIS-STRATEGI":3,"FIS-EKSP":3};
 const items = {};
 MOD.tahap.forEach((s, i) => { s.c = "var(--s" + (i % 5 + 1) + ")"; s.soal.forEach((it, j) => { it.no = j + 1; it.stage = s; items[it.id] = it; }); });
 let current = MOD.tahap[0].tahap;
@@ -286,7 +285,7 @@ function controls(it){
 function itemHTML(it){
   const done = state[it.id] && state[it.id].ok;
   let badges = '<span class="badge">' + FORMAT[it.format] + "</span>";
-  if(it.tka) badges += '<a class="badge tka" href="tka.html" title="Pola soal: ' + it.tka.acuan.join(", ") + '">Setara TKA · ' + it.tka.tipe + (TKA_LEVEL[it.tka.tipe] ? " · level " + TKA_LEVEL[it.tka.tipe] : "") + "</a>";
+  if(it.tka) badges += '<a class="badge tka" href="tka.html" title="Pola soal: ' + it.tka.acuan.join(", ") + '">Setara TKA · ' + it.tka.tipe + ((MOD.tka_levels || {})[it.tka.tipe] ? " · level " + MOD.tka_levels[it.tka.tipe] : "") + "</a>";
   if(done) badges += '<span class="badge done">Sudah benar</span>';
   const stem = it.soal.split("[Tabel]");
   const stemHTML = paras(stem[0]) + (it.tabel ? table(it.tabel) : "") + (stem[1] ? paras(stem[1]) : "");

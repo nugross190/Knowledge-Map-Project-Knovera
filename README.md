@@ -81,12 +81,14 @@ data/tka/<id>.json      one transcribed TKA exam paper per file; all feed docs/t
 templates/*.html        page sources; each becomes docs/<same name>
 templates/_map.html     shared page for every subject map (files starting with _ are not built directly)
 templates/_theme.css    shared light theme, added to every page by build.py
+templates/_feed.css     swipe feed ("Mode geser") shared by the map, bank and TKA pages: styles
+templates/_feed.js      swipe feed: script (a template pulls shared files in with /*@include _name*/)
 templates/_icons.json   subject icons for the home page and map headers
 specs/                  rules for content, questions, workflow, and quality checks
-scripts/build.py        checks the data, then builds docs/
-tests/test_build.py     tests for the checks and the build
-docs/                   the built site (GitHub Pages serves this folder)
-.github/workflows/      CI: validate, test, and confirm docs/ was rebuilt
+scripts/build.py        checks the data, then builds docs/ (rewrites only changed files, removes pages no longer built)
+tests/test_build.py     tests for the checks and the build (they build into temporary folders, never into docs/)
+docs/                   the built site (GitHub Pages serves this folder); generated, never edited by hand
+.github/workflows/      CI: validate, test, and confirm docs/ matches a fresh build (including added or removed pages)
 ```
 
 ## Adding or fixing questions
@@ -120,7 +122,7 @@ Text may contain simple HTML (`<b>`, `<i>`, `<sub>`, `<sup>`). Unicode superscri
 
 ## Publishing
 
-In the repository settings, under Pages, choose "Deploy from a branch", branch `main`, folder `/docs`. The site will be at `https://<user>.github.io/<repo>/`. GitHub Pages on a free account requires a public repository; nothing here is personal data.
+In the repository settings, under Pages, choose "Deploy from a branch", branch `main`, folder `/docs`. The site will be at `https://<user>.github.io/<repo>/`, now https://nugross190.github.io/Knowledge-Map-Project-Knovera/. GitHub Pages on a free account requires a public repository; nothing here is personal data. The address follows the repository name, and GitHub does not redirect it after a rename, so a rename also needs `PAGES_URL` in `scripts/build.py` updated (the 404 page and the claude.ai copies link through it).
 
 The build also writes `docs/.nojekyll`, so GitHub publishes the folder as-is instead of running it through Jekyll, and `docs/404.html`, shown for any missing address. A root `index.html` forwards visitors to `docs/`, so even if Pages is accidentally set to the repository root, the start page appears instead of this README. After changing the Pages setting, wait for the "pages build and deployment" run in the Actions tab to finish, then hard-refresh (Ctrl+Shift+R); browsers cache the previous version.
 
