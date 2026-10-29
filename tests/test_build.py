@@ -194,6 +194,11 @@ class MapsTest(unittest.TestCase):
         self.assertTrue(payload["icon"])
         self.assertIn('id="grades"', page)
 
+    def test_map_pages_have_story_mode(self):
+        for name, page in build.map_pages(self.maps, {}).items():
+            for needle in ('id="storyOpen"', 'id="story"', 'id="feed"', 'params.get("mode") === "geser"'):
+                self.assertIn(needle, page, name)
+
     def test_every_map_has_an_icon(self):
         icons = build.load_icons()
         for name in self.maps:

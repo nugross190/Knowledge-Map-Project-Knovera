@@ -10,7 +10,8 @@
 <style>
 /* Layout: home page. Nav → hero with "continue" button → stats → "Mau belajar apa?" group tabs with subject cards
    (a card opens the grade chooser) → other tools → how to study → FAQ. Cards, tabs and numbers come from scripts/build.py;
-   progress comes from each map's saved checklist in this browser. */
+   progress comes from each map's saved checklist in this browser. Phones come first: below 600px the hero art goes,
+   the tabs scroll in one row, subject cards sit two per row, and the grade chooser opens maps in story mode by default. */
 :root{
   --bg:#F4F8FD; --surface:#FFFFFF; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
   --f-label:"Poppins",system-ui,sans-serif;
@@ -110,7 +111,12 @@ dialog::backdrop{background:rgba(21,22,26,.4)}
 .dlg-head p{color:var(--muted);font-size:.9rem}
 .x{margin-left:auto;align-self:flex-start;font:inherit;font-size:1.3rem;line-height:1;border:2px solid var(--stroke);border-radius:10px;background:var(--surface);width:36px;height:36px;cursor:pointer}
 .x:hover,.x:focus-visible{background:var(--yellow)}
-.grades{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.view{display:flex;align-items:center;gap:10px;margin-top:16px;font-family:var(--f-label);font-weight:600;font-size:.88rem}
+.view .seg{display:inline-flex}
+.view .seg button{font:inherit;border:0;background:transparent;color:var(--ink);padding:6px 12px;cursor:pointer}
+.view .seg button + button{border-left:2px solid var(--stroke)}
+.view-note{font-size:.82rem;color:var(--muted);margin-top:6px}
+.grades{display:flex;flex-direction:column;gap:10px;margin-top:14px}
 .grades a{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:4px 14px;text-decoration:none;border:2px solid var(--stroke);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow-sm);background:var(--surface)}
 .grades a:hover,.grades a:focus-visible{background:var(--blue-soft);outline:none}
 .grades a.all{background:var(--yellow)}
@@ -153,12 +159,36 @@ footer{margin-top:72px;padding-block:20px 48px;color:var(--muted);font-size:.88r
   .stats{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:1fr}
 }
-@media (max-width:480px){
+@media (max-width:600px){
   .wrap{padding-inline:16px}
+  .nav .wrap{min-height:56px}
   .nav nav a:not(:last-child){display:none}
-  .stats b{font-size:1.6rem}
-  .art{max-width:220px}
-  section.block{margin-top:56px}
+  .art{display:none}
+  .hero{padding-block:24px 18px}
+  .hero h1{font-size:2.1rem;margin-top:12px}
+  .hero .lead{font-size:1rem;margin-top:10px}
+  .cta{margin-top:18px}
+  .cta .btn{flex:1 1 140px;padding:10px 14px}
+  .stats{gap:10px;margin-top:16px}
+  .stats div{padding:10px 12px;box-shadow:var(--shadow-sm)}
+  .stats b{font-size:1.4rem}
+  .stats span{font-size:.8rem}
+  section.block{margin-top:44px}
+  .head{margin-bottom:14px}
+  .head p{font-size:.92rem}
+  .tabs{flex-wrap:nowrap;overflow-x:auto;margin-inline:-16px;padding:2px 16px 8px;scrollbar-width:none}
+  .tabs::-webkit-scrollbar{display:none}
+  .gtab{flex:none;padding:7px 14px;font-size:.92rem}
+  .subs{grid-template-columns:1fr 1fr;gap:12px}
+  .sub{padding:12px;border-radius:16px;box-shadow:var(--shadow-sm);gap:4px}
+  .sub .ico{width:44px;height:44px;border-radius:12px;margin-bottom:4px}
+  .sub .ico svg{width:28px;height:28px}
+  .sname{font-size:1rem}
+  .smeta{font-size:.8rem}
+  .sgrades{display:none}
+  .sdone{font-size:.74rem}
+  dialog{width:100%;max-width:100%;margin:auto 0 0;border-radius:22px 22px 0 0;border-bottom:0;box-shadow:none}
+  .dlg{padding:18px 16px calc(18px + env(safe-area-inset-bottom))}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
 /* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
@@ -306,6 +336,9 @@ footer{border-top:2px solid var(--stroke)}
 <dialog id="kelas" aria-labelledby="dlgName">
   <div class="dlg">
     <div class="dlg-head"><span class="ico" id="dlgIcon"></span><div><h2 id="dlgName"></h2><p>Pilih kelas</p></div><button class="x" type="button" id="dlgClose" aria-label="Tutup">×</button></div>
+    <div class="view"><span id="viewLbl">Tampilan</span><div class="seg" role="group" aria-labelledby="viewLbl" id="view">
+      <button type="button" data-view="geser" aria-pressed="false">Geser</button><button type="button" data-view="peta" aria-pressed="false">Peta lengkap</button></div></div>
+    <p class="view-note" id="viewNote"></p>
     <div class="grades" id="dlgGrades"></div>
     <div class="dlg-foot" id="dlgFoot"></div>
   </div>
@@ -320,7 +353,12 @@ const $ = id => document.getElementById(id);
 const FASE = {X: "Fase E", XI: "Fase F", XII: "Fase F"};
 function read(key, fallback){ try { const v = JSON.parse(localStorage.getItem(key)); return v == null ? fallback : v; } catch(e) { return fallback; } }
 const doneOf = map => new Set(read("peta-" + map + "-v1", []));
-const pageUrl = (s, kelas) => s.href + (kelas ? (s.href.includes("?") ? "&" : "?") + "kelas=" + kelas : "");
+const pageUrl = (s, kelas, geser) => {
+  const q = [kelas ? "kelas=" + kelas : "", geser ? "mode=geser" : ""].filter(Boolean).join("&");
+  return s.href + (q ? (s.href.includes("?") ? "&" : "?") + q : "");
+};
+// How the grade chooser opens a map: "geser" (story feed, one topic per screen) or "peta" (the full catalogue).
+let view = read("knovera-view", matchMedia("(max-width: 600px)").matches ? "geser" : "peta");
 
 // Hero tiles reuse the subject icons from the cards.
 document.querySelectorAll(".art .tile").forEach(t => {
@@ -368,33 +406,45 @@ document.querySelectorAll(".sub").forEach(card => {
 function subjectFor(r){ return Object.values(HOME.subjects).find(s => s.map === r.map && s.lanjut === !!r.lanjut); }
 const label = r => { const s = subjectFor(r); return s ? s.name + (r.kelas ? " · Kelas " + r.kelas : "") : ""; };
 if(recent.length && subjectFor(recent[0])){
-  $("resume").hidden = false; $("resume").href = pageUrl(subjectFor(recent[0]), recent[0].kelas);
+  $("resume").hidden = false; $("resume").href = pageUrl(subjectFor(recent[0]), recent[0].kelas, recent[0].geser);
   $("resumeWhat").textContent = label(recent[0]);
 }
 const rs = recent.filter(subjectFor).slice(0, 6);
 if(rs.length){
   $("recent").hidden = false;
-  rs.forEach(r => { const a = document.createElement("a"); a.href = pageUrl(subjectFor(r), r.kelas); a.textContent = label(r); $("recent").appendChild(a); });
+  rs.forEach(r => { const a = document.createElement("a"); a.href = pageUrl(subjectFor(r), r.kelas, r.geser); a.textContent = label(r); $("recent").appendChild(a); });
 }
 
 // Grade chooser.
 const dlg = $("kelas");
-document.addEventListener("click", e => {
-  const card = e.target.closest(".sub");
-  if(!card || !dlg.showModal) return;
-  e.preventDefault();
-  const s = HOME.subjects[card.dataset.sid], done = doneOf(s.map);
-  $("dlgIcon").innerHTML = card.querySelector(".ico").innerHTML;
-  $("dlgName").textContent = s.name;
+let current = null;
+function fillGrades(){
+  const s = current, done = doneOf(s.map);
+  document.querySelectorAll("#view button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.view === view)));
+  $("viewNote").textContent = view === "geser" ? "Satu simpul satu layar, seperti story: ketuk untuk lanjut, geser ke atas untuk simpul berikutnya." : "Semua simpul dalam satu halaman, dengan pencarian dan peta bidang.";
   const row = (kelas, codes) => {
     const k = codes.filter(c => done.has(c)).length;
-    return '<a href="' + pageUrl(s, kelas) + '"' + (kelas ? "" : ' class="all"') + '><span class="g">' + (kelas || "Semua") + '</span>' +
+    return '<a href="' + pageUrl(s, kelas, view === "geser") + '"' + (kelas ? "" : ' class="all"') + '><span class="g">' + (kelas || "Semua") + '</span>' +
       '<span class="t">' + (kelas ? "Kelas " + kelas : "Semua kelas") + '<small>' + (kelas ? FASE[kelas] + " · " : "") + codes.length + ' simpul</small></span>' +
       '<span class="d">' + (k ? k + " dikuasai" : "") + '</span></a>';
   };
   $("dlgGrades").innerHTML = Object.entries(s.grades).map(([g, codes]) => row(g, codes)).join("") + row("", s.codes);
   $("dlgFoot").innerHTML = s.bank ? '<a class="btn" href="' + s.bank + '">Bank soal ' + s.name + '</a>' : "";
+}
+document.addEventListener("click", e => {
+  const card = e.target.closest(".sub");
+  if(!card || !dlg.showModal) return;
+  e.preventDefault();
+  current = HOME.subjects[card.dataset.sid];
+  $("dlgIcon").innerHTML = card.querySelector(".ico").innerHTML;
+  $("dlgName").textContent = current.name;
+  fillGrades();
   dlg.showModal();
+});
+$("view").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  view = b.dataset.view; fillGrades();
+  try { localStorage.setItem("knovera-view", JSON.stringify(view)); } catch(e) {}
 });
 $("dlgClose").addEventListener("click", () => dlg.close());
 dlg.addEventListener("click", e => { if(e.target === dlg) dlg.close(); });
