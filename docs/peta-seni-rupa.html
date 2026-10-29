@@ -6,29 +6,19 @@
 <title>Peta Materi Seni Rupa SMA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+/* Layout: generic subject map, same catalogue look as the history map. "Mode geser" opens the same topics as a
+   full-screen story feed (one topic per screen, swipe up for the next, tap through its parts). Grade filter and domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json; each topic's grades come from its src (scripts/build.py). */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
   --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -93,7 +83,6 @@ section{margin-top:44px}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
 .lj{border:1.3px dotted var(--ink);font-style:italic}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.chip.off{opacity:.35}
 #lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
@@ -131,7 +120,7 @@ td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
 .traps li::marker{color:var(--warn)}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
 
@@ -142,19 +131,158 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .card-head{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.titlebar{display:flex;align-items:center;gap:16px;margin-top:8px}
+.subj-ico{flex:none;display:grid;place-items:center;width:60px;height:60px;border:2px solid var(--ink);border-radius:16px;background:var(--mark)}
+.subj-ico svg{width:38px;height:38px}
+.subj-ico:empty{display:none}
+.grade-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.grade-bar .lbl{font-family:var(--f-label);font-weight:600;font-size:.92rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg button{font:inherit;font-family:var(--f-label);font-weight:600;font-size:.92rem;border:0;background:transparent;color:var(--ink);padding:8px 14px;cursor:pointer;line-height:1.2}
+.seg button small{display:block;font-family:var(--f-body);font-weight:400;font-size:.72rem;opacity:.8}
+.seg button + button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.empty-note{color:var(--muted);font-size:.95rem}
+.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
+.story-btn svg{width:18px;height:18px}
+
+/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
+   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
+.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
+.st-feed{position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide > *{position:relative;z-index:1}
+.bars{display:flex;gap:4px;padding-right:44px}
+.bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
+.bars i.on{background:var(--ink)}
+.st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
+.st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
+.st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
+.slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
+.st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
+.st-card.trap .st-label{color:var(--warn)}
+.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
+.st-body li::marker{color:var(--c)}
+.st-body .st-sum{font-size:1.2rem;line-height:1.45}
+.st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
+.st-body .tbl{margin-top:4px;font-size:.92rem}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
+.st-end h2{font-size:1.8rem;font-weight:800}
+.st-end .btn{text-decoration:none}
+body.story-open{overflow:hidden}
+@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
+
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
 </style>
 
 <div class="wrap">
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow" id="eyebrow"></div>
-    <h1 style="margin-top:8px" id="title"></h1>
+    <div class="titlebar"><span class="subj-ico" id="icon" aria-hidden="true"></span><h1 id="title"></h1></div>
     <p class="lead" id="lead"></p>
+    <div class="grade-bar"><span class="lbl" id="gradeLbl">Kelas</span>
+      <div class="seg" id="grades" role="group" aria-labelledby="gradeLbl">
+        <button type="button" data-kelas="" aria-pressed="true">Semua<small>X–XII</small></button>
+        <button type="button" data-kelas="X" aria-pressed="false">Kelas X<small>Fase E</small></button>
+        <button type="button" data-kelas="XI" aria-pressed="false">Kelas XI<small>Fase F</small></button>
+        <button type="button" data-kelas="XII" aria-pressed="false">Kelas XII<small>Fase F</small></button>
+      </div>
+    </div>
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -171,6 +299,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
+    <p class="empty-note" id="emptyNote" hidden>Tidak ada simpul untuk pilihan ini. Pilih Semua kelas.</p>
     <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
     <p id="lanjutNote" hidden></p>
   </section>
@@ -182,14 +311,23 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div class="notes" id="notes"></div>
   </section>
 
+  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
+    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
+    <div class="st-feed" id="feed"></div>
+  </div>
+
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
 <script>
-const MAP = {"id": "seni-rupa", "subject": "Seni Rupa", "title": "Peta Materi Seni Rupa SMA", "lead": "Seluruh materi Seni Rupa SMA, dari unsur, prinsip, dan warna sampai teknik karya dua dan tiga dimensi, aliran dan tokoh, serta pameran dan kritik, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur dan prinsip seni rupa, warna, perspektif, menggambar dan melukis, grafis, patung, kriya, desain, aliran, tokoh, pameran, dan kritik.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Rupa SMA: unsur dan prinsip, teknik berkarya, sejarah dan tokoh, serta apresiasi dan pameran. Label kelas hanya perkiraan karena buku menyusun materi per proyek.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: dari unsur, prinsip, dan warna, ke teknik dua dan tiga dimensi, lalu sejarah, kritik, dan pameran.", "path": [{"label": "Unsur", "title": "Unsur seni rupa", "note": "Garis, bidang, warna", "to": "UNR-01"}, {"label": "Prinsip", "title": "Prinsip seni rupa", "note": "Kesatuan, keseimbangan", "to": "UNR-02"}, {"label": "Warna", "title": "Teori warna", "note": "Primer, komplementer", "to": "UNR-03"}, {"label": "Gambar", "title": "Menggambar dan melukis", "note": "Teknik, media", "to": "KRP-01"}, {"label": "Tiga dimensi", "title": "Patung", "note": "Aditif, subtraktif", "to": "KRP-03"}, {"label": "Aliran", "title": "Aliran seni rupa", "note": "Realisme sampai pop art", "to": "SEJ-01"}, {"label": "Kritik", "title": "Apresiasi dan kritik", "note": "Tahap Feldman", "to": "APR-01"}], "domains": [{"id": "UNR", "name": "Unsur dan prinsip seni rupa", "short": "Unsur dan prinsip", "note": "Unsur visual, prinsip penyusunan, warna, perspektif, dan gelap terang.", "topics": [{"code": "UNR-01", "title": "Unsur seni rupa", "scope": "Titik, garis, bidang, warna, tekstur", "src": "Kelas X", "tier": 1, "sum": "Karya seni rupa tersusun dari unsur visual: titik, garis, bidang, bentuk, ruang, warna, tekstur, dan gelap terang.", "blocks": [{"h": "Unsur", "table": {"cols": ["Unsur", "Keterangan"], "rows": [["Titik", "Unsur paling dasar; kumpulan titik membentuk garis atau bidang"], ["Garis", "Lurus, lengkung, zig-zag; memberi kesan arah dan gerak"], ["Bidang", "Bentuk datar dua dimensi (geometris atau organis)"], ["Bentuk", "Wujud tiga dimensi yang bervolume"], ["Ruang", "Kesan jauh-dekat atau kedalaman"], ["Tekstur", "Sifat permukaan: nyata (teraba) atau semu (hanya terlihat)"], ["Gelap terang", "Perbedaan intensitas cahaya yang memberi kesan volume"]]}}], "traps": ["Tekstur semu hanya terlihat kasar tetapi rata bila diraba; tekstur nyata benar-benar teraba."]}, {"code": "UNR-02", "title": "Prinsip seni rupa", "scope": "Kesatuan, keseimbangan, irama, proporsi", "src": "Kelas X", "tier": 1, "sum": "Prinsip seni rupa mengatur cara unsur disusun agar karya utuh dan menarik.", "blocks": [{"h": "Prinsip", "table": {"cols": ["Prinsip", "Keterangan"], "rows": [["Kesatuan (unity)", "Semua unsur terasa sebagai satu kesatuan"], ["Keseimbangan", "Simetris (sama kiri-kanan), asimetris (berbeda tetapi seimbang), radial (memusat)"], ["Irama", "Pengulangan unsur yang teratur"], ["Proporsi", "Perbandingan ukuran antarbagian"], ["Pusat perhatian (aksen)", "Bagian yang paling menarik perhatian"], ["Harmoni", "Keselarasan antarunsur"], ["Kontras", "Perbedaan mencolok untuk menarik perhatian"]]}}], "traps": ["Keseimbangan asimetris tetap seimbang walau kedua sisi tidak sama."]}, {"code": "UNR-03", "title": "Teori warna", "scope": "Primer, sekunder, komplementer", "src": "Kelas X", "tier": 1, "sum": "Warna dikelompokkan menurut cara terbentuknya (teori Brewster) dan menurut kesan yang ditimbulkannya.", "blocks": [{"h": "Teori Brewster", "li": ["<b>Warna primer<\/b>: merah, kuning, biru.", "Warna sekunder: jingga (merah + kuning), hijau (kuning + biru), ungu (merah + biru).", "Warna tersier: campuran warna primer dengan sekunder di sebelahnya.", "Warna komplementer (kontras) berseberangan pada lingkaran warna: merah–hijau, kuning–ungu, biru–jingga."]}, {"h": "Kesan dan sistem lain", "li": ["Warna panas (merah, jingga, kuning) berkesan semangat; warna dingin (biru, hijau, ungu) berkesan tenang.", "Warna cahaya di layar memakai RGB (merah, hijau, biru); tinta cetak memakai CMYK."]}], "traps": ["Hijau adalah warna sekunder (kuning + biru), bukan primer menurut teori Brewster."]}, {"code": "UNR-04", "title": "Perspektif", "scope": "Titik hilang, garis horizon", "src": "Kelas XI", "tier": 2, "sum": "Perspektif membuat gambar dua dimensi terkesan berkedalaman.", "blocks": [{"h": "Perspektif", "li": ["Garis horizon: garis setinggi mata pengamat; titik hilang: titik di horizon tempat garis-garis sejajar bertemu.", "<b>Perspektif satu titik hilang<\/b>: objek dilihat dari depan, misalnya jalan lurus atau lorong.", "Dua titik hilang: objek dilihat dari sudut; tiga titik hilang: objek tinggi dilihat dari bawah atau atas.", "Perspektif warna: benda jauh tampak lebih pudar dan kebiruan."]}]}, {"code": "UNR-05", "title": "Gambar bentuk dan gelap terang", "scope": "Cahaya, bayangan, arsir", "src": "Kelas X", "tier": 2, "sum": "Menggambar benda nyata dengan memperhatikan proporsi, arah cahaya, dan bayangan.", "blocks": [{"h": "Gelap terang", "li": ["Bagian benda yang terkena cahaya paling terang, lalu bayangan inti, dan bayangan jatuh (cast shadow) di bidang dasar.", "<b>Arah cahaya<\/b> menentukan letak bayangan; bayangan jatuh berada di sisi yang berlawanan dengan sumber cahaya.", "Gambar bentuk (still life) melatih proporsi, komposisi, dan gelap terang."]}]}]}, {"id": "KRP", "name": "Berkarya dua dan tiga dimensi", "short": "Berkarya", "note": "Teknik dan media menggambar, melukis, grafis, patung, kriya, desain, dan media baru.", "topics": [{"code": "KRP-01", "title": "Menggambar dan melukis", "scope": "Teknik arsir, media cat", "src": "Kelas X–XI", "tier": 1, "sum": "Teknik dan media untuk menggambar dan melukis, serta perbedaan sifat cat.", "blocks": [{"h": "Teknik gambar", "table": {"cols": ["Teknik", "Cara"], "rows": [["Arsir", "Garis-garis sejajar atau bersilang untuk gelap terang"], ["Dusel", "Menggosok goresan pensil atau arang agar halus"], ["Pointilis", "Titik-titik rapat"], ["Blok", "Menutup bidang dengan satu warna"]]}}, {"h": "Media cat", "li": ["<b>Cat air teknik aquarel<\/b> tipis dan transparan; teknik plakat tebal dan menutup (opak).", "Cat minyak lambat kering dan diencerkan dengan minyak; cat akrilik cepat kering dan diencerkan dengan air.", "Jenis gambar: gambar bentuk, gambar ilustrasi, gambar model, gambar ragam hias."]}], "traps": ["Aquarel transparan, plakat opak. Keduanya sama-sama memakai cat air."]}, {"code": "KRP-02", "title": "Seni grafis", "scope": "Cetak tinggi, dalam, datar, saring", "src": "Kelas XI", "tier": 1, "sum": "Seni grafis menghasilkan karya yang dapat dicetak berulang dengan klise atau acuan cetak.", "blocks": [{"h": "Teknik cetak", "table": {"cols": ["Teknik", "Ciri", "Contoh"], "rows": [["Cetak tinggi", "Bagian yang menonjol menerima tinta", "Cukil kayu, cukil lino, stempel"], ["Cetak dalam", "Tinta mengisi bagian yang digores atau diasamkan", "Etsa, drypoint"], ["Cetak datar", "Acuan rata, memakai sifat tolak-menolak minyak dan air", "Litografi"], ["Cetak saring", "Tinta ditekan melewati screen berpola", "Sablon (serigrafi)"]]}}], "traps": ["Pada cetak tinggi bagian menonjol yang tercetak; pada cetak dalam bagian cekung yang tercetak."]}, {"code": "KRP-03", "title": "Patung", "scope": "Teknik aditif, subtraktif, cor", "src": "Kelas XI–XII", "tier": 1, "sum": "Patung adalah karya tiga dimensi yang dibuat dengan menambah, mengurangi, mencetak, atau merakit bahan.", "blocks": [{"h": "Teknik", "table": {"cols": ["Teknik", "Cara", "Bahan"], "rows": [["Pahat (subtraktif)", "Mengurangi bahan", "Kayu, batu"], ["Butsir/modeling (aditif)", "Menambah bahan", "Tanah liat, plastisin"], ["Cor (cetak)", "Menuang bahan cair ke cetakan", "Gips, logam, semen"], ["Konstruksi (rakit)", "Menyambung bagian-bagian", "Logam, kayu, barang bekas"]]}}, {"h": "Jenis", "li": ["<b>Patung relief<\/b> menempel pada bidang dan hanya dapat dilihat dari depan; patung trimatra dapat dilihat dari segala arah."]}], "traps": ["Memahat adalah teknik subtraktif (mengurangi), membutsir adalah aditif (menambah)."]}, {"code": "KRP-04", "title": "Kriya", "scope": "Batik, tenun, keramik, ukir", "src": "Kelas X–XII", "tier": 2, "sum": "Kriya adalah seni rupa terapan yang mengutamakan keterampilan tangan dan fungsi, dengan bahan dan teknik khas.", "blocks": [{"h": "Kriya", "li": ["Kriya tekstil (batik, tenun, sulam), kriya kayu (ukir Jepara), kriya keramik (gerabah Kasongan), kriya logam, kriya kulit.", "<b>Keramik<\/b> dibentuk dari tanah liat dengan teknik pijat, pilin, lempeng (slab), atau putar, lalu dibakar.", "Fungsi kriya: hias, pakai, dan benda upacara."]}]}, {"code": "KRP-05", "title": "Desain komunikasi visual", "scope": "Poster, logo, tipografi", "src": "Kelas XI–XII", "tier": 2, "sum": "Desain komunikasi visual menyampaikan pesan lewat gambar, huruf, dan tata letak.", "blocks": [{"h": "Karya desain", "li": ["Poster menyampaikan pesan singkat dan menarik dari jarak jauh; logo adalah lambang identitas.", "<b>Tipografi<\/b>: seni memilih dan menata huruf; huruf serif berkait, sans-serif tanpa kait.", "Prinsip tata letak: hierarki (yang penting lebih menonjol), keseimbangan, ruang kosong, dan keterbacaan."]}]}, {"code": "KRP-06", "title": "Fotografi dan seni media baru", "scope": "Komposisi foto, instalasi, digital", "src": "Kelas XII", "tier": 3, "sum": "Seni rupa kontemporer memakai media baru: fotografi, video, instalasi, dan karya digital.", "blocks": [{"h": "Media baru", "li": ["<b>Aturan sepertiga<\/b> (rule of thirds): objek utama diletakkan di titik potong garis yang membagi bidang menjadi tiga bagian.", "Seni instalasi: karya yang menata benda di suatu ruang agar dialami penonton.", "Seni digital dibuat dengan perangkat lunak; seni video memakai rekaman gambar bergerak."]}]}, {"code": "KRP-07", "title": "Mural dan seni rupa publik", "scope": "Mural, monumen, seni ruang publik", "src": "Kelas XI–XII", "tier": 2, "sum": "Karya seni rupa yang dibuat untuk ruang publik dan dinikmati banyak orang.", "blocks": [{"h": "Bentuk", "li": ["<b>Mural<\/b>: lukisan pada dinding atau tembok yang besar, sering bertema lingkungan atau sosial.", "Monumen dan patung kota memperingati tokoh atau peristiwa.", "Karya ruang publik memerlukan izin dari pemilik tempat atau pemerintah setempat."]}]}]}, {"id": "SEJ", "name": "Sejarah dan tokoh seni rupa", "short": "Sejarah", "note": "Aliran seni rupa dunia, seni rupa Indonesia, seni rupa prasejarah, dan Renaisans.", "topics": [{"code": "SEJ-01", "title": "Aliran seni rupa", "scope": "Realisme sampai pop art", "src": "Kelas XI–XII", "tier": 1, "sum": "Aliran seni rupa Barat beserta ciri dan tokohnya.", "blocks": [{"h": "Aliran", "table": {"cols": ["Aliran", "Ciri", "Tokoh"], "rows": [["Naturalisme dan realisme", "Meniru kenyataan apa adanya", "Gustave Courbet"], ["Romantisme", "Dramatis, emosional, sering bertema heroik", "Eugène Delacroix"], ["Impresionisme", "Menangkap kesan cahaya sesaat", "Claude Monet"], ["Ekspresionisme", "Mengungkapkan perasaan batin dengan goresan kuat", "Edvard Munch"], ["Kubisme", "Objek dipecah menjadi bidang geometris", "Pablo Picasso, Georges Braque"], ["Surealisme", "Dunia mimpi dan alam bawah sadar", "Salvador Dalí"], ["Abstrak", "Tidak meniru bentuk nyata", "Wassily Kandinsky"], ["Pop art", "Mengangkat budaya populer dan iklan", "Andy Warhol"]]}}, {"h": "Catatan", "li": ["<b>Nama impresionisme<\/b> berasal dari lukisan Monet, Impression, Sunrise (1872)."]}], "traps": ["Kubisme memecah objek menjadi bidang geometris; surealisme menggambarkan dunia mimpi."]}, {"code": "SEJ-02", "title": "Seni rupa Indonesia dan tokohnya", "scope": "Raden Saleh, Persagi, Affandi", "src": "Kelas XI–XII", "tier": 1, "sum": "Perkembangan seni rupa modern Indonesia dari Raden Saleh sampai Gerakan Seni Rupa Baru.", "blocks": [{"h": "Tokoh dan peristiwa", "table": {"cols": ["Tokoh atau peristiwa", "Keterangan"], "rows": [["Raden Saleh", "Pelopor seni lukis modern Indonesia, beraliran romantisme; Penangkapan Pangeran Diponegoro (1857)"], ["Mooi Indië", "Lukisan pemandangan Hindia yang serba indah; dikritik Sudjojono"], ["Persagi (1938)", "Persatuan Ahli-Ahli Gambar Indonesia, didirikan S. Sudjojono dan Agus Djaya"], ["S. Sudjojono", "Bapak Seni Rupa Indonesia Modern; konsep jiwa ketok"], ["Affandi", "Pelukis ekspresionis; sering melukis langsung dari tube cat"], ["Basuki Abdullah", "Pelukis realis dan naturalis, dikenal dengan lukisan potret"], ["Gerakan Seni Rupa Baru (1975)", "Menolak batas seni rupa yang kaku; memakai media baru"]]}}], "traps": ["Raden Saleh beraliran romantisme; Affandi ekspresionisme; Basuki Abdullah realisme dan naturalisme."]}, {"code": "SEJ-03", "title": "Seni rupa prasejarah dan tradisional", "scope": "Lukisan gua, ragam hias", "src": "Kelas X", "tier": 2, "sum": "Seni rupa Nusantara sudah ada sejak prasejarah dan berlanjut dalam ragam hias tradisional.", "blocks": [{"h": "Prasejarah", "li": ["Lukisan cap tangan di gua-gua Maros, Sulawesi Selatan.", "<b>Lukisan babi kutil di Leang Tedongnge<\/b>, Sulawesi Selatan, berumur sedikitnya 45.500 tahun (diumumkan 2021).", "Pada 2024 diumumkan lukisan gua di Leang Karampuang, Maros, berumur sedikitnya 51.200 tahun."]}, {"h": "Ragam hias", "li": ["Motif geometris (tumpal, meander, pilin), flora (sulur), fauna, dan figuratif (manusia).", "Ragam hias dipakai pada batik, ukiran, tenun, dan relief candi."]}], "traps": ["Umur lukisan gua tertua terus diperbarui oleh penelitian; sebutkan tahun pengumumannya."]}, {"code": "SEJ-04", "title": "Renaisans", "scope": "Leonardo, Michelangelo, Raffaello", "src": "Kelas XII", "tier": 3, "sum": "Masa kelahiran kembali seni dan ilmu di Eropa (abad ke-14 sampai ke-16) yang menekankan proporsi, perspektif, dan anatomi.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Karya"], "rows": [["Leonardo da Vinci", "Mona Lisa, Perjamuan Terakhir"], ["Michelangelo", "Patung Daud, lukisan langit-langit Kapel Sistina"], ["Raffaello Sanzio", "Sekolah Athena"]]}}]}]}, {"id": "APR", "name": "Apresiasi dan pameran", "short": "Apresiasi", "note": "Fungsi seni rupa, kritik, pameran, dan hak cipta karya.", "topics": [{"code": "APR-01", "title": "Apresiasi dan kritik seni rupa", "scope": "Tahap Feldman, jenis kritik", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi adalah menghayati dan menilai karya; kritik menyampaikan penilaian itu dengan tahap dan alasan yang jelas.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terlihat (judul, ukuran, media, objek).", "Analisis formal: menguraikan unsur dan prinsip seni rupa.", "Interpretasi: menafsirkan makna.", "Evaluasi: menilai kualitas karya dengan alasan."]}, {"h": "Jenis kritik", "li": ["Kritik jurnalistik (di media massa), pedagogik (untuk pendidikan), ilmiah (akademis), populer (untuk umum)."]}], "traps": ["Deskripsi belum menilai; penilaian baru dilakukan pada tahap evaluasi."]}, {"code": "APR-02", "title": "Fungsi seni rupa", "scope": "Seni murni, seni terapan", "src": "Kelas X", "tier": 1, "sum": "Seni rupa dibedakan menurut fungsinya: seni murni untuk dinikmati keindahannya dan seni terapan untuk dipakai.", "blocks": [{"h": "Fungsi", "li": ["<b>Seni rupa murni<\/b> (fine art): lukisan, patung, grafis yang dibuat terutama untuk dinikmati.", "Seni rupa terapan (applied art): kriya, desain, arsitektur yang mengutamakan fungsi pakai.", "Fungsi individual: ekspresi diri; fungsi sosial: pendidikan, keagamaan, kritik sosial, hiburan."]}], "traps": ["Kriya dan desain termasuk seni terapan karena mengutamakan fungsi pakai."]}, {"code": "APR-03", "title": "Pameran", "scope": "Jenis, tahap, kurator", "src": "Kelas XI–XII", "tier": 2, "sum": "Pameran menyajikan karya seni rupa kepada publik dan perlu direncanakan bersama panitia.", "blocks": [{"h": "Pameran", "li": ["Jenis: tunggal (satu seniman) atau bersama; tetap (permanen), temporer, atau keliling.", "<b>Kurator<\/b> memilih karya, menyusun konsep, dan menulis pengantar pameran.", "Tahap: perencanaan (tema, tempat, waktu), persiapan (seleksi karya, katalog, penataan), pelaksanaan, evaluasi.", "Katalog berisi daftar karya, keterangan, dan pengantar pameran."]}]}, {"code": "APR-04", "title": "Hak cipta karya seni rupa", "scope": "Masa berlaku, etika", "src": "Kelas XII", "tier": 2, "sum": "Karya seni rupa dilindungi hak cipta; memakai karya orang lain memerlukan izin dan penyebutan nama.", "blocks": [{"h": "Ketentuan", "li": ["Hak cipta lukisan, patung, dan karya seni rupa lain berlaku seumur hidup pencipta ditambah 70 tahun setelah meninggal (UU No. 28 Tahun 2014).", "<b>Hak moral<\/b>: hak pencipta agar namanya dicantumkan dan karyanya tidak diubah tanpa izin.", "Meniru karya untuk latihan boleh, tetapi tidak boleh diakui sebagai karya sendiri atau dijual."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Rupa Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Penggolongan aliran dan tokoh disederhanakan; Van Gogh, misalnya, digolongkan pascaimpresionis atau ekspresionis tergantung buku.", "Umur lukisan gua di Sulawesi diperbarui oleh penelitian baru; peta ini mencantumkan angka yang diumumkan pada 2021 dan 2024.", "Teori warna Brewster (merah, kuning, biru) dipakai untuk cat; sistem RGB dan CMYK dipakai untuk layar dan cetak."]}, {"title": "Rujukan", "items": ["Buku Seni Rupa SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "UU No. 28 Tahun 2014 tentang Hak Cipta.", "Publikasi penelitian lukisan gua Leang Tedongnge (2021) dan Leang Karampuang (2024) di Sulawesi Selatan."]}], "bank": "bank-seni-rupa.html"};
+const MAP = {"id": "seni-rupa", "subject": "Seni Rupa", "title": "Peta Materi Seni Rupa SMA", "lead": "Seluruh materi Seni Rupa SMA, dari unsur, prinsip, dan warna sampai teknik karya dua dan tiga dimensi, aliran dan tokoh, serta pameran dan kritik, disusun sebagai satu peta. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Unsur dan prinsip seni rupa, warna, perspektif, menggambar dan melukis, grafis, patung, kriya, desain, aliran, tokoh, pameran, dan kritik.", "source_note": "Seni Budaya kelas X–XII Kurikulum Merdeka dipilih salah satu (musik, tari, rupa, atau teater). Domain merangkum materi buku Seni Rupa SMA: unsur dan prinsip, teknik berkarya, sejarah dan tokoh, serta apresiasi dan pameran. Label kelas hanya perkiraan karena buku menyusun materi per proyek.", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: dari unsur, prinsip, dan warna, ke teknik dua dan tiga dimensi, lalu sejarah, kritik, dan pameran.", "path": [{"label": "Unsur", "title": "Unsur seni rupa", "note": "Garis, bidang, warna", "to": "UNR-01"}, {"label": "Prinsip", "title": "Prinsip seni rupa", "note": "Kesatuan, keseimbangan", "to": "UNR-02"}, {"label": "Warna", "title": "Teori warna", "note": "Primer, komplementer", "to": "UNR-03"}, {"label": "Gambar", "title": "Menggambar dan melukis", "note": "Teknik, media", "to": "KRP-01"}, {"label": "Tiga dimensi", "title": "Patung", "note": "Aditif, subtraktif", "to": "KRP-03"}, {"label": "Aliran", "title": "Aliran seni rupa", "note": "Realisme sampai pop art", "to": "SEJ-01"}, {"label": "Kritik", "title": "Apresiasi dan kritik", "note": "Tahap Feldman", "to": "APR-01"}], "domains": [{"id": "UNR", "name": "Unsur dan prinsip seni rupa", "short": "Unsur dan prinsip", "note": "Unsur visual, prinsip penyusunan, warna, perspektif, dan gelap terang.", "topics": [{"code": "UNR-01", "title": "Unsur seni rupa", "scope": "Titik, garis, bidang, warna, tekstur", "src": "Kelas X", "tier": 1, "sum": "Karya seni rupa tersusun dari unsur visual: titik, garis, bidang, bentuk, ruang, warna, tekstur, dan gelap terang.", "blocks": [{"h": "Unsur", "table": {"cols": ["Unsur", "Keterangan"], "rows": [["Titik", "Unsur paling dasar; kumpulan titik membentuk garis atau bidang"], ["Garis", "Lurus, lengkung, zig-zag; memberi kesan arah dan gerak"], ["Bidang", "Bentuk datar dua dimensi (geometris atau organis)"], ["Bentuk", "Wujud tiga dimensi yang bervolume"], ["Ruang", "Kesan jauh-dekat atau kedalaman"], ["Tekstur", "Sifat permukaan: nyata (teraba) atau semu (hanya terlihat)"], ["Gelap terang", "Perbedaan intensitas cahaya yang memberi kesan volume"]]}}], "traps": ["Tekstur semu hanya terlihat kasar tetapi rata bila diraba; tekstur nyata benar-benar teraba."], "grades": ["X"]}, {"code": "UNR-02", "title": "Prinsip seni rupa", "scope": "Kesatuan, keseimbangan, irama, proporsi", "src": "Kelas X", "tier": 1, "sum": "Prinsip seni rupa mengatur cara unsur disusun agar karya utuh dan menarik.", "blocks": [{"h": "Prinsip", "table": {"cols": ["Prinsip", "Keterangan"], "rows": [["Kesatuan (unity)", "Semua unsur terasa sebagai satu kesatuan"], ["Keseimbangan", "Simetris (sama kiri-kanan), asimetris (berbeda tetapi seimbang), radial (memusat)"], ["Irama", "Pengulangan unsur yang teratur"], ["Proporsi", "Perbandingan ukuran antarbagian"], ["Pusat perhatian (aksen)", "Bagian yang paling menarik perhatian"], ["Harmoni", "Keselarasan antarunsur"], ["Kontras", "Perbedaan mencolok untuk menarik perhatian"]]}}], "traps": ["Keseimbangan asimetris tetap seimbang walau kedua sisi tidak sama."], "grades": ["X"]}, {"code": "UNR-03", "title": "Teori warna", "scope": "Primer, sekunder, komplementer", "src": "Kelas X", "tier": 1, "sum": "Warna dikelompokkan menurut cara terbentuknya (teori Brewster) dan menurut kesan yang ditimbulkannya.", "blocks": [{"h": "Teori Brewster", "li": ["<b>Warna primer<\/b>: merah, kuning, biru.", "Warna sekunder: jingga (merah + kuning), hijau (kuning + biru), ungu (merah + biru).", "Warna tersier: campuran warna primer dengan sekunder di sebelahnya.", "Warna komplementer (kontras) berseberangan pada lingkaran warna: merah–hijau, kuning–ungu, biru–jingga."]}, {"h": "Kesan dan sistem lain", "li": ["Warna panas (merah, jingga, kuning) berkesan semangat; warna dingin (biru, hijau, ungu) berkesan tenang.", "Warna cahaya di layar memakai RGB (merah, hijau, biru); tinta cetak memakai CMYK."]}], "traps": ["Hijau adalah warna sekunder (kuning + biru), bukan primer menurut teori Brewster."], "grades": ["X"]}, {"code": "UNR-04", "title": "Perspektif", "scope": "Titik hilang, garis horizon", "src": "Kelas XI", "tier": 2, "sum": "Perspektif membuat gambar dua dimensi terkesan berkedalaman.", "blocks": [{"h": "Perspektif", "li": ["Garis horizon: garis setinggi mata pengamat; titik hilang: titik di horizon tempat garis-garis sejajar bertemu.", "<b>Perspektif satu titik hilang<\/b>: objek dilihat dari depan, misalnya jalan lurus atau lorong.", "Dua titik hilang: objek dilihat dari sudut; tiga titik hilang: objek tinggi dilihat dari bawah atau atas.", "Perspektif warna: benda jauh tampak lebih pudar dan kebiruan."]}], "grades": ["XI"]}, {"code": "UNR-05", "title": "Gambar bentuk dan gelap terang", "scope": "Cahaya, bayangan, arsir", "src": "Kelas X", "tier": 2, "sum": "Menggambar benda nyata dengan memperhatikan proporsi, arah cahaya, dan bayangan.", "blocks": [{"h": "Gelap terang", "li": ["Bagian benda yang terkena cahaya paling terang, lalu bayangan inti, dan bayangan jatuh (cast shadow) di bidang dasar.", "<b>Arah cahaya<\/b> menentukan letak bayangan; bayangan jatuh berada di sisi yang berlawanan dengan sumber cahaya.", "Gambar bentuk (still life) melatih proporsi, komposisi, dan gelap terang."]}], "grades": ["X"]}]}, {"id": "KRP", "name": "Berkarya dua dan tiga dimensi", "short": "Berkarya", "note": "Teknik dan media menggambar, melukis, grafis, patung, kriya, desain, dan media baru.", "topics": [{"code": "KRP-01", "title": "Menggambar dan melukis", "scope": "Teknik arsir, media cat", "src": "Kelas X–XI", "tier": 1, "sum": "Teknik dan media untuk menggambar dan melukis, serta perbedaan sifat cat.", "blocks": [{"h": "Teknik gambar", "table": {"cols": ["Teknik", "Cara"], "rows": [["Arsir", "Garis-garis sejajar atau bersilang untuk gelap terang"], ["Dusel", "Menggosok goresan pensil atau arang agar halus"], ["Pointilis", "Titik-titik rapat"], ["Blok", "Menutup bidang dengan satu warna"]]}}, {"h": "Media cat", "li": ["<b>Cat air teknik aquarel<\/b> tipis dan transparan; teknik plakat tebal dan menutup (opak).", "Cat minyak lambat kering dan diencerkan dengan minyak; cat akrilik cepat kering dan diencerkan dengan air.", "Jenis gambar: gambar bentuk, gambar ilustrasi, gambar model, gambar ragam hias."]}], "traps": ["Aquarel transparan, plakat opak. Keduanya sama-sama memakai cat air."], "grades": ["X", "XI"]}, {"code": "KRP-02", "title": "Seni grafis", "scope": "Cetak tinggi, dalam, datar, saring", "src": "Kelas XI", "tier": 1, "sum": "Seni grafis menghasilkan karya yang dapat dicetak berulang dengan klise atau acuan cetak.", "blocks": [{"h": "Teknik cetak", "table": {"cols": ["Teknik", "Ciri", "Contoh"], "rows": [["Cetak tinggi", "Bagian yang menonjol menerima tinta", "Cukil kayu, cukil lino, stempel"], ["Cetak dalam", "Tinta mengisi bagian yang digores atau diasamkan", "Etsa, drypoint"], ["Cetak datar", "Acuan rata, memakai sifat tolak-menolak minyak dan air", "Litografi"], ["Cetak saring", "Tinta ditekan melewati screen berpola", "Sablon (serigrafi)"]]}}], "traps": ["Pada cetak tinggi bagian menonjol yang tercetak; pada cetak dalam bagian cekung yang tercetak."], "grades": ["XI"]}, {"code": "KRP-03", "title": "Patung", "scope": "Teknik aditif, subtraktif, cor", "src": "Kelas XI–XII", "tier": 1, "sum": "Patung adalah karya tiga dimensi yang dibuat dengan menambah, mengurangi, mencetak, atau merakit bahan.", "blocks": [{"h": "Teknik", "table": {"cols": ["Teknik", "Cara", "Bahan"], "rows": [["Pahat (subtraktif)", "Mengurangi bahan", "Kayu, batu"], ["Butsir/modeling (aditif)", "Menambah bahan", "Tanah liat, plastisin"], ["Cor (cetak)", "Menuang bahan cair ke cetakan", "Gips, logam, semen"], ["Konstruksi (rakit)", "Menyambung bagian-bagian", "Logam, kayu, barang bekas"]]}}, {"h": "Jenis", "li": ["<b>Patung relief<\/b> menempel pada bidang dan hanya dapat dilihat dari depan; patung trimatra dapat dilihat dari segala arah."]}], "traps": ["Memahat adalah teknik subtraktif (mengurangi), membutsir adalah aditif (menambah)."], "grades": ["XI", "XII"]}, {"code": "KRP-04", "title": "Kriya", "scope": "Batik, tenun, keramik, ukir", "src": "Kelas X–XII", "tier": 2, "sum": "Kriya adalah seni rupa terapan yang mengutamakan keterampilan tangan dan fungsi, dengan bahan dan teknik khas.", "blocks": [{"h": "Kriya", "li": ["Kriya tekstil (batik, tenun, sulam), kriya kayu (ukir Jepara), kriya keramik (gerabah Kasongan), kriya logam, kriya kulit.", "<b>Keramik<\/b> dibentuk dari tanah liat dengan teknik pijat, pilin, lempeng (slab), atau putar, lalu dibakar.", "Fungsi kriya: hias, pakai, dan benda upacara."]}], "grades": ["X", "XI", "XII"]}, {"code": "KRP-05", "title": "Desain komunikasi visual", "scope": "Poster, logo, tipografi", "src": "Kelas XI–XII", "tier": 2, "sum": "Desain komunikasi visual menyampaikan pesan lewat gambar, huruf, dan tata letak.", "blocks": [{"h": "Karya desain", "li": ["Poster menyampaikan pesan singkat dan menarik dari jarak jauh; logo adalah lambang identitas.", "<b>Tipografi<\/b>: seni memilih dan menata huruf; huruf serif berkait, sans-serif tanpa kait.", "Prinsip tata letak: hierarki (yang penting lebih menonjol), keseimbangan, ruang kosong, dan keterbacaan."]}], "grades": ["XI", "XII"]}, {"code": "KRP-06", "title": "Fotografi dan seni media baru", "scope": "Komposisi foto, instalasi, digital", "src": "Kelas XII", "tier": 3, "sum": "Seni rupa kontemporer memakai media baru: fotografi, video, instalasi, dan karya digital.", "blocks": [{"h": "Media baru", "li": ["<b>Aturan sepertiga<\/b> (rule of thirds): objek utama diletakkan di titik potong garis yang membagi bidang menjadi tiga bagian.", "Seni instalasi: karya yang menata benda di suatu ruang agar dialami penonton.", "Seni digital dibuat dengan perangkat lunak; seni video memakai rekaman gambar bergerak."]}], "grades": ["XII"]}, {"code": "KRP-07", "title": "Mural dan seni rupa publik", "scope": "Mural, monumen, seni ruang publik", "src": "Kelas XI–XII", "tier": 2, "sum": "Karya seni rupa yang dibuat untuk ruang publik dan dinikmati banyak orang.", "blocks": [{"h": "Bentuk", "li": ["<b>Mural<\/b>: lukisan pada dinding atau tembok yang besar, sering bertema lingkungan atau sosial.", "Monumen dan patung kota memperingati tokoh atau peristiwa.", "Karya ruang publik memerlukan izin dari pemilik tempat atau pemerintah setempat."]}], "grades": ["XI", "XII"]}]}, {"id": "SEJ", "name": "Sejarah dan tokoh seni rupa", "short": "Sejarah", "note": "Aliran seni rupa dunia, seni rupa Indonesia, seni rupa prasejarah, dan Renaisans.", "topics": [{"code": "SEJ-01", "title": "Aliran seni rupa", "scope": "Realisme sampai pop art", "src": "Kelas XI–XII", "tier": 1, "sum": "Aliran seni rupa Barat beserta ciri dan tokohnya.", "blocks": [{"h": "Aliran", "table": {"cols": ["Aliran", "Ciri", "Tokoh"], "rows": [["Naturalisme dan realisme", "Meniru kenyataan apa adanya", "Gustave Courbet"], ["Romantisme", "Dramatis, emosional, sering bertema heroik", "Eugène Delacroix"], ["Impresionisme", "Menangkap kesan cahaya sesaat", "Claude Monet"], ["Ekspresionisme", "Mengungkapkan perasaan batin dengan goresan kuat", "Edvard Munch"], ["Kubisme", "Objek dipecah menjadi bidang geometris", "Pablo Picasso, Georges Braque"], ["Surealisme", "Dunia mimpi dan alam bawah sadar", "Salvador Dalí"], ["Abstrak", "Tidak meniru bentuk nyata", "Wassily Kandinsky"], ["Pop art", "Mengangkat budaya populer dan iklan", "Andy Warhol"]]}}, {"h": "Catatan", "li": ["<b>Nama impresionisme<\/b> berasal dari lukisan Monet, Impression, Sunrise (1872)."]}], "traps": ["Kubisme memecah objek menjadi bidang geometris; surealisme menggambarkan dunia mimpi."], "grades": ["XI", "XII"]}, {"code": "SEJ-02", "title": "Seni rupa Indonesia dan tokohnya", "scope": "Raden Saleh, Persagi, Affandi", "src": "Kelas XI–XII", "tier": 1, "sum": "Perkembangan seni rupa modern Indonesia dari Raden Saleh sampai Gerakan Seni Rupa Baru.", "blocks": [{"h": "Tokoh dan peristiwa", "table": {"cols": ["Tokoh atau peristiwa", "Keterangan"], "rows": [["Raden Saleh", "Pelopor seni lukis modern Indonesia, beraliran romantisme; Penangkapan Pangeran Diponegoro (1857)"], ["Mooi Indië", "Lukisan pemandangan Hindia yang serba indah; dikritik Sudjojono"], ["Persagi (1938)", "Persatuan Ahli-Ahli Gambar Indonesia, didirikan S. Sudjojono dan Agus Djaya"], ["S. Sudjojono", "Bapak Seni Rupa Indonesia Modern; konsep jiwa ketok"], ["Affandi", "Pelukis ekspresionis; sering melukis langsung dari tube cat"], ["Basuki Abdullah", "Pelukis realis dan naturalis, dikenal dengan lukisan potret"], ["Gerakan Seni Rupa Baru (1975)", "Menolak batas seni rupa yang kaku; memakai media baru"]]}}], "traps": ["Raden Saleh beraliran romantisme; Affandi ekspresionisme; Basuki Abdullah realisme dan naturalisme."], "grades": ["XI", "XII"]}, {"code": "SEJ-03", "title": "Seni rupa prasejarah dan tradisional", "scope": "Lukisan gua, ragam hias", "src": "Kelas X", "tier": 2, "sum": "Seni rupa Nusantara sudah ada sejak prasejarah dan berlanjut dalam ragam hias tradisional.", "blocks": [{"h": "Prasejarah", "li": ["Lukisan cap tangan di gua-gua Maros, Sulawesi Selatan.", "<b>Lukisan babi kutil di Leang Tedongnge<\/b>, Sulawesi Selatan, berumur sedikitnya 45.500 tahun (diumumkan 2021).", "Pada 2024 diumumkan lukisan gua di Leang Karampuang, Maros, berumur sedikitnya 51.200 tahun."]}, {"h": "Ragam hias", "li": ["Motif geometris (tumpal, meander, pilin), flora (sulur), fauna, dan figuratif (manusia).", "Ragam hias dipakai pada batik, ukiran, tenun, dan relief candi."]}], "traps": ["Umur lukisan gua tertua terus diperbarui oleh penelitian; sebutkan tahun pengumumannya."], "grades": ["X"]}, {"code": "SEJ-04", "title": "Renaisans", "scope": "Leonardo, Michelangelo, Raffaello", "src": "Kelas XII", "tier": 3, "sum": "Masa kelahiran kembali seni dan ilmu di Eropa (abad ke-14 sampai ke-16) yang menekankan proporsi, perspektif, dan anatomi.", "blocks": [{"h": "Tokoh", "table": {"cols": ["Tokoh", "Karya"], "rows": [["Leonardo da Vinci", "Mona Lisa, Perjamuan Terakhir"], ["Michelangelo", "Patung Daud, lukisan langit-langit Kapel Sistina"], ["Raffaello Sanzio", "Sekolah Athena"]]}}], "grades": ["XII"]}]}, {"id": "APR", "name": "Apresiasi dan pameran", "short": "Apresiasi", "note": "Fungsi seni rupa, kritik, pameran, dan hak cipta karya.", "topics": [{"code": "APR-01", "title": "Apresiasi dan kritik seni rupa", "scope": "Tahap Feldman, jenis kritik", "src": "Kelas X–XII", "tier": 1, "sum": "Apresiasi adalah menghayati dan menilai karya; kritik menyampaikan penilaian itu dengan tahap dan alasan yang jelas.", "blocks": [{"h": "Tahap kritik (Feldman)", "li": ["<b>Deskripsi<\/b>: menyebut apa yang terlihat (judul, ukuran, media, objek).", "Analisis formal: menguraikan unsur dan prinsip seni rupa.", "Interpretasi: menafsirkan makna.", "Evaluasi: menilai kualitas karya dengan alasan."]}, {"h": "Jenis kritik", "li": ["Kritik jurnalistik (di media massa), pedagogik (untuk pendidikan), ilmiah (akademis), populer (untuk umum)."]}], "traps": ["Deskripsi belum menilai; penilaian baru dilakukan pada tahap evaluasi."], "grades": ["X", "XI", "XII"]}, {"code": "APR-02", "title": "Fungsi seni rupa", "scope": "Seni murni, seni terapan", "src": "Kelas X", "tier": 1, "sum": "Seni rupa dibedakan menurut fungsinya: seni murni untuk dinikmati keindahannya dan seni terapan untuk dipakai.", "blocks": [{"h": "Fungsi", "li": ["<b>Seni rupa murni<\/b> (fine art): lukisan, patung, grafis yang dibuat terutama untuk dinikmati.", "Seni rupa terapan (applied art): kriya, desain, arsitektur yang mengutamakan fungsi pakai.", "Fungsi individual: ekspresi diri; fungsi sosial: pendidikan, keagamaan, kritik sosial, hiburan."]}], "traps": ["Kriya dan desain termasuk seni terapan karena mengutamakan fungsi pakai."], "grades": ["X"]}, {"code": "APR-03", "title": "Pameran", "scope": "Jenis, tahap, kurator", "src": "Kelas XI–XII", "tier": 2, "sum": "Pameran menyajikan karya seni rupa kepada publik dan perlu direncanakan bersama panitia.", "blocks": [{"h": "Pameran", "li": ["Jenis: tunggal (satu seniman) atau bersama; tetap (permanen), temporer, atau keliling.", "<b>Kurator<\/b> memilih karya, menyusun konsep, dan menulis pengantar pameran.", "Tahap: perencanaan (tema, tempat, waktu), persiapan (seleksi karya, katalog, penataan), pelaksanaan, evaluasi.", "Katalog berisi daftar karya, keterangan, dan pengantar pameran."]}], "grades": ["XI", "XII"]}, {"code": "APR-04", "title": "Hak cipta karya seni rupa", "scope": "Masa berlaku, etika", "src": "Kelas XII", "tier": 2, "sum": "Karya seni rupa dilindungi hak cipta; memakai karya orang lain memerlukan izin dan penyebutan nama.", "blocks": [{"h": "Ketentuan", "li": ["Hak cipta lukisan, patung, dan karya seni rupa lain berlaku seumur hidup pencipta ditambah 70 tahun setelah meninggal (UU No. 28 Tahun 2014).", "<b>Hak moral<\/b>: hak pencipta agar namanya dicantumkan dan karyanya tidak diubah tanpa izin.", "Meniru karya untuk latihan boleh, tetapi tidak boleh diakui sebagai karya sendiri atau dijual."]}], "grades": ["XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Buku Seni Rupa Kurikulum Merdeka disusun per proyek; peta ini menyusun ulang materinya per topik.", "Penggolongan aliran dan tokoh disederhanakan; Van Gogh, misalnya, digolongkan pascaimpresionis atau ekspresionis tergantung buku.", "Umur lukisan gua di Sulawesi diperbarui oleh penelitian baru; peta ini mencantumkan angka yang diumumkan pada 2021 dan 2024.", "Teori warna Brewster (merah, kuning, biru) dipakai untuk cat; sistem RGB dan CMYK dipakai untuk layar dan cetak."]}, {"title": "Rujukan", "items": ["Buku Seni Rupa SMA kelas X–XII Kurikulum Merdeka dan buku Seni Budaya Kurikulum 2013: pembagian materi umum.", "UU No. 28 Tahun 2014 tentang Hak Cipta.", "Publikasi penelitian lukisan gua Leang Tedongnge (2021) dan Leang Karampuang (2024) di Sulawesi Selatan."]}], "icon": "<path d=\"M24 6C13 6 5 14 5 23s7 17 15 17c3 0 4-2 3-4-1-3 1-5 4-5h5c6 0 11-4 11-10C43 13 35 6 24 6z\"/><circle cx=\"14\" cy=\"22\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"20\" cy=\"14\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"30\" cy=\"14\" r=\"2.5\" fill=\"currentColor\"/><circle cx=\"36\" cy=\"22\" r=\"2.5\" fill=\"currentColor\"/>", "bank": "bank-seni-rupa.html"};
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
-let onlyLanjut = false;
+// Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
+const params = new URLSearchParams(location.search);
+let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
+let onlyLanjut = params.get("lanjut") === "1";
+const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -233,6 +371,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
+  if(MAP.icon) $("icon").innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + MAP.icon + '</svg>';
   $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
@@ -245,13 +384,13 @@ function render(){
   const map = $("map"), host = $("domains");
   MAP.domains.forEach(d => {
     const col = document.createElement("div");
-    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
-    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+    col.className = "mcol"; col.dataset.domain = d.id; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono" id="n-' + d.id + '">' + d.topics.length + '</span></h3><ul>' +
       d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
-    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w" id="w-' + d.id + '">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
     d.topics.forEach(t => {
       const a = document.createElement("article");
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
@@ -285,10 +424,11 @@ function goTo(code){
 function progress(){
   let k = 0, n = 0;
   MAP.domains.forEach(d => {
-    const dn = d.topics.filter(t => done.has(t.code)).length;
-    k += dn; n += d.topics.length;
-    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
-    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+    const ts = d.topics.filter(shown), dn = ts.filter(t => done.has(t.code)).length;
+    k += dn; n += ts.length;
+    $("bar-" + d.id).style.width = (ts.length ? dn / ts.length * 100 : 0) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + ts.length;
+    $("bar-" + d.id).closest(".pg").hidden = !ts.length;
   });
   $("overall").textContent = k + " dari " + n;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
@@ -300,18 +440,144 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    const keep = !onlyLanjut || t.lanjut;
+    const keep = shown(t);
     if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
     const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  document.querySelectorAll(".chip").forEach(c => c.parentNode.hidden = !shown(byCode[c.dataset.code].t));
+  MAP.domains.forEach(d => {
+    const k = d.topics.filter(shown).length;
+    document.querySelector('.mcol[data-domain="' + d.id + '"]').hidden = !k;
+    $("d-" + d.id).hidden = !k;
+    $("n-" + d.id).textContent = k; $("w-" + d.id).textContent = k + " simpul";
+  });
+  $("emptyNote").hidden = MAP.domains.some(d => d.topics.some(shown));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
 }
 
+// Remember this view for the home page's "Lanjutkan" button and recent list.
+function remember(){
+  const url = new URL(location.href);
+  kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
+  onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
+  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+  try { history.replaceState(null, "", url); } catch(e) {}
+  try {
+    const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
+  } catch(e) {}
+}
+function applyFilters(){
+  document.querySelectorAll("#grades button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kelas === kelas)));
+  $("onlyLanjut").setAttribute("aria-pressed", String(onlyLanjut));
+  search($("q").value); progress(); remember();
+}
+
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
+let storyOn = false;
+const parts = t => {
+  const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
+  t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
+    (b.table ? '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>" : "")}));
+  if(t.traps && t.traps.length) out.push({label: "Jebakan soal", trap: true, html: "<ul>" + t.traps.map(x => "<li>" + x + "</li>").join("") + "</ul>"});
+  return out;
+};
+function showPart(slide, i){
+  const t = byCode[slide.dataset.code].t, ps = parts(t);
+  i = Math.max(0, Math.min(ps.length - 1, i));
+  slide.dataset.part = i;
+  slide.querySelectorAll(".bars i").forEach((b, k) => b.classList.toggle("on", k <= i));
+  const card = slide.querySelector(".st-card");
+  card.classList.toggle("trap", !!ps[i].trap);
+  card.querySelector(".st-label").innerHTML = ps[i].label;
+  card.querySelector(".st-body").innerHTML = ps[i].html;
+  card.querySelector(".st-body").scrollTop = 0;
+}
+function slideHTML(t, d, n, total){
+  const on = done.has(t.code);
+  return '<article class="slide" data-code="' + t.code + '" data-part="0" style="--c:' + d.c + ';--soft:' + d.soft + '" aria-label="' + (n + 1) + ' dari ' + total + '">' +
+    '<div class="bars">' + parts(t).map(() => "<i></i>").join("") + '</div>' +
+    '<div class="st-head"><span class="st-dom">' + d.short + '</span><span class="mono">' + t.code + '</span>' + tags(t) +
+    '<span class="st-grade">Kelas ' + t.grades.join(", ") + '</span></div>' +
+    '<h2>' + t.title + '</h2>' +
+    '<div class="st-card"><div class="st-label"></div><div class="st-body"></div></div>' +
+    '<div class="st-foot"><b>' + (n + 1) + ' / ' + total + '</b><span>Ketuk → lanjut · Geser ↑ simpul berikutnya</span></div>' +
+    '<div class="rail">' +
+      '<button type="button" data-act="done" aria-pressed="' + on + '"><span aria-hidden="true">✓</span>' + (on ? "Dikuasai" : "Kuasai") + '</button>' +
+      '<button type="button" data-act="map"><span aria-hidden="true">▤</span>Di peta</button>' +
+      (MAP.bank ? '<a href="' + MAP.bank + '"><span aria-hidden="true">?</span>Latihan</a>' : '') +
+    '</div></article>';
+}
+function openStory(code){
+  const list = [];
+  MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
+  if(!list.length) return;
+  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+    (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '">Latihan bank soal</a>' : '') +
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
+  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  $("story").hidden = false; document.body.classList.add("story-open");
+  storyOn = true; remember();
+  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
+  $("feed").scrollTop = start ? start.offsetTop : 0;
+  $("storyClose").focus();
+}
+function closeStory(){
+  const cur = currentSlide();
+  $("story").hidden = true; document.body.classList.remove("story-open");
+  storyOn = false; remember();
+  if(cur) goTo(cur.dataset.code);
+}
+function currentSlide(){
+  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
+  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
+}
+function step(dir){
+  const sl = currentSlide();
+  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
+  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
+  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
+  showPart(sl, i);
+}
+$("storyOpen").addEventListener("click", () => openStory());
+$("storyClose").addEventListener("click", closeStory);
+$("feed").addEventListener("click", e => {
+  const act = e.target.closest("[data-act]");
+  if(act){
+    const sl = act.closest(".slide");
+    if(act.dataset.act === "done"){
+      const code = sl.dataset.code, on = !done.has(code);
+      on ? done.add(code) : done.delete(code); save(); progress();
+      act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
+    }
+    if(act.dataset.act === "map") closeStory();
+    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
+    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    return;
+  }
+  // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
+  if(e.target.closest("a, .tbl") || String(getSelection())) return;
+  const sl = e.target.closest(".slide"); if(!sl) return;
+  const box = sl.getBoundingClientRect();
+  step(e.clientX - box.left < box.width / 3 ? -1 : 1);
+});
+document.addEventListener("keydown", e => {
+  if($("story").hidden) return;
+  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
+  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
+  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
+  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
+});
+
 render();
 progress();
+applyFilters();
+if(params.get("mode") === "geser") openStory(location.hash.startsWith("#t-") ? location.hash.slice(3) : "");
 document.addEventListener("click", e => {
   const tg = e.target.closest(".toggle");
   if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
@@ -328,7 +594,8 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
-$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
+$("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
 </script>

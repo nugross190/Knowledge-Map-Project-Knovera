@@ -6,7 +6,7 @@
 <title>Modul Vektor dan Gerak</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: learning module. Goals and linked map topics → lessons (collapsible) → staged exercises, one stage at a time, with answer checking. Content comes from data/modules/<id>.json. */
 :root{
@@ -14,21 +14,10 @@
   --accent:#6E3466; --accent-soft:#F1E3EE; --tka:#8A5526; --tka-soft:#F3E9DF;
   --s1:#2C6B63; --s2:#3D5A80; --s3:#2B3A78; --s4:#6E3466; --s5:#9A3B1F;
   --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F; --ok-soft:#E1F0E5;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
-  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
-  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
-  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
-  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -56,7 +45,7 @@ section{margin-top:44px}
 .btn[disabled]{opacity:.5;cursor:default}
 
 .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.panel{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .panel ol,.panel ul{margin:8px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:5px;font-size:.95rem}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .chip{display:inline-flex;gap:8px;align-items:baseline;text-decoration:none;padding:5px 9px;border-radius:5px;background:var(--accent-soft);font-size:.9rem;line-height:1.3}
@@ -158,6 +147,80 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .bs td:not(:first-child),.bs th:not(:first-child){width:4.5em}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
 </style>
 
 <div class="wrap">

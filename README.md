@@ -4,7 +4,8 @@ High-school study maps, starting with tools for a history competition in the Lom
 
 | Page | What it is for |
 |---|---|
-| `docs/index.html` | Home page: a menu with one card per subject, generated from `data/maps/` plus the history kit. Every subject page links back to it. |
+| `docs/index.html` | Home page: "Mau belajar apa?" with tabs Umum, IPA, IPS, Bahasa and Tingkat Lanjut (from `data/subjects.json`). A subject card opens a grade chooser (Kelas X / XI / XII or all) and shows the progress saved in this browser; "Lanjutkan" reopens the last map. Phones come first: two cards per row, one-row tabs, and the grade chooser opens maps in story mode by default. Below: TKA practice, the history kit and modules. Every subject page links back to it. |
+| `docs/peta-<id>.html` story mode | "Mode geser" (`?mode=geser`): the filtered topics as a full-screen feed, one topic per screen. Swipe up for the next topic; tap right or left to step through its summary, blocks and traps; mark it mastered from the side rail. On a wide screen it is a phone-sized column. |
 | `docs/peta.html` | Knowledge map: 23 topics ("simpul"), each with a code such as `SNI-04`, key facts, and commonly confused facts. |
 | `docs/bank.html` | Question bank: practice (weighted 40/30/30, optional timer), full list, and per-topic progress. |
 | `docs/simulasi.html` | Round simulator for a moderator: compulsory round (babak wajib) with passed-on questions, buzzer round (babak rebutan), 1–3 teams, scoreboard, and a list of missed questions. |
@@ -71,12 +72,14 @@ The rules for content, questions, and the agent workflow are in [`specs/`](specs
 data/topics.json        domains, weights, topic codes and titles
 data/questions.csv      the question bank (source of truth; edit this)
 data/maps/<id>.json     one knowledge map per subject; becomes docs/peta-<id>.html
-data/subjects.json      roster of all school subjects; build.py prints each one's status
+data/subjects.json      roster of all school subjects and the home page tabs; build.py prints each one's status
 data/modules/<id>.json  one learning module per file; becomes docs/modul-<id>.html (specs/module-spec.md)
 print/                  printable PDF modules and their sources; print/<id>.pdf becomes docs/modul-<id>.pdf (print/README.md)
 data/tka/<id>.json      one transcribed TKA exam paper per file; all feed docs/tka.html (specs/tka-spec.md)
 templates/*.html        page sources; each becomes docs/<same name>
 templates/_map.html     shared page for every subject map (files starting with _ are not built directly)
+templates/_theme.css    shared light theme, added to every page by build.py
+templates/_icons.json   subject icons for the home page and map headers
 specs/                  rules for content, questions, workflow, and quality checks
 scripts/build.py        checks the data, then builds docs/
 tests/test_build.py     tests for the checks and the build

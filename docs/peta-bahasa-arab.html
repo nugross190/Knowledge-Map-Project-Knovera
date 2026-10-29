@@ -6,29 +6,19 @@
 <title>Peta Materi Bahasa Arab SMA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+/* Layout: generic subject map, same catalogue look as the history map. "Mode geser" opens the same topics as a
+   full-screen story feed (one topic per screen, swipe up for the next, tap through its parts). Grade filter and domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json; each topic's grades come from its src (scripts/build.py). */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
   --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -93,7 +83,6 @@ section{margin-top:44px}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
 .lj{border:1.3px dotted var(--ink);font-style:italic}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.chip.off{opacity:.35}
 #lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
@@ -131,7 +120,7 @@ td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
 .traps li::marker{color:var(--warn)}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
 
@@ -142,19 +131,158 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .card-head{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.titlebar{display:flex;align-items:center;gap:16px;margin-top:8px}
+.subj-ico{flex:none;display:grid;place-items:center;width:60px;height:60px;border:2px solid var(--ink);border-radius:16px;background:var(--mark)}
+.subj-ico svg{width:38px;height:38px}
+.subj-ico:empty{display:none}
+.grade-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.grade-bar .lbl{font-family:var(--f-label);font-weight:600;font-size:.92rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg button{font:inherit;font-family:var(--f-label);font-weight:600;font-size:.92rem;border:0;background:transparent;color:var(--ink);padding:8px 14px;cursor:pointer;line-height:1.2}
+.seg button small{display:block;font-family:var(--f-body);font-weight:400;font-size:.72rem;opacity:.8}
+.seg button + button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.empty-note{color:var(--muted);font-size:.95rem}
+.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
+.story-btn svg{width:18px;height:18px}
+
+/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
+   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
+.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
+.st-feed{position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide > *{position:relative;z-index:1}
+.bars{display:flex;gap:4px;padding-right:44px}
+.bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
+.bars i.on{background:var(--ink)}
+.st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
+.st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
+.st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
+.slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
+.st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
+.st-card.trap .st-label{color:var(--warn)}
+.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
+.st-body li::marker{color:var(--c)}
+.st-body .st-sum{font-size:1.2rem;line-height:1.45}
+.st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
+.st-body .tbl{margin-top:4px;font-size:.92rem}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
+.st-end h2{font-size:1.8rem;font-weight:800}
+.st-end .btn{text-decoration:none}
+body.story-open{overflow:hidden}
+@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
+
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
 </style>
 
 <div class="wrap">
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow" id="eyebrow"></div>
-    <h1 style="margin-top:8px" id="title"></h1>
+    <div class="titlebar"><span class="subj-ico" id="icon" aria-hidden="true"></span><h1 id="title"></h1></div>
     <p class="lead" id="lead"></p>
+    <div class="grade-bar"><span class="lbl" id="gradeLbl">Kelas</span>
+      <div class="seg" id="grades" role="group" aria-labelledby="gradeLbl">
+        <button type="button" data-kelas="" aria-pressed="true">Semua<small>X–XII</small></button>
+        <button type="button" data-kelas="X" aria-pressed="false">Kelas X<small>Fase E</small></button>
+        <button type="button" data-kelas="XI" aria-pressed="false">Kelas XI<small>Fase F</small></button>
+        <button type="button" data-kelas="XII" aria-pressed="false">Kelas XII<small>Fase F</small></button>
+      </div>
+    </div>
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -171,6 +299,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
+    <p class="empty-note" id="emptyNote" hidden>Tidak ada simpul untuk pilihan ini. Pilih Semua kelas.</p>
     <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
     <p id="lanjutNote" hidden></p>
   </section>
@@ -182,14 +311,23 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div class="notes" id="notes"></div>
   </section>
 
+  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
+    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
+    <div class="st-feed" id="feed"></div>
+  </div>
+
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
 <script>
-const MAP = {"id": "bahasa-arab", "subject": "Bahasa dan Sastra Arab", "title": "Peta Materi Bahasa Arab SMA", "lead": "Seluruh materi Bahasa Arab SMA, dari huruf hijaiah dan harakat sampai qawaid (tata bahasa), tema percakapan sehari-hari, serta budaya dan sastra Arab, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Arab dan transliterasi. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Huruf hijaiah dan harakat, akar kata, isim-fi'il-harf, dhamir, isim isyarah, jumlah ismiyah dan fi'liyah, fi'il madhi-mudhari'-amr, tema sehari-hari, dan sastra Arab.", "source_note": "Bahasa dan Sastra Arab adalah mapel pilihan kelas XI–XII. Peta merangkum materi buku Bahasa Arab SMA dan MA tingkat dasar: huruf, qawaid, dan tema (maudhu'). Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Transliterasi disederhanakan seperti buku sekolah (dh, dz, sy, ts, kh).", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: huruf dan harakat, perkenalan, pembagian kata dan dhamir, kalimat nominal, lalu kata kerja dan kalimat verbal.", "path": [{"label": "Huruf", "title": "Huruf hijaiah dan harakat", "note": "28 huruf", "to": "HRF-01"}, {"label": "Kenalan", "title": "Ta'aruf", "note": "Salam, perkenalan", "to": "MWD-01"}, {"label": "Kata", "title": "Isim, fi'il, harf", "note": "Tiga jenis kata", "to": "NHW-01"}, {"label": "Dhamir", "title": "Kata ganti", "note": "Ana, anta, huwa", "to": "NHW-03"}, {"label": "Ismiyah", "title": "Mubtada' dan khabar", "note": "Kalimat nominal", "to": "NHW-05"}, {"label": "Fi'il", "title": "Madhi dan mudhari'", "note": "Perubahan kata kerja", "to": "NHW-06"}, {"label": "Fi'liyah", "title": "Fi'il, fa'il, maf'ul", "note": "Kalimat verbal", "to": "NHW-08"}], "domains": [{"id": "HRF", "name": "Huruf dan kata", "short": "Huruf", "note": "Huruf hijaiah, harakat, alif lam, bentuk huruf bersambung, dan akar kata.", "topics": [{"code": "HRF-01", "title": "Huruf hijaiah dan harakat", "scope": "Harakat, tanwin, syamsiyah-qamariyah", "src": "Kelas XI", "tier": 1, "sum": "Bahasa Arab ditulis dari kanan ke kiri dengan 28 huruf hijaiah; bunyi vokal ditandai harakat.", "blocks": [{"h": "Tanda baca", "table": {"cols": ["Tanda", "Bunyi"], "rows": [["Fathah (ـَ)", "a"], ["Kasrah (ـِ)", "i"], ["Dammah (ـُ)", "u"], ["Sukun (ـْ)", "Mati, tanpa vokal"], ["Tasydid (ـّ)", "Huruf dibaca dobel"], ["Tanwin (ـً ـٍ ـٌ)", "an, in, un"]]}}, {"h": "Alif lam", "li": ["<b>Alif lam qamariyah<\/b>: lam dibaca jelas, misalnya اَلْقَمَرُ al-qamaru (bulan).", "Alif lam syamsiyah: lam lebur ke huruf berikutnya yang bertasydid, misalnya اَلشَّمْسُ asy-syamsu (matahari).", "Huruf syamsiyah 14 dan huruf qamariyah 14."]}], "traps": ["Pada alif lam syamsiyah, huruf lam tidak dibaca; huruf sesudahnya dibaca dobel."]}, {"code": "HRF-02", "title": "Bentuk huruf bersambung", "scope": "Awal, tengah, akhir", "src": "Kelas XI", "tier": 2, "sum": "Huruf Arab berubah bentuk menurut letaknya dalam kata; enam huruf tidak bersambung dengan huruf sesudahnya.", "blocks": [{"h": "Aturan", "li": ["Sebagian besar huruf punya bentuk berdiri sendiri, awal, tengah, dan akhir.", "<b>Huruf yang tidak bersambung ke kiri<\/b>: ا د ذ ر ز و.", "Ta marbutah (ة) hanya muncul di akhir kata dan dibaca h bila waqaf (berhenti)."]}], "traps": ["Huruf ا د ذ ر ز و tetap disambung dari kanan, tetapi tidak menyambung ke huruf sesudahnya."]}, {"code": "HRF-03", "title": "Akar kata dan kamus", "scope": "Huruf asal tiga, wazan", "src": "Kelas XII", "tier": 2, "sum": "Sebagian besar kata Arab dibentuk dari akar tiga huruf; kamus Arab tradisional disusun menurut akar kata.", "blocks": [{"h": "Akar kata", "li": ["<b>Akar ك ت ب (k-t-b)<\/b> bermakna menulis: كَتَبَ kataba (menulis), كِتَابٌ kitab (buku), كَاتِبٌ katib (penulis), مَكْتَبٌ maktab (meja/kantor), مَكْتَبَةٌ maktabah (perpustakaan).", "Pola (wazan) dasar kata kerja adalah فَعَلَ fa'ala.", "Untuk mencari kata di kamus seperti Al-Munawwir, kembalikan dulu kata ke akar tiga hurufnya."]}]}]}, {"id": "NHW", "name": "Qawaid (tata bahasa)", "short": "Qawaid", "note": "Jenis kata, jenis dan jumlah isim, kata ganti, kata tunjuk, kalimat nominal dan verbal, kata kerja, dan huruf jar.", "topics": [{"code": "NHW-01", "title": "Isim, fi'il, dan harf", "scope": "Tiga jenis kata", "src": "Kelas XI", "tier": 1, "sum": "Kata dalam bahasa Arab dibagi tiga: isim (kata benda), fi'il (kata kerja), dan harf (kata tugas).", "blocks": [{"h": "Jenis kata", "table": {"cols": ["Jenis", "Pengertian", "Ciri atau contoh"], "rows": [["Isim", "Kata benda, sifat, atau kata ganti", "Bisa diberi alif lam atau tanwin: اَلْكِتَابُ، كِتَابٌ"], ["Fi'il", "Kata kerja yang terikat waktu", "كَتَبَ (telah menulis), يَكْتُبُ (sedang menulis)"], ["Harf", "Kata tugas yang baru bermakna bila bersambung", "فِيْ، مِنْ، إِلَى"]]}}], "traps": ["Kata yang dapat diberi alif lam atau tanwin adalah isim, bukan fi'il."]}, {"code": "NHW-02", "title": "Jenis dan jumlah isim", "scope": "Mudzakkar-muannats, mufrad-mutsanna-jamak", "src": "Kelas XI", "tier": 1, "sum": "Isim dibedakan menurut jenis (laki-laki atau perempuan) dan jumlah (tunggal, dua, atau banyak).", "blocks": [{"h": "Jenis", "li": ["Mudzakkar (maskulin): مُدَرِّسٌ mudarris (guru laki-laki).", "<b>Muannats<\/b> (feminin) umumnya ditandai ta marbutah: مُدَرِّسَةٌ mudarrisah (guru perempuan)."]}, {"h": "Jumlah", "table": {"cols": ["Bentuk", "Ciri", "Contoh"], "rows": [["Mufrad (tunggal)", "Satu", "طَالِبٌ thalib"], ["Mutsanna (dua)", "Akhiran -ani atau -aini", "طَالِبَانِ thaliban"], ["Jamak mudzakkar salim", "Akhiran -una atau -ina", "مُدَرِّسُوْنَ mudarrisun"], ["Jamak muannats salim", "Akhiran -at", "مُدَرِّسَاتٌ mudarrisat"], ["Jamak taksir", "Bentuk berubah tidak beraturan", "كِتَابٌ → كُتُبٌ kutub"]]}}], "traps": ["Jamak taksir tidak punya akhiran tetap; bentuknya harus dihafal (qalam → aqlam, walad → aulad)."]}, {"code": "NHW-03", "title": "Dhamir (kata ganti)", "scope": "Dhamir munfashil", "src": "Kelas XI", "tier": 1, "sum": "Kata ganti orang dalam bahasa Arab membedakan jumlah dan jenis kelamin.", "blocks": [{"h": "Dhamir", "table": {"cols": ["Orang", "Tunggal", "Dua", "Jamak"], "rows": [["Pertama", "أَنَا ana (saya)", "نَحْنُ nahnu (kami)", "نَحْنُ nahnu (kami)"], ["Kedua laki-laki", "أَنْتَ anta", "أَنْتُمَا antuma", "أَنْتُمْ antum"], ["Kedua perempuan", "أَنْتِ anti", "أَنْتُمَا antuma", "أَنْتُنَّ antunna"], ["Ketiga laki-laki", "هُوَ huwa", "هُمَا huma", "هُمْ hum"], ["Ketiga perempuan", "هِيَ hiya", "هُمَا huma", "هُنَّ hunna"]]}}], "traps": ["أَنْتَ (anta) untuk laki-laki, أَنْتِ (anti) untuk perempuan; bedanya hanya harakat akhir."]}, {"code": "NHW-04", "title": "Isim isyarah (kata tunjuk)", "scope": "Hadza, hadzihi, dzalika, tilka", "src": "Kelas XI", "tier": 1, "sum": "Kata tunjuk dibedakan menurut jarak (dekat atau jauh), jenis, dan jumlah benda yang ditunjuk.", "blocks": [{"h": "Isim isyarah", "table": {"cols": ["Untuk", "Dekat (ini)", "Jauh (itu)"], "rows": [["Mudzakkar tunggal", "هٰذَا hadza", "ذٰلِكَ dzalika"], ["Muannats tunggal", "هٰذِهِ hadzihi", "تِلْكَ tilka"], ["Jamak (manusia)", "هٰؤُلَاءِ ha'ula'i", "أُولٰئِكَ ula'ika"]]}}, {"h": "Contoh", "li": ["<b>هٰذَا كِتَابٌ<\/b> (ini buku); هٰذِهِ سَبُّوْرَةٌ (ini papan tulis); تِلْكَ مَدْرَسَةٌ (itu sekolah)."]}], "traps": ["Kata benda bertanda ta marbutah memakai هٰذِهِ atau تِلْكَ, bukan هٰذَا atau ذٰلِكَ."]}, {"code": "NHW-05", "title": "Jumlah ismiyah", "scope": "Mubtada' dan khabar", "src": "Kelas XI", "tier": 1, "sum": "Kalimat nominal (jumlah ismiyah) diawali isim dan terdiri atas mubtada' (subjek) dan khabar (predikat).", "blocks": [{"h": "Aturan", "li": ["<b>Mubtada' dan khabar sama-sama marfu'<\/b> (umumnya berharakat akhir dammah).", "Mubtada' biasanya ma'rifah (tertentu, misalnya beralif lam); khabar biasanya nakirah.", "Khabar menyesuaikan mubtada' dalam jenis dan jumlah: اَلطَّالِبُ مُجْتَهِدٌ، اَلطَّالِبَةُ مُجْتَهِدَةٌ."]}, {"h": "Contoh", "li": ["اَلْبَيْتُ كَبِيْرٌ (rumah itu besar); اَلْمُدَرِّسُ فِي الْفَصْلِ (guru ada di kelas)."]}], "traps": ["Bila mubtada' muannats, khabar sifatnya juga muannats."]}, {"code": "NHW-06", "title": "Fi'il madhi dan mudhari'", "scope": "Perubahan kata kerja (tashrif)", "src": "Kelas XI–XII", "tier": 1, "sum": "Fi'il madhi menyatakan perbuatan lampau; fi'il mudhari' menyatakan perbuatan sekarang atau akan datang; keduanya berubah menurut pelaku.", "blocks": [{"h": "Perubahan كَتَبَ", "table": {"cols": ["Pelaku", "Madhi (telah)", "Mudhari' (sedang/akan)"], "rows": [["هُوَ huwa", "كَتَبَ kataba", "يَكْتُبُ yaktubu"], ["هِيَ hiya", "كَتَبَتْ katabat", "تَكْتُبُ taktubu"], ["أَنْتَ anta", "كَتَبْتَ katabta", "تَكْتُبُ taktubu"], ["أَنَا ana", "كَتَبْتُ katabtu", "أَكْتُبُ aktubu"], ["نَحْنُ nahnu", "كَتَبْنَا katabna", "نَكْتُبُ naktubu"], ["هُمْ hum", "كَتَبُوْا katabu", "يَكْتُبُوْنَ yaktubuna"]]}}, {"h": "Ciri mudhari'", "li": ["<b>Fi'il mudhari'<\/b> diawali salah satu huruf أ ن ي ت (sering dihafal \"anaitu\")."]}], "traps": ["تَكْتُبُ bisa berarti \"kamu (laki-laki) menulis\" atau \"dia (perempuan) menulis\"; konteks menentukannya."]}, {"code": "NHW-07", "title": "Fi'il amr dan nahi", "scope": "Perintah dan larangan", "src": "Kelas XII", "tier": 2, "sum": "Fi'il amr menyatakan perintah; larangan dibentuk dengan لَا nahiyah ditambah fi'il mudhari' yang dijazmkan.", "blocks": [{"h": "Bentuk", "li": ["<b>Amr<\/b>: اُكْتُبْ uktub (tulislah!), اِقْرَأْ iqra' (bacalah!), اِجْلِسْ ijlis (duduklah!).", "Nahi: لَا تَكْتُبْ la taktub (jangan menulis!), لَا تَجْلِسْ la tajlis.", "Amr untuk perempuan: اُكْتُبِيْ uktubi; untuk jamak laki-laki: اُكْتُبُوْا uktubu."]}]}, {"code": "NHW-08", "title": "Jumlah fi'liyah", "scope": "Fi'il, fa'il, maf'ul bih", "src": "Kelas XII", "tier": 1, "sum": "Kalimat verbal (jumlah fi'liyah) diawali fi'il, diikuti fa'il (pelaku) dan bila perlu maf'ul bih (objek).", "blocks": [{"h": "Aturan", "li": ["<b>Fa'il marfu'<\/b> (umumnya dammah); maf'ul bih manshub (umumnya fathah).", "Contoh: قَرَأَ الطَّالِبُ الْكِتَابَ qara'a ath-thalibu al-kitaba (siswa itu membaca buku).", "Bila fa'il muannats, fi'il diberi ta: قَرَأَتِ الطَّالِبَةُ.", "Bila fa'il berupa isim zhahir jamak, fi'il tetap tunggal: كَتَبَ الطُّلَّابُ."]}], "traps": ["Pelaku (fa'il) berharakat dammah dan objek (maf'ul bih) berharakat fathah; jangan tertukar."]}, {"code": "NHW-09", "title": "Huruf jar", "scope": "Min, ila, 'an, 'ala, fi, bi, li", "src": "Kelas XI–XII", "tier": 2, "sum": "Huruf jar adalah kata depan yang membuat isim sesudahnya majrur (umumnya berharakat kasrah).", "blocks": [{"h": "Huruf jar", "table": {"cols": ["Huruf", "Arti"], "rows": [["مِنْ min", "Dari"], ["إِلَى ila", "Ke"], ["عَنْ 'an", "Tentang, dari"], ["عَلَى 'ala", "Di atas"], ["فِيْ fi", "Di dalam"], ["بِـ bi", "Dengan"], ["لِـ li", "Untuk, milik"]]}}, {"h": "Contoh", "li": ["<b>ذَهَبْتُ إِلَى الْمَدْرَسَةِ<\/b>: kata الْمَدْرَسَةِ berharakat kasrah karena didahului huruf jar."]}]}]}, {"id": "MWD", "name": "Maudhu' (tema sehari-hari)", "short": "Tema", "note": "Perkenalan, bilangan dan jam, keluarga dan rumah, sekolah, hari, serta letak benda.", "topics": [{"code": "MWD-01", "title": "Ta'aruf (perkenalan)", "scope": "Salam, perkenalan, sapaan", "src": "Kelas XI", "tier": 1, "sum": "Ungkapan salam, menanyakan kabar, dan memperkenalkan diri dalam bahasa Arab.", "blocks": [{"h": "Ungkapan", "table": {"cols": ["Ungkapan", "Jawaban", "Arti"], "rows": [["صَبَاحَ الْخَيْرِ shabahal khair", "صَبَاحَ النُّوْرِ shabahan nur", "Selamat pagi"], ["مَسَاءَ الْخَيْرِ masa'al khair", "مَسَاءَ النُّوْرِ masa'an nur", "Selamat sore/malam"], ["كَيْفَ حَالُكَ؟ kaifa haluka?", "بِخَيْرٍ، اَلْحَمْدُ لِلّٰهِ bikhair, alhamdulillah", "Apa kabar? Baik"], ["شُكْرًا syukran", "عَفْوًا 'afwan", "Terima kasih, sama-sama"], ["أَهْلًا وَسَهْلًا ahlan wa sahlan", "", "Selamat datang"]]}}, {"h": "Perkenalan", "li": ["<b>مَا اسْمُكَ؟<\/b> (siapa namamu?) dijawab اِسْمِيْ ... (nama saya ...).", "مِنْ أَيْنَ أَنْتَ؟ (dari mana kamu?) dijawab أَنَا مِنْ إِنْدُوْنِيْسِيَا."]}], "traps": ["Jawaban صَبَاحَ الْخَيْرِ adalah صَبَاحَ النُّوْرِ, bukan mengulang ucapan yang sama."]}, {"code": "MWD-02", "title": "Bilangan dan jam", "scope": "Al-'adad, as-sa'ah", "src": "Kelas XI", "tier": 1, "sum": "Bilangan 1–10 dan cara menyebut jam dalam bahasa Arab.", "blocks": [{"h": "Bilangan", "table": {"cols": ["Angka", "Bahasa Arab"], "rows": [["1", "وَاحِدٌ wahid"], ["2", "اِثْنَانِ itsnan"], ["3", "ثَلَاثَةٌ tsalatsah"], ["4", "أَرْبَعَةٌ arba'ah"], ["5", "خَمْسَةٌ khamsah"], ["6", "سِتَّةٌ sittah"], ["7", "سَبْعَةٌ sab'ah"], ["8", "ثَمَانِيَةٌ tsamaniyah"], ["9", "تِسْعَةٌ tis'ah"], ["10", "عَشَرَةٌ 'asyarah"]]}}, {"h": "Jam", "li": ["<b>كَمِ السَّاعَةُ؟<\/b> (jam berapa?) dijawab misalnya اَلسَّاعَةُ الثَّالِثَةُ (jam tiga).", "Setengah: وَالنِّصْفُ wan-nishfu; seperempat: وَالرُّبْعُ war-rub'u."]}], "traps": ["Untuk jam dipakai bilangan bertingkat (ats-tsalitsah), bukan bilangan biasa (tsalatsah)."]}, {"code": "MWD-03", "title": "Keluarga dan rumah", "scope": "Al-usrah, al-bait", "src": "Kelas XI", "tier": 2, "sum": "Kosakata anggota keluarga dan bagian rumah.", "blocks": [{"h": "Kosakata", "table": {"cols": ["Arab", "Arti", "Arab", "Arti"], "rows": [["أَبٌ ab", "Ayah", "غُرْفَةٌ ghurfah", "Kamar"], ["أُمٌّ umm", "Ibu", "مَطْبَخٌ mathbakh", "Dapur"], ["أَخٌ akh", "Saudara laki-laki", "حَمَّامٌ hammam", "Kamar mandi"], ["أُخْتٌ ukht", "Saudara perempuan", "حَدِيْقَةٌ hadiqah", "Taman, kebun"], ["جَدٌّ jadd", "Kakek", "بَيْتٌ bait", "Rumah"]]}}]}, {"code": "MWD-04", "title": "Sekolah dan kegiatan harian", "scope": "Al-madrasah, al-yaumiyyat", "src": "Kelas XI–XII", "tier": 2, "sum": "Kosakata sekolah dan kegiatan sehari-hari.", "blocks": [{"h": "Kosakata", "li": ["مَدْرَسَةٌ madrasah (sekolah), فَصْلٌ fashl (kelas), مُدَرِّسٌ mudarris (guru), طَالِبٌ thalib (siswa), مَكْتَبَةٌ maktabah (perpustakaan), سَبُّوْرَةٌ sabburah (papan tulis).", "Kegiatan: أَسْتَيْقِظُ (saya bangun), أَذْهَبُ إِلَى الْمَدْرَسَةِ (saya pergi ke sekolah), أَتَعَلَّمُ (saya belajar), أَنَامُ (saya tidur).", "<b>مَكْتَبَةٌ<\/b> berarti perpustakaan atau toko buku, bukan kantor (مَكْتَبٌ)."]}]}, {"code": "MWD-05", "title": "Hari dan waktu", "scope": "Al-ayyam", "src": "Kelas XI–XII", "tier": 2, "sum": "Nama hari dalam bahasa Arab dan keterangan waktu.", "blocks": [{"h": "Hari", "table": {"cols": ["Hari", "Bahasa Arab"], "rows": [["Minggu", "اَلْأَحَدُ al-ahad"], ["Senin", "اَلْاِثْنَيْنِ al-itsnain"], ["Selasa", "اَلثُّلَاثَاءُ ats-tsulatsa'"], ["Rabu", "اَلْأَرْبِعَاءُ al-arbi'a'"], ["Kamis", "اَلْخَمِيْسُ al-khamis"], ["Jumat", "اَلْجُمُعَةُ al-jumu'ah"], ["Sabtu", "اَلسَّبْتُ as-sabt"]]}}, {"h": "Waktu", "li": ["<b>أَمْسِ<\/b> (kemarin), اَلْيَوْمَ (hari ini), غَدًا (besok)."]}], "traps": ["Al-ahad (satu) adalah hari Minggu, karena hitungan hari dimulai dari Minggu."]}, {"code": "MWD-06", "title": "Letak dan arah", "scope": "Zharaf makan", "src": "Kelas XII", "tier": 2, "sum": "Kata keterangan tempat untuk menyebut letak benda.", "blocks": [{"h": "Letak", "table": {"cols": ["Arab", "Arti"], "rows": [["فَوْقَ fauqa", "Di atas"], ["تَحْتَ tahta", "Di bawah"], ["أَمَامَ amama", "Di depan"], ["خَلْفَ khalfa", "Di belakang"], ["بِجَانِبِ bijanibi", "Di samping"], ["بَيْنَ baina", "Di antara"]]}}, {"h": "Contoh", "li": ["اَلْكِتَابُ فَوْقَ الْمَكْتَبِ (buku itu di atas meja)."]}]}]}, {"id": "TSQ", "name": "Budaya dan sastra Arab", "short": "Budaya", "note": "Bahasa Arab di dunia dan karya sastra Arab.", "topics": [{"code": "TSQ-01", "title": "Bahasa Arab di dunia", "scope": "Liga Arab, bahasa resmi PBB", "src": "Kelas XI", "tier": 3, "sum": "Kedudukan bahasa Arab sebagai bahasa resmi banyak negara dan organisasi internasional.", "blocks": [{"h": "Fakta", "li": ["Liga Arab beranggotakan 22 negara dan wilayah.", "<b>Bahasa Arab menjadi bahasa resmi PBB<\/b> pada 1973; Hari Bahasa Arab Sedunia diperingati setiap 18 Desember.", "Bahasa Arab fusha (baku) dipakai dalam Al-Qur'an, buku, dan media resmi; bahasa amiyah (dialek) dipakai sehari-hari dan berbeda antarnegara."]}]}, {"code": "TSQ-02", "title": "Sastra Arab", "scope": "Syair, mu'allaqat, sastrawan modern", "src": "Kelas XII", "tier": 3, "sum": "Sastra Arab berkembang dari syair Arab pra-Islam sampai novel modern.", "blocks": [{"h": "Karya dan tokoh", "li": ["Mu'allaqat: kumpulan syair terbaik masa pra-Islam; salah satu penyairnya Imru' al-Qais.", "<b>Naguib Mahfouz<\/b> (Mesir) menerima Hadiah Nobel Sastra pada 1988.", "Kahlil Gibran (kelahiran Lebanon) dikenal lewat Sang Nabi (The Prophet, 1923).", "Unsur syair Arab: wazan (pola irama) dan qafiyah (rima akhir)."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Transliterasi disederhanakan seperti buku sekolah; sistem resmi (SKB Menteri Agama dan Menteri P dan K 1987) memakai tanda yang lebih rinci.", "Buku Bahasa Arab SMA dan MA berbeda dalam urutan tema dan qawaid; cocokkan dengan buku sekolah.", "Huruf Arab pada halaman ini memakai fon perangkat; harakat bisa tampil sedikit bergeser pada sebagian perangkat.", "Jumlah anggota Liga Arab (22) dihitung termasuk Palestina; status keanggotaan beberapa negara pernah ditangguhkan."]}, {"title": "Rujukan", "items": ["Buku Bahasa Arab SMA kelas XI–XII dan buku Bahasa Arab MA (Kementerian Agama): pembagian materi umum.", "Kaidah nahwu dan sharaf dasar: jumlah ismiyah, jumlah fi'liyah, tashrif fi'il.", "PBB: bahasa Arab sebagai bahasa resmi (1973) dan Hari Bahasa Arab Sedunia (18 Desember)."]}], "bank": "bank-bahasa-arab.html"};
+const MAP = {"id": "bahasa-arab", "subject": "Bahasa dan Sastra Arab", "title": "Peta Materi Bahasa Arab SMA", "lead": "Seluruh materi Bahasa Arab SMA, dari huruf hijaiah dan harakat sampai qawaid (tata bahasa), tema percakapan sehari-hari, serta budaya dan sastra Arab, disusun sebagai satu peta. Penjelasan dalam bahasa Indonesia; contoh ditulis dalam huruf Arab dan transliterasi. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Huruf hijaiah dan harakat, akar kata, isim-fi'il-harf, dhamir, isim isyarah, jumlah ismiyah dan fi'liyah, fi'il madhi-mudhari'-amr, tema sehari-hari, dan sastra Arab.", "source_note": "Bahasa dan Sastra Arab adalah mapel pilihan kelas XI–XII. Peta merangkum materi buku Bahasa Arab SMA dan MA tingkat dasar: huruf, qawaid, dan tema (maudhu'). Urutan tema berbeda antarbuku, jadi label kelas hanya perkiraan. Transliterasi disederhanakan seperti buku sekolah (dh, dz, sy, ts, kh).", "path_title": "Alur belajar", "path_note": "Urutan yang disarankan: huruf dan harakat, perkenalan, pembagian kata dan dhamir, kalimat nominal, lalu kata kerja dan kalimat verbal.", "path": [{"label": "Huruf", "title": "Huruf hijaiah dan harakat", "note": "28 huruf", "to": "HRF-01"}, {"label": "Kenalan", "title": "Ta'aruf", "note": "Salam, perkenalan", "to": "MWD-01"}, {"label": "Kata", "title": "Isim, fi'il, harf", "note": "Tiga jenis kata", "to": "NHW-01"}, {"label": "Dhamir", "title": "Kata ganti", "note": "Ana, anta, huwa", "to": "NHW-03"}, {"label": "Ismiyah", "title": "Mubtada' dan khabar", "note": "Kalimat nominal", "to": "NHW-05"}, {"label": "Fi'il", "title": "Madhi dan mudhari'", "note": "Perubahan kata kerja", "to": "NHW-06"}, {"label": "Fi'liyah", "title": "Fi'il, fa'il, maf'ul", "note": "Kalimat verbal", "to": "NHW-08"}], "domains": [{"id": "HRF", "name": "Huruf dan kata", "short": "Huruf", "note": "Huruf hijaiah, harakat, alif lam, bentuk huruf bersambung, dan akar kata.", "topics": [{"code": "HRF-01", "title": "Huruf hijaiah dan harakat", "scope": "Harakat, tanwin, syamsiyah-qamariyah", "src": "Kelas XI", "tier": 1, "sum": "Bahasa Arab ditulis dari kanan ke kiri dengan 28 huruf hijaiah; bunyi vokal ditandai harakat.", "blocks": [{"h": "Tanda baca", "table": {"cols": ["Tanda", "Bunyi"], "rows": [["Fathah (ـَ)", "a"], ["Kasrah (ـِ)", "i"], ["Dammah (ـُ)", "u"], ["Sukun (ـْ)", "Mati, tanpa vokal"], ["Tasydid (ـّ)", "Huruf dibaca dobel"], ["Tanwin (ـً ـٍ ـٌ)", "an, in, un"]]}}, {"h": "Alif lam", "li": ["<b>Alif lam qamariyah<\/b>: lam dibaca jelas, misalnya اَلْقَمَرُ al-qamaru (bulan).", "Alif lam syamsiyah: lam lebur ke huruf berikutnya yang bertasydid, misalnya اَلشَّمْسُ asy-syamsu (matahari).", "Huruf syamsiyah 14 dan huruf qamariyah 14."]}], "traps": ["Pada alif lam syamsiyah, huruf lam tidak dibaca; huruf sesudahnya dibaca dobel."], "grades": ["XI"]}, {"code": "HRF-02", "title": "Bentuk huruf bersambung", "scope": "Awal, tengah, akhir", "src": "Kelas XI", "tier": 2, "sum": "Huruf Arab berubah bentuk menurut letaknya dalam kata; enam huruf tidak bersambung dengan huruf sesudahnya.", "blocks": [{"h": "Aturan", "li": ["Sebagian besar huruf punya bentuk berdiri sendiri, awal, tengah, dan akhir.", "<b>Huruf yang tidak bersambung ke kiri<\/b>: ا د ذ ر ز و.", "Ta marbutah (ة) hanya muncul di akhir kata dan dibaca h bila waqaf (berhenti)."]}], "traps": ["Huruf ا د ذ ر ز و tetap disambung dari kanan, tetapi tidak menyambung ke huruf sesudahnya."], "grades": ["XI"]}, {"code": "HRF-03", "title": "Akar kata dan kamus", "scope": "Huruf asal tiga, wazan", "src": "Kelas XII", "tier": 2, "sum": "Sebagian besar kata Arab dibentuk dari akar tiga huruf; kamus Arab tradisional disusun menurut akar kata.", "blocks": [{"h": "Akar kata", "li": ["<b>Akar ك ت ب (k-t-b)<\/b> bermakna menulis: كَتَبَ kataba (menulis), كِتَابٌ kitab (buku), كَاتِبٌ katib (penulis), مَكْتَبٌ maktab (meja/kantor), مَكْتَبَةٌ maktabah (perpustakaan).", "Pola (wazan) dasar kata kerja adalah فَعَلَ fa'ala.", "Untuk mencari kata di kamus seperti Al-Munawwir, kembalikan dulu kata ke akar tiga hurufnya."]}], "grades": ["XII"]}]}, {"id": "NHW", "name": "Qawaid (tata bahasa)", "short": "Qawaid", "note": "Jenis kata, jenis dan jumlah isim, kata ganti, kata tunjuk, kalimat nominal dan verbal, kata kerja, dan huruf jar.", "topics": [{"code": "NHW-01", "title": "Isim, fi'il, dan harf", "scope": "Tiga jenis kata", "src": "Kelas XI", "tier": 1, "sum": "Kata dalam bahasa Arab dibagi tiga: isim (kata benda), fi'il (kata kerja), dan harf (kata tugas).", "blocks": [{"h": "Jenis kata", "table": {"cols": ["Jenis", "Pengertian", "Ciri atau contoh"], "rows": [["Isim", "Kata benda, sifat, atau kata ganti", "Bisa diberi alif lam atau tanwin: اَلْكِتَابُ، كِتَابٌ"], ["Fi'il", "Kata kerja yang terikat waktu", "كَتَبَ (telah menulis), يَكْتُبُ (sedang menulis)"], ["Harf", "Kata tugas yang baru bermakna bila bersambung", "فِيْ، مِنْ، إِلَى"]]}}], "traps": ["Kata yang dapat diberi alif lam atau tanwin adalah isim, bukan fi'il."], "grades": ["XI"]}, {"code": "NHW-02", "title": "Jenis dan jumlah isim", "scope": "Mudzakkar-muannats, mufrad-mutsanna-jamak", "src": "Kelas XI", "tier": 1, "sum": "Isim dibedakan menurut jenis (laki-laki atau perempuan) dan jumlah (tunggal, dua, atau banyak).", "blocks": [{"h": "Jenis", "li": ["Mudzakkar (maskulin): مُدَرِّسٌ mudarris (guru laki-laki).", "<b>Muannats<\/b> (feminin) umumnya ditandai ta marbutah: مُدَرِّسَةٌ mudarrisah (guru perempuan)."]}, {"h": "Jumlah", "table": {"cols": ["Bentuk", "Ciri", "Contoh"], "rows": [["Mufrad (tunggal)", "Satu", "طَالِبٌ thalib"], ["Mutsanna (dua)", "Akhiran -ani atau -aini", "طَالِبَانِ thaliban"], ["Jamak mudzakkar salim", "Akhiran -una atau -ina", "مُدَرِّسُوْنَ mudarrisun"], ["Jamak muannats salim", "Akhiran -at", "مُدَرِّسَاتٌ mudarrisat"], ["Jamak taksir", "Bentuk berubah tidak beraturan", "كِتَابٌ → كُتُبٌ kutub"]]}}], "traps": ["Jamak taksir tidak punya akhiran tetap; bentuknya harus dihafal (qalam → aqlam, walad → aulad)."], "grades": ["XI"]}, {"code": "NHW-03", "title": "Dhamir (kata ganti)", "scope": "Dhamir munfashil", "src": "Kelas XI", "tier": 1, "sum": "Kata ganti orang dalam bahasa Arab membedakan jumlah dan jenis kelamin.", "blocks": [{"h": "Dhamir", "table": {"cols": ["Orang", "Tunggal", "Dua", "Jamak"], "rows": [["Pertama", "أَنَا ana (saya)", "نَحْنُ nahnu (kami)", "نَحْنُ nahnu (kami)"], ["Kedua laki-laki", "أَنْتَ anta", "أَنْتُمَا antuma", "أَنْتُمْ antum"], ["Kedua perempuan", "أَنْتِ anti", "أَنْتُمَا antuma", "أَنْتُنَّ antunna"], ["Ketiga laki-laki", "هُوَ huwa", "هُمَا huma", "هُمْ hum"], ["Ketiga perempuan", "هِيَ hiya", "هُمَا huma", "هُنَّ hunna"]]}}], "traps": ["أَنْتَ (anta) untuk laki-laki, أَنْتِ (anti) untuk perempuan; bedanya hanya harakat akhir."], "grades": ["XI"]}, {"code": "NHW-04", "title": "Isim isyarah (kata tunjuk)", "scope": "Hadza, hadzihi, dzalika, tilka", "src": "Kelas XI", "tier": 1, "sum": "Kata tunjuk dibedakan menurut jarak (dekat atau jauh), jenis, dan jumlah benda yang ditunjuk.", "blocks": [{"h": "Isim isyarah", "table": {"cols": ["Untuk", "Dekat (ini)", "Jauh (itu)"], "rows": [["Mudzakkar tunggal", "هٰذَا hadza", "ذٰلِكَ dzalika"], ["Muannats tunggal", "هٰذِهِ hadzihi", "تِلْكَ tilka"], ["Jamak (manusia)", "هٰؤُلَاءِ ha'ula'i", "أُولٰئِكَ ula'ika"]]}}, {"h": "Contoh", "li": ["<b>هٰذَا كِتَابٌ<\/b> (ini buku); هٰذِهِ سَبُّوْرَةٌ (ini papan tulis); تِلْكَ مَدْرَسَةٌ (itu sekolah)."]}], "traps": ["Kata benda bertanda ta marbutah memakai هٰذِهِ atau تِلْكَ, bukan هٰذَا atau ذٰلِكَ."], "grades": ["XI"]}, {"code": "NHW-05", "title": "Jumlah ismiyah", "scope": "Mubtada' dan khabar", "src": "Kelas XI", "tier": 1, "sum": "Kalimat nominal (jumlah ismiyah) diawali isim dan terdiri atas mubtada' (subjek) dan khabar (predikat).", "blocks": [{"h": "Aturan", "li": ["<b>Mubtada' dan khabar sama-sama marfu'<\/b> (umumnya berharakat akhir dammah).", "Mubtada' biasanya ma'rifah (tertentu, misalnya beralif lam); khabar biasanya nakirah.", "Khabar menyesuaikan mubtada' dalam jenis dan jumlah: اَلطَّالِبُ مُجْتَهِدٌ، اَلطَّالِبَةُ مُجْتَهِدَةٌ."]}, {"h": "Contoh", "li": ["اَلْبَيْتُ كَبِيْرٌ (rumah itu besar); اَلْمُدَرِّسُ فِي الْفَصْلِ (guru ada di kelas)."]}], "traps": ["Bila mubtada' muannats, khabar sifatnya juga muannats."], "grades": ["XI"]}, {"code": "NHW-06", "title": "Fi'il madhi dan mudhari'", "scope": "Perubahan kata kerja (tashrif)", "src": "Kelas XI–XII", "tier": 1, "sum": "Fi'il madhi menyatakan perbuatan lampau; fi'il mudhari' menyatakan perbuatan sekarang atau akan datang; keduanya berubah menurut pelaku.", "blocks": [{"h": "Perubahan كَتَبَ", "table": {"cols": ["Pelaku", "Madhi (telah)", "Mudhari' (sedang/akan)"], "rows": [["هُوَ huwa", "كَتَبَ kataba", "يَكْتُبُ yaktubu"], ["هِيَ hiya", "كَتَبَتْ katabat", "تَكْتُبُ taktubu"], ["أَنْتَ anta", "كَتَبْتَ katabta", "تَكْتُبُ taktubu"], ["أَنَا ana", "كَتَبْتُ katabtu", "أَكْتُبُ aktubu"], ["نَحْنُ nahnu", "كَتَبْنَا katabna", "نَكْتُبُ naktubu"], ["هُمْ hum", "كَتَبُوْا katabu", "يَكْتُبُوْنَ yaktubuna"]]}}, {"h": "Ciri mudhari'", "li": ["<b>Fi'il mudhari'<\/b> diawali salah satu huruf أ ن ي ت (sering dihafal \"anaitu\")."]}], "traps": ["تَكْتُبُ bisa berarti \"kamu (laki-laki) menulis\" atau \"dia (perempuan) menulis\"; konteks menentukannya."], "grades": ["XI", "XII"]}, {"code": "NHW-07", "title": "Fi'il amr dan nahi", "scope": "Perintah dan larangan", "src": "Kelas XII", "tier": 2, "sum": "Fi'il amr menyatakan perintah; larangan dibentuk dengan لَا nahiyah ditambah fi'il mudhari' yang dijazmkan.", "blocks": [{"h": "Bentuk", "li": ["<b>Amr<\/b>: اُكْتُبْ uktub (tulislah!), اِقْرَأْ iqra' (bacalah!), اِجْلِسْ ijlis (duduklah!).", "Nahi: لَا تَكْتُبْ la taktub (jangan menulis!), لَا تَجْلِسْ la tajlis.", "Amr untuk perempuan: اُكْتُبِيْ uktubi; untuk jamak laki-laki: اُكْتُبُوْا uktubu."]}], "grades": ["XII"]}, {"code": "NHW-08", "title": "Jumlah fi'liyah", "scope": "Fi'il, fa'il, maf'ul bih", "src": "Kelas XII", "tier": 1, "sum": "Kalimat verbal (jumlah fi'liyah) diawali fi'il, diikuti fa'il (pelaku) dan bila perlu maf'ul bih (objek).", "blocks": [{"h": "Aturan", "li": ["<b>Fa'il marfu'<\/b> (umumnya dammah); maf'ul bih manshub (umumnya fathah).", "Contoh: قَرَأَ الطَّالِبُ الْكِتَابَ qara'a ath-thalibu al-kitaba (siswa itu membaca buku).", "Bila fa'il muannats, fi'il diberi ta: قَرَأَتِ الطَّالِبَةُ.", "Bila fa'il berupa isim zhahir jamak, fi'il tetap tunggal: كَتَبَ الطُّلَّابُ."]}], "traps": ["Pelaku (fa'il) berharakat dammah dan objek (maf'ul bih) berharakat fathah; jangan tertukar."], "grades": ["XII"]}, {"code": "NHW-09", "title": "Huruf jar", "scope": "Min, ila, 'an, 'ala, fi, bi, li", "src": "Kelas XI–XII", "tier": 2, "sum": "Huruf jar adalah kata depan yang membuat isim sesudahnya majrur (umumnya berharakat kasrah).", "blocks": [{"h": "Huruf jar", "table": {"cols": ["Huruf", "Arti"], "rows": [["مِنْ min", "Dari"], ["إِلَى ila", "Ke"], ["عَنْ 'an", "Tentang, dari"], ["عَلَى 'ala", "Di atas"], ["فِيْ fi", "Di dalam"], ["بِـ bi", "Dengan"], ["لِـ li", "Untuk, milik"]]}}, {"h": "Contoh", "li": ["<b>ذَهَبْتُ إِلَى الْمَدْرَسَةِ<\/b>: kata الْمَدْرَسَةِ berharakat kasrah karena didahului huruf jar."]}], "grades": ["XI", "XII"]}]}, {"id": "MWD", "name": "Maudhu' (tema sehari-hari)", "short": "Tema", "note": "Perkenalan, bilangan dan jam, keluarga dan rumah, sekolah, hari, serta letak benda.", "topics": [{"code": "MWD-01", "title": "Ta'aruf (perkenalan)", "scope": "Salam, perkenalan, sapaan", "src": "Kelas XI", "tier": 1, "sum": "Ungkapan salam, menanyakan kabar, dan memperkenalkan diri dalam bahasa Arab.", "blocks": [{"h": "Ungkapan", "table": {"cols": ["Ungkapan", "Jawaban", "Arti"], "rows": [["صَبَاحَ الْخَيْرِ shabahal khair", "صَبَاحَ النُّوْرِ shabahan nur", "Selamat pagi"], ["مَسَاءَ الْخَيْرِ masa'al khair", "مَسَاءَ النُّوْرِ masa'an nur", "Selamat sore/malam"], ["كَيْفَ حَالُكَ؟ kaifa haluka?", "بِخَيْرٍ، اَلْحَمْدُ لِلّٰهِ bikhair, alhamdulillah", "Apa kabar? Baik"], ["شُكْرًا syukran", "عَفْوًا 'afwan", "Terima kasih, sama-sama"], ["أَهْلًا وَسَهْلًا ahlan wa sahlan", "", "Selamat datang"]]}}, {"h": "Perkenalan", "li": ["<b>مَا اسْمُكَ؟<\/b> (siapa namamu?) dijawab اِسْمِيْ ... (nama saya ...).", "مِنْ أَيْنَ أَنْتَ؟ (dari mana kamu?) dijawab أَنَا مِنْ إِنْدُوْنِيْسِيَا."]}], "traps": ["Jawaban صَبَاحَ الْخَيْرِ adalah صَبَاحَ النُّوْرِ, bukan mengulang ucapan yang sama."], "grades": ["XI"]}, {"code": "MWD-02", "title": "Bilangan dan jam", "scope": "Al-'adad, as-sa'ah", "src": "Kelas XI", "tier": 1, "sum": "Bilangan 1–10 dan cara menyebut jam dalam bahasa Arab.", "blocks": [{"h": "Bilangan", "table": {"cols": ["Angka", "Bahasa Arab"], "rows": [["1", "وَاحِدٌ wahid"], ["2", "اِثْنَانِ itsnan"], ["3", "ثَلَاثَةٌ tsalatsah"], ["4", "أَرْبَعَةٌ arba'ah"], ["5", "خَمْسَةٌ khamsah"], ["6", "سِتَّةٌ sittah"], ["7", "سَبْعَةٌ sab'ah"], ["8", "ثَمَانِيَةٌ tsamaniyah"], ["9", "تِسْعَةٌ tis'ah"], ["10", "عَشَرَةٌ 'asyarah"]]}}, {"h": "Jam", "li": ["<b>كَمِ السَّاعَةُ؟<\/b> (jam berapa?) dijawab misalnya اَلسَّاعَةُ الثَّالِثَةُ (jam tiga).", "Setengah: وَالنِّصْفُ wan-nishfu; seperempat: وَالرُّبْعُ war-rub'u."]}], "traps": ["Untuk jam dipakai bilangan bertingkat (ats-tsalitsah), bukan bilangan biasa (tsalatsah)."], "grades": ["XI"]}, {"code": "MWD-03", "title": "Keluarga dan rumah", "scope": "Al-usrah, al-bait", "src": "Kelas XI", "tier": 2, "sum": "Kosakata anggota keluarga dan bagian rumah.", "blocks": [{"h": "Kosakata", "table": {"cols": ["Arab", "Arti", "Arab", "Arti"], "rows": [["أَبٌ ab", "Ayah", "غُرْفَةٌ ghurfah", "Kamar"], ["أُمٌّ umm", "Ibu", "مَطْبَخٌ mathbakh", "Dapur"], ["أَخٌ akh", "Saudara laki-laki", "حَمَّامٌ hammam", "Kamar mandi"], ["أُخْتٌ ukht", "Saudara perempuan", "حَدِيْقَةٌ hadiqah", "Taman, kebun"], ["جَدٌّ jadd", "Kakek", "بَيْتٌ bait", "Rumah"]]}}], "grades": ["XI"]}, {"code": "MWD-04", "title": "Sekolah dan kegiatan harian", "scope": "Al-madrasah, al-yaumiyyat", "src": "Kelas XI–XII", "tier": 2, "sum": "Kosakata sekolah dan kegiatan sehari-hari.", "blocks": [{"h": "Kosakata", "li": ["مَدْرَسَةٌ madrasah (sekolah), فَصْلٌ fashl (kelas), مُدَرِّسٌ mudarris (guru), طَالِبٌ thalib (siswa), مَكْتَبَةٌ maktabah (perpustakaan), سَبُّوْرَةٌ sabburah (papan tulis).", "Kegiatan: أَسْتَيْقِظُ (saya bangun), أَذْهَبُ إِلَى الْمَدْرَسَةِ (saya pergi ke sekolah), أَتَعَلَّمُ (saya belajar), أَنَامُ (saya tidur).", "<b>مَكْتَبَةٌ<\/b> berarti perpustakaan atau toko buku, bukan kantor (مَكْتَبٌ)."]}], "grades": ["XI", "XII"]}, {"code": "MWD-05", "title": "Hari dan waktu", "scope": "Al-ayyam", "src": "Kelas XI–XII", "tier": 2, "sum": "Nama hari dalam bahasa Arab dan keterangan waktu.", "blocks": [{"h": "Hari", "table": {"cols": ["Hari", "Bahasa Arab"], "rows": [["Minggu", "اَلْأَحَدُ al-ahad"], ["Senin", "اَلْاِثْنَيْنِ al-itsnain"], ["Selasa", "اَلثُّلَاثَاءُ ats-tsulatsa'"], ["Rabu", "اَلْأَرْبِعَاءُ al-arbi'a'"], ["Kamis", "اَلْخَمِيْسُ al-khamis"], ["Jumat", "اَلْجُمُعَةُ al-jumu'ah"], ["Sabtu", "اَلسَّبْتُ as-sabt"]]}}, {"h": "Waktu", "li": ["<b>أَمْسِ<\/b> (kemarin), اَلْيَوْمَ (hari ini), غَدًا (besok)."]}], "traps": ["Al-ahad (satu) adalah hari Minggu, karena hitungan hari dimulai dari Minggu."], "grades": ["XI", "XII"]}, {"code": "MWD-06", "title": "Letak dan arah", "scope": "Zharaf makan", "src": "Kelas XII", "tier": 2, "sum": "Kata keterangan tempat untuk menyebut letak benda.", "blocks": [{"h": "Letak", "table": {"cols": ["Arab", "Arti"], "rows": [["فَوْقَ fauqa", "Di atas"], ["تَحْتَ tahta", "Di bawah"], ["أَمَامَ amama", "Di depan"], ["خَلْفَ khalfa", "Di belakang"], ["بِجَانِبِ bijanibi", "Di samping"], ["بَيْنَ baina", "Di antara"]]}}, {"h": "Contoh", "li": ["اَلْكِتَابُ فَوْقَ الْمَكْتَبِ (buku itu di atas meja)."]}], "grades": ["XII"]}]}, {"id": "TSQ", "name": "Budaya dan sastra Arab", "short": "Budaya", "note": "Bahasa Arab di dunia dan karya sastra Arab.", "topics": [{"code": "TSQ-01", "title": "Bahasa Arab di dunia", "scope": "Liga Arab, bahasa resmi PBB", "src": "Kelas XI", "tier": 3, "sum": "Kedudukan bahasa Arab sebagai bahasa resmi banyak negara dan organisasi internasional.", "blocks": [{"h": "Fakta", "li": ["Liga Arab beranggotakan 22 negara dan wilayah.", "<b>Bahasa Arab menjadi bahasa resmi PBB<\/b> pada 1973; Hari Bahasa Arab Sedunia diperingati setiap 18 Desember.", "Bahasa Arab fusha (baku) dipakai dalam Al-Qur'an, buku, dan media resmi; bahasa amiyah (dialek) dipakai sehari-hari dan berbeda antarnegara."]}], "grades": ["XI"]}, {"code": "TSQ-02", "title": "Sastra Arab", "scope": "Syair, mu'allaqat, sastrawan modern", "src": "Kelas XII", "tier": 3, "sum": "Sastra Arab berkembang dari syair Arab pra-Islam sampai novel modern.", "blocks": [{"h": "Karya dan tokoh", "li": ["Mu'allaqat: kumpulan syair terbaik masa pra-Islam; salah satu penyairnya Imru' al-Qais.", "<b>Naguib Mahfouz<\/b> (Mesir) menerima Hadiah Nobel Sastra pada 1988.", "Kahlil Gibran (kelahiran Lebanon) dikenal lewat Sang Nabi (The Prophet, 1923).", "Unsur syair Arab: wazan (pola irama) dan qafiyah (rima akhir)."]}], "grades": ["XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Transliterasi disederhanakan seperti buku sekolah; sistem resmi (SKB Menteri Agama dan Menteri P dan K 1987) memakai tanda yang lebih rinci.", "Buku Bahasa Arab SMA dan MA berbeda dalam urutan tema dan qawaid; cocokkan dengan buku sekolah.", "Huruf Arab pada halaman ini memakai fon perangkat; harakat bisa tampil sedikit bergeser pada sebagian perangkat.", "Jumlah anggota Liga Arab (22) dihitung termasuk Palestina; status keanggotaan beberapa negara pernah ditangguhkan."]}, {"title": "Rujukan", "items": ["Buku Bahasa Arab SMA kelas XI–XII dan buku Bahasa Arab MA (Kementerian Agama): pembagian materi umum.", "Kaidah nahwu dan sharaf dasar: jumlah ismiyah, jumlah fi'liyah, tashrif fi'il.", "PBB: bahasa Arab sebagai bahasa resmi (1973) dan Hari Bahasa Arab Sedunia (18 Desember)."]}], "icon": "<text x=\"24\" y=\"34\" text-anchor=\"middle\" font-size=\"30\" font-family=\"serif\" fill=\"currentColor\" stroke=\"none\">ع<\/text><rect x=\"5\" y=\"5\" width=\"38\" height=\"38\" rx=\"9\"/>", "bank": "bank-bahasa-arab.html"};
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
-let onlyLanjut = false;
+// Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
+const params = new URLSearchParams(location.search);
+let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
+let onlyLanjut = params.get("lanjut") === "1";
+const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -233,6 +371,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
+  if(MAP.icon) $("icon").innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + MAP.icon + '</svg>';
   $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
@@ -245,13 +384,13 @@ function render(){
   const map = $("map"), host = $("domains");
   MAP.domains.forEach(d => {
     const col = document.createElement("div");
-    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
-    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+    col.className = "mcol"; col.dataset.domain = d.id; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono" id="n-' + d.id + '">' + d.topics.length + '</span></h3><ul>' +
       d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
-    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w" id="w-' + d.id + '">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
     d.topics.forEach(t => {
       const a = document.createElement("article");
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
@@ -285,10 +424,11 @@ function goTo(code){
 function progress(){
   let k = 0, n = 0;
   MAP.domains.forEach(d => {
-    const dn = d.topics.filter(t => done.has(t.code)).length;
-    k += dn; n += d.topics.length;
-    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
-    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+    const ts = d.topics.filter(shown), dn = ts.filter(t => done.has(t.code)).length;
+    k += dn; n += ts.length;
+    $("bar-" + d.id).style.width = (ts.length ? dn / ts.length * 100 : 0) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + ts.length;
+    $("bar-" + d.id).closest(".pg").hidden = !ts.length;
   });
   $("overall").textContent = k + " dari " + n;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
@@ -300,18 +440,144 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    const keep = !onlyLanjut || t.lanjut;
+    const keep = shown(t);
     if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
     const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  document.querySelectorAll(".chip").forEach(c => c.parentNode.hidden = !shown(byCode[c.dataset.code].t));
+  MAP.domains.forEach(d => {
+    const k = d.topics.filter(shown).length;
+    document.querySelector('.mcol[data-domain="' + d.id + '"]').hidden = !k;
+    $("d-" + d.id).hidden = !k;
+    $("n-" + d.id).textContent = k; $("w-" + d.id).textContent = k + " simpul";
+  });
+  $("emptyNote").hidden = MAP.domains.some(d => d.topics.some(shown));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
 }
 
+// Remember this view for the home page's "Lanjutkan" button and recent list.
+function remember(){
+  const url = new URL(location.href);
+  kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
+  onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
+  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+  try { history.replaceState(null, "", url); } catch(e) {}
+  try {
+    const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
+  } catch(e) {}
+}
+function applyFilters(){
+  document.querySelectorAll("#grades button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kelas === kelas)));
+  $("onlyLanjut").setAttribute("aria-pressed", String(onlyLanjut));
+  search($("q").value); progress(); remember();
+}
+
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
+let storyOn = false;
+const parts = t => {
+  const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
+  t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
+    (b.table ? '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>" : "")}));
+  if(t.traps && t.traps.length) out.push({label: "Jebakan soal", trap: true, html: "<ul>" + t.traps.map(x => "<li>" + x + "</li>").join("") + "</ul>"});
+  return out;
+};
+function showPart(slide, i){
+  const t = byCode[slide.dataset.code].t, ps = parts(t);
+  i = Math.max(0, Math.min(ps.length - 1, i));
+  slide.dataset.part = i;
+  slide.querySelectorAll(".bars i").forEach((b, k) => b.classList.toggle("on", k <= i));
+  const card = slide.querySelector(".st-card");
+  card.classList.toggle("trap", !!ps[i].trap);
+  card.querySelector(".st-label").innerHTML = ps[i].label;
+  card.querySelector(".st-body").innerHTML = ps[i].html;
+  card.querySelector(".st-body").scrollTop = 0;
+}
+function slideHTML(t, d, n, total){
+  const on = done.has(t.code);
+  return '<article class="slide" data-code="' + t.code + '" data-part="0" style="--c:' + d.c + ';--soft:' + d.soft + '" aria-label="' + (n + 1) + ' dari ' + total + '">' +
+    '<div class="bars">' + parts(t).map(() => "<i></i>").join("") + '</div>' +
+    '<div class="st-head"><span class="st-dom">' + d.short + '</span><span class="mono">' + t.code + '</span>' + tags(t) +
+    '<span class="st-grade">Kelas ' + t.grades.join(", ") + '</span></div>' +
+    '<h2>' + t.title + '</h2>' +
+    '<div class="st-card"><div class="st-label"></div><div class="st-body"></div></div>' +
+    '<div class="st-foot"><b>' + (n + 1) + ' / ' + total + '</b><span>Ketuk → lanjut · Geser ↑ simpul berikutnya</span></div>' +
+    '<div class="rail">' +
+      '<button type="button" data-act="done" aria-pressed="' + on + '"><span aria-hidden="true">✓</span>' + (on ? "Dikuasai" : "Kuasai") + '</button>' +
+      '<button type="button" data-act="map"><span aria-hidden="true">▤</span>Di peta</button>' +
+      (MAP.bank ? '<a href="' + MAP.bank + '"><span aria-hidden="true">?</span>Latihan</a>' : '') +
+    '</div></article>';
+}
+function openStory(code){
+  const list = [];
+  MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
+  if(!list.length) return;
+  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+    (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '">Latihan bank soal</a>' : '') +
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
+  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  $("story").hidden = false; document.body.classList.add("story-open");
+  storyOn = true; remember();
+  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
+  $("feed").scrollTop = start ? start.offsetTop : 0;
+  $("storyClose").focus();
+}
+function closeStory(){
+  const cur = currentSlide();
+  $("story").hidden = true; document.body.classList.remove("story-open");
+  storyOn = false; remember();
+  if(cur) goTo(cur.dataset.code);
+}
+function currentSlide(){
+  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
+  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
+}
+function step(dir){
+  const sl = currentSlide();
+  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
+  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
+  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
+  showPart(sl, i);
+}
+$("storyOpen").addEventListener("click", () => openStory());
+$("storyClose").addEventListener("click", closeStory);
+$("feed").addEventListener("click", e => {
+  const act = e.target.closest("[data-act]");
+  if(act){
+    const sl = act.closest(".slide");
+    if(act.dataset.act === "done"){
+      const code = sl.dataset.code, on = !done.has(code);
+      on ? done.add(code) : done.delete(code); save(); progress();
+      act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
+    }
+    if(act.dataset.act === "map") closeStory();
+    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
+    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    return;
+  }
+  // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
+  if(e.target.closest("a, .tbl") || String(getSelection())) return;
+  const sl = e.target.closest(".slide"); if(!sl) return;
+  const box = sl.getBoundingClientRect();
+  step(e.clientX - box.left < box.width / 3 ? -1 : 1);
+});
+document.addEventListener("keydown", e => {
+  if($("story").hidden) return;
+  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
+  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
+  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
+  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
+});
+
 render();
 progress();
+applyFilters();
+if(params.get("mode") === "geser") openStory(location.hash.startsWith("#t-") ? location.hash.slice(3) : "");
 document.addEventListener("click", e => {
   const tg = e.target.closest(".toggle");
   if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
@@ -328,7 +594,8 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
-$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
+$("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
 </script>

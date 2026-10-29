@@ -53,7 +53,7 @@ map
 | `code` | MUST | `<domain id>-<two digits>`, numbered from 01 in teaching order: `MEK-03`. Codes are permanent once published (see §6). |
 | `title` | MUST | Indonesian noun phrase, sentence case, ≤ 8 words, matching textbook chapter wording where possible. |
 | `scope` | MUST | ≤ 6 words naming the subtopics or time span: `GLB, GLBB, gerak vertikal`. |
-| `src` | MUST | Where it is taught: `Kelas X`, `Kelas XI`, `Kelas X–XI`, `Kelas XII`, or `Semua kelas`. If unsure, use the usual placement and say so in `source_note`. |
+| `src` | MUST | Where it is taught, exactly one of: `Kelas X`, `Kelas XI`, `Kelas XII`, `Kelas X–XI`, `Kelas XI–XII`, `Kelas X–XII`, `Kelas X dan XII`, or `Semua kelas`. The build reads the grades from it for the page's Kelas X / XI / XII filter (kelas X is Fase E, XI–XII Fase F) and rejects any other value. If unsure, use the usual placement and say so in `source_note`. |
 | `tier` | MUST | 1, 2 or 3 (see §4). |
 | `sum` | MUST | One sentence, ≤ 30 words: what the topic covers. Shown when the card is closed. |
 | `blocks` | MUST | 1–5 blocks (see §3). |

@@ -1,7 +1,7 @@
 <title>__TITLE__</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: learning module. Goals and linked map topics → lessons (collapsible) → staged exercises, one stage at a time, with answer checking. Content comes from data/modules/<id>.json. */
 :root{
@@ -9,21 +9,10 @@
   --accent:#6E3466; --accent-soft:#F1E3EE; --tka:#8A5526; --tka-soft:#F3E9DF;
   --s1:#2C6B63; --s2:#3D5A80; --s3:#2B3A78; --s4:#6E3466; --s5:#9A3B1F;
   --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F; --ok-soft:#E1F0E5;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
-  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
-  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --accent:#D9A0CF; --accent-soft:#33202F; --tka:#E0A974; --tka-soft:#33271C;
-  --s1:#76C7B9; --s2:#9DBBE0; --s3:#A3B1F2; --s4:#D9A0CF; --s5:#F0A58A;
-  --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; --ok-soft:#1B3022; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -51,7 +40,7 @@ section{margin-top:44px}
 .btn[disabled]{opacity:.5;cursor:default}
 
 .goals{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:14px}
-.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.panel{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .panel ol,.panel ul{margin:8px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:5px;font-size:.95rem}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
 .chip{display:inline-flex;gap:8px;align-items:baseline;text-decoration:none;padding:5px 9px;border-radius:5px;background:var(--accent-soft);font-size:.9rem;line-height:1.3}

@@ -1,7 +1,7 @@
 <title>Peta Materi Lomba Sejarah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: museum-catalogue page. Weighted header bar -> study order -> map overview -> era strip -> catalogue cards per domain (each card = one "simpul" with an inventory code). */
 :root{
@@ -9,21 +9,10 @@
   --indigo:#2B3A78; --soga:#8A5526; --patina:#2C6B63;
   --indigo-soft:#E4E8F6; --soga-soft:#F3E9DF; --patina-soft:#DFEFEC;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
-  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --indigo:#A3B1F2; --soga:#E0A974; --patina:#76C7B9;
-  --indigo-soft:#232A47; --soga-soft:#33271C; --patina-soft:#1C3330;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -138,7 +127,7 @@ td:first-child{font-variant-numeric:tabular-nums}
 .new{font-family:var(--f-label);font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--bg);background:var(--patina);border-radius:3px;padding:0 5px;margin-right:4px;white-space:nowrap}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 .src a{word-break:break-word}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}

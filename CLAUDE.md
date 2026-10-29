@@ -65,6 +65,8 @@ data/tka-types.json      TKA item types; every transcribed item mapped to one
 data/tka-generated/      agent-generated TKA items (checked by scripts/check_generated.py, not built)
 templates/_map.html      shared page for all subject maps
 templates/_modul.html    shared page for all learning modules
+templates/_theme.css     shared light theme, added by build.py to every page
+templates/_icons.json    subject icons (SVG markup keyed by map id) for the home page and map headers
 templates/*.html         other pages (history map, bank, simulator, start page)
 scripts/build.py         validation, lint, build
 tests/test_build.py      tests
@@ -77,6 +79,8 @@ specs/                   rules: map, questions, workflow, checklist
 
 - The history map (`templates/peta.html`) predates the JSON format and has its content inside the page. Do not copy that pattern; new subjects use `data/maps/`.
 - Template files whose names start with `_` are not built directly.
+- The site is light-only: page styles set their own tokens and `_theme.css` overrides them. Do not add dark-mode blocks back.
+- The home page tabs come from `groups` in `data/subjects.json`; a subject's grades (X/XI/XII) come from each topic's `src`.
 - Pages are built twice: `docs/` links pages by file name; `--artifact` fragments link by claude.ai URL (`ARTIFACT_URLS`) or to the GitHub Pages site (`PAGES_URL`). Add a page's URL to `ARTIFACT_URLS` only after publishing it.
 - The page fonts lack Unicode superscript digits; the map page converts `10⁻¹⁹`-style text to `<sup>` on load. Write formulas with Unicode freely.
 - The cloud environment's network proxy blocks some sites (including the Kemendikbud textbook PDF host). Use web search, or record the gap in the pull request.

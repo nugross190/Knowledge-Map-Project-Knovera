@@ -6,29 +6,19 @@
 <title>Peta Materi PJOK SMA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: generic subject map, same catalogue look as the history map. Domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json. */
+/* Layout: generic subject map, same catalogue look as the history map. "Mode geser" opens the same topics as a
+   full-screen story feed (one topic per screen, swipe up for the next, tap through its parts). Grade filter and domain progress → path strip → map overview → catalogue cards per domain. Content comes from data/maps/<subject>.json; each topic's grades come from its src (scripts/build.py). */
 :root{
   --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
   --d1:#2B3A78; --d2:#8A5526; --d3:#2C6B63; --d4:#6E3466; --d5:#5A6420; --d6:#9A3B1F; --d7:#3D5A80;
   --s1:#E4E8F6; --s2:#F3E9DF; --s3:#DFEFEC; --s4:#F1E3EE; --s5:#ECEEDC; --s6:#F8E6DF; --s7:#E2E9F2;
   --mark:#F6DE8D; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F;
-  --f-label:"Archivo Narrow","Arial Narrow","Roboto Condensed",system-ui,sans-serif;
-  --f-body:"Literata",Georgia,"Times New Roman",serif;
+  --f-label:"Poppins",system-ui,sans-serif;
+  --f-body:"Lato",system-ui,sans-serif;
   --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
 }
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}}
-:root[data-theme="dark"]{
-  --bg:#11131A; --surface:#191C26; --sunk:#222634; --ink:#E7E9F0; --muted:#A3A9BC; --line:#2E3345;
-  --d1:#A3B1F2; --d2:#E0A974; --d3:#76C7B9; --d4:#D9A0CF; --d5:#C3CC7E; --d6:#F0A58A; --d7:#9DBBE0;
-  --s1:#232A47; --s2:#33271C; --s3:#1C3330; --s4:#33202F; --s5:#2A2D1A; --s6:#3A221B; --s7:#1F2A3A;
-  --mark:#6D5A1C; --warn:#F0A58A; --warn-soft:#3A221B; --ok:#8FD3A2; color-scheme:dark}
-
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
@@ -93,7 +83,6 @@ section{margin-top:44px}
 .t3{border:1.3px dashed var(--muted);color:var(--muted)}
 .lj{border:1.3px dotted var(--ink);font-style:italic}
 .btn[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
-.chip.off{opacity:.35}
 #lanjutNote{font-size:.88rem;color:var(--muted);margin-top:8px;max-width:75ch}
 .legend{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted);align-items:center}
 
@@ -131,7 +120,7 @@ td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
 .traps li::marker{color:var(--warn)}
 
 .notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:18px}
-.note{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:16px;min-width:0}
+.note{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
 .note ul{margin:8px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);padding-top:14px}
 
@@ -142,19 +131,158 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   .card-head{flex-direction:column;gap:8px}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+.titlebar{display:flex;align-items:center;gap:16px;margin-top:8px}
+.subj-ico{flex:none;display:grid;place-items:center;width:60px;height:60px;border:2px solid var(--ink);border-radius:16px;background:var(--mark)}
+.subj-ico svg{width:38px;height:38px}
+.subj-ico:empty{display:none}
+.grade-bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;margin-top:22px}
+.grade-bar .lbl{font-family:var(--f-label);font-weight:600;font-size:.92rem}
+.seg{display:inline-flex;flex-wrap:wrap}
+.seg button{font:inherit;font-family:var(--f-label);font-weight:600;font-size:.92rem;border:0;background:transparent;color:var(--ink);padding:8px 14px;cursor:pointer;line-height:1.2}
+.seg button small{display:block;font-family:var(--f-body);font-weight:400;font-size:.72rem;opacity:.8}
+.seg button + button{border-left:2px solid var(--ink)}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.seg button:focus-visible{outline:2px solid var(--ink);outline-offset:-4px}
+.empty-note{color:var(--muted);font-size:.95rem}
+.btn.story-btn{background:var(--mark);display:inline-flex;align-items:center;gap:8px}
+.story-btn svg{width:18px;height:18px}
+
+/* Story mode: a vertical feed of full-screen topic slides (scroll-snap). Each slide steps through its parts:
+   summary, each block, then the traps, with segment bars on top like a story. On wide screens it is a phone-sized column. */
+.story{position:fixed;inset:0;z-index:50;background:rgba(21,22,26,.88);display:flex;justify-content:center}
+.st-feed{position:relative;width:100%;max-width:480px;height:100%;overflow-y:auto;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
+.st-feed::-webkit-scrollbar{display:none}
+.slide{position:relative;height:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;
+  padding:calc(14px + env(safe-area-inset-top)) 16px calc(14px + env(safe-area-inset-bottom));background:var(--bg);overflow:hidden}
+.slide::before{content:"";position:absolute;width:420px;height:420px;right:-160px;top:-120px;border-radius:50%;background:var(--soft);z-index:0}
+.slide > *{position:relative;z-index:1}
+.bars{display:flex;gap:4px;padding-right:44px}
+.bars i{flex:1;height:5px;border-radius:999px;background:color-mix(in srgb,var(--ink) 18%,transparent);overflow:hidden}
+.bars i.on{background:var(--ink)}
+.st-head{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;margin-top:14px;font-family:var(--f-label);font-size:.82rem}
+.st-dom{font-weight:700;color:#fff;background:var(--c);border:2px solid var(--ink);border-radius:999px;padding:1px 10px}
+.st-grade{border:2px solid var(--ink);border-radius:999px;padding:0 8px;background:var(--surface);font-weight:600}
+.slide h2{font-size:clamp(1.6rem,7vw,2.1rem);font-weight:800;line-height:1.1;margin-top:10px;padding-right:56px}
+.st-card{flex:1;min-height:0;display:flex;flex-direction:column;margin:14px 56px 0 0;background:var(--surface);border:2px solid var(--ink);border-radius:20px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.st-card.trap{border-color:var(--warn);box-shadow:4px 4px 0 var(--warn);background:var(--warn-soft)}
+.st-label{font-family:var(--f-label);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--c);padding:12px 16px 0}
+.st-card.trap .st-label{color:var(--warn)}
+.st-body{flex:1;min-height:0;overflow-y:auto;padding:6px 16px 16px;font-size:1.05rem;line-height:1.55}
+.st-body ul{margin:4px 0 0;padding-left:1.1em;display:flex;flex-direction:column;gap:10px}
+.st-body li::marker{color:var(--c)}
+.st-body .st-sum{font-size:1.2rem;line-height:1.45}
+.st-body .st-meta{margin-top:12px;color:var(--muted);font-size:.9rem;font-family:var(--f-label)}
+.st-body .tbl{margin-top:4px;font-size:.92rem}
+.st-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:12px;font-family:var(--f-label);font-size:.8rem;color:var(--muted)}
+.st-foot b{white-space:nowrap;color:var(--ink)}
+.rail{position:absolute;right:12px;bottom:calc(64px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:14px;z-index:2}
+.rail button,.rail a{display:flex;flex-direction:column;align-items:center;gap:3px;font:600 .68rem var(--f-label);color:var(--ink);text-decoration:none;background:none;border:0;padding:0;cursor:pointer;width:48px}
+.rail span{display:grid;place-items:center;width:44px;height:44px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);box-shadow:2px 2px 0 var(--ink);font-size:1.1rem}
+.rail button[aria-pressed="true"] span{background:var(--ok);color:#fff}
+.rail :focus-visible span{outline:3px solid var(--c);outline-offset:2px}
+.st-close{position:absolute;top:calc(8px + env(safe-area-inset-top));right:max(12px,calc(50% - 228px));z-index:3;width:40px;height:40px;border:2px solid var(--ink);border-radius:50%;background:var(--surface);font:700 1.3rem/1 var(--f-label);cursor:pointer}
+.st-end{height:100%;height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:24px;text-align:center;background:var(--bg)}
+.st-end h2{font-size:1.8rem;font-weight:800}
+.st-end .btn{text-decoration:none}
+body.story-open{overflow:hidden}
+@media (min-width:600px){.slide,.st-end{border-inline:2px solid var(--ink)}}
+
 .home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
 .home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
 </style>
 
 <div class="wrap">
   <a class="home-link" href="index.html">← Semua mata pelajaran</a>
   <header>
     <div class="eyebrow" id="eyebrow"></div>
-    <h1 style="margin-top:8px" id="title"></h1>
+    <div class="titlebar"><span class="subj-ico" id="icon" aria-hidden="true"></span><h1 id="title"></h1></div>
     <p class="lead" id="lead"></p>
+    <div class="grade-bar"><span class="lbl" id="gradeLbl">Kelas</span>
+      <div class="seg" id="grades" role="group" aria-labelledby="gradeLbl">
+        <button type="button" data-kelas="" aria-pressed="true">Semua<small>X–XII</small></button>
+        <button type="button" data-kelas="X" aria-pressed="false">Kelas X<small>Fase E</small></button>
+        <button type="button" data-kelas="XI" aria-pressed="false">Kelas XI<small>Fase F</small></button>
+        <button type="button" data-kelas="XII" aria-pressed="false">Kelas XII<small>Fase F</small></button>
+      </div>
+    </div>
     <nav class="progress" id="progress" aria-label="Kemajuan per bidang"></nav>
     <div class="tools">
       <label class="search" for="q"><span class="mono" aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Cari konsep, rumus, tokoh…" autocomplete="off"></label>
+      <button class="btn story-btn" id="storyOpen" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M12 8v8M9 11l3-3 3 3"/></svg>Mode geser</button>
       <button class="btn" id="openAll" type="button">Buka semua</button>
       <button class="btn" id="closeAll" type="button">Tutup semua</button>
       <button class="btn" id="onlyLanjut" type="button" aria-pressed="false" hidden>Hanya Tingkat Lanjut</button>
@@ -171,6 +299,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
   <section id="peta" aria-labelledby="h-peta">
     <div class="sec-head"><h2 id="h-peta">Peta</h2><p>Setiap simpul punya kode. Klik untuk membuka isinya.</p></div>
     <div class="map" id="map"></div>
+    <p class="empty-note" id="emptyNote" hidden>Tidak ada simpul untuk pilihan ini. Pilih Semua kelas.</p>
     <div class="legend"><span><span class="tier t1">Inti</span> pelajari dulu</span><span><span class="tier t2">Penting</span> sering keluar</span><span><span class="tier t3">Pelengkap</span> pendalaman</span><span id="lanjutKey" hidden><span class="tier lj">Lanjut</span> Tingkat Lanjut</span></div>
     <p id="lanjutNote" hidden></p>
   </section>
@@ -182,14 +311,23 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
     <div class="notes" id="notes"></div>
   </section>
 
+  <div class="story" id="story" role="dialog" aria-modal="true" aria-label="Mode geser" hidden>
+    <button class="st-close" id="storyClose" type="button" aria-label="Tutup mode geser">×</button>
+    <div class="st-feed" id="feed"></div>
+  </div>
+
   <footer>Bagian dari kumpulan peta materi SMA. <a href="index.html">Lihat semua peta</a>.</footer>
 </div>
 
 <script>
-const MAP = {"id": "pjok", "subject": "Pendidikan Jasmani, Olahraga, dan Kesehatan", "title": "Peta Materi PJOK SMA", "lead": "Seluruh materi PJOK SMA, dari permainan bola dan atletik sampai kebugaran dan kesehatan, disusun sebagai satu peta. Setiap simpul memuat teknik dasar, ukuran dan aturan pokok, serta jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Permainan bola besar dan kecil, atletik, senam, gerak berirama, pencak silat, renang, kebugaran jasmani, cedera, gizi, dan bahaya narkoba.", "source_note": "Domain mengikuti unit buku PJOK Kurikulum Merdeka kelas X (bola basket, sepak bola, bola tangan, bola voli, bulu tangkis, atletik, senam, gerak berirama) ditambah aktivitas air, kebugaran, dan kesehatan yang dipelajari sepanjang kelas X–XII. Ukuran lapangan dan aturan mengikuti federasi internasional; aturan bisa berubah, dan buku sekolah kadang memakai versi lama.", "domains": [{"id": "PBB", "name": "Permainan bola besar", "short": "Bola besar", "note": "Teknik dasar, aturan pokok, dan ukuran lapangan sepak bola, bola voli, bola basket, dan bola tangan.", "topics": [{"code": "PBB-01", "title": "Sepak bola", "scope": "Teknik dasar, aturan, offside", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi sebelas pemain yang berusaha memasukkan bola ke gawang lawan terutama dengan kaki.", "blocks": [{"h": "Teknik dasar", "li": ["Menendang dengan kaki bagian dalam untuk umpan pendek yang akurat; punggung kaki untuk tendangan keras dan jauh.", "Menghentikan (mengontrol) bola dengan kaki, paha, atau dada; menggiring; menyundul dengan dahi.", "<b>Lemparan ke dalam<\/b>: bola dilempar dengan dua tangan dari belakang kepala, kedua kaki tetap menyentuh tanah."]}, {"h": "Ukuran dan aturan", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "11 per regu, termasuk penjaga gawang"], ["Waktu", "2 × 45 menit"], ["Gawang", "Lebar 7,32 m, tinggi 2,44 m"], ["Titik penalti", "11 m dari garis gawang"], ["Lapangan internasional", "Panjang 100–110 m, lebar 64–75 m"]]}}, {"h": "Offside", "li": ["Pemain dalam posisi offside bila berada di setengah lapangan lawan dan lebih dekat ke garis gawang lawan daripada bola dan pemain lawan kedua terakhir saat bola dimainkan rekannya.", "Tidak ada offside langsung dari tendangan gawang, lemparan ke dalam, dan tendangan sudut."]}], "traps": ["Pemain lawan kedua terakhir biasanya bek terakhir, karena lawan terakhir umumnya penjaga gawang.", "Berada di posisi offside belum pelanggaran; pelanggaran terjadi bila pemain itu ikut aktif bermain."]}, {"code": "PBB-02", "title": "Bola voli", "scope": "Teknik dasar, rotasi, sistem skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi enam pemain yang memantulkan bola melewati net, dengan sistem rally point.", "blocks": [{"h": "Teknik dasar", "li": ["Servis bawah, servis atas (termasuk float dan jumping).", "<b>Passing bawah<\/b> dengan kedua lengan dirapatkan, untuk menerima servis dan bola rendah; passing atas dengan jari untuk mengumpan.", "Smash (spike) untuk menyerang; bendungan (blok) di depan net untuk menahan serangan."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "6 per regu di lapangan"], ["Lapangan", "18 m × 9 m; garis serang 3 m dari net"], ["Tinggi net", "Putra 2,43 m, putri 2,24 m"], ["Sentuhan", "Paling banyak 3 kali per regu, tidak termasuk blok"], ["Skor", "Set 1–4 sampai 25, set penentu sampai 15, selisih minimal 2; menang 3 set"]]}}, {"h": "Rotasi dan libero", "li": ["Regu yang merebut hak servis berputar searah jarum jam.", "Libero adalah pemain bertahan berkaus berbeda yang tidak boleh melakukan servis, smash di atas net, atau blok."]}], "traps": ["Rotasi searah jarum jam dilakukan saat regu merebut servis dari lawan, bukan setiap kali mendapat poin.", "Sentuhan blok tidak dihitung sebagai salah satu dari tiga sentuhan."]}, {"code": "PBB-03", "title": "Bola basket", "scope": "Teknik dasar, aturan waktu, skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi lima pemain yang memasukkan bola ke keranjang lawan dengan tangan.", "blocks": [{"h": "Teknik dasar", "li": ["Operan: dada (chest pass), pantulan (bounce pass), atas kepala (overhead pass).", "Menggiring (dribble) dengan satu tangan; pivot berputar dengan satu kaki tetap.", "<b>Lay up<\/b>: tembakan dekat keranjang setelah dua langkah; jump shot dan free throw untuk menembak dari jauh."]}, {"h": "Aturan FIBA", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "5 per regu di lapangan"], ["Waktu", "4 × 10 menit"], ["Lapangan", "28 m × 15 m"], ["Tinggi ring", "3,05 m"], ["Nilai tembakan", "Lemparan bebas 1, di dalam garis 3 angka 2, di luar garis 3 angka (6,75 m) 3"], ["Batas waktu", "3 detik di daerah terlarang, 8 detik melewati tengah, 24 detik untuk menembak"]]}}, {"h": "Pelanggaran", "li": ["Traveling: berjalan atau berlari sambil memegang bola tanpa menggiring.", "Double dribble: menggiring lagi setelah berhenti menggiring, atau menggiring dengan dua tangan sekaligus.", "Pemain yang melakukan 5 pelanggaran pribadi harus keluar."]}], "traps": ["Aturan FIBA memakai 4 × 10 menit; 4 × 12 menit adalah aturan liga NBA."]}, {"code": "PBB-04", "title": "Bola tangan", "scope": "Teknik dasar, aturan pokok", "src": "Kelas X", "tier": 2, "sum": "Permainan dua regu berisi tujuh pemain yang mengoper dan melempar bola dengan tangan ke gawang lawan.", "blocks": [{"h": "Teknik dasar", "li": ["Mengoper, menangkap, menggiring dengan memantulkan bola, dan menembak ke gawang, termasuk tembakan sambil melompat."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "7 per regu (6 pemain lapangan dan 1 penjaga gawang)"], ["Waktu", "2 × 30 menit"], ["Lapangan", "40 m × 20 m; garis daerah gawang 6 m"], ["Gawang", "Lebar 3 m, tinggi 2 m"], ["Memegang bola", "Paling lama 3 detik dan paling banyak 3 langkah"], ["Hukuman berat", "Lemparan 7 m"]]}}]}]}, {"id": "PBK", "name": "Permainan bola kecil", "short": "Bola kecil", "note": "Teknik dasar dan aturan pokok bulu tangkis dan tenis meja.", "topics": [{"code": "PBK-01", "title": "Bulu tangkis", "scope": "Pegangan, pukulan, skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan raket yang memukul kok melewati net, dimainkan tunggal atau ganda dengan sistem rally point 21.", "blocks": [{"h": "Teknik dasar", "li": ["Pegangan: forehand (seperti berjabat tangan) dan backhand.", "Pukulan: lob (tinggi ke belakang), dropshot (jatuh dekat net), <b>smash<\/b> (menukik keras), netting, drive (mendatar).", "Servis pendek sering dipakai di ganda; servis panjang di tunggal."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Skor", "Gim sampai 21, selisih 2; pada 29–29 poin ke-30 menentukan; menang 2 gim"], ["Lapangan", "13,40 m × 6,10 m (ganda); lebar tunggal 5,18 m"], ["Tinggi net", "1,55 m di tiang, 1,524 m di tengah"], ["Servis", "Diagonal; seluruh kok di bawah 1,15 m dari lantai saat dipukul (aturan BWF sejak 2018)"]]}}], "traps": ["Pada tunggal, lapangan servis lebih panjang dan lebih sempit; pada ganda, lebih pendek dan lebih lebar.", "Gim berakhir paling lambat pada poin ke-30, bukan berlanjut tanpa batas."]}, {"code": "PBK-02", "title": "Tenis meja", "scope": "Pegangan, servis, skor", "src": "Kelas X–XII", "tier": 2, "sum": "Permainan memukul bola kecil di atas meja yang dibagi net, dengan gim sampai 11 poin.", "blocks": [{"h": "Teknik dasar", "li": ["Pegangan shakehand (seperti berjabat tangan) dan penhold (seperti memegang pena).", "Pukulan: push, drive, chop, dan smash; servis forehand dan backhand.", "<b>Servis<\/b>: bola dilambungkan hampir tegak lurus dari telapak tangan terbuka setinggi minimal 16 cm, lalu dipukul memantul dulu di meja sendiri."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Skor", "Gim sampai 11, selisih 2"], ["Pergantian servis", "Setiap 2 poin; setiap 1 poin bila skor 10–10"], ["Meja", "274 cm × 152,5 cm, tinggi 76 cm"], ["Net", "Tinggi 15,25 cm"], ["Bola", "Diameter 40 mm"]]}}]}]}, {"id": "ATL", "name": "Atletik", "short": "Atletik", "note": "Nomor lari, lompat, dan lempar beserta teknik dan peraturannya.", "topics": [{"code": "ATL-01", "title": "Lari", "scope": "Jarak pendek, menengah, jauh, estafet", "src": "Kelas X–XII", "tier": 1, "sum": "Nomor lari dibedakan menurut jarak dan jenis startnya, ditambah lari estafet yang menuntut teknik pergantian tongkat.", "blocks": [{"h": "Nomor lari", "table": {"cols": ["Jenis", "Jarak", "Start"], "rows": [["Jarak pendek (sprint)", "100, 200, 400 m", "Start jongkok"], ["Jarak menengah", "800, 1.500 m", "Start berdiri"], ["Jarak jauh", "5.000, 10.000 m, maraton 42,195 km", "Start berdiri"], ["Estafet", "4 × 100 m, 4 × 400 m", "Pelari pertama start jongkok"]]}}, {"h": "Teknik", "li": ["Aba-aba start jongkok: bersedia, siap, lalu bunyi pistol atau ya.", "Variasi start jongkok: pendek (bunch), menengah (medium), panjang (elongated), menurut jarak lutut ke kaki depan.", "Estafet 4 × 100 m memakai penerimaan tanpa melihat (nonvisual); 4 × 400 m dengan melihat (visual).", "<b>Pemberian tongkat<\/b>: dari bawah ke atas (upsweep) atau dari atas ke bawah (downsweep), di dalam zona pergantian."]}], "traps": ["Pelari estafet yang memberi tongkat di luar zona pergantian didiskualifikasi, walau kedua pelari cepat."]}, {"code": "ATL-02", "title": "Lompat", "scope": "Lompat jauh, tinggi, jangkit", "src": "Kelas X–XII", "tier": 1, "sum": "Nomor lompat diukur dari jarak atau tinggi lompatan, dengan rangkaian awalan, tumpuan, melayang, dan mendarat.", "blocks": [{"h": "Lompat jauh", "li": ["Tahap: awalan, tolakan di papan tumpu, sikap melayang, mendarat.", "Gaya melayang: jongkok (tuck), menggantung (hang style), berjalan di udara (walking in the air).", "Jarak diukur dari batas papan tumpu ke bekas pendaratan terdekat dengan papan tumpu."]}, {"h": "Lompat tinggi dan jangkit", "li": ["Gaya lompat tinggi: gunting, guling sisi (western roll), guling perut (straddle), dan flop (Fosbury flop) yang melewati mistar dengan punggung.", "<b>Lompat jangkit<\/b> (triple jump): jingkat (hop), langkah (step), lompat (jump); jingkat mendarat dengan kaki yang sama dengan kaki tolakan."]}], "traps": ["Lompat jauh diukur dari batas papan tumpu, bukan dari tempat kaki benar-benar menolak."]}, {"code": "ATL-03", "title": "Lempar", "scope": "Tolak peluru, lembing, cakram", "src": "Kelas X–XII", "tier": 2, "sum": "Nomor lempar mencakup tolak peluru, lempar lembing, dan lempar cakram, masing-masing dengan alat dan teknik khusus.", "blocks": [{"h": "Tolak peluru", "li": ["<b>Peluru ditolak (didorong) dari bahu<\/b>, bukan dilempar; dilakukan dalam lingkaran berdiameter 2,135 m.", "Gaya menyamping (ortodoks) dan membelakangi (O'Brien).", "Berat peluru senior: putra 7,26 kg, putri 4 kg."]}, {"h": "Alat lempar senior", "table": {"cols": ["Nomor", "Putra", "Putri"], "rows": [["Lembing", "800 g", "600 g"], ["Cakram", "2 kg", "1 kg"], ["Peluru", "7,26 kg", "4 kg"]]}}], "traps": ["Tolak peluru adalah gerakan mendorong; peluru yang dilempar seperti melempar bola dinyatakan tidak sah."]}]}, {"id": "SEN", "name": "Senam, gerak berirama, dan bela diri", "short": "Senam", "note": "Senam lantai, aktivitas gerak berirama, dan pencak silat.", "topics": [{"code": "SEN-01", "title": "Senam lantai", "scope": "Guling, meroda, kayang, handstand", "src": "Kelas X–XII", "tier": 1, "sum": "Senam lantai dilakukan di atas matras tanpa alat bantu, dengan gerakan guling, keseimbangan, dan tumpuan tangan.", "blocks": [{"h": "Gerakan", "li": ["Guling depan (roll depan) dan guling belakang dengan dagu dirapatkan ke dada.", "<b>Meroda<\/b> (radschlag/cartwheel): berguling ke samping bertumpu pada kedua tangan bergantian.", "Kayang: tubuh melenting ke belakang membentuk busur, bertumpu pada tangan dan kaki.", "Handstand (berdiri dengan tangan), sikap lilin, guling lenting (neck kip)."]}, {"h": "Keselamatan", "li": ["Pemanasan dulu, pakai matras, dan minta bantuan teman (spotter) saat belajar gerakan baru."]}], "traps": ["Pada guling depan, tengkuk yang menyentuh matras, bukan ubun-ubun kepala."]}, {"code": "SEN-02", "title": "Aktivitas gerak berirama", "scope": "Senam aerobik, irama, hitungan", "src": "Kelas X–XII", "tier": 2, "sum": "Gerak berirama memadukan langkah dan ayunan lengan dengan iringan musik, seperti senam aerobik dan senam kreasi.", "blocks": [{"h": "Unsur", "li": ["Kelenturan, kesinambungan gerak, dan ketepatan dengan irama; hitungan umumnya 2 × 8.", "Langkah dasar: langkah biasa, langkah rapat, langkah keseimbangan, langkah depan, langkah samping.", "<b>Aerobik low impact<\/b>: satu kaki selalu menapak lantai; high impact ada gerakan melompat."]}, {"h": "Rangkaian", "li": ["Pemanasan, inti, pendinginan; intensitas naik perlahan lalu turun perlahan."]}]}, {"code": "SEN-03", "title": "Pencak silat", "scope": "Aspek, teknik dasar, sejarah", "src": "Kelas X–XII", "tier": 3, "sum": "Bela diri asli Indonesia yang memadukan aspek mental spiritual, seni budaya, bela diri, dan olahraga.", "blocks": [{"h": "Konsep", "li": ["Empat aspek: mental spiritual, seni budaya, bela diri, olahraga.", "Ikatan Pencak Silat Indonesia (IPSI) didirikan 18 Mei 1948 di Surakarta.", "<b>Tradisi pencak silat<\/b> ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada 12 Desember 2019."]}, {"h": "Teknik dasar", "li": ["Kuda-kuda, sikap pasang, pola langkah, pukulan, tendangan (depan, samping, sabit), tangkisan, elakan."]}]}]}, {"id": "AIR", "name": "Aktivitas air", "short": "Renang", "note": "Gaya renang dan keselamatan di air.", "topics": [{"code": "AIR-01", "title": "Gaya renang", "scope": "Bebas, dada, punggung, kupu-kupu", "src": "Kelas X–XII", "tier": 1, "sum": "Empat gaya renang resmi beserta gerakan kaki, lengan, pernapasan, dan urutannya dalam nomor gaya ganti.", "blocks": [{"h": "Gaya", "table": {"cols": ["Gaya", "Ciri"], "rows": [["Bebas (crawl)", "Tubuh telungkup, kaki naik turun bergantian, napas dengan menoleh ke samping"], ["Dada (katak)", "Kaki menendang seperti katak, lengan menyapu ke samping"], ["Punggung", "Tubuh telentang; start dari dalam air"], ["Kupu-kupu", "Kedua lengan diayun bersamaan, kaki seperti ekor lumba-lumba"]]}}, {"h": "Gaya ganti", "li": ["<b>Gaya ganti perorangan<\/b>: kupu-kupu, punggung, dada, bebas.", "Gaya ganti estafet: punggung, dada, kupu-kupu, bebas (gaya punggung pertama karena startnya dari dalam air).", "Kolam ukuran olimpiade panjangnya 50 m."]}], "traps": ["Urutan gaya ganti perorangan dan estafet berbeda; jangan menukar keduanya."]}, {"code": "AIR-02", "title": "Keselamatan dan pertolongan di air", "scope": "Pertolongan, RJP", "src": "Kelas X–XII", "tier": 2, "sum": "Cara menolong orang yang tenggelam dengan aman dan memberi bantuan hidup dasar.", "blocks": [{"h": "Menolong", "li": ["Utamakan pertolongan dari darat: raih (dengan tongkat atau galah), lempar (pelampung atau tali), dayung (perahu); berenang menolong adalah pilihan terakhir.", "Panggil bantuan dan jangan berenang di area tanpa pengawas."]}, {"h": "Bantuan hidup dasar", "li": ["Periksa respons dan napas, panggil bantuan, lalu lakukan resusitasi jantung paru (RJP).", "<b>RJP dewasa<\/b>: 30 kompresi dada lalu 2 napas bantuan; kedalaman 5–6 cm, kecepatan 100–120 kali per menit."]}]}]}, {"id": "KBG", "name": "Kebugaran jasmani", "short": "Kebugaran", "note": "Komponen kebugaran, prinsip latihan, dan cara mengukurnya.", "topics": [{"code": "KBG-01", "title": "Komponen kebugaran jasmani", "scope": "Komponen kesehatan dan keterampilan", "src": "Kelas X–XII", "tier": 1, "sum": "Kebugaran jasmani adalah kemampuan melakukan kegiatan sehari-hari tanpa kelelahan berarti; komponennya terkait kesehatan dan keterampilan.", "blocks": [{"h": "Komponen", "table": {"cols": ["Kelompok", "Komponen", "Contoh latihan"], "rows": [["Kesehatan", "Daya tahan jantung-paru", "Lari jarak jauh, bersepeda"], ["Kesehatan", "Kekuatan dan daya tahan otot", "Push up, sit up, back up, pull up"], ["Kesehatan", "Kelenturan", "Sit and reach, peregangan"], ["Kesehatan", "Komposisi tubuh", "Diukur dengan IMT"], ["Keterampilan", "Kecepatan", "Lari cepat 30–60 m"], ["Keterampilan", "Kelincahan", "Lari bolak-balik (shuttle run), zig-zag"], ["Keterampilan", "Keseimbangan, koordinasi, daya ledak (power), waktu reaksi", "Berdiri satu kaki, lompat tegak"]]}}, {"h": "Indeks massa tubuh", "li": ["<b>IMT = berat badan (kg) ÷ tinggi badan² (m²)<\/b>; contoh 60 kg dan 1,60 m: IMT ≈ 23,4."]}], "traps": ["Kelincahan adalah kemampuan mengubah arah dengan cepat; kecepatan adalah menempuh jarak dalam waktu sesingkat-singkatnya.", "Daya ledak (power) menggabungkan kekuatan dan kecepatan, misalnya lompat tegak."]}, {"code": "KBG-02", "title": "Prinsip latihan", "scope": "FITT, beban lebih, denyut nadi", "src": "Kelas X–XII", "tier": 1, "sum": "Latihan kebugaran yang baik mengikuti prinsip beban lebih, progresif, spesifik, individual, dan teratur, dengan takaran FITT.", "blocks": [{"h": "Prinsip", "li": ["Beban lebih (overload): beban sedikit di atas kemampuan saat ini, dinaikkan bertahap (progresif).", "Spesifik: latihan sesuai komponen yang ingin ditingkatkan; individual: sesuai kondisi tiap orang.", "Reversibel: hasil latihan menurun bila latihan berhenti.", "Setiap sesi terdiri atas pemanasan, latihan inti, dan pendinginan."]}, {"h": "Takaran latihan", "li": ["<b>FITT<\/b>: frequency (frekuensi), intensity (intensitas), time (durasi), type (jenis).", "Denyut nadi maksimal (DNM) diperkirakan 220 − usia; umur 16 tahun: 204 kali per menit.", "Zona latihan aerobik umumnya sekitar 60–85% DNM; batas persisnya berbeda antarbuku."]}], "traps": ["220 − usia adalah perkiraan denyut nadi maksimal, bukan target saat berlatih."]}, {"code": "KBG-03", "title": "Tes kebugaran jasmani", "scope": "TKJI, lari 12 menit, MFT", "src": "Kelas X–XII", "tier": 2, "sum": "Kebugaran diukur dengan rangkaian tes baku seperti TKJI, atau tes daya tahan seperti lari 12 menit dan multistage fitness test.", "blocks": [{"h": "TKJI usia 16–19 tahun", "table": {"cols": ["Butir tes", "Mengukur"], "rows": [["Lari 60 m", "Kecepatan"], ["Gantung angkat tubuh 60 detik (putra), gantung siku tekuk (putri)", "Kekuatan dan daya tahan otot lengan dan bahu"], ["Baring duduk 60 detik", "Kekuatan dan daya tahan otot perut"], ["Loncat tegak", "Daya ledak otot tungkai"], ["Lari 1.200 m (putra), 1.000 m (putri)", "Daya tahan jantung-paru"]]}}, {"h": "Tes lain", "li": ["Lari 12 menit (tes Cooper) dan multistage fitness test (bleep test) mengukur daya tahan jantung-paru (VO₂ maks)."]}]}]}, {"id": "KES", "name": "Kesehatan", "short": "Kesehatan", "note": "Cedera olahraga dan P3K, gizi dan pola hidup sehat, bahaya narkoba, serta penyakit menular.", "topics": [{"code": "KES-01", "title": "Cedera olahraga dan P3K", "scope": "Jenis cedera, RICE", "src": "Kelas X–XII", "tier": 1, "sum": "Mengenali cedera yang sering terjadi saat berolahraga dan memberi pertolongan pertama yang tepat.", "blocks": [{"h": "Jenis cedera", "table": {"cols": ["Cedera", "Keterangan"], "rows": [["Sprain (keseleo)", "Ligamen sendi teregang atau robek"], ["Strain", "Otot atau tendon teregang atau robek"], ["Memar", "Pembuluh darah kecil pecah akibat benturan"], ["Kram", "Otot berkontraksi terus tanpa kendali"], ["Dislokasi", "Tulang bergeser dari sendinya"], ["Patah tulang (fraktur)", "Tulang retak atau patah; pasang bidai, jangan diluruskan paksa"]]}}, {"h": "Penanganan", "li": ["<b>RICE<\/b>: rest (istirahatkan), ice (kompres dingin), compression (balut tekan), elevation (tinggikan bagian yang cedera).", "Jangan memijat atau mengompres panas cedera baru, karena dapat menambah bengkak."]}], "traps": ["Sprain mengenai ligamen; strain mengenai otot atau tendon.", "Cedera baru dikompres dingin, bukan panas."]}, {"code": "KES-02", "title": "Gizi dan pola hidup sehat", "scope": "Gizi seimbang, Isi Piringku, istirahat", "src": "Kelas X–XII", "tier": 2, "sum": "Pola hidup sehat menggabungkan gizi seimbang, aktivitas fisik teratur, istirahat cukup, dan kebersihan diri.", "blocks": [{"h": "Gizi", "li": ["Zat gizi makro: karbohidrat, protein, lemak; mikro: vitamin dan mineral; ditambah air.", "<b>Isi Piringku<\/b> (Kemenkes): setengah piring sayur dan buah, setengah lagi makanan pokok dan lauk-pauk.", "Batasi gula, garam, dan lemak; minum air putih yang cukup."]}, {"h": "Kebiasaan", "li": ["Aktivitas fisik teratur, tidur cukup, cuci tangan, dan tidak merokok."]}]}, {"code": "KES-03", "title": "Bahaya narkoba, rokok, dan alkohol", "scope": "NAPZA, golongan, dampak", "src": "Kelas X–XII", "tier": 1, "sum": "NAPZA (narkotika, psikotropika, dan zat adiktif) merusak kesehatan fisik dan mental serta menimbulkan ketergantungan.", "blocks": [{"h": "Penggolongan", "li": ["<b>Narkotika<\/b> diatur UU No. 35 Tahun 2009: golongan I (heroin, kokain, ganja, metamfetamin atau sabu), golongan II (morfin, petidin), golongan III (kodein).", "Golongan I hanya untuk penelitian, tidak untuk pengobatan; golongan III paling ringan potensi ketergantungannya.", "Psikotropika diatur UU No. 5 Tahun 1997; zat adiktif lain termasuk nikotin (rokok), alkohol, dan inhalan (lem)."]}, {"h": "Dampak dan pencegahan", "li": ["Dampak: kerusakan otak, jantung, paru, dan hati; gangguan mental; masalah hukum dan sosial; penularan HIV lewat jarum suntik bersama.", "Pencegahan: menolak tegas, memilih pergaulan sehat, kegiatan positif, dan mencari bantuan konselor atau layanan rehabilitasi."]}], "traps": ["Sabu (metamfetamin) termasuk narkotika golongan I menurut UU No. 35 Tahun 2009, bukan psikotropika."]}, {"code": "KES-04", "title": "Penyakit menular dan pergaulan sehat", "scope": "HIV/AIDS, penularan, pencegahan", "src": "Kelas XI–XII", "tier": 2, "sum": "Penyakit menular seperti HIV/AIDS dapat dicegah dengan memahami cara penularannya dan menjaga pergaulan yang sehat.", "blocks": [{"h": "HIV/AIDS", "li": ["<b>HIV<\/b> adalah virus yang menyerang kekebalan tubuh; AIDS adalah kumpulan gejala pada tahap lanjut infeksi HIV.", "Menular lewat darah, cairan kelamin, dan air susu ibu, misalnya jarum suntik bergantian dan hubungan seksual tanpa pelindung.", "Tidak menular lewat jabat tangan, berpelukan, berbagi alat makan, berenang bersama, atau gigitan nyamuk."]}, {"h": "Pergaulan sehat", "li": ["Menghargai diri dan orang lain, menolak tekanan teman sebaya, dan mencari informasi dari tenaga kesehatan.", "Orang dengan HIV berhak mendapat perlakuan yang sama; stigma menghambat orang memeriksakan diri."]}]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Aturan servis bulu tangkis: buku lama menyebut kok dipukul di bawah pinggang (aturan lama BWF: di bawah tulang rusuk terbawah); sejak 2018 BWF memakai batas tinggi tetap 1,15 m dari lantai.", "Zona pergantian estafet 4 × 100 m: buku lama menyebut zona 20 m ditambah daerah percepatan 10 m; sejak 2018 World Athletics (dulu IAAF) menggabungkannya menjadi satu zona 30 m. Ikuti buku sekolah saat ujian.", "Batas IMT berbeda: WHO memakai normal 18,5–24,9, sedangkan pedoman Kemenkes memakai normal 18,5–25,0 dengan kategori gemuk 25,1–27,0.", "Ukuran lapangan sepak bola memakai rentang untuk pertandingan internasional; aturan IFAB membolehkan rentang yang lebih lebar untuk pertandingan lain.", "Zona latihan aerobik dan butir TKJI berbeda sedikit antarbuku; cocokkan dengan buku sekolah."]}, {"title": "Rujukan", "items": ["Buku PJOK SMA kelas X Kurikulum Merdeka (Kemendikbudristek): daftar unit dari ringkasan sekunder; PDF resminya tidak dapat dibuka dari lingkungan kerja ini.", "Peraturan permainan IFAB (sepak bola), FIVB (bola voli), FIBA (bola basket), IHF (bola tangan), BWF (bulu tangkis), ITTF (tenis meja), dan World Athletics.", "UU No. 35 Tahun 2009 tentang Narkotika; UU No. 5 Tahun 1997 tentang Psikotropika; pedoman Isi Piringku Kemenkes; pedoman RJP American Heart Association."]}], "bank": "bank-pjok.html"};
+const MAP = {"id": "pjok", "subject": "Pendidikan Jasmani, Olahraga, dan Kesehatan", "title": "Peta Materi PJOK SMA", "lead": "Seluruh materi PJOK SMA, dari permainan bola dan atletik sampai kebugaran dan kesehatan, disusun sebagai satu peta. Setiap simpul memuat teknik dasar, ukuran dan aturan pokok, serta jebakan soal yang sering muncul. Centang “Dikuasai” di tiap simpul; kemajuan tersimpan di peramban ini saja.", "blurb": "Permainan bola besar dan kecil, atletik, senam, gerak berirama, pencak silat, renang, kebugaran jasmani, cedera, gizi, dan bahaya narkoba.", "source_note": "Domain mengikuti unit buku PJOK Kurikulum Merdeka kelas X (bola basket, sepak bola, bola tangan, bola voli, bulu tangkis, atletik, senam, gerak berirama) ditambah aktivitas air, kebugaran, dan kesehatan yang dipelajari sepanjang kelas X–XII. Ukuran lapangan dan aturan mengikuti federasi internasional; aturan bisa berubah, dan buku sekolah kadang memakai versi lama.", "domains": [{"id": "PBB", "name": "Permainan bola besar", "short": "Bola besar", "note": "Teknik dasar, aturan pokok, dan ukuran lapangan sepak bola, bola voli, bola basket, dan bola tangan.", "topics": [{"code": "PBB-01", "title": "Sepak bola", "scope": "Teknik dasar, aturan, offside", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi sebelas pemain yang berusaha memasukkan bola ke gawang lawan terutama dengan kaki.", "blocks": [{"h": "Teknik dasar", "li": ["Menendang dengan kaki bagian dalam untuk umpan pendek yang akurat; punggung kaki untuk tendangan keras dan jauh.", "Menghentikan (mengontrol) bola dengan kaki, paha, atau dada; menggiring; menyundul dengan dahi.", "<b>Lemparan ke dalam<\/b>: bola dilempar dengan dua tangan dari belakang kepala, kedua kaki tetap menyentuh tanah."]}, {"h": "Ukuran dan aturan", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "11 per regu, termasuk penjaga gawang"], ["Waktu", "2 × 45 menit"], ["Gawang", "Lebar 7,32 m, tinggi 2,44 m"], ["Titik penalti", "11 m dari garis gawang"], ["Lapangan internasional", "Panjang 100–110 m, lebar 64–75 m"]]}}, {"h": "Offside", "li": ["Pemain dalam posisi offside bila berada di setengah lapangan lawan dan lebih dekat ke garis gawang lawan daripada bola dan pemain lawan kedua terakhir saat bola dimainkan rekannya.", "Tidak ada offside langsung dari tendangan gawang, lemparan ke dalam, dan tendangan sudut."]}], "traps": ["Pemain lawan kedua terakhir biasanya bek terakhir, karena lawan terakhir umumnya penjaga gawang.", "Berada di posisi offside belum pelanggaran; pelanggaran terjadi bila pemain itu ikut aktif bermain."], "grades": ["X", "XI", "XII"]}, {"code": "PBB-02", "title": "Bola voli", "scope": "Teknik dasar, rotasi, sistem skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi enam pemain yang memantulkan bola melewati net, dengan sistem rally point.", "blocks": [{"h": "Teknik dasar", "li": ["Servis bawah, servis atas (termasuk float dan jumping).", "<b>Passing bawah<\/b> dengan kedua lengan dirapatkan, untuk menerima servis dan bola rendah; passing atas dengan jari untuk mengumpan.", "Smash (spike) untuk menyerang; bendungan (blok) di depan net untuk menahan serangan."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "6 per regu di lapangan"], ["Lapangan", "18 m × 9 m; garis serang 3 m dari net"], ["Tinggi net", "Putra 2,43 m, putri 2,24 m"], ["Sentuhan", "Paling banyak 3 kali per regu, tidak termasuk blok"], ["Skor", "Set 1–4 sampai 25, set penentu sampai 15, selisih minimal 2; menang 3 set"]]}}, {"h": "Rotasi dan libero", "li": ["Regu yang merebut hak servis berputar searah jarum jam.", "Libero adalah pemain bertahan berkaus berbeda yang tidak boleh melakukan servis, smash di atas net, atau blok."]}], "traps": ["Rotasi searah jarum jam dilakukan saat regu merebut servis dari lawan, bukan setiap kali mendapat poin.", "Sentuhan blok tidak dihitung sebagai salah satu dari tiga sentuhan."], "grades": ["X", "XI", "XII"]}, {"code": "PBB-03", "title": "Bola basket", "scope": "Teknik dasar, aturan waktu, skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan dua regu berisi lima pemain yang memasukkan bola ke keranjang lawan dengan tangan.", "blocks": [{"h": "Teknik dasar", "li": ["Operan: dada (chest pass), pantulan (bounce pass), atas kepala (overhead pass).", "Menggiring (dribble) dengan satu tangan; pivot berputar dengan satu kaki tetap.", "<b>Lay up<\/b>: tembakan dekat keranjang setelah dua langkah; jump shot dan free throw untuk menembak dari jauh."]}, {"h": "Aturan FIBA", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "5 per regu di lapangan"], ["Waktu", "4 × 10 menit"], ["Lapangan", "28 m × 15 m"], ["Tinggi ring", "3,05 m"], ["Nilai tembakan", "Lemparan bebas 1, di dalam garis 3 angka 2, di luar garis 3 angka (6,75 m) 3"], ["Batas waktu", "3 detik di daerah terlarang, 8 detik melewati tengah, 24 detik untuk menembak"]]}}, {"h": "Pelanggaran", "li": ["Traveling: berjalan atau berlari sambil memegang bola tanpa menggiring.", "Double dribble: menggiring lagi setelah berhenti menggiring, atau menggiring dengan dua tangan sekaligus.", "Pemain yang melakukan 5 pelanggaran pribadi harus keluar."]}], "traps": ["Aturan FIBA memakai 4 × 10 menit; 4 × 12 menit adalah aturan liga NBA."], "grades": ["X", "XI", "XII"]}, {"code": "PBB-04", "title": "Bola tangan", "scope": "Teknik dasar, aturan pokok", "src": "Kelas X", "tier": 2, "sum": "Permainan dua regu berisi tujuh pemain yang mengoper dan melempar bola dengan tangan ke gawang lawan.", "blocks": [{"h": "Teknik dasar", "li": ["Mengoper, menangkap, menggiring dengan memantulkan bola, dan menembak ke gawang, termasuk tembakan sambil melompat."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Pemain", "7 per regu (6 pemain lapangan dan 1 penjaga gawang)"], ["Waktu", "2 × 30 menit"], ["Lapangan", "40 m × 20 m; garis daerah gawang 6 m"], ["Gawang", "Lebar 3 m, tinggi 2 m"], ["Memegang bola", "Paling lama 3 detik dan paling banyak 3 langkah"], ["Hukuman berat", "Lemparan 7 m"]]}}], "grades": ["X"]}]}, {"id": "PBK", "name": "Permainan bola kecil", "short": "Bola kecil", "note": "Teknik dasar dan aturan pokok bulu tangkis dan tenis meja.", "topics": [{"code": "PBK-01", "title": "Bulu tangkis", "scope": "Pegangan, pukulan, skor", "src": "Kelas X–XII", "tier": 1, "sum": "Permainan raket yang memukul kok melewati net, dimainkan tunggal atau ganda dengan sistem rally point 21.", "blocks": [{"h": "Teknik dasar", "li": ["Pegangan: forehand (seperti berjabat tangan) dan backhand.", "Pukulan: lob (tinggi ke belakang), dropshot (jatuh dekat net), <b>smash<\/b> (menukik keras), netting, drive (mendatar).", "Servis pendek sering dipakai di ganda; servis panjang di tunggal."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Skor", "Gim sampai 21, selisih 2; pada 29–29 poin ke-30 menentukan; menang 2 gim"], ["Lapangan", "13,40 m × 6,10 m (ganda); lebar tunggal 5,18 m"], ["Tinggi net", "1,55 m di tiang, 1,524 m di tengah"], ["Servis", "Diagonal; seluruh kok di bawah 1,15 m dari lantai saat dipukul (aturan BWF sejak 2018)"]]}}], "traps": ["Pada tunggal, lapangan servis lebih panjang dan lebih sempit; pada ganda, lebih pendek dan lebih lebar.", "Gim berakhir paling lambat pada poin ke-30, bukan berlanjut tanpa batas."], "grades": ["X", "XI", "XII"]}, {"code": "PBK-02", "title": "Tenis meja", "scope": "Pegangan, servis, skor", "src": "Kelas X–XII", "tier": 2, "sum": "Permainan memukul bola kecil di atas meja yang dibagi net, dengan gim sampai 11 poin.", "blocks": [{"h": "Teknik dasar", "li": ["Pegangan shakehand (seperti berjabat tangan) dan penhold (seperti memegang pena).", "Pukulan: push, drive, chop, dan smash; servis forehand dan backhand.", "<b>Servis<\/b>: bola dilambungkan hampir tegak lurus dari telapak tangan terbuka setinggi minimal 16 cm, lalu dipukul memantul dulu di meja sendiri."]}, {"h": "Aturan pokok", "table": {"cols": ["Unsur", "Ketentuan"], "rows": [["Skor", "Gim sampai 11, selisih 2"], ["Pergantian servis", "Setiap 2 poin; setiap 1 poin bila skor 10–10"], ["Meja", "274 cm × 152,5 cm, tinggi 76 cm"], ["Net", "Tinggi 15,25 cm"], ["Bola", "Diameter 40 mm"]]}}], "grades": ["X", "XI", "XII"]}]}, {"id": "ATL", "name": "Atletik", "short": "Atletik", "note": "Nomor lari, lompat, dan lempar beserta teknik dan peraturannya.", "topics": [{"code": "ATL-01", "title": "Lari", "scope": "Jarak pendek, menengah, jauh, estafet", "src": "Kelas X–XII", "tier": 1, "sum": "Nomor lari dibedakan menurut jarak dan jenis startnya, ditambah lari estafet yang menuntut teknik pergantian tongkat.", "blocks": [{"h": "Nomor lari", "table": {"cols": ["Jenis", "Jarak", "Start"], "rows": [["Jarak pendek (sprint)", "100, 200, 400 m", "Start jongkok"], ["Jarak menengah", "800, 1.500 m", "Start berdiri"], ["Jarak jauh", "5.000, 10.000 m, maraton 42,195 km", "Start berdiri"], ["Estafet", "4 × 100 m, 4 × 400 m", "Pelari pertama start jongkok"]]}}, {"h": "Teknik", "li": ["Aba-aba start jongkok: bersedia, siap, lalu bunyi pistol atau ya.", "Variasi start jongkok: pendek (bunch), menengah (medium), panjang (elongated), menurut jarak lutut ke kaki depan.", "Estafet 4 × 100 m memakai penerimaan tanpa melihat (nonvisual); 4 × 400 m dengan melihat (visual).", "<b>Pemberian tongkat<\/b>: dari bawah ke atas (upsweep) atau dari atas ke bawah (downsweep), di dalam zona pergantian."]}], "traps": ["Pelari estafet yang memberi tongkat di luar zona pergantian didiskualifikasi, walau kedua pelari cepat."], "grades": ["X", "XI", "XII"]}, {"code": "ATL-02", "title": "Lompat", "scope": "Lompat jauh, tinggi, jangkit", "src": "Kelas X–XII", "tier": 1, "sum": "Nomor lompat diukur dari jarak atau tinggi lompatan, dengan rangkaian awalan, tumpuan, melayang, dan mendarat.", "blocks": [{"h": "Lompat jauh", "li": ["Tahap: awalan, tolakan di papan tumpu, sikap melayang, mendarat.", "Gaya melayang: jongkok (tuck), menggantung (hang style), berjalan di udara (walking in the air).", "Jarak diukur dari batas papan tumpu ke bekas pendaratan terdekat dengan papan tumpu."]}, {"h": "Lompat tinggi dan jangkit", "li": ["Gaya lompat tinggi: gunting, guling sisi (western roll), guling perut (straddle), dan flop (Fosbury flop) yang melewati mistar dengan punggung.", "<b>Lompat jangkit<\/b> (triple jump): jingkat (hop), langkah (step), lompat (jump); jingkat mendarat dengan kaki yang sama dengan kaki tolakan."]}], "traps": ["Lompat jauh diukur dari batas papan tumpu, bukan dari tempat kaki benar-benar menolak."], "grades": ["X", "XI", "XII"]}, {"code": "ATL-03", "title": "Lempar", "scope": "Tolak peluru, lembing, cakram", "src": "Kelas X–XII", "tier": 2, "sum": "Nomor lempar mencakup tolak peluru, lempar lembing, dan lempar cakram, masing-masing dengan alat dan teknik khusus.", "blocks": [{"h": "Tolak peluru", "li": ["<b>Peluru ditolak (didorong) dari bahu<\/b>, bukan dilempar; dilakukan dalam lingkaran berdiameter 2,135 m.", "Gaya menyamping (ortodoks) dan membelakangi (O'Brien).", "Berat peluru senior: putra 7,26 kg, putri 4 kg."]}, {"h": "Alat lempar senior", "table": {"cols": ["Nomor", "Putra", "Putri"], "rows": [["Lembing", "800 g", "600 g"], ["Cakram", "2 kg", "1 kg"], ["Peluru", "7,26 kg", "4 kg"]]}}], "traps": ["Tolak peluru adalah gerakan mendorong; peluru yang dilempar seperti melempar bola dinyatakan tidak sah."], "grades": ["X", "XI", "XII"]}]}, {"id": "SEN", "name": "Senam, gerak berirama, dan bela diri", "short": "Senam", "note": "Senam lantai, aktivitas gerak berirama, dan pencak silat.", "topics": [{"code": "SEN-01", "title": "Senam lantai", "scope": "Guling, meroda, kayang, handstand", "src": "Kelas X–XII", "tier": 1, "sum": "Senam lantai dilakukan di atas matras tanpa alat bantu, dengan gerakan guling, keseimbangan, dan tumpuan tangan.", "blocks": [{"h": "Gerakan", "li": ["Guling depan (roll depan) dan guling belakang dengan dagu dirapatkan ke dada.", "<b>Meroda<\/b> (radschlag/cartwheel): berguling ke samping bertumpu pada kedua tangan bergantian.", "Kayang: tubuh melenting ke belakang membentuk busur, bertumpu pada tangan dan kaki.", "Handstand (berdiri dengan tangan), sikap lilin, guling lenting (neck kip)."]}, {"h": "Keselamatan", "li": ["Pemanasan dulu, pakai matras, dan minta bantuan teman (spotter) saat belajar gerakan baru."]}], "traps": ["Pada guling depan, tengkuk yang menyentuh matras, bukan ubun-ubun kepala."], "grades": ["X", "XI", "XII"]}, {"code": "SEN-02", "title": "Aktivitas gerak berirama", "scope": "Senam aerobik, irama, hitungan", "src": "Kelas X–XII", "tier": 2, "sum": "Gerak berirama memadukan langkah dan ayunan lengan dengan iringan musik, seperti senam aerobik dan senam kreasi.", "blocks": [{"h": "Unsur", "li": ["Kelenturan, kesinambungan gerak, dan ketepatan dengan irama; hitungan umumnya 2 × 8.", "Langkah dasar: langkah biasa, langkah rapat, langkah keseimbangan, langkah depan, langkah samping.", "<b>Aerobik low impact<\/b>: satu kaki selalu menapak lantai; high impact ada gerakan melompat."]}, {"h": "Rangkaian", "li": ["Pemanasan, inti, pendinginan; intensitas naik perlahan lalu turun perlahan."]}], "grades": ["X", "XI", "XII"]}, {"code": "SEN-03", "title": "Pencak silat", "scope": "Aspek, teknik dasar, sejarah", "src": "Kelas X–XII", "tier": 3, "sum": "Bela diri asli Indonesia yang memadukan aspek mental spiritual, seni budaya, bela diri, dan olahraga.", "blocks": [{"h": "Konsep", "li": ["Empat aspek: mental spiritual, seni budaya, bela diri, olahraga.", "Ikatan Pencak Silat Indonesia (IPSI) didirikan 18 Mei 1948 di Surakarta.", "<b>Tradisi pencak silat<\/b> ditetapkan UNESCO sebagai Warisan Budaya Takbenda pada 12 Desember 2019."]}, {"h": "Teknik dasar", "li": ["Kuda-kuda, sikap pasang, pola langkah, pukulan, tendangan (depan, samping, sabit), tangkisan, elakan."]}], "grades": ["X", "XI", "XII"]}]}, {"id": "AIR", "name": "Aktivitas air", "short": "Renang", "note": "Gaya renang dan keselamatan di air.", "topics": [{"code": "AIR-01", "title": "Gaya renang", "scope": "Bebas, dada, punggung, kupu-kupu", "src": "Kelas X–XII", "tier": 1, "sum": "Empat gaya renang resmi beserta gerakan kaki, lengan, pernapasan, dan urutannya dalam nomor gaya ganti.", "blocks": [{"h": "Gaya", "table": {"cols": ["Gaya", "Ciri"], "rows": [["Bebas (crawl)", "Tubuh telungkup, kaki naik turun bergantian, napas dengan menoleh ke samping"], ["Dada (katak)", "Kaki menendang seperti katak, lengan menyapu ke samping"], ["Punggung", "Tubuh telentang; start dari dalam air"], ["Kupu-kupu", "Kedua lengan diayun bersamaan, kaki seperti ekor lumba-lumba"]]}}, {"h": "Gaya ganti", "li": ["<b>Gaya ganti perorangan<\/b>: kupu-kupu, punggung, dada, bebas.", "Gaya ganti estafet: punggung, dada, kupu-kupu, bebas (gaya punggung pertama karena startnya dari dalam air).", "Kolam ukuran olimpiade panjangnya 50 m."]}], "traps": ["Urutan gaya ganti perorangan dan estafet berbeda; jangan menukar keduanya."], "grades": ["X", "XI", "XII"]}, {"code": "AIR-02", "title": "Keselamatan dan pertolongan di air", "scope": "Pertolongan, RJP", "src": "Kelas X–XII", "tier": 2, "sum": "Cara menolong orang yang tenggelam dengan aman dan memberi bantuan hidup dasar.", "blocks": [{"h": "Menolong", "li": ["Utamakan pertolongan dari darat: raih (dengan tongkat atau galah), lempar (pelampung atau tali), dayung (perahu); berenang menolong adalah pilihan terakhir.", "Panggil bantuan dan jangan berenang di area tanpa pengawas."]}, {"h": "Bantuan hidup dasar", "li": ["Periksa respons dan napas, panggil bantuan, lalu lakukan resusitasi jantung paru (RJP).", "<b>RJP dewasa<\/b>: 30 kompresi dada lalu 2 napas bantuan; kedalaman 5–6 cm, kecepatan 100–120 kali per menit."]}], "grades": ["X", "XI", "XII"]}]}, {"id": "KBG", "name": "Kebugaran jasmani", "short": "Kebugaran", "note": "Komponen kebugaran, prinsip latihan, dan cara mengukurnya.", "topics": [{"code": "KBG-01", "title": "Komponen kebugaran jasmani", "scope": "Komponen kesehatan dan keterampilan", "src": "Kelas X–XII", "tier": 1, "sum": "Kebugaran jasmani adalah kemampuan melakukan kegiatan sehari-hari tanpa kelelahan berarti; komponennya terkait kesehatan dan keterampilan.", "blocks": [{"h": "Komponen", "table": {"cols": ["Kelompok", "Komponen", "Contoh latihan"], "rows": [["Kesehatan", "Daya tahan jantung-paru", "Lari jarak jauh, bersepeda"], ["Kesehatan", "Kekuatan dan daya tahan otot", "Push up, sit up, back up, pull up"], ["Kesehatan", "Kelenturan", "Sit and reach, peregangan"], ["Kesehatan", "Komposisi tubuh", "Diukur dengan IMT"], ["Keterampilan", "Kecepatan", "Lari cepat 30–60 m"], ["Keterampilan", "Kelincahan", "Lari bolak-balik (shuttle run), zig-zag"], ["Keterampilan", "Keseimbangan, koordinasi, daya ledak (power), waktu reaksi", "Berdiri satu kaki, lompat tegak"]]}}, {"h": "Indeks massa tubuh", "li": ["<b>IMT = berat badan (kg) ÷ tinggi badan² (m²)<\/b>; contoh 60 kg dan 1,60 m: IMT ≈ 23,4."]}], "traps": ["Kelincahan adalah kemampuan mengubah arah dengan cepat; kecepatan adalah menempuh jarak dalam waktu sesingkat-singkatnya.", "Daya ledak (power) menggabungkan kekuatan dan kecepatan, misalnya lompat tegak."], "grades": ["X", "XI", "XII"]}, {"code": "KBG-02", "title": "Prinsip latihan", "scope": "FITT, beban lebih, denyut nadi", "src": "Kelas X–XII", "tier": 1, "sum": "Latihan kebugaran yang baik mengikuti prinsip beban lebih, progresif, spesifik, individual, dan teratur, dengan takaran FITT.", "blocks": [{"h": "Prinsip", "li": ["Beban lebih (overload): beban sedikit di atas kemampuan saat ini, dinaikkan bertahap (progresif).", "Spesifik: latihan sesuai komponen yang ingin ditingkatkan; individual: sesuai kondisi tiap orang.", "Reversibel: hasil latihan menurun bila latihan berhenti.", "Setiap sesi terdiri atas pemanasan, latihan inti, dan pendinginan."]}, {"h": "Takaran latihan", "li": ["<b>FITT<\/b>: frequency (frekuensi), intensity (intensitas), time (durasi), type (jenis).", "Denyut nadi maksimal (DNM) diperkirakan 220 − usia; umur 16 tahun: 204 kali per menit.", "Zona latihan aerobik umumnya sekitar 60–85% DNM; batas persisnya berbeda antarbuku."]}], "traps": ["220 − usia adalah perkiraan denyut nadi maksimal, bukan target saat berlatih."], "grades": ["X", "XI", "XII"]}, {"code": "KBG-03", "title": "Tes kebugaran jasmani", "scope": "TKJI, lari 12 menit, MFT", "src": "Kelas X–XII", "tier": 2, "sum": "Kebugaran diukur dengan rangkaian tes baku seperti TKJI, atau tes daya tahan seperti lari 12 menit dan multistage fitness test.", "blocks": [{"h": "TKJI usia 16–19 tahun", "table": {"cols": ["Butir tes", "Mengukur"], "rows": [["Lari 60 m", "Kecepatan"], ["Gantung angkat tubuh 60 detik (putra), gantung siku tekuk (putri)", "Kekuatan dan daya tahan otot lengan dan bahu"], ["Baring duduk 60 detik", "Kekuatan dan daya tahan otot perut"], ["Loncat tegak", "Daya ledak otot tungkai"], ["Lari 1.200 m (putra), 1.000 m (putri)", "Daya tahan jantung-paru"]]}}, {"h": "Tes lain", "li": ["Lari 12 menit (tes Cooper) dan multistage fitness test (bleep test) mengukur daya tahan jantung-paru (VO₂ maks)."]}], "grades": ["X", "XI", "XII"]}]}, {"id": "KES", "name": "Kesehatan", "short": "Kesehatan", "note": "Cedera olahraga dan P3K, gizi dan pola hidup sehat, bahaya narkoba, serta penyakit menular.", "topics": [{"code": "KES-01", "title": "Cedera olahraga dan P3K", "scope": "Jenis cedera, RICE", "src": "Kelas X–XII", "tier": 1, "sum": "Mengenali cedera yang sering terjadi saat berolahraga dan memberi pertolongan pertama yang tepat.", "blocks": [{"h": "Jenis cedera", "table": {"cols": ["Cedera", "Keterangan"], "rows": [["Sprain (keseleo)", "Ligamen sendi teregang atau robek"], ["Strain", "Otot atau tendon teregang atau robek"], ["Memar", "Pembuluh darah kecil pecah akibat benturan"], ["Kram", "Otot berkontraksi terus tanpa kendali"], ["Dislokasi", "Tulang bergeser dari sendinya"], ["Patah tulang (fraktur)", "Tulang retak atau patah; pasang bidai, jangan diluruskan paksa"]]}}, {"h": "Penanganan", "li": ["<b>RICE<\/b>: rest (istirahatkan), ice (kompres dingin), compression (balut tekan), elevation (tinggikan bagian yang cedera).", "Jangan memijat atau mengompres panas cedera baru, karena dapat menambah bengkak."]}], "traps": ["Sprain mengenai ligamen; strain mengenai otot atau tendon.", "Cedera baru dikompres dingin, bukan panas."], "grades": ["X", "XI", "XII"]}, {"code": "KES-02", "title": "Gizi dan pola hidup sehat", "scope": "Gizi seimbang, Isi Piringku, istirahat", "src": "Kelas X–XII", "tier": 2, "sum": "Pola hidup sehat menggabungkan gizi seimbang, aktivitas fisik teratur, istirahat cukup, dan kebersihan diri.", "blocks": [{"h": "Gizi", "li": ["Zat gizi makro: karbohidrat, protein, lemak; mikro: vitamin dan mineral; ditambah air.", "<b>Isi Piringku<\/b> (Kemenkes): setengah piring sayur dan buah, setengah lagi makanan pokok dan lauk-pauk.", "Batasi gula, garam, dan lemak; minum air putih yang cukup."]}, {"h": "Kebiasaan", "li": ["Aktivitas fisik teratur, tidur cukup, cuci tangan, dan tidak merokok."]}], "grades": ["X", "XI", "XII"]}, {"code": "KES-03", "title": "Bahaya narkoba, rokok, dan alkohol", "scope": "NAPZA, golongan, dampak", "src": "Kelas X–XII", "tier": 1, "sum": "NAPZA (narkotika, psikotropika, dan zat adiktif) merusak kesehatan fisik dan mental serta menimbulkan ketergantungan.", "blocks": [{"h": "Penggolongan", "li": ["<b>Narkotika<\/b> diatur UU No. 35 Tahun 2009: golongan I (heroin, kokain, ganja, metamfetamin atau sabu), golongan II (morfin, petidin), golongan III (kodein).", "Golongan I hanya untuk penelitian, tidak untuk pengobatan; golongan III paling ringan potensi ketergantungannya.", "Psikotropika diatur UU No. 5 Tahun 1997; zat adiktif lain termasuk nikotin (rokok), alkohol, dan inhalan (lem)."]}, {"h": "Dampak dan pencegahan", "li": ["Dampak: kerusakan otak, jantung, paru, dan hati; gangguan mental; masalah hukum dan sosial; penularan HIV lewat jarum suntik bersama.", "Pencegahan: menolak tegas, memilih pergaulan sehat, kegiatan positif, dan mencari bantuan konselor atau layanan rehabilitasi."]}], "traps": ["Sabu (metamfetamin) termasuk narkotika golongan I menurut UU No. 35 Tahun 2009, bukan psikotropika."], "grades": ["X", "XI", "XII"]}, {"code": "KES-04", "title": "Penyakit menular dan pergaulan sehat", "scope": "HIV/AIDS, penularan, pencegahan", "src": "Kelas XI–XII", "tier": 2, "sum": "Penyakit menular seperti HIV/AIDS dapat dicegah dengan memahami cara penularannya dan menjaga pergaulan yang sehat.", "blocks": [{"h": "HIV/AIDS", "li": ["<b>HIV<\/b> adalah virus yang menyerang kekebalan tubuh; AIDS adalah kumpulan gejala pada tahap lanjut infeksi HIV.", "Menular lewat darah, cairan kelamin, dan air susu ibu, misalnya jarum suntik bergantian dan hubungan seksual tanpa pelindung.", "Tidak menular lewat jabat tangan, berpelukan, berbagi alat makan, berenang bersama, atau gigitan nyamuk."]}, {"h": "Pergaulan sehat", "li": ["Menghargai diri dan orang lain, menolak tekanan teman sebaya, dan mencari informasi dari tenaga kesehatan.", "Orang dengan HIV berhak mendapat perlakuan yang sama; stigma menghambat orang memeriksakan diri."]}], "grades": ["XI", "XII"]}]}], "notes": [{"title": "Perlu diperhatikan", "items": ["Aturan servis bulu tangkis: buku lama menyebut kok dipukul di bawah pinggang (aturan lama BWF: di bawah tulang rusuk terbawah); sejak 2018 BWF memakai batas tinggi tetap 1,15 m dari lantai.", "Zona pergantian estafet 4 × 100 m: buku lama menyebut zona 20 m ditambah daerah percepatan 10 m; sejak 2018 World Athletics (dulu IAAF) menggabungkannya menjadi satu zona 30 m. Ikuti buku sekolah saat ujian.", "Batas IMT berbeda: WHO memakai normal 18,5–24,9, sedangkan pedoman Kemenkes memakai normal 18,5–25,0 dengan kategori gemuk 25,1–27,0.", "Ukuran lapangan sepak bola memakai rentang untuk pertandingan internasional; aturan IFAB membolehkan rentang yang lebih lebar untuk pertandingan lain.", "Zona latihan aerobik dan butir TKJI berbeda sedikit antarbuku; cocokkan dengan buku sekolah."]}, {"title": "Rujukan", "items": ["Buku PJOK SMA kelas X Kurikulum Merdeka (Kemendikbudristek): daftar unit dari ringkasan sekunder; PDF resminya tidak dapat dibuka dari lingkungan kerja ini.", "Peraturan permainan IFAB (sepak bola), FIVB (bola voli), FIBA (bola basket), IHF (bola tangan), BWF (bulu tangkis), ITTF (tenis meja), dan World Athletics.", "UU No. 35 Tahun 2009 tentang Narkotika; UU No. 5 Tahun 1997 tentang Psikotropika; pedoman Isi Piringku Kemenkes; pedoman RJP American Heart Association."]}], "icon": "<circle cx=\"24\" cy=\"24\" r=\"18\"/><path d=\"m24 15 7 5-3 8h-8l-3-8z\"/><path d=\"M24 15V6M31 20l9-4M28 28l5 8M20 28l-5 8M17 20l-9-4\"/>", "bank": "bank-pjok.html"};
 const TIER = {1:["t1","Inti"],2:["t2","Penting"],3:["t3","Pelengkap"]};
 const tags = t => '<span class="tier ' + TIER[t.tier][0] + '">' + TIER[t.tier][1] + '</span>' + (t.lanjut ? ' <span class="tier lj">Lanjut</span>' : '');
-let onlyLanjut = false;
+// Filters, read from the address (?kelas=XI&lanjut=1) so links from the home page open the right view.
+const params = new URLSearchParams(location.search);
+let kelas = ["X", "XI", "XII"].includes(params.get("kelas")) ? params.get("kelas") : "";
+let onlyLanjut = params.get("lanjut") === "1";
+const shown = t => (!kelas || t.grades.includes(kelas)) && (!onlyLanjut || t.lanjut);
 const KEY = "peta-" + MAP.id + "-v1";
 let done = new Set();
 try { done = new Set(JSON.parse(localStorage.getItem(KEY) || "[]")); } catch(e) {}
@@ -233,6 +371,7 @@ function render(){
   document.title = MAP.title;
   $("eyebrow").textContent = "Peta materi · " + MAP.subject + " · " + MAP.domains.length + " bidang · " + total + " simpul";
   $("title").textContent = MAP.title;
+  if(MAP.icon) $("icon").innerHTML = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">' + MAP.icon + '</svg>';
   $("lead").innerHTML = MAP.lead + (MAP.bank ? ' <a href="' + MAP.bank + '">Latih dengan bank soal →</a>' : "");
   $("sourceNote").textContent = MAP.source_note || "";
   $("progress").innerHTML = MAP.domains.map(d => '<a class="pg" href="#d-' + d.id + '" style="--c:' + d.c + '"><b>' + d.short + '</b><div class="bar"><i id="bar-' + d.id + '"></i></div><span id="pg-' + d.id + '"></span></a>').join("");
@@ -245,13 +384,13 @@ function render(){
   const map = $("map"), host = $("domains");
   MAP.domains.forEach(d => {
     const col = document.createElement("div");
-    col.className = "mcol"; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
-    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono">' + d.topics.length + '</span></h3><ul>' +
+    col.className = "mcol"; col.dataset.domain = d.id; col.style.setProperty("--c", d.c); col.style.setProperty("--soft", d.soft);
+    col.innerHTML = '<h3><span>' + d.name + '</span><span class="mono" id="n-' + d.id + '">' + d.topics.length + '</span></h3><ul>' +
       d.topics.map(t => '<li><a class="chip" data-code="' + t.code + '" href="#t-' + t.code + '"><span class="mono">' + t.code + '</span><span>' + t.title + ' ' + tags(t) + '</span></a></li>').join("") + "</ul>";
     map.appendChild(col);
     const sec = document.createElement("section");
     sec.id = "d-" + d.id; sec.style.setProperty("--c", d.c); sec.style.setProperty("--soft", d.soft);
-    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
+    sec.innerHTML = '<div class="domain-head"><h2>' + d.name + '</h2><span class="w" id="w-' + d.id + '">' + d.topics.length + ' simpul</span><p>' + (d.note || "") + '</p></div>';
     d.topics.forEach(t => {
       const a = document.createElement("article");
       a.className = "card"; a.id = "t-" + t.code; a.dataset.code = t.code;
@@ -285,10 +424,11 @@ function goTo(code){
 function progress(){
   let k = 0, n = 0;
   MAP.domains.forEach(d => {
-    const dn = d.topics.filter(t => done.has(t.code)).length;
-    k += dn; n += d.topics.length;
-    $("bar-" + d.id).style.width = (dn / d.topics.length * 100) + "%";
-    $("pg-" + d.id).textContent = dn + " dari " + d.topics.length;
+    const ts = d.topics.filter(shown), dn = ts.filter(t => done.has(t.code)).length;
+    k += dn; n += ts.length;
+    $("bar-" + d.id).style.width = (ts.length ? dn / ts.length * 100 : 0) + "%";
+    $("pg-" + d.id).textContent = dn + " dari " + ts.length;
+    $("bar-" + d.id).closest(".pg").hidden = !ts.length;
   });
   $("overall").textContent = k + " dari " + n;
   document.querySelectorAll(".chip").forEach(c => c.classList.toggle("done", done.has(c.dataset.code)));
@@ -300,18 +440,144 @@ function search(q){
   let hits = 0;
   document.querySelectorAll(".card").forEach(card => {
     const t = byCode[card.dataset.code].t, body = card.querySelector(".body");
-    const keep = !onlyLanjut || t.lanjut;
+    const keep = shown(t);
     if(!re){ card.hidden = !keep; body.innerHTML = bodyHTML(t, null); setOpen(card, false); return; }
     const match = keep && new RegExp(re.source, "i").test(plain(t));
     card.hidden = !match; body.innerHTML = bodyHTML(t, match ? re : null); setOpen(card, match);
     if(match) hits++;
   });
-  document.querySelectorAll(".chip").forEach(c => c.classList.toggle("off", onlyLanjut && !byCode[c.dataset.code].t.lanjut));
+  document.querySelectorAll(".chip").forEach(c => c.parentNode.hidden = !shown(byCode[c.dataset.code].t));
+  MAP.domains.forEach(d => {
+    const k = d.topics.filter(shown).length;
+    document.querySelector('.mcol[data-domain="' + d.id + '"]').hidden = !k;
+    $("d-" + d.id).hidden = !k;
+    $("n-" + d.id).textContent = k; $("w-" + d.id).textContent = k + " simpul";
+  });
+  $("emptyNote").hidden = MAP.domains.some(d => d.topics.some(shown));
   $("hits").textContent = re ? (hits ? hits + " simpul cocok" : "Tidak ada yang cocok. Coba kata lain.") : "";
 }
 
+// Remember this view for the home page's "Lanjutkan" button and recent list.
+function remember(){
+  const url = new URL(location.href);
+  kelas ? url.searchParams.set("kelas", kelas) : url.searchParams.delete("kelas");
+  onlyLanjut ? url.searchParams.set("lanjut", "1") : url.searchParams.delete("lanjut");
+  storyOn ? url.searchParams.set("mode", "geser") : url.searchParams.delete("mode");
+  try { history.replaceState(null, "", url); } catch(e) {}
+  try {
+    const recent = JSON.parse(localStorage.getItem("knovera-recent") || "[]").filter(r => !(r.map === MAP.id && !!r.lanjut === onlyLanjut));
+    recent.unshift({map: MAP.id, kelas, lanjut: onlyLanjut, geser: storyOn, t: Date.now()});
+    localStorage.setItem("knovera-recent", JSON.stringify(recent.slice(0, 8)));
+  } catch(e) {}
+}
+function applyFilters(){
+  document.querySelectorAll("#grades button").forEach(b => b.setAttribute("aria-pressed", String(b.dataset.kelas === kelas)));
+  $("onlyLanjut").setAttribute("aria-pressed", String(onlyLanjut));
+  search($("q").value); progress(); remember();
+}
+
+// Story mode ("Mode geser"): the topics that pass the filters, one per screen.
+let storyOn = false;
+const parts = t => {
+  const out = [{label: "Ringkasan", html: '<p class="st-sum">' + t.sum + '</p><p class="st-meta">' + t.scope + ' · ' + t.src + '</p>'}];
+  t.blocks.forEach(b => out.push({label: b.h, html: (b.li ? "<ul>" + b.li.map(x => "<li>" + x + "</li>").join("") + "</ul>" : "") +
+    (b.table ? '<div class="tbl"><table><thead><tr>' + b.table.cols.map(c => "<th>" + c + "</th>").join("") + "</tr></thead><tbody>" +
+      b.table.rows.map(r => "<tr>" + r.map(c => "<td>" + c + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>" : "")}));
+  if(t.traps && t.traps.length) out.push({label: "Jebakan soal", trap: true, html: "<ul>" + t.traps.map(x => "<li>" + x + "</li>").join("") + "</ul>"});
+  return out;
+};
+function showPart(slide, i){
+  const t = byCode[slide.dataset.code].t, ps = parts(t);
+  i = Math.max(0, Math.min(ps.length - 1, i));
+  slide.dataset.part = i;
+  slide.querySelectorAll(".bars i").forEach((b, k) => b.classList.toggle("on", k <= i));
+  const card = slide.querySelector(".st-card");
+  card.classList.toggle("trap", !!ps[i].trap);
+  card.querySelector(".st-label").innerHTML = ps[i].label;
+  card.querySelector(".st-body").innerHTML = ps[i].html;
+  card.querySelector(".st-body").scrollTop = 0;
+}
+function slideHTML(t, d, n, total){
+  const on = done.has(t.code);
+  return '<article class="slide" data-code="' + t.code + '" data-part="0" style="--c:' + d.c + ';--soft:' + d.soft + '" aria-label="' + (n + 1) + ' dari ' + total + '">' +
+    '<div class="bars">' + parts(t).map(() => "<i></i>").join("") + '</div>' +
+    '<div class="st-head"><span class="st-dom">' + d.short + '</span><span class="mono">' + t.code + '</span>' + tags(t) +
+    '<span class="st-grade">Kelas ' + t.grades.join(", ") + '</span></div>' +
+    '<h2>' + t.title + '</h2>' +
+    '<div class="st-card"><div class="st-label"></div><div class="st-body"></div></div>' +
+    '<div class="st-foot"><b>' + (n + 1) + ' / ' + total + '</b><span>Ketuk → lanjut · Geser ↑ simpul berikutnya</span></div>' +
+    '<div class="rail">' +
+      '<button type="button" data-act="done" aria-pressed="' + on + '"><span aria-hidden="true">✓</span>' + (on ? "Dikuasai" : "Kuasai") + '</button>' +
+      '<button type="button" data-act="map"><span aria-hidden="true">▤</span>Di peta</button>' +
+      (MAP.bank ? '<a href="' + MAP.bank + '"><span aria-hidden="true">?</span>Latihan</a>' : '') +
+    '</div></article>';
+}
+function openStory(code){
+  const list = [];
+  MAP.domains.forEach(d => d.topics.filter(shown).forEach(t => list.push([t, d])));
+  if(!list.length) return;
+  $("feed").innerHTML = list.map(([t, d], n) => slideHTML(t, d, n, list.length)).join("") +
+    '<div class="st-end"><h2>Selesai!</h2><p>' + list.filter(([t]) => done.has(t.code)).length + ' dari ' + list.length + ' simpul sudah dikuasai.</p>' +
+    (MAP.bank ? '<a class="btn primary" href="' + MAP.bank + '">Latihan bank soal</a>' : '') +
+    '<button class="btn" type="button" data-act="top">Ulangi dari awal</button><button class="btn" type="button" data-act="close">Kembali ke peta</button></div>';
+  $("feed").querySelectorAll(".slide").forEach(sl => showPart(sl, 0));
+  $("story").hidden = false; document.body.classList.add("story-open");
+  storyOn = true; remember();
+  const start = code && $("feed").querySelector('.slide[data-code="' + code + '"]');
+  $("feed").scrollTop = start ? start.offsetTop : 0;
+  $("storyClose").focus();
+}
+function closeStory(){
+  const cur = currentSlide();
+  $("story").hidden = true; document.body.classList.remove("story-open");
+  storyOn = false; remember();
+  if(cur) goTo(cur.dataset.code);
+}
+function currentSlide(){
+  const feed = $("feed"), i = Math.round(feed.scrollTop / feed.clientHeight);
+  return feed.children[i] && feed.children[i].classList.contains("slide") ? feed.children[i] : null;
+}
+function step(dir){
+  const sl = currentSlide();
+  if(!sl){ if(dir < 0) $("feed").scrollBy({top: -$("feed").clientHeight}); return; }
+  const i = +sl.dataset.part + dir, n = sl.querySelectorAll(".bars i").length;
+  if(i >= n || i < 0){ $("feed").scrollBy({top: dir * $("feed").clientHeight, behavior: "smooth"}); return; }
+  showPart(sl, i);
+}
+$("storyOpen").addEventListener("click", () => openStory());
+$("storyClose").addEventListener("click", closeStory);
+$("feed").addEventListener("click", e => {
+  const act = e.target.closest("[data-act]");
+  if(act){
+    const sl = act.closest(".slide");
+    if(act.dataset.act === "done"){
+      const code = sl.dataset.code, on = !done.has(code);
+      on ? done.add(code) : done.delete(code); save(); progress();
+      act.setAttribute("aria-pressed", String(on)); act.lastChild.textContent = on ? "Dikuasai" : "Kuasai";
+    }
+    if(act.dataset.act === "map") closeStory();
+    if(act.dataset.act === "close"){ $("story").hidden = true; document.body.classList.remove("story-open"); storyOn = false; remember(); }
+    if(act.dataset.act === "top") $("feed").scrollTo({top: 0, behavior: "smooth"});
+    return;
+  }
+  // Tap the left third for the previous part, the rest for the next; links, tables and text selection are left alone.
+  if(e.target.closest("a, .tbl") || String(getSelection())) return;
+  const sl = e.target.closest(".slide"); if(!sl) return;
+  const box = sl.getBoundingClientRect();
+  step(e.clientX - box.left < box.width / 3 ? -1 : 1);
+});
+document.addEventListener("keydown", e => {
+  if($("story").hidden) return;
+  if(e.key === "Escape"){ e.preventDefault(); closeStory(); }
+  if(e.key === "ArrowRight"){ e.preventDefault(); step(1); }
+  if(e.key === "ArrowLeft"){ e.preventDefault(); step(-1); }
+  if(e.key === "ArrowDown" || e.key === "ArrowUp"){ e.preventDefault(); $("feed").scrollBy({top: (e.key === "ArrowDown" ? 1 : -1) * $("feed").clientHeight, behavior: "smooth"}); }
+});
+
 render();
 progress();
+applyFilters();
+if(params.get("mode") === "geser") openStory(location.hash.startsWith("#t-") ? location.hash.slice(3) : "");
 document.addEventListener("click", e => {
   const tg = e.target.closest(".toggle");
   if(tg){ const card = tg.closest(".card"); setOpen(card, !card.classList.contains("open")); return; }
@@ -328,7 +594,8 @@ document.addEventListener("change", e => {
 let timer;
 $("q").addEventListener("input", e => { clearTimeout(timer); timer = setTimeout(() => search(e.target.value), 150); });
 $("openAll").addEventListener("click", () => document.querySelectorAll(".card:not([hidden])").forEach(c => setOpen(c, true)));
-$("onlyLanjut").addEventListener("click", e => { onlyLanjut = !onlyLanjut; e.target.setAttribute("aria-pressed", String(onlyLanjut)); search($("q").value); });
+$("onlyLanjut").addEventListener("click", () => { onlyLanjut = !onlyLanjut; applyFilters(); });
+$("grades").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ kelas = b.dataset.kelas; applyFilters(); } });
 $("closeAll").addEventListener("click", () => document.querySelectorAll(".card").forEach(c => setOpen(c, false)));
-if(location.hash.startsWith("#t-")) goTo(location.hash.slice(3));
+if(location.hash.startsWith("#t-") && !storyOn) goTo(location.hash.slice(3));
 </script>

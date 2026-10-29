@@ -3,7 +3,8 @@
 Usage:  python scripts/build.py              # build docs/ for GitHub Pages
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
 Reads:  data/topics.json, data/questions.csv, data/maps/*.json, data/questions/*.csv, data/tka/*.json,
-        data/modules/*.json, data/tka-types.json, templates/*.html
+        data/modules/*.json, data/tka-types.json, data/subjects.json, templates/*.html,
+        templates/_theme.css (the shared light theme, added to every page) and templates/_icons.json (subject icons)
 Writes: docs/questions.json, one docs/<name>.html per template (docs/tka.html carries the TKA banks),
         one docs/peta-<id>.html per subject map (rendered through templates/_map.html),
         one docs/bank-<id>.html per subject question bank (rendered through templates/bank.html),
@@ -29,6 +30,13 @@ MIN_LEVEL1_SHARE = 0.35   # question-spec 3: subject banks with konteks items ru
 HEAD = ('<!doctype html>\n<html lang="id">\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
         '<style>body{margin:0}</style>\n')
+# Grades a topic's `src` covers (map-spec 3). Kelas X is Fase E; kelas XI and XII are Fase F.
+GRADES = ("X", "XI", "XII")
+GRADE_LABELS = {
+    "Kelas X": ["X"], "Kelas XI": ["XI"], "Kelas XII": ["XII"],
+    "Kelas X–XI": ["X", "XI"], "Kelas XI–XII": ["XI", "XII"], "Kelas X dan XII": ["X", "XII"],
+    "Kelas X–XII": list(GRADES), "Semua kelas": list(GRADES),
+}
 # The hosted claude.ai copies link to each other by URL instead of by file name.
 ARTIFACT_URLS = {
     "peta.html": "https://claude.ai/artifact/D5VQvyvvDqr9rVwHTMX3eP",
@@ -179,6 +187,8 @@ def validate_map(name, m):
             for key in ("title", "scope", "src", "sum", "blocks"):
                 if not t.get(key):
                     errors.append(f"{where}: {code} missing '{key}'")
+            if t.get("src") and t["src"] not in GRADE_LABELS:
+                errors.append(f"{where}: {code} src '{t['src']}' must be one of: {', '.join(GRADE_LABELS)}")
             if t.get("tier") not in (1, 2, 3):
                 errors.append(f"{where}: {code} tier must be 1, 2 or 3")
             if "lanjut" in t and not isinstance(t["lanjut"], bool):
@@ -464,12 +474,29 @@ def lint_map(name, m):
     return warnings
 
 
+def with_grades(m):
+    """Copy of a map with each topic's grades (["X", "XI"]) read from its src, for the page's grade filter."""
+    domains = [dict(d, topics=[dict(t, grades=GRADE_LABELS[t["src"]]) for t in d["topics"]]) for d in m["domains"]]
+    return dict(m, domains=domains, icon=load_icons().get(m["id"], ""))
+
+
+def load_icons():
+    """Subject icons: inner SVG markup for a 48x48 stroke drawing, keyed by map id (templates/_icons.json)."""
+    return json.loads((ROOT / "templates/_icons.json").read_text(encoding="utf-8"))
+
+
+def icon_svg(markup):
+    return ('<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" '
+            'stroke-linejoin="round" aria-hidden="true">' + markup + '</svg>')
+
+
 def map_pages(maps, links, banks=None):
     """Return {file name: page body} for every subject map."""
     template = (ROOT / "templates/_map.html").read_text(encoding="utf-8")
     banks = banks if banks is not None else load_subject_banks()
     out = {}
     for m in maps.values():
+        m = with_grades(m)
         if m["id"] in banks:
             m = dict(m, bank=links.get(f"bank-{m['id']}.html", f"bank-{m['id']}.html"))
         payload = json.dumps(m, ensure_ascii=False).replace("</", "<\\/")
@@ -508,54 +535,77 @@ def module_pages(modules, maps, links):
     return out
 
 
-def subject_cards(maps, topics, n_questions, tka=None, modules=None, banks=None):
-    """HTML cards for the home page: the history kit, one card per subject map (with its modules), then the TKA banks."""
+def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None, subjects=None, groups=None):
+    """Return (html, data) for the home page: subject cards in one panel per group tab, and the tools section.
+
+    Every subject sits in its primary group's panel and in each panel listed under `also`, where it carries its
+    primary group's name as a flag. Tingkat Lanjut subjects open the parent map with only the tagged topics.
+    `data` feeds the page script: topic codes per grade (for the grade chooser and progress) and bank links.
+    """
     e = html.escape
+    banks = banks or {}
+    subjects = subjects if subjects is not None else load_subjects()
+    groups = groups if groups is not None else load_groups()
+    icons = load_icons()
+    names = {g["id"]: g["name"] for g in groups}
+    data, panels = {}, {g["id"]: [] for g in groups}
+    for s in subjects:
+        mid = s.get("map") or s.get("lanjut_of")
+        if mid not in maps:
+            continue
+        m = maps[mid]
+        topics_ = [t for d in m["domains"] for t in d["topics"] if not s.get("lanjut_of") or t.get("lanjut")]
+        grades = ["XI", "XII"] if s.get("lanjut_of") else list(GRADES)
+        by_grade = {g: [t["code"] for t in topics_ if g in GRADE_LABELS[t["src"]]] for g in grades}
+        href = f"peta-{mid}.html" + ("?lanjut=1" if s.get("lanjut_of") else "")
+        data[s["id"]] = {"map": mid, "name": s["short"], "href": href, "lanjut": bool(s.get("lanjut_of")),
+                         "grades": by_grade, "codes": [t["code"] for t in topics_],
+                         "bank": f"bank-{mid}.html" if mid in banks and not s.get("lanjut_of") else ""}
+        n_bank = len(banks[mid]) if mid in banks and not s.get("lanjut_of") else 0
+        counts = " · ".join(f"{g} {len(c)}" for g, c in by_grade.items())
+        for gid in [s["group"]] + s.get("also", []):
+            flag = f'<span class="flag">{e(names[s["group"]])}</span>' if gid != s["group"] else ""
+            panels[gid].append(
+                f'<a class="sub" href="{e(href)}" data-sid="{e(s["id"])}">'
+                f'<span class="ico">{icon_svg(icons.get(mid, icons["modul"]))}</span>'
+                f'<span class="sname">{e(s["short"])}{flag}</span>'
+                f'<span class="smeta">{len(topics_)} simpul' + (f" · {n_bank} soal" if n_bank else "") + '</span>'
+                f'<span class="sgrades">Kelas {counts}</span>'
+                '<span class="sprog" hidden><i></i></span><span class="sdone" hidden></span></a>')
+    tabs = "".join(
+        f'<button class="gtab" type="button" role="tab" id="tab-{e(g["id"])}" aria-controls="panel-{e(g["id"])}" '
+        f'aria-selected="{"true" if i == 0 else "false"}">{e(g["name"])} <span>{len(panels[g["id"]])}</span></button>'
+        for i, g in enumerate(groups))
+    body = "".join(
+        f'<section class="gpanel" role="tabpanel" id="panel-{e(g["id"])}" aria-labelledby="tab-{e(g["id"])}">'
+        f'<h3 class="gname">{e(g["name"])}</h3><p class="gnote">{e(g["note"])}</p>'
+        f'<div class="subs">{"".join(panels[g["id"]])}</div></section>'
+        for g in groups)
     sni = topics["domains"]
-    n_topics = sum(len(d["topics"]) for d in sni)
-    cards = [
-        '<article class="subject" style="--c:var(--c-sejarah, var(--c-default))">'
-        '<span class="kind">Lomba LCCM · ' + str(n_topics) + ' simpul · ' + str(n_questions) + ' soal</span>'
-        '<h2>Kit Lomba Sejarah</h2>'
-        '<p>Perangkat lomba bergaya Lomba Cerdas Cermat Museum: sejarah nasional, kebudayaan, serta permuseuman dan cagar budaya.</p>'
-        '<div class="chips">' + "".join(f'<span>{e(d["short"])} {d["weight"]}%</span>' for d in sni) + '</div>'
-        '<nav class="links" aria-label="Sejarah">'
-        '<a class="primary" href="peta.html">Peta materi <span>praaksara–Reformasi</span></a>'
-        '<a href="bank.html">Bank soal <span>latihan per simpul</span></a>'
-        '<a href="simulasi.html">Simulasi babak <span>wajib dan rebutan</span></a>'
-        '</nav></article>'
-    ]
-    for m in maps.values():
-        n = sum(len(d["topics"]) for d in m["domains"])
-        blurb = m.get("blurb") or ", ".join(d["name"] for d in m["domains"]) + "."
-        cards.append(
-            f'<article class="subject" style="--c:var(--c-{e(m["id"])}, var(--c-default))">'
-            f'<span class="kind">{e(m["subject"])} · {n} simpul</span>'
-            f'<h2>{e(m["subject"])}</h2>'
-            f'<p>{e(blurb)}</p>'
-            '<div class="chips">' + "".join(f'<span>{e(d["short"])}</span>' for d in m["domains"]) + '</div>'
-            f'<nav class="links" aria-label="{e(m["subject"])}">'
-            f'<a class="primary" href="peta-{e(m["id"])}.html">Peta materi <span>{n} simpul</span></a>'
-            + (f'<a href="bank-{e(m["id"])}.html">Bank soal <span>{len(banks[m["id"]])} soal</span></a>'
-               if banks and m["id"] in banks else "")
-            + "".join(f'<a href="modul-{e(mod["id"])}.html">{e(mod["title"])} '
-                      f'<span>{sum(len(st["soal"]) for st in mod["tahap"])} latihan</span></a>'
-                      for mod in (modules or {}).values() if mod.get("map") == m["id"])
-            + '</nav></article>'
-        )
+    tools = [
+        f'<article class="tool"><span class="ico">{icon_svg(icons["lomba"])}</span><h3>Kit Lomba Sejarah</h3>'
+        f'<p>Perangkat Lomba Cerdas Cermat Museum: {sum(len(d["topics"]) for d in sni)} simpul, {n_questions} soal, '
+        'dan simulasi babak wajib serta rebutan.</p><nav class="tlinks" aria-label="Kit Lomba Sejarah">'
+        '<a class="btn primary" href="peta.html">Peta lomba</a><a class="btn" href="bank.html">Bank soal</a>'
+        '<a class="btn" href="simulasi.html">Simulasi babak</a></nav></article>']
     if tka:
         n_items = sum(len(b["soal"]) for b in tka.values())
-        cards.append(
-            '<article class="subject" style="--c:var(--c-tka, var(--c-default))">'
-            f'<span class="kind">TKA 2025 · {len(tka)} mapel · {n_items} soal</span>'
-            '<h2>Latihan TKA</h2>'
-            '<p>Soal Tes Kemampuan Akademik SMA 2025 yang ditranskripsi dari berkas soal, dengan kunci usulan yang belum resmi.</p>'
-            '<div class="chips">' + "".join(f'<span>{e(b["mapel"])}</span>' for b in tka.values()) + '</div>'
-            '<nav class="links" aria-label="Latihan TKA">'
-            '<a class="primary" href="tka.html">Latihan soal <span>pilih mapel</span></a>'
-            '</nav></article>'
-        )
-    return "\n    ".join(cards)
+        tools.append(
+            f'<article class="tool"><span class="ico">{icon_svg(icons["tka"])}</span><h3>Latihan TKA</h3>'
+            f'<p>Soal TKA SMA 2025 dari {len(tka)} naskah, {n_items} soal, dengan kunci usulan yang belum resmi.</p>'
+            '<nav class="tlinks" aria-label="Latihan TKA"><a class="btn primary" href="tka.html">Latihan soal</a></nav></article>')
+    for mod in (modules or {}).values():
+        n_items = sum(len(st["soal"]) for st in mod["tahap"])
+        tools.append(
+            f'<article class="tool"><span class="ico">{icon_svg(icons["modul"])}</span><h3>{e(mod["title"])}</h3>'
+            f'<p>Modul belajar {e(maps[mod["map"]]["subject"]) if mod.get("map") in maps else ""}: '
+            f'{len(mod["materi"])} materi dan {n_items} latihan bertahap sampai setara TKA.</p>'
+            f'<nav class="tlinks" aria-label="{e(mod["title"])}"><a class="btn primary" href="modul-{e(mod["id"])}.html">Buka modul</a></nav></article>')
+    stats = {"subjects": len(data), "topics": sum(len(d["topics"]) for m in maps.values() for d in m["domains"]),
+             "questions": sum(len(r) for r in banks.values()) + n_questions,
+             "tka": sum(len(b["soal"]) for b in (tka or {}).values())}
+    sections = {"tabs": tabs, "panels": body, "tools": "\n".join(tools)}
+    return sections, {"subjects": data, "stats": stats}
 
 
 def pages(topics, questions, links, maps=None, tka=None, modules=None):
@@ -577,14 +627,24 @@ def pages(topics, questions, links, maps=None, tka=None, modules=None):
         body = body.replace("/*__DATA__*/", "const DATA = " + payload + ";")
         body = body.replace("/*__TKA__*/", "const BANKS = " + tka_payload + ";")
         body = body.replace("__SITE_BASE__", SITE_BASE)
-        if "<!--__SUBJECT_CARDS__-->" in body:
-            cards = subject_cards(maps if maps is not None else load_maps(), topics, len(questions), tka,
-                                  modules if modules is not None else load_modules(), load_subject_banks())
-            body = body.replace("<!--__SUBJECT_CARDS__-->", cards)
+        if "<!--__TABS__-->" in body:
+            sections, home = home_sections(maps if maps is not None else load_maps(), topics, len(questions), tka,
+                                           modules if modules is not None else load_modules(), load_subject_banks())
+            for key, part in sections.items():
+                body = body.replace(f"<!--__{key.upper()}__-->", part)
+            for key, n in home["stats"].items():
+                body = body.replace(f"__N_{key.upper()}__", f"{n:,}".replace(",", "."))
+            body = body.replace("/*__HOME__*/", "const HOME = " + json.dumps(home, ensure_ascii=False).replace("</", "<\\/") + ";")
         for name, target in links.items():
             body = body.replace('href="' + name, 'href="' + target)
         out[path.name] = body
     return out
+
+
+def themed(body):
+    """Add the shared light theme (templates/_theme.css) at the end of the page's first <style> block."""
+    theme = (ROOT / "templates/_theme.css").read_text(encoding="utf-8")
+    return body.replace("</style>", theme + "</style>", 1)
 
 
 def build(topics, rows, maps, artifact, tka=None, modules=None):
@@ -600,7 +660,7 @@ def build(topics, rows, maps, artifact, tka=None, modules=None):
     built = {**pages(topics, questions, {}, maps, tka, modules), **map_pages(maps, {}, banks),
              **bank_pages(banks, maps, {}), **module_pages(modules, maps, {})}
     for name, body in built.items():
-        (docs / name).write_text(HEAD + body, encoding="utf-8")
+        (docs / name).write_text(HEAD + themed(body), encoding="utf-8")
     for mod_id in modules:
         if module_pdf(mod_id):
             (docs / f"modul-{mod_id}.pdf").write_bytes(module_pdf(mod_id).read_bytes())
@@ -614,7 +674,7 @@ def build(topics, rows, maps, artifact, tka=None, modules=None):
                   **module_pages(modules, maps, HOSTED_LINKS)}
         for name, body in hosted.items():
             if name in ARTIFACT_URLS:
-                (out / name.replace(".html", ".fragment.html")).write_text(body, encoding="utf-8")
+                (out / name.replace(".html", ".fragment.html")).write_text(themed(body), encoding="utf-8")
         print("Wrote build/*.fragment.html for " + ", ".join(ARTIFACT_URLS))
 
 
@@ -623,9 +683,16 @@ def load_subjects():
     return json.loads(path.read_text(encoding="utf-8"))["subjects"] if path.exists() else []
 
 
-def validate_subjects(subjects, maps, tka):
+def load_groups():
+    """The home page tabs (Umum, IPA, IPS, Bahasa, Tingkat Lanjut), in order, from data/subjects.json."""
+    path = ROOT / "data/subjects.json"
+    return json.loads(path.read_text(encoding="utf-8")).get("groups", []) if path.exists() else []
+
+
+def validate_subjects(subjects, maps, tka, groups=None):
     """Return problems in data/subjects.json, the roster that the status report follows."""
     errors, where, seen = [], "data/subjects.json", set()
+    group_ids = {g["id"] for g in (groups if groups is not None else load_groups())}
     for s in subjects:
         sid = s.get("id", "?")
         if sid in seen:
@@ -633,6 +700,15 @@ def validate_subjects(subjects, maps, tka):
         seen.add(sid)
         if not s.get("name") or not s.get("kelompok"):
             errors.append(f"{where}: {sid} needs 'name' and 'kelompok'")
+        if not s.get("short"):
+            errors.append(f"{where}: {sid} needs 'short', the name on its home page card")
+        if s.get("group") not in group_ids:
+            errors.append(f"{where}: {sid} group must be one of: {', '.join(sorted(group_ids))}")
+        for g in s.get("also", []):
+            if g not in group_ids or g == s.get("group"):
+                errors.append(f"{where}: {sid} lists bad extra group {g}")
+        if s.get("lanjut_of") and s.get("group") != "lanjut":
+            errors.append(f"{where}: {sid} is a Tingkat Lanjut subject and belongs in group 'lanjut'")
         if bool(s.get("map")) == bool(s.get("lanjut_of")):
             errors.append(f"{where}: {sid} needs exactly one of 'map' or 'lanjut_of'")
         if s.get("lanjut_of") and s["lanjut_of"] not in maps:
