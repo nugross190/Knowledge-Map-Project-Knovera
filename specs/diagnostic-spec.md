@@ -189,7 +189,9 @@ Before the pilot, placements rest on the authors' fase tags. The report says so:
 
 ## 13. Item files
 
-Items will live in `data/diagnostic/<domain>.json` (`lit.json`, `num.json`), one array of units and items each. `build.py` does not read these files yet. Validation (ids, tags, `cp` and `butir` against `data/cp/`, form rules) is added with the first items. Item ids are `<domain>-<four digits>` (`NUM-0001`), permanent. One item, without a unit:
+Items carry answer keys and this repository is public, so they live in the private HADIR repository (`nugross190/V2HADIR`, decided by the owner on 2026-11-01). The files are `content/diagnostik/<domain>.json` (`lit.json`, `num.json`), with their pictures in `content/diagnostik/img/`. That folder's README gives the full format. Its test, `tests/test_diagnostik_items.py`, checks ids, CP references, forms and keys, distractor tags and pictures. This repository keeps the rules and the CP text, and nothing here reads the items.
+
+A file has `unit[]` and, for NUM only, `soal[]` of single items outside any unit. Item ids are `<domain>-<four digits>` (`NUM-0001`) and unit ids `<domain>-U<three digits>` (`LIT-U001`), both permanent. One single item:
 
 ```json
 {
@@ -214,6 +216,13 @@ Items will live in `data/diagnostic/<domain>.json` (`lit.json`, `num.json`), one
 
 A unit adds `id`, `judul`, `teks` (LIT), `konteks_akm`, `stimulus`, `sumber` and its `soal[]`. Items inside a unit take their `unit` and `konteks_akm` from it.
 
+A `stimulus` has:
+- `teks`: paragraphs separated by a blank line
+- optional `tabel` (`judul`, `kolom`, `baris`), placed where `teks` has the marker `[TABEL]`
+- optional `gambar`, a picture path, which then requires `deskripsi_gambar`. HADIR shows that description as the figure description.
+
+A single item with a picture carries its own `stimulus` and `sumber`.
+
 ## 14. Changes this needs in HADIR
 
 These are listed for the HADIR phase document; none of them are made by this spec.
@@ -222,7 +231,7 @@ These are listed for the HADIR phase document; none of them are made by this spe
 - **Reports:** the report in `services/ujian_diagnostik.py` is rebuilt on these tags (§12). `SUBTESTS` goes.
 - **Item types:** `MENJODOHKAN` now; `URAIAN` with rubric marking later.
 - **Later features:** per-section timers (screener, §9), routing (v2, §11), audio items (Menyimak).
-- **Moving items into HADIR:** a script turns `data/diagnostic/*.json` into the CSV files of HADIR's Knovera upload (`/ujian-admin/bank/impor-csv`), whose columns grow by the new fields.
+- **Moving items into HADIR:** the items now sit in the same repository as HADIR (`content/diagnostik/`). An import script reads them straight into the question bank with the new fields and stores their pictures as `QbMedia`.
 
 ## 15. Open decisions
 
