@@ -23,6 +23,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 | Questions (`data/questions.csv`, `data/questions/`) | `specs/question-spec.md` |
 | TKA banks (`data/tka/`) | `specs/tka-spec.md` |
 | Generating TKA items (`data/tka-generated/`) | `specs/tka-generation.md`, `specs/tka-item-types.md`, `specs/tka-templates/<subject>.md` |
+| Diagnostic literacy and numeracy items, CP text (`data/cp/`) | `specs/diagnostic-spec.md` |
 
 For a new subject map, the `new-subject` skill (`.claude/skills/new-subject/SKILL.md`) runs the whole pipeline.
 
@@ -55,6 +56,7 @@ Python 3 standard library only; no dependencies to install.
 ```
 data/maps/<id>.json      subject maps (source of truth)
 data/subjects.json       roster of all subjects; drives the status table build.py prints
+data/cp/<id>.json        CP 2025 text per subject (fase x elemen, verbatim) that diagnostic items cite
 data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
 data/questions/<id>.csv  subject question banks, one per map (feeds docs/bank-<id>.html)

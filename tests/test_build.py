@@ -377,6 +377,41 @@ class SubjectsTest(unittest.TestCase):
         self.assertIn("bank", text)
 
 
+class CpTest(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.cp, cls.subjects = site().cp, site().subjects
+
+    def test_cp_files_are_valid(self):
+        self.assertLessEqual({"bahasa-indonesia", "matematika"}, set(self.cp))
+        for name, doc in self.cp.items():
+            self.assertEqual(build.validate_cp(name, doc, self.subjects), [], name)
+
+    def test_cp_covers_every_fase(self):
+        ids = {c["id"] for doc in self.cp.values() for c in doc["capaian"]}
+        for fase in build.CP_FASES:
+            self.assertIn(f"BIN.{fase}.BAC", ids)                       # reading, the literacy domain
+            for code in ("BIL", "ALJ", "GEO", "DAT"):
+                self.assertIn(f"MAT.{fase}.{code}", ids)
+        self.assertNotIn("MAT.E.UKR", ids)                               # Pengukuran ends at Fase D in CP 2025
+
+    def test_validator_catches_problems(self):
+        doc = copy(self.cp["matematika"])
+        doc["capaian"].append(copy(doc["capaian"][0]))                   # MAT.A.BIL twice
+        doc["capaian"][1]["id"] = "MAT.A.XYZ"                            # id that does not match fase and elemen
+        doc["capaian"][2]["butir"][1]["id"] = "MAT.A.UKR.9"              # gap in butir numbers
+        doc["capaian"][3].update(id="MAT.A.PNL", elemen="PNL")           # a process element as capaian
+        doc["capaian"][4]["butir"][0]["teks"] = "teks yang tidak ada"    # butir not copied from the capaian
+        doc["capaian"] = [c for c in doc["capaian"] if c["fase"] != "F"]
+        errors = " | ".join(build.validate_cp("matematika", doc, self.subjects))
+        for needle in ("duplicate capaian MAT.A.BIL", "MAT.A.XYZ must have id", "butir 2 must have id MAT.A.UKR.2",
+                       "PNL is not a content element", "butir text must be copied", "fase F has no capaian"):
+            self.assertIn(needle, errors)
+        other = " | ".join(build.validate_cp("kimia-baru", copy(self.cp["matematika"]), self.subjects))
+        self.assertIn("id must be the file name", other)
+        self.assertIn("kimia-baru is not a subject", other)
+
+
 class TkaTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

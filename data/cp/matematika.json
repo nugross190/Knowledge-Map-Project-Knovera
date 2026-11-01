@@ -1,0 +1,746 @@
+{
+  "id": "matematika",
+  "mapel": "Matematika",
+  "prefix": "MAT",
+  "sumber": {
+    "dokumen": "Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan Kementerian Pendidikan Dasar dan Menengah Nomor 046/H/KR/2025 tentang Capaian Pembelajaran pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah",
+    "tanggal": "2025-07-16",
+    "bagian": "Lampiran II (SD/MI, SMP/MTs, SMA/MA), IV.1 Capaian Pembelajaran Matematika, huruf D",
+    "catatan": "Teks disalin apa adanya dari PDF salinan resmi (potongan bagian mapel); hanya spasi dan pemenggalan baris yang dirapikan. Kolom nomor mengikuti penomoran dokumen (fase.elemen). Butir adalah teks capaian yang dipecah pada titik koma dan paragraf, tanpa kata sambung 'dan'/'serta' di awal."
+  },
+  "fase": [
+    {
+      "fase": "A",
+      "kelas": [
+        "I",
+        "II"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas I dan II SD/MI/Program Paket A"
+    },
+    {
+      "fase": "B",
+      "kelas": [
+        "III",
+        "IV"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas III dan IV SD/MI/Program Paket A"
+    },
+    {
+      "fase": "C",
+      "kelas": [
+        "V",
+        "VI"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas V dan VI SD/MI/Program Paket A"
+    },
+    {
+      "fase": "D",
+      "kelas": [
+        "VII",
+        "VIII",
+        "IX"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas VII, VIII dan IX SMP/MTs/Program Paket B"
+    },
+    {
+      "fase": "E",
+      "kelas": [
+        "X",
+        "XI"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas X dan XI SMA/MA/SMK/MAK/Program Paket C"
+    },
+    {
+      "fase": "F",
+      "kelas": [
+        "XI",
+        "XII"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas XI dan XII SMA/MA/SMK/MAK/Program Paket C"
+    }
+  ],
+  "elemen": [
+    {
+      "kode": "BIL",
+      "nama": "Bilangan",
+      "jenis": "konten",
+      "deskripsi": "Bidang kajian Bilangan membahas tentang angka sebagai simbol bilangan, konsep bilangan, operasi hitung bilangan, dan relasi antara berbagai operasi hitung bilangan dalam sub-elemen representasi visual, sifat urutan, dan operasi."
+    },
+    {
+      "kode": "ALJ",
+      "nama": "Aljabar",
+      "jenis": "konten",
+      "deskripsi": "Bidang kajian Aljabar membahas tentang aljabar non-formal dalam bentuk simbol gambar sampai dengan aljabar formal dalam bentuk simbol huruf yang mewakili bilangan tertentu dalam sub-elemen persamaan dan pertidaksamaan, relasi dan pola bilangan, serta rasio dan proporsi."
+    },
+    {
+      "kode": "UKR",
+      "nama": "Pengukuran",
+      "jenis": "konten",
+      "deskripsi": "Bidang kajian Pengukuran membahas tentang besaran-besaran pengukuran, cara mengukur besaran tertentu, dan membuktikan prinsip atau teorema terkait besaran tertentu dalam sub-elemen pengukuran besaran geometris dan non-geometris."
+    },
+    {
+      "kode": "GEO",
+      "nama": "Geometri",
+      "jenis": "konten",
+      "deskripsi": "Bidang kajian Geometri membahas tentang berbagai bentuk bangun datar dan bangun ruang serta ciri-cirinya dalam sub-elemen geometri datar dan geometri ruang."
+    },
+    {
+      "kode": "DAT",
+      "nama": "Analisis Data dan Peluang",
+      "jenis": "konten",
+      "deskripsi": "Bidang kajian Analisis Data dan Peluang membahas tentang pengertian data, jenis-jenis data, pengolahan data dalam berbagai bentuk representasi, dan analisis data kuantitatif terkait pemusatan dan penyebaran data serta peluang munculnya suatu data atau kejadian tertentu dalam sub-elemen data dan representasinya, serta ketidakpastian dan peluang."
+    },
+    {
+      "kode": "PNL",
+      "nama": "Penalaran dan Pembuktian Matematis",
+      "jenis": "proses",
+      "deskripsi": "Penalaran terkait dengan proses penggunaan pola hubungan dalam menganalisis situasi untuk menyusun serta menyelidiki praduga. Pembuktian matematis terkait proses membuktikan kebenaran suatu prinsip, rumus, atau teorema tertentu."
+    },
+    {
+      "kode": "PMS",
+      "nama": "Pemecahan Masalah Matematis",
+      "jenis": "proses",
+      "deskripsi": "Pemecahan masalah matematis terkait dengan proses penyelesaian masalah matematis atau masalah sehari-hari dengan cara menerapkan dan mengadaptasi berbagai strategi yang efektif. Proses ini juga mencakup konstruksi dan rekonstruksi pemahaman matematika melalui pemecahan masalah."
+    },
+    {
+      "kode": "KOM",
+      "nama": "Komunikasi",
+      "jenis": "proses",
+      "deskripsi": "Komunikasi matematis terkait dengan pembentukan alur pemahaman materi pembelajaran matematika melalui cara mengomunikasikan pemikiran matematis menggunakan bahasa matematis yang tepat. Komunikasi matematis juga mencakup proses menganalisis dan mengevaluasi pemikiran matematis orang lain."
+    },
+    {
+      "kode": "REP",
+      "nama": "Representasi Matematis",
+      "jenis": "proses",
+      "deskripsi": "Representasi matematis terkait dengan proses membuat dan menggunakan simbol, tabel, diagram, atau bentuk lain untuk mengomunikasikan gagasan dan pemodelan matematika. Proses ini juga mencakup fleksibilitas dalam mengubah dari satu bentuk representasi ke bentuk representasi lainnya, dan memilih representasi yang paling sesuai untuk memecahkan masalah."
+    },
+    {
+      "kode": "KNK",
+      "nama": "Koneksi Matematis",
+      "jenis": "proses",
+      "deskripsi": "Koneksi matematis terkait dengan proses mengaitkan antara materi pembelajaran matematika pada suatu bidang kajian, lintas bidang kajian, lintas bidang ilmu, dan dengan kehidupan."
+    }
+  ],
+  "capaian": [
+    {
+      "id": "MAT.A.BIL",
+      "fase": "A",
+      "elemen": "BIL",
+      "nomor": "1.1",
+      "teks": "Menunjukkan pemahaman dan memiliki intuisi bilangan (number sense) pada bilangan cacah sampai 100; membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, serta melakukan komposisi (menyusun) dan dekomposisi (mengurai) bilangan; melakukan operasi penjumlahan dan pengurangan menggunakan benda-benda konkret yang banyaknya sampai 20; dan menunjukkan pemahaman pecahan sebagai bagian dari keseluruhan melalui konteks membagi sebuah benda atau kumpulan benda sama banyak (pecahan yang diperkenalkan adalah setengah dan seperempat).",
+      "butir": [
+        {
+          "id": "MAT.A.BIL.1",
+          "teks": "Menunjukkan pemahaman dan memiliki intuisi bilangan (number sense) pada bilangan cacah sampai 100"
+        },
+        {
+          "id": "MAT.A.BIL.2",
+          "teks": "membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, serta melakukan komposisi (menyusun) dan dekomposisi (mengurai) bilangan"
+        },
+        {
+          "id": "MAT.A.BIL.3",
+          "teks": "melakukan operasi penjumlahan dan pengurangan menggunakan benda-benda konkret yang banyaknya sampai 20"
+        },
+        {
+          "id": "MAT.A.BIL.4",
+          "teks": "menunjukkan pemahaman pecahan sebagai bagian dari keseluruhan melalui konteks membagi sebuah benda atau kumpulan benda sama banyak (pecahan yang diperkenalkan adalah setengah dan seperempat)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.A.ALJ",
+      "fase": "A",
+      "elemen": "ALJ",
+      "nomor": "1.2",
+      "teks": "Menunjukan pemahaman makna simbol matematika \"=\" dalam suatu kalimat matematika yang terkait dengan penjumlahan dan pengurangan bilangan cacah sampai 20 menggunakan gambar. Contoh: [gambar di dokumen sumber, tidak disalin]\n\nMurid dapat mengenali, meniru, dan melanjutkan pola bukan bilangan (misalnya, gambar, warna, bunyi/suara).",
+      "butir": [
+        {
+          "id": "MAT.A.ALJ.1",
+          "teks": "Menunjukan pemahaman makna simbol matematika \"=\" dalam suatu kalimat matematika yang terkait dengan penjumlahan dan pengurangan bilangan cacah sampai 20 menggunakan gambar"
+        },
+        {
+          "id": "MAT.A.ALJ.2",
+          "teks": "Murid dapat mengenali, meniru, dan melanjutkan pola bukan bilangan (misalnya, gambar, warna, bunyi/suara)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.A.UKR",
+      "fase": "A",
+      "elemen": "UKR",
+      "nomor": "1.3",
+      "teks": "Membandingkan panjang dan berat benda secara langsung, dan membandingkan durasi waktu; mengukur dan mengestimasi panjang dan berat benda menggunakan satuan tidak baku.",
+      "butir": [
+        {
+          "id": "MAT.A.UKR.1",
+          "teks": "Membandingkan panjang dan berat benda secara langsung, dan membandingkan durasi waktu"
+        },
+        {
+          "id": "MAT.A.UKR.2",
+          "teks": "mengukur dan mengestimasi panjang dan berat benda menggunakan satuan tidak baku"
+        }
+      ]
+    },
+    {
+      "id": "MAT.A.GEO",
+      "fase": "A",
+      "elemen": "GEO",
+      "nomor": "1.4",
+      "teks": "Mengenal berbagai bangun datar (segitiga, segiempat, segi banyak, lingkaran) dan bangun ruang (balok, kubus, kerucut, dan bola); melakukan komposisi (penyusunan) dan dekomposisi (penguraian) suatu bangun datar (segitiga, segiempat, dan segi banyak); dan menentukan posisi benda terhadap benda lain (kanan, kiri, depan belakang, bawah, atas).",
+      "butir": [
+        {
+          "id": "MAT.A.GEO.1",
+          "teks": "Mengenal berbagai bangun datar (segitiga, segiempat, segi banyak, lingkaran) dan bangun ruang (balok, kubus, kerucut, dan bola)"
+        },
+        {
+          "id": "MAT.A.GEO.2",
+          "teks": "melakukan komposisi (penyusunan) dan dekomposisi (penguraian) suatu bangun datar (segitiga, segiempat, dan segi banyak)"
+        },
+        {
+          "id": "MAT.A.GEO.3",
+          "teks": "menentukan posisi benda terhadap benda lain (kanan, kiri, depan belakang, bawah, atas)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.A.DAT",
+      "fase": "A",
+      "elemen": "DAT",
+      "nomor": "1.5",
+      "teks": "Mengurutkan, menyortir, mengelompokkan, membandingkan, dan menyajikan data dari banyak benda dengan menggunakan turus dan piktogram paling banyak 4 kategori.",
+      "butir": [
+        {
+          "id": "MAT.A.DAT.1",
+          "teks": "Mengurutkan, menyortir, mengelompokkan, membandingkan, dan menyajikan data dari banyak benda dengan menggunakan turus dan piktogram paling banyak 4 kategori"
+        }
+      ]
+    },
+    {
+      "id": "MAT.B.BIL",
+      "fase": "B",
+      "elemen": "BIL",
+      "nomor": "2.1",
+      "teks": "Memiliki pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 10.000; membaca, menulis, membandingkan, dan mengurutkan bilangan; menentukan dan menggunakan nilai tempat; melakukan komposisi dan dekomposisi bilangan cacah sampai 10.000.\n\nMurid dapat melakukan dan menyelesaikan masalah operasi bilangan penjumlahan dan pengurangan bilangan cacah sampai 1.000; melakukan dan menyelesaikan masalah operasi perkalian dan pembagian bilangan cacah sampai 100 dengan bantuan benda konkret, gambar dan simbol; mengenal kelipatan dan faktor.\n\nMurid dapat melakukan perbandingan dan pengurutan pecahan dengan pembilang satu dan antar pecahan dengan penyebut yang sama; mengenal dan dapat menerapkan pecahan senilai, memiliki intuisi pecahan dan desimal, serta dapat menentukan pecahan sebagai desimal dan persen.",
+      "butir": [
+        {
+          "id": "MAT.B.BIL.1",
+          "teks": "Memiliki pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 10.000"
+        },
+        {
+          "id": "MAT.B.BIL.2",
+          "teks": "membaca, menulis, membandingkan, dan mengurutkan bilangan"
+        },
+        {
+          "id": "MAT.B.BIL.3",
+          "teks": "menentukan dan menggunakan nilai tempat"
+        },
+        {
+          "id": "MAT.B.BIL.4",
+          "teks": "melakukan komposisi dan dekomposisi bilangan cacah sampai 10.000"
+        },
+        {
+          "id": "MAT.B.BIL.5",
+          "teks": "Murid dapat melakukan dan menyelesaikan masalah operasi bilangan penjumlahan dan pengurangan bilangan cacah sampai 1.000"
+        },
+        {
+          "id": "MAT.B.BIL.6",
+          "teks": "melakukan dan menyelesaikan masalah operasi perkalian dan pembagian bilangan cacah sampai 100 dengan bantuan benda konkret, gambar dan simbol"
+        },
+        {
+          "id": "MAT.B.BIL.7",
+          "teks": "mengenal kelipatan dan faktor"
+        },
+        {
+          "id": "MAT.B.BIL.8",
+          "teks": "Murid dapat melakukan perbandingan dan pengurutan pecahan dengan pembilang satu dan antar pecahan dengan penyebut yang sama"
+        },
+        {
+          "id": "MAT.B.BIL.9",
+          "teks": "mengenal dan dapat menerapkan pecahan senilai, memiliki intuisi pecahan dan desimal, serta dapat menentukan pecahan sebagai desimal dan persen"
+        }
+      ]
+    },
+    {
+      "id": "MAT.B.ALJ",
+      "fase": "B",
+      "elemen": "ALJ",
+      "nomor": "2.2",
+      "teks": "Menemukan nilai yang tidak diketahui dalam kalimat matematika yang melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100, dengan menggunakan sifat-sifat bilangan dan operasinya.\n\nMurid dapat mengidentifikasi, meniru, dan mengembangkan pola gambar atau objek sederhana dan pola bilangan membesar dan mengecil yang dapat melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100.",
+      "butir": [
+        {
+          "id": "MAT.B.ALJ.1",
+          "teks": "Menemukan nilai yang tidak diketahui dalam kalimat matematika yang melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100, dengan menggunakan sifat-sifat bilangan dan operasinya"
+        },
+        {
+          "id": "MAT.B.ALJ.2",
+          "teks": "Murid dapat mengidentifikasi, meniru, dan mengembangkan pola gambar atau objek sederhana dan pola bilangan membesar dan mengecil yang dapat melibatkan penjumlahan dan pengurangan pada bilangan cacah sampai 100"
+        }
+      ]
+    },
+    {
+      "id": "MAT.B.UKR",
+      "fase": "B",
+      "elemen": "UKR",
+      "nomor": "2.3",
+      "teks": "Mengukur panjang dan berat benda menggunakan satuan baku; menentukan hubungan antar-satuan baku panjang (cm, m) dan antar-satuan berat (g, kg); serta mengukur dan mengestimasi luas dan volume menggunakan satuan tidak baku dan satuan baku berupa bilangan cacah.",
+      "butir": [
+        {
+          "id": "MAT.B.UKR.1",
+          "teks": "Mengukur panjang dan berat benda menggunakan satuan baku"
+        },
+        {
+          "id": "MAT.B.UKR.2",
+          "teks": "menentukan hubungan antar-satuan baku panjang (cm, m) dan antar-satuan berat (g, kg)"
+        },
+        {
+          "id": "MAT.B.UKR.3",
+          "teks": "mengukur dan mengestimasi luas dan volume menggunakan satuan tidak baku dan satuan baku berupa bilangan cacah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.B.GEO",
+      "fase": "B",
+      "elemen": "GEO",
+      "nomor": "2.4",
+      "teks": "Mendeskripsikan ciri berbagai bentuk bangun datar (segiempat, segitiga, segi banyak); menyusun (komposisi) dan mengurai (dekomposisi) berbagai bangun datar dengan lebih dari satu cara jika memungkinkan.",
+      "butir": [
+        {
+          "id": "MAT.B.GEO.1",
+          "teks": "Mendeskripsikan ciri berbagai bentuk bangun datar (segiempat, segitiga, segi banyak)"
+        },
+        {
+          "id": "MAT.B.GEO.2",
+          "teks": "menyusun (komposisi) dan mengurai (dekomposisi) berbagai bangun datar dengan lebih dari satu cara jika memungkinkan"
+        }
+      ]
+    },
+    {
+      "id": "MAT.B.DAT",
+      "fase": "B",
+      "elemen": "DAT",
+      "nomor": "2.5",
+      "teks": "Mengurutkan, membandingkan, menyajikan, menganalisis dan menginterpretasi data dalam bentuk tabel, diagram gambar, piktogram, dan diagram batang (skala satu satuan).",
+      "butir": [
+        {
+          "id": "MAT.B.DAT.1",
+          "teks": "Mengurutkan, membandingkan, menyajikan, menganalisis dan menginterpretasi data dalam bentuk tabel, diagram gambar, piktogram, dan diagram batang (skala satu satuan)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.C.BIL",
+      "fase": "C",
+      "elemen": "BIL",
+      "nomor": "3.1",
+      "teks": "Menunjukkan pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 1.000.000; membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, melakukan komposisi dan dekomposisi bilangan; menyelesaikan masalah yang berkaitan dengan uang; melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian bilangan cacah sampai 100.000; serta menyelesaikan masalah yang berkaitan dengan KPK dan FPB.\n\nMurid dapat membandingkan dan mengurutkan berbagai pecahan termasuk pecahan campuran, melakukan operasi penjumlahan dan pengurangan pecahan, serta melakukan operasi perkalian dan pembagian pecahan dengan bilangan asli; mengubah pecahan menjadi berbagai bentuk pecahan lain, serta membandingkan dan mengurutkan bilangan desimal (satu angka di belakang koma).",
+      "butir": [
+        {
+          "id": "MAT.C.BIL.1",
+          "teks": "Menunjukkan pemahaman dan intuisi bilangan (number sense) pada bilangan cacah sampai 1.000.000"
+        },
+        {
+          "id": "MAT.C.BIL.2",
+          "teks": "membaca, menulis, menentukan nilai tempat, membandingkan, mengurutkan, melakukan komposisi dan dekomposisi bilangan"
+        },
+        {
+          "id": "MAT.C.BIL.3",
+          "teks": "menyelesaikan masalah yang berkaitan dengan uang"
+        },
+        {
+          "id": "MAT.C.BIL.4",
+          "teks": "melakukan operasi penjumlahan, pengurangan, perkalian, dan pembagian bilangan cacah sampai 100.000"
+        },
+        {
+          "id": "MAT.C.BIL.5",
+          "teks": "menyelesaikan masalah yang berkaitan dengan KPK dan FPB"
+        },
+        {
+          "id": "MAT.C.BIL.6",
+          "teks": "Murid dapat membandingkan dan mengurutkan berbagai pecahan termasuk pecahan campuran, melakukan operasi penjumlahan dan pengurangan pecahan, serta melakukan operasi perkalian dan pembagian pecahan dengan bilangan asli"
+        },
+        {
+          "id": "MAT.C.BIL.7",
+          "teks": "mengubah pecahan menjadi berbagai bentuk pecahan lain, serta membandingkan dan mengurutkan bilangan desimal (satu angka di belakang koma)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.C.ALJ",
+      "fase": "C",
+      "elemen": "ALJ",
+      "nomor": "3.2",
+      "teks": "Menemukan nilai yang belum diketahui dalam kalimat matematika yang melibatkan penjumlahan, pengurangan, perkalian, dan pembagian pada bilangan cacah sampai 1000 dengan menggunakan sifat-sifat bilangan dan operasinya.\n\nMurid dapat mengidentifikasi, meniru, dan mengembangkan pola bilangan membesar dan mengecil yang melibatkan perkalian dan pembagian; bernalar secara proporsional untuk menyelesaikan masalah sehari-hari dengan rasio satuan; menggunakan operasi perkalian dan pembagian dalam menyelesaikan masalah sehari-hari yang terkait dengan proporsi.",
+      "butir": [
+        {
+          "id": "MAT.C.ALJ.1",
+          "teks": "Menemukan nilai yang belum diketahui dalam kalimat matematika yang melibatkan penjumlahan, pengurangan, perkalian, dan pembagian pada bilangan cacah sampai 1000 dengan menggunakan sifat-sifat bilangan dan operasinya"
+        },
+        {
+          "id": "MAT.C.ALJ.2",
+          "teks": "Murid dapat mengidentifikasi, meniru, dan mengembangkan pola bilangan membesar dan mengecil yang melibatkan perkalian dan pembagian"
+        },
+        {
+          "id": "MAT.C.ALJ.3",
+          "teks": "bernalar secara proporsional untuk menyelesaikan masalah sehari-hari dengan rasio satuan"
+        },
+        {
+          "id": "MAT.C.ALJ.4",
+          "teks": "menggunakan operasi perkalian dan pembagian dalam menyelesaikan masalah sehari-hari yang terkait dengan proporsi"
+        }
+      ]
+    },
+    {
+      "id": "MAT.C.UKR",
+      "fase": "C",
+      "elemen": "UKR",
+      "nomor": "3.3",
+      "teks": "Menentukan keliling dan luas berbagai bentuk bangun datar (segitiga, segiempat, dan segi banyak) serta gabungannya; menghitung durasi waktu dan mengukur besar sudut pada bangun datar atau yang dibentuk dari dua garis berpotongan.",
+      "butir": [
+        {
+          "id": "MAT.C.UKR.1",
+          "teks": "Menentukan keliling dan luas berbagai bentuk bangun datar (segitiga, segiempat, dan segi banyak) serta gabungannya"
+        },
+        {
+          "id": "MAT.C.UKR.2",
+          "teks": "menghitung durasi waktu dan mengukur besar sudut pada bangun datar atau yang dibentuk dari dua garis berpotongan"
+        }
+      ]
+    },
+    {
+      "id": "MAT.C.GEO",
+      "fase": "C",
+      "elemen": "GEO",
+      "nomor": "3.4",
+      "teks": "Mengkonstruksi dan mengurai bangun ruang (kubus, balok, dan gabungannya) dan mengenali visualisasi spasial (bagian depan, atas, dan samping); membandingkan karakteristik antar bangun datar dan antar bangun ruang; serta menentukan lokasi pada peta yang menggunakan sistem berpetak.",
+      "butir": [
+        {
+          "id": "MAT.C.GEO.1",
+          "teks": "Mengkonstruksi dan mengurai bangun ruang (kubus, balok, dan gabungannya) dan mengenali visualisasi spasial (bagian depan, atas, dan samping)"
+        },
+        {
+          "id": "MAT.C.GEO.2",
+          "teks": "membandingkan karakteristik antar bangun datar dan antar bangun ruang"
+        },
+        {
+          "id": "MAT.C.GEO.3",
+          "teks": "menentukan lokasi pada peta yang menggunakan sistem berpetak"
+        }
+      ]
+    },
+    {
+      "id": "MAT.C.DAT",
+      "fase": "C",
+      "elemen": "DAT",
+      "nomor": "3.5",
+      "teks": "Mengurutkan, membandingkan, menyajikan, dan menganalisis data banyak benda dan data hasil pengukuran dalam bentuk gambar, piktogram, diagram batang, dan tabel frekuensi untuk mendapatkan informasi; menentukan kejadian dengan kemungkinan yang lebih besar atau lebih kecil dalam suatu percobaan acak.",
+      "butir": [
+        {
+          "id": "MAT.C.DAT.1",
+          "teks": "Mengurutkan, membandingkan, menyajikan, dan menganalisis data banyak benda dan data hasil pengukuran dalam bentuk gambar, piktogram, diagram batang, dan tabel frekuensi untuk mendapatkan informasi"
+        },
+        {
+          "id": "MAT.C.DAT.2",
+          "teks": "menentukan kejadian dengan kemungkinan yang lebih besar atau lebih kecil dalam suatu percobaan acak"
+        }
+      ]
+    },
+    {
+      "id": "MAT.D.BIL",
+      "fase": "D",
+      "elemen": "BIL",
+      "nomor": "4.1",
+      "teks": "Membaca, menulis, dan membandingkan bilangan bulat, bilangan rasional, bilangan desimal, bilangan berpangkat bulat dan akar, bilangan dalam notasi ilmiah; menerapkan operasi aritmatika pada bilangan real, dan memberikan estimasi/perkiraan dalam menyelesaikan masalah (termasuk berkaitan dengan literasi finansial).\n\nMurid dapat menggunakan rasio (skala, proporsi, dan laju perubahan) dalam penyelesaian masalah.",
+      "butir": [
+        {
+          "id": "MAT.D.BIL.1",
+          "teks": "Membaca, menulis, dan membandingkan bilangan bulat, bilangan rasional, bilangan desimal, bilangan berpangkat bulat dan akar, bilangan dalam notasi ilmiah"
+        },
+        {
+          "id": "MAT.D.BIL.2",
+          "teks": "menerapkan operasi aritmatika pada bilangan real, dan memberikan estimasi/perkiraan dalam menyelesaikan masalah (termasuk berkaitan dengan literasi finansial)"
+        },
+        {
+          "id": "MAT.D.BIL.3",
+          "teks": "Murid dapat menggunakan rasio (skala, proporsi, dan laju perubahan) dalam penyelesaian masalah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.D.ALJ",
+      "fase": "D",
+      "elemen": "ALJ",
+      "nomor": "4.2",
+      "teks": "Mengenali, memprediksi dan menggeneralisasi pola dalam bentuk susunan benda dan bilangan; Menyatakan suatu situasi ke dalam bentuk aljabar; menggunakan sifat-sifat operasi (komutatif, asosiatif, dan distributif) untuk menghasilkan bentuk aljabar yang ekuivalen.\n\nMurid dapat memahami relasi dan fungsi (domain, kodomain, range) serta menyajikannya dalam bentuk diagram panah, tabel, himpunan pasangan berurutan, dan grafik; membedakan beberapa fungsi non linear dari fungsi linear secara grafik; menyelesaikan persamaan dan pertidaksamaan linear satu variabel; menyajikan, menganalisis, dan menyelesaikan masalah dengan menggunakan relasi, fungsi dan persamaan linear; serta menyelesaikan sistem persaman linear dua variabel melalui beberapa cara untuk penyelesaian masalah.",
+      "butir": [
+        {
+          "id": "MAT.D.ALJ.1",
+          "teks": "Mengenali, memprediksi dan menggeneralisasi pola dalam bentuk susunan benda dan bilangan"
+        },
+        {
+          "id": "MAT.D.ALJ.2",
+          "teks": "Menyatakan suatu situasi ke dalam bentuk aljabar"
+        },
+        {
+          "id": "MAT.D.ALJ.3",
+          "teks": "menggunakan sifat-sifat operasi (komutatif, asosiatif, dan distributif) untuk menghasilkan bentuk aljabar yang ekuivalen"
+        },
+        {
+          "id": "MAT.D.ALJ.4",
+          "teks": "Murid dapat memahami relasi dan fungsi (domain, kodomain, range) serta menyajikannya dalam bentuk diagram panah, tabel, himpunan pasangan berurutan, dan grafik"
+        },
+        {
+          "id": "MAT.D.ALJ.5",
+          "teks": "membedakan beberapa fungsi non linear dari fungsi linear secara grafik"
+        },
+        {
+          "id": "MAT.D.ALJ.6",
+          "teks": "menyelesaikan persamaan dan pertidaksamaan linear satu variabel"
+        },
+        {
+          "id": "MAT.D.ALJ.7",
+          "teks": "menyajikan, menganalisis, dan menyelesaikan masalah dengan menggunakan relasi, fungsi dan persamaan linear"
+        },
+        {
+          "id": "MAT.D.ALJ.8",
+          "teks": "menyelesaikan sistem persaman linear dua variabel melalui beberapa cara untuk penyelesaian masalah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.D.UKR",
+      "fase": "D",
+      "elemen": "UKR",
+      "nomor": "4.3",
+      "teks": "Menentukan keliling, luas, panjang busur, sudut dan luas juring lingkaran, serta menyelesaikan masalah yang terkait; menjelaskan cara untuk menentukan luas permukaan dan volume bangun ruang (prisma, tabung, bola, limas dan kerucut) dan menyelesaikan masalah yang terkait; dan menjelaskan pengaruh perubahan secara proporsional dari bangun datar dan bangun ruang terhadap ukuran panjang, besar sudut, luas, dan/atau volume.",
+      "butir": [
+        {
+          "id": "MAT.D.UKR.1",
+          "teks": "Menentukan keliling, luas, panjang busur, sudut dan luas juring lingkaran, serta menyelesaikan masalah yang terkait"
+        },
+        {
+          "id": "MAT.D.UKR.2",
+          "teks": "menjelaskan cara untuk menentukan luas permukaan dan volume bangun ruang (prisma, tabung, bola, limas dan kerucut) dan menyelesaikan masalah yang terkait"
+        },
+        {
+          "id": "MAT.D.UKR.3",
+          "teks": "menjelaskan pengaruh perubahan secara proporsional dari bangun datar dan bangun ruang terhadap ukuran panjang, besar sudut, luas, dan/atau volume"
+        }
+      ]
+    },
+    {
+      "id": "MAT.D.GEO",
+      "fase": "D",
+      "elemen": "GEO",
+      "nomor": "4.4",
+      "teks": "Membuat jaring-jaring bangun ruang (prisma, tabung, limas dan kerucut) dan membuat bangun ruang dari jaring-jaringnya.\n\nMurid dapat menggunakan hubungan antar-sudut yang terbentuk oleh dua garis yang berpotongan, dan oleh dua garis sejajar yang dipotong sebuah garis transversal untuk menyelesaikan masalah (termasuk menentukan jumlah besar sudut dalam sebuah segitiga, menentukan besar sudut yang belum diketahui pada sebuah segitiga); menjelaskan sifat-sifat kekongruenan dan kesebangunan pada segitiga dan segiempat, dan menggunakannya untuk menyelesaikan masalah; menunjukkan kebenaran teorema Pythagoras dan menggunakannya dalam menyelesaikan masalah (termasuk pengenalan bilangan irasional dan jarak antara dua titik pada bidang koordinat Kartesius).\n\nMurid dapat melakukan transformasi tunggal (refleksi, translasi, rotasi, dan dilatasi) titik, garis, dan bangun datar pada bidang koordinat Kartesius dan menggunakannya untuk menyelesaikan masalah.",
+      "butir": [
+        {
+          "id": "MAT.D.GEO.1",
+          "teks": "Membuat jaring-jaring bangun ruang (prisma, tabung, limas dan kerucut) dan membuat bangun ruang dari jaring-jaringnya"
+        },
+        {
+          "id": "MAT.D.GEO.2",
+          "teks": "Murid dapat menggunakan hubungan antar-sudut yang terbentuk oleh dua garis yang berpotongan, dan oleh dua garis sejajar yang dipotong sebuah garis transversal untuk menyelesaikan masalah (termasuk menentukan jumlah besar sudut dalam sebuah segitiga, menentukan besar sudut yang belum diketahui pada sebuah segitiga)"
+        },
+        {
+          "id": "MAT.D.GEO.3",
+          "teks": "menjelaskan sifat-sifat kekongruenan dan kesebangunan pada segitiga dan segiempat, dan menggunakannya untuk menyelesaikan masalah"
+        },
+        {
+          "id": "MAT.D.GEO.4",
+          "teks": "menunjukkan kebenaran teorema Pythagoras dan menggunakannya dalam menyelesaikan masalah (termasuk pengenalan bilangan irasional dan jarak antara dua titik pada bidang koordinat Kartesius)"
+        },
+        {
+          "id": "MAT.D.GEO.5",
+          "teks": "Murid dapat melakukan transformasi tunggal (refleksi, translasi, rotasi, dan dilatasi) titik, garis, dan bangun datar pada bidang koordinat Kartesius dan menggunakannya untuk menyelesaikan masalah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.D.DAT",
+      "fase": "D",
+      "elemen": "DAT",
+      "nomor": "4.5",
+      "teks": "Merumuskan pertanyaan, mengumpulkan, menyajikan, dan menganalisis data untuk menjawab pertanyaan dari situasi atau masalah; menggunakan diagram batang dan diagram lingkaran untuk menyajikan dan menginterpretasi data; mengambil sampel yang mewakili suatu populasi untuk mendapatkan data yang terkait dengan diri dan lingkungan mereka; menentukan dan menafsirkan rerata (mean), median, modus, dan jangkauan (range) dari data tersebut untuk menyelesaikan masalah (termasuk membandingkan suatu data terhadap kelompoknya, membandingkan dua kelompok data, memprediksi, membuat keputusan); menyelidiki kemungkinan adanya perubahan pengukuran pusat tersebut akibat perubahan data.\n\nMurid dapat menjelaskan dan menggunakan pengertian peluang dan frekuensi relatif untuk menentukan frekuensi harapan satu kejadian pada suatu percobaan sederhana (semua hasil percobaan dapat muncul secara merata).",
+      "butir": [
+        {
+          "id": "MAT.D.DAT.1",
+          "teks": "Merumuskan pertanyaan, mengumpulkan, menyajikan, dan menganalisis data untuk menjawab pertanyaan dari situasi atau masalah"
+        },
+        {
+          "id": "MAT.D.DAT.2",
+          "teks": "menggunakan diagram batang dan diagram lingkaran untuk menyajikan dan menginterpretasi data"
+        },
+        {
+          "id": "MAT.D.DAT.3",
+          "teks": "mengambil sampel yang mewakili suatu populasi untuk mendapatkan data yang terkait dengan diri dan lingkungan mereka"
+        },
+        {
+          "id": "MAT.D.DAT.4",
+          "teks": "menentukan dan menafsirkan rerata (mean), median, modus, dan jangkauan (range) dari data tersebut untuk menyelesaikan masalah (termasuk membandingkan suatu data terhadap kelompoknya, membandingkan dua kelompok data, memprediksi, membuat keputusan)"
+        },
+        {
+          "id": "MAT.D.DAT.5",
+          "teks": "menyelidiki kemungkinan adanya perubahan pengukuran pusat tersebut akibat perubahan data"
+        },
+        {
+          "id": "MAT.D.DAT.6",
+          "teks": "Murid dapat menjelaskan dan menggunakan pengertian peluang dan frekuensi relatif untuk menentukan frekuensi harapan satu kejadian pada suatu percobaan sederhana (semua hasil percobaan dapat muncul secara merata)"
+        }
+      ]
+    },
+    {
+      "id": "MAT.E.BIL",
+      "fase": "E",
+      "elemen": "BIL",
+      "nomor": "5.1",
+      "teks": "Menggeneralisasi sifat-sifat bilangan berpangkat (termasuk bilangan pangkat pecahan), dan menggunakannya untuk menyelesaikan masalah.",
+      "butir": [
+        {
+          "id": "MAT.E.BIL.1",
+          "teks": "Menggeneralisasi sifat-sifat bilangan berpangkat (termasuk bilangan pangkat pecahan), dan menggunakannya untuk menyelesaikan masalah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.E.ALJ",
+      "fase": "E",
+      "elemen": "ALJ",
+      "nomor": "5.2",
+      "teks": "Menyelesaikan masalah yang berkaitan dengan sistem pertidaksamaan linear dua variabel; menyelesaikan masalah yang berkaitan dengan persamaan dan fungsi kuadrat (termasuk akar imajiner), serta persamaan eksponensial (berbasis/ bilangan pokok sama) dan fungsi eksponensial.",
+      "butir": [
+        {
+          "id": "MAT.E.ALJ.1",
+          "teks": "Menyelesaikan masalah yang berkaitan dengan sistem pertidaksamaan linear dua variabel"
+        },
+        {
+          "id": "MAT.E.ALJ.2",
+          "teks": "menyelesaikan masalah yang berkaitan dengan persamaan dan fungsi kuadrat (termasuk akar imajiner), serta persamaan eksponensial (berbasis/ bilangan pokok sama) dan fungsi eksponensial"
+        }
+      ],
+      "nama_elemen": "Aljabar dan Fungsi"
+    },
+    {
+      "id": "MAT.E.GEO",
+      "fase": "E",
+      "elemen": "GEO",
+      "nomor": "5.3",
+      "teks": "Mengaplikasikan perbandingan trigonometri (sinus, cosinus, tangen) dari sudut lancip.",
+      "butir": [
+        {
+          "id": "MAT.E.GEO.1",
+          "teks": "Mengaplikasikan perbandingan trigonometri (sinus, cosinus, tangen) dari sudut lancip"
+        }
+      ]
+    },
+    {
+      "id": "MAT.E.DAT",
+      "fase": "E",
+      "elemen": "DAT",
+      "nomor": "5.4",
+      "teks": "Merepresentasikan dan menginterpretasi data dengan cara menentukan jangkauan kuartil dan interkuartil; membuat dan menginterpretasi diagram box plot dan menggunakannya untuk membandingkan himpunan data; menentukan dan menggunakan dari box plot, histogram dan dot plot sesuai dengan natur (karakteristik) data dan kebutuhan; menggunakan diagram pencar untuk menyelidiki dan menjelaskan hubungan antara dua variabel numerik/kuantitatif (termasuk salah satunya variabel bebas berupa waktu); serta mengevaluasi laporan statistika di media berdasarkan tampilan, statistika dan representasi data, termasuk yang disajikan dalam bentuk matriks.",
+      "butir": [
+        {
+          "id": "MAT.E.DAT.1",
+          "teks": "Merepresentasikan dan menginterpretasi data dengan cara menentukan jangkauan kuartil dan interkuartil"
+        },
+        {
+          "id": "MAT.E.DAT.2",
+          "teks": "membuat dan menginterpretasi diagram box plot dan menggunakannya untuk membandingkan himpunan data"
+        },
+        {
+          "id": "MAT.E.DAT.3",
+          "teks": "menentukan dan menggunakan dari box plot, histogram dan dot plot sesuai dengan natur (karakteristik) data dan kebutuhan"
+        },
+        {
+          "id": "MAT.E.DAT.4",
+          "teks": "menggunakan diagram pencar untuk menyelidiki dan menjelaskan hubungan antara dua variabel numerik/kuantitatif (termasuk salah satunya variabel bebas berupa waktu)"
+        },
+        {
+          "id": "MAT.E.DAT.5",
+          "teks": "mengevaluasi laporan statistika di media berdasarkan tampilan, statistika dan representasi data, termasuk yang disajikan dalam bentuk matriks"
+        }
+      ]
+    },
+    {
+      "id": "MAT.F.BIL",
+      "fase": "F",
+      "elemen": "BIL",
+      "nomor": "6.1",
+      "teks": "Menjelaskan barisan dan deret (aritmetika dan geometri), menerapkannya pada beragam masalah terutama masalah bunga tunggal dan majemuk, memodelkan pinjaman dan investasi dengan bunga majemuk dan anuitas, serta menyelidiki (secara numerik atau grafis) pengaruh masing-masing parameter (suku bunga, periode pembayaran) dalam model tersebut.",
+      "butir": [
+        {
+          "id": "MAT.F.BIL.1",
+          "teks": "Menjelaskan barisan dan deret (aritmetika dan geometri), menerapkannya pada beragam masalah terutama masalah bunga tunggal dan majemuk, memodelkan pinjaman dan investasi dengan bunga majemuk dan anuitas, serta menyelidiki (secara numerik atau grafis) pengaruh masing-masing parameter (suku bunga, periode pembayaran) dalam model tersebut"
+        }
+      ]
+    },
+    {
+      "id": "MAT.F.ALJ",
+      "fase": "F",
+      "elemen": "ALJ",
+      "nomor": "6.2",
+      "teks": "Menentukan fungsi invers, komposisi fungsi, dan transformasi fungsi untuk memodelkan situasi dunia nyata menggunakan fungsi yang sesuai (linear, kuadrat, eksponensial).",
+      "butir": [
+        {
+          "id": "MAT.F.ALJ.1",
+          "teks": "Menentukan fungsi invers, komposisi fungsi, dan transformasi fungsi untuk memodelkan situasi dunia nyata menggunakan fungsi yang sesuai (linear, kuadrat, eksponensial)"
+        }
+      ],
+      "nama_elemen": "Aljabar dan Fungsi"
+    },
+    {
+      "id": "MAT.F.GEO",
+      "fase": "F",
+      "elemen": "GEO",
+      "nomor": "6.3",
+      "teks": "Menerapkan, mengidentifikasi dan menjelaskan hubungan antara unsur-unsur lingkaran untuk menyelesaikan masalah.",
+      "butir": [
+        {
+          "id": "MAT.F.GEO.1",
+          "teks": "Menerapkan, mengidentifikasi dan menjelaskan hubungan antara unsur-unsur lingkaran untuk menyelesaikan masalah"
+        }
+      ]
+    },
+    {
+      "id": "MAT.F.DAT",
+      "fase": "F",
+      "elemen": "DAT",
+      "nomor": "6.4",
+      "teks": "Melakukan proses penyelidikan statistika untuk mengidentifikasi dan menjelaskan asosiasi antara dua variabel kategorikal (kualitatif) dan antara dua variabel numerikal (kuantitatif); memperkirakan model linear terbaik (best fit linear) pada data numerikal (kuantitatif); membedakan hubungan asosiasi dan sebab-akibat; menjelaskan peluang dan menentukan frekuensi harapan dari kejadian majemuk; menyelidiki konsep dari kejadian saling bebas dan saling lepas, dan menentukan peluangnya; serta memahami konsep peluang bersyarat dan kejadian yang saling bebas menggunakan konsep permutasi dan kombinasi.",
+      "butir": [
+        {
+          "id": "MAT.F.DAT.1",
+          "teks": "Melakukan proses penyelidikan statistika untuk mengidentifikasi dan menjelaskan asosiasi antara dua variabel kategorikal (kualitatif) dan antara dua variabel numerikal (kuantitatif)"
+        },
+        {
+          "id": "MAT.F.DAT.2",
+          "teks": "memperkirakan model linear terbaik (best fit linear) pada data numerikal (kuantitatif)"
+        },
+        {
+          "id": "MAT.F.DAT.3",
+          "teks": "membedakan hubungan asosiasi dan sebab-akibat"
+        },
+        {
+          "id": "MAT.F.DAT.4",
+          "teks": "menjelaskan peluang dan menentukan frekuensi harapan dari kejadian majemuk"
+        },
+        {
+          "id": "MAT.F.DAT.5",
+          "teks": "menyelidiki konsep dari kejadian saling bebas dan saling lepas, dan menentukan peluangnya"
+        },
+        {
+          "id": "MAT.F.DAT.6",
+          "teks": "memahami konsep peluang bersyarat dan kejadian yang saling bebas menggunakan konsep permutasi dan kombinasi"
+        }
+      ]
+    }
+  ],
+  "catatan": [
+    "Fase E tertulis 'Umumnya untuk Kelas X dan XI' dan Fase F 'Umumnya untuk Kelas XI dan XII', sehingga kelas XI muncul di dua fase. Bagian Bahasa Indonesia pada dokumen yang sama menulis Fase E untuk Kelas X saja. Proyek ini memakai Fase E = kelas X dan Fase F = kelas XI-XII (specs/map-spec.md); konflik ini dicatat, tidak diselesaikan.",
+    "Elemen Pengukuran tidak ada di Fase E dan F. Di Fase E dan F elemen Aljabar bernama 'Aljabar dan Fungsi'; kodenya tetap ALJ agar satu alur konten memakai satu kode.",
+    "Contoh pada MAT.A.ALJ berupa gambar dan tidak disalin.",
+    "Ejaan dibiarkan sesuai sumber, misalnya 'Menunjukan' (MAT.A.ALJ) dan 'persaman' (MAT.D.ALJ). Satu spasi di dalam kata 'sehari- hari' (MAT.C.ALJ) dirapikan."
+  ]
+}
