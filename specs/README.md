@@ -11,6 +11,7 @@ Rules for building and extending this project. They are written for both people 
 | [`tka-item-types.md`](tka-item-types.md) | Item types and levels; how `data/tka-types.json` classifies every transcribed item | Classifying items, adding a subject template |
 | [`tka-templates/`](tka-templates/) | One template per subject: item types, stem patterns, key and distractor rules, real examples (all 14 TKA papers, in 11 subject templates) | Writing or reviewing items of that subject |
 | [`tka-generation.md`](tka-generation.md) | How agents generate, review and answer TKA items; `data/tka-generated/` | Running or testing agents |
+| [`diagnostic-spec.md`](diagnostic-spec.md) | Draft: diagnostic literacy and numeracy items for HADIR: item tags, fase placement, units, test grid, reporting; the CP text in `data/cp/` | Writing diagnostic items or editing `data/cp/` |
 | [`agent-workflow.md`](agent-workflow.md) | The step-by-step pipeline for adding a subject, from research to publishing | Starting any content task |
 | [`quality-checklist.md`](quality-checklist.md) | The pass/fail checks a change must meet before it is committed | Before every commit |
 

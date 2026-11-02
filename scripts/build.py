@@ -3,7 +3,7 @@
 Usage:  python scripts/build.py              # validate, print the report, and rebuild docs/
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
 Reads:  data/topics.json and data/questions.csv (history kit), data/maps/*.json, data/questions/*.csv,
-        data/tka/*.json, data/tka-types.json, data/modules/*.json, data/subjects.json, print/<id>.pdf, and
+        data/tka/*.json, data/tka-types.json, data/modules/*.json, data/subjects.json, data/cp/*.json, print/<id>.pdf, and
         templates/*.html with their shared parts: templates/_theme.css (added to every page), templates/_feed.css
         and _feed.js (the swipe feed, where a template includes them) and templates/_icons.json (subject icons).
 Writes: docs/: one page per template, peta-<id>.html per map, bank-<id>.html per subject bank, modul-<id>.html (and
@@ -19,7 +19,7 @@ import json
 import re
 import sys
 from collections import Counter
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -53,6 +53,8 @@ PAGES_URL = "https://nugross190.github.io/Knowledge-Map-Project-Knovera/"
 SITE_BASE = urlparse(PAGES_URL).path
 # A template pulls in a shared file from templates/ with /*@include _name.ext*/ (in its <style> or <script>).
 INCLUDE = re.compile(r"/\*@include (_[\w.-]+)\*/")
+# Fases of the CP files in data/cp/ (specs/diagnostic-spec.md 2).
+CP_FASES = "ABCDEF"
 # Suffixes of the files the build owns in its output folders; others (a CNAME, say) are never removed.
 GENERATED = (".html", ".pdf", ".json")
 
@@ -100,6 +102,11 @@ def load_modules():
     return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted(folder.glob("*.json"))}
 
 
+def load_cp():
+    """{subject id: CP text} from data/cp/<subject id>.json (specs/diagnostic-spec.md 2)."""
+    return {p.stem: json.loads(p.read_text(encoding="utf-8")) for p in sorted((ROOT / "data/cp").glob("*.json"))}
+
+
 def load_roster():
     """data/subjects.json: the subject roster and the home page tabs."""
     path = ROOT / "data/subjects.json"
@@ -133,13 +140,14 @@ class Site:
     modules: dict     # {module id: learning module}
     subjects: list    # the roster
     groups: list      # the home page tabs
+    cp: dict = field(default_factory=dict)  # {subject id: CP text}; not rendered, only validated
 
 
 def load_site():
     topics, rows = load()
     roster = load_roster()
     return Site(topics, rows, load_maps(), load_subject_banks(), load_tka(), load_tka_types(), load_modules(),
-                roster.get("subjects", []), roster.get("groups", []))
+                roster.get("subjects", []), roster.get("groups", []), load_cp())
 
 
 # ---------- validation ----------
@@ -520,6 +528,66 @@ def validate_subjects(subjects, maps, tka, groups=None):
     return errors
 
 
+def validate_cp(name, doc, subjects):
+    """Return problems in data/cp/<name>.json, the CP text that diagnostic items cite (specs/diagnostic-spec.md 2)."""
+    errors, where = [], f"data/cp/{name}.json"
+    if doc.get("id") != name:
+        errors.append(f"{where}: id must be the file name ({name})")
+    if name not in {s.get("id") for s in subjects}:
+        errors.append(f"{where}: {name} is not a subject in data/subjects.json")
+    prefix = doc.get("prefix", "")
+    if not re.fullmatch(r"[A-Z]{2,4}", prefix):
+        errors.append(f"{where}: prefix must be 2-4 capital letters")
+    for key in ("mapel", "sumber"):
+        if not doc.get(key):
+            errors.append(f"{where}: '{key}' is required")
+    fases = [f.get("fase") for f in doc.get("fase", [])]
+    if not fases or len(set(fases)) != len(fases) or [f for f in CP_FASES if f in fases] != fases:
+        errors.append(f"{where}: fase must list distinct fases from {CP_FASES}, in order")
+    for f in doc.get("fase", []):
+        if not f.get("kelas") or not f.get("kelas_teks"):
+            errors.append(f"{where}: fase {f.get('fase')} needs 'kelas' and 'kelas_teks'")
+    kinds = {}
+    for e in doc.get("elemen", []):
+        code = e.get("kode", "")
+        if not re.fullmatch(r"[A-Z]{3}", code):
+            errors.append(f"{where}: element code '{code}' must be 3 capital letters")
+        if code in kinds:
+            errors.append(f"{where}: duplicate element {code}")
+        if e.get("jenis") not in ("konten", "proses"):
+            errors.append(f"{where}: element {code} jenis must be 'konten' or 'proses'")
+        if not e.get("nama") or not e.get("deskripsi"):
+            errors.append(f"{where}: element {code} needs 'nama' and 'deskripsi'")
+        kinds[code] = e.get("jenis")
+    seen, covered = set(), set()
+    for c in doc.get("capaian", []):
+        cid, fase, code = c.get("id", "?"), c.get("fase"), c.get("elemen")
+        if cid != f"{prefix}.{fase}.{code}":
+            errors.append(f"{where}: capaian {cid} must have id {prefix}.<fase>.<elemen>")
+        if cid in seen:
+            errors.append(f"{where}: duplicate capaian {cid}")
+        seen.add(cid)
+        if fase not in fases:
+            errors.append(f"{where}: {cid}: unknown fase {fase}")
+        if kinds.get(code) != "konten":
+            errors.append(f"{where}: {cid}: {code} is not a content element of this file")
+        if not re.fullmatch(r"\d\.\d", c.get("nomor", "")):
+            errors.append(f"{where}: {cid}: nomor must be the decree's <fase>.<elemen> number, like 4.2")
+        teks = c.get("teks", "")
+        if not teks.strip():
+            errors.append(f"{where}: {cid}: teks is empty")
+        if not c.get("butir"):
+            errors.append(f"{where}: {cid}: no butir")
+        for n, b in enumerate(c.get("butir", []), start=1):
+            if b.get("id") != f"{cid}.{n}":
+                errors.append(f"{where}: {cid}: butir {n} must have id {cid}.{n}")
+            if not b.get("teks") or b["teks"] not in teks:
+                errors.append(f"{where}: {b.get('id')}: butir text must be copied from the capaian text")
+        covered.add(fase)
+    errors += [f"{where}: fase {f} has no capaian" for f in fases if f not in covered]
+    return errors
+
+
 def validate_site(site):
     """Every problem in data/ that stops the build."""
     return (validate(site.topics, site.rows)
@@ -527,7 +595,8 @@ def validate_site(site):
             + [e for name, b in site.tka.items() for e in validate_tka(name, b)]
             + [e for name, mod in site.modules.items() for e in validate_module(name, mod, site.maps, site.tka_types)]
             + validate_subject_banks(site.banks, site.maps)
-            + validate_subjects(site.subjects, site.maps, site.tka, site.groups))
+            + validate_subjects(site.subjects, site.maps, site.tka, site.groups)
+            + [e for name, doc in site.cp.items() for e in validate_cp(name, doc, site.subjects)])
 
 
 # ---------- report ----------
@@ -601,6 +670,9 @@ def print_report(site):
               f"({sum('tka' in it for it in items)} setara TKA)")
         for w in lint_module(name, mod):
             print("  warning: " + w)
+    for doc in site.cp.values():
+        butir = sum(len(c["butir"]) for c in doc["capaian"])
+        print(f"CP {doc['mapel']}: {len(doc['fase'])} fase, {len(doc['capaian'])} capaian, {butir} butir")
     print("\n".join(subject_status(site.subjects, site.maps, site.banks, site.tka)))
 
 

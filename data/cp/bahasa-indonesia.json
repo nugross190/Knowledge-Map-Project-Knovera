@@ -1,0 +1,536 @@
+{
+  "id": "bahasa-indonesia",
+  "mapel": "Bahasa Indonesia",
+  "prefix": "BIN",
+  "sumber": {
+    "dokumen": "Keputusan Kepala Badan Standar, Kurikulum, dan Asesmen Pendidikan Kementerian Pendidikan Dasar dan Menengah Nomor 046/H/KR/2025 tentang Capaian Pembelajaran pada Pendidikan Anak Usia Dini, Jenjang Pendidikan Dasar, dan Jenjang Pendidikan Menengah",
+    "tanggal": "2025-07-16",
+    "bagian": "Lampiran II (SD/MI, SMP/MTs, SMA/MA), III.1 Capaian Pembelajaran Bahasa Indonesia, huruf D",
+    "catatan": "Teks disalin apa adanya dari PDF salinan resmi (potongan bagian mapel); hanya spasi dan pemenggalan baris yang dirapikan. Kolom nomor mengikuti penomoran dokumen (fase.elemen). Butir adalah teks capaian yang dipecah pada titik koma dan paragraf, tanpa kata sambung 'dan'/'serta' di awal."
+  },
+  "fase": [
+    {
+      "fase": "A",
+      "kelas": [
+        "I",
+        "II"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas I dan II SD/MI/Program Paket A"
+    },
+    {
+      "fase": "B",
+      "kelas": [
+        "III",
+        "IV"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas III dan IV SD/MI/Program Paket A"
+    },
+    {
+      "fase": "C",
+      "kelas": [
+        "V",
+        "VI"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas V dan VI SD/MI/Program Paket A"
+    },
+    {
+      "fase": "D",
+      "kelas": [
+        "VII",
+        "VIII",
+        "IX"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas VII, VIII dan IX SMP/MTs/Program Paket B"
+    },
+    {
+      "fase": "E",
+      "kelas": [
+        "X"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas X SMA/MA/SMK/MAK/Program Paket C"
+    },
+    {
+      "fase": "F",
+      "kelas": [
+        "XI",
+        "XII"
+      ],
+      "kelas_teks": "Umumnya untuk Kelas XI dan XII SMA/MA/SMK/MAK/Program Paket C"
+    }
+  ],
+  "elemen": [
+    {
+      "kode": "SIM",
+      "nama": "Menyimak",
+      "jenis": "konten",
+      "deskripsi": "Kemampuan murid dalam menerima, memahami informasi yang didengar, dan menyiapkan tanggapan secara relevan untuk memberikan apresiasi kepada mitra tutur. Proses yang terjadi dalam menyimak mencakup kegiatan seperti mendengarkan, mengidentifikasi, memahami, menginterpretasi tuturan bahasa, memaknai, dan/atau menyiapkan tanggapan terhadap mitra tutur. Komponen-komponen yang dapat dikembangkan dalam menyimak di antaranya kepekaan terhadap bunyi bahasa, sistem isyarat, kosakata, struktur bahasa (tata bahasa), makna, dan metakognisi."
+    },
+    {
+      "kode": "BAC",
+      "nama": "Membaca dan Memirsa",
+      "jenis": "konten",
+      "deskripsi": "Membaca merupakan kemampuan murid untuk memahami, memaknai, menginterpretasi, dan merefleksi teks sesuai tujuan dan kepentingannya untuk mengembangkan pengetahuan, keterampilan, dan potensi. Memirsa merupakan kemampuan untuk memahami, memaknai, menginterpretasi, dan merefleksi sajian visual dan/atau audiovisual sesuai tujuan dan kepentingannya untuk mengembangkan pengetahuan, keterampilan, dan potensi murid. Komponen-komponen yang dapat dikembangkan dalam membaca dan memirsa di antaranya kepekaan terhadap fonem, huruf, sistem isyarat, kosakata, struktur bahasa (tata bahasa), makna, dan metakognisi."
+    },
+    {
+      "kode": "BIC",
+      "nama": "Berbicara dan Mempresentasikan",
+      "jenis": "konten",
+      "deskripsi": "Berbicara merupakan kemampuan menyampaikan gagasan, tanggapan, dan perasaan dalam bentuk lisan. Mempresentasikan merupakan kemampuan memaparkan gagasan atau tanggapan secara fasih, akurat, bertanggung jawab, dan/atau menyampaikan perasaan sesuai konteks dengan cara yang komunikatif melalui beragam media (visual, digital, audio, dan audiovisual). Komponen-komponen yang dapat dikembangkan dalam berbicara dan mempresentasikan di antaranya kepekaan terhadap bunyi bahasa, sistem isyarat, kosakata, struktur bahasa (tata bahasa), makna, dan metakognisi."
+    },
+    {
+      "kode": "TUL",
+      "nama": "Menulis",
+      "jenis": "konten",
+      "deskripsi": "Kemampuan menyampaikan gagasan, tanggapan, dan perasaan dalam bentuk tulis secara fasih, akurat, bertanggung jawab, dan sesuai konteks. Komponen-komponen yang dapat dikembangkan dalam menulis di antaranya menerapkan penggunaan ejaan, kata, kalimat, dan paragraf, struktur bahasa (tata bahasa), makna, dan metakognisi dalam beragam tipe teks."
+    }
+  ],
+  "capaian": [
+    {
+      "id": "BIN.A.SIM",
+      "fase": "A",
+      "elemen": "SIM",
+      "nomor": "1.1",
+      "teks": "Memahami informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan) berupa percakapan yang berkaitan dengan diri, keluarga, dan/atau lingkungan sekitar; dan memahami pesan teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.A.SIM.1",
+          "teks": "Memahami informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan) berupa percakapan yang berkaitan dengan diri, keluarga, dan/atau lingkungan sekitar"
+        },
+        {
+          "id": "BIN.A.SIM.2",
+          "teks": "memahami pesan teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.A.BAC",
+      "fase": "A",
+      "elemen": "BAC",
+      "nomor": "1.2",
+      "teks": "Membaca kata-kata sederhana dengan fasih dari bacaan dan/atau tayangan yang dipirsa tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar; dan memahami isi bacaan dan/atau tayangan yang dipirsa tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar.",
+      "butir": [
+        {
+          "id": "BIN.A.BAC.1",
+          "teks": "Membaca kata-kata sederhana dengan fasih dari bacaan dan/atau tayangan yang dipirsa tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar"
+        },
+        {
+          "id": "BIN.A.BAC.2",
+          "teks": "memahami isi bacaan dan/atau tayangan yang dipirsa tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar"
+        }
+      ]
+    },
+    {
+      "id": "BIN.A.BIC",
+      "fase": "A",
+      "elemen": "BIC",
+      "nomor": "1.3",
+      "teks": "Merespons dengan bertanya tentang sesuatu, menjawab, dan menanggapi komentar orang lain (teman, pendidik, dan/atau orang dewasa) dengan baik dan santun dalam suatu percakapan tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar; mengungkapkan perasaan dan gagasan secara lisan dengan atau tanpa bantuan gambar; dan menceritakan kembali isi berbagai tipe teks yang dibaca, dipirsa, atau didengar tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar.",
+      "butir": [
+        {
+          "id": "BIN.A.BIC.1",
+          "teks": "Merespons dengan bertanya tentang sesuatu, menjawab, dan menanggapi komentar orang lain (teman, pendidik, dan/atau orang dewasa) dengan baik dan santun dalam suatu percakapan tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar"
+        },
+        {
+          "id": "BIN.A.BIC.2",
+          "teks": "mengungkapkan perasaan dan gagasan secara lisan dengan atau tanpa bantuan gambar"
+        },
+        {
+          "id": "BIN.A.BIC.3",
+          "teks": "menceritakan kembali isi berbagai tipe teks yang dibaca, dipirsa, atau didengar tentang diri, keluarga, kesehatan, dan/atau lingkungan sekitar"
+        }
+      ]
+    },
+    {
+      "id": "BIN.A.TUL",
+      "fase": "A",
+      "elemen": "TUL",
+      "nomor": "1.4",
+      "teks": "Menulis permulaan dengan benar di atas kertas dan/atau melalui media digital; mengembangkan tulisan tangan yang semakin baik; dan menulis berbagai tipe teks sederhana tentang diri, keluarga, dan/atau lingkungan sekitar dengan beberapa kalimat sederhana.",
+      "butir": [
+        {
+          "id": "BIN.A.TUL.1",
+          "teks": "Menulis permulaan dengan benar di atas kertas dan/atau melalui media digital"
+        },
+        {
+          "id": "BIN.A.TUL.2",
+          "teks": "mengembangkan tulisan tangan yang semakin baik"
+        },
+        {
+          "id": "BIN.A.TUL.3",
+          "teks": "menulis berbagai tipe teks sederhana tentang diri, keluarga, dan/atau lingkungan sekitar dengan beberapa kalimat sederhana"
+        }
+      ]
+    },
+    {
+      "id": "BIN.B.SIM",
+      "fase": "B",
+      "elemen": "SIM",
+      "nomor": "2.1",
+      "teks": "Memahami ide pokok suatu informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan); dan memahami isi teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.B.SIM.1",
+          "teks": "Memahami ide pokok suatu informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan)"
+        },
+        {
+          "id": "BIN.B.SIM.2",
+          "teks": "memahami isi teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.B.BAC",
+      "fase": "B",
+      "elemen": "BAC",
+      "nomor": "2.2",
+      "teks": "Membaca kata-kata baru dengan fasih dari bacaan dan/atau tayangan yang dipirsa; dan memahami ide pokok, ide pendukung, pesan, dan informasi dalam teks sastra dan nonsastra berbentuk cetak dan/atau elektronik.",
+      "butir": [
+        {
+          "id": "BIN.B.BAC.1",
+          "teks": "Membaca kata-kata baru dengan fasih dari bacaan dan/atau tayangan yang dipirsa"
+        },
+        {
+          "id": "BIN.B.BAC.2",
+          "teks": "memahami ide pokok, ide pendukung, pesan, dan informasi dalam teks sastra dan nonsastra berbentuk cetak dan/atau elektronik"
+        }
+      ]
+    },
+    {
+      "id": "BIN.B.BIC",
+      "fase": "B",
+      "elemen": "BIC",
+      "nomor": "2.3",
+      "teks": "Menyajikan pendapat dengan pilihan kata dan sikap tubuh/gestur yang sesuai, menggunakan volume dan intonasi yang tepat sesuai konteks; menanggapi diskusi sesuai tata cara; dan menceritakan kembali isi dan/atau informasi dari berbagai tipe teks yang dibaca, dipirsa, atau didengar.",
+      "butir": [
+        {
+          "id": "BIN.B.BIC.1",
+          "teks": "Menyajikan pendapat dengan pilihan kata dan sikap tubuh/gestur yang sesuai, menggunakan volume dan intonasi yang tepat sesuai konteks"
+        },
+        {
+          "id": "BIN.B.BIC.2",
+          "teks": "menanggapi diskusi sesuai tata cara"
+        },
+        {
+          "id": "BIN.B.BIC.3",
+          "teks": "menceritakan kembali isi dan/atau informasi dari berbagai tipe teks yang dibaca, dipirsa, atau didengar"
+        }
+      ]
+    },
+    {
+      "id": "BIN.B.TUL",
+      "fase": "B",
+      "elemen": "TUL",
+      "nomor": "2.4",
+      "teks": "Menulis berbagai tipe teks sederhana dengan rangkaian kalimat yang beragam; dan menggunakan kaidah kebahasaan dan kosakata baru yang memiliki makna denotatif untuk menulis teks sesuai dengan konteks.",
+      "butir": [
+        {
+          "id": "BIN.B.TUL.1",
+          "teks": "Menulis berbagai tipe teks sederhana dengan rangkaian kalimat yang beragam"
+        },
+        {
+          "id": "BIN.B.TUL.2",
+          "teks": "menggunakan kaidah kebahasaan dan kosakata baru yang memiliki makna denotatif untuk menulis teks sesuai dengan konteks"
+        }
+      ]
+    },
+    {
+      "id": "BIN.C.SIM",
+      "fase": "C",
+      "elemen": "SIM",
+      "nomor": "3.1",
+      "teks": "Menganalisis informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan; dan menganalisis isi teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.C.SIM.1",
+          "teks": "Menganalisis informasi dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan"
+        },
+        {
+          "id": "BIN.C.SIM.2",
+          "teks": "menganalisis isi teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.C.BAC",
+      "fase": "C",
+      "elemen": "BAC",
+      "nomor": "3.2",
+      "teks": "Membaca kata-kata dengan berbagai pola kombinasi huruf dengan fasih dari bacaan dan/atau tayangan yang dipirsa; dan menganalisis informasi serta nilai-nilai dalam teks sastra dan nonsastra berwujud teks visual dan/atau audiovisual.",
+      "butir": [
+        {
+          "id": "BIN.C.BAC.1",
+          "teks": "Membaca kata-kata dengan berbagai pola kombinasi huruf dengan fasih dari bacaan dan/atau tayangan yang dipirsa"
+        },
+        {
+          "id": "BIN.C.BAC.2",
+          "teks": "menganalisis informasi serta nilai-nilai dalam teks sastra dan nonsastra berwujud teks visual dan/atau audiovisual"
+        }
+      ]
+    },
+    {
+      "id": "BIN.C.BIC",
+      "fase": "C",
+      "elemen": "BIC",
+      "nomor": "3.3",
+      "teks": "Mempresentasikan gagasan dari berbagai tipe teks dengan efektif dan santun; dan menyampaikan perasaan berdasarkan fakta, imajinasi (dari diri sendiri dan orang lain) secara indah dan menarik dalam bentuk teks sastra dengan penggunaan kosakata secara kreatif.",
+      "butir": [
+        {
+          "id": "BIN.C.BIC.1",
+          "teks": "Mempresentasikan gagasan dari berbagai tipe teks dengan efektif dan santun"
+        },
+        {
+          "id": "BIN.C.BIC.2",
+          "teks": "menyampaikan perasaan berdasarkan fakta, imajinasi (dari diri sendiri dan orang lain) secara indah dan menarik dalam bentuk teks sastra dengan penggunaan kosakata secara kreatif"
+        }
+      ]
+    },
+    {
+      "id": "BIN.C.TUL",
+      "fase": "C",
+      "elemen": "TUL",
+      "nomor": "3.4",
+      "teks": "Menulis berbagai tipe teks sederhana berdasarkan gagasan, hasil pengamatan, pengalaman, dan/atau imajinasi dengan rangkaian kalimat kompleks secara kreatif, menarik, dan/atau indah; dan menggunakan kaidah kebahasaan dan kosakata baru yang memiliki makna denotatif dan konotatif.",
+      "butir": [
+        {
+          "id": "BIN.C.TUL.1",
+          "teks": "Menulis berbagai tipe teks sederhana berdasarkan gagasan, hasil pengamatan, pengalaman, dan/atau imajinasi dengan rangkaian kalimat kompleks secara kreatif, menarik, dan/atau indah"
+        },
+        {
+          "id": "BIN.C.TUL.2",
+          "teks": "menggunakan kaidah kebahasaan dan kosakata baru yang memiliki makna denotatif dan konotatif"
+        }
+      ]
+    },
+    {
+      "id": "BIN.D.SIM",
+      "fase": "D",
+      "elemen": "SIM",
+      "nomor": "4.1",
+      "teks": "Menganalisis gagasan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan); dan menganalisis unsur intrinsik teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.D.SIM.1",
+          "teks": "Menganalisis gagasan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan)"
+        },
+        {
+          "id": "BIN.D.SIM.2",
+          "teks": "menganalisis unsur intrinsik teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.D.BAC",
+      "fase": "D",
+      "elemen": "BAC",
+      "nomor": "4.2",
+      "teks": "Menganalisis informasi berupa gagasan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud teks visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat; menginterpretasi informasi untuk mengungkapkan kepedulian dan/atau pendapat pro/kontra dari berbagai tipe teks berwujud teks visual dan/atau audiovisual; dan mengevaluasi kualitas dan/atau kredibilitas dari berbagai tipe teks berwujud teks visual dan/atau audiovisual menggunakan sumber informasi lain.",
+      "butir": [
+        {
+          "id": "BIN.D.BAC.1",
+          "teks": "Menganalisis informasi berupa gagasan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud teks visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat"
+        },
+        {
+          "id": "BIN.D.BAC.2",
+          "teks": "menginterpretasi informasi untuk mengungkapkan kepedulian dan/atau pendapat pro/kontra dari berbagai tipe teks berwujud teks visual dan/atau audiovisual"
+        },
+        {
+          "id": "BIN.D.BAC.3",
+          "teks": "mengevaluasi kualitas dan/atau kredibilitas dari berbagai tipe teks berwujud teks visual dan/atau audiovisual menggunakan sumber informasi lain"
+        }
+      ]
+    },
+    {
+      "id": "BIN.D.BIC",
+      "fase": "D",
+      "elemen": "BIC",
+      "nomor": "4.3",
+      "teks": "Mempresentasikan gagasan, pandangan, arahan, dan/atau pesan untuk tujuan pengajuan usul dan pemberian solusi dalam bentuk monolog, dialog logis, dan/atau berbagai tipe teks secara kritis dan kreatif; dan menyajikan ungkapan kepedulian dari berbagai tipe teks dan/atau teks multimodal.",
+      "butir": [
+        {
+          "id": "BIN.D.BIC.1",
+          "teks": "Mempresentasikan gagasan, pandangan, arahan, dan/atau pesan untuk tujuan pengajuan usul dan pemberian solusi dalam bentuk monolog, dialog logis, dan/atau berbagai tipe teks secara kritis dan kreatif"
+        },
+        {
+          "id": "BIN.D.BIC.2",
+          "teks": "menyajikan ungkapan kepedulian dari berbagai tipe teks dan/atau teks multimodal"
+        }
+      ]
+    },
+    {
+      "id": "BIN.D.TUL",
+      "fase": "D",
+      "elemen": "TUL",
+      "nomor": "4.4",
+      "teks": "Menulis gagasan, pandangan, arahan, pesan, pengalaman, dan/atau imajinasi dalam berbagai tipe teks secara logis, kritis, kreatif, menarik, dan/atau indah; menulis ungkapan kepedulian dan/atau pendapat pro/kontra dalam berbagai tipe teks berbentuk teks multimodal; dan menggunakan kosakata baru yang memiliki makna denotatif, konotatif, dan kiasan untuk menulis.",
+      "butir": [
+        {
+          "id": "BIN.D.TUL.1",
+          "teks": "Menulis gagasan, pandangan, arahan, pesan, pengalaman, dan/atau imajinasi dalam berbagai tipe teks secara logis, kritis, kreatif, menarik, dan/atau indah"
+        },
+        {
+          "id": "BIN.D.TUL.2",
+          "teks": "menulis ungkapan kepedulian dan/atau pendapat pro/kontra dalam berbagai tipe teks berbentuk teks multimodal"
+        },
+        {
+          "id": "BIN.D.TUL.3",
+          "teks": "menggunakan kosakata baru yang memiliki makna denotatif, konotatif, dan kiasan untuk menulis"
+        }
+      ]
+    },
+    {
+      "id": "BIN.E.SIM",
+      "fase": "E",
+      "elemen": "SIM",
+      "nomor": "5.1",
+      "teks": "Mengevaluasi gagasan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan); dan mengevaluasi unsur intrinsik dan ekstrinsik teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.E.SIM.1",
+          "teks": "Mengevaluasi gagasan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan)"
+        },
+        {
+          "id": "BIN.E.SIM.2",
+          "teks": "mengevaluasi unsur intrinsik dan ekstrinsik teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.E.BAC",
+      "fase": "E",
+      "elemen": "BAC",
+      "nomor": "5.2",
+      "teks": "Mengevaluasi informasi berupa gagasan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat; menginterpretasi informasi untuk mengungkapkan gagasan dan perasaan (simpati, peduli, dan empati) dari berbagai tipe teks berwujud teks visual dan/atau audiovisual secara kreatif; mengevaluasi kualitas dan/atau kredibilitas dari berbagai tipe teks berwujud teks visual dan/atau audiovisual menggunakan sumber informasi lain; dan membandingkan isi teks.",
+      "butir": [
+        {
+          "id": "BIN.E.BAC.1",
+          "teks": "Mengevaluasi informasi berupa gagasan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat"
+        },
+        {
+          "id": "BIN.E.BAC.2",
+          "teks": "menginterpretasi informasi untuk mengungkapkan gagasan dan perasaan (simpati, peduli, dan empati) dari berbagai tipe teks berwujud teks visual dan/atau audiovisual secara kreatif"
+        },
+        {
+          "id": "BIN.E.BAC.3",
+          "teks": "mengevaluasi kualitas dan/atau kredibilitas dari berbagai tipe teks berwujud teks visual dan/atau audiovisual menggunakan sumber informasi lain"
+        },
+        {
+          "id": "BIN.E.BAC.4",
+          "teks": "membandingkan isi teks"
+        }
+      ]
+    },
+    {
+      "id": "BIN.E.BIC",
+      "fase": "E",
+      "elemen": "BIC",
+      "nomor": "5.3",
+      "teks": "Mempresentasikan gagasan, pandangan, arahan, dan/atau pesan berbagai tipe teks berbentuk monolog, dialog, dan/atau gelar wicara secara sistematis, kritis, dan/atau kreatif; dan mengungkapkan kepedulian dari berbagai tipe teks dan/atau teks multimodal secara kreatif.",
+      "butir": [
+        {
+          "id": "BIN.E.BIC.1",
+          "teks": "Mempresentasikan gagasan, pandangan, arahan, dan/atau pesan berbagai tipe teks berbentuk monolog, dialog, dan/atau gelar wicara secara sistematis, kritis, dan/atau kreatif"
+        },
+        {
+          "id": "BIN.E.BIC.2",
+          "teks": "mengungkapkan kepedulian dari berbagai tipe teks dan/atau teks multimodal secara kreatif"
+        }
+      ]
+    },
+    {
+      "id": "BIN.E.TUL",
+      "fase": "E",
+      "elemen": "TUL",
+      "nomor": "5.4",
+      "teks": "Menulis gagasan, pandangan, arahan, pesan, dan/atau imajinasi dalam berbagai tipe teks secara logis, kritis, dan kreatif; dan memublikasikan hasil karya di media cetak, elektronik, dan/atau digital.",
+      "butir": [
+        {
+          "id": "BIN.E.TUL.1",
+          "teks": "Menulis gagasan, pandangan, arahan, pesan, dan/atau imajinasi dalam berbagai tipe teks secara logis, kritis, dan kreatif"
+        },
+        {
+          "id": "BIN.E.TUL.2",
+          "teks": "memublikasikan hasil karya di media cetak, elektronik, dan/atau digital"
+        }
+      ]
+    },
+    {
+      "id": "BIN.F.SIM",
+      "fase": "F",
+      "elemen": "SIM",
+      "nomor": "6.1",
+      "teks": "Mengevaluasi gagasan, perasaan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan); dan mengapresiasi teks sastra berbentuk teks aural.",
+      "butir": [
+        {
+          "id": "BIN.F.SIM.1",
+          "teks": "Mengevaluasi gagasan, perasaan, pandangan, arahan, dan/atau pesan dari teks nonsastra berbentuk teks aural (teks yang dibacakan dan/atau didengarkan)"
+        },
+        {
+          "id": "BIN.F.SIM.2",
+          "teks": "mengapresiasi teks sastra berbentuk teks aural"
+        }
+      ]
+    },
+    {
+      "id": "BIN.F.BAC",
+      "fase": "F",
+      "elemen": "BAC",
+      "nomor": "6.2",
+      "teks": "Mengevaluasi informasi berupa gagasan, perasaan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud teks visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat berdasarkan kaidah logika berpikir; merefleksi gagasan dan pandangan berdasarkan kaidah logika berpikir dari berbagai tipe teks berwujud teks visual dan/atau audiovisual; dan mengapresiasi berbagai tipe teks berwujud teks visual dan/atau audiovisual.",
+      "butir": [
+        {
+          "id": "BIN.F.BAC.1",
+          "teks": "Mengevaluasi informasi berupa gagasan, perasaan, pandangan, arahan, dan/atau pesan dari berbagai tipe teks berwujud teks visual dan/atau audiovisual untuk menemukan makna yang tersurat dan tersirat berdasarkan kaidah logika berpikir"
+        },
+        {
+          "id": "BIN.F.BAC.2",
+          "teks": "merefleksi gagasan dan pandangan berdasarkan kaidah logika berpikir dari berbagai tipe teks berwujud teks visual dan/atau audiovisual"
+        },
+        {
+          "id": "BIN.F.BAC.3",
+          "teks": "mengapresiasi berbagai tipe teks berwujud teks visual dan/atau audiovisual"
+        }
+      ]
+    },
+    {
+      "id": "BIN.F.BIC",
+      "fase": "F",
+      "elemen": "BIC",
+      "nomor": "6.3",
+      "teks": "Mempresentasikan gagasan, perasaan, pandangan, arahan, pesan, dan/atau kreativitas berbahasa dalam berbagai tipe teks berbentuk monolog, dialog, dan/atau gelar wicara dan/atau berbagai tipe teks secara logis, sistematis, kritis, dan kreatif sesuai dengan norma kesopanan dan budaya Indonesia; menyajikan karya sastra secara kreatif dan menarik; dan mempertahankan hasil penelitian dengan argumentasi.",
+      "butir": [
+        {
+          "id": "BIN.F.BIC.1",
+          "teks": "Mempresentasikan gagasan, perasaan, pandangan, arahan, pesan, dan/atau kreativitas berbahasa dalam berbagai tipe teks berbentuk monolog, dialog, dan/atau gelar wicara dan/atau berbagai tipe teks secara logis, sistematis, kritis, dan kreatif sesuai dengan norma kesopanan dan budaya Indonesia"
+        },
+        {
+          "id": "BIN.F.BIC.2",
+          "teks": "menyajikan karya sastra secara kreatif dan menarik"
+        },
+        {
+          "id": "BIN.F.BIC.3",
+          "teks": "mempertahankan hasil penelitian dengan argumentasi"
+        }
+      ]
+    },
+    {
+      "id": "BIN.F.TUL",
+      "fase": "F",
+      "elemen": "TUL",
+      "nomor": "6.4",
+      "teks": "Menulis gagasan, pandangan, imajinasi, dan/atau pengetahuan metakognisi dalam berbagai tipe teks secara logis, kritis, dan kreatif; dan mempublikasikan hasil karya di media cetak, elektronik, dan/atau digital.",
+      "butir": [
+        {
+          "id": "BIN.F.TUL.1",
+          "teks": "Menulis gagasan, pandangan, imajinasi, dan/atau pengetahuan metakognisi dalam berbagai tipe teks secara logis, kritis, dan kreatif"
+        },
+        {
+          "id": "BIN.F.TUL.2",
+          "teks": "mempublikasikan hasil karya di media cetak, elektronik, dan/atau digital"
+        }
+      ]
+    }
+  ],
+  "catatan": [
+    "Tanda kurung yang tidak ditutup pada BIN.C.SIM dibiarkan sesuai sumber."
+  ]
+}
