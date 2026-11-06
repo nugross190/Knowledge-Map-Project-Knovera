@@ -12,7 +12,7 @@ Printable (A4 PDF) versions of the learning modules, for students who work on pa
 | `graphs.py` | Shared motion model and the fixed graph templates (GLB, GLBB, combined motion, tracking data). An item adds a motion, data points or a line to a template; graphs and keys come from the same model, and every segment corner must sit on a gridline. |
 | `<id>.pdf` | The finished PDF. `scripts/build.py` copies it to `docs/modul-<id>.pdf`, and the module page links to it. |
 
-Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X), `gerak-vertikal` (Gerak Vertikal, kelas X), `gerak-parabola` (Gerak Parabola, kelas X–XI), `eksponen-logaritma` (Eksponen dan Logaritma, Matematika kelas X), `vektor` (Vektor dan Operasinya, Matematika kelas X), `trigonometri` (Trigonometri, Matematika kelas X) and `fungsi-linear` (Fungsi Linear dan Persamaan Garis, Matematika kelas X).
+Modules: `vektor-gerak` (Vektor dan Gerak, kelas X–XI), `gerak-lurus` (Gerak Lurus, kelas X), `gerak-vertikal` (Gerak Vertikal, kelas X), `gerak-parabola` (Gerak Parabola, kelas X–XI), `eksponen-logaritma` (Eksponen dan Logaritma, Matematika kelas X), `vektor` (Vektor dan Operasinya, Matematika kelas X), `trigonometri` (Trigonometri, Matematika kelas X), `fungsi-linear` (Fungsi Linear dan Persamaan Garis, Matematika kelas X) and `fungsi-invers` (Fungsi Invers, Matematika kelas XI).
 
 Draft among sequence (see the among generator spec, not yet in `specs/`): `jembatan-gerak-lurus` (Jembatan ke Gerak Lurus, Fisika kelas X), a bridge booklet for classes with weak prerequisites, Steps 0–3 plus a praxis card. It has its own `render.py` layout (codification, translation drill, three support levels, product before discussion) and reuses `modlib.CSS`.
 
