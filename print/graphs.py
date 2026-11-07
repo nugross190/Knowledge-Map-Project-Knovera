@@ -259,12 +259,13 @@ def render(tp, motions=(), points=(), lines=(), shade=None, marks=(), width=300,
     return "".join(s)
 
 
-def plane(xr, yr, curves=(), points=(), arrows=(), segs=(), labels=(), width=300, height=200, xlabel="x", ylabel="y", ticks_every=1):
+def plane(xr, yr, curves=(), points=(), arrows=(), segs=(), labels=(), width=300, height=200, xlabel="x", ylabel="y", ticks_every=1, polys=()):
     """A general x–y plane for mathematics.
 
     xr, yr: (min, max, grid step). curves: [(f, x0, x1, color, label)] drawn by sampling f.
     points: [(x, y, label)]. arrows: [(x1, y1, x2, y2, color, label)] vectors with arrowheads.
     segs: [(x1, y1, x2, y2, color, dashed)] plain segments. labels: [(x, y, text, color)].
+    polys: [([(x, y), ...], color)] shaded regions, drawn under everything else.
     """
     (x0, x1, xs), (y0, y1, ys) = xr, yr
     L, R, T, B = 34, 14, 14, 24
@@ -280,6 +281,9 @@ def plane(xr, yr, curves=(), points=(), arrows=(), segs=(), labels=(), width=300
     for k in range(ny + 1):
         y = y0 + k * ys
         s.append(f'<line x1="{L}" y1="{Y(y):.1f}" x2="{L+W}" y2="{Y(y):.1f}" stroke="#d5dbe6" stroke-width="0.7"/>')
+    for pts, color in polys:
+        if len(pts) >= 3:
+            s.append(f'<polygon points="' + " ".join(f"{X(x):.1f},{Y(y):.1f}" for x, y in pts) + f'" fill="{color}" fill-opacity="0.22" stroke="none"/>')
     ax_y = Y(0) if y0 <= 0 <= y1 else T + H
     ax_x = X(0) if x0 <= 0 <= x1 else L
     s.append(f'<line x1="{L}" y1="{ax_y:.1f}" x2="{L+W+6}" y2="{ax_y:.1f}" stroke="#1f2430" stroke-width="1.2"/>')
@@ -319,5 +323,103 @@ def plane(xr, yr, curves=(), points=(), arrows=(), segs=(), labels=(), width=300
             s.append(f'<text x="{X(x)+4:.1f}" y="{Y(y)-5:.1f}" font-size="8.5" fill="#1f2430">{label}</text>')
     for x, y, text, color in labels:
         s.append(f'<text x="{X(x):.1f}" y="{Y(y):.1f}" font-size="9" fill="{color}">{text}</text>')
+    s.append("</svg>")
+    return "".join(s)
+
+
+def _clip(poly, a, b, c):
+    """Clip a convex polygon to the half-plane ax + by ≤ c (Sutherland–Hodgman)."""
+    out = []
+    for k in range(len(poly)):
+        p, q = poly[k], poly[(k + 1) % len(poly)]
+        fp, fq = a * p[0] + b * p[1] - c, a * q[0] + b * q[1] - c
+        if fp <= 0:
+            out.append(p)
+        if fp * fq < 0:
+            t = fp / (fp - fq)
+            out.append((p[0] + t * (q[0] - p[0]), p[1] + t * (q[1] - p[1])))
+    return out
+
+
+def _line_in_window(a, b, c, x0, x1, y0, y1):
+    """End points of the line ax + by = c inside the window, or None."""
+    pts = []
+    if b:
+        for x in (x0, x1):
+            y = (c - a * x) / b
+            if y0 - 1e-9 <= y <= y1 + 1e-9:
+                pts.append((x, y))
+    if a:
+        for y in (y0, y1):
+            x = (c - b * y) / a
+            if x0 - 1e-9 <= x <= x1 + 1e-9:
+                pts.append((x, y))
+    pts = sorted(set((round(x, 9), round(y, 9)) for x, y in pts))
+    return (pts[0], pts[-1]) if len(pts) >= 2 else None
+
+
+REGION = "#2e5597"
+
+
+def region_plane(xr, yr, cons, points=(), extra_segs=(), labels=(), shade=True, color=REGION, width=300, height=200, ticks_every=1):
+    """An x–y plane showing the solution region of a system of linear inequalities.
+
+    cons: [(a, b, op, c)] meaning ax + by op c, op in "<=", "<", ">=", ">". Boundary lines are drawn
+    solid for ≤/≥ and dashed for </>; a boundary that lies on an axis (x ≥ 0, y ≥ 0) is not redrawn.
+    The region (clipped to the window) is shaded when shade is true.
+    """
+    (x0, x1, _), (y0, y1, _) = xr, yr
+    poly = [(x0, y0), (x1, y0), (x1, y1), (x0, y1)]
+    segs = []
+    for a, b, op, c in cons:
+        s = 1 if op in ("<=", "<") else -1
+        poly = _clip(poly, s * a, s * b, s * c) if poly else poly
+        on_axis = c == 0 and (a == 0 or b == 0)
+        ends = _line_in_window(a, b, c, x0, x1, y0, y1)
+        if ends and not on_axis:
+            (xa, ya), (xb, yb) = ends
+            segs.append((xa, ya, xb, yb, "#1f2430", op in ("<", ">")))
+    return plane(xr, yr, points=points, segs=segs + list(extra_segs), labels=labels, width=width, height=height,
+                 ticks_every=ticks_every, polys=[(poly, color)] if shade and poly else [])
+
+
+def numline(crit, shade=(), dots=(), signs=None, width=300, height=46, color="#c0502a"):
+    """A sign-chart number line (not to scale).
+
+    crit: [(label, closed)] critical values in increasing order, drawn evenly spaced.
+    shade: indices of the intervals in the solution (0 = left of the first value, len(crit) = right of the last).
+    dots: indices of critical values that are isolated solutions. signs: one sign per interval, written above it.
+    A critical value is drawn filled when closed, open otherwise; values next to no shaded interval are plain ticks.
+    """
+    L, R = 14, 14
+    W = width - L - R
+    n = len(crit)
+    xs = [L + W * (k + 1) / (n + 1) for k in range(n)]
+    ends = [L] + xs + [L + W]
+    y = 26
+    s = [f'<svg viewBox="0 0 {width} {height}" xmlns="http://www.w3.org/2000/svg" font-family="Inter,DejaVu Sans,sans-serif">',
+         '<defs><marker id="na" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0L10 5L0 10z" fill="context-stroke"/></marker></defs>',
+         f'<line x1="{L-6}" y1="{y}" x2="{L+W+8}" y2="{y}" stroke="#1f2430" stroke-width="1.1" marker-end="url(#na)"/>']
+    for i in shade:
+        xa, xb = ends[i], ends[i + 1]
+        mk = ""
+        if i == 0:
+            xa, mk = xb, ' marker-end="url(#na)"'
+            xb = L - 4
+        elif i == n:
+            xb = L + W + 4
+            mk = ' marker-end="url(#na)"'
+        s.append(f'<line x1="{xa:.1f}" y1="{y}" x2="{xb:.1f}" y2="{y}" stroke="{color}" stroke-width="3.2"{mk}/>')
+    if signs:
+        for i, sg in enumerate(signs):
+            s.append(f'<text x="{(ends[i] + ends[i + 1]) / 2:.1f}" y="{y - 9}" font-size="10" font-weight="700" text-anchor="middle" fill="#1f3a68">{sg}</text>')
+    for k, (lab, closed) in enumerate(crit):
+        used = k in dots or k in shade or (k + 1) in shade
+        if used:
+            fill = color if closed else "#fff"
+            s.append(f'<circle cx="{xs[k]:.1f}" cy="{y}" r="3.4" fill="{fill}" stroke="{color}" stroke-width="1.5"/>')
+        else:
+            s.append(f'<line x1="{xs[k]:.1f}" y1="{y-4}" x2="{xs[k]:.1f}" y2="{y+4}" stroke="#1f2430" stroke-width="1.1"/>')
+        s.append(f'<text x="{xs[k]:.1f}" y="{y + 15}" font-size="8.5" text-anchor="middle" fill="#1f2430">{lab}</text>')
     s.append("</svg>")
     return "".join(s)
