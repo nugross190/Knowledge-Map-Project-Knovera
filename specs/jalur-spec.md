@@ -9,13 +9,14 @@ A learning path (*jalur belajar*) is one JSON file, `data/jalur/<id>.json`, rend
 ```
 path
 ├── id, kode, subject, map, src, title, lead, blurb
-├── sesi_menit               session length before the page suggests stopping (default 15)
+├── sesi_menit               target minutes per pack, shown to the student (default 15)
 ├── ulang_hari[]             review intervals in days for boxes 1, 2, 3, ... (default [1, 3, 7, 21])
 ├── prasyarat[]              prerequisite skills
 │   ├── id (P1, P2, ...), judul, kenapa, untuk[] (unit ids)
 │   ├── cek[]                two item ids; variant a is the first check, variant b the re-check after the bridge
 │   └── jembatan             {isi[] blocks, soal: item id}
-├── unit[]                   units in teaching order
+├── paket[]                  packs: {id (K1, K2, ...), judul, unit[] unit ids}; one pack = one sitting, then a break
+├── unit[]                   units in teaching order (the order of the packs)
 │   ├── id (U1, U2, ...), judul, simpul[], butuh[] (prerequisite ids)
 │   ├── kait                 {teks, soal: item id}: a scene and a prediction question
 │   ├── media                {judul, alat[] widget names, data, isi[] blocks}
@@ -24,13 +25,15 @@ path
 │   ├── sendiri[]            item ids of practice families, each mastered on fresh variants
 │   ├── ringkas[]            the unit's main points
 │   └── lanjut               the open question the next unit answers
-├── akhir                    {judul, teks, soal[] item ids}: mixed practice and TKA-style items
+├── akhir                    {judul, teks, soal[] item ids}: the final exam, mixed items including TKA-style ones
 ├── miskonsepsi              {M01: {judul, teks}, ...}: named mistakes, shown when a wrong answer matches
 ├── soal[]                   every item (family); see 3
 └── catatan[]                teacher notes: judul + items[]
 ```
 
 Blocks (`isi`) are the module blocks: each exactly one of `p`, `li`, `tabel`, `contoh`, `jebakan`.
+
+The **material cards** (*kartu materi*) are built from this data, not written separately: one card per bridge (`jembatan.isi`) and one per unit (`media.isi` plus the `lihat` worked example with its figure). Keep `media.isi` short and complete enough to work from.
 
 ## 2. Widgets
 
@@ -43,7 +46,9 @@ Blocks (`isi`) are the module blocks: each exactly one of `p`, `li`, `tabel`, `c
 | `jangka-sorong` | Vernier caliper scales (main scale and 10-division vernier) at any opening | none |
 | `mikrometer` | Micrometer sleeve and thimble at any reading | none |
 | `angka-penting` | A number with each digit marked significant, not significant, or ambiguous | `contoh[]` |
+| `hitung-ap` | Two measurements and an operation: the significant-figure or decimal-place rule applied to the result | `contoh[]` ([a, op, b]) |
 | `geser-koma` | A number whose decimal comma moves while the power of ten keeps the value | `contoh[]` |
+| `awalan` | A value with a unit prefix rewritten as a power of ten and in standard form | `contoh[]` |
 | `dimensi` | Candidate formulas and the dimensions of each side | `set[]` ({tanya, calon[]: {rumus, uraian, cocok}}) |
 
 Item figures use the same drawings: an item with `fig` (`mistar`, `jangka-sorong`, `mikrometer`) is drawn from its variant's `p`.
@@ -77,6 +82,8 @@ Default tolerance for a numeric key is 0,4 of its last decimal place (23,7 accep
 
 ## 4. Support rules (what the page does)
 
+- **Name and class first.** The student enters a name and class before any card opens. Both are locked (changing them means deleting the progress), and the page draws a random four-character device ID that goes with them.
+- **Packs and breaks.** Units run in the order of `paket`. After the last unit of a pack comes a break card: a summary, the share button and an optional five-minute timer. After the last pack comes the final exam (`akhir`): one try per item, no help ladder.
 - **Prerequisite check.** Variant a of both check items per prerequisite. A prerequisite with a wrong answer gets its bridge as the first card of the first unit that needs it, followed by the re-check (variant b). The result is shown to the teacher; the path never locks.
 - **Cards per unit:** kait → media → lihat → bersama → one card per practice family → ringkas.
 - **Confidence before checking.** Yakin, ragu or nebak. A confident wrong answer is counted and reported.
@@ -84,8 +91,10 @@ Default tolerance for a numeric key is 0,4 of its last decimal place (23,7 accep
 - **Keyed feedback.** A wrong answer that matches a `salah` entry shows that misconception's card and counts it.
 - **Mastery.** Two correct answers in a row on fresh variants, without help, mark a family *bisa*. After three attempts the student may skip (*dibantu*); the family returns in review.
 - **Spaced review.** A mastered family enters box 1 and returns after `ulang_hari[0]` days; a correct review moves it up a box, a wrong one sends it back. Box 3 or higher is *kuat*. Each session opens with up to three due reviews.
-- **Bounded session.** After `sesi_menit` minutes the page suggests stopping at the next card boundary.
-- **Teacher code.** The student types a name and gets one line of text: status per family, prerequisite results, top misconceptions and the confident-wrong count. The teacher pastes the lines of a class into the page's teacher view (`#guru`) and sees a table and the most common mistakes. The code is not secure; it is a reporting aid, not an exam record.
+- **Material cards.** A *Kartu materi* button on every card and on the home page opens the cards in a pop-up, at the current unit. Using them is allowed everywhere, the exam included, and does not count as help: the aim is applying, not memorising. Each opening is counted per pack and for the exam.
+- **Time.** Active time is summed per pack and for the exam: the gap since the last interaction, capped at three minutes.
+- **Share card.** At each break, after the exam and on the home page, the student can open a progress card (name, class, device ID, date and time, prerequisite results, mastery per unit, minutes per pack, exam score, material-card openings) and share it as an image, save the image, copy it as text, or take a screenshot.
+- **Teacher code.** One line of text, also at the end of the shared text: `<kode>2|name|class|device ID|status per family|prerequisite results|top misconceptions|confident-wrong count|exam correct/answered|minutes per pack and exam|card openings|checksum`. The teacher pastes the lines of a class into the page's teacher view (`#guru`) and sees a table per pack, the most common mistakes, and a warning when one device ID appears under two names. Version-1 lines (without class) still decode. Neither the card nor the code is secure; they are monitoring aids, not exam records.
 
 Progress lives in the student's browser (`localStorage`), like the other pages.
 
@@ -98,4 +107,4 @@ Progress lives in the student's browser (`localStorage`), like the other pages.
 
 ## 6. What the build checks
 
-`validate_jalur` in `scripts/jalur.py` stops the build on: missing fields, an id that does not match the file name, item ids not `<kode>-NNN` or duplicated, references to unknown items, units, prerequisites, misconceptions or map topics, a practice family with fewer than two variants, keys that do not fit the format, unknown widgets or figures, a TKA type or `acuan` that does not exist, and any generated variant that differs from its generator's output.
+`validate_jalur` in `scripts/jalur.py` stops the build on: missing fields, an id that does not match the file name, item ids not `<kode>-NNN` or duplicated, references to unknown items, units, prerequisites, misconceptions or map topics, packs that do not list every unit exactly once in unit order, a practice family with fewer than two variants, keys that do not fit the format, unknown widgets or figures, a TKA type or `acuan` that does not exist, and any generated variant that differs from its generator's output.

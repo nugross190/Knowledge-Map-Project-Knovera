@@ -588,12 +588,21 @@ class PathsTest(unittest.TestCase):
         pg["varian"][0]["salah"] = {"0": "M99"}                         # unknown misconception
         doc["unit"][1]["media"]["alat"] = ["papan-tulis"]               # unknown widget
         doc["unit"][2]["bersama"] = doc["unit"][2]["sendiri"][0]        # bersama must be a bertahap item
-        doc["prasyarat"][0]["untuk"] = ["U9"]                           # unknown unit
+        doc["prasyarat"][0]["untuk"] = ["U99"]                          # unknown unit
+        doc["paket"][0]["unit"] = doc["paket"][0]["unit"][1:]           # a pack drops a unit
         doc["soal"].append(dict(doc["soal"][0]))                        # duplicate id
         errors = " | ".join(build.jalur.validate_jalur("pengukuran", doc, self.maps, self.types))
         for needle in ("differs from generator", "needs at least two variants", "known misconception",
-                       "unknown widget", "must be a 'bertahap' item", "unknown unit U9", "duplicate id"):
+                       "unknown widget", "must be a 'bertahap' item", "unknown unit U99", "every unit exactly once",
+                       "duplicate id"):
             self.assertIn(needle, errors)
+
+    def test_packs_follow_unit_order(self):
+        doc = copy(self.paths["pengukuran"])
+        self.assertEqual([u for p in doc["paket"] for u in p["unit"]], [u["id"] for u in doc["unit"]])
+        doc["paket"][0]["unit"], doc["paket"][1]["unit"] = doc["paket"][1]["unit"], doc["paket"][0]["unit"]
+        errors = build.jalur.validate_jalur("pengukuran", doc, self.maps, self.types)
+        self.assertTrue(any("follow the paket order" in e for e in errors))
 
     def test_generators_give_known_answers(self):
         j = build.jalur
@@ -607,6 +616,12 @@ class PathsTest(unittest.TestCase):
         self.assertEqual(j.g_dimensi_pangkat({"target": {"T": 1}, "faktor": [{"L": 1}, {"L": 1, "T": -2}], "tanya": 0})["kunci"], 0.5)
         pipe = j.g_tka_pipa({"luar": {"mm": 18, "k": 6}, "tebal": {"s": 1.5, "t": 25}})
         self.assertEqual([pipe["opsi"][i] for i in pipe["kunci"]], ["14,60 mm", "15,00 mm"])  # inner diameter 15,10 mm
+        self.assertEqual([s["kunci"] for s in j.g_notasi_tahap({"x": "0,00305"})["langkah"]], [3, 3.05, -3])
+        self.assertEqual([s["kunci"] for s in j.g_ap_hitung_tahap({"x": "0,04050"})["langkah"]], [2, 4])
+        pick = j.g_ap_pilih({"opsi": ["0,05", "1,250", "20,4", "3,0"], "n": 3})
+        self.assertEqual((pick["kunci"], pick["salah"]), (2, {"0": "M17", "1": "M18"}))
+        with self.assertRaises(ValueError):
+            j.g_ap_pilih({"opsi": ["2,0", "3,5"], "n": 2})                # two options with 2 significant figures
         with self.assertRaises(ValueError):
             j.round_sig("2,25", 2)                                       # a dropped 5: textbooks round it differently
         with self.assertRaises(ValueError):

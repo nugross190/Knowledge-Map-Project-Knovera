@@ -17,7 +17,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FORMATS = ("isian", "bertahap", "pilihan-ganda", "pilihan-ganda-kompleks", "benar-salah")
 BLOCKS = ("p", "li", "tabel", "contoh", "jebakan")
-WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "geser-koma", "dimensi")
+WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "hitung-ap", "geser-koma", "awalan", "dimensi")
 FIGURES = ("mistar", "jangka-sorong", "mikrometer")
 CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan")
 SUP = str.maketrans("0123456789-", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻")
@@ -252,6 +252,34 @@ def g_ap_hitung(p):
     return {"kunci": n, "satuan": "angka penting", "salah": _salah(*pairs, avoid=[n])}
 
 
+def g_ap_hitung_tahap(p):
+    """Two steps: how many leading zeros (not significant), then how many significant figures."""
+    x = p["x"]
+    digits = x.replace(",", "")
+    lead = len(digits) - len(digits.lstrip("0"))
+    n = sig_figs(x)
+    return {"langkah": [{"kunci": lead}, {"kunci": n, "salah": _salah((len(digits), "M17"), avoid=[n])}]}
+
+
+def g_ap_pilih(p):
+    """Which written number has exactly p.n significant figures. A wrong option is keyed to M17 when counting its
+    leading zeros would give n, and to M18 when dropping its trailing decimal zeros would give n."""
+    counts = [sig_figs(x) for x in p["opsi"]]
+    if counts.count(p["n"]) != 1:
+        raise ValueError(f"exactly one option must have {p['n']} significant figures: {counts}")
+    k = counts.index(p["n"])
+    salah = {}
+    for i, x in enumerate(p["opsi"]):
+        d = x.replace(",", "")
+        if i == k:
+            continue
+        if x.startswith("0") and len(d) == p["n"]:
+            salah[str(i)] = "M17"
+        elif "," in x and x.endswith("0") and len(d.lstrip("0").rstrip("0")) == p["n"]:
+            salah[str(i)] = "M18"
+    return {"opsi": list(p["opsi"]), "kunci": k, "salah": salah}
+
+
 OPS = {"×": lambda a, b: a * b, ":": lambda a, b: a / b, "+": lambda a, b: a + b, "−": lambda a, b: a - b}
 
 
@@ -306,6 +334,15 @@ def g_notasi(p):
     if e == 0:
         raise ValueError("choose a number that needs a power of ten")
     return {"langkah": [{"kunci": num(m), "salah": _salah((m * 10, "M24"), (m / 10, "M24"), avoid=[m])},
+                        {"kunci": e, "salah": _salah((-e, "M22"), (e + 1, "M23"), (e - 1, "M23"), avoid=[e])}]}
+
+
+def g_notasi_tahap(p):
+    """Three steps: how many places the comma moves, the mantissa a, the exponent n."""
+    m, e = normalize(p["x"])
+    if e == 0:
+        raise ValueError("choose a number that needs a power of ten")
+    return {"langkah": [{"kunci": abs(e)}, {"kunci": num(m), "salah": _salah((m * 10, "M24"), (m / 10, "M24"), avoid=[m])},
                         {"kunci": e, "salah": _salah((-e, "M22"), (e + 1, "M23"), (e - 1, "M23"), avoid=[e])}]}
 
 
@@ -421,8 +458,8 @@ GEN = {
     "mistar": g_mistar, "mistar-tahap": g_mistar_tahap, "titik-nol": g_titik_nol,
     "jangka-sorong": g_jangka_sorong, "jangka-sorong-tahap": g_jangka_sorong_tahap,
     "mikrometer": g_mikrometer, "mikrometer-tahap": g_mikrometer_tahap,
-    "ap-hitung": g_ap_hitung, "ap-kali": g_ap_kali, "ap-kali-tahap": g_ap_kali_tahap, "ap-tambah": g_ap_tambah,
-    "notasi": g_notasi, "notasi-kali": g_notasi_kali, "notasi-kali-tahap": g_notasi_kali_tahap, "awalan": g_awalan,
+    "ap-hitung": g_ap_hitung, "ap-hitung-tahap": g_ap_hitung_tahap, "ap-pilih": g_ap_pilih, "ap-kali": g_ap_kali, "ap-kali-tahap": g_ap_kali_tahap, "ap-tambah": g_ap_tambah,
+    "notasi": g_notasi, "notasi-tahap": g_notasi_tahap, "notasi-kali": g_notasi_kali, "notasi-kali-tahap": g_notasi_kali_tahap, "awalan": g_awalan,
     "dimensi-pangkat": g_dimensi_pangkat, "tka-pipa": g_tka_pipa, "tka-kedalaman": g_tka_kedalaman,
 }
 
@@ -661,6 +698,16 @@ def validate_jalur(name, doc, maps, tka_types):
                 err(f"unit {uid} bersama {u['bersama']} must be a 'bertahap' item")
         for sid in u.get("sendiri", []):
             ref(sid, f"unit {uid} sendiri", practice=True)
+    paket = doc.get("paket")
+    if paket is not None:
+        listed = [uid for pk in paket for uid in pk.get("unit", [])]
+        for pk in paket:
+            if not (pk.get("id") and pk.get("judul") and pk.get("unit")):
+                err(f"paket {pk.get('id', '?')} needs 'id', 'judul' and 'unit'")
+        if sorted(listed) != sorted(u.get("id") for u in doc["unit"]):
+            err("paket must list every unit exactly once")
+        elif listed != [u.get("id") for u in doc["unit"]]:
+            err("unit order must follow the paket order")
     akhir = doc["akhir"]
     if not akhir.get("judul") or not akhir.get("soal"):
         err("akhir needs 'judul' and 'soal'")
@@ -699,7 +746,8 @@ def lint_jalur(name, doc):
 
 def summary(doc):
     variants = sum(len(it["varian"]) for it in doc["soal"])
-    return (f"{doc['title']}: {len(doc['prasyarat'])} prasyarat, {len(doc['unit'])} unit, {len(doc['soal'])} soal "
+    packs = f"{len(doc['paket'])} paket, " if doc.get("paket") else ""
+    return (f"{doc['title']}: {len(doc['prasyarat'])} prasyarat, {packs}{len(doc['unit'])} unit, {len(doc['soal'])} soal "
             f"({variants} varian, {sum('tka' in it for it in doc['soal'])} setara TKA), "
             f"{len(doc['miskonsepsi'])} miskonsepsi")
 

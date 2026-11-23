@@ -131,6 +131,7 @@
    "kenapa": "Notasi ilmiah dan awalan satuan (kilo, mili, mikro) memakai pangkat sepuluh. Analisis dimensi juga memakai aturan pangkat.",
    "untuk": [
     "U6",
+    "U9",
     "U7"
    ],
    "cek": [
@@ -164,7 +165,8 @@
    "judul": "Membulatkan bilangan",
    "kenapa": "Hasil hitung dengan angka penting harus dibulatkan. Kamu perlu membulatkan sampai tempat tertentu dengan benar.",
    "untuk": [
-    "U5"
+    "U5",
+    "U8"
    ],
    "cek": [
     "UKUR-010",
@@ -224,6 +226,35 @@
     ],
     "soal": "UKUR-015"
    }
+  }
+ ],
+ "paket": [
+  {
+   "id": "K1",
+   "judul": "Mengukur",
+   "unit": [
+    "U1",
+    "U2",
+    "U3"
+   ]
+  },
+  {
+   "id": "K2",
+   "judul": "Alat teliti dan angka penting",
+   "unit": [
+    "U4",
+    "U5",
+    "U8"
+   ]
+  },
+  {
+   "id": "K3",
+   "judul": "Notasi ilmiah dan dimensi",
+   "unit": [
+    "U6",
+    "U9",
+    "U7"
+   ]
   }
  ],
  "unit": [
@@ -532,7 +563,7 @@
   },
   {
    "id": "U5",
-   "judul": "Angka penting",
+   "judul": "Menghitung angka penting",
    "simpul": [
     "DAS-01"
    ],
@@ -569,7 +600,67 @@
        "Nol di belakang angka bukan nol pada bilangan desimal adalah angka penting: 2,50 punya 3 angka penting.",
        "Nol di belakang bilangan bulat, seperti 1500, tidak jelas. Tulis dalam notasi ilmiah (unit berikutnya) agar jelas."
       ]
-     },
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Berapa banyak angka penting pada hasil ukur 0,0305 kg?",
+    "langkah": [
+     "Nol di depan (0,0) hanya menunjukkan letak koma: bukan angka penting.",
+     "Angka 3 dan 5 penting; nol di antara keduanya juga penting.",
+     "Jadi ada 3 angka penting: 3, 0, 5."
+    ]
+   },
+   "bersama": "UKUR-056",
+   "sendiri": [
+    "UKUR-037",
+    "UKUR-058"
+   ],
+   "ringkas": [
+    "Nol di depan tidak penting: 0,0052 punya 2 angka penting.",
+    "Nol di antara angka bukan nol dan nol di belakang pada desimal penting.",
+    "Nol di belakang bilangan bulat tidak jelas; tulis dalam notasi ilmiah."
+   ],
+   "lanjut": "Pelat berukuran 3,52 cm × 2,1 cm. Kalkulator menulis luasnya 7,392 cm². Bolehkah semua angka itu ditulis?"
+  },
+  {
+   "id": "U8",
+   "judul": "Angka penting dalam hitungan",
+   "simpul": [
+    "DAS-01"
+   ],
+   "butuh": [
+    "P4"
+   ],
+   "kait": {
+    "teks": "Panjang sebuah pelat 3,52 cm dan lebarnya 2,1 cm. Kalkulator menulis luasnya 7,392 cm².",
+    "soal": "UKUR-054"
+   },
+   "media": {
+    "judul": "Aturan angka penting dalam hitungan",
+    "alat": [
+     "hitung-ap"
+    ],
+    "data": {
+     "contoh": [
+      [
+       "3,52",
+       "×",
+       "2,1"
+      ],
+      [
+       "12,43",
+       "+",
+       "2,1"
+      ],
+      [
+       "125,4",
+       ":",
+       "9,6"
+      ]
+     ]
+    },
+    "isi": [
      {
       "tabel": {
        "cols": [
@@ -590,6 +681,13 @@
         ]
        ]
       }
+     },
+     {
+      "li": [
+       "Kali dan bagi: hitung angka penting setiap data; hasil mengikuti yang paling sedikit.",
+       "Tambah dan kurang: lihat banyak angka di belakang koma; hasil mengikuti yang paling sedikit.",
+       "Bulatkan sekali saja, di akhir hitungan."
+      ]
      }
     ]
    },
@@ -603,14 +701,13 @@
    },
    "bersama": "UKUR-036",
    "sendiri": [
-    "UKUR-037",
     "UKUR-038",
     "UKUR-039"
    ],
    "ringkas": [
-    "Nol di depan tidak penting; nol di belakang pada desimal penting.",
     "Kali dan bagi: ikuti angka penting paling sedikit.",
-    "Tambah dan kurang: ikuti angka di belakang koma paling sedikit."
+    "Tambah dan kurang: ikuti angka di belakang koma paling sedikit.",
+    "Bulatkan sekali, di akhir hitungan."
    ],
    "lanjut": "Diameter atom hidrogen kira-kira 0,000 000 000 106 m. Menghitung nolnya saja sudah melelahkan. Adakah cara yang lebih rapi?"
   },
@@ -647,10 +744,58 @@
        "Notasi ilmiah: a × 10ⁿ dengan 1 ≤ a < 10 dan n bilangan bulat.",
        "Koma digeser ke kiri sebanyak n tempat → pangkat +n (bilangan besar).",
        "Koma digeser ke kanan sebanyak n tempat → pangkat −n (bilangan di bawah 1).",
-       "Mengalikan: kalikan angka depannya, jumlahkan pangkatnya, lalu rapikan ke bentuk baku. Membagi: bagi angka depannya, kurangkan pangkatnya.",
        "Angka penting terlihat jelas: 1,50 × 10³ m punya 3 angka penting."
       ]
-     },
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Tulis 0,000 452 m dalam notasi ilmiah.",
+    "langkah": [
+     "Geser koma ke kanan sampai tersisa satu angka bukan nol di depannya: 4,52.",
+     "Koma bergeser 4 tempat ke kanan, jadi pangkatnya −4.",
+     "Hasil: 4,52 × 10⁻⁴ m."
+    ]
+   },
+   "bersama": "UKUR-057",
+   "sendiri": [
+    "UKUR-042",
+    "UKUR-045"
+   ],
+   "ringkas": [
+    "Bentuk baku: a × 10ⁿ, dengan 1 ≤ a < 10.",
+    "Koma ke kiri → pangkat positif; koma ke kanan → pangkat negatif.",
+    "Notasi ilmiah menunjukkan angka penting dengan jelas: 1,50 × 10³ m."
+   ],
+   "lanjut": "Sebuah sel berukuran sekitar 10 μm dan sebuah virus sekitar 100 nm. Berapa kali lebih besar sel itu?"
+  },
+  {
+   "id": "U9",
+   "judul": "Awalan satuan dan operasi notasi ilmiah",
+   "simpul": [
+    "DAS-01",
+    "DAS-03"
+   ],
+   "butuh": [
+    "P3"
+   ],
+   "kait": {
+    "teks": "Sebuah sel berukuran sekitar 10 μm, sedangkan sebuah virus sekitar 100 nm.",
+    "soal": "UKUR-055"
+   },
+   "media": {
+    "judul": "Awalan adalah pangkat sepuluh",
+    "alat": [
+     "awalan"
+    ],
+    "data": {
+     "contoh": [
+      "350",
+      "2,4",
+      "10"
+     ]
+    },
+    "isi": [
      {
       "tabel": {
        "cols": [
@@ -696,28 +841,33 @@
         ]
        ]
       }
+     },
+     {
+      "li": [
+       "Ganti awalan dengan pangkat sepuluhnya, lalu rapikan ke bentuk baku: 350 nm = 350 × 10⁻⁹ m = 3,5 × 10⁻⁷ m.",
+       "Mengalikan: kalikan angka depannya, jumlahkan pangkatnya. Membagi: bagi angka depannya, kurangkan pangkatnya.",
+       "Rapikan hasilnya: 12 × 10² = 1,2 × 10³."
+      ]
      }
     ]
    },
    "lihat": {
-    "soal": "Tulis 0,000 452 m dalam notasi ilmiah.",
+    "soal": "Hitung (4 × 10⁻³) × (3 × 10⁵) dalam bentuk baku.",
     "langkah": [
-     "Geser koma ke kanan sampai tersisa satu angka bukan nol di depannya: 4,52.",
-     "Koma bergeser 4 tempat ke kanan, jadi pangkatnya −4.",
-     "Hasil: 4,52 × 10⁻⁴ m."
+     "Kalikan angka depan: 4 × 3 = 12.",
+     "Jumlahkan pangkat: −3 + 5 = 2, jadi 12 × 10².",
+     "Rapikan: 12 × 10² = 1,2 × 10³."
     ]
    },
    "bersama": "UKUR-041",
    "sendiri": [
-    "UKUR-042",
     "UKUR-043",
-    "UKUR-044",
-    "UKUR-045"
+    "UKUR-044"
    ],
    "ringkas": [
-    "Bentuk baku: a × 10ⁿ, dengan 1 ≤ a < 10.",
-    "Koma ke kiri → pangkat naik; koma ke kanan → pangkat turun.",
-    "Awalan satuan adalah pangkat sepuluh."
+    "Awalan = pangkat sepuluh: mikro 10⁻⁶, nano 10⁻⁹, giga 10⁹.",
+    "Kali: kalikan angka depan, jumlahkan pangkat. Bagi: bagi angka depan, kurangkan pangkat.",
+    "Rapikan hasil ke bentuk baku."
    ],
    "lanjut": "Sebuah rumus bisa diperiksa tanpa percobaan, hanya dengan melihat besaran penyusunnya. Bagaimana caranya?"
   },
@@ -868,8 +1018,8 @@
   }
  ],
  "akhir": {
-  "judul": "Campuran dan setara TKA",
-  "teks": "Soal dari semua unit diacak, ditambah tiga soal setara TKA. Kerjakan setiap soal sekali; hasilnya masuk ke jadwal ulangan.",
+  "judul": "Ujian akhir",
+  "teks": "Soal dari ketiga paket diacak, termasuk tiga soal setara TKA. Setiap soal dikerjakan sekali, tanpa bantuan. Kartu materi boleh dibuka; jumlah pembukaannya dicatat untuk guru. Hasilnya masuk ke jadwal ulangan.",
   "soal": [
    "UKUR-023",
    "UKUR-037",
@@ -4680,6 +4830,265 @@
      ]
     }
    ]
+  },
+  {
+   "id": "UKUR-054",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "bantuan": [
+    "Lebar hanya diukur sampai 0,1 cm (2 angka penting). Bisakah luasnya lebih teliti dari itu?"
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: bagaimana luas ini sebaiknya ditulis?",
+     "opsi": [
+      "7,392 cm², karena kalkulator selalu benar",
+      "7,4 cm², karena hasil tidak boleh lebih teliti daripada data yang paling kasar",
+      "7 cm², karena hasil selalu dibulatkan ke bilangan bulat",
+      "7,39 cm², karena 3,52 punya tiga angka penting"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "2,1 cm hanya punya 2 angka penting, jadi luasnya juga ditulis dengan 2 angka penting: 7,4 cm².",
+      "Angka 9 dan 2 pada 7,392 tidak didukung oleh ketelitian alat ukur."
+     ],
+     "salah": {
+      "0": "M19",
+      "3": "M21"
+     }
+    }
+   ]
+  },
+  {
+   "id": "UKUR-055",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "bantuan": [
+    "Ubah keduanya ke meter: mikro = 10⁻⁶, nano = 10⁻⁹."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: berapa kali lebih besar sel itu daripada virus?",
+     "opsi": [
+      "10 kali",
+      "100 kali",
+      "1000 kali",
+      "10 000 kali"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "10 μm = 10 × 10⁻⁶ m = 10⁻⁵ m; 100 nm = 100 × 10⁻⁹ m = 10⁻⁷ m.",
+      "10⁻⁵ : 10⁻⁷ = 10², jadi sel itu sekitar 100 kali lebih besar."
+     ],
+     "salah": {
+      "0": "M26",
+      "2": "M26"
+     }
+    }
+   ]
+  },
+  {
+   "id": "UKUR-056",
+   "format": "bertahap",
+   "simpul": "DAS-01",
+   "gen": "ap-hitung-tahap",
+   "bantuan": [
+    "Coret dulu nol di depan angka bukan nol pertama.",
+    "Hitung semua angka sesudahnya, termasuk nol di belakang pada desimal."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": "0,04050"
+     },
+     "soal": "Tentukan banyak angka penting pada hasil ukur 0,04050 m.",
+     "langkah": [
+      {
+       "teks": "Banyak angka nol di depan angka 4 (bukan angka penting)",
+       "kunci": 2
+      },
+      {
+       "teks": "Banyak angka penting",
+       "kunci": 4,
+       "satuan": "angka penting",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M17"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Nol di depan angka 4 ada dua (0,0): bukan angka penting.",
+      "Sisanya 4, 0, 5, 0 penting: nol di antara angka bukan nol dan nol di belakang pada desimal ikut dihitung.",
+      "Jadi ada 4 angka penting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "UKUR-057",
+   "format": "bertahap",
+   "simpul": "DAS-01",
+   "gen": "notasi-tahap",
+   "bantuan": [
+    "Letakkan koma sesudah angka bukan nol pertama.",
+    "Ke kanan → pangkat negatif."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": "0,00305"
+     },
+     "soal": "Tulis 0,00305 dalam notasi ilmiah.",
+     "langkah": [
+      {
+       "teks": "Koma digeser ke kanan sebanyak berapa tempat?",
+       "kunci": 3
+      },
+      {
+       "teks": "Angka depan a",
+       "kunci": 3.05,
+       "salah": [
+        {
+         "nilai": 30.5,
+         "m": "M24"
+        },
+        {
+         "nilai": 0.305,
+         "m": "M24"
+        }
+       ]
+      },
+      {
+       "teks": "Pangkat n",
+       "kunci": -3,
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M22"
+        },
+        {
+         "nilai": -2,
+         "m": "M23"
+        },
+        {
+         "nilai": -4,
+         "m": "M23"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Koma digeser 3 tempat ke kanan: 0,00305 menjadi 3,05.",
+      "Angka depan a = 3,05 (di antara 1 dan 10).",
+      "Digeser ke kanan → pangkat negatif: 3,05 × 10⁻³."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "UKUR-058",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "gen": "ap-pilih",
+   "bantuan": [
+    "Hitung angka penting setiap pilihan satu per satu.",
+    "Nol di depan tidak dihitung; nol di belakang pada desimal dihitung."
+   ],
+   "varian": [
+    {
+     "p": {
+      "opsi": [
+       "0,05",
+       "1,250",
+       "20,4",
+       "3,0"
+      ],
+      "n": 3
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 3 angka penting?",
+     "opsi": [
+      "0,05",
+      "1,250",
+      "20,4",
+      "3,0"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M17",
+      "1": "M18"
+     },
+     "pembahasan": [
+      "0,05: 1 angka penting.",
+      "1,250: 4 angka penting.",
+      "20,4: 3 angka penting.",
+      "3,0: 2 angka penting.",
+      "Yang tepat 3 angka penting adalah 20,4."
+     ]
+    },
+    {
+     "p": {
+      "opsi": [
+       "0,0062",
+       "1,50",
+       "0,7",
+       "620,1"
+      ],
+      "n": 2
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 2 angka penting?",
+     "opsi": [
+      "0,0062",
+      "1,50",
+      "0,7",
+      "620,1"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M18",
+      "2": "M17"
+     },
+     "pembahasan": [
+      "0,0062: 2 angka penting.",
+      "1,50: 3 angka penting.",
+      "0,7: 1 angka penting.",
+      "620,1: 4 angka penting.",
+      "Yang tepat 2 angka penting adalah 0,0062."
+     ]
+    },
+    {
+     "p": {
+      "opsi": [
+       "0,030",
+       "20,07",
+       "2,5070",
+       "3,05"
+      ],
+      "n": 4
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 4 angka penting?",
+     "opsi": [
+      "0,030",
+      "20,07",
+      "2,5070",
+      "3,05"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M17",
+      "2": "M18"
+     },
+     "pembahasan": [
+      "0,030: 2 angka penting.",
+      "20,07: 4 angka penting.",
+      "2,5070: 5 angka penting.",
+      "3,05: 3 angka penting.",
+      "Yang tepat 4 angka penting adalah 20,07."
+     ]
+    }
+   ]
   }
  ],
  "catatan": [
@@ -4693,8 +5102,11 @@
   {
    "judul": "Cara memakai di kelas",
    "items": [
-    "Tugaskan sesinya, misalnya dua sesi per minggu; jangan hanya disediakan. Latihan daring biasanya hanya membantu siswa yang benar-benar memakainya sesuai takaran.",
-    "Minta siswa mengirim kode progres di akhir minggu. Tempel semua kode di tampilan guru untuk melihat miskonsepsi yang paling sering, lalu bahas itu di pertemuan berikutnya.",
+    "Jalur dibagi menjadi tiga paket, masing-masing tiga unit, lalu ujian akhir. Satu paket satu sesi; sesudah setiap paket ada istirahat. Lama sebenarnya setiap paket tercatat di kartu progres.",
+    "Tugaskan sesinya; jangan hanya disediakan. Latihan daring biasanya hanya membantu siswa yang benar-benar memakainya sesuai takaran.",
+    "Siswa mengisi nama dan kelas sebelum mulai. Sesudah setiap paket dan sesudah ujian mereka bisa membagikan kartu progres (gambar atau teks) yang memuat nama, kelas, waktu, dan ID perangkat.",
+    "Kartu materi boleh dibuka kapan saja, termasuk saat ujian: tujuannya menerapkan, bukan menghafal. Jumlah pembukaan dicatat per paket, jadi guru bisa melihat apakah siswa makin jarang membutuhkannya.",
+    "Untuk tabel kelas, minta siswa mengirim teks kode progres, lalu tempel semua kode di tampilan guru untuk melihat miskonsepsi yang paling sering.",
     "Pakai jalur ini untuk latihan dan pekerjaan rumah, bukan pengganti pelajaran. Pada uji coba di SMP negeri di Indonesia (program MENGEJAR, 2022–2023), perangkat lunak adaptif tanpa pelatihan guru tidak menaikkan hasil belajar."
    ]
   },
@@ -4704,8 +5116,8 @@
     "Ketidakpastian pengukuran dan pengukuran berulang belum dilatih; hanya disebut di unit 2.",
     "Jangka sorong memakai nonius 10 skala (0,1 mm); nonius 20 skala hanya disebut.",
     "Angka dalam cerita (panjang jengkal, ubin, ukuran benda) adalah angka contoh, bukan data sungguhan.",
-    "Kode progres tidak aman; jangan dipakai sebagai nilai ujian.",
-    "Belum diuji di kelas: urutan, lama sesi, dan aturan penguasaan masih perkiraan."
+    "Kartu dan kode progres tidak aman (nama bisa diganti dengan menghapus progres); jangan dipakai sebagai nilai rapor.",
+    "Belum diuji di kelas: target 15 menit per paket, urutan, dan aturan penguasaan masih perkiraan."
    ]
   }
  ]
