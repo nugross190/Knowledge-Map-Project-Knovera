@@ -131,6 +131,7 @@
    "kenapa": "Notasi ilmiah dan awalan satuan (kilo, mili, mikro) memakai pangkat sepuluh. Analisis dimensi juga memakai aturan pangkat.",
    "untuk": [
     "U6",
+    "U9",
     "U7"
    ],
    "cek": [
@@ -164,7 +165,8 @@
    "judul": "Membulatkan bilangan",
    "kenapa": "Hasil hitung dengan angka penting harus dibulatkan. Kamu perlu membulatkan sampai tempat tertentu dengan benar.",
    "untuk": [
-    "U5"
+    "U5",
+    "U8"
    ],
    "cek": [
     "UKUR-010",
@@ -224,6 +226,35 @@
     ],
     "soal": "UKUR-015"
    }
+  }
+ ],
+ "paket": [
+  {
+   "id": "K1",
+   "judul": "Mengukur",
+   "unit": [
+    "U1",
+    "U2",
+    "U3"
+   ]
+  },
+  {
+   "id": "K2",
+   "judul": "Alat teliti dan angka penting",
+   "unit": [
+    "U4",
+    "U5",
+    "U8"
+   ]
+  },
+  {
+   "id": "K3",
+   "judul": "Notasi ilmiah dan dimensi",
+   "unit": [
+    "U6",
+    "U9",
+    "U7"
+   ]
   }
  ],
  "unit": [
@@ -374,6 +405,7 @@
       "li": [
        "Nilai skala terkecil (nst) mistar biasa 1 mm = 0,1 cm. Hasil ukur mistar ditulis sampai 0,1 cm, misalnya 12,4 cm.",
        "Mata harus tegak lurus di atas skala yang dibaca. Melihat dari samping menggeser bacaan; kesalahan ini disebut paralaks.",
+       "Cara membaca: angka cm, lalu hitung garis kecil sesudahnya. Angka 6 lalu 2 garis kecil = 6 + 0,2 = 6,2 cm.",
        "Jika ujung benda tidak di angka 0, panjang = bacaan ujung kanan − bacaan ujung kiri.",
        "Timbangan dan alat berjarum lain: periksa jarum di angka nol sebelum mengukur. Jika tidak, hasilnya harus dikoreksi (kesalahan titik nol).",
        "Alat digital: nst-nya adalah nilai angka terakhir yang ditampilkan, misalnya 0,01 s pada stopwatch yang menampilkan 12,47 s.",
@@ -390,9 +422,9 @@
      "b": 58
     },
     "langkah": [
-     "Ujung kiri tidak di 0, jadi panjang = bacaan kanan − bacaan kiri.",
-     "5,8 cm − 2,0 cm = 3,8 cm = 38 mm.",
-     "Hasil ditulis sampai nst mistar: 3,8 cm."
+     "Ujung kiri: tepat di angka 2: 2,0 cm.",
+     "Ujung kanan: angka 5 lalu 8 garis kecil: 5 + 0,8 = 5,8 cm.",
+     "Panjang = 5,8 − 2,0 = 3,8 cm."
     ]
    },
    "bersama": "UKUR-022",
@@ -406,7 +438,7 @@
     "Ujung benda tidak di 0: panjang = kanan − kiri.",
     "Periksa titik nol alat sebelum mengukur."
    ],
-   "lanjut": "Mistar hanya teliti sampai 1 mm. Bagaimana mengukur diameter kelereng sampai 0,1 mm?"
+   "lanjut": "Mistar hanya teliti sampai 0,1 cm. Bagaimana mengukur diameter kelereng sampai 0,01 cm?"
   },
   {
    "id": "U3",
@@ -419,7 +451,7 @@
     "P2"
    ],
    "kait": {
-    "teks": "Diameter sebuah kelereng sekitar 1,6 cm. Dengan mistar kamu hanya bisa menulis 16 mm, padahal bisa saja diameternya 16,2 mm atau 16,3 mm.",
+    "teks": "Diameter sebuah kelereng sekitar 1,6 cm. Dengan mistar kamu hanya bisa menulis 1,6 cm, padahal bisa saja diameternya 1,62 cm atau 1,63 cm.",
     "soal": "UKUR-026"
    },
    "media": {
@@ -431,15 +463,15 @@
      {
       "li": [
        "Rahang luar (bawah) untuk diameter luar, rahang dalam (atas) untuk diameter dalam, batang di ujung untuk kedalaman.",
-       "Skala utama: setiap garis 1 mm; angka 1, 2, 3, ... menunjukkan cm.",
-       "Skala nonius: 10 garis sepanjang 9 mm, jadi setiap garis nonius 0,1 mm lebih pendek daripada garis skala utama. Ketelitian jangka sorong ini 0,1 mm.",
-       "Hasil = skala utama (garis tepat sebelum angka nol nonius) + nomor garis nonius yang berimpit × 0,1 mm."
+       "Skala utama: angka 1, 2, 3, ... menunjukkan cm; setiap garis kecil 1 mm = 0,1 cm.",
+       "Skala nonius: 10 garis sepanjang 0,9 cm, jadi setiap garis nonius 0,01 cm lebih pendek daripada garis skala utama. Ketelitian jangka sorong ini 0,01 cm (0,1 mm).",
+       "Cara membaca: angka cm tepat sebelum nol nonius + garis kecil sesudahnya × 0,1 cm + nomor garis nonius yang berimpit × 0,01 cm. Contoh: 2 + 0,1 + 0,08 = 2,18 cm."
       ]
      },
      {
       "jebakan": [
-       "Nomor garis nonius yang berimpit bukan milimeter: garis ke-7 berarti 0,7 mm.",
-       "Ada juga jangka sorong dengan nonius 20 skala (ketelitian 0,05 mm). Jalur ini memakai nonius 10 skala."
+       "Nomor garis nonius yang berimpit dikali 0,01 cm: garis ke-8 berarti 0,08 cm, bukan 0,8 cm.",
+       "Ada juga jangka sorong dengan nonius 20 skala (ketelitian 0,005 cm = 0,05 mm). Jalur ini memakai nonius 10 skala."
       ]
      }
     ]
@@ -452,9 +484,10 @@
      "k": 3
     },
     "langkah": [
-     "Angka nol nonius berada sesudah garis 16 mm (1,6 cm): skala utama = 16 mm.",
-     "Garis nonius ke-3 berimpit dengan salah satu garis skala utama: 3 × 0,1 mm = 0,3 mm.",
-     "Hasil = 16 + 0,3 = 16,3 mm = 1,63 cm."
+     "Angka 1 pada skala utama, tepat sebelum nol nonius: 1 cm.",
+     "Sesudah angka 1 ada 6 garis kecil sebelum nol nonius: 6 × 0,1 cm = 0,6 cm.",
+     "Garis nonius ke-3 berimpit dengan garis skala utama: 3 × 0,01 cm = 0,03 cm.",
+     "Hasil = 1 + 0,6 + 0,03 = 1,63 cm."
     ]
    },
    "bersama": "UKUR-027",
@@ -464,11 +497,11 @@
     "UKUR-030"
    ],
    "ringkas": [
-    "Skala utama: garis tepat di kiri nol nonius.",
-    "Tambahkan nomor garis nonius yang berimpit × 0,1 mm.",
+    "Angka cm tepat sebelum nol nonius, lalu garis kecil sesudahnya (0,1 cm per garis).",
+    "Tambahkan nomor garis nonius yang berimpit × 0,01 cm.",
     "Rahang luar, rahang dalam, batang kedalaman: pilih sesuai yang diukur."
    ],
-   "lanjut": "Selembar kertas tebalnya sekitar 0,1 mm, sama dengan ketelitian jangka sorong. Butuh alat yang sepuluh kali lebih teliti."
+   "lanjut": "Selembar kertas tebalnya sekitar 0,01 cm (0,1 mm), sama dengan ketelitian jangka sorong. Butuh alat yang sepuluh kali lebih teliti."
   },
   {
    "id": "U4",
@@ -513,9 +546,10 @@
      "t": 18
     },
     "langkah": [
-     "Garis milimeter terakhir yang terlihat: 2 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 2,5 mm.",
+     "Garis milimeter terakhir yang terlihat di atas garis acuan: 2 mm.",
+     "Garis setengah milimeter sesudahnya (di bawah garis acuan) juga terlihat: + 0,5 mm.",
      "Garis 18 pada selubung segaris dengan garis acuan: 18 × 0,01 mm = 0,18 mm.",
-     "Hasil = 2,5 + 0,18 = 2,68 mm."
+     "Hasil = 2 + 0,5 + 0,18 = 2,68 mm."
     ]
    },
    "bersama": "UKUR-032",
@@ -532,7 +566,7 @@
   },
   {
    "id": "U5",
-   "judul": "Angka penting",
+   "judul": "Menghitung angka penting",
    "simpul": [
     "DAS-01"
    ],
@@ -569,7 +603,67 @@
        "Nol di belakang angka bukan nol pada bilangan desimal adalah angka penting: 2,50 punya 3 angka penting.",
        "Nol di belakang bilangan bulat, seperti 1500, tidak jelas. Tulis dalam notasi ilmiah (unit berikutnya) agar jelas."
       ]
-     },
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Berapa banyak angka penting pada hasil ukur 0,0305 kg?",
+    "langkah": [
+     "Nol di depan (0,0) hanya menunjukkan letak koma: bukan angka penting.",
+     "Angka 3 dan 5 penting; nol di antara keduanya juga penting.",
+     "Jadi ada 3 angka penting: 3, 0, 5."
+    ]
+   },
+   "bersama": "UKUR-056",
+   "sendiri": [
+    "UKUR-037",
+    "UKUR-058"
+   ],
+   "ringkas": [
+    "Nol di depan tidak penting: 0,0052 punya 2 angka penting.",
+    "Nol di antara angka bukan nol dan nol di belakang pada desimal penting.",
+    "Nol di belakang bilangan bulat tidak jelas; tulis dalam notasi ilmiah."
+   ],
+   "lanjut": "Pelat berukuran 3,52 cm × 2,1 cm. Kalkulator menulis luasnya 7,392 cm². Bolehkah semua angka itu ditulis?"
+  },
+  {
+   "id": "U8",
+   "judul": "Angka penting dalam hitungan",
+   "simpul": [
+    "DAS-01"
+   ],
+   "butuh": [
+    "P4"
+   ],
+   "kait": {
+    "teks": "Panjang sebuah pelat 3,52 cm dan lebarnya 2,1 cm. Kalkulator menulis luasnya 7,392 cm².",
+    "soal": "UKUR-054"
+   },
+   "media": {
+    "judul": "Aturan angka penting dalam hitungan",
+    "alat": [
+     "hitung-ap"
+    ],
+    "data": {
+     "contoh": [
+      [
+       "3,52",
+       "×",
+       "2,1"
+      ],
+      [
+       "12,43",
+       "+",
+       "2,1"
+      ],
+      [
+       "125,4",
+       ":",
+       "9,6"
+      ]
+     ]
+    },
+    "isi": [
      {
       "tabel": {
        "cols": [
@@ -590,6 +684,13 @@
         ]
        ]
       }
+     },
+     {
+      "li": [
+       "Kali dan bagi: hitung angka penting setiap data; hasil mengikuti yang paling sedikit.",
+       "Tambah dan kurang: lihat banyak angka di belakang koma; hasil mengikuti yang paling sedikit.",
+       "Bulatkan sekali saja, di akhir hitungan."
+      ]
      }
     ]
    },
@@ -603,14 +704,13 @@
    },
    "bersama": "UKUR-036",
    "sendiri": [
-    "UKUR-037",
     "UKUR-038",
     "UKUR-039"
    ],
    "ringkas": [
-    "Nol di depan tidak penting; nol di belakang pada desimal penting.",
     "Kali dan bagi: ikuti angka penting paling sedikit.",
-    "Tambah dan kurang: ikuti angka di belakang koma paling sedikit."
+    "Tambah dan kurang: ikuti angka di belakang koma paling sedikit.",
+    "Bulatkan sekali, di akhir hitungan."
    ],
    "lanjut": "Diameter atom hidrogen kira-kira 0,000 000 000 106 m. Menghitung nolnya saja sudah melelahkan. Adakah cara yang lebih rapi?"
   },
@@ -647,10 +747,58 @@
        "Notasi ilmiah: a × 10ⁿ dengan 1 ≤ a < 10 dan n bilangan bulat.",
        "Koma digeser ke kiri sebanyak n tempat → pangkat +n (bilangan besar).",
        "Koma digeser ke kanan sebanyak n tempat → pangkat −n (bilangan di bawah 1).",
-       "Mengalikan: kalikan angka depannya, jumlahkan pangkatnya, lalu rapikan ke bentuk baku. Membagi: bagi angka depannya, kurangkan pangkatnya.",
        "Angka penting terlihat jelas: 1,50 × 10³ m punya 3 angka penting."
       ]
-     },
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Tulis 0,000 452 m dalam notasi ilmiah.",
+    "langkah": [
+     "Geser koma ke kanan sampai tersisa satu angka bukan nol di depannya: 4,52.",
+     "Koma bergeser 4 tempat ke kanan, jadi pangkatnya −4.",
+     "Hasil: 4,52 × 10⁻⁴ m."
+    ]
+   },
+   "bersama": "UKUR-057",
+   "sendiri": [
+    "UKUR-042",
+    "UKUR-045"
+   ],
+   "ringkas": [
+    "Bentuk baku: a × 10ⁿ, dengan 1 ≤ a < 10.",
+    "Koma ke kiri → pangkat positif; koma ke kanan → pangkat negatif.",
+    "Notasi ilmiah menunjukkan angka penting dengan jelas: 1,50 × 10³ m."
+   ],
+   "lanjut": "Sebuah sel berukuran sekitar 10 μm dan sebuah virus sekitar 100 nm. Berapa kali lebih besar sel itu?"
+  },
+  {
+   "id": "U9",
+   "judul": "Awalan satuan dan operasi notasi ilmiah",
+   "simpul": [
+    "DAS-01",
+    "DAS-03"
+   ],
+   "butuh": [
+    "P3"
+   ],
+   "kait": {
+    "teks": "Sebuah sel berukuran sekitar 10 μm, sedangkan sebuah virus sekitar 100 nm.",
+    "soal": "UKUR-055"
+   },
+   "media": {
+    "judul": "Awalan adalah pangkat sepuluh",
+    "alat": [
+     "awalan"
+    ],
+    "data": {
+     "contoh": [
+      "350",
+      "2,4",
+      "10"
+     ]
+    },
+    "isi": [
      {
       "tabel": {
        "cols": [
@@ -696,28 +844,33 @@
         ]
        ]
       }
+     },
+     {
+      "li": [
+       "Ganti awalan dengan pangkat sepuluhnya, lalu rapikan ke bentuk baku: 350 nm = 350 × 10⁻⁹ m = 3,5 × 10⁻⁷ m.",
+       "Mengalikan: kalikan angka depannya, jumlahkan pangkatnya. Membagi: bagi angka depannya, kurangkan pangkatnya.",
+       "Rapikan hasilnya: 12 × 10² = 1,2 × 10³."
+      ]
      }
     ]
    },
    "lihat": {
-    "soal": "Tulis 0,000 452 m dalam notasi ilmiah.",
+    "soal": "Hitung (4 × 10⁻³) × (3 × 10⁵) dalam bentuk baku.",
     "langkah": [
-     "Geser koma ke kanan sampai tersisa satu angka bukan nol di depannya: 4,52.",
-     "Koma bergeser 4 tempat ke kanan, jadi pangkatnya −4.",
-     "Hasil: 4,52 × 10⁻⁴ m."
+     "Kalikan angka depan: 4 × 3 = 12.",
+     "Jumlahkan pangkat: −3 + 5 = 2, jadi 12 × 10².",
+     "Rapikan: 12 × 10² = 1,2 × 10³."
     ]
    },
    "bersama": "UKUR-041",
    "sendiri": [
-    "UKUR-042",
     "UKUR-043",
-    "UKUR-044",
-    "UKUR-045"
+    "UKUR-044"
    ],
    "ringkas": [
-    "Bentuk baku: a × 10ⁿ, dengan 1 ≤ a < 10.",
-    "Koma ke kiri → pangkat naik; koma ke kanan → pangkat turun.",
-    "Awalan satuan adalah pangkat sepuluh."
+    "Awalan = pangkat sepuluh: mikro 10⁻⁶, nano 10⁻⁹, giga 10⁹.",
+    "Kali: kalikan angka depan, jumlahkan pangkat. Bagi: bagi angka depan, kurangkan pangkat.",
+    "Rapikan hasil ke bentuk baku."
    ],
    "lanjut": "Sebuah rumus bisa diperiksa tanpa percobaan, hanya dengan melihat besaran penyusunnya. Bagaimana caranya?"
   },
@@ -868,8 +1021,8 @@
   }
  ],
  "akhir": {
-  "judul": "Campuran dan setara TKA",
-  "teks": "Soal dari semua unit diacak, ditambah tiga soal setara TKA. Kerjakan setiap soal sekali; hasilnya masuk ke jadwal ulangan.",
+  "judul": "Ujian akhir",
+  "teks": "Soal dari ketiga paket diacak, termasuk tiga soal setara TKA. Setiap soal dikerjakan sekali, tanpa bantuan. Kartu materi boleh dibuka; jumlah pembukaannya dicatat untuk guru. Hasilnya masuk ke jadwal ulangan.",
   "soal": [
    "UKUR-023",
    "UKUR-037",
@@ -924,11 +1077,11 @@
   },
   "M10": {
    "judul": "Nomor garis nonius dibaca sebagai milimeter",
-   "teks": "Nomor garis nonius yang berimpit dikalikan 0,1 mm. Garis ke-7 berarti 0,7 mm, bukan 7 mm."
+   "teks": "Nomor garis nonius yang berimpit dikalikan 0,01 cm (0,1 mm). Garis ke-8 berarti 0,08 cm, bukan 0,8 cm."
   },
   "M11": {
-   "judul": "Ketelitian jangka sorong dikira 0,01 mm",
-   "teks": "Jangka sorong dengan nonius 10 skala teliti 0,1 mm. Ketelitian 0,01 mm milik mikrometer sekrup."
+   "judul": "Ketelitian jangka sorong dikira 0,001 cm",
+   "teks": "Jangka sorong dengan nonius 10 skala teliti 0,01 cm (0,1 mm). Ketelitian 0,01 mm (0,001 cm) milik mikrometer sekrup."
   },
   "M12": {
    "judul": "Skala utama dibaca sesudah nol nonius",
@@ -948,7 +1101,7 @@
   },
   "M16": {
    "judul": "Ketelitian alat ukur tertukar",
-   "teks": "Ketelitian: mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm. Hasil ukur ditulis tepat sampai ketelitian alatnya."
+   "teks": "Ketelitian: mistar 0,1 cm (1 mm), jangka sorong 0,01 cm (0,1 mm), mikrometer sekrup 0,01 mm. Hasil ukur ditulis tepat sampai ketelitian alatnya."
   },
   "M17": {
    "judul": "Nol di depan dihitung sebagai angka penting",
@@ -1959,47 +2112,51 @@
    "gen": "mistar-tahap",
    "fig": "mistar",
    "bantuan": [
-    "Baca setiap ujung pada garis skala yang tepat di bawahnya. Setiap garis kecil 1 mm.",
+    "Baca angka cm di kiri ujung benda, lalu hitung garis kecil sesudahnya: setiap garis 0,1 cm.",
     "Panjang = ujung kanan − ujung kiri."
    ],
    "varian": [
     {
      "p": {
       "a": 15,
-      "b": 62
+      "b": 62,
+      "satuan": "cm"
      },
      "soal": "Sebuah kunci diukur dengan mistar seperti pada gambar.",
      "langkah": [
       {
-       "teks": "Bacaan ujung kiri (mm)",
-       "kunci": 15,
-       "satuan": "mm"
+       "teks": "Bacaan ujung kiri (cm)",
+       "kunci": 1.5,
+       "satuan": "cm",
+       "toleransi": 0.04
       },
       {
-       "teks": "Bacaan ujung kanan (mm)",
-       "kunci": 62,
-       "satuan": "mm"
+       "teks": "Bacaan ujung kanan (cm)",
+       "kunci": 6.2,
+       "satuan": "cm",
+       "toleransi": 0.04
       },
       {
-       "teks": "Panjang kunci (mm)",
-       "kunci": 47,
-       "satuan": "mm",
+       "teks": "Panjang kunci (cm)",
+       "kunci": 4.7,
+       "satuan": "cm",
+       "toleransi": 0.04,
        "salah": [
         {
-         "nilai": 62,
+         "nilai": 6.2,
          "m": "M05"
         },
         {
-         "nilai": 4.7,
+         "nilai": 47,
          "m": "M06"
         }
        ]
       }
      ],
      "pembahasan": [
-      "Ujung kiri di 1,5 cm = 15 mm.",
-      "Ujung kanan di 6,2 cm = 62 mm.",
-      "Panjang = 62 − 15 = 47 mm."
+      "Ujung kiri: angka 1 lalu 5 garis kecil: 1 + 0,5 = 1,5 cm.",
+      "Ujung kanan: angka 6 lalu 2 garis kecil: 6 + 0,2 = 6,2 cm.",
+      "Panjang = 6,2 − 1,5 = 4,7 cm."
      ]
     }
    ]
@@ -2011,124 +2168,134 @@
    "gen": "mistar",
    "fig": "mistar",
    "bantuan": [
-    "Setiap garis kecil pada mistar bernilai 1 mm; angka besar menunjukkan cm.",
+    "Angka besar pada mistar menunjukkan cm; setiap garis kecil 0,1 cm (1 mm).",
     "Panjang = bacaan ujung kanan − bacaan ujung kiri."
    ],
    "varian": [
     {
      "p": {
       "a": 0,
-      "b": 47
+      "b": 47,
+      "satuan": "cm"
      },
-     "soal": "Sebuah baut diukur dengan mistar seperti pada gambar. Berapa panjang baut dalam milimeter?",
-     "kunci": 47,
-     "satuan": "mm",
+     "soal": "Sebuah baut diukur dengan mistar seperti pada gambar. Berapa panjang baut dalam sentimeter?",
+     "kunci": 4.7,
+     "satuan": "cm",
+     "toleransi": 0.04,
      "salah": [
       {
-       "nilai": 4.7,
+       "nilai": 47,
        "m": "M06"
       }
      ],
      "pembahasan": [
       "Ujung kiri tepat di angka 0.",
-      "Ujung kanan di 4,7 cm = 47 mm.",
-      "Panjang = 47 − 0 = 47 mm."
+      "Ujung kanan: angka 4 lalu 7 garis kecil: 4 + 0,7 = 4,7 cm.",
+      "Panjang = 4,7 − 0,0 = 4,7 cm."
      ]
     },
     {
      "p": {
       "a": 30,
-      "b": 84
+      "b": 84,
+      "satuan": "cm"
      },
-     "soal": "Sebuah pensil diukur dengan mistar seperti pada gambar. Berapa panjang pensil dalam milimeter?",
-     "kunci": 54,
-     "satuan": "mm",
+     "soal": "Sebuah pensil diukur dengan mistar seperti pada gambar. Berapa panjang pensil dalam sentimeter?",
+     "kunci": 5.4,
+     "satuan": "cm",
+     "toleransi": 0.04,
      "salah": [
       {
-       "nilai": 5.4,
+       "nilai": 54,
        "m": "M06"
       },
       {
-       "nilai": 84,
+       "nilai": 8.4,
        "m": "M05"
       }
      ],
      "pembahasan": [
-      "Ujung kiri di 3,0 cm = 30 mm.",
-      "Ujung kanan di 8,4 cm = 84 mm.",
-      "Panjang = 84 − 30 = 54 mm."
+      "Ujung kiri: tepat di angka 3: 3,0 cm.",
+      "Ujung kanan: angka 8 lalu 4 garis kecil: 8 + 0,4 = 8,4 cm.",
+      "Panjang = 8,4 − 3,0 = 5,4 cm."
      ]
     },
     {
      "p": {
       "a": 12,
-      "b": 69
+      "b": 69,
+      "satuan": "cm"
      },
-     "soal": "Sebuah jepit kertas diukur dengan mistar seperti pada gambar. Berapa panjang jepit kertas dalam milimeter?",
-     "kunci": 57,
-     "satuan": "mm",
+     "soal": "Sebuah jepit kertas diukur dengan mistar seperti pada gambar. Berapa panjang jepit kertas dalam sentimeter?",
+     "kunci": 5.7,
+     "satuan": "cm",
+     "toleransi": 0.04,
      "salah": [
       {
-       "nilai": 5.7,
+       "nilai": 57,
        "m": "M06"
       },
       {
-       "nilai": 69,
+       "nilai": 6.9,
        "m": "M05"
       }
      ],
      "pembahasan": [
-      "Ujung kiri di 1,2 cm = 12 mm.",
-      "Ujung kanan di 6,9 cm = 69 mm.",
-      "Panjang = 69 − 12 = 57 mm."
+      "Ujung kiri: angka 1 lalu 2 garis kecil: 1 + 0,2 = 1,2 cm.",
+      "Ujung kanan: angka 6 lalu 9 garis kecil: 6 + 0,9 = 6,9 cm.",
+      "Panjang = 6,9 − 1,2 = 5,7 cm."
      ]
     },
     {
      "p": {
       "a": 25,
-      "b": 91
+      "b": 91,
+      "satuan": "cm"
      },
-     "soal": "Sebuah penghapus diukur dengan mistar seperti pada gambar. Berapa panjang penghapus dalam milimeter?",
-     "kunci": 66,
-     "satuan": "mm",
+     "soal": "Sebuah penghapus diukur dengan mistar seperti pada gambar. Berapa panjang penghapus dalam sentimeter?",
+     "kunci": 6.6,
+     "satuan": "cm",
+     "toleransi": 0.04,
      "salah": [
       {
-       "nilai": 6.6,
+       "nilai": 66,
        "m": "M06"
       },
       {
-       "nilai": 91,
+       "nilai": 9.1,
        "m": "M05"
       }
      ],
      "pembahasan": [
-      "Ujung kiri di 2,5 cm = 25 mm.",
-      "Ujung kanan di 9,1 cm = 91 mm.",
-      "Panjang = 91 − 25 = 66 mm."
+      "Ujung kiri: angka 2 lalu 5 garis kecil: 2 + 0,5 = 2,5 cm.",
+      "Ujung kanan: angka 9 lalu 1 garis kecil: 9 + 0,1 = 9,1 cm.",
+      "Panjang = 9,1 − 2,5 = 6,6 cm."
      ]
     },
     {
      "p": {
       "a": 7,
-      "b": 38
+      "b": 38,
+      "satuan": "cm"
      },
-     "soal": "Sebuah kapur tulis diukur dengan mistar seperti pada gambar. Berapa panjang kapur tulis dalam milimeter?",
-     "kunci": 31,
-     "satuan": "mm",
+     "soal": "Sebuah kapur tulis diukur dengan mistar seperti pada gambar. Berapa panjang kapur tulis dalam sentimeter?",
+     "kunci": 3.1,
+     "satuan": "cm",
+     "toleransi": 0.04,
      "salah": [
       {
-       "nilai": 3.1,
+       "nilai": 31,
        "m": "M06"
       },
       {
-       "nilai": 38,
+       "nilai": 3.8,
        "m": "M05"
       }
      ],
      "pembahasan": [
-      "Ujung kiri di 0,7 cm = 7 mm.",
-      "Ujung kanan di 3,8 cm = 38 mm.",
-      "Panjang = 38 − 7 = 31 mm."
+      "Ujung kiri: angka 0 lalu 7 garis kecil: 0 + 0,7 = 0,7 cm.",
+      "Ujung kanan: angka 3 lalu 8 garis kecil: 3 + 0,8 = 3,8 cm.",
+      "Panjang = 3,8 − 0,7 = 3,1 cm."
      ]
     }
    ]
@@ -2306,11 +2473,11 @@
    "format": "pilihan-ganda",
    "simpul": "DAS-01",
    "bantuan": [
-    "Alatnya harus bisa membaca sampai persepuluhan milimeter."
+    "Alatnya harus bisa membaca sampai perseratus sentimeter (0,01 cm)."
    ],
    "varian": [
     {
-     "soal": "Tebak dulu: alat apa yang dapat membedakan 16,2 mm dan 16,3 mm?",
+     "soal": "Tebak dulu: alat apa yang dapat membedakan 1,62 cm dan 1,63 cm?",
      "opsi": [
       "Mistar 1 meter",
       "Meteran kain",
@@ -2319,8 +2486,8 @@
      ],
      "kunci": 2,
      "pembahasan": [
-      "Beda 16,2 mm dan 16,3 mm adalah 0,1 mm.",
-      "Jangka sorong (nonius 10 skala) teliti sampai 0,1 mm; mistar dan meteran hanya sampai 1 mm."
+      "Beda 1,62 cm dan 1,63 cm adalah 0,01 cm (0,1 mm).",
+      "Jangka sorong (nonius 10 skala) teliti sampai 0,01 cm; mistar dan meteran hanya sampai 0,1 cm."
      ],
      "salah": {
       "0": "M16",
@@ -2336,24 +2503,29 @@
    "gen": "jangka-sorong-tahap",
    "fig": "jangka-sorong",
    "bantuan": [
-    "Skala utama dibaca pada garis tepat di kiri angka nol nonius.",
-    "Cari satu garis nonius yang paling lurus dengan garis skala utama."
+    "Cari angka cm di kiri nol nonius, lalu hitung garis kecil dari angka itu sampai sebelum nol nonius.",
+    "Cari satu garis nonius yang paling lurus dengan garis skala utama; setiap nomor bernilai 0,01 cm."
    ],
    "varian": [
     {
      "p": {
       "mm": 41,
-      "k": 4
+      "k": 4,
+      "satuan": "cm"
      },
      "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus.",
      "langkah": [
       {
-       "teks": "Skala utama (mm)",
-       "kunci": 41,
-       "satuan": "mm",
+       "teks": "Angka cm pada skala utama, tepat sebelum nol nonius",
+       "kunci": 4,
+       "satuan": "cm"
+      },
+      {
+       "teks": "Banyak garis kecil (0,1 cm) sesudah angka itu, sebelum nol nonius",
+       "kunci": 1,
        "salah": [
         {
-         "nilai": 42,
+         "nilai": 2,
          "m": "M12"
         }
        ]
@@ -2363,25 +2535,31 @@
        "kunci": 4
       },
       {
-       "teks": "Hasil pengukuran (mm)",
-       "kunci": 41.4,
-       "satuan": "mm",
+       "teks": "Hasil pengukuran (cm)",
+       "kunci": 4.14,
+       "satuan": "cm",
+       "toleransi": 0.004,
        "salah": [
         {
-         "nilai": 45,
+         "nilai": 4.5,
          "m": "M10"
         },
         {
-         "nilai": 41.04,
+         "nilai": 4.104,
          "m": "M11"
+        },
+        {
+         "nilai": 41.4,
+         "m": "M06"
         }
        ]
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 41 mm (4,1 cm): skala utama = 41 mm.",
-      "Garis nonius ke-4 berimpit dengan salah satu garis skala utama: 4 × 0,1 mm = 0,4 mm.",
-      "Hasil = 41 + 0,4 = 41,4 mm."
+      "Angka 4 pada skala utama, tepat sebelum nol nonius: 4 cm.",
+      "Sesudah angka 4 ada 1 garis kecil sebelum nol nonius: 1 × 0,1 cm = 0,1 cm.",
+      "Garis nonius ke-4 berimpit dengan garis skala utama: 4 × 0,01 cm = 0,04 cm.",
+      "Hasil = 4 + 0,1 + 0,04 = 4,14 cm."
      ]
     }
    ]
@@ -2393,176 +2571,218 @@
    "gen": "jangka-sorong",
    "fig": "jangka-sorong",
    "bantuan": [
-    "Baca skala utama pada garis tepat di kiri angka nol nonius.",
-    "Tambahkan nomor garis nonius yang berimpit × 0,1 mm."
+    "Baca angka cm di kiri nol nonius, lalu tambahkan garis kecil sesudahnya × 0,1 cm.",
+    "Tambahkan nomor garis nonius yang berimpit × 0,01 cm."
    ],
    "varian": [
     {
      "p": {
       "mm": 23,
-      "k": 7
+      "k": 7,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur tebal sebuah buku. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 23.7,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur tebal sebuah buku. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 2.37,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 30,
+       "nilai": 23.7,
+       "m": "M06"
+      },
+      {
+       "nilai": 3,
        "m": "M10"
       },
       {
-       "nilai": 23.07,
+       "nilai": 2.307,
        "m": "M11"
       },
       {
-       "nilai": 24.7,
+       "nilai": 2.47,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 23 mm (2,3 cm): skala utama = 23 mm.",
-      "Garis nonius ke-7 berimpit dengan salah satu garis skala utama: 7 × 0,1 mm = 0,7 mm.",
-      "Hasil = 23 + 0,7 = 23,7 mm."
+      "Angka 2 pada skala utama, tepat sebelum nol nonius: 2 cm.",
+      "Sesudah angka 2 ada 3 garis kecil sebelum nol nonius: 3 × 0,1 cm = 0,3 cm.",
+      "Garis nonius ke-7 berimpit dengan garis skala utama: 7 × 0,01 cm = 0,07 cm.",
+      "Hasil = 2 + 0,3 + 0,07 = 2,37 cm."
      ]
     },
     {
      "p": {
       "mm": 15,
-      "k": 2
+      "k": 2,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah kelereng. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 15.2,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah kelereng. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 1.52,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 17,
+       "nilai": 15.2,
+       "m": "M06"
+      },
+      {
+       "nilai": 1.7,
        "m": "M10"
       },
       {
-       "nilai": 15.02,
+       "nilai": 1.502,
        "m": "M11"
       },
       {
-       "nilai": 16.2,
+       "nilai": 1.62,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 15 mm (1,5 cm): skala utama = 15 mm.",
-      "Garis nonius ke-2 berimpit dengan salah satu garis skala utama: 2 × 0,1 mm = 0,2 mm.",
-      "Hasil = 15 + 0,2 = 15,2 mm."
+      "Angka 1 pada skala utama, tepat sebelum nol nonius: 1 cm.",
+      "Sesudah angka 1 ada 5 garis kecil sebelum nol nonius: 5 × 0,1 cm = 0,5 cm.",
+      "Garis nonius ke-2 berimpit dengan garis skala utama: 2 × 0,01 cm = 0,02 cm.",
+      "Hasil = 1 + 0,5 + 0,02 = 1,52 cm."
      ]
     },
     {
      "p": {
       "mm": 34,
-      "k": 9
+      "k": 9,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur panjang sebuah baut. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 34.9,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur panjang sebuah baut. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 3.49,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 43,
+       "nilai": 34.9,
+       "m": "M06"
+      },
+      {
+       "nilai": 4.3,
        "m": "M10"
       },
       {
-       "nilai": 34.09,
+       "nilai": 3.409,
        "m": "M11"
       },
       {
-       "nilai": 35.9,
+       "nilai": 3.59,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 34 mm (3,4 cm): skala utama = 34 mm.",
-      "Garis nonius ke-9 berimpit dengan salah satu garis skala utama: 9 × 0,1 mm = 0,9 mm.",
-      "Hasil = 34 + 0,9 = 34,9 mm."
+      "Angka 3 pada skala utama, tepat sebelum nol nonius: 3 cm.",
+      "Sesudah angka 3 ada 4 garis kecil sebelum nol nonius: 4 × 0,1 cm = 0,4 cm.",
+      "Garis nonius ke-9 berimpit dengan garis skala utama: 9 × 0,01 cm = 0,09 cm.",
+      "Hasil = 3 + 0,4 + 0,09 = 3,49 cm."
      ]
     },
     {
      "p": {
       "mm": 8,
-      "k": 5
+      "k": 5,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah pensil. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 8.5,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah pensil. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 0.85,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 13,
+       "nilai": 8.5,
+       "m": "M06"
+      },
+      {
+       "nilai": 1.3,
        "m": "M10"
       },
       {
-       "nilai": 8.05,
+       "nilai": 0.805,
        "m": "M11"
       },
       {
-       "nilai": 9.5,
+       "nilai": 0.95,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 8 mm (0,8 cm): skala utama = 8 mm.",
-      "Garis nonius ke-5 berimpit dengan salah satu garis skala utama: 5 × 0,1 mm = 0,5 mm.",
-      "Hasil = 8 + 0,5 = 8,5 mm."
+      "Angka 0 pada skala utama, tepat sebelum nol nonius: 0 cm.",
+      "Sesudah angka 0 ada 8 garis kecil sebelum nol nonius: 8 × 0,1 cm = 0,8 cm.",
+      "Garis nonius ke-5 berimpit dengan garis skala utama: 5 × 0,01 cm = 0,05 cm.",
+      "Hasil = 0 + 0,8 + 0,05 = 0,85 cm."
      ]
     },
     {
      "p": {
       "mm": 52,
-      "k": 1
+      "k": 1,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter luar sebuah gelas plastik. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 52.1,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter luar sebuah gelas plastik. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 5.21,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 53,
+       "nilai": 52.1,
+       "m": "M06"
+      },
+      {
+       "nilai": 5.3,
        "m": "M10"
       },
       {
-       "nilai": 52.01,
+       "nilai": 5.201,
        "m": "M11"
       },
       {
-       "nilai": 53.1,
+       "nilai": 5.31,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 52 mm (5,2 cm): skala utama = 52 mm.",
-      "Garis nonius ke-1 berimpit dengan salah satu garis skala utama: 1 × 0,1 mm = 0,1 mm.",
-      "Hasil = 52 + 0,1 = 52,1 mm."
+      "Angka 5 pada skala utama, tepat sebelum nol nonius: 5 cm.",
+      "Sesudah angka 5 ada 2 garis kecil sebelum nol nonius: 2 × 0,1 cm = 0,2 cm.",
+      "Garis nonius ke-1 berimpit dengan garis skala utama: 1 × 0,01 cm = 0,01 cm.",
+      "Hasil = 5 + 0,2 + 0,01 = 5,21 cm."
      ]
     },
     {
      "p": {
       "mm": 19,
-      "k": 6
+      "k": 6,
+      "satuan": "cm"
      },
-     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus. Berapa hasil pengukurannya dalam milimeter?",
-     "kunci": 19.6,
-     "satuan": "mm",
+     "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus. Berapa hasil pengukurannya dalam sentimeter?",
+     "kunci": 1.96,
+     "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
-       "nilai": 25,
+       "nilai": 19.6,
+       "m": "M06"
+      },
+      {
+       "nilai": 2.5,
        "m": "M10"
       },
       {
-       "nilai": 19.06,
+       "nilai": 1.906,
        "m": "M11"
       },
       {
-       "nilai": 20.6,
+       "nilai": 2.06,
        "m": "M12"
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 19 mm (1,9 cm): skala utama = 19 mm.",
-      "Garis nonius ke-6 berimpit dengan salah satu garis skala utama: 6 × 0,1 mm = 0,6 mm.",
-      "Hasil = 19 + 0,6 = 19,6 mm."
+      "Angka 1 pada skala utama, tepat sebelum nol nonius: 1 cm.",
+      "Sesudah angka 1 ada 9 garis kecil sebelum nol nonius: 9 × 0,1 cm = 0,9 cm.",
+      "Garis nonius ke-6 berimpit dengan garis skala utama: 6 × 0,01 cm = 0,06 cm.",
+      "Hasil = 1 + 0,9 + 0,06 = 1,96 cm."
      ]
     }
    ]
@@ -2636,8 +2856,8 @@
    "gen": "jangka-sorong",
    "fig": "jangka-sorong",
    "bantuan": [
-    "Baca hasilnya dalam mm dulu, lalu ubah ke cm.",
-    "1 cm = 10 mm, jadi bagi hasil dalam mm dengan 10."
+    "Pisahkan bacaan menjadi tiga bagian: angka cm, garis kecil (0,1 cm), garis nonius (0,01 cm).",
+    "Jumlahkan ketiganya; hasilnya punya dua angka di belakang koma."
    ],
    "varian": [
     {
@@ -2649,6 +2869,7 @@
      "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah tutup spidol. Nyatakan hasilnya dalam sentimeter.",
      "kunci": 1.78,
      "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 17.8,
@@ -2668,9 +2889,10 @@
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 17 mm (1,7 cm): skala utama = 17 mm.",
-      "Garis nonius ke-8 berimpit dengan salah satu garis skala utama: 8 × 0,1 mm = 0,8 mm.",
-      "Hasil = 17 + 0,8 = 17,8 mm = 1,78 cm."
+      "Angka 1 pada skala utama, tepat sebelum nol nonius: 1 cm.",
+      "Sesudah angka 1 ada 7 garis kecil sebelum nol nonius: 7 × 0,1 cm = 0,7 cm.",
+      "Garis nonius ke-8 berimpit dengan garis skala utama: 8 × 0,01 cm = 0,08 cm.",
+      "Hasil = 1 + 0,7 + 0,08 = 1,78 cm."
      ]
     },
     {
@@ -2682,6 +2904,7 @@
      "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus. Nyatakan hasilnya dalam sentimeter.",
      "kunci": 2.13,
      "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 21.3,
@@ -2701,9 +2924,10 @@
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 21 mm (2,1 cm): skala utama = 21 mm.",
-      "Garis nonius ke-3 berimpit dengan salah satu garis skala utama: 3 × 0,1 mm = 0,3 mm.",
-      "Hasil = 21 + 0,3 = 21,3 mm = 2,13 cm."
+      "Angka 2 pada skala utama, tepat sebelum nol nonius: 2 cm.",
+      "Sesudah angka 2 ada 1 garis kecil sebelum nol nonius: 1 × 0,1 cm = 0,1 cm.",
+      "Garis nonius ke-3 berimpit dengan garis skala utama: 3 × 0,01 cm = 0,03 cm.",
+      "Hasil = 2 + 0,1 + 0,03 = 2,13 cm."
      ]
     },
     {
@@ -2715,6 +2939,7 @@
      "soal": "Gambar menunjukkan skala jangka sorong saat mengukur tebal sebuah papan. Nyatakan hasilnya dalam sentimeter.",
      "kunci": 1.26,
      "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 12.6,
@@ -2734,9 +2959,10 @@
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 12 mm (1,2 cm): skala utama = 12 mm.",
-      "Garis nonius ke-6 berimpit dengan salah satu garis skala utama: 6 × 0,1 mm = 0,6 mm.",
-      "Hasil = 12 + 0,6 = 12,6 mm = 1,26 cm."
+      "Angka 1 pada skala utama, tepat sebelum nol nonius: 1 cm.",
+      "Sesudah angka 1 ada 2 garis kecil sebelum nol nonius: 2 × 0,1 cm = 0,2 cm.",
+      "Garis nonius ke-6 berimpit dengan garis skala utama: 6 × 0,01 cm = 0,06 cm.",
+      "Hasil = 1 + 0,2 + 0,06 = 1,26 cm."
      ]
     },
     {
@@ -2748,6 +2974,7 @@
      "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah gelas kecil. Nyatakan hasilnya dalam sentimeter.",
      "kunci": 4.52,
      "satuan": "cm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 45.2,
@@ -2767,9 +2994,10 @@
       }
      ],
      "pembahasan": [
-      "Angka nol nonius berada sesudah garis 45 mm (4,5 cm): skala utama = 45 mm.",
-      "Garis nonius ke-2 berimpit dengan salah satu garis skala utama: 2 × 0,1 mm = 0,2 mm.",
-      "Hasil = 45 + 0,2 = 45,2 mm = 4,52 cm."
+      "Angka 4 pada skala utama, tepat sebelum nol nonius: 4 cm.",
+      "Sesudah angka 4 ada 5 garis kecil sebelum nol nonius: 5 × 0,1 cm = 0,5 cm.",
+      "Garis nonius ke-2 berimpit dengan garis skala utama: 2 × 0,01 cm = 0,02 cm.",
+      "Hasil = 4 + 0,5 + 0,02 = 4,52 cm."
      ]
     }
    ]
@@ -2820,12 +3048,18 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur tebal sebuah koin.",
      "langkah": [
       {
-       "teks": "Skala utama, termasuk garis setengah milimeter (mm)",
-       "kunci": 1.5,
+       "teks": "Garis milimeter terakhir yang terlihat (mm)",
+       "kunci": 1,
+       "satuan": "mm"
+      },
+      {
+       "teks": "Garis setengah milimeter: tulis 0,5 jika terlihat, 0 jika belum",
+       "kunci": 0.5,
        "satuan": "mm",
+       "toleransi": 0.04,
        "salah": [
         {
-         "nilai": 1,
+         "nilai": 0,
          "m": "M14"
         }
        ]
@@ -2838,18 +3072,24 @@
        "teks": "Hasil pengukuran (mm)",
        "kunci": 1.86,
        "satuan": "mm",
+       "toleransi": 0.004,
        "salah": [
         {
          "nilai": 5.1,
          "m": "M15"
+        },
+        {
+         "nilai": 1.36,
+         "m": "M14"
         }
        ]
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 1 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 1,5 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 1 mm.",
+      "Garis setengah milimeter sesudahnya (di bawah garis acuan) juga terlihat: + 0,5 mm.",
       "Garis 36 pada selubung segaris dengan garis acuan: 36 × 0,01 mm = 0,36 mm.",
-      "Hasil = 1,5 + 0,36 = 1,86 mm."
+      "Hasil = 1 + 0,5 + 0,36 = 1,86 mm."
      ]
     }
    ]
@@ -2873,6 +3113,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah paku. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 4.36,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 4.86,
@@ -2884,7 +3125,8 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 4 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 4 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 4 mm.",
+      "Garis setengah milimeter sesudahnya belum terlihat: + 0 mm.",
       "Garis 36 pada selubung segaris dengan garis acuan: 36 × 0,01 mm = 0,36 mm.",
       "Hasil = 4 + 0,36 = 4,36 mm."
      ]
@@ -2897,6 +3139,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah sedotan. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 7.72,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 7.22,
@@ -2908,9 +3151,10 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 7 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 7,5 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 7 mm.",
+      "Garis setengah milimeter sesudahnya (di bawah garis acuan) juga terlihat: + 0,5 mm.",
       "Garis 22 pada selubung segaris dengan garis acuan: 22 × 0,01 mm = 0,22 mm.",
-      "Hasil = 7,5 + 0,22 = 7,72 mm."
+      "Hasil = 7 + 0,5 + 0,22 = 7,72 mm."
      ]
     },
     {
@@ -2921,6 +3165,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur tebal selembar karton. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 0.62,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 0.12,
@@ -2932,9 +3177,10 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 0 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 0,5 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 0 mm.",
+      "Garis setengah milimeter sesudahnya (di bawah garis acuan) juga terlihat: + 0,5 mm.",
       "Garis 12 pada selubung segaris dengan garis acuan: 12 × 0,01 mm = 0,12 mm.",
-      "Hasil = 0,5 + 0,12 = 0,62 mm."
+      "Hasil = 0 + 0,5 + 0,12 = 0,62 mm."
      ]
     },
     {
@@ -2945,6 +3191,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah kelereng kecil. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 11.41,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 11.91,
@@ -2956,7 +3203,8 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 11 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 11 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 11 mm.",
+      "Garis setengah milimeter sesudahnya belum terlihat: + 0 mm.",
       "Garis 41 pada selubung segaris dengan garis acuan: 41 × 0,01 mm = 0,41 mm.",
       "Hasil = 11 + 0,41 = 11,41 mm."
      ]
@@ -2969,6 +3217,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter seutas kabel. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 3.57,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 3.07,
@@ -2980,9 +3229,10 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 3 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 3,5 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 3 mm.",
+      "Garis setengah milimeter sesudahnya (di bawah garis acuan) juga terlihat: + 0,5 mm.",
       "Garis 7 pada selubung segaris dengan garis acuan: 7 × 0,01 mm = 0,07 mm.",
-      "Hasil = 3,5 + 0,07 = 3,57 mm."
+      "Hasil = 3 + 0,5 + 0,07 = 3,57 mm."
      ]
     },
     {
@@ -2993,6 +3243,7 @@
      "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur lebar sebuah penghapus kecil. Berapa hasil pengukurannya dalam milimeter?",
      "kunci": 15.28,
      "satuan": "mm",
+     "toleransi": 0.004,
      "salah": [
       {
        "nilai": 15.78,
@@ -3004,7 +3255,8 @@
       }
      ],
      "pembahasan": [
-      "Garis milimeter terakhir yang terlihat: 15 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 15 mm.",
+      "Garis milimeter terakhir yang terlihat di atas garis acuan: 15 mm.",
+      "Garis setengah milimeter sesudahnya belum terlihat: + 0 mm.",
       "Garis 28 pada selubung segaris dengan garis acuan: 28 × 0,01 mm = 0,28 mm.",
       "Hasil = 15 + 0,28 = 15,28 mm."
      ]
@@ -4491,7 +4743,7 @@
       "4": "M31"
      },
      "pembahasan": [
-      "Diameter luar: skala utama 18 mm + garis nonius ke-6 × 0,1 mm = 18,6 mm.",
+      "Diameter luar (jangka sorong): 1 cm + 8 × 0,1 cm + 6 × 0,01 cm = 1,86 cm = 18,6 mm.",
       "Tebal dinding: skala utama 1,5 mm (garis setengah milimeter terlihat) + 25 × 0,01 mm = 1,75 mm.",
       "Diameter dalam = 18,6 − 2 × 1,75 = 15,10 mm. Yang dapat masuk hanya yang lebih kecil dari itu.",
       "16,10 mm muncul jika garis setengah milimeter terlewat; 16,85 mm muncul jika tebal dikurangkan sekali saja; 15,30 mm sedikit melebihi batas."
@@ -4525,7 +4777,7 @@
       "4": "M31"
      },
      "pembahasan": [
-      "Diameter luar: skala utama 24 mm + garis nonius ke-2 × 0,1 mm = 24,2 mm.",
+      "Diameter luar (jangka sorong): 2 cm + 4 × 0,1 cm + 2 × 0,01 cm = 2,42 cm = 24,2 mm.",
       "Tebal dinding: skala utama 2,5 mm (garis setengah milimeter terlihat) + 14 × 0,01 mm = 2,64 mm.",
       "Diameter dalam = 24,2 − 2 × 2,64 = 18,92 mm. Yang dapat masuk hanya yang lebih kecil dari itu.",
       "19,92 mm muncul jika garis setengah milimeter terlewat; 21,56 mm muncul jika tebal dikurangkan sekali saja; 19,12 mm sedikit melebihi batas."
@@ -4632,14 +4884,15 @@
       "mm": 31,
       "k": 8,
       "baut": "33,0",
-      "posisi": 0
+      "posisi": 0,
+      "satuan": "cm"
      },
-     "soal": "Kedalaman sebuah lubang di balok kayu diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah baut sepanjang 33,0 mm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian baut yang menonjol di atas permukaan balok?",
+     "soal": "Kedalaman sebuah lubang di balok kayu diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah baut sepanjang 3,30 cm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian baut yang menonjol di atas permukaan balok?",
      "opsi": [
-      "1,2 mm",
+      "0,12 cm",
       "Baut tidak menonjol",
-      "0,2 mm",
-      "1,92 mm"
+      "0,02 cm",
+      "0,192 cm"
      ],
      "kunci": 0,
      "salah": {
@@ -4648,9 +4901,9 @@
       "3": "M11"
      },
      "pembahasan": [
-      "Kedalaman: skala utama 31 mm + garis nonius ke-8 × 0,1 mm = 31,8 mm.",
-      "Bagian yang menonjol = 33,0 − 31,8 = 1,2 mm.",
-      "Jika nomor garis nonius dibaca sebagai milimeter, kedalamannya terbaca 39 mm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 32,8 mm."
+      "Kedalaman: 3 cm + 1 × 0,1 cm + 8 × 0,01 cm = 3,18 cm.",
+      "Bagian yang menonjol = 3,30 − 3,18 = 0,12 cm.",
+      "Jika nomor garis nonius dibaca sebagai milimeter (0,1 cm), kedalamannya terbaca 3,90 cm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 3,28 cm."
      ]
     },
     {
@@ -4658,14 +4911,15 @@
       "mm": 26,
       "k": 3,
       "baut": "30,0",
-      "posisi": 2
+      "posisi": 2,
+      "satuan": "cm"
      },
-     "soal": "Kedalaman lubang pada sebuah papan diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah paku sepanjang 30,0 mm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian paku yang menonjol di atas permukaan papan?",
+     "soal": "Kedalaman lubang pada sebuah papan diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah paku sepanjang 3,00 cm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian paku yang menonjol di atas permukaan papan?",
      "opsi": [
-      "1,0 mm",
-      "2,7 mm",
-      "3,7 mm",
-      "3,97 mm"
+      "0,10 cm",
+      "0,27 cm",
+      "0,37 cm",
+      "0,397 cm"
      ],
      "kunci": 2,
      "salah": {
@@ -4674,9 +4928,268 @@
       "3": "M11"
      },
      "pembahasan": [
-      "Kedalaman: skala utama 26 mm + garis nonius ke-3 × 0,1 mm = 26,3 mm.",
-      "Bagian yang menonjol = 30,0 − 26,3 = 3,7 mm.",
-      "Jika nomor garis nonius dibaca sebagai milimeter, kedalamannya terbaca 29 mm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 27,3 mm."
+      "Kedalaman: 2 cm + 6 × 0,1 cm + 3 × 0,01 cm = 2,63 cm.",
+      "Bagian yang menonjol = 3,00 − 2,63 = 0,37 cm.",
+      "Jika nomor garis nonius dibaca sebagai milimeter (0,1 cm), kedalamannya terbaca 2,90 cm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 2,73 cm."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "UKUR-054",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "bantuan": [
+    "Lebar hanya diukur sampai 0,1 cm (2 angka penting). Bisakah luasnya lebih teliti dari itu?"
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: bagaimana luas ini sebaiknya ditulis?",
+     "opsi": [
+      "7,392 cm², karena kalkulator selalu benar",
+      "7,4 cm², karena hasil tidak boleh lebih teliti daripada data yang paling kasar",
+      "7 cm², karena hasil selalu dibulatkan ke bilangan bulat",
+      "7,39 cm², karena 3,52 punya tiga angka penting"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "2,1 cm hanya punya 2 angka penting, jadi luasnya juga ditulis dengan 2 angka penting: 7,4 cm².",
+      "Angka 9 dan 2 pada 7,392 tidak didukung oleh ketelitian alat ukur."
+     ],
+     "salah": {
+      "0": "M19",
+      "3": "M21"
+     }
+    }
+   ]
+  },
+  {
+   "id": "UKUR-055",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "bantuan": [
+    "Ubah keduanya ke meter: mikro = 10⁻⁶, nano = 10⁻⁹."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: berapa kali lebih besar sel itu daripada virus?",
+     "opsi": [
+      "10 kali",
+      "100 kali",
+      "1000 kali",
+      "10 000 kali"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "10 μm = 10 × 10⁻⁶ m = 10⁻⁵ m; 100 nm = 100 × 10⁻⁹ m = 10⁻⁷ m.",
+      "10⁻⁵ : 10⁻⁷ = 10², jadi sel itu sekitar 100 kali lebih besar."
+     ],
+     "salah": {
+      "0": "M26",
+      "2": "M26"
+     }
+    }
+   ]
+  },
+  {
+   "id": "UKUR-056",
+   "format": "bertahap",
+   "simpul": "DAS-01",
+   "gen": "ap-hitung-tahap",
+   "bantuan": [
+    "Coret dulu nol di depan angka bukan nol pertama.",
+    "Hitung semua angka sesudahnya, termasuk nol di belakang pada desimal."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": "0,04050"
+     },
+     "soal": "Tentukan banyak angka penting pada hasil ukur 0,04050 m.",
+     "langkah": [
+      {
+       "teks": "Banyak angka nol di depan angka 4 (bukan angka penting)",
+       "kunci": 2
+      },
+      {
+       "teks": "Banyak angka penting",
+       "kunci": 4,
+       "satuan": "angka penting",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M17"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Nol di depan angka 4 ada dua (0,0): bukan angka penting.",
+      "Sisanya 4, 0, 5, 0 penting: nol di antara angka bukan nol dan nol di belakang pada desimal ikut dihitung.",
+      "Jadi ada 4 angka penting."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "UKUR-057",
+   "format": "bertahap",
+   "simpul": "DAS-01",
+   "gen": "notasi-tahap",
+   "bantuan": [
+    "Letakkan koma sesudah angka bukan nol pertama.",
+    "Ke kanan → pangkat negatif."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": "0,00305"
+     },
+     "soal": "Tulis 0,00305 dalam notasi ilmiah.",
+     "langkah": [
+      {
+       "teks": "Koma digeser ke kanan sebanyak berapa tempat?",
+       "kunci": 3
+      },
+      {
+       "teks": "Angka depan a",
+       "kunci": 3.05,
+       "salah": [
+        {
+         "nilai": 30.5,
+         "m": "M24"
+        },
+        {
+         "nilai": 0.305,
+         "m": "M24"
+        }
+       ]
+      },
+      {
+       "teks": "Pangkat n",
+       "kunci": -3,
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M22"
+        },
+        {
+         "nilai": -2,
+         "m": "M23"
+        },
+        {
+         "nilai": -4,
+         "m": "M23"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Koma digeser 3 tempat ke kanan: 0,00305 menjadi 3,05.",
+      "Angka depan a = 3,05 (di antara 1 dan 10).",
+      "Digeser ke kanan → pangkat negatif: 3,05 × 10⁻³."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "UKUR-058",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-01",
+   "gen": "ap-pilih",
+   "bantuan": [
+    "Hitung angka penting setiap pilihan satu per satu.",
+    "Nol di depan tidak dihitung; nol di belakang pada desimal dihitung."
+   ],
+   "varian": [
+    {
+     "p": {
+      "opsi": [
+       "0,05",
+       "1,250",
+       "20,4",
+       "3,0"
+      ],
+      "n": 3
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 3 angka penting?",
+     "opsi": [
+      "0,05",
+      "1,250",
+      "20,4",
+      "3,0"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M17",
+      "1": "M18"
+     },
+     "pembahasan": [
+      "0,05: 1 angka penting.",
+      "1,250: 4 angka penting.",
+      "20,4: 3 angka penting.",
+      "3,0: 2 angka penting.",
+      "Yang tepat 3 angka penting adalah 20,4."
+     ]
+    },
+    {
+     "p": {
+      "opsi": [
+       "0,0062",
+       "1,50",
+       "0,7",
+       "620,1"
+      ],
+      "n": 2
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 2 angka penting?",
+     "opsi": [
+      "0,0062",
+      "1,50",
+      "0,7",
+      "620,1"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M18",
+      "2": "M17"
+     },
+     "pembahasan": [
+      "0,0062: 2 angka penting.",
+      "1,50: 3 angka penting.",
+      "0,7: 1 angka penting.",
+      "620,1: 4 angka penting.",
+      "Yang tepat 2 angka penting adalah 0,0062."
+     ]
+    },
+    {
+     "p": {
+      "opsi": [
+       "0,030",
+       "20,07",
+       "2,5070",
+       "3,05"
+      ],
+      "n": 4
+     },
+     "soal": "Hasil pengukuran manakah yang mempunyai tepat 4 angka penting?",
+     "opsi": [
+      "0,030",
+      "20,07",
+      "2,5070",
+      "3,05"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M17",
+      "2": "M18"
+     },
+     "pembahasan": [
+      "0,030: 2 angka penting.",
+      "20,07: 4 angka penting.",
+      "2,5070: 5 angka penting.",
+      "3,05: 3 angka penting.",
+      "Yang tepat 4 angka penting adalah 20,07."
      ]
     }
    ]
@@ -4693,8 +5206,11 @@
   {
    "judul": "Cara memakai di kelas",
    "items": [
-    "Tugaskan sesinya, misalnya dua sesi per minggu; jangan hanya disediakan. Latihan daring biasanya hanya membantu siswa yang benar-benar memakainya sesuai takaran.",
-    "Minta siswa mengirim kode progres di akhir minggu. Tempel semua kode di tampilan guru untuk melihat miskonsepsi yang paling sering, lalu bahas itu di pertemuan berikutnya.",
+    "Jalur dibagi menjadi tiga paket, masing-masing tiga unit, lalu ujian akhir. Satu paket satu sesi; sesudah setiap paket ada istirahat. Lama sebenarnya setiap paket tercatat di kartu progres.",
+    "Tugaskan sesinya; jangan hanya disediakan. Latihan daring biasanya hanya membantu siswa yang benar-benar memakainya sesuai takaran.",
+    "Siswa mengisi nama dan kelas sebelum mulai. Sesudah setiap paket dan sesudah ujian mereka bisa membagikan kartu progres (gambar atau teks) yang memuat nama, kelas, waktu, dan ID perangkat.",
+    "Kartu materi boleh dibuka kapan saja, termasuk saat ujian: tujuannya menerapkan, bukan menghafal. Jumlah pembukaan dicatat per paket, jadi guru bisa melihat apakah siswa makin jarang membutuhkannya.",
+    "Untuk tabel kelas, minta siswa mengirim teks kode progres, lalu tempel semua kode di tampilan guru untuk melihat miskonsepsi yang paling sering.",
     "Pakai jalur ini untuk latihan dan pekerjaan rumah, bukan pengganti pelajaran. Pada uji coba di SMP negeri di Indonesia (program MENGEJAR, 2022–2023), perangkat lunak adaptif tanpa pelatihan guru tidak menaikkan hasil belajar."
    ]
   },
@@ -4702,10 +5218,10 @@
    "judul": "Batas pilot",
    "items": [
     "Ketidakpastian pengukuran dan pengukuran berulang belum dilatih; hanya disebut di unit 2.",
-    "Jangka sorong memakai nonius 10 skala (0,1 mm); nonius 20 skala hanya disebut.",
+    "Jangka sorong memakai nonius 10 skala (ketelitian 0,01 cm); nonius 20 skala hanya disebut. Mistar dan jangka sorong dibaca dalam cm, mikrometer dalam mm.",
     "Angka dalam cerita (panjang jengkal, ubin, ukuran benda) adalah angka contoh, bukan data sungguhan.",
-    "Kode progres tidak aman; jangan dipakai sebagai nilai ujian.",
-    "Belum diuji di kelas: urutan, lama sesi, dan aturan penguasaan masih perkiraan."
+    "Kartu dan kode progres tidak aman (nama bisa diganti dengan menghapus progres); jangan dipakai sebagai nilai rapor.",
+    "Belum diuji di kelas: target 15 menit per paket, urutan, dan aturan penguasaan masih perkiraan."
    ]
   }
  ]

@@ -17,9 +17,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 FORMATS = ("isian", "bertahap", "pilihan-ganda", "pilihan-ganda-kompleks", "benar-salah")
 BLOCKS = ("p", "li", "tabel", "contoh", "jebakan")
-WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "geser-koma", "dimensi")
+WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "hitung-ap", "geser-koma", "awalan", "dimensi")
 FIGURES = ("mistar", "jangka-sorong", "mikrometer")
-CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan")
+CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan", "toleransi")
 SUP = str.maketrans("0123456789-", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻")
 
 
@@ -175,16 +175,29 @@ def g_satuan_tahap(p):
     return {"langkah": [{"kunci": num(cm)}, {"kunci": num(cm / 100), "salah": _salah((cm, "M03"), avoid=[cm / 100])}]}
 
 
+TOL_CM_RULER = 0.04     # ruler read to 0,1 cm: only the exact reading passes
+TOL_CM_CALIPER = 0.004  # caliper read to 0,01 cm
+TOL_MM_MICRO = 0.004    # micrometer read to 0,01 mm
+
+
 def g_mistar(p):
-    """Object from a mm to b mm on a ruler: length in mm."""
+    """Object from a mm to b mm on a ruler: its length, in mm or (p.satuan "cm") in cm."""
     a, b = D(p["a"]), D(p["b"])
     L = b - a
+    if p.get("satuan") == "cm":
+        pairs = [(L, "M06")] + ([(b / 10, "M05")] if a else [])
+        return {"kunci": num(L / 10), "satuan": "cm", "toleransi": TOL_CM_RULER, "salah": _salah(*pairs, avoid=[L / 10])}
     pairs = [(L / 10, "M06")] + ([(b, "M05")] if a else [])
     return {"kunci": num(L), "satuan": "mm", "salah": _salah(*pairs, avoid=[L])}
 
 
 def g_mistar_tahap(p):
     a, b = D(p["a"]), D(p["b"])
+    if p.get("satuan") == "cm":
+        t = TOL_CM_RULER
+        return {"langkah": [{"kunci": num(a / 10), "toleransi": t}, {"kunci": num(b / 10), "toleransi": t},
+                            {"kunci": num((b - a) / 10), "toleransi": t,
+                             "salah": _salah((b / 10, "M05"), (b - a, "M06"), avoid=[(b - a) / 10])}]}
     return {"langkah": [{"kunci": num(a)}, {"kunci": num(b)},
                         {"kunci": num(b - a), "salah": _salah((b, "M05"), ((b - a) / 10, "M06"), avoid=[b - a])}]}
 
@@ -201,19 +214,27 @@ def _js(p):
 
 
 def g_jangka_sorong(p):
-    """Vernier caliper: main scale mm (line before the vernier zero), vernier line k (10 divisions, 0,1 mm)."""
+    """Vernier caliper: main scale mm (line before the vernier zero), vernier line k (10 divisions, 0,1 mm = 0,01 cm)."""
     mm, k = D(p["mm"]), D(p["k"])
     x = _js(p)
     wrong = [(mm + k, "M10"), (mm + k / 100, "M11"), (mm + 1 + k / 10, "M12")]
     if p.get("satuan", "mm") == "cm":
-        return {"kunci": num(x / 10), "satuan": "cm",
+        return {"kunci": num(x / 10), "satuan": "cm", "toleransi": TOL_CM_CALIPER,
                 "salah": _salah((x, "M06"), *[(v / 10, m) for v, m in wrong], avoid=[x / 10])}
     return {"kunci": num(x), "satuan": "mm", "salah": _salah(*wrong, avoid=[x])}
 
 
 def g_jangka_sorong_tahap(p):
+    """Steps of a caliper reading. In cm (p.satuan "cm"): the cm number, the small lines after it, the vernier line,
+    the result. In mm: the main scale, the vernier line, the result."""
     mm, k = D(p["mm"]), D(p["k"])
     x = _js(p)
+    if p.get("satuan") == "cm":
+        cm, ticks = mm // 10, mm % 10
+        return {"langkah": [{"kunci": num(cm)}, {"kunci": num(ticks), "salah": _salah((ticks + 1, "M12"), avoid=[ticks])},
+                            {"kunci": num(k)},
+                            {"kunci": num(x / 10), "toleransi": TOL_CM_CALIPER,
+                             "salah": _salah(((mm + k) / 10, "M10"), ((mm + k / 100) / 10, "M11"), (x, "M06"), avoid=[x / 10])}]}
     return {"langkah": [{"kunci": num(mm), "salah": _salah((mm + 1, "M12"), avoid=[mm])}, {"kunci": num(k)},
                         {"kunci": num(x), "salah": _salah((mm + k, "M10"), (mm + k / 100, "M11"), avoid=[x])}]}
 
@@ -229,14 +250,20 @@ def g_mikrometer(p):
     """Micrometer: sleeve reading s (with the half-millimetre line), thimble division t (50 divisions, 0,01 mm)."""
     s, t, x = _mk(p)
     half = s - Decimal("0.5") if s % 1 else s + Decimal("0.5")
-    return {"kunci": num(x), "satuan": "mm", "salah": _salah((half + t / 100, "M14"), (s + t / 10, "M15"), avoid=[x])}
+    return {"kunci": num(x), "satuan": "mm", "toleransi": TOL_MM_MICRO,
+            "salah": _salah((half + t / 100, "M14"), (s + t / 10, "M15"), avoid=[x])}
 
 
 def g_mikrometer_tahap(p):
+    """Steps of a micrometer reading: the last millimetre line, the half-millimetre line (0 or 0,5), the thimble line,
+    the result."""
     s, t, x = _mk(p)
-    half = s - Decimal("0.5") if s % 1 else s + Decimal("0.5")
-    return {"langkah": [{"kunci": num(s), "salah": _salah((half, "M14"), avoid=[s])}, {"kunci": num(t)},
-                        {"kunci": num(x), "salah": _salah((s + t / 10, "M15"), avoid=[x])}]}
+    whole, half = s // 1, s % 1
+    return {"langkah": [{"kunci": num(whole)},
+                        {"kunci": num(half), "toleransi": 0.04, "salah": _salah((Decimal("0.5") - half, "M14"), avoid=[half])},
+                        {"kunci": num(t)},
+                        {"kunci": num(x), "toleransi": TOL_MM_MICRO,
+                         "salah": _salah((s + t / 10, "M15"), (x - half + (Decimal("0.5") - half), "M14"), avoid=[x])}]}
 
 
 def g_ap_hitung(p):
@@ -250,6 +277,34 @@ def g_ap_hitung(p):
     if "," in x and x.endswith("0"):
         pairs.append((len(digits.lstrip("0").rstrip("0")) or 1, "M18"))
     return {"kunci": n, "satuan": "angka penting", "salah": _salah(*pairs, avoid=[n])}
+
+
+def g_ap_hitung_tahap(p):
+    """Two steps: how many leading zeros (not significant), then how many significant figures."""
+    x = p["x"]
+    digits = x.replace(",", "")
+    lead = len(digits) - len(digits.lstrip("0"))
+    n = sig_figs(x)
+    return {"langkah": [{"kunci": lead}, {"kunci": n, "salah": _salah((len(digits), "M17"), avoid=[n])}]}
+
+
+def g_ap_pilih(p):
+    """Which written number has exactly p.n significant figures. A wrong option is keyed to M17 when counting its
+    leading zeros would give n, and to M18 when dropping its trailing decimal zeros would give n."""
+    counts = [sig_figs(x) for x in p["opsi"]]
+    if counts.count(p["n"]) != 1:
+        raise ValueError(f"exactly one option must have {p['n']} significant figures: {counts}")
+    k = counts.index(p["n"])
+    salah = {}
+    for i, x in enumerate(p["opsi"]):
+        d = x.replace(",", "")
+        if i == k:
+            continue
+        if x.startswith("0") and len(d) == p["n"]:
+            salah[str(i)] = "M17"
+        elif "," in x and x.endswith("0") and len(d.lstrip("0").rstrip("0")) == p["n"]:
+            salah[str(i)] = "M18"
+    return {"opsi": list(p["opsi"]), "kunci": k, "salah": salah}
 
 
 OPS = {"×": lambda a, b: a * b, ":": lambda a, b: a / b, "+": lambda a, b: a + b, "−": lambda a, b: a - b}
@@ -306,6 +361,15 @@ def g_notasi(p):
     if e == 0:
         raise ValueError("choose a number that needs a power of ten")
     return {"langkah": [{"kunci": num(m), "salah": _salah((m * 10, "M24"), (m / 10, "M24"), avoid=[m])},
+                        {"kunci": e, "salah": _salah((-e, "M22"), (e + 1, "M23"), (e - 1, "M23"), avoid=[e])}]}
+
+
+def g_notasi_tahap(p):
+    """Three steps: how many places the comma moves, the mantissa a, the exponent n."""
+    m, e = normalize(p["x"])
+    if e == 0:
+        raise ValueError("choose a number that needs a power of ten")
+    return {"langkah": [{"kunci": abs(e)}, {"kunci": num(m), "salah": _salah((m * 10, "M24"), (m / 10, "M24"), avoid=[m])},
                         {"kunci": e, "salah": _salah((-e, "M22"), (e + 1, "M23"), (e - 1, "M23"), avoid=[e])}]}
 
 
@@ -401,17 +465,20 @@ def g_tka_pipa(p):
 
 
 def g_tka_kedalaman(p):
-    """Depth read with the caliper's depth rod; a bolt of length p.baut is pushed in: how much sticks out."""
+    """Depth read with the caliper's depth rod; a bolt of length p.baut (mm) is pushed in: how much sticks out.
+    Options in mm, or in cm when p.satuan is "cm"."""
     depth, bolt = _js(p), D(p["baut"])
     mm, k = D(p["mm"]), D(p["k"])
     out = bolt - depth
     if out <= 0:
         raise ValueError("the bolt must stick out")
-    entries = [(fmt(out, 1) + " mm", None)]
+    cm = p.get("satuan") == "cm"
+    show = (lambda v, dp: fmt(v / 10, dp + 1) + " cm") if cm else (lambda v, dp: fmt(v, dp) + " mm")
+    entries = [(show(out, 1), None)]
     misread = mm + k
-    entries.append(("Baut tidak menonjol" if misread >= bolt else fmt(bolt - misread, 1) + " mm", "M10"))
-    entries.append((fmt(bolt - (mm + 1 + k / 10), 1) + " mm", "M12"))
-    entries.append((fmt(bolt - (mm + k / 100), 2) + " mm", "M11"))
+    entries.append(("Baut tidak menonjol" if misread >= bolt else show(bolt - misread, 1), "M10"))
+    entries.append((show(bolt - (mm + 1 + k / 10), 1), "M12"))
+    entries.append((show(bolt - (mm + k / 100), 2), "M11"))
     return _choice(entries, p["posisi"])
 
 
@@ -421,8 +488,8 @@ GEN = {
     "mistar": g_mistar, "mistar-tahap": g_mistar_tahap, "titik-nol": g_titik_nol,
     "jangka-sorong": g_jangka_sorong, "jangka-sorong-tahap": g_jangka_sorong_tahap,
     "mikrometer": g_mikrometer, "mikrometer-tahap": g_mikrometer_tahap,
-    "ap-hitung": g_ap_hitung, "ap-kali": g_ap_kali, "ap-kali-tahap": g_ap_kali_tahap, "ap-tambah": g_ap_tambah,
-    "notasi": g_notasi, "notasi-kali": g_notasi_kali, "notasi-kali-tahap": g_notasi_kali_tahap, "awalan": g_awalan,
+    "ap-hitung": g_ap_hitung, "ap-hitung-tahap": g_ap_hitung_tahap, "ap-pilih": g_ap_pilih, "ap-kali": g_ap_kali, "ap-kali-tahap": g_ap_kali_tahap, "ap-tambah": g_ap_tambah,
+    "notasi": g_notasi, "notasi-tahap": g_notasi_tahap, "notasi-kali": g_notasi_kali, "notasi-kali-tahap": g_notasi_kali_tahap, "awalan": g_awalan,
     "dimensi-pangkat": g_dimensi_pangkat, "tka-pipa": g_tka_pipa, "tka-kedalaman": g_tka_kedalaman,
 }
 
@@ -520,7 +587,7 @@ def _check_generated(it, v, owner, err):
             err(f"{owner} has {len(steps)} steps; generator {it['gen']} makes {len(expected['langkah'])}")
             return
         for i, (got, want) in enumerate(zip(steps, expected["langkah"]), 1):
-            for key in ("kunci", "salah"):
+            for key in ("kunci", "salah", "toleransi"):
                 if key in want and got.get(key) != want[key]:
                     err(f"{owner} langkah {i} {key} {got.get(key)!r} differs from generator {it['gen']}: {want[key]!r}")
 
@@ -661,6 +728,16 @@ def validate_jalur(name, doc, maps, tka_types):
                 err(f"unit {uid} bersama {u['bersama']} must be a 'bertahap' item")
         for sid in u.get("sendiri", []):
             ref(sid, f"unit {uid} sendiri", practice=True)
+    paket = doc.get("paket")
+    if paket is not None:
+        listed = [uid for pk in paket for uid in pk.get("unit", [])]
+        for pk in paket:
+            if not (pk.get("id") and pk.get("judul") and pk.get("unit")):
+                err(f"paket {pk.get('id', '?')} needs 'id', 'judul' and 'unit'")
+        if sorted(listed) != sorted(u.get("id") for u in doc["unit"]):
+            err("paket must list every unit exactly once")
+        elif listed != [u.get("id") for u in doc["unit"]]:
+            err("unit order must follow the paket order")
     akhir = doc["akhir"]
     if not akhir.get("judul") or not akhir.get("soal"):
         err("akhir needs 'judul' and 'soal'")
@@ -699,7 +776,8 @@ def lint_jalur(name, doc):
 
 def summary(doc):
     variants = sum(len(it["varian"]) for it in doc["soal"])
-    return (f"{doc['title']}: {len(doc['prasyarat'])} prasyarat, {len(doc['unit'])} unit, {len(doc['soal'])} soal "
+    packs = f"{len(doc['paket'])} paket, " if doc.get("paket") else ""
+    return (f"{doc['title']}: {len(doc['prasyarat'])} prasyarat, {packs}{len(doc['unit'])} unit, {len(doc['soal'])} soal "
             f"({variants} varian, {sum('tka' in it for it in doc['soal'])} setara TKA), "
             f"{len(doc['miskonsepsi'])} miskonsepsi")
 

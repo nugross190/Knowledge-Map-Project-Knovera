@@ -161,6 +161,29 @@ figcaption{font-size:.84rem;color:var(--muted);text-align:center}
 .cand .btn.no{border-color:var(--warn);background:var(--warn-soft)}
 details.notes{margin-top:8px}
 details.notes summary{cursor:pointer;font-family:var(--f-label);font-weight:600}
+/* identity, packs, dialogs, share card */
+.who{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-size:.95rem}
+.pack{list-style:none;border-left:4px solid var(--accent);padding-left:10px;display:flex;flex-direction:column;gap:6px}
+.pack-head{display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;font-family:var(--f-label)}
+.dlg{border:2px solid var(--ink);border-radius:16px;padding:0;width:min(760px,calc(100vw - 16px));max-height:calc(100vh - 24px);background:var(--surface);color:var(--ink);overflow:auto}
+.dlg::backdrop{background:rgba(20,24,40,.5)}
+.dlg-head{position:sticky;top:0;background:var(--surface);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;padding:12px 16px;border-bottom:1.5px solid var(--line);z-index:2}
+.dlg-head select{font:inherit;font-size:.9rem;padding:6px 8px;border:1.5px solid var(--line);border-radius:8px;flex:1 1 100%;min-width:0}
+.dlg-body{padding:12px 16px 20px;display:flex;flex-direction:column;gap:14px}
+.kcard{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:10px;scroll-margin-top:110px}
+.kcard h4{font-family:var(--f-label);font-size:.95rem;margin:6px 0 0}
+.kcard.cur{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.sharecard{border:2px solid var(--ink);border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:8px;background:#fff}
+.sc-t{font-family:var(--f-label);font-weight:600;font-size:.82rem;color:var(--accent)}
+.sc-n{font-family:var(--f-label);font-weight:800;font-size:1.6rem;line-height:1.1}
+.sc-k{font-family:var(--f-label);font-weight:700}
+.sc-w{color:var(--muted);font-size:.9rem;border-bottom:1.5px solid var(--line);padding-bottom:8px}
+.sc-row{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:center;font-family:var(--f-label);font-weight:600}
+.sc-row .small{grid-column:1 / -1;font-family:var(--f-body);font-weight:400;color:var(--muted)}
+.sc-big{font-size:1.5rem;font-weight:800}
+.dots i.sx{background:var(--warn)}
+.dots b.gap{width:6px}
+body.wide .wrap{max-width:1200px}
 @media (max-width:520px){.step{grid-template-columns:auto 1fr}.step .go{grid-row:auto;grid-column:2;justify-self:start}.card{padding:14px}}
 </style>
 <div class="wrap">
@@ -172,13 +195,19 @@ details.notes summary{cursor:pointer;font-family:var(--f-label);font-weight:600}
   </header>
   <main id="app" aria-live="polite"></main>
 </div>
+<dialog id="kdlg" class="dlg" aria-labelledby="kdlgT"><div class="dlg-head"><h2 id="kdlgT">Kartu materi</h2><button class="btn small" type="button" data-close>Tutup</button><select id="ksel" aria-label="Pilih kartu"></select></div><div class="dlg-body" id="kbody"></div></dialog>
+<dialog id="sdlg" class="dlg" aria-labelledby="sdlgT"><div class="dlg-head"><h2 id="sdlgT">Kartu progres</h2><button class="btn small" type="button" data-close>Tutup</button></div><div class="dlg-body" id="sbody"></div></dialog>
 <script>
 /*__JALUR__*/
 // ---------- data and text helpers ----------
 const ITEM = Object.fromEntries(J.soal.map(it => [it.id, it]));
 const UNIT = Object.fromEntries(J.unit.map(u => [u.id, u]));
 const PRE = Object.fromEntries(J.prasyarat.map(p => [p.id, p]));
-const STEPS = ["cek", ...J.unit.map(u => u.id), "akhir"];
+const PAKET = J.paket || [{id: "K1", judul: "Semua unit", unit: J.unit.map(u => u.id)}];
+const PACK = Object.fromEntries(PAKET.map((p, i) => [p.id, Object.assign({no: i + 1}, p)]));
+const PACK_OF = Object.fromEntries(PAKET.flatMap(p => p.unit.map(u => [u, p.id])));
+const UNIT_NO = Object.fromEntries(J.unit.map((u, i) => [u.id, i + 1]));
+const STEPS = ["cek", ...PAKET.flatMap(p => p.unit), "akhir"];
 const SKILLS = [...new Set([...J.unit.flatMap(u => u.sendiri), ...J.akhir.soal])].sort();
 const DAY = new URLSearchParams(location.search).has("uji") ? 60e3 : 864e5;  // ?uji: one "day" lasts a minute, for testing reviews
 const ULANG = J.ulang_hari || [1, 3, 7, 21];
@@ -215,7 +244,7 @@ function topicChips(codes){
 
 // ---------- saved progress ----------
 const KEY = "jalur-" + J.id;
-function blank(){ return {v: 1, nama: "", cek: {}, unit: {}, fam: {}, mis: {}, akhir: {hasil: {}}, sesi: null}; }
+function blank(){ return {v: 1, nama: "", kelas: "", pid: "", cek: {}, unit: {}, fam: {}, mis: {}, akhir: {hasil: {}}, sesi: null, waktu: {}, kartu: {}, tick: null}; }
 function load(){ try { const s = JSON.parse(localStorage.getItem(KEY)); if(s && s.v === 1) return Object.assign(blank(), s); } catch(e) {} return blank(); }
 let S = load();
 function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
@@ -245,7 +274,16 @@ function cekDone(){ return J.prasyarat.every(p => S.cek[p.id] && S.cek[p.id].awa
 function akhirDone(){ return J.akhir.soal.every(id => id in S.akhir.hasil); }
 function stepDone(step){ return step === "cek" ? cekDone() : step === "akhir" ? akhirDone() : !!(S.unit[step] && S.unit[step].selesai); }
 function nextStep(){ return STEPS.find(s => !stepDone(s)) || null; }
-function stepTitle(step){ return step === "cek" ? "Cek prasyarat" : step === "akhir" ? J.akhir.judul : step === "ulang" ? "Ulangan" : "Unit " + step.slice(1) + " · " + UNIT[step].judul; }
+function stepTitle(step){ return step === "cek" ? "Cek prasyarat" : step === "akhir" ? J.akhir.judul : step === "ulang" ? "Ulangan" : "Unit " + UNIT_NO[step] + " · " + UNIT[step].judul; }
+const hasId = () => !!(S.nama && S.kelas);
+// Active time per zone (pack, exam, check): the gap since the last interaction, capped at 3 minutes so idle time is not counted.
+function zoneOf(step){ return step === "akhir" ? "ujian" : step === "cek" ? "cek" : step === "ulang" ? "ulang" : PACK_OF[step] || step; }
+function tick(){
+  const now = Date.now();
+  if(RUN && S.tick){ const z = zoneOf(RUN.step); S.waktu[z] = (S.waktu[z] || 0) + Math.min(now - S.tick, 180e3); }
+  S.tick = RUN ? now : null;
+}
+const minutes = z => { const ms = S.waktu[z] || 0; return ms ? Math.max(1, Math.round(ms / 60e3)) : 0; };
 function preDigit(pid){
   const c = S.cek[pid];
   if(!c || !c.awal) return 0;
@@ -258,11 +296,26 @@ function svgOpen(w, h, label){ return '<svg viewBox="0 0 ' + w + " " + h + '" ro
 const TXT = (x, y, s, size, anchor, extra) => '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (size || 13) + '" text-anchor="' + (anchor || "middle") + '" fill="currentColor"' + (extra || "") + ">" + s + "</text>";
 const LINE = (x1, y1, x2, y2, w, color, extra) => '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + (color || "currentColor") + '" stroke-width="' + (w || 1) + '"' + (extra || "") + "/>";
 
+// Reading marks: colour 1 = whole units from the numbered line, colour 2 = small lines (or the half-millimetre line),
+// colour 3 = the vernier or thimble line. opt.marks = how many parts to show (the worked example reveals them one by one).
+const C1 = "#0A64A8", C2 = "#C2410C", C3 = "#15803D";
+function svgBox(y0, w, h, label){ return '<svg viewBox="0 ' + y0 + " " + w + " " + h + '" role="img" aria-label="' + esc(label) + '" font-family="Lato,system-ui,sans-serif">'; }
+function placed(x, W, s, size, color, extra){
+  const anchor = x < 110 ? "start" : x > W - 110 ? "end" : "middle", xx = anchor === "start" ? Math.max(4, x - 12) : anchor === "end" ? Math.min(W - 4, x + 12) : x;
+  return TXT(xx, s.y, s.t, size, anchor, ' font-weight="800" fill="' + color + '"' + (extra || ""));
+}
+function sumText(x, y, parts, total, size){
+  return '<text x="' + x + '" y="' + y + '" font-size="' + size + '" text-anchor="middle" font-weight="800" fill="currentColor">' +
+    parts.map(([t, c], i) => (i ? '<tspan fill="currentColor"> + </tspan>' : "") + '<tspan fill="' + c + '">' + t + "</tspan>").join("") +
+    '<tspan fill="currentColor"> = ' + total + "</tspan></text>";
+}
+const cm1 = v => nf((v / 10).toFixed(1));
+
 function figMistar(p, opt = {}){
-  const a = +p.a, b = +p.b;
+  const a = +p.a, b = +p.b, mk = opt.marks || 0;
   const lo = Math.max(0, Math.floor(a / 10) * 10 - 4), hi = Math.ceil(b / 10) * 10 + 4;
   const W = 520, L = 14, R = 14, s = (W - L - R) / (hi - lo), X = mm => L + (mm - lo) * s;
-  let g = svgOpen(W, 150, "Mistar: benda dari " + nf(a / 10) + " cm sampai " + nf(b / 10) + " cm");
+  let g = svgBox(0, W, mk ? 236 : 150, "Mistar: benda dari " + cm1(a) + " cm sampai " + cm1(b) + " cm");
   g += '<rect x="' + (lo === 0 ? X(0) - 8 : -2) + '" y="62" width="' + (W + 4) + '" height="66" rx="4" fill="#F6E7B8" stroke="currentColor" stroke-width="1.5"/>';
   for(let m = lo; m <= hi; m++){
     const len = m % 10 === 0 ? 24 : m % 5 === 0 ? 16 : 10;
@@ -272,7 +325,20 @@ function figMistar(p, opt = {}){
   g += TXT(W - 8, 122, "cm", 14, "end");
   g += '<rect x="' + X(a) + '" y="26" width="' + (X(b) - X(a)) + '" height="28" rx="6" fill="var(--accent-soft)" stroke="currentColor" stroke-width="1.8"/>';
   g += LINE(X(a), 54, X(a), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"') + LINE(X(b), 54, X(b), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"');
-  if(opt.eye){
+  const end = (v, row) => {
+    const cm = Math.floor(v / 10), t = v % 10, xc = X(cm * 10), y = 158 + row * 26;
+    let h = '<rect x="' + (xc - 15) + '" y="90" width="30" height="27" rx="7" fill="none" stroke="' + C1 + '" stroke-width="3"/>' + LINE(xc, 62, xc, 86, 3.5, C1);
+    for(let m = cm * 10 + 1; m <= v; m++) h += LINE(X(m), 62, X(m), 62 + (m % 5 === 0 ? 16 : 10), 3.5, C2);
+    if(t) h += '<path d="M' + xc + " 134 V140 H" + X(v) + ' V134" fill="none" stroke="' + C2 + '" stroke-width="3"/>';
+    const anchorEnd = row === 1 && X(v) > W / 2, xt = anchorEnd ? Math.min(W - 4, X(v) + 8) : Math.max(4, xc - 8);
+    h += '<text x="' + xt + '" y="' + y + '" font-size="19" font-weight="800" text-anchor="' + (anchorEnd ? "end" : "start") + '"><tspan fill="' + C1 + '">' + cm + " cm</tspan>" +
+      (t ? '<tspan fill="currentColor"> + </tspan><tspan fill="' + C2 + '">' + nf((t / 10).toFixed(1)) + ' cm</tspan>' : "") + '<tspan fill="currentColor"> = ' + cm1(v) + " cm</tspan></text>";
+    return h;
+  };
+  if(mk >= 1) g += end(a, 0);
+  if(mk >= 2) g += end(b, 1);
+  if(mk >= 3) g += TXT(W / 2, 224, "Panjang = " + cm1(b) + " cm − " + cm1(a) + " cm = " + cm1(b - a) + " cm", 21, "middle", ' font-weight="800"');
+  if(opt.eye && !mk){
     const ex = opt.eye === "miring" ? Math.min(W - 12, X(b) + 70) : X(b);
     g += '<circle cx="' + ex + '" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="' + ex + '" cy="10" r="2.5" fill="currentColor"/>';
     if(opt.eye === "miring"){
@@ -284,37 +350,52 @@ function figMistar(p, opt = {}){
 }
 
 function figJangka(p, opt = {}){
-  const x = (+p.mm) + (+p.k) / 10;
-  const lo = Math.max(-2, Math.floor(x) - 4), hi = lo + 18;
-  const W = 520, L = 10, s = (W - 2 * L) / (hi - lo), X = mm => L + (mm - lo) * s;
-  const hiK = opt.highlight ? Math.round((x - Math.floor(x)) * 10) : -1;
-  let g = svgOpen(W, 190, "Skala jangka sorong");
+  const mm = +p.mm, k = +p.k, x = mm + k / 10, mk = opt.marks || 0;
+  // The window always shows the cm number the reading starts from and the whole vernier.
+  const lo = Math.max(-2, Math.min(Math.floor(x) - 4, Math.floor(mm / 10) * 10 - 1)), hi = Math.max(lo + 18, x + 11);
+  const W = 520, L = 10, s = (W - 2 * L) / (hi - lo), X = v => L + (v - lo) * s;
+  const hiK = mk >= 3 || opt.highlight ? k : -1, hiC = mk ? C3 : "var(--warn)";
+  const top = mk ? -70 : 0;
+  let g = svgBox(top, W, mk ? 310 : 190, "Skala jangka sorong");
   g += '<rect x="-2" y="10" width="' + (W + 4) + '" height="82" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
-  g += TXT(10, 32, "cm", 15, "start");
+  if(!mk) g += TXT(10, 32, "cm", 15, "start");
   for(let m = Math.ceil(lo); m <= hi; m++){
     if(m < 0) continue;
     const len = m % 10 === 0 ? 32 : m % 5 === 0 ? 22 : 14;
-    const hit = hiK >= 0 && m === Math.floor(x + 1e-9) + hiK;
-    g += LINE(X(m), 92 - len, X(m), 92, hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    const hit = hiK >= 0 && m === mm + hiK;
+    g += LINE(X(m), 92 - len, X(m), 92, hit ? 3.6 : 1.6, hit ? hiC : "currentColor");
     if(m % 10 === 0) g += TXT(X(m), 52, String(m / 10), 24, "middle", ' font-weight="700"');
   }
   const v0 = X(x - 1.4), v1 = X(x + 10.4);
   g += '<rect x="' + v0 + '" y="92" width="' + (v1 - v0) + '" height="74" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5"/>';
   for(let j = 0; j <= 10; j++){
     const pos = x + 0.9 * j, big = j % 5 === 0, hit = j === hiK;
-    g += LINE(X(pos), 92, X(pos), 92 + (big ? 28 : 18), hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    g += LINE(X(pos), 92, X(pos), 92 + (big ? 28 : 18), hit ? 3.6 : 1.6, hit ? hiC : "currentColor");
     if(big) g += TXT(X(pos), 142, String(j), 19, "middle", ' font-weight="700"');
   }
   g += TXT(v1 - 6, 160, "nonius", 13, "end", ' fill="var(--muted)"');
+  const cm = Math.floor(mm / 10), t = mm % 10, xc = X(cm * 10);
+  if(mk >= 1){
+    g += '<rect x="' + (xc - 19) + '" y="27" width="38" height="33" rx="8" fill="none" stroke="' + C1 + '" stroke-width="3"/>' + LINE(xc, 60, xc, 92, 3.6, C1);
+    g += placed(xc, W, {t: cm + " cm", y: -44}, 22, C1);
+  }
+  if(mk >= 2){
+    for(let m = cm * 10 + 1; m <= mm; m++) g += LINE(X(m), 92 - (m % 5 === 0 ? 22 : 14), X(m), 92, 3.6, C2);
+    g += LINE(X(x), 4, X(x), 92, 2, C2, ' stroke-dasharray="5 4"');
+    if(t) g += '<path d="M' + xc + " 6 V-2 H" + X(mm) + ' V6" fill="none" stroke="' + C2 + '" stroke-width="3"/>' + placed((xc + X(mm)) / 2, W, {t: "+ " + t + " × 0,1 = " + nf((t / 10).toFixed(1)) + " cm", y: -12}, 18, C2);
+    else g += placed(xc, W, {t: "+ 0 cm", y: -12}, 18, C2);
+  }
+  if(mk >= 3) g += placed(X(x + 0.9 * k), W, {t: "+ " + k + " × 0,01 = " + nf((k / 100).toFixed(2)) + " cm", y: 190}, 18, C3);
+  if(mk >= 4) g += sumText(W / 2, 228, [[cm + " cm", C1], [nf((t / 10).toFixed(1)) + " cm", C2], [nf((k / 100).toFixed(2)) + " cm", C3]], nf(((mm * 10 + k) / 100).toFixed(2)) + " cm", 22);
   return g + "</svg>";
 }
 
 function figMikro(p, opt = {}){
-  const s0 = +p.s, t = +p.t, x = s0 + t / 100;
+  const s0 = +p.s, t = +p.t, x = s0 + t / 100, mk = opt.marks || 0;
   const start = Math.max(0, 5 * Math.floor((s0 - 3) / 5));
   const x0 = 34, k = 40, X = mm => x0 + (mm - start) * k, edge = X(x), tw = 150;
-  const W = Math.max(380, edge + tw + 6), top = 18, bot = 182, gap = 13, ref = 100;
-  let g = svgOpen(W, 200, "Skala mikrometer sekrup");
+  const W = Math.max(mk ? 480 : 380, edge + tw + 6, mk >= 3 ? edge + 250 : 0), top = 18, bot = 182, gap = 13, ref = 100;
+  let g = svgBox(0, W, mk ? (mk >= 4 ? 262 : 222) : 200, "Skala mikrometer sekrup");
   g += '<rect x="-2" y="72" width="' + (edge + 2) + '" height="56" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
   g += LINE(0, ref, edge, ref, 2);
   for(let m = start; m < x - 0.04; m++){
@@ -322,24 +403,39 @@ function figMikro(p, opt = {}){
     if(m % 5 === 0) g += TXT(X(m), 62, String(m), 22, "middle", ' font-weight="700"');
   }
   for(let m = start + 0.5; m < x - 0.04; m += 1) g += LINE(X(m), ref, X(m), ref + 16, 1.8);
-  g += TXT(4, 24, "mm", 14, "start");
+  if(!mk) g += TXT(4, 24, "mm", 14, "start");
   g += '<rect x="' + edge + '" y="' + top + '" width="' + tw + '" height="' + (bot - top) + '" rx="6" fill="#FFFFFF" stroke="currentColor" stroke-width="1.6"/>';
   g += LINE(edge + 1.5, top + 2, edge + 1.5, bot - 2, 4, "#C9D2DE");
   for(let d = t - 6; d <= t + 6; d++){
     const y = ref - (d - t) * gap;
     if(y < top + 6 || y > bot - 6) continue;
     const v = ((d % 50) + 50) % 50, big = v % 5 === 0;
-    g += LINE(edge, y, edge + (big ? 30 : 18), y, 1.6);
+    g += LINE(edge, y, edge + (big ? 30 : 18), y, mk >= 3 && d === t ? 3.6 : 1.6, mk >= 3 && d === t ? C3 : "currentColor");
     if(big) g += TXT(edge + 38, y + 7, String(v), 20, "start", ' font-weight="700"');
   }
   g += TXT(edge + tw - 8, bot - 8, "selubung", 13, "end", ' fill="var(--muted)"');
+  const whole = Math.floor(s0), half = s0 % 1 !== 0;
+  if(mk >= 1){
+    g += LINE(X(whole), ref, X(whole), ref - 18, 3.6, C1) + LINE(X(whole), 42, X(whole), 78, 1.6, C1, ' stroke-dasharray="4 3"');
+    g += placed(X(whole), edge, {t: whole + " mm", y: 34}, 20, C1);
+  }
+  if(mk >= 2){
+    if(half) g += LINE(X(whole + 0.5), ref, X(whole + 0.5), ref + 16, 3.6, C2) + placed(X(whole + 0.5), edge, {t: "+ 0,5 mm", y: 150}, 18, C2);
+    else {
+      const left = edge - 8 >= 160, xr = left ? edge - 8 : edge + tw + 10, an = left ? "end" : "start";
+      g += TXT(xr, 150, "+ 0 mm", 18, an, ' font-weight="800" fill="' + C2 + '"') + TXT(xr, 168, "garis 0,5 belum terlihat", 13, an, ' font-weight="700" fill="' + C2 + '"');
+    }
+  }
+  if(mk >= 3) g += TXT(edge, 208, "+ " + t + " × 0,01 = " + nf((t / 100).toFixed(2)) + " mm", 18, "start", ' font-weight="800" fill="' + C3 + '"');
+  if(mk >= 4) g += sumText(W / 2, 248, [[whole + " mm", C1]].concat(half ? [["0,5 mm", C2]] : []).concat([[nf((t / 100).toFixed(2)) + " mm", C3]]), nf(x.toFixed(2)) + " mm", 21);
   return g + "</svg>";
 }
+
 const FIG = {"mistar": figMistar, "jangka-sorong": figJangka, "mikrometer": figMikro};
-function figsHTML(it, v){
+function figsHTML(it, v, opt){
   if(!it.fig) return "";
   const list = typeof it.fig === "string" ? [{jenis: it.fig}] : it.fig;
-  return list.map(f => "<figure>" + FIG[f.jenis](f.p ? v.p[f.p] : v.p) + (f.judul ? "<figcaption>" + esc(f.judul) + "</figcaption>" : "") + "</figure>").join("");
+  return list.map(f => "<figure>" + FIG[f.jenis](f.p ? v.p[f.p] : v.p, opt) + (f.judul ? "<figcaption>" + esc(f.judul) + "</figcaption>" : "") + "</figure>").join("");
 }
 
 // ---------- widgets ----------
@@ -368,8 +464,8 @@ WIDGET["satuan"] = (el, d) => {
 WIDGET["mistar"] = el => {
   let a = 20, len = 47, eye = "tegak", shown = false;
   function draw(){
-    el.querySelector(".w-fig").innerHTML = figMistar({a, b: a + len}, {eye: eye === "tegak" ? "tegak" : "miring"});
-    el.querySelector(".readout").innerHTML = shown ? "Panjang = " + nf((a + len) / 10) + " cm − " + nf(a / 10) + " cm = <b>" + nf(len / 10) + " cm = " + len + " mm</b>" : "Baca dulu panjangnya, lalu tekan Tunjukkan bacaan.";
+    el.querySelector(".w-fig").innerHTML = figMistar({a, b: a + len}, {eye: eye === "tegak" ? "tegak" : "miring", marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? "Panjang = " + cm1(a + len) + " cm − " + cm1(a) + " cm = <b>" + cm1(len) + " cm</b>" : "Baca dulu panjangnya dalam cm, lalu tekan Tunjukkan bacaan.";
     $$("[data-eye]", el).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.eye === eye)));
   }
   el.innerHTML = '<div class="w-title">Geser benda, baca panjangnya</div><div class="w-fig"></div>' +
@@ -385,8 +481,8 @@ WIDGET["jangka-sorong"] = el => {
   let x = 237, mark = false, shown = false;
   function draw(){
     const mm = Math.floor(x / 10), k = x % 10;
-    el.querySelector(".w-fig").innerHTML = figJangka({mm, k}, {highlight: mark});
-    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + mm + " mm + garis nonius ke-" + k + " × 0,1 mm = <b>" + nf(x / 10) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector(".w-fig").innerHTML = figJangka({mm, k}, {highlight: mark, marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? Math.floor(mm / 10) + " cm + " + nf(((mm % 10) / 10).toFixed(1)) + " cm + " + nf((k / 100).toFixed(2)) + " cm = <b>" + nf((x / 100).toFixed(2)) + " cm</b>" : "Baca dulu dalam cm, lalu tekan Tunjukkan hasil.";
     el.querySelector("[data-k]").value = x;
   }
   el.innerHTML = '<div class="w-title">Buka dan tutup rahang jangka sorong</div><div class="w-fig"></div>' +
@@ -401,8 +497,8 @@ WIDGET["mikrometer"] = el => {
   let x = 268, shown = false;
   function draw(){
     const half = Math.floor(x / 50) / 2, t = x % 50;
-    el.querySelector(".w-fig").innerHTML = figMikro({s: half, t: t});
-    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + nf(half) + " mm + garis " + t + " × 0,01 mm = <b>" + nf((x / 100).toFixed(2)) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector(".w-fig").innerHTML = figMikro({s: half, t: t}, {marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? Math.floor(half) + " mm" + (half % 1 ? " + 0,5 mm" : "") + " + " + nf((t / 100).toFixed(2)) + " mm = <b>" + nf((x / 100).toFixed(2)) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
     el.querySelector("[data-k]").value = x;
   }
   el.innerHTML = '<div class="w-title">Putar selubung mikrometer</div><div class="w-fig"></div>' +
@@ -493,6 +589,79 @@ WIDGET["dimensi"] = (el, d) => {
   });
 };
 
+function parseDec(raw){
+  const s = String(raw).trim().replace(/\./g, ",");
+  if(!/^\d+(,\d+)?$/.test(s)) return null;
+  const [ip, fp = ""] = s.split(",");
+  return {s, int: parseInt(ip + fp, 10), dp: fp.length};
+}
+function sciHTML(m, e){ return nf(m) + " × 10<sup>" + nf(e) + "</sup>"; }
+function fromPrecision(str){
+  if(!/e/.test(str)) return nf(str);
+  const [m, e] = str.split("e");
+  return sciHTML(m, +e);
+}
+WIDGET["hitung-ap"] = (el, d) => {
+  let op = d.contoh[0][1];
+  el.innerHTML = '<div class="w-title">Coba aturannya pada dua hasil ukur</div><div class="row"><input type="text" inputmode="decimal" data-a value="' + esc(d.contoh[0][0]) + '" aria-label="Bilangan pertama" style="width:7em">' +
+    '<span class="row pick">' + ["×", ":", "+", "−"].map(o => '<button class="btn small" type="button" data-op="' + o + '">' + o + "</button>").join("") + "</span>" +
+    '<input type="text" inputmode="decimal" data-b value="' + esc(d.contoh[0][2]) + '" aria-label="Bilangan kedua" style="width:7em"></div>' +
+    '<div class="row">' + d.contoh.map(([a, o, b], i) => '<button class="btn small" type="button" data-ex="' + i + '">' + esc(a + " " + o + " " + b) + "</button>").join("") + '</div><div class="readout" data-out></div>';
+  const A = $("[data-a]", el), B = $("[data-b]", el), out = $("[data-out]", el);
+  function draw(){
+    $$("[data-op]", el).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.op === op)));
+    const a = parseDec(A.value), b = parseDec(B.value);
+    if(!a || !b){ out.textContent = "Tulis dua bilangan positif, misalnya 3,52 dan 2,1."; return; }
+    if(op === "×" || op === ":"){
+      const ca = apCount(a.s), cb = apCount(b.s);
+      if(ca.min !== ca.max || cb.min !== cb.max){ out.textContent = "Nol di belakang bilangan bulat tidak jelas angka pentingnya. Tulis dengan koma atau notasi ilmiah."; return; }
+      if(op === ":" && b.int === 0){ out.textContent = "Tidak bisa membagi dengan nol."; return; }
+      const x = op === "×" ? (a.int * b.int) / Math.pow(10, a.dp + b.dp) : (a.int / b.int) * Math.pow(10, b.dp - a.dp);
+      const n = Math.min(ca.min, cb.min);
+      out.innerHTML = esc(a.s) + " punya " + ca.min + " angka penting, " + esc(b.s) + " punya " + cb.min + ": hasil ditulis dengan <b>" + n + " angka penting</b>.<br>" +
+        esc(a.s) + " " + op + " " + esc(b.s) + " = " + nf(+x.toPrecision(10)) + " → <b>" + fromPrecision(x.toPrecision(n)) + "</b>";
+    } else {
+      const m = Math.max(a.dp, b.dp), ia = a.int * Math.pow(10, m - a.dp), ib = b.int * Math.pow(10, m - b.dp);
+      const r = op === "+" ? ia + ib : ia - ib, d0 = Math.min(a.dp, b.dp);
+      const exact = (r / Math.pow(10, m)).toFixed(m), q = Math.pow(10, m - d0);
+      const rounded = (Math.sign(r) * Math.round(Math.abs(r) / q) / Math.pow(10, d0)).toFixed(d0);
+      out.innerHTML = esc(a.s) + " punya " + a.dp + " angka di belakang koma, " + esc(b.s) + " punya " + b.dp + ": hasil ditulis dengan <b>" + d0 + " angka di belakang koma</b>.<br>" +
+        esc(a.s) + " " + op + " " + esc(b.s) + " = " + nf(exact) + " → <b>" + nf(rounded) + "</b>";
+    }
+  }
+  el.addEventListener("input", draw);
+  el.addEventListener("click", e => {
+    const o = e.target.closest("[data-op]"); if(o){ op = o.dataset.op; draw(); }
+    const x = e.target.closest("[data-ex]"); if(x){ const [a, oo, b] = d.contoh[+x.dataset.ex]; A.value = a; B.value = b; op = oo; draw(); }
+  });
+  draw();
+};
+WIDGET["awalan"] = (el, d) => {
+  const PRE = [["G", "giga", 9], ["M", "mega", 6], ["k", "kilo", 3], ["c", "senti", -2], ["m", "mili", -3], ["μ", "mikro", -6], ["n", "nano", -9]];
+  let pre = 6;
+  el.innerHTML = '<div class="w-title">Ganti awalan dengan pangkat sepuluh</div><div class="row"><input type="text" inputmode="decimal" data-v value="' + esc(d.contoh[0]) + '" aria-label="Nilai" style="width:7em"><span class="row pick">' +
+    PRE.map(([sym, name], i) => '<button class="btn small" type="button" data-p="' + i + '" title="' + name + '">' + sym + "m</button>").join("") + '</span></div>' +
+    '<div class="row">' + d.contoh.map(c => '<button class="btn small" type="button" data-c="' + esc(c) + '">' + esc(c) + "</button>").join("") + '</div><div class="readout" data-out></div>';
+  const V = $("[data-v]", el), out = $("[data-out]", el);
+  function draw(){
+    $$("[data-p]", el).forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.p === pre)));
+    const v = parseDec(V.value);
+    if(!v || !v.int){ out.textContent = "Tulis bilangan positif, misalnya 350."; return; }
+    const [sym, name, pw] = PRE[pre];
+    let digits = String(v.int), e = -v.dp + pw;
+    const trail = digits.match(/0*$/)[0].length;
+    if(trail && trail < digits.length){ digits = digits.slice(0, digits.length - trail); e += trail; }
+    const mant = digits[0] + (digits.length > 1 ? "," + digits.slice(1) : ""), exp = e + digits.length - 1;
+    out.innerHTML = esc(v.s) + " " + sym + "m = " + esc(v.s) + " × 10<sup>" + nf(pw) + "</sup> m = <b>" + mant + " × 10<sup>" + nf(exp) + '</sup> m</b> <span class="small muted">(' + name + " = 10<sup>" + nf(pw) + "</sup>)</span>";
+  }
+  el.addEventListener("input", draw);
+  el.addEventListener("click", e => {
+    const b = e.target.closest("[data-p]"); if(b){ pre = +b.dataset.p; draw(); }
+    const c = e.target.closest("[data-c]"); if(c){ V.value = c.dataset.c; draw(); }
+  });
+  draw();
+};
+
 // ---------- items ----------
 function parseNum(raw){
   let s = String(raw).trim().replace(/\s+/g, "").replace(/−/g, "-").replace(/[a-zA-Zμ²³°/]+$/, "");
@@ -549,7 +718,7 @@ function mountItem(el, id, vi, mode, hooks = {}){
     (ladder ? '<button class="btn" type="button" data-act="hint">' + ladderLabel(0) + "</button>" : "") +
     '<button class="btn" type="button" data-act="sol" hidden>Pembahasan</button></div>' +
     '<p class="feedback" aria-live="polite"></p><div class="extra stack"></div><div class="hints"></div>' +
-    '<div class="solution" hidden><b>Pembahasan</b><ol>' + v.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></div>";
+    '<div class="solution" hidden><b>Pembahasan</b>' + figsHTML(it, v, {marks: 9}) + "<ol>" + v.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></div>";
   const fb = $(".feedback", el), extra = $(".extra", el);
   function ladderLabel(level){
     const n = it.bantuan.length;
@@ -630,7 +799,7 @@ function mountItem(el, id, vi, mode, hooks = {}){
       if(st.level < n) box.insertAdjacentHTML("beforeend", '<div class="hint"><b>Bantuan ' + (st.level + 1) + "</b>" + tx(it.bantuan[st.level]) + "</div>");
       else if(st.level === n && it.varian.length > 1){
         const w = it.varian[(vi + 1) % it.varian.length];
-        box.insertAdjacentHTML("beforeend", '<div class="twin"><b class="small">CONTOH KEMBAR (angka lain)</b>' + figsHTML(it, w) + paras(w.soal.replace(/\nJawaban benar lebih dari satu\.$/, "")) + "<ol>" + w.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>");
+        box.insertAdjacentHTML("beforeend", '<div class="twin"><b class="small">CONTOH KEMBAR (angka lain)</b>' + figsHTML(it, w, {marks: 9}) + paras(w.soal.replace(/\nJawaban benar lebih dari satu\.$/, "")) + "<ol>" + w.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>");
         st.helped = true; if(hooks.onHelp) hooks.onHelp(st);
       }
       st.level++;
@@ -656,17 +825,22 @@ function stepCards(step){
   cards.push({t: "kait"}, {t: "media"}, {t: "lihat"}, {t: "bersama"});
   u.sendiri.forEach((id, k) => cards.push({t: "sendiri", id, k, n: u.sendiri.length}));
   cards.push({t: "ringkas"});
+  const pk = PACK[PACK_OF[step]];
+  if(pk && pk.unit[pk.unit.length - 1] === step) cards.push({t: "istirahat", pack: pk.id});
   return cards.map(c => Object.assign(c, {u: step}));
 }
 const cardKey = c => c.t + ":" + (c.id || c.pid || "");
 function startSession(){ if(!S.sesi || Date.now() - S.sesi.last > 2 * 3600e3) S.sesi = {mulai: Date.now(), last: Date.now(), kartu: 0, diingatkan: false}; save(); }
 function open(step, fresh){
+  if(!hasId()){ renderHome("Isi nama dan kelas dulu."); return; }
+  if(RUN) tick();
   startSession();
   const cards = stepCards(step);
   let i = 0;
   if(!fresh && S.unit[step] && S.unit[step].at && !S.unit[step].selesai){ const k = cards.findIndex(c => cardKey(c) === S.unit[step].at); if(k > 0) i = k; }
   if(step === "akhir" && !fresh){ const k = cards.findIndex(c => c.t === "akhir" && !(c.id in S.akhir.hasil)); if(k > 1) i = k; }
   RUN = {step, cards, i, ready: false};
+  S.tick = Date.now();
   history.replaceState(null, "", location.pathname + location.search);
   render();
 }
@@ -681,23 +855,22 @@ function advance(){
   const card = RUN.cards[RUN.i];
   S.sesi.last = Date.now(); S.sesi.kartu++;
   if(UNIT[RUN.step]) S.unit[RUN.step] = Object.assign(S.unit[RUN.step] || {}, {at: cardKey(RUN.cards[Math.min(RUN.i + 1, RUN.cards.length - 1)])});
-  if(card.t !== "sesi" && !S.sesi.diingatkan && Date.now() - S.sesi.mulai >= (J.sesi_menit || 15) * 60e3 && RUN.i + 1 < RUN.cards.length){
-    S.sesi.diingatkan = true;
-    RUN.cards.splice(RUN.i + 1, 0, {t: "sesi"});
-  }
-  save();
+  tick(); save();
   RUN.i++;
   render();
 }
+let TIMER = null;
 function render(){
   if(!RUN) return renderHome();
+  clearInterval(TIMER);
   const c = RUN.cards[RUN.i];
   RUN.ready = false;
   const kinds = {"cek-intro": "Cek prasyarat", cek: "Cek prasyarat", "cek-hasil": "Hasil cek", jembatan: "Jembatan", "ulang-cek": "Cek ulang",
-    kait: "Kait", media: "Media", lihat: "Lihat", bersama: "Bersama", sendiri: "Sendiri", ringkas: "Ringkas", "akhir-intro": "Campuran",
-    akhir: "Campuran", "akhir-hasil": "Hasil", "ulang-intro": "Ulangan", ulang: "Ulangan", "ulang-selesai": "Ulangan", sesi: "Istirahat"};
-  app.innerHTML = '<div class="player"><div class="p-top"><div><p class="p-kind">' + kinds[c.t] + (c.t === "sendiri" ? " " + (c.k + 1) + "/" + c.n : "") + '</p><p class="p-step">' + esc(stepTitle(RUN.step)) + "</p></div>" +
-    '<button class="linklike" type="button" id="exit">Simpan dan keluar</button></div>' +
+    kait: "Kait", media: "Media", lihat: "Lihat", bersama: "Bersama", sendiri: "Sendiri", ringkas: "Ringkas", istirahat: "Istirahat",
+    "akhir-intro": "Ujian", akhir: "Ujian", "akhir-hasil": "Hasil ujian", "ulang-intro": "Ulangan", ulang: "Ulangan", "ulang-selesai": "Ulangan"};
+  const pk = PACK[PACK_OF[RUN.step]];
+  app.innerHTML = '<div class="player"><div class="p-top"><div><p class="p-kind">' + kinds[c.t] + (c.t === "sendiri" ? " " + (c.k + 1) + "/" + c.n : "") + '</p><p class="p-step">' + esc((pk ? "Paket " + pk.no + " · " : "") + stepTitle(RUN.step)) + "</p></div>" +
+    '<div class="row"><button class="btn small" type="button" data-kartu>Kartu materi</button><button class="linklike" type="button" id="exit">Simpan dan keluar</button></div></div>' +
     '<div class="prog" aria-label="Kartu ' + (RUN.i + 1) + " dari " + RUN.cards.length + '">' + RUN.cards.map((_, k) => "<i" + (k < RUN.i ? ' class="on"' : k === RUN.i ? ' class="cur"' : "") + "></i>").join("") + "</div>" +
     '<article class="card" id="card"></article><div class="p-nav"><button class="btn" type="button" id="back"' + (RUN.i === 0 ? " disabled" : "") + '>← Kembali</button>' +
     '<button class="btn primary" type="button" id="next" disabled>Lanjut →</button></div></div>';
@@ -706,7 +879,7 @@ function render(){
   $("#next").disabled = !RUN.ready;
   $("#next").onclick = () => { if(RUN.i + 1 < RUN.cards.length) advance(); else { advance0(); } };
   $("#back").onclick = () => { if(RUN.i > 0){ RUN.i--; render(); } };
-  $("#exit").onclick = () => { RUN = null; save(); renderHome(); };
+  $("#exit").onclick = () => renderHome();
   window.scrollTo({top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
   const h = $("h2", el); if(h){ h.setAttribute("tabindex", "-1"); h.focus({preventScroll: true}); }
 }
@@ -767,10 +940,11 @@ CARD["media"] = (c, el) => {
 CARD["lihat"] = (c, el) => {
   const l = UNIT[c.u].lihat;
   let shown = 1;
-  el.innerHTML = '<h2>Lihat contoh</h2><div class="stem">' + paras(l.soal) + "</div>" + (l.fig ? "<figure>" + FIG[l.fig](l.p) + "</figure>" : "") +
+  el.innerHTML = '<h2>Lihat contoh</h2><div class="stem">' + paras(l.soal) + "</div>" + (l.fig ? '<figure id="lfig"></figure>' : "") +
     '<ol class="body revealed" id="steps"></ol><div class="row"><button class="btn" type="button" id="more">Langkah berikutnya</button><span class="small muted">Pikirkan dulu langkah berikutnya sebelum membukanya.</span></div>';
   function draw(){
     $("#steps", el).innerHTML = l.langkah.slice(0, shown).map(x => "<li>" + tx(x) + "</li>").join("");
+    if(l.fig) $("#lfig", el).innerHTML = FIG[l.fig](l.p, {marks: shown}) + (shown < l.langkah.length ? '<figcaption>Tanda warna muncul bersama setiap langkah.</figcaption>' : "");
     if(shown >= l.langkah.length){ $("#more", el).disabled = true; $("#more", el).textContent = "Semua langkah terbuka"; setReady(); }
   }
   $("#more", el).onclick = () => { shown++; draw(); };
@@ -832,12 +1006,28 @@ CARD["ringkas"] = (c, el) => {
   el.innerHTML = '<h2>Ringkasan: ' + esc(u.judul) + '</h2><ul class="body">' + u.ringkas.map(x => "<li>" + tx(x) + "</li>").join("") + "</ul>" +
     '<p class="small">Latihan mandiri unit ini: ' + fams + "</p>" + '<div class="teaser"><b>Pertanyaan berikutnya.</b> ' + tx(u.lanjut) + "</div>";
   setReady();
-  $("#next") && ($("#next").textContent = nxt ? "Ke " + (nxt === "akhir" ? J.akhir.judul : "Unit " + nxt.slice(1)) + " →" : "Selesai");
+  if(RUN.i + 1 < RUN.cards.length) return;
+  $("#next").textContent = nxt ? "Ke " + (nxt === "akhir" ? J.akhir.judul : "Unit " + UNIT_NO[nxt]) + " →" : "Selesai";
+};
+CARD["istirahat"] = (c, el) => {
+  const pk = PACK[c.pack], s = packStats(pk), nxt = PAKET[pk.no];
+  el.innerHTML = "<h2>Paket " + pk.no + " selesai</h2><p><b>" + esc(pk.judul) + "</b>: " + s.m + " dari " + s.fams + " latihan dikuasai, " + s.menit + " menit belajar.</p>" +
+    "<p>Istirahat dulu sebelum " + (nxt ? "Paket " + (pk.no + 1) : "ujian akhir") + ". Bangun, minum, lihat jauh. Jeda membantu ingatan.</p>" +
+    '<div class="row"><button class="btn primary" type="button" data-share>Bagikan progres ke guru</button><button class="btn" type="button" id="rest">Mulai istirahat 5 menit</button></div><p class="readout" id="restOut" hidden></p>';
+  $("#rest", el).onclick = () => {
+    const end = Date.now() + 5 * 60e3, out = $("#restOut", el);
+    out.hidden = false; $("#rest", el).disabled = true;
+    const show = () => { const left = Math.max(0, end - Date.now()), m = Math.floor(left / 60e3), sec = Math.floor(left / 1e3) % 60;
+      out.textContent = left ? "Istirahat: " + m + ":" + String(sec).padStart(2, "0") : "Istirahat selesai. Siap lanjut!"; if(!left) clearInterval(TIMER); };
+    show(); TIMER = setInterval(show, 1000);
+  };
+  setReady();
+  $("#next").textContent = nxt ? "Mulai Paket " + (pk.no + 1) + " →" : "Ke " + J.akhir.judul + " →";
 };
 CARD["akhir-intro"] = (c, el) => { el.innerHTML = "<h2>" + esc(J.akhir.judul) + "</h2><p>" + tx(J.akhir.teks) + "</p>"; setReady(); };
 CARD["akhir"] = (c, el) => {
   const it = ITEM[c.id];
-  el.innerHTML = "<h2>Soal campuran</h2>" + (it.tka ? '<p class="small"><span class="st s2">Setara TKA</span> tipe ' + esc(it.tka.tipe) + "</p>" : "") + "<div data-q></div>";
+  el.innerHTML = "<h2>Soal ujian</h2>" + (it.tka ? '<p class="small"><span class="st s2">Setara TKA</span> tipe ' + esc(it.tka.tipe) + "</p>" : "") + "<div data-q></div>";
   if(c.id in S.akhir.hasil){ el.insertAdjacentHTML("beforeend", '<p class="note">Sudah dikerjakan: ' + (S.akhir.hasil[c.id] ? "benar." : "belum tepat.") + "</p>"); setReady(); return; }
   const vi = nextVariant(c.id); markSeen(c.id, vi);
   mountItem($("[data-q]", el), c.id, vi, "tes", {onCheck: g => {
@@ -851,10 +1041,11 @@ CARD["akhir-hasil"] = (c, el) => {
   const ids = J.akhir.soal, ok = ids.filter(id => S.akhir.hasil[id]).length;
   const unitOf = id => J.unit.find(u => u.sendiri.includes(id));
   const weak = [...new Set(ids.filter(id => S.akhir.hasil[id] === false).map(id => (unitOf(id) || {}).id).filter(Boolean))];
-  el.innerHTML = "<h2>Hasil campuran: " + ok + " dari " + ids.length + '</h2><ul class="result-list">' + ids.map(id => {
+  el.innerHTML = "<h2>Hasil ujian: " + ok + " dari " + ids.length + '</h2><ul class="result-list">' + ids.map(id => {
     const it = ITEM[id], u = unitOf(id);
     return "<li>" + (S.akhir.hasil[id] ? '<span class="ok-t">✓</span>' : '<span class="no-t">✗</span>') + "<span>" + (it.tka ? "Setara TKA (" + esc(it.tka.tipe) + ")" : esc(u ? u.judul : id)) + "</span></li>";
-  }).join("") + "</ul>" + (weak.length ? "<p>Ulangi unit: " + weak.map(u => esc(stepTitle(u))).join("; ") + ". Soal yang salah sudah masuk jadwal ulangan besok.</p>" : "<p>Semua benar. Soal-soal ini akan kembali beberapa hari lagi untuk ulangan.</p>");
+  }).join("") + "</ul>" + (weak.length ? "<p>Ulangi unit: " + weak.map(u => esc(stepTitle(u))).join("; ") + ". Soal yang salah sudah masuk jadwal ulangan besok.</p>" : "<p>Semua benar. Soal-soal ini akan kembali beberapa hari lagi untuk ulangan.</p>") +
+    '<div class="row"><button class="btn primary" type="button" data-share>Bagikan hasil ke guru</button></div>';
   setReady();
 };
 CARD["ulang-intro"] = (c, el) => {
@@ -873,13 +1064,6 @@ CARD["ulang-selesai"] = (c, el) => {
   el.innerHTML = "<h2>Pemanasan selesai</h2><p>" + (s ? "Lanjutkan ke " + esc(stepTitle(s)) + "." : "Semua bagian sudah selesai. Sampai jumpa di ulangan berikutnya.") + "</p>";
   setReady();
 };
-CARD["sesi"] = (c, el) => {
-  const min = J.sesi_menit || 15;
-  el.innerHTML = "<h2>Sudah " + min + " menit</h2><p>Sesi pendek yang diulang lebih efektif daripada satu sesi panjang. Progresmu tersimpan; besok beberapa soal akan kembali untuk ulangan.</p>" +
-    '<div class="row"><button class="btn primary" type="button" id="stop">Selesai untuk hari ini</button></div><p class="small muted">Atau tekan Lanjut untuk meneruskan satu kartu lagi.</p>';
-  $("#stop", el).onclick = () => { RUN = null; save(); renderHome("Sampai besok! Ulangan pertama akan menunggu di awal sesi berikutnya."); };
-  setReady();
-};
 
 // ---------- home ----------
 function stepMeta(step){
@@ -896,75 +1080,220 @@ function stepMeta(step){
   const sel = S.unit[step] && S.unit[step].selesai;
   return {meta: (sel ? "Selesai" : S.unit[step] && S.unit[step].at ? "Sedang dikerjakan" : "Belum mulai") + " · dikuasai " + m + " dari " + u.sendiri.length, frac: sel ? Math.max(0.5, m / u.sendiri.length) : 0};
 }
+function packStats(pk){
+  const fams = pk.unit.flatMap(u => UNIT[u].sendiri);
+  return {fams: fams.length, m: fams.filter(id => ST_NUM[fam(id).st] >= 2).length, done: pk.unit.filter(u => S.unit[u] && S.unit[u].selesai).length, menit: minutes(pk.id)};
+}
+function identityHTML(){
+  if(hasId()) return '<div class="who"><span>Belajar sebagai <b>' + esc(S.nama) + "</b> · Kelas <b>" + esc(S.kelas) + "</b> · ID <b>" + esc(S.pid) + '</b></span><button class="btn small" type="button" data-share>Bagikan progres</button></div>';
+  return '<div class="panel stack" id="idform"><h2>Kenalan dulu</h2><p class="small">Isi nama dan kelas sebelum mulai. Keduanya muncul di kartu progres yang kamu kirim ke guru, dan tidak bisa diganti tanpa menghapus progres.</p>' +
+    '<div class="row"><input type="text" id="inNama" maxlength="40" placeholder="Nama lengkap" aria-label="Nama lengkap" autocomplete="name"><input type="text" id="inKelas" maxlength="12" placeholder="Kelas, mis. X-3" aria-label="Kelas" style="width:9em">' +
+    '<button class="btn primary" type="button" id="saveId">Simpan</button></div><p class="feedback no" id="idMsg" aria-live="polite"></p></div>';
+}
 function renderHome(message){
-  RUN = null;
+  if(RUN){ tick(); RUN = null; }
+  S.tick = null; save();
   if(location.hash === "#guru") return renderGuru();
-  const due = dueList(), nxt = nextStep();
+  document.body.classList.remove("wide");
+  const due = dueList(), nxt = nextStep(), ok = hasId();
   const label = !nxt ? (due.length ? "Mulai ulangan" : "Semua selesai") : (S.sesi || Object.keys(S.cek).length) ? "Lanjutkan: " + stepTitle(nxt) : "Mulai belajar";
+  const row = s => { const m = stepMeta(s); return '<li class="step' + (stepDone(s) ? " done" : "") + '"><span class="no">' + (s === "cek" ? "P" : s === "akhir" ? "★" : UNIT_NO[s]) + '</span><span class="ttl">' + esc(stepTitle(s)) + '</span><span class="meta">' + esc(m.meta) + '</span><span class="bar"><i style="width:' + Math.round(m.frac * 100) + '%"></i></span><button class="btn small go" type="button" data-step="' + s + '"' + (ok ? "" : " disabled") + ">" + (stepDone(s) ? "Ulangi" : "Buka") + "</button></li>"; };
   app.innerHTML = (message ? '<p class="note" style="margin-top:18px">' + esc(message) + "</p>" : "") +
-    '<section><div class="panel hero"><p class="big">Sesi hari ini · sekitar ' + (J.sesi_menit || 15) + " menit</p>" +
-    "<p>" + (due.length ? "<b>" + due.length + " soal</b> menunggu diulang. Pemanasan dulu, lalu lanjut ke kartu berikutnya." : nxt ? "Belajar dalam kartu pendek: lihat contoh, kerjakan bersama, lalu kerjakan sendiri sampai benar-benar bisa." : "Tidak ada ulangan yang jatuh tempo hari ini.") + "</p>" +
-    '<div class="row"><button class="btn primary" type="button" id="go"' + (!nxt && !due.length ? " disabled" : "") + ">" + esc(label) + " →</button></div></div></section>" +
-    '<section><div class="sec-head"><h2>Jalur</h2><p>Urutan yang disarankan; semua bagian bisa dibuka.</p></div><ol class="steps">' +
-    STEPS.map((s, i) => { const m = stepMeta(s); return '<li class="step' + (stepDone(s) ? " done" : "") + '"><span class="no">' + (s === "cek" ? "P" : s === "akhir" ? "★" : s) + '</span><span class="ttl">' + esc(stepTitle(s)) + '</span><span class="meta">' + esc(m.meta) + '</span><span class="bar"><i style="width:' + Math.round(m.frac * 100) + '%"></i></span><button class="btn small go" type="button" data-step="' + s + '">' + (stepDone(s) ? "Ulangi" : "Buka") + "</button></li>"; }).join("") + "</ol></section>" +
+    "<section>" + identityHTML() + "</section>" +
+    '<section><div class="panel hero"><p class="big">' + PAKET.length + " paket · sekitar " + (J.sesi_menit || 15) + " menit per paket · lalu ujian</p>" +
+    "<p>" + (due.length ? "<b>" + due.length + " soal</b> menunggu diulang. Pemanasan dulu, lalu lanjut ke kartu berikutnya." : nxt ? "Kerjakan satu paket, istirahat sebentar, lalu lanjut ke paket berikutnya. Kartu materi boleh dibuka kapan saja." : "Tidak ada ulangan yang jatuh tempo hari ini.") + "</p>" +
+    '<div class="row"><button class="btn primary" type="button" id="go"' + (!ok || (!nxt && !due.length) ? " disabled" : "") + ">" + esc(label) + ' →</button><button class="btn" type="button" data-kartu>Kartu materi</button></div></div></section>' +
+    '<section><div class="sec-head"><h2>Jalur</h2><p>Urutan yang disarankan; semua bagian bisa dibuka.</p></div><ol class="steps">' + row("cek") +
+    PAKET.map(pk => { const s = packStats(pk); return '<li class="pack"><div class="pack-head"><b>Paket ' + PACK[pk.id].no + " · " + esc(pk.judul) + '</b><span class="small muted">' + s.done + "/" + pk.unit.length + " unit selesai · " + s.m + "/" + s.fams + " latihan dikuasai" + (s.menit ? " · " + s.menit + " menit" : "") + '</span></div><ol class="steps">' + pk.unit.map(row).join("") + "</ol></li>"; }).join("") +
+    row("akhir") + "</ol></section>" +
     '<section><div class="sec-head"><h2>Kemampuanmu</h2><p>Setiap kotak satu jenis latihan.</p></div><div class="panel skills">' +
-    J.unit.map(u => '<div class="skill"><span>' + esc(u.judul) + '</span><span class="dots">' + u.sendiri.map(id => '<i class="s' + ST_NUM[fam(id).st] + '" title="' + ST_NAME[fam(id).st] + '"></i>').join("") + "</span></div>").join("") +
+    J.unit.map(u => '<div class="skill"><span>' + UNIT_NO[u.id] + ". " + esc(u.judul) + '</span><span class="dots">' + u.sendiri.map(id => '<i class="s' + ST_NUM[fam(id).st] + '" title="' + ST_NAME[fam(id).st] + '"></i>').join("") + "</span></div>").join("") +
     '<div class="skill"><span>Setara TKA</span><span class="dots">' + J.akhir.soal.filter(id => ITEM[id].tka).map(id => '<i class="s' + ST_NUM[fam(id).st] + '" title="' + ST_NAME[fam(id).st] + '"></i>').join("") + "</span></div>" +
     '<div class="legend">' + Object.keys(ST_NAME).map(k => '<span><span class="st s' + ST_NUM[k] + '">' + ST_NAME[k] + "</span>" + {belum: "belum dicoba", dibantu: "dicoba, belum dikuasai", bisa: "dua kali benar tanpa bantuan", kuat: "lolos dua ulangan berjarak"}[k] + "</span>").join("") + "</div></div></section>" +
-    '<section><div class="sec-head"><h2>Kirim progres ke guru</h2></div><div class="panel stack"><p class="small">Tulis namamu, buat kode, lalu kirim teksnya ke guru (misalnya lewat pesan). Kode hanya berisi status latihan, bukan jawabanmu.</p>' +
-    '<div class="row"><input type="text" id="nama" maxlength="40" placeholder="Nama" value="' + esc(S.nama || "") + '" aria-label="Nama"><button class="btn" type="button" id="mkcode">Buat kode</button><button class="btn" type="button" id="copy" hidden>Salin</button></div><p class="code" id="code" hidden></p>' +
+    '<section><div class="sec-head"><h2>Kirim progres ke guru</h2></div><div class="panel stack"><p class="small">Tombol <b>Bagikan progres</b> membuat kartu bergambar dengan nama, kelas, dan waktu: kirim gambarnya atau tangkap layar. Untuk tabel kelas, guru memakai kode teks di bawah.</p>' +
+    '<div class="row"><button class="btn" type="button" data-share' + (ok ? "" : " disabled") + '>Bagikan progres</button><button class="btn" type="button" id="mkcode"' + (ok ? "" : " disabled") + '>Buat kode teks</button><button class="btn" type="button" id="copy" hidden>Salin</button></div><p class="code" id="code" hidden></p>' +
     '<p class="small"><a href="#guru" id="guruLink">Tampilan guru</a>: tempel kode dari satu kelas untuk melihat tabel dan miskonsepsi yang paling sering.</p></div></section>' +
     '<section><details class="notes"><summary>Catatan untuk guru</summary><div class="stack" style="margin-top:10px">' + (J.catatan || []).map(n => '<div class="panel"><h3>' + esc(n.judul) + '</h3><ul class="body">' + n.items.map(i => "<li>" + tx(i) + "</li>").join("") + "</ul></div>").join("") +
     "</div></details><p style=\"margin-top:14px\"><button class=\"linklike\" type=\"button\" id=\"reset\">Hapus progres di perangkat ini</button></p></section>";
   $("#go").onclick = continueLearning;
   $$("[data-step]").forEach(b => b.onclick = () => open(b.dataset.step, stepDone(b.dataset.step)));
-  $("#mkcode").onclick = () => { S.nama = $("#nama").value.trim(); save(); const code = encode(); $("#code").hidden = false; $("#code").textContent = code; $("#copy").hidden = false; };
+  if($("#saveId")) $("#saveId").onclick = () => {
+    const n = $("#inNama").value.trim().replace(/\s+/g, " "), k = $("#inKelas").value.trim().replace(/\s+/g, " ");
+    if(n.length < 3 || !k){ $("#idMsg").textContent = "Isi nama lengkap dan kelas dulu."; return; }
+    S.nama = n; S.kelas = k; S.pid = newId(); save(); renderHome();
+  };
+  $("#mkcode").onclick = () => { $("#code").hidden = false; $("#code").textContent = encode(); $("#copy").hidden = false; };
   $("#copy").onclick = () => { navigator.clipboard && navigator.clipboard.writeText($("#code").textContent).then(() => { $("#copy").textContent = "Tersalin"; }, () => {}); };
-  $("#reset").onclick = () => { if(confirm("Hapus semua progres jalur ini di perangkat ini?")){ S = blank(); save(); renderHome("Progres dihapus."); } };
+  $("#reset").onclick = () => { if(confirm("Hapus semua progres jalur ini di perangkat ini, termasuk nama dan kelas?")){ S = blank(); save(); renderHome("Progres dihapus."); } };
+}
+function newId(){ const A = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; let s = ""; for(let i = 0; i < 4; i++) s += A[Math.floor(Math.random() * A.length)]; return s; }
+
+// ---------- material cards ----------
+function kartuHTML(){
+  return '<section class="kcard" id="k-bekal"><h3>Bekal</h3>' + J.prasyarat.map(p => "<h4>" + esc(p.judul) + '</h4><div class="body">' + blocks(p.jembatan.isi) + "</div>").join("") + "</section>" +
+    J.unit.map(u => '<section class="kcard" id="k-' + u.id + '"><h3>Unit ' + UNIT_NO[u.id] + " · " + esc(u.judul) + '</h3><div class="body">' + blocks(u.media.isi) + "</div>" +
+      '<div class="example"><h4>Contoh</h4><p>' + tx(u.lihat.soal) + "</p>" + (u.lihat.fig ? "<figure>" + FIG[u.lihat.fig](u.lihat.p, {marks: 9}) + "</figure>" : "") +
+      "<ol>" + u.lihat.langkah.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></section>").join("");
+}
+function openKartu(){
+  const z = RUN ? zoneOf(RUN.step) : "beranda";
+  S.kartu[z] = (S.kartu[z] || 0) + 1; save();
+  const d = $("#kdlg");
+  if(!$("#kbody").innerHTML){
+    $("#kbody").innerHTML = kartuHTML();
+    $("#ksel").innerHTML = '<option value="k-bekal">Bekal</option>' + J.unit.map(u => '<option value="k-' + u.id + '">Unit ' + UNIT_NO[u.id] + " · " + esc(u.judul) + "</option>").join("");
+  }
+  const target = RUN && UNIT[RUN.step] ? "k-" + RUN.step : RUN && RUN.step === "cek" ? "k-bekal" : null;
+  $$(".kcard", d).forEach(k => k.classList.toggle("cur", k.id === target));
+  d.showModal();
+  if(target){ $("#ksel").value = target; document.getElementById(target).scrollIntoView({block: "start"}); } else { $("#ksel").value = "k-bekal"; $("#kbody").scrollTop = 0; d.scrollTop = 0; }
+}
+
+// ---------- share card ----------
+let SHARE = null;
+function shareInfo(){
+  const ids = J.akhir.soal.filter(id => id in S.akhir.hasil);
+  return {
+    when: new Date().toLocaleString("id-ID", {weekday: "long", day: "numeric", month: "long", year: "numeric", hour: "2-digit", minute: "2-digit"}),
+    cek: J.prasyarat.map(p => preDigit(p.id)),
+    packs: PAKET.map(pk => Object.assign({no: PACK[pk.id].no, judul: pk.judul, n: pk.unit.length, units: pk.unit.map(u => UNIT[u].sendiri.map(id => ST_NUM[fam(id).st]))}, packStats(pk))),
+    ujian: {benar: ids.filter(id => S.akhir.hasil[id]).length, dijawab: ids.length, total: J.akhir.soal.length, menit: minutes("ujian")},
+    kartu: Object.values(S.kartu).reduce((a, b) => a + b, 0),
+    yw: SKILLS.reduce((a, id) => a + ((S.fam[id] || {}).yw || 0), 0),
+    code: encode()};
+}
+const cekText = c => c.filter(d => d === 3).length + " dari " + c.length + " lulus" + (c.some(d => d === 2) ? ", " + c.filter(d => d === 2).length + " lulus setelah jembatan" : "") + (c.every(d => d === 0) ? " (belum dicek)" : "");
+const ujianText = u => u.dijawab ? u.benar + " dari " + u.dijawab + " benar" + (u.dijawab < u.total ? " (" + u.dijawab + " dari " + u.total + " soal dijawab)" : "") + (u.menit ? " · " + u.menit + " menit" : "") : "belum dikerjakan";
+function shareText(i){
+  return [J.title + " (" + J.subject + " " + J.src + ")", "Nama: " + S.nama + " · Kelas: " + S.kelas + " · ID " + S.pid, i.when, "Cek prasyarat: " + cekText(i.cek)]
+    .concat(i.packs.map(p => "Paket " + p.no + " (" + p.judul + "): " + p.done + "/" + p.n + " unit selesai, " + p.m + "/" + p.fams + " latihan dikuasai, " + p.menit + " menit"))
+    .concat(["Ujian akhir: " + ujianText(i.ujian), "Kartu materi dibuka: " + i.kartu + " kali · Yakin tapi salah: " + i.yw, "Kode untuk guru: " + i.code]).join("\n");
+}
+function shareCardHTML(i){
+  const sq = d => '<i class="s' + (d === 3 ? 2 : d === 2 ? 1 : d === 1 ? "x" : 0) + '"></i>';
+  return '<div class="sharecard" id="sharecard"><p class="sc-t">' + esc(J.title) + " · " + esc(J.subject + " " + J.src) + '</p><p class="sc-n">' + esc(S.nama) + '</p><p class="sc-k">Kelas ' + esc(S.kelas) + " · ID " + esc(S.pid) + '</p><p class="sc-w">' + esc(i.when) + "</p>" +
+    '<div class="sc-row"><span>Cek prasyarat</span><span class="dots">' + i.cek.map(sq).join("") + '</span><span class="small">' + esc(cekText(i.cek)) + "</span></div>" +
+    i.packs.map(p => '<div class="sc-row"><span>Paket ' + p.no + " · " + esc(p.judul) + '</span><span class="dots">' + p.units.map(u => u.map(s => '<i class="s' + s + '"></i>').join("")).join('<b class="gap"></b>') + '</span><span class="small">' + p.done + "/" + p.n + " unit · " + p.m + "/" + p.fams + " dikuasai · " + p.menit + " menit</span></div>").join("") +
+    '<div class="sc-row"><span>Ujian akhir</span><span class="sc-big">' + (i.ujian.dijawab ? i.ujian.benar + "/" + i.ujian.dijawab : "–") + '</span><span class="small">' + esc(ujianText(i.ujian)) + "</span></div>" +
+    '<p class="small">Kartu materi dibuka ' + i.kartu + " kali · Yakin tapi salah " + i.yw + "</p>" +
+    '<div class="legend">' + Object.keys(ST_NAME).map(k => '<span class="dots"><i class="s' + ST_NUM[k] + '"></i></span>' + ST_NAME[k]).join(" ") + "</div></div>";
+}
+function openShare(){
+  if(!hasId()){ renderHome("Isi nama dan kelas dulu."); return; }
+  if(RUN){ tick(); save(); }
+  SHARE = shareInfo();
+  $("#sbody").innerHTML = shareCardHTML(SHARE) + '<div class="row"><button class="btn primary" type="button" data-sh="share">Bagikan</button><button class="btn" type="button" data-sh="save">Simpan gambar</button><button class="btn" type="button" data-sh="copy">Salin teks</button></div>' +
+    '<p class="small muted" id="shMsg" aria-live="polite">Kirim gambar atau teksnya ke guru, atau tangkap layar kartu ini.</p>';
+  $("#sdlg").showModal();
+}
+function rrect(g, x, y, w, h, r){ g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); }
+function shareCanvas(i){
+  const W = 1080, H = 1350, c = document.createElement("canvas"); c.width = W; c.height = H;
+  const g = c.getContext("2d"), F = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+  const COL = ["#9AA1B2", "#D9822B", "#2E8B57", "#1F5E3A"], INK = "#15161A", MUTED = "#4F5664";
+  const fit = (s, max, font) => { g.font = font; if(g.measureText(s).width <= max) return s; while(s.length > 1 && g.measureText(s + "…").width > max) s = s.slice(0, -1); return s + "…"; };
+  const text = (s, x, y, font, color, max) => { g.font = font; g.fillStyle = color || INK; g.fillText(max ? fit(s, max, font) : s, x, y); };
+  g.fillStyle = "#F4F8FD"; g.fillRect(0, 0, W, H);
+  g.fillStyle = INK; rrect(g, 58, 58, W - 104, H - 104, 36); g.fill();
+  g.fillStyle = "#FFFFFF"; rrect(g, 44, 44, W - 104, H - 104, 36); g.fill(); g.lineWidth = 5; g.strokeStyle = INK; g.stroke();
+  const L = 92, R = W - 100;
+  let y = 120;
+  text(J.title + " · " + J.subject + " " + J.src, L, y, "600 30px " + F, "#0A64A8", R - L); y += 86;
+  text(S.nama, L, y, "800 66px " + F, INK, R - L); y += 58;
+  text("Kelas " + S.kelas + " · ID " + S.pid, L, y, "700 38px " + F, INK); y += 48;
+  text(i.when, L, y, "400 30px " + F, MUTED, R - L); y += 34;
+  g.fillStyle = "#CBD6E3"; g.fillRect(L, y, R - L, 3); y += 62;
+  const dots = (arr, x, y0, gapAt) => { let xx = x; arr.forEach((d, k) => { if(gapAt && gapAt.includes(k)) xx += 18; g.fillStyle = d === "x" ? "#B8322A" : COL[d]; rrect(g, xx, y0 - 30, 34, 34, 7); g.fill(); xx += 42; }); };
+  text("Cek prasyarat", L, y, "700 36px " + F); dots(i.cek.map(d => d === 3 ? 2 : d === 2 ? 1 : d === 1 ? "x" : 0), R - i.cek.length * 42, y); y += 42;
+  text(cekText(i.cek), L, y, "400 28px " + F, MUTED, R - L); y += 70;
+  i.packs.forEach(p => {
+    const flat = [].concat(...p.units), gaps = []; let k = 0; p.units.forEach(u => { k += u.length; gaps.push(k); }); gaps.pop();
+    text("Paket " + p.no + " · " + p.judul, L, y, "700 36px " + F, INK, R - L); y += 56;
+    dots(flat, L, y, gaps); y += 44;
+    text(p.done + "/" + p.n + " unit selesai · " + p.m + "/" + p.fams + " latihan dikuasai · " + p.menit + " menit", L, y, "400 28px " + F, MUTED, R - L); y += 72;
+  });
+  text("Ujian akhir", L, y, "700 36px " + F); g.textAlign = "right"; text(i.ujian.dijawab ? i.ujian.benar + "/" + i.ujian.dijawab : "–", R, y + 6, "800 54px " + F); g.textAlign = "left"; y += 42;
+  text(ujianText(i.ujian), L, y, "400 28px " + F, MUTED, R - L); y += 70;
+  g.fillStyle = "#CBD6E3"; g.fillRect(L, y - 30, R - L, 3); y += 20;
+  text("Kartu materi dibuka " + i.kartu + " kali · Yakin tapi salah " + i.yw, L, y, "400 30px " + F, INK, R - L); y += 46;
+  const lg = [["Belum", 0], ["Dibantu", 1], ["Bisa", 2], ["Kuat", 3]]; let x = L;
+  lg.forEach(([n, d]) => { g.fillStyle = COL[d]; rrect(g, x, y - 24, 26, 26, 6); g.fill(); text(n, x + 34, y, "400 26px " + F, MUTED); g.font = "400 26px " + F; x += 34 + g.measureText(n).width + 30; });
+  return c;
+}
+async function doShare(kind){
+  const msg = t => { const m = $("#shMsg"); if(m) m.textContent = t; };
+  const text = shareText(SHARE), name = "progres-" + (S.nama + "-" + S.kelas).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "") + ".png";
+  if(kind === "copy"){
+    try { await navigator.clipboard.writeText(text); msg("Teks tersalin. Tempel di pesan ke guru."); } catch(e) { msg("Tidak bisa menyalin di perangkat ini; tangkap layar kartu ini."); }
+    return;
+  }
+  const blob = await new Promise(r => shareCanvas(SHARE).toBlob(r, "image/png"));
+  if(kind === "share"){
+    try {
+      const file = new File([blob], name, {type: "image/png"});
+      if(navigator.canShare && navigator.canShare({files: [file]})){ await navigator.share({files: [file], title: J.title, text: "Progres " + S.nama + " (" + S.kelas + ")"}); msg("Terkirim."); return; }
+      if(navigator.share){ await navigator.share({title: J.title, text}); msg("Terkirim."); return; }
+    } catch(e) { if(e.name === "AbortError") return; }
+  }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 2000);
+  msg("Gambar disimpan (" + name + "). Kirim gambar itu ke guru.");
 }
 
 // ---------- teacher code ----------
 function checksum(s){ let n = 0; for(const ch of s) n = (n * 31 + ch.codePointAt(0)) % 1296; return n.toString(36).padStart(2, "0"); }
 function encode(){
-  const nama = (S.nama || "Tanpa nama").replace(/[|\n\r]/g, " ").slice(0, 40).trim();
+  const clean = s => (String(s || "").replace(/[|\n\r]/g, " ").trim().slice(0, 40)) || "-";
   const st = SKILLS.map(id => ST_NUM[(S.fam[id] || {}).st || "belum"]).join("");
   const pr = J.prasyarat.map(p => preDigit(p.id)).join("");
   const mis = Object.entries(S.mis).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([m, n]) => m + "x" + n).join(",");
   const yw = SKILLS.reduce((a, id) => a + ((S.fam[id] || {}).yw || 0), 0);
-  const body = [J.kode + "1", nama, st, pr, mis || "-", yw].join("|");
+  const done = J.akhir.soal.filter(id => id in S.akhir.hasil);
+  const uj = done.length ? done.filter(id => S.akhir.hasil[id]).length + "/" + done.length : "-";
+  const mnt = PAKET.map(p => minutes(p.id)).concat(minutes("ujian")).join(",");
+  const kartu = Object.values(S.kartu).reduce((a, b) => a + b, 0);
+  const body = [J.kode + "2", clean(S.nama), clean(S.kelas), S.pid || "-", st, pr, mis || "-", yw, uj, mnt, kartu].join("|");
   return body + "|" + checksum(body);
 }
 function decode(line){
-  const parts = line.trim().split("|");
-  if(parts.length !== 7 || parts[0] !== J.kode + "1") return null;
-  if(checksum(parts.slice(0, 6).join("|")) !== parts[6]) return {bad: true, nama: parts[1]};
-  const st = {}; SKILLS.forEach((id, i) => st[id] = +(parts[2][i] || 0));
-  const mis = parts[4] === "-" ? [] : parts[4].split(",").map(x => { const [m, n] = x.split("x"); return [m, +n]; });
-  return {nama: parts[1], st, pr: [...parts[3]].map(Number), mis, yw: +parts[5]};
+  const parts = line.trim().split("|"), v1 = parts.length === 7 && parts[0] === J.kode + "1", v2 = parts.length === 12 && parts[0] === J.kode + "2";
+  if(!v1 && !v2) return null;
+  const n = parts.length - 1;
+  if(checksum(parts.slice(0, n).join("|")) !== parts[n]) return {bad: true, nama: parts[1]};
+  const f = v2 ? {nama: parts[1], kelas: parts[2], pid: parts[3], st: parts[4], pr: parts[5], mis: parts[6], yw: parts[7], uj: parts[8], mnt: parts[9], kartu: parts[10]}
+               : {nama: parts[1], kelas: "-", pid: "-", st: parts[2], pr: parts[3], mis: parts[4], yw: parts[5], uj: "-", mnt: "", kartu: "-"};
+  const st = {}; SKILLS.forEach((id, i) => st[id] = +(f.st[i] || 0));
+  const mis = f.mis === "-" ? [] : f.mis.split(",").map(x => { const [m, k] = x.split("x"); return [m, +k]; });
+  return {nama: f.nama, kelas: f.kelas, pid: f.pid, st, pr: [...f.pr].map(Number), mis, yw: +f.yw, uj: f.uj, mnt: f.mnt ? f.mnt.split(",").map(Number) : [], kartu: f.kartu};
 }
 function renderGuru(){
+  document.body.classList.add("wide");
   app.innerHTML = '<section><div class="sec-head"><h2>Tampilan guru</h2><p><a href="#" id="back">Kembali ke jalur</a></p></div><div class="panel stack">' +
-    '<p class="small">Tempel kode progres siswa, satu baris per siswa. Semua diolah di peramban ini; tidak ada yang dikirim ke mana pun.</p>' +
-    '<textarea id="codes" aria-label="Kode progres" placeholder="' + J.kode + '1|Nama|..."></textarea><div class="row"><button class="btn primary" type="button" id="show">Tampilkan</button></div><div id="out" class="stack"></div></div></section>';
+    '<p class="small">Tempel kode progres siswa, satu baris per siswa (baris "Kode untuk guru" dari teks yang dibagikan). Semua diolah di peramban ini; tidak ada yang dikirim ke mana pun.</p>' +
+    '<textarea id="codes" aria-label="Kode progres" placeholder="' + J.kode + '2|Nama|Kelas|..."></textarea><div class="row"><button class="btn primary" type="button" id="show">Tampilkan</button></div><div id="out" class="stack"></div></div></section>';
   $("#back").onclick = e => { e.preventDefault(); history.replaceState(null, "", location.pathname + location.search); renderHome(); };
   $("#show").onclick = () => {
-    const rows = $("#codes").value.split(/\n+/).filter(l => l.trim()).map(decode);
+    const rows = $("#codes").value.split(/\n+/).map(l => l.replace(/^.*?(UKUR\d\|)/, "$1")).filter(l => l.trim()).map(decode);
     const good = rows.filter(r => r && !r.bad), bad = rows.filter(r => !r || r.bad);
     if(!good.length){ $("#out").innerHTML = '<p class="note">Tidak ada kode yang terbaca.</p>'; return; }
+    good.sort((a, b) => (a.kelas + a.nama).localeCompare(b.kelas + b.nama));
     const cell = (k, n) => { const f = n ? k / n : 0; return '<span class="cell" style="background:' + (f >= 1 ? "var(--ok-soft)" : f > 0 ? "#FFF0D6" : "var(--sunk)") + '">' + k + "/" + n + "</span>"; };
     const tka = J.akhir.soal.filter(id => ITEM[id].tka);
-    const head = "<tr><th>Nama</th><th>Prasyarat</th>" + J.unit.map(u => '<th title="' + esc(u.judul) + '">' + u.id + "</th>").join("") + "<th>TKA</th><th>Yakin salah</th></tr>";
-    const body = good.map(r => "<tr><td>" + esc(r.nama) + '</td><td class="mono">' + r.pr.map(d => ["·", "✗", "✓*", "✓"][d]).join(" ") + "</td>" +
-      J.unit.map(u => "<td>" + cell(u.sendiri.filter(id => r.st[id] >= 2).length, u.sendiri.length) + "</td>").join("") +
-      "<td>" + cell(tka.filter(id => r.st[id] >= 2).length, tka.length) + "</td><td>" + r.yw + "</td></tr>").join("");
+    const head = "<tr><th>Nama</th><th>Kelas</th><th>ID</th><th>Prasyarat</th>" + PAKET.map(p => '<th title="' + esc(p.judul) + '">Paket ' + PACK[p.id].no + "</th>").join("") + "<th>TKA</th><th>Ujian</th><th>Menit (paket, ujian)</th><th>Kartu dibuka</th><th>Yakin salah</th></tr>";
+    const body = good.map(r => "<tr><td>" + esc(r.nama) + "</td><td>" + esc(r.kelas) + '</td><td class="mono">' + esc(r.pid) + '</td><td class="mono">' + r.pr.map(d => ["·", "✗", "✓*", "✓"][d]).join(" ") + "</td>" +
+      PAKET.map(p => { const fs = p.unit.flatMap(u => UNIT[u].sendiri); return "<td>" + cell(fs.filter(id => r.st[id] >= 2).length, fs.length) + "</td>"; }).join("") +
+      "<td>" + cell(tka.filter(id => r.st[id] >= 2).length, tka.length) + "</td><td>" + esc(r.uj) + '</td><td class="mono">' + (r.mnt.length ? r.mnt.join(" / ") : "–") + "</td><td>" + esc(r.kartu) + "</td><td>" + r.yw + "</td></tr>").join("");
     const tot = {};
-    good.forEach(r => r.mis.forEach(([m, n]) => { tot[m] = tot[m] || {n: 0, s: 0}; tot[m].n += n; tot[m].s++; }));
+    good.forEach(r => r.mis.forEach(([m, k]) => { tot[m] = tot[m] || {n: 0, s: 0}; tot[m].n += k; tot[m].s++; }));
     const misList = Object.entries(tot).sort((a, b) => b[1].s - a[1].s || b[1].n - a[1].n).slice(0, 8);
     const preFail = J.prasyarat.map((p, i) => [p.judul, good.filter(r => r.pr[i] === 1).length]).filter(x => x[1]);
+    const ids = {}; good.forEach(r => { if(r.pid !== "-") (ids[r.pid] = ids[r.pid] || []).push(r.nama); });
+    const shared = Object.entries(ids).filter(([, v]) => new Set(v).size > 1);
     $("#out").innerHTML = "<h3>" + good.length + " siswa" + (bad.length ? ' <span class="small muted">(' + bad.length + " baris tidak terbaca)</span>" : "") + "</h3>" +
+      (shared.length ? '<p class="note">ID perangkat yang sama dipakai nama berbeda: ' + shared.map(([k, v]) => esc(k) + " (" + v.map(esc).join(", ") + ")").join("; ") + ".</p>" : "") +
       '<div class="tbl"><table class="gtable"><thead>' + head + "</thead><tbody>" + body + "</tbody></table></div>" +
-      '<p class="small muted">Sel = jenis latihan yang dikuasai (Bisa atau Kuat) dari jumlahnya. Prasyarat: ✓ lulus, ✓* lulus setelah jembatan, ✗ belum lulus, · belum dicek.</p>' +
-      (preFail.length ? "<h3>Prasyarat yang belum lulus</h3><ul class=\"body\">" + preFail.map(([j, n]) => "<li>" + esc(j) + ": " + n + " siswa</li>").join("") + "</ul>" : "") +
+      '<p class="small muted">Sel paket = jenis latihan yang dikuasai (Bisa atau Kuat) dari jumlahnya. Prasyarat: ✓ lulus, ✓* lulus setelah jembatan, ✗ belum lulus, · belum dicek. Menit = waktu aktif per paket dan ujian.</p>' +
+      (preFail.length ? "<h3>Prasyarat yang belum lulus</h3><ul class=\"body\">" + preFail.map(([j, k]) => "<li>" + esc(j) + ": " + k + " siswa</li>").join("") + "</ul>" : "") +
       "<h3>Miskonsepsi yang paling sering</h3>" + (misList.length ? '<ol class="body">' + misList.map(([m, v]) => "<li><b>" + tx(J.miskonsepsi[m] ? J.miskonsepsi[m].judul : m) + "</b>: " + v.s + " siswa, " + v.n + " kali. " + tx(J.miskonsepsi[m] ? J.miskonsepsi[m].teks : "") + "</li>").join("") + "</ol>" : "<p>Belum ada.</p>");
   };
 }
@@ -973,6 +1302,14 @@ function renderGuru(){
 $("#eyebrow").textContent = J.subject + " · " + J.src + " · Jalur belajar (pilot)";
 $("#title").innerHTML = tx(J.title);
 $("#lead").innerHTML = tx(J.lead);
+document.addEventListener("click", e => {
+  if(RUN && app.contains(e.target)){ tick(); save(); }
+  if(e.target.closest("[data-kartu]")) openKartu();
+  if(e.target.closest("[data-share]")) openShare();
+  const cl = e.target.closest("[data-close]"); if(cl) cl.closest("dialog").close();
+  const sh = e.target.closest("[data-sh]"); if(sh) doShare(sh.dataset.sh);
+});
+$("#ksel").onchange = () => document.getElementById($("#ksel").value).scrollIntoView({block: "start", behavior: "smooth"});
 window.addEventListener("hashchange", () => { if(!RUN) renderHome(); });
 renderHome();
 </script>
