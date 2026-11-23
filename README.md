@@ -55,6 +55,7 @@ High-school study maps, starting with tools for a history competition in the Lom
 | `docs/bank-bahasa-inggris.html` | Short-answer question bank for Bahasa Inggris (151 questions, about a fifth to a quarter with everyday-context items). |
 | `docs/modul-vektor-gerak.html` | Learning module Vektor dan Gerak: 7 lessons linking vectors with displacement, speed, velocity and relative motion, then 42 exercises in 5 stages from easy to TKA level (14 TKA-style items), with answer checking, hints and worked solutions. |
 | `docs/modul-vektor-gerak.pdf` | Printable version of the Vektor dan Gerak module (39 pages A4): 5 sub-chapters, 105 exercises from easy to TKA level including 13 TKA-style items, Uji Kompetensi, and an answer key. Source in `print/`. |
+| `docs/jalur-pengukuran.html` | Learning path (pilot) Besaran dan Pengukuran, Fisika kelas X: a self-paced sequence of short cards from a prerequisite check with bridges, through 7 units (measuring with non-standard units, everyday instruments, vernier caliper, micrometer, significant figures, scientific notation, dimensional analysis), to a mixed set with 3 TKA-style items. 53 item families with 129 variants, feedback keyed to 36 named mistakes, mastery on fresh numbers, spaced review, and a progress code with a teacher view. |
 | `docs/tka.html` | TKA 2025 practice: transcribed exam items per subject, with figure descriptions, answer checking against proposed (unofficial) keys, and per-item notes. |
 | `docs/404.html` | Shown by GitHub Pages for any missing address, with links back to the start page. |
 
@@ -76,6 +77,7 @@ data/questions.csv      the question bank (source of truth; edit this)
 data/maps/<id>.json     one knowledge map per subject; becomes docs/peta-<id>.html
 data/subjects.json      roster of all school subjects and the home page tabs; build.py prints each one's status
 data/modules/<id>.json  one learning module per file; becomes docs/modul-<id>.html (specs/module-spec.md)
+data/jalur/<id>.json    one learning path per file (pilot); becomes docs/jalur-<id>.html (specs/jalur-spec.md)
 print/                  printable PDF modules and their sources; print/<id>.pdf becomes docs/modul-<id>.pdf (print/README.md)
 data/tka/<id>.json      one transcribed TKA exam paper per file; all feed docs/tka.html (specs/tka-spec.md)
 templates/*.html        page sources; each becomes docs/<same name>
@@ -86,6 +88,7 @@ templates/_feed.js      swipe feed: script (a template pulls shared files in wit
 templates/_icons.json   subject icons for the home page and map headers
 specs/                  rules for content, questions, workflow, and quality checks
 scripts/build.py        checks the data, then builds docs/ (rewrites only changed files, removes pages no longer built)
+scripts/jalur.py        learning paths: answer generators and validation, used by build.py
 tests/test_build.py     tests for the checks and the build (they build into temporary folders, never into docs/)
 docs/                   the built site (GitHub Pages serves this folder); generated, never edited by hand
 .github/workflows/      CI: validate, test, and confirm docs/ matches a fresh build (including added or removed pages)

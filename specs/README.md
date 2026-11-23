@@ -6,6 +6,7 @@ Rules for building and extending this project. They are written for both people 
 |---|---|---|
 | [`map-spec.md`](map-spec.md) | What a subject knowledge map is: structure, every field, writing rules, size targets | Creating or editing anything in `data/maps/` |
 | [`module-spec.md`](module-spec.md) | What a learning module is: lessons, staged exercises, item formats, TKA-style items | Creating or editing anything in `data/modules/` |
+| [`jalur-spec.md`](jalur-spec.md) | Pilot: what a learning path is: prerequisite check and bridges, card sequence per unit, item families with generated variants, help ladder, keyed misconceptions, mastery, spaced review, teacher code | Creating or editing anything in `data/jalur/` |
 | [`question-spec.md`](question-spec.md) | What a question is: fields, ids, difficulty, writing rules | Adding or editing questions |
 | [`tka-spec.md`](tka-spec.md) | What a TKA bank is: transcribed exam items, proposed keys, figure descriptions | Adding or editing `data/tka/` |
 | [`tka-item-types.md`](tka-item-types.md) | Item types and levels; how `data/tka-types.json` classifies every transcribed item | Classifying items, adding a subject template |

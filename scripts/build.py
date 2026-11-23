@@ -3,11 +3,12 @@
 Usage:  python scripts/build.py              # validate, print the report, and rebuild docs/
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
 Reads:  data/topics.json and data/questions.csv (history kit), data/maps/*.json, data/questions/*.csv,
-        data/tka/*.json, data/tka-types.json, data/modules/*.json, data/subjects.json, data/cp/*.json, print/<id>.pdf, and
+        data/tka/*.json, data/tka-types.json, data/modules/*.json, data/jalur/*.json, data/subjects.json, data/cp/*.json,
+        print/<id>.pdf, and
         templates/*.html with their shared parts: templates/_theme.css (added to every page), templates/_feed.css
         and _feed.js (the swipe feed, where a template includes them) and templates/_icons.json (subject icons).
 Writes: docs/: one page per template, peta-<id>.html per map, bank-<id>.html per subject bank, modul-<id>.html (and
-        modul-<id>.pdf) per module, questions.json and .nojekyll. Only files whose content changed are rewritten,
+        modul-<id>.pdf) per module, jalur-<id>.html per learning path, questions.json and .nojekyll. Only files whose content changed are rewritten,
         and generated files that are no longer built are removed, so a second run changes nothing.
 Exits with status 1, writing nothing, if the data has errors.
 """
@@ -22,6 +23,8 @@ from collections import Counter
 from dataclasses import dataclass, field
 from pathlib import Path
 from urllib.parse import urlparse
+
+import jalur  # learning paths: generators and validation (scripts/jalur.py, specs/jalur-spec.md)
 
 ROOT = Path(__file__).resolve().parent.parent
 FIELDS = ["id", "simpul", "tingkat", "soal", "jawaban", "catatan"]
@@ -141,13 +144,14 @@ class Site:
     subjects: list    # the roster
     groups: list      # the home page tabs
     cp: dict = field(default_factory=dict)  # {subject id: CP text}; not rendered, only validated
+    paths: dict = field(default_factory=dict)  # {path id: learning path} (data/jalur/)
 
 
 def load_site():
     topics, rows = load()
     roster = load_roster()
     return Site(topics, rows, load_maps(), load_subject_banks(), load_tka(), load_tka_types(), load_modules(),
-                roster.get("subjects", []), roster.get("groups", []), load_cp())
+                roster.get("subjects", []), roster.get("groups", []), load_cp(), jalur.load_jalur())
 
 
 # ---------- validation ----------
@@ -594,6 +598,7 @@ def validate_site(site):
             + [e for name, m in site.maps.items() for e in validate_map(name, m)]
             + [e for name, b in site.tka.items() for e in validate_tka(name, b)]
             + [e for name, mod in site.modules.items() for e in validate_module(name, mod, site.maps, site.tka_types)]
+            + [e for name, doc in site.paths.items() for e in jalur.validate_jalur(name, doc, site.maps, site.tka_types)]
             + validate_subject_banks(site.banks, site.maps)
             + validate_subjects(site.subjects, site.maps, site.tka, site.groups)
             + [e for name, doc in site.cp.items() for e in validate_cp(name, doc, site.subjects)])
@@ -670,6 +675,10 @@ def print_report(site):
               f"({sum('tka' in it for it in items)} setara TKA)")
         for w in lint_module(name, mod):
             print("  warning: " + w)
+    for name, doc in site.paths.items():
+        print(jalur.summary(doc))
+        for w in jalur.lint_jalur(name, doc):
+            print("  warning: " + w)
     for doc in site.cp.values():
         butir = sum(len(c["butir"]) for c in doc["capaian"])
         print(f"CP {doc['mapel']}: {len(doc['fase'])} fase, {len(doc['capaian'])} capaian, {butir} butir")
@@ -713,6 +722,7 @@ def page_names(site):
     names = [p.name for p in sorted((ROOT / "templates").glob("*.html")) if not p.name.startswith("_")]
     names += [f"peta-{i}.html" for i in site.maps] + [f"bank-{i}.html" for i in site.banks]
     names += [f"modul-{i}.html" for i in site.modules] + [f"modul-{i}.pdf" for i in site.modules if module_pdf(i)]
+    names += [f"jalur-{i}.html" for i in site.paths]
     return names
 
 
@@ -803,7 +813,24 @@ def module_pages(modules, maps, links, tka_types=None):
     return out
 
 
-def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None, subjects=None, groups=None, links=None):
+def path_pages(paths, maps, links):
+    """Return {file name: page body} for every learning path (specs/jalur-spec.md)."""
+    template = read_template("_jalur.html")
+    out = {}
+    for doc in paths.values():
+        data = dict(doc)
+        if doc.get("map") in maps:
+            m = maps[doc["map"]]
+            data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
+            data["topics"] = {t["code"]: t["title"] for d in m["domains"] for t in d["topics"]}
+        body = template.replace("__TITLE__", html.escape(doc["title"], quote=False))
+        body = body.replace("/*__JALUR__*/", "const J = " + script_json(data) + ";")
+        out[f"jalur-{doc['id']}.html"] = rewrite_links(body, links)
+    return out
+
+
+def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None, subjects=None, groups=None, links=None,
+                  paths=None):
     """Return (html, data) for the home page: subject cards in one panel per group tab, and the tools section.
 
     Every subject sits in its primary group's panel and in each panel listed under `also`, where it carries its
@@ -875,6 +902,12 @@ def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None,
             f'<p>Modul belajar {e(maps[mod["map"]]["subject"]) if mod.get("map") in maps else ""}: '
             f'{len(mod["materi"])} materi dan {n_items} latihan bertahap sampai setara TKA.</p>'
             f'<nav class="tlinks" aria-label="{e(mod["title"])}"><a class="btn primary" href="modul-{e(mod["id"])}.html">Buka modul</a></nav></article>')
+    for doc in (paths or {}).values():
+        n_units = len(doc["unit"])
+        tools.append(
+            f'<article class="tool"><span class="ico">{icon_svg(icons["modul"])}</span><h3>{e(doc["title"])}</h3>'
+            f'<p>{e(doc.get("blurb", ""))} {n_units} unit, cek prasyarat, dan ulangan berjarak.</p>'
+            f'<nav class="tlinks" aria-label="{e(doc["title"])}"><a class="btn primary" href="jalur-{e(doc["id"])}.html">Buka jalur</a></nav></article>')
     stats = {"subjects": len(data), "topics": sum(len(d["topics"]) for m in maps.values() for d in m["domains"]),
              "questions": sum(len(r) for r in banks.values()) + n_questions,
              "tka": sum(len(b["soal"]) for b in (tka or {}).values())}
@@ -882,7 +915,7 @@ def home_sections(maps, topics, n_questions, tka=None, modules=None, banks=None,
     return sections, {"subjects": data, "stats": stats}
 
 
-def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=None, subjects=None, groups=None):
+def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=None, subjects=None, groups=None, paths=None):
     """Return {file name: page body} for every template, with cross-page links resolved through `links`.
 
     A template that contains /*__DATA__*/ gets the history topics and questions injected there, one that contains
@@ -893,6 +926,7 @@ def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=Non
     tka = tka if tka is not None else load_tka()
     modules = modules if modules is not None else load_modules()
     banks = banks if banks is not None else load_subject_banks()
+    paths = paths if paths is not None else jalur.load_jalur()
     history = script_json({"topics": dict(topics, map_url=links.get("peta.html", "peta.html")), "questions": questions})
     banks_json = script_json(list(tka.values()))
     out = {}
@@ -904,7 +938,7 @@ def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=Non
         body = body.replace("/*__TKA__*/", "const BANKS = " + banks_json + ";")
         body = body.replace("__SITE_BASE__", SITE_BASE)
         if "<!--__TABS__-->" in body:
-            sections, home = home_sections(maps, topics, len(questions), tka, modules, banks, subjects, groups, links)
+            sections, home = home_sections(maps, topics, len(questions), tka, modules, banks, subjects, groups, links, paths)
             for key, part in sections.items():
                 body = body.replace(f"<!--__{key.upper()}__-->", part)
             for key, n in home["stats"].items():
@@ -917,10 +951,11 @@ def pages(topics, questions, links, maps=None, tka=None, modules=None, banks=Non
 def render_site(site, links):
     """{file name: page body} for every page, with cross-page links resolved through `links` ({} for docs/)."""
     return {**pages(site.topics, question_json(site.rows), links, site.maps, site.tka, site.modules, site.banks,
-                    site.subjects, site.groups),
+                    site.subjects, site.groups, site.paths),
             **map_pages(site.maps, links, site.banks),
             **bank_pages(site.banks, site.maps, links),
-            **module_pages(site.modules, site.maps, links, site.tka_types)}
+            **module_pages(site.modules, site.maps, links, site.tka_types),
+            **path_pages(site.paths, site.maps, links)}
 
 
 def site_files(site):
