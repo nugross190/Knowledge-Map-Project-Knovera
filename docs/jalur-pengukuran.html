@@ -1,0 +1,1057 @@
+<!doctype html>
+<html lang="id">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>body{margin:0}</style>
+<title>Jalur Besaran dan Pengukuran</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Lato:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: learning path (pilot). A home view (path, skills, teacher code) and a card player that runs one card at a time:
+   prerequisite check and bridges, then per unit kait → media → lihat → bersama → sendiri (mastery) → ringkas, with spaced
+   review at the start of a session. Content comes from data/jalur/<id>.json (specs/jalur-spec.md). */
+:root{
+  --bg:#F3F4F7; --surface:#FFFFFF; --sunk:#E9EBF1; --ink:#1A1F33; --muted:#585E73; --line:#D6DAE3;
+  --accent:#0A64A8; --accent-soft:#D7EDFB; --warn:#9A3B1F; --warn-soft:#F8E6DF; --ok:#2C6B3F; --ok-soft:#E1F0E5;
+  --st0:#9AA1B2; --st1:#D9822B; --st2:#2E8B57; --st3:#1F5E3A;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6;margin:0}
+.wrap{max-width:860px;margin:0 auto;padding-inline:16px;padding-block:24px 64px}
+h1,h2,h3{font-family:var(--f-label);text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(1.9rem,5vw,2.7rem);font-weight:700}
+h2{font-size:1.45rem;font-weight:700}
+h3{font-size:1.1rem;font-weight:600}
+p{margin:0}
+a{color:inherit}
+sub,sup{line-height:0}
+.eyebrow{font-family:var(--f-label);font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.lead{max-width:64ch;color:var(--muted);font-size:1.02rem;margin-top:10px}
+.mono{font-family:var(--f-mono);font-size:.82em}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+.home-link{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-label);font-weight:600;font-size:.9rem;color:var(--muted);text-decoration:none;margin-bottom:14px}
+.home-link:hover,.home-link:focus-visible{color:var(--ink);text-decoration:underline;outline:none}
+.btn{font-family:var(--f-label);font-weight:600;font-size:.92rem;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 14px;border-radius:6px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;line-height:1.2}
+.btn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.btn.small{font-size:.82rem;padding:5px 10px}
+.btn[disabled]{opacity:.45;cursor:default}
+.linklike{all:unset;cursor:pointer;color:var(--muted);text-decoration:underline;font-size:.88rem}
+.linklike:focus-visible{outline:2px solid var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.stack{display:flex;flex-direction:column;gap:12px}
+section{margin-top:34px}
+.sec-head{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 14px;margin-bottom:12px;border-bottom:2px solid var(--ink);padding-bottom:6px}
+.sec-head p{color:var(--muted);font-size:.92rem}
+.panel{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:16px;min-width:0}
+.hero{display:grid;gap:12px}
+.hero .big{font-family:var(--f-label);font-weight:700;font-size:1.15rem}
+.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.step{display:grid;grid-template-columns:auto 1fr auto;gap:4px 12px;align-items:center;background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:10px 12px}
+.step .no{font-family:var(--f-mono);font-size:.8rem;color:var(--accent);min-width:2.2em}
+.step .ttl{font-family:var(--f-label);font-weight:600;line-height:1.25}
+.step .meta{grid-column:2;font-size:.84rem;color:var(--muted)}
+.step .bar{grid-column:2;height:6px;background:var(--sunk);border-radius:3px;overflow:hidden}
+.step .bar i{display:block;height:100%;background:var(--st2)}
+.step .go{grid-row:1 / span 3;grid-column:3}
+.step.done{border-color:var(--st2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{display:inline-flex;gap:6px;align-items:baseline;padding:3px 8px;border-radius:6px;background:var(--sunk);font-size:.84rem;line-height:1.3;text-decoration:none}
+.chip .mono{color:var(--accent)}
+.st{display:inline-block;font-family:var(--f-label);font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:4px;color:#fff;background:var(--st0);white-space:nowrap}
+.st.s1{background:var(--st1)} .st.s2{background:var(--st2)} .st.s3{background:var(--st3)}
+.skills{display:grid;gap:8px}
+.skill{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;font-size:.92rem;border-bottom:1px dashed var(--line);padding-bottom:6px}
+.dots{display:flex;gap:3px}
+.dots i{width:12px;height:12px;border-radius:3px;background:var(--st0)}
+.dots i.s1{background:var(--st1)} .dots i.s2{background:var(--st2)} .dots i.s3{background:var(--st3)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:.84rem;color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;gap:5px;align-items:center}
+input[type="text"],textarea,.fill input,.step-in input{font:inherit;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);min-width:0}
+textarea{width:100%;min-height:140px;font-family:var(--f-mono);font-size:.82rem}
+.code{font-family:var(--f-mono);font-size:.8rem;word-break:break-all;background:var(--sunk);padding:8px 10px;border-radius:8px}
+
+/* player */
+.player{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.p-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px}
+.p-step{font-family:var(--f-label);font-weight:700}
+.p-kind{font-family:var(--f-label);font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
+.prog{display:flex;gap:4px;flex-wrap:wrap}
+.prog i{width:18px;height:6px;border-radius:3px;background:var(--line)}
+.prog i.on{background:var(--accent)} .prog i.cur{background:var(--ink)}
+.card{background:var(--surface);border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);padding:18px;min-width:0;display:flex;flex-direction:column;gap:14px}
+.card h2{font-size:1.3rem}
+.p-nav{display:flex;justify-content:space-between;gap:8px;align-items:center;flex-wrap:wrap}
+.story{border-left:5px solid var(--accent);background:var(--accent-soft);border-radius:0 10px 10px 0;padding:12px 14px;font-size:1.02rem}
+.teaser{border:2px dashed var(--accent);border-radius:12px;padding:12px 14px}
+.teaser b{font-family:var(--f-label)}
+.body p + p{margin-top:8px}
+.body ul,.body ol{margin:6px 0 0;padding-left:1.2em;display:flex;flex-direction:column;gap:5px}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.4}
+th{font-family:var(--f-label);font-weight:700;text-align:left;background:var(--sunk);padding:7px 10px}
+td{padding:6px 10px;border-top:1px solid var(--line);vertical-align:top}
+.example{border-left:4px solid var(--accent);background:var(--accent-soft);border-radius:0 8px 8px 0;padding:10px 14px}
+.example h4,.traps h4{font-family:var(--f-label);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin:0 0 4px;color:var(--accent)}
+.traps{background:var(--warn-soft);border-radius:8px;padding:10px 14px}
+.traps h4{color:var(--warn)}
+.revealed li{animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.revealed li{animation:none}}
+figure{margin:0;display:flex;flex-direction:column;align-items:center;gap:4px}
+figure svg{width:100%;max-width:560px;height:auto;color:var(--ink)}
+figcaption{font-size:.84rem;color:var(--muted);text-align:center}
+.widget{border:1.5px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:10px;background:#FAFBFD}
+.widget .w-title{font-family:var(--f-label);font-weight:700;font-size:.92rem}
+.widget label{font-size:.9rem;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.widget input[type="range"]{flex:1;min-width:140px;accent-color:var(--accent)}
+.readout{font-family:var(--f-label);font-weight:600;background:var(--sunk);border-radius:8px;padding:8px 10px}
+.pick button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* items */
+.q{display:flex;flex-direction:column;gap:10px;min-width:0}
+[data-q] + [data-q]{border-top:1.5px dashed var(--line);padding-top:14px}
+.stem{max-width:72ch}
+.stem p + p{margin-top:6px}
+.opts{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.opts label{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1.5px solid var(--line);border-radius:8px;cursor:pointer;font-size:.96rem}
+.opts input{margin-top:5px;accent-color:var(--accent);flex:none}
+.opts .lt{font-family:var(--f-label);font-weight:700;flex:none;min-width:1.1em}
+.opts label.right{border-color:var(--ok);background:var(--ok-soft)}
+.opts label.wrong{border-color:var(--warn);background:var(--warn-soft)}
+.fill{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.fill input{width:9em}
+.step-in{display:grid;grid-template-columns:1fr auto;gap:6px 10px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--line)}
+.step-in .ans{display:flex;gap:6px;align-items:center}
+.step-in input{width:7em}
+.right input,input.right{border-color:var(--ok);background:var(--ok-soft)}
+.wrong input,input.wrong{border-color:var(--warn);background:var(--warn-soft)}
+.conf{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:.88rem;color:var(--muted)}
+.conf button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.feedback{font-family:var(--f-label);font-weight:600;font-size:.95rem}
+.feedback.ok{color:var(--ok)} .feedback.no{color:var(--warn)}
+.note{font-size:.9rem;background:var(--sunk);border-radius:8px;padding:8px 12px}
+.mis{border:2px solid var(--warn);border-radius:10px;padding:10px 12px;background:var(--warn-soft)}
+.mis b{font-family:var(--f-label);display:block;margin-bottom:2px}
+.hints{display:flex;flex-direction:column;gap:6px}
+.hint{background:#FFF6D8;border-radius:8px;padding:8px 12px;font-size:.94rem}
+.hint b,.solution b{font-family:var(--f-label);font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;display:block}
+.solution{background:var(--ok-soft);border-radius:8px;padding:10px 14px}
+.solution ol{margin:4px 0 0;padding-left:1.2em}
+.twin{background:#EEF1FA;border-radius:8px;padding:10px 14px}
+.mastery{display:flex;gap:8px;align-items:center;font-size:.9rem;color:var(--muted)}
+.mastery i{width:14px;height:14px;border-radius:50%;border:2px solid var(--st2)}
+.mastery i.on{background:var(--st2)}
+.result-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.result-list li{display:flex;gap:8px;align-items:baseline}
+.ok-t{color:var(--ok);font-weight:700} .no-t{color:var(--warn);font-weight:700}
+
+/* teacher view */
+.gtable td,.gtable th{text-align:center;white-space:nowrap}
+.gtable td:first-child,.gtable th:first-child{text-align:left}
+.cell{display:inline-block;min-width:2.6em;padding:2px 6px;border-radius:4px;font-family:var(--f-mono);font-size:.78rem}
+.ap{font-family:var(--f-mono);font-size:1.6rem;letter-spacing:.06em}
+.ap .y{color:var(--accent);font-weight:700} .ap .n{color:var(--st0)} .ap .q{color:var(--st1);text-decoration:underline dotted}
+.bignum{font-family:var(--f-mono);font-size:1.5rem;text-align:center;padding:6px 0}
+.bignum .cm{color:var(--warn);font-weight:700}
+.cand{display:flex;flex-direction:column;gap:6px}
+.cand .btn{justify-content:flex-start;text-align:left}
+.cand .btn.yes{border-color:var(--ok);background:var(--ok-soft)}
+.cand .btn.no{border-color:var(--warn);background:var(--warn-soft)}
+details.notes{margin-top:8px}
+details.notes summary{cursor:pointer;font-family:var(--f-label);font-weight:600}
+@media (max-width:520px){.step{grid-template-columns:auto 1fr}.step .go{grid-row:auto;grid-column:2;justify-self:start}.card{padding:14px}}
+/* Shared light theme, added by scripts/build.py at the end of every page's first <style> block, so it
+   overrides the page's own tokens and components. Look: pale blue page with soft blobs, bold Poppins headings,
+   white cards with a thick dark outline and an offset shadow, yellow primary buttons, blue for selected states. */
+:root{
+  --bg:#F4F8FD; --surface:#FFFFFF; --sunk:#E6EFF8; --ink:#15161A; --muted:#4F5664; --line:#CBD6E3;
+  --stroke:#15161A; --blue:#2FA4E7; --blue-ink:#0A64A8; --blue-soft:#D7EDFB; --yellow:#FFD23F; --yellow-soft:#FFF3C4;
+  --d1:#0A64A8; --d2:#B4560C; --d3:#17775D; --d4:#8E3593; --d5:#5E6B0E; --d6:#B8322A; --d7:#3E48A8;
+  --s1:#E0EFFA; --s2:#FCEBDA; --s3:#DCF2EA; --s4:#F4E3F5; --s5:#EDF1D5; --s6:#FBE3E0; --s7:#E3E6F8;
+  --mark:#FFE27A; --warn:#B8322A; --warn-soft:#FDECEA; --ok:#17803F;
+  --f-label:"Poppins",system-ui,sans-serif; --f-body:"Lato",system-ui,sans-serif;
+  --shadow:4px 4px 0 var(--stroke); --shadow-sm:3px 3px 0 var(--stroke); --radius:16px;
+  color-scheme:light;
+}
+body{
+  background:
+    radial-gradient(520px 380px at 100% 0,var(--blue-soft),transparent 70%),
+    radial-gradient(420px 320px at 0 340px,var(--yellow-soft),transparent 70%),
+    var(--bg);
+  background-repeat:no-repeat;
+  min-height:100vh;
+}
+html{background:var(--bg)}
+h1,h2,h3{font-family:var(--f-label);letter-spacing:-.015em}
+h1{font-weight:800}
+h2{font-weight:700}
+.eyebrow{font-family:var(--f-label);font-weight:600;letter-spacing:.08em;color:var(--blue-ink)}
+a{text-underline-offset:3px}
+::selection{background:var(--yellow)}
+
+/* Buttons and pressed states */
+.btn,.linkbtn{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink);
+  font-family:var(--f-label);font-weight:600;transition:transform .12s,box-shadow .12s}
+.btn:hover:not([disabled]):not(:disabled){border-color:var(--stroke);transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--stroke)}
+.btn:active:not([disabled]):not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--stroke)}
+.btn.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+.btn.ok{background:#DDF5E5;border-color:var(--stroke);color:#0E5A2B}
+.btn.bad{background:#FDE3E0;border-color:var(--stroke);color:#8E1F18}
+.btn[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.btn[disabled],.btn:disabled{box-shadow:none;opacity:.5}
+.seg{border:2px solid var(--stroke);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);background:var(--surface)}
+.seg button{border-radius:0;font-family:var(--f-label);font-weight:600}
+.seg button[aria-pressed="true"]{background:var(--blue-ink);color:#fff}
+.tab,.stage-tab{border:2px solid var(--stroke);border-radius:12px;background:var(--surface);font-family:var(--f-label)}
+.tab[aria-selected="true"],.stage-tab[aria-selected="true"]{background:var(--blue-soft);color:var(--ink);box-shadow:var(--shadow-sm)}
+
+/* Inputs */
+.search,select,input[type="search"],input[type="text"],input[type="number"]{border:2px solid var(--stroke);border-radius:12px;background:var(--surface)}
+.search{box-shadow:var(--shadow-sm)}
+.search input{border:0}
+
+/* Cards and panels */
+.card,.mcol,.qcard,.stat,.team,.stage,.step,.item,details.lesson,.empty,.weak,.result,.warning{
+  border:2px solid var(--stroke);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--surface)}
+.card{box-shadow:var(--shadow-sm)}
+.card + .card{margin-top:12px}
+.mcol{border-top:7px solid var(--c)}
+.card.is-done{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.item.ok{border-color:var(--ok);box-shadow:3px 3px 0 var(--ok)}
+.team.turn{background:var(--yellow-soft)}
+.chip{border-radius:10px}
+.tier{border-radius:999px}
+.t1{background:var(--ink);color:#fff}
+.tbl{border-radius:12px}
+.traps{border-radius:12px;border:2px dashed var(--warn)}
+.sec-head{border-bottom:3px solid var(--stroke)}
+.pg .bar,.bar{border-radius:999px}
+.pg .bar::after{border-radius:999px}
+
+/* Back link to the home page: a small outlined pill */
+.home-link{border:2px solid var(--stroke);border-radius:999px;background:var(--surface);color:var(--ink);padding:5px 14px;box-shadow:2px 2px 0 var(--stroke);font-family:var(--f-label)}
+.home-link:hover,.home-link:focus-visible{background:var(--yellow);color:var(--ink);text-decoration:none}
+.links a{border:2px solid var(--stroke);border-radius:12px;box-shadow:var(--shadow-sm);background:var(--surface);color:var(--ink)}
+.links a.primary{background:var(--yellow);border-color:var(--stroke);color:var(--ink)}
+footer{border-top:2px solid var(--stroke)}
+</style>
+<div class="wrap">
+  <a class="home-link" href="index.html">← Beranda</a>
+  <header>
+    <p class="eyebrow" id="eyebrow"></p>
+    <h1 id="title"></h1>
+    <p class="lead" id="lead"></p>
+  </header>
+  <main id="app" aria-live="polite"></main>
+</div>
+<script>
+const J = {"id": "pengukuran", "kode": "UKUR", "subject": "Fisika", "map": "fisika", "src": "Kelas X", "title": "Jalur Besaran dan Pengukuran", "lead": "Belajar mandiri dalam sesi pendek: cek prasyarat, kartu belajar yang bertahap, latihan sampai benar-benar bisa, dan ulangan yang kembali beberapa hari kemudian.", "blurb": "Pilot jalur belajar mandiri Fisika kelas X: dari prasyarat sampai jangka sorong, mikrometer, angka penting, notasi ilmiah, dan analisis dimensi.", "sesi_menit": 15, "ulang_hari": [1, 3, 7, 21], "prasyarat": [{"id": "P1", "judul": "Membaca dan membandingkan desimal", "kenapa": "Hasil ukur mistar, jangka sorong, dan mikrometer ditulis sebagai desimal (2,37 cm; 2,68 mm). Kamu perlu membacanya dengan yakin.", "untuk": ["U2", "U3", "U4", "U5"], "cek": ["UKUR-001", "UKUR-002"], "jembatan": {"isi": [{"p": "Bilangan desimal dibaca dari koma: angka pertama di belakang koma bernilai persepuluhan (0,1), angka kedua perseratusan (0,01), angka ketiga perseribuan (0,001)."}, {"li": ["Untuk membandingkan, samakan banyak angka di belakang koma: 2,5 = 2,50 = 2,500.", "Lalu bandingkan dari kiri ke kanan: 2,500 > 2,450 > 2,405 > 2,054.", "Pada alat ukur, 2,37 cm berarti 2 cm + 3 mm + 7 persepuluh milimeter."]}, {"contoh": {"soal": "Urutkan dari yang terkecil: 0,6; 0,56; 0,506.", "langkah": ["Samakan: 0,600; 0,560; 0,506.", "Bandingkan: 0,506 < 0,560 < 0,600.", "Jadi urutannya 0,506; 0,56; 0,6."]}}], "soal": "UKUR-003"}}, {"id": "P2", "judul": "Mengubah satuan panjang", "kenapa": "Mengukur sering berpindah satuan: jengkal ke cm, cm ke m, mm ke cm. Kamu perlu tahu kapan mengali dan kapan membagi dengan 10, 100, atau 1000.", "untuk": ["U1", "U2", "U3"], "cek": ["UKUR-004", "UKUR-005"], "jembatan": {"isi": [{"tabel": {"cols": ["Dari", "Ke", "Caranya"], "rows": [["km", "m", "× 1000"], ["m", "cm", "× 100"], ["cm", "mm", "× 10"], ["mm", "cm", ": 10"], ["cm", "m", ": 100"]]}}, {"li": ["Satuan lebih kecil, angkanya lebih besar: 1 m = 100 cm.", "Periksa apakah jawabanmu masuk akal: 2,4 cm tidak mungkin 0,24 mm."]}, {"contoh": {"soal": "Ubah 750 mm ke m.", "langkah": ["750 mm : 10 = 75 cm.", "75 cm : 100 = 0,75 m."]}}], "soal": "UKUR-006"}}, {"id": "P3", "judul": "Pangkat sepuluh", "kenapa": "Notasi ilmiah dan awalan satuan (kilo, mili, mikro) memakai pangkat sepuluh. Analisis dimensi juga memakai aturan pangkat.", "untuk": ["U6", "U7"], "cek": ["UKUR-007", "UKUR-008"], "jembatan": {"isi": [{"li": ["10ⁿ (n positif) = 1 diikuti n nol: 10³ = 1000. Lalu 10⁰ = 1.", "10⁻ⁿ = 1 : 10ⁿ, misalnya 10⁻² = 0,01. Pangkat negatif menghasilkan bilangan kecil, bukan bilangan negatif.", "10ᵃ × 10ᵇ = 10ᵃ⁺ᵇ; 10ᵃ : 10ᵇ = 10ᵃ⁻ᵇ."]}, {"contoh": {"soal": "Hitung 10⁻² × 10⁵.", "langkah": ["Jumlahkan pangkatnya: −2 + 5 = 3.", "Hasil: 10³ = 1000."]}}], "soal": "UKUR-009"}}, {"id": "P4", "judul": "Membulatkan bilangan", "kenapa": "Hasil hitung dengan angka penting harus dibulatkan. Kamu perlu membulatkan sampai tempat tertentu dengan benar.", "untuk": ["U5"], "cek": ["UKUR-010", "UKUR-011"], "jembatan": {"isi": [{"li": ["Tentukan sampai angka mana yang disimpan.", "Lihat angka pertama yang dibuang: 5 atau lebih → angka terakhir naik satu; kurang dari 5 → tetap.", "Hanya angka pertama yang dibuang yang menentukan: 2,349 dibulatkan satu angka di belakang koma menjadi 2,3, bukan 2,4."]}, {"contoh": {"soal": "Bulatkan 5,682 sampai satu angka di belakang koma.", "langkah": ["5,6|82: angka pertama yang dibuang 8.", "8 ≥ 5, jadi 6 naik: 5,7."]}}], "soal": "UKUR-012"}}, {"id": "P5", "judul": "Aturan pangkat pada huruf", "kenapa": "Analisis dimensi menulis besaran sebagai [M]ᵃ[L]ᵇ[T]ᶜ dan memakai aturan pangkat pada huruf.", "untuk": ["U7"], "cek": ["UKUR-013", "UKUR-014"], "jembatan": {"isi": [{"li": ["aᵐ × aⁿ = aᵐ⁺ⁿ dan aᵐ : aⁿ = aᵐ⁻ⁿ.", "(aᵐ)ⁿ = aᵐⁿ, misalnya ([L][T]⁻¹)² = [L]²[T]⁻².", "1/aⁿ = a⁻ⁿ dan √a = a<sup>1/2<\/sup>."]}, {"contoh": {"soal": "Sederhanakan [L] : [T]².", "langkah": ["Membagi dengan [T]² sama dengan mengalikan dengan [T]⁻².", "Hasil: [L][T]⁻² (dimensi percepatan)."]}}], "soal": "UKUR-015"}}], "unit": [{"id": "U1", "judul": "Apa itu mengukur?", "simpul": ["DAS-01"], "butuh": ["P2"], "kait": {"teks": "Andi dan Budi mengukur panjang meja yang sama dengan jengkal tangan masing-masing. Andi mendapat 6 jengkal, Budi mendapat 8 jengkal.", "soal": "UKUR-016"}, "media": {"judul": "Satu meja, banyak angka", "alat": ["satuan"], "data": {"panjang_cm": 120, "satuan": [{"nama": "jengkal Andi", "cm": 20}, {"nama": "jengkal Budi", "cm": 15}, {"nama": "ubin", "cm": 30}, {"nama": "buku tulis", "cm": 24}, {"nama": "meter", "cm": 100}]}, "isi": [{"p": "Mengukur berarti membandingkan suatu besaran dengan besaran sejenis yang dipakai sebagai satuan. Hasil ukur selalu terdiri atas angka dan satuan: \"6 jengkal\", bukan \"6\"."}, {"li": ["Satuan tak baku (jengkal, depa, langkah, ubin) berbeda dari orang ke orang, sehingga hasilnya sulit dibandingkan.", "Karena itu disepakati satuan baku yang sama di seluruh dunia: Sistem Internasional (SI).", "Besaran pokok satuannya ditetapkan lebih dulu. Besaran turunan disusun dari besaran pokok, misalnya luas = panjang × lebar (m²)."]}, {"tabel": {"cols": ["Besaran pokok", "Satuan SI", "Lambang"], "rows": [["Panjang", "meter", "m"], ["Massa", "kilogram", "kg"], ["Waktu", "sekon", "s"], ["Kuat arus listrik", "ampere", "A"], ["Suhu", "kelvin", "K"], ["Jumlah zat", "mol", "mol"], ["Intensitas cahaya", "kandela", "cd"]]}}]}, "lihat": {"soal": "Lantai kelas dipasangi ubin persegi dengan sisi 30 cm. Sepanjang dinding depan terdapat 24 ubin. Berapa panjang dinding depan dalam meter?", "langkah": ["Satu ubin = 30 cm, jadi panjang dinding = 24 × 30 cm = 720 cm.", "Ubah ke meter: 720 cm : 100 = 7,2 m.", "Satuan ubin diubah menjadi satuan baku (meter) supaya semua orang memahami angkanya."]}, "bersama": "UKUR-017", "sendiri": ["UKUR-018", "UKUR-019", "UKUR-020"], "ringkas": ["Mengukur = membandingkan dengan satuan; hasilnya angka dan satuan.", "Satuan lebih panjang → angka hasil ukur lebih kecil.", "Satuan baku SI dipakai agar semua orang mendapat angka yang sama."], "lanjut": "Dua siswa memakai mistar yang sama untuk pensil yang sama, tetapi mendapat 12,4 cm dan 12,7 cm. Siapa yang salah, dan mengapa?"}, {"id": "U2", "judul": "Mengukur dengan alat sehari-hari", "simpul": ["DAS-01"], "butuh": ["P1", "P2"], "kait": {"teks": "Dua siswa mengukur pensil yang sama dengan mistar yang sama. Hasilnya 12,4 cm dan 12,7 cm.", "soal": "UKUR-021"}, "media": {"judul": "Membaca mistar dengan benar", "alat": ["mistar"], "isi": [{"li": ["Nilai skala terkecil (nst) mistar biasa 1 mm = 0,1 cm. Hasil ukur mistar ditulis sampai 0,1 cm, misalnya 12,4 cm.", "Mata harus tegak lurus di atas skala yang dibaca. Melihat dari samping menggeser bacaan; kesalahan ini disebut paralaks.", "Jika ujung benda tidak di angka 0, panjang = bacaan ujung kanan − bacaan ujung kiri.", "Timbangan dan alat berjarum lain: periksa jarum di angka nol sebelum mengukur. Jika tidak, hasilnya harus dikoreksi (kesalahan titik nol).", "Alat digital: nst-nya adalah nilai angka terakhir yang ditampilkan, misalnya 0,01 s pada stopwatch yang menampilkan 12,47 s.", "Pada pengukuran tunggal dengan alat analog, ketidakpastian = ½ × nst; untuk mistar 0,5 mm."]}]}, "lihat": {"soal": "Sebuah penghapus diletakkan mulai dari angka 2 cm pada mistar, dan ujung kanannya di 5,8 cm. Berapa panjang penghapus?", "fig": "mistar", "p": {"a": 20, "b": 58}, "langkah": ["Ujung kiri tidak di 0, jadi panjang = bacaan kanan − bacaan kiri.", "5,8 cm − 2,0 cm = 3,8 cm = 38 mm.", "Hasil ditulis sampai nst mistar: 3,8 cm."]}, "bersama": "UKUR-022", "sendiri": ["UKUR-023", "UKUR-024", "UKUR-025"], "ringkas": ["Baca dengan mata tegak lurus skala (hindari paralaks).", "Ujung benda tidak di 0: panjang = kanan − kiri.", "Periksa titik nol alat sebelum mengukur."], "lanjut": "Mistar hanya teliti sampai 1 mm. Bagaimana mengukur diameter kelereng sampai 0,1 mm?"}, {"id": "U3", "judul": "Jangka sorong", "simpul": ["DAS-01"], "butuh": ["P1", "P2"], "kait": {"teks": "Diameter sebuah kelereng sekitar 1,6 cm. Dengan mistar kamu hanya bisa menulis 16 mm, padahal bisa saja diameternya 16,2 mm atau 16,3 mm.", "soal": "UKUR-026"}, "media": {"judul": "Skala utama dan skala nonius", "alat": ["jangka-sorong"], "isi": [{"li": ["Rahang luar (bawah) untuk diameter luar, rahang dalam (atas) untuk diameter dalam, batang di ujung untuk kedalaman.", "Skala utama: setiap garis 1 mm; angka 1, 2, 3, ... menunjukkan cm.", "Skala nonius: 10 garis sepanjang 9 mm, jadi setiap garis nonius 0,1 mm lebih pendek daripada garis skala utama. Ketelitian jangka sorong ini 0,1 mm.", "Hasil = skala utama (garis tepat sebelum angka nol nonius) + nomor garis nonius yang berimpit × 0,1 mm."]}, {"jebakan": ["Nomor garis nonius yang berimpit bukan milimeter: garis ke-7 berarti 0,7 mm.", "Ada juga jangka sorong dengan nonius 20 skala (ketelitian 0,05 mm). Jalur ini memakai nonius 10 skala."]}]}, "lihat": {"soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah kelereng.", "fig": "jangka-sorong", "p": {"mm": 16, "k": 3}, "langkah": ["Angka nol nonius berada sesudah garis 16 mm (1,6 cm): skala utama = 16 mm.", "Garis nonius ke-3 berimpit dengan salah satu garis skala utama: 3 × 0,1 mm = 0,3 mm.", "Hasil = 16 + 0,3 = 16,3 mm = 1,63 cm."]}, "bersama": "UKUR-027", "sendiri": ["UKUR-028", "UKUR-029", "UKUR-030"], "ringkas": ["Skala utama: garis tepat di kiri nol nonius.", "Tambahkan nomor garis nonius yang berimpit × 0,1 mm.", "Rahang luar, rahang dalam, batang kedalaman: pilih sesuai yang diukur."], "lanjut": "Selembar kertas tebalnya sekitar 0,1 mm, sama dengan ketelitian jangka sorong. Butuh alat yang sepuluh kali lebih teliti."}, {"id": "U4", "judul": "Mikrometer sekrup", "simpul": ["DAS-01"], "butuh": ["P1"], "kait": {"teks": "Pada mikrometer sekrup, satu putaran penuh selubung memajukan poros 0,5 mm. Selubungnya dibagi menjadi 50 garis.", "soal": "UKUR-031"}, "media": {"judul": "Selubung, skala utama, dan garis setengah milimeter", "alat": ["mikrometer"], "isi": [{"li": ["Skala utama ada pada laras: garis milimeter di atas garis acuan, garis setengah milimeter di bawahnya.", "Skala putar ada pada selubung: 50 garis, setiap garis 0,01 mm.", "Skala utama dibaca pada garis terakhir yang masih terlihat di tepi selubung. Jika garis setengah milimeter sesudah garis milimeter terakhir terlihat, tambahkan 0,5 mm.", "Hasil = skala utama + garis skala putar yang segaris dengan garis acuan × 0,01 mm."]}, {"jebakan": ["Garis setengah milimeter paling sering terlewat: periksa garis di bawah garis acuan.", "Satu garis skala putar 0,01 mm, bukan 0,1 mm."]}]}, "lihat": {"soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter seutas kawat.", "fig": "mikrometer", "p": {"s": 2.5, "t": 18}, "langkah": ["Garis milimeter terakhir yang terlihat: 2 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 2,5 mm.", "Garis 18 pada selubung segaris dengan garis acuan: 18 × 0,01 mm = 0,18 mm.", "Hasil = 2,5 + 0,18 = 2,68 mm."]}, "bersama": "UKUR-032", "sendiri": ["UKUR-033", "UKUR-034"], "ringkas": ["Ketelitian mikrometer sekrup 0,01 mm (0,5 mm : 50).", "Jangan lewatkan garis setengah milimeter di bawah garis acuan.", "Hasil = skala utama + skala putar × 0,01 mm."], "lanjut": "Mikrometer memberi 2,68 mm, mistar memberi 12,4 cm. Berapa banyak angka yang boleh ditulis, dan bagaimana jika dua hasil ukur dikalikan?"}, {"id": "U5", "judul": "Angka penting", "simpul": ["DAS-01"], "butuh": ["P1", "P4"], "kait": {"teks": "Dua siswa menulis hasil ukur panjang yang sama: 2,5 cm dan 2,50 cm.", "soal": "UKUR-035"}, "media": {"judul": "Angka mana yang penting?", "alat": ["angka-penting"], "data": {"contoh": ["0,00520", "105,0", "2,50", "3,07", "0,4", "1500"]}, "isi": [{"li": ["Angka penting adalah semua angka hasil ukur yang pasti ditambah satu angka taksiran (angka terakhir).", "Semua angka bukan nol adalah angka penting.", "Nol di antara angka bukan nol adalah angka penting: 3,07 punya 3 angka penting.", "Nol di depan angka bukan nol pertama bukan angka penting: 0,0052 punya 2 angka penting.", "Nol di belakang angka bukan nol pada bilangan desimal adalah angka penting: 2,50 punya 3 angka penting.", "Nol di belakang bilangan bulat, seperti 1500, tidak jelas. Tulis dalam notasi ilmiah (unit berikutnya) agar jelas."]}, {"tabel": {"cols": ["Operasi", "Aturan", "Contoh"], "rows": [["Kali dan bagi", "Hasil mengikuti banyak angka penting paling sedikit", "3,52 × 2,1 = 7,392 → 7,4"], ["Tambah dan kurang", "Hasil mengikuti angka di belakang koma paling sedikit", "12,43 + 2,1 = 14,53 → 14,5"]]}}]}, "lihat": {"soal": "Sebuah pelat logam panjangnya 6,25 cm dan lebarnya 1,8 cm. Hitung luasnya sesuai aturan angka penting.", "langkah": ["6,25 punya 3 angka penting; 1,8 punya 2 angka penting.", "Kalkulator: 6,25 × 1,8 = 11,25.", "Hasil mengikuti angka penting paling sedikit (2): 11 cm²."]}, "bersama": "UKUR-036", "sendiri": ["UKUR-037", "UKUR-038", "UKUR-039"], "ringkas": ["Nol di depan tidak penting; nol di belakang pada desimal penting.", "Kali dan bagi: ikuti angka penting paling sedikit.", "Tambah dan kurang: ikuti angka di belakang koma paling sedikit."], "lanjut": "Diameter atom hidrogen kira-kira 0,000 000 000 106 m. Menghitung nolnya saja sudah melelahkan. Adakah cara yang lebih rapi?"}, {"id": "U6", "judul": "Notasi ilmiah", "simpul": ["DAS-01", "DAS-03"], "butuh": ["P3"], "kait": {"teks": "Diameter atom hidrogen (model Bohr) sekitar 0,000 000 000 106 m. Jari-jari Bumi sekitar 6 370 000 m.", "soal": "UKUR-040"}, "media": {"judul": "Geser koma, jaga nilainya", "alat": ["geser-koma"], "data": {"contoh": ["45000", "0,00072", "6370000", "0,000000000106"]}, "isi": [{"li": ["Notasi ilmiah: a × 10ⁿ dengan 1 ≤ a < 10 dan n bilangan bulat.", "Koma digeser ke kiri sebanyak n tempat → pangkat +n (bilangan besar).", "Koma digeser ke kanan sebanyak n tempat → pangkat −n (bilangan di bawah 1).", "Mengalikan: kalikan angka depannya, jumlahkan pangkatnya, lalu rapikan ke bentuk baku. Membagi: bagi angka depannya, kurangkan pangkatnya.", "Angka penting terlihat jelas: 1,50 × 10³ m punya 3 angka penting."]}, {"tabel": {"cols": ["Awalan", "Lambang", "Nilai"], "rows": [["giga", "G", "10⁹"], ["mega", "M", "10⁶"], ["kilo", "k", "10³"], ["senti", "c", "10⁻²"], ["mili", "m", "10⁻³"], ["mikro", "μ", "10⁻⁶"], ["nano", "n", "10⁻⁹"]]}}]}, "lihat": {"soal": "Tulis 0,000 452 m dalam notasi ilmiah.", "langkah": ["Geser koma ke kanan sampai tersisa satu angka bukan nol di depannya: 4,52.", "Koma bergeser 4 tempat ke kanan, jadi pangkatnya −4.", "Hasil: 4,52 × 10⁻⁴ m."]}, "bersama": "UKUR-041", "sendiri": ["UKUR-042", "UKUR-043", "UKUR-044", "UKUR-045"], "ringkas": ["Bentuk baku: a × 10ⁿ, dengan 1 ≤ a < 10.", "Koma ke kiri → pangkat naik; koma ke kanan → pangkat turun.", "Awalan satuan adalah pangkat sepuluh."], "lanjut": "Sebuah rumus bisa diperiksa tanpa percobaan, hanya dengan melihat besaran penyusunnya. Bagaimana caranya?"}, {"id": "U7", "judul": "Analisis dimensi", "simpul": ["DAS-01"], "butuh": ["P3", "P5"], "kait": {"teks": "Rina menulis rumus periode ayunan T = 2π√(g/L). Doni menulis T = 2π√(L/g). L adalah panjang tali dan g percepatan gravitasi.", "soal": "UKUR-046"}, "media": {"judul": "Dimensi sebagai detektor rumus", "alat": ["dimensi"], "data": {"set": [{"tanya": "Periode ayunan T berdimensi [T]. L panjang tali [L], g percepatan gravitasi [L][T]⁻². Rumus mana yang mungkin benar?", "calon": [{"rumus": "T = 2π√(g/L)", "uraian": "g/L = [L][T]⁻² : [L] = [T]⁻². Akarnya [T]⁻¹, tidak sama dengan [T].", "cocok": false}, {"rumus": "T = 2π√(L/g)", "uraian": "L/g = [L] : [L][T]⁻² = [T]². Akarnya [T], sama dengan ruas kiri.", "cocok": true}, {"rumus": "T = 2π · L · g", "uraian": "L · g = [L] · [L][T]⁻² = [L]²[T]⁻², tidak sama dengan [T].", "cocok": false}]}, {"tanya": "Energi kinetik Eₖ berdimensi [M][L]²[T]⁻². m massa, v kecepatan. Rumus mana yang lolos pemeriksaan dimensi?", "calon": [{"rumus": "Eₖ = ½mv²", "uraian": "[M]([L][T]⁻¹)² = [M][L]²[T]⁻². Lolos.", "cocok": true}, {"rumus": "Eₖ = mv²", "uraian": "[M][L]²[T]⁻². Juga lolos! Angka ½ tidak berdimensi, jadi analisis dimensi tidak bisa memilih antara ½mv² dan mv².", "cocok": true}, {"rumus": "Eₖ = ½mv", "uraian": "[M][L][T]⁻¹, dimensi momentum. Tidak lolos.", "cocok": false}]}]}, "isi": [{"li": ["Dimensi menunjukkan besaran pokok penyusun suatu besaran: [M] massa, [L] panjang, [T] waktu, [I] kuat arus, [θ] suhu, [N] jumlah zat, [J] intensitas cahaya.", "Kedua ruas persamaan, dan setiap suku yang dijumlahkan, harus berdimensi sama.", "Angka seperti ½, 2, dan 2π tidak berdimensi: analisis dimensi tidak bisa menemukan atau memeriksanya."]}, {"tabel": {"cols": ["Besaran", "Rumus", "Dimensi"], "rows": [["Kecepatan", "v = s/t", "[L][T]⁻¹"], ["Percepatan", "a = v/t", "[L][T]⁻²"], ["Gaya", "F = m · a", "[M][L][T]⁻²"], ["Usaha, energi", "W = F · s", "[M][L]²[T]⁻²"], ["Daya", "P = W/t", "[M][L]²[T]⁻³"], ["Tekanan", "P = F/A", "[M][L]⁻¹[T]⁻²"], ["Massa jenis", "ρ = m/V", "[M][L]⁻³"], ["Momentum", "p = m · v", "[M][L][T]⁻¹"]]}}]}, "lihat": {"soal": "Tentukan dimensi gaya, F = m · a.", "langkah": ["Massa m berdimensi [M].", "Percepatan a = kecepatan : waktu = [L][T]⁻¹ : [T] = [L][T]⁻².", "Gaya F = [M] · [L][T]⁻² = [M][L][T]⁻²."]}, "bersama": "UKUR-047", "sendiri": ["UKUR-048", "UKUR-049", "UKUR-050"], "ringkas": ["Dimensi = susunan besaran pokok: [M], [L], [T], ...", "Kedua ruas dan setiap suku harus berdimensi sama.", "Analisis dimensi tidak bisa menemukan angka seperti ½ atau 2π."], "lanjut": "Semua unit selesai. Bagian terakhir mencampur soal dari semua unit, termasuk soal setara TKA: kamu harus memilih sendiri cara mengerjakannya."}], "akhir": {"judul": "Campuran dan setara TKA", "teks": "Soal dari semua unit diacak, ditambah tiga soal setara TKA. Kerjakan setiap soal sekali; hasilnya masuk ke jadwal ulangan.", "soal": ["UKUR-023", "UKUR-037", "UKUR-051", "UKUR-043", "UKUR-028", "UKUR-048", "UKUR-052", "UKUR-033", "UKUR-038", "UKUR-042", "UKUR-053", "UKUR-050"]}, "miskonsepsi": {"M01": {"judul": "Satuan lebih besar dikira menghasilkan angka lebih besar", "teks": "Kebalikannya: makin panjang satuannya, makin sedikit satuan yang muat. Meja 120 cm sama dengan 6 jengkal 20 cm, tetapi 8 jengkal 15 cm."}, "M02": {"judul": "Benda dikira berubah karena satuannya berubah", "teks": "Panjang benda tetap. Yang berubah hanya angka hasil ukurnya, karena satuannya berbeda."}, "M03": {"judul": "Lupa mengubah satuan", "teks": "Periksa satuan yang diminta soal. 1 m = 100 cm dan 1 km = 1000 m: dari cm ke m bagi 100, dari m ke cm kali 100."}, "M04": {"judul": "Derajat Celsius dikira satuan SI suhu", "teks": "Satuan SI suhu adalah kelvin (K). Derajat Celsius dipakai sehari-hari, tetapi bukan satuan besaran pokok SI."}, "M05": {"judul": "Ujung kiri benda tidak dikurangkan", "teks": "Jika ujung kiri benda tidak tepat di angka 0, panjang = bacaan ujung kanan − bacaan ujung kiri."}, "M06": {"judul": "Satuan cm dan mm tertukar", "teks": "1 cm = 10 mm. Periksa satuan yang diminta: jawaban dalam mm angkanya 10 kali jawaban dalam cm."}, "M07": {"judul": "Nilai skala terkecil tertukar dengan ketidakpastian", "teks": "Nilai skala terkecil mistar 1 mm. Angka 0,5 mm adalah ketidakpastian pengukuran tunggal (½ × nst), bukan skala terkecilnya."}, "M08": {"judul": "Kesalahan titik nol tidak dikoreksi", "teks": "Jika jarum tidak di nol sebelum mengukur, bacaan harus dikoreksi dengan bacaan awal itu."}, "M09": {"judul": "Arah koreksi titik nol terbalik", "teks": "Jarum sudah di atas nol: bacaan kelebihan, jadi kurangi. Jarum di bawah nol: bacaan kekurangan, jadi tambahkan."}, "M10": {"judul": "Nomor garis nonius dibaca sebagai milimeter", "teks": "Nomor garis nonius yang berimpit dikalikan 0,1 mm. Garis ke-7 berarti 0,7 mm, bukan 7 mm."}, "M11": {"judul": "Ketelitian jangka sorong dikira 0,01 mm", "teks": "Jangka sorong dengan nonius 10 skala teliti 0,1 mm. Ketelitian 0,01 mm milik mikrometer sekrup."}, "M12": {"judul": "Skala utama dibaca sesudah nol nonius", "teks": "Skala utama dibaca pada garis tepat sebelum (di kiri) angka nol nonius, bukan garis sesudahnya."}, "M13": {"judul": "Bagian jangka sorong tertukar", "teks": "Rahang luar (bawah) menjepit benda dari luar, rahang dalam (atas) membuka di dalam lubang, batang di ujung masuk untuk mengukur kedalaman."}, "M14": {"judul": "Garis setengah milimeter salah dibaca", "teks": "Lihat garis di bawah garis acuan. Jika garis setengah milimeter sesudah garis milimeter terakhir terlihat, tambahkan 0,5 mm; jika tidak terlihat, jangan."}, "M15": {"judul": "Satu skala putar dikira 0,1 mm", "teks": "Satu putaran selubung 0,5 mm dibagi 50 garis, jadi satu garis skala putar = 0,01 mm."}, "M16": {"judul": "Ketelitian alat ukur tertukar", "teks": "Ketelitian: mistar 1 mm, jangka sorong 0,1 mm, mikrometer sekrup 0,01 mm. Hasil ukur ditulis tepat sampai ketelitian alatnya."}, "M17": {"judul": "Nol di depan dihitung sebagai angka penting", "teks": "Nol di depan angka bukan nol pertama hanya menunjukkan letak koma. 0,0052 punya 2 angka penting."}, "M18": {"judul": "Nol di belakang pada desimal tidak dihitung", "teks": "Nol di belakang angka bukan nol pada bilangan desimal adalah angka penting: 2,50 punya 3 angka penting."}, "M19": {"judul": "Hasil kalkulator tidak dibulatkan", "teks": "Hasil hitung tidak boleh lebih teliti daripada datanya. Bulatkan sesuai aturan angka penting."}, "M20": {"judul": "Aturan kali dipakai untuk penjumlahan", "teks": "Tambah dan kurang: ikuti angka di belakang koma paling sedikit. Aturan banyak angka penting hanya untuk kali dan bagi."}, "M21": {"judul": "Mengikuti angka penting yang paling banyak", "teks": "Hasil kali dan bagi mengikuti data dengan angka penting paling sedikit, bukan paling banyak."}, "M22": {"judul": "Tanda pangkat terbalik", "teks": "Koma digeser ke kiri → pangkat positif (bilangan besar). Koma digeser ke kanan → pangkat negatif (bilangan di bawah 1)."}, "M23": {"judul": "Banyak geseran koma salah dihitung", "teks": "Hitung tempat yang dilewati koma sampai tersisa satu angka bukan nol di depannya. Setelah merapikan angka depan, ubah pangkatnya sebanyak geseran itu."}, "M24": {"judul": "Bukan bentuk baku", "teks": "Bentuk baku menuntut 1 ≤ a < 10. 30 × 10⁻² harus dirapikan menjadi 3 × 10⁻¹."}, "M25": {"judul": "Aturan pangkat tertukar", "teks": "aᵐ × aⁿ = aᵐ⁺ⁿ, aᵐ : aⁿ = aᵐ⁻ⁿ, dan (aᵐ)ⁿ = aᵐⁿ. Pangkat tidak dikalikan saat bilangannya dikalikan."}, "M26": {"judul": "Nilai awalan satuan tertukar", "teks": "Mili 10⁻³, mikro 10⁻⁶, nano 10⁻⁹; kilo 10³, mega 10⁶, giga 10⁹."}, "M27": {"judul": "Luas dan volume tertukar dalam dimensi", "teks": "Luas berdimensi [L]², volume [L]³. Tekanan = gaya : luas = [M][L][T]⁻² : [L]²."}, "M28": {"judul": "Rumus turunan tidak diuraikan", "teks": "Uraikan rumusnya dulu: usaha = gaya × perpindahan, daya = usaha : waktu, momentum = massa × kecepatan."}, "M30": {"judul": "Suku berdimensi berbeda dijumlahkan", "teks": "Kedua ruas persamaan dan setiap suku yang dijumlahkan harus berdimensi sama."}, "M31": {"judul": "Tebal dinding dikurangkan sekali saja", "teks": "Dinding ada di dua sisi lubang: diameter dalam = diameter luar − 2 × tebal dinding."}, "M32": {"judul": "Membulatkan terlalu banyak", "teks": "Hasil memiliki angka penting sebanyak data yang paling sedikit, tidak kurang. Nol di belakang koma tetap ditulis bila termasuk angka penting (4,0, bukan 4)."}, "M33": {"judul": "Pangkat negatif dikira bilangan negatif", "teks": "10⁻³ = 1 : 10³ = 0,001. Pangkat negatif menghasilkan bilangan kecil di bawah 1, bukan bilangan negatif."}, "M34": {"judul": "Pangkat dikira perkalian biasa", "teks": "10⁴ berarti 10 × 10 × 10 × 10 = 10 000, bukan 10 × 4."}, "M35": {"judul": "Memotong, bukan membulatkan", "teks": "Lihat angka pertama yang dibuang: jika 5 atau lebih, angka terakhir yang disimpan naik satu."}, "M36": {"judul": "Membulatkan berantai", "teks": "Bulatkan sekali saja dari bilangan aslinya. 2,349 menjadi 2,3; jangan 2,349 → 2,35 → 2,4."}, "M37": {"judul": "Kesalahan paralaks", "teks": "Membaca skala dari samping menggeser bacaan. Mata harus tegak lurus di atas garis skala yang dibaca."}}, "soal": [{"id": "UKUR-001", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Samakan dulu banyak angka di belakang koma dengan menambah nol: 2,5 = 2,500.", "Bandingkan angka demi angka dari kiri: satuan, lalu persepuluhan, lalu perseratusan."], "varian": [{"soal": "Bilangan manakah yang paling besar?", "opsi": ["2,405", "2,5", "2,45", "2,054"], "kunci": 1, "pembahasan": ["Samakan banyak angka di belakang koma: 2,405; 2,500; 2,450; 2,054.", "Angka pertama di belakang koma terbesar adalah 5, jadi 2,5 paling besar."]}, {"soal": "Bilangan manakah yang paling kecil?", "opsi": ["0,35", "0,305", "0,4", "0,053"], "kunci": 3, "pembahasan": ["Samakan: 0,350; 0,305; 0,400; 0,053.", "Angka pertama di belakang koma terkecil adalah 0, jadi 0,053 paling kecil."]}]}, {"id": "UKUR-002", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Hitung posisi dari koma: tempat pertama di belakang koma adalah persepuluhan.", "Tempat kedua di belakang koma perseratusan, ketiga perseribuan."], "varian": [{"soal": "Pada bilangan 3,07, angka 7 menempati nilai tempat ...", "opsi": ["persepuluhan", "perseratusan", "satuan", "perseribuan"], "kunci": 1, "pembahasan": ["Angka pertama di belakang koma (0) persepuluhan, angka kedua (7) perseratusan.", "Jadi 3,07 = 3 + 7/100."]}, {"soal": "Pada bilangan 12,458, angka 5 menempati nilai tempat ...", "opsi": ["persepuluhan", "perseratusan", "perseribuan", "puluhan"], "kunci": 1, "pembahasan": ["4 persepuluhan, 5 perseratusan, 8 perseribuan."]}]}, {"id": "UKUR-003", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Tulis ulang ketiganya dengan tiga angka di belakang koma, lalu bandingkan."], "varian": [{"soal": "Urutan dari yang terkecil yang benar adalah ...", "opsi": ["1,2; 1,15; 1,105", "1,105; 1,15; 1,2", "1,15; 1,105; 1,2", "1,2; 1,105; 1,15"], "kunci": 1, "pembahasan": ["Samakan: 1,200; 1,150; 1,105.", "Terkecil 1,105, lalu 1,150, lalu 1,200."]}]}, {"id": "UKUR-004", "format": "isian", "simpul": "DAS-01", "gen": "konversi", "bantuan": ["Satuan lebih kecil → angkanya lebih besar.", "1 cm = 10 mm: dari cm ke mm kalikan 10; dari mm ke cm bagi 10."], "varian": [{"p": {"nilai": "2,4", "kali": "10"}, "soal": "2,4 cm = ... mm", "kunci": 24, "pembahasan": ["1 cm = 10 mm, jadi 2,4 cm = 2,4 × 10 = 24 mm."], "satuan": "mm", "salah": [{"nilai": 0.24, "m": "M06"}]}, {"p": {"nilai": "35", "kali": "0,1"}, "soal": "35 mm = ... cm", "kunci": 3.5, "pembahasan": ["10 mm = 1 cm, jadi 35 mm = 35 : 10 = 3,5 cm."], "satuan": "cm", "salah": [{"nilai": 350, "m": "M06"}]}]}, {"id": "UKUR-005", "format": "isian", "simpul": "DAS-01", "gen": "konversi", "bantuan": ["Ingat: 1 m = 100 cm dan 1 km = 1000 m.", "Dari satuan besar ke satuan kecil, kalikan."], "varian": [{"p": {"nilai": "1,5", "kali": "100"}, "soal": "1,5 m = ... cm", "kunci": 150, "pembahasan": ["1 m = 100 cm, jadi 1,5 m = 1,5 × 100 = 150 cm."], "satuan": "cm", "salah": [{"nilai": 15, "m": "M03"}, {"nilai": 0.015, "m": "M03"}]}, {"p": {"nilai": "0,8", "kali": "1000"}, "soal": "0,8 km = ... m", "kunci": 800, "pembahasan": ["1 km = 1000 m, jadi 0,8 km = 0,8 × 1000 = 800 m."], "satuan": "m", "salah": [{"nilai": 80, "m": "M03"}, {"nilai": 8000, "m": "M03"}]}]}, {"id": "UKUR-006", "format": "isian", "simpul": "DAS-01", "gen": "konversi", "bantuan": ["Dari mm ke m: bagi 10 (menjadi cm), lalu bagi 100 (menjadi m)."], "varian": [{"p": {"nilai": "1250", "kali": "0,001"}, "soal": "Ubah 1250 mm ke meter.", "kunci": 1.25, "pembahasan": ["1250 mm : 10 = 125 cm.", "125 cm : 100 = 1,25 m."], "satuan": "m", "salah": [{"nilai": 12.5, "m": "M03"}, {"nilai": 125, "m": "M03"}]}]}, {"id": "UKUR-007", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["10ⁿ dengan n positif: tulis 1 lalu n buah nol.", "10⁻ⁿ = 1 : 10ⁿ, bilangan kecil di bawah 1, bukan bilangan negatif."], "varian": [{"soal": "10⁻³ sama dengan ...", "opsi": ["−1000", "0,001", "0,0001", "−0,001"], "kunci": 1, "pembahasan": ["10⁻³ = 1 : 10³ = 1 : 1000 = 0,001.", "Pangkat negatif menghasilkan bilangan kecil, bukan bilangan negatif."], "salah": {"0": "M33", "3": "M33"}}, {"soal": "10⁴ sama dengan ...", "opsi": ["40", "1000", "10 000", "100 000"], "kunci": 2, "pembahasan": ["10⁴ = 10 × 10 × 10 × 10 = 10 000."], "salah": {"0": "M34"}}]}, {"id": "UKUR-008", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Bilangan pokoknya sama (10): pada perkalian, pangkatnya dijumlahkan.", "Pada pembagian, pangkatnya dikurangkan."], "varian": [{"soal": "10² × 10³ = ...", "opsi": ["10⁶", "100⁵", "10⁵", "10¹"], "kunci": 2, "pembahasan": ["10² × 10³ = 10²⁺³ = 10⁵.", "Cek: 100 × 1000 = 100 000 = 10⁵."], "salah": {"0": "M25"}}, {"soal": "10⁵ : 10² = ...", "opsi": ["10³", "10⁷", "10¹⁰", "1³"], "kunci": 0, "pembahasan": ["10⁵ : 10² = 10⁵⁻² = 10³.", "Cek: 100 000 : 100 = 1000 = 10³."], "salah": {"1": "M25", "2": "M25"}}]}, {"id": "UKUR-009", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Jumlahkan pangkatnya dengan memperhatikan tanda: −4 + 6."], "varian": [{"soal": "10⁻⁴ × 10⁶ = ...", "opsi": ["10²", "10⁻²⁴", "10¹⁰", "10⁻²"], "kunci": 0, "pembahasan": ["−4 + 6 = 2, jadi 10⁻⁴ × 10⁶ = 10²."], "salah": {"1": "M25", "2": "M33", "3": "M33"}}]}, {"id": "UKUR-010", "format": "isian", "simpul": "DAS-01", "gen": "bulat", "bantuan": ["Tandai angka terakhir yang disimpan, lalu lihat angka sesudahnya.", "Angka sesudahnya 5 atau lebih: naikkan satu. Kurang dari 5: biarkan."], "varian": [{"p": {"nilai": "3,476", "dp": 1}, "soal": "Bulatkan 3,476 sampai satu angka di belakang koma.", "kunci": 3.5, "pembahasan": ["Disimpan sampai persepuluhan: 3,4|76.", "Angka pertama yang dibuang 7 (≥ 5), jadi 4 naik menjadi 5: 3,5."], "satuan": "(tanpa satuan)", "salah": [{"nilai": 3.4, "m": "M35"}]}, {"p": {"nilai": "12,83", "dp": 0}, "soal": "Bulatkan 12,83 sampai bilangan bulat terdekat.", "kunci": 13, "pembahasan": ["Disimpan sampai satuan: 12|,83.", "Angka pertama yang dibuang 8 (≥ 5), jadi 12 naik menjadi 13."], "satuan": "(tanpa satuan)", "salah": [{"nilai": 12, "m": "M35"}]}]}, {"id": "UKUR-011", "format": "isian", "simpul": "DAS-01", "gen": "bulat", "bantuan": ["Tandai angka terakhir yang disimpan, lalu lihat angka sesudahnya.", "Angka sesudahnya 5 atau lebih: naikkan satu. Kurang dari 5: biarkan."], "varian": [{"p": {"nilai": "0,04628", "dp": 2}, "soal": "Bulatkan 0,04628 sampai dua angka di belakang koma.", "kunci": 0.05, "pembahasan": ["0,04|628: angka pertama yang dibuang 6 (≥ 5).", "4 naik menjadi 5: 0,05."], "satuan": "(tanpa satuan)", "salah": [{"nilai": 0.04, "m": "M35"}]}, {"p": {"nilai": "7,9149", "dp": 3}, "soal": "Bulatkan 7,9149 sampai tiga angka di belakang koma.", "kunci": 7.915, "pembahasan": ["7,914|9: angka pertama yang dibuang 9 (≥ 5).", "4 naik menjadi 5: 7,915."], "satuan": "(tanpa satuan)", "salah": [{"nilai": 7.914, "m": "M35"}]}]}, {"id": "UKUR-012", "format": "isian", "simpul": "DAS-01", "gen": "bulat", "bantuan": ["Lihat hanya angka pertama yang dibuang."], "varian": [{"p": {"nilai": "2,349", "dp": 1}, "soal": "Bulatkan 2,349 sampai satu angka di belakang koma.", "kunci": 2.3, "pembahasan": ["2,3|49: angka pertama yang dibuang 4 (< 5).", "Jadi tetap 2,3."], "satuan": "(tanpa satuan)", "salah": [{"nilai": 2.4, "m": "M36"}]}]}, {"id": "UKUR-013", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Bilangan pokok sama: perkalian → pangkat dijumlahkan.", "Pangkat dipangkatkan → pangkatnya dikalikan."], "varian": [{"soal": "a² × a³ = ...", "opsi": ["a⁶", "a⁵", "2a⁵", "a¹"], "kunci": 1, "pembahasan": ["a² × a³ = a²⁺³ = a⁵."], "salah": {"0": "M25"}}, {"soal": "(b²)³ = ...", "opsi": ["b⁵", "b⁸", "b⁶", "6b"], "kunci": 2, "pembahasan": ["(b²)³ = b² · b² · b² = b⁶."], "salah": {"0": "M25"}}]}, {"id": "UKUR-014", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Membagi dengan xⁿ sama dengan mengalikan dengan x⁻ⁿ.", "Akar kuadrat adalah pangkat ½."], "varian": [{"soal": "1/x² dapat ditulis sebagai ...", "opsi": ["−x²", "x⁻²", "2x⁻¹", "x²"], "kunci": 1, "pembahasan": ["1/xⁿ = x⁻ⁿ, jadi 1/x² = x⁻²."], "salah": {"0": "M33"}}, {"soal": "√y dapat ditulis sebagai ...", "opsi": ["y²", "y⁻²", "y<sup>1/2<\/sup>", "2y"], "kunci": 2, "pembahasan": ["Akar kuadrat sama dengan pangkat setengah: √y = y<sup>1/2<\/sup>, karena (y<sup>1/2<\/sup>)² = y."]}]}, {"id": "UKUR-015", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Pindahkan [T]² dari penyebut menjadi [T]⁻²."], "varian": [{"soal": "Bentuk sederhana dari [M][L]² : [T]² adalah ...", "opsi": ["[M][L]²[T]⁻²", "[M][L]²[T]²", "[M][L]⁻²[T]²", "[M]²[L][T]⁻¹"], "kunci": 0, "pembahasan": ["Membagi dengan [T]² sama dengan mengalikan dengan [T]⁻².", "Hasil: [M][L]²[T]⁻² (dimensi energi)."], "salah": {"1": "M33"}}]}, {"id": "UKUR-016", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Meja yang sama, angka berbeda. Siapa yang butuh lebih sedikit jengkal untuk menutup meja?"], "varian": [{"soal": "Tebak dulu: jengkal siapa yang lebih panjang?", "opsi": ["Jengkal Andi", "Jengkal Budi", "Sama panjang", "Tidak bisa ditentukan"], "kunci": 0, "pembahasan": ["Meja yang sama ditutup oleh lebih sedikit jengkal Andi (6) daripada jengkal Budi (8).", "Jadi satu jengkal Andi lebih panjang. Makin panjang satuannya, makin kecil angka hasil ukurnya."], "salah": {"1": "M01"}}]}, {"id": "UKUR-017", "format": "bertahap", "simpul": "DAS-01", "gen": "satuan-tahap", "bantuan": ["Panjang = banyak jengkal × panjang satu jengkal.", "Dari cm ke m, bagi dengan 100."], "varian": [{"p": {"u": 18, "n": 12}, "soal": "Panjang papan tulis sama dengan 12 jengkal Sinta. Satu jengkal Sinta = 18 cm.", "langkah": [{"teks": "Panjang papan dalam cm", "kunci": 216, "satuan": "cm"}, {"teks": "Panjang papan dalam meter", "kunci": 2.16, "satuan": "m", "salah": [{"nilai": 216, "m": "M03"}]}], "pembahasan": ["12 × 18 cm = 216 cm.", "216 cm : 100 = 2,16 m."]}]}, {"id": "UKUR-018", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Benda yang diukur sama. Satuan yang lebih panjang butuh lebih sedikit atau lebih banyak kali?", "Angka hasil ukur yang lebih kecil berasal dari satuan yang lebih panjang."], "varian": [{"soal": "Panjang lorong sekolah diukur dengan langkah kaki. Rina mendapat 40 langkah, Dodi mendapat 32 langkah. Pernyataan yang benar adalah ...", "opsi": ["Langkah Rina lebih panjang daripada langkah Dodi", "Langkah Dodi lebih panjang daripada langkah Rina", "Lorong menjadi lebih panjang saat diukur Rina", "Langkah keduanya sama; salah satu salah menghitung"], "kunci": 1, "pembahasan": ["Lorong yang sama ditutup oleh lebih sedikit langkah Dodi (32).", "Jadi satu langkah Dodi lebih panjang. Panjang lorong tidak berubah; hanya angkanya yang berbeda."], "salah": {"0": "M01", "2": "M02"}}, {"soal": "Sebuah meja diukur dengan pensil A dan pensil B. Hasilnya 5 pensil A atau 8 pensil B. Pensil manakah yang lebih pendek?", "opsi": ["Pensil A", "Pensil B", "Sama panjang", "Pensil yang dipakai lebih dulu"], "kunci": 1, "pembahasan": ["Dibutuhkan lebih banyak pensil B (8) untuk menutup meja yang sama.", "Jadi pensil B lebih pendek."], "salah": {"0": "M01"}}, {"soal": "Seutas tali diukur dengan depa. Hasilnya 3 depa Pak Amir atau 4 depa Bu Sari. Pernyataan yang benar adalah ...", "opsi": ["Depa Bu Sari lebih panjang", "Tali lebih panjang menurut Bu Sari", "Depa Pak Amir lebih panjang", "Depa keduanya sama panjang"], "kunci": 2, "pembahasan": ["Tali yang sama ditutup oleh lebih sedikit depa Pak Amir (3).", "Jadi depa Pak Amir lebih panjang. Panjang tali tetap; hanya angkanya yang berbeda karena satuannya berbeda."], "salah": {"0": "M01", "1": "M02"}}]}, {"id": "UKUR-019", "format": "isian", "simpul": "DAS-01", "gen": "satuan-tak-baku", "bantuan": ["Kalikan banyak satuan dengan panjang satu satuan.", "Hasilnya dalam cm, sedangkan soal meminta meter."], "varian": [{"p": {"u": 25, "n": 32}, "soal": "Panjang kelas diukur dengan ubin: hasilnya 32 ubin. Satu ubin = 25 cm. Berapa meter panjang kelas?", "kunci": 8, "satuan": "m", "salah": [{"nilai": 800, "m": "M03"}, {"nilai": 80, "m": "M03"}], "pembahasan": ["Panjang kelas = 32 × 25 cm = 800 cm.", "800 cm : 100 = 8 m."]}, {"p": {"u": 40, "n": 21}, "soal": "Lebar aula diukur dengan ubin: hasilnya 21 ubin. Satu ubin = 40 cm. Berapa meter lebar aula?", "kunci": 8.4, "satuan": "m", "salah": [{"nilai": 840, "m": "M03"}, {"nilai": 84, "m": "M03"}], "pembahasan": ["Lebar aula = 21 × 40 cm = 840 cm.", "840 cm : 100 = 8,4 m."]}, {"p": {"u": 20, "n": 9}, "soal": "Panjang meja guru diukur dengan jengkal: hasilnya 9 jengkal. Satu jengkal = 20 cm. Berapa meter panjang meja guru?", "kunci": 1.8, "satuan": "m", "salah": [{"nilai": 180, "m": "M03"}, {"nilai": 18, "m": "M03"}], "pembahasan": ["Panjang meja guru = 9 × 20 cm = 180 cm.", "180 cm : 100 = 1,8 m."]}, {"p": {"u": 65, "n": 14}, "soal": "Panjang koridor diukur dengan langkah: hasilnya 14 langkah. Satu langkah = 65 cm. Berapa meter panjang koridor?", "kunci": 9.1, "satuan": "m", "salah": [{"nilai": 910, "m": "M03"}, {"nilai": 91, "m": "M03"}], "pembahasan": ["Panjang koridor = 14 × 65 cm = 910 cm.", "910 cm : 100 = 9,1 m."]}]}, {"id": "UKUR-020", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Ingat tujuh besaran pokok: panjang, massa, waktu, kuat arus listrik, suhu, jumlah zat, intensitas cahaya.", "Satuan SI-nya: meter, kilogram, sekon, ampere, kelvin, mol, kandela."], "varian": [{"soal": "Kelompok besaran pokok beserta satuan SI yang semuanya benar adalah ...", "opsi": ["massa – gram; waktu – jam; suhu – derajat Celsius", "massa – kilogram; waktu – sekon; suhu – kelvin", "panjang – meter; kecepatan – meter per sekon; massa – kilogram", "panjang – sentimeter; waktu – sekon; kuat arus – ampere"], "kunci": 1, "pembahasan": ["Satuan SI besaran pokok: massa kilogram, waktu sekon, suhu kelvin.", "A: gram, jam, dan derajat Celsius bukan satuan SI besaran pokok. C: kecepatan besaran turunan. D: satuan SI panjang adalah meter."], "salah": {"0": "M04"}}, {"soal": "Manakah yang termasuk besaran turunan?", "opsi": ["Massa", "Waktu", "Luas", "Kuat arus listrik"], "kunci": 2, "pembahasan": ["Luas disusun dari besaran pokok panjang: panjang × lebar, satuannya m².", "Massa, waktu, dan kuat arus listrik adalah besaran pokok."]}, {"soal": "Satuan SI untuk suhu adalah ...", "opsi": ["derajat Celsius", "derajat Fahrenheit", "joule", "kelvin"], "kunci": 3, "pembahasan": ["Satuan SI suhu adalah kelvin (K).", "Derajat Celsius dipakai sehari-hari, tetapi bukan satuan besaran pokok SI."], "salah": {"0": "M04"}}]}, {"id": "UKUR-021", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Benda dan alatnya sama. Apa yang bisa berbeda di antara dua orang yang membaca?"], "varian": [{"soal": "Tebak dulu: penyebab yang paling mungkin adalah ...", "opsi": ["Pensilnya memanjang saat diukur kedua kalinya", "Salah satu membaca skala dengan mata miring atau tidak mulai dari angka 0", "Mistar tidak bisa dipakai untuk mengukur pensil", "Kedua hasil benar karena setiap orang boleh berbeda"], "kunci": 1, "pembahasan": ["Benda dan alatnya sama, jadi perbedaannya datang dari cara membaca.", "Dua kesalahan yang paling sering: mata tidak tegak lurus terhadap skala (paralaks) dan ujung benda tidak diletakkan di angka 0."], "salah": {"0": "M02"}}]}, {"id": "UKUR-022", "format": "bertahap", "simpul": "DAS-01", "gen": "mistar-tahap", "fig": "mistar", "bantuan": ["Baca setiap ujung pada garis skala yang tepat di bawahnya. Setiap garis kecil 1 mm.", "Panjang = ujung kanan − ujung kiri."], "varian": [{"p": {"a": 15, "b": 62}, "soal": "Sebuah kunci diukur dengan mistar seperti pada gambar.", "langkah": [{"teks": "Bacaan ujung kiri (mm)", "kunci": 15, "satuan": "mm"}, {"teks": "Bacaan ujung kanan (mm)", "kunci": 62, "satuan": "mm"}, {"teks": "Panjang kunci (mm)", "kunci": 47, "satuan": "mm", "salah": [{"nilai": 62, "m": "M05"}, {"nilai": 4.7, "m": "M06"}]}], "pembahasan": ["Ujung kiri di 1,5 cm = 15 mm.", "Ujung kanan di 6,2 cm = 62 mm.", "Panjang = 62 − 15 = 47 mm."]}]}, {"id": "UKUR-023", "format": "isian", "simpul": "DAS-01", "gen": "mistar", "fig": "mistar", "bantuan": ["Setiap garis kecil pada mistar bernilai 1 mm; angka besar menunjukkan cm.", "Panjang = bacaan ujung kanan − bacaan ujung kiri."], "varian": [{"p": {"a": 0, "b": 47}, "soal": "Sebuah baut diukur dengan mistar seperti pada gambar. Berapa panjang baut dalam milimeter?", "kunci": 47, "satuan": "mm", "salah": [{"nilai": 4.7, "m": "M06"}], "pembahasan": ["Ujung kiri tepat di angka 0.", "Ujung kanan di 4,7 cm = 47 mm.", "Panjang = 47 − 0 = 47 mm."]}, {"p": {"a": 30, "b": 84}, "soal": "Sebuah pensil diukur dengan mistar seperti pada gambar. Berapa panjang pensil dalam milimeter?", "kunci": 54, "satuan": "mm", "salah": [{"nilai": 5.4, "m": "M06"}, {"nilai": 84, "m": "M05"}], "pembahasan": ["Ujung kiri di 3,0 cm = 30 mm.", "Ujung kanan di 8,4 cm = 84 mm.", "Panjang = 84 − 30 = 54 mm."]}, {"p": {"a": 12, "b": 69}, "soal": "Sebuah jepit kertas diukur dengan mistar seperti pada gambar. Berapa panjang jepit kertas dalam milimeter?", "kunci": 57, "satuan": "mm", "salah": [{"nilai": 5.7, "m": "M06"}, {"nilai": 69, "m": "M05"}], "pembahasan": ["Ujung kiri di 1,2 cm = 12 mm.", "Ujung kanan di 6,9 cm = 69 mm.", "Panjang = 69 − 12 = 57 mm."]}, {"p": {"a": 25, "b": 91}, "soal": "Sebuah penghapus diukur dengan mistar seperti pada gambar. Berapa panjang penghapus dalam milimeter?", "kunci": 66, "satuan": "mm", "salah": [{"nilai": 6.6, "m": "M06"}, {"nilai": 91, "m": "M05"}], "pembahasan": ["Ujung kiri di 2,5 cm = 25 mm.", "Ujung kanan di 9,1 cm = 91 mm.", "Panjang = 91 − 25 = 66 mm."]}, {"p": {"a": 7, "b": 38}, "soal": "Sebuah kapur tulis diukur dengan mistar seperti pada gambar. Berapa panjang kapur tulis dalam milimeter?", "kunci": 31, "satuan": "mm", "salah": [{"nilai": 3.1, "m": "M06"}, {"nilai": 38, "m": "M05"}], "pembahasan": ["Ujung kiri di 0,7 cm = 7 mm.", "Ujung kanan di 3,8 cm = 38 mm.", "Panjang = 38 − 7 = 31 mm."]}]}, {"id": "UKUR-024", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Ingat dua kesalahan membaca: posisi mata (paralaks) dan jarum yang tidak di nol (titik nol).", "Nilai skala terkecil = jarak antara dua garis skala yang paling dekat."], "varian": [{"soal": "Agar tidak terjadi kesalahan paralaks saat membaca mistar, mata harus ...", "opsi": ["berada di sebelah kiri skala yang dibaca", "tegak lurus di atas skala yang dibaca", "sejauh mungkin dari mistar", "berada di sebelah kanan skala yang dibaca"], "kunci": 1, "pembahasan": ["Mata harus tegak lurus di atas garis skala yang dibaca.", "Melihat dari kiri atau kanan menggeser bacaan; kesalahan ini disebut paralaks."], "salah": {"0": "M37", "3": "M37"}}, {"soal": "Saat membaca termometer, mata Sinta lebih tinggi daripada permukaan cairan. Kesalahan yang terjadi disebut ...", "opsi": ["kesalahan titik nol", "kesalahan paralaks", "kesalahan kalibrasi", "kesalahan satuan"], "kunci": 1, "pembahasan": ["Membaca dari posisi miring (lebih tinggi atau lebih rendah daripada skala) disebut kesalahan paralaks.", "Kesalahan titik nol terjadi jika alat tidak menunjuk nol sebelum dipakai."], "salah": {"0": "M37"}}, {"soal": "Nilai skala terkecil mistar biasa adalah ...", "opsi": ["1 cm", "0,5 mm", "1 mm", "0,1 mm"], "kunci": 2, "pembahasan": ["Jarak antargaris terkecil pada mistar biasa 1 mm, jadi nilai skala terkecilnya 1 mm.", "0,5 mm adalah ketidakpastian pengukuran tunggal (½ × nst); 0,1 mm adalah ketelitian jangka sorong."], "salah": {"1": "M07", "3": "M16"}}]}, {"id": "UKUR-025", "format": "isian", "simpul": "DAS-01", "gen": "titik-nol", "bantuan": ["Bacaan saat timbangan kosong menunjukkan seberapa jauh jarum dari nol.", "Jarum di atas nol: kurangi. Jarum di bawah nol: tambahkan."], "varian": [{"p": {"z": 2, "r": 47}, "soal": "Sebelum ada yang naik, jarum timbangan badan sudah menunjuk 2 kg. Saat Dina berdiri di atasnya, jarum menunjuk 47 kg. Berapa massa Dina sebenarnya?", "kunci": 45, "satuan": "kg", "salah": [{"nilai": 47, "m": "M08"}, {"nilai": 49, "m": "M09"}], "pembahasan": ["Jarum sudah menunjuk 2 kg sebelum dipakai: bacaan kelebihan 2 kg.", "Massa sebenarnya = 47 − 2 = 45 kg."]}, {"p": {"z": "1,5", "r": "60,5"}, "soal": "Sebelum ada yang naik, jarum timbangan badan sudah menunjuk 1,5 kg. Saat Rudi berdiri di atasnya, jarum menunjuk 60,5 kg. Berapa massa Rudi sebenarnya?", "kunci": 59, "satuan": "kg", "salah": [{"nilai": 60.5, "m": "M08"}, {"nilai": 62, "m": "M09"}], "pembahasan": ["Jarum sudah menunjuk 1,5 kg sebelum dipakai: bacaan kelebihan 1,5 kg.", "Massa sebenarnya = 60,5 − 1,5 = 59 kg."]}, {"p": {"z": -1, "r": 52}, "soal": "Sebelum ada yang naik, jarum timbangan badan berada 1 kg di bawah angka nol. Saat Maya berdiri di atasnya, jarum menunjuk 52 kg. Berapa massa Maya sebenarnya?", "kunci": 53, "satuan": "kg", "salah": [{"nilai": 52, "m": "M08"}, {"nilai": 51, "m": "M09"}], "pembahasan": ["Jarum mulai 1 kg di bawah nol: bacaan kekurangan 1 kg.", "Massa sebenarnya = 52 + 1 = 53 kg."]}, {"p": {"z": 3, "r": 38}, "soal": "Sebelum ada yang naik, jarum timbangan badan sudah menunjuk 3 kg. Saat Tono berdiri di atasnya, jarum menunjuk 38 kg. Berapa massa Tono sebenarnya?", "kunci": 35, "satuan": "kg", "salah": [{"nilai": 38, "m": "M08"}, {"nilai": 41, "m": "M09"}], "pembahasan": ["Jarum sudah menunjuk 3 kg sebelum dipakai: bacaan kelebihan 3 kg.", "Massa sebenarnya = 38 − 3 = 35 kg."]}]}, {"id": "UKUR-026", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Alatnya harus bisa membaca sampai persepuluhan milimeter."], "varian": [{"soal": "Tebak dulu: alat apa yang dapat membedakan 16,2 mm dan 16,3 mm?", "opsi": ["Mistar 1 meter", "Meteran kain", "Jangka sorong", "Timbangan digital"], "kunci": 2, "pembahasan": ["Beda 16,2 mm dan 16,3 mm adalah 0,1 mm.", "Jangka sorong (nonius 10 skala) teliti sampai 0,1 mm; mistar dan meteran hanya sampai 1 mm."], "salah": {"0": "M16", "1": "M16"}}]}, {"id": "UKUR-027", "format": "bertahap", "simpul": "DAS-01", "gen": "jangka-sorong-tahap", "fig": "jangka-sorong", "bantuan": ["Skala utama dibaca pada garis tepat di kiri angka nol nonius.", "Cari satu garis nonius yang paling lurus dengan garis skala utama."], "varian": [{"p": {"mm": 41, "k": 4}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus.", "langkah": [{"teks": "Skala utama (mm)", "kunci": 41, "satuan": "mm", "salah": [{"nilai": 42, "m": "M12"}]}, {"teks": "Nomor garis nonius yang berimpit", "kunci": 4}, {"teks": "Hasil pengukuran (mm)", "kunci": 41.4, "satuan": "mm", "salah": [{"nilai": 45, "m": "M10"}, {"nilai": 41.04, "m": "M11"}]}], "pembahasan": ["Angka nol nonius berada sesudah garis 41 mm (4,1 cm): skala utama = 41 mm.", "Garis nonius ke-4 berimpit dengan salah satu garis skala utama: 4 × 0,1 mm = 0,4 mm.", "Hasil = 41 + 0,4 = 41,4 mm."]}]}, {"id": "UKUR-028", "format": "isian", "simpul": "DAS-01", "gen": "jangka-sorong", "fig": "jangka-sorong", "bantuan": ["Baca skala utama pada garis tepat di kiri angka nol nonius.", "Tambahkan nomor garis nonius yang berimpit × 0,1 mm."], "varian": [{"p": {"mm": 23, "k": 7}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur tebal sebuah buku. Berapa hasil pengukurannya dalam milimeter?", "kunci": 23.7, "satuan": "mm", "salah": [{"nilai": 30, "m": "M10"}, {"nilai": 23.07, "m": "M11"}, {"nilai": 24.7, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 23 mm (2,3 cm): skala utama = 23 mm.", "Garis nonius ke-7 berimpit dengan salah satu garis skala utama: 7 × 0,1 mm = 0,7 mm.", "Hasil = 23 + 0,7 = 23,7 mm."]}, {"p": {"mm": 15, "k": 2}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah kelereng. Berapa hasil pengukurannya dalam milimeter?", "kunci": 15.2, "satuan": "mm", "salah": [{"nilai": 17, "m": "M10"}, {"nilai": 15.02, "m": "M11"}, {"nilai": 16.2, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 15 mm (1,5 cm): skala utama = 15 mm.", "Garis nonius ke-2 berimpit dengan salah satu garis skala utama: 2 × 0,1 mm = 0,2 mm.", "Hasil = 15 + 0,2 = 15,2 mm."]}, {"p": {"mm": 34, "k": 9}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur panjang sebuah baut. Berapa hasil pengukurannya dalam milimeter?", "kunci": 34.9, "satuan": "mm", "salah": [{"nilai": 43, "m": "M10"}, {"nilai": 34.09, "m": "M11"}, {"nilai": 35.9, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 34 mm (3,4 cm): skala utama = 34 mm.", "Garis nonius ke-9 berimpit dengan salah satu garis skala utama: 9 × 0,1 mm = 0,9 mm.", "Hasil = 34 + 0,9 = 34,9 mm."]}, {"p": {"mm": 8, "k": 5}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah pensil. Berapa hasil pengukurannya dalam milimeter?", "kunci": 8.5, "satuan": "mm", "salah": [{"nilai": 13, "m": "M10"}, {"nilai": 8.05, "m": "M11"}, {"nilai": 9.5, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 8 mm (0,8 cm): skala utama = 8 mm.", "Garis nonius ke-5 berimpit dengan salah satu garis skala utama: 5 × 0,1 mm = 0,5 mm.", "Hasil = 8 + 0,5 = 8,5 mm."]}, {"p": {"mm": 52, "k": 1}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter luar sebuah gelas plastik. Berapa hasil pengukurannya dalam milimeter?", "kunci": 52.1, "satuan": "mm", "salah": [{"nilai": 53, "m": "M10"}, {"nilai": 52.01, "m": "M11"}, {"nilai": 53.1, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 52 mm (5,2 cm): skala utama = 52 mm.", "Garis nonius ke-1 berimpit dengan salah satu garis skala utama: 1 × 0,1 mm = 0,1 mm.", "Hasil = 52 + 0,1 = 52,1 mm."]}, {"p": {"mm": 19, "k": 6}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus. Berapa hasil pengukurannya dalam milimeter?", "kunci": 19.6, "satuan": "mm", "salah": [{"nilai": 25, "m": "M10"}, {"nilai": 19.06, "m": "M11"}, {"nilai": 20.6, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 19 mm (1,9 cm): skala utama = 19 mm.", "Garis nonius ke-6 berimpit dengan salah satu garis skala utama: 6 × 0,1 mm = 0,6 mm.", "Hasil = 19 + 0,6 = 19,6 mm."]}]}, {"id": "UKUR-029", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Bayangkan bagian mana yang menyentuh benda: dari luar, dari dalam, atau masuk ke dasar lubang?", "Rahang bawah menjepit dari luar; rahang atas membuka ke dalam; batang di ujung masuk ke lubang."], "varian": [{"soal": "Untuk mengukur diameter dalam sebuah cincin, bagian jangka sorong yang dipakai adalah ...", "opsi": ["rahang luar (bawah)", "rahang dalam (atas)", "batang pengukur kedalaman", "skala nonius"], "kunci": 1, "pembahasan": ["Diameter dalam diukur dengan rahang dalam (atas) yang dibuka di dalam lubang cincin."], "salah": {"0": "M13", "2": "M13"}}, {"soal": "Untuk mengukur kedalaman lubang sebuah tabung reaksi, bagian jangka sorong yang dipakai adalah ...", "opsi": ["rahang luar (bawah)", "rahang dalam (atas)", "skala utama", "batang pengukur kedalaman di ujung"], "kunci": 3, "pembahasan": ["Kedalaman diukur dengan batang di ujung jangka sorong yang keluar saat rahang dibuka."], "salah": {"0": "M13", "1": "M13"}}, {"soal": "Untuk mengukur diameter luar sebuah pipa, bagian jangka sorong yang dipakai adalah ...", "opsi": ["rahang luar (bawah)", "rahang dalam (atas)", "batang pengukur kedalaman", "sekrup pengunci"], "kunci": 0, "pembahasan": ["Diameter luar diukur dengan menjepit benda di antara rahang luar (bawah)."], "salah": {"1": "M13", "2": "M13"}}]}, {"id": "UKUR-030", "format": "isian", "simpul": "DAS-01", "gen": "jangka-sorong", "fig": "jangka-sorong", "bantuan": ["Baca hasilnya dalam mm dulu, lalu ubah ke cm.", "1 cm = 10 mm, jadi bagi hasil dalam mm dengan 10."], "varian": [{"p": {"mm": 17, "k": 8, "satuan": "cm"}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah tutup spidol. Nyatakan hasilnya dalam sentimeter.", "kunci": 1.78, "satuan": "cm", "salah": [{"nilai": 17.8, "m": "M06"}, {"nilai": 2.5, "m": "M10"}, {"nilai": 1.708, "m": "M11"}, {"nilai": 1.88, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 17 mm (1,7 cm): skala utama = 17 mm.", "Garis nonius ke-8 berimpit dengan salah satu garis skala utama: 8 × 0,1 mm = 0,8 mm.", "Hasil = 17 + 0,8 = 17,8 mm = 1,78 cm."]}, {"p": {"mm": 21, "k": 3, "satuan": "cm"}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur lebar sebuah penghapus. Nyatakan hasilnya dalam sentimeter.", "kunci": 2.13, "satuan": "cm", "salah": [{"nilai": 21.3, "m": "M06"}, {"nilai": 2.4, "m": "M10"}, {"nilai": 2.103, "m": "M11"}, {"nilai": 2.23, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 21 mm (2,1 cm): skala utama = 21 mm.", "Garis nonius ke-3 berimpit dengan salah satu garis skala utama: 3 × 0,1 mm = 0,3 mm.", "Hasil = 21 + 0,3 = 21,3 mm = 2,13 cm."]}, {"p": {"mm": 12, "k": 6, "satuan": "cm"}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur tebal sebuah papan. Nyatakan hasilnya dalam sentimeter.", "kunci": 1.26, "satuan": "cm", "salah": [{"nilai": 12.6, "m": "M06"}, {"nilai": 1.8, "m": "M10"}, {"nilai": 1.206, "m": "M11"}, {"nilai": 1.36, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 12 mm (1,2 cm): skala utama = 12 mm.", "Garis nonius ke-6 berimpit dengan salah satu garis skala utama: 6 × 0,1 mm = 0,6 mm.", "Hasil = 12 + 0,6 = 12,6 mm = 1,26 cm."]}, {"p": {"mm": 45, "k": 2, "satuan": "cm"}, "soal": "Gambar menunjukkan skala jangka sorong saat mengukur diameter sebuah gelas kecil. Nyatakan hasilnya dalam sentimeter.", "kunci": 4.52, "satuan": "cm", "salah": [{"nilai": 45.2, "m": "M06"}, {"nilai": 4.7, "m": "M10"}, {"nilai": 4.502, "m": "M11"}, {"nilai": 4.62, "m": "M12"}], "pembahasan": ["Angka nol nonius berada sesudah garis 45 mm (4,5 cm): skala utama = 45 mm.", "Garis nonius ke-2 berimpit dengan salah satu garis skala utama: 2 × 0,1 mm = 0,2 mm.", "Hasil = 45 + 0,2 = 45,2 mm = 4,52 cm."]}]}, {"id": "UKUR-031", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Satu putaran = 0,5 mm, dibagi menjadi 50 bagian yang sama."], "varian": [{"soal": "Tebak dulu: satu garis selubung bernilai ...", "opsi": ["0,1 mm", "0,05 mm", "0,5 mm", "0,01 mm"], "kunci": 3, "pembahasan": ["0,5 mm : 50 = 0,01 mm.", "Jadi ketelitian mikrometer sekrup 0,01 mm, sepuluh kali lebih teliti daripada jangka sorong."], "salah": {"0": "M15"}}]}, {"id": "UKUR-032", "format": "bertahap", "simpul": "DAS-01", "gen": "mikrometer-tahap", "fig": "mikrometer", "bantuan": ["Lihat garis di atas dan di bawah garis acuan yang masih terlihat di tepi selubung.", "Kalikan nomor garis skala putar dengan 0,01 mm."], "varian": [{"p": {"s": 1.5, "t": 36}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur tebal sebuah koin.", "langkah": [{"teks": "Skala utama, termasuk garis setengah milimeter (mm)", "kunci": 1.5, "satuan": "mm", "salah": [{"nilai": 1, "m": "M14"}]}, {"teks": "Garis skala putar yang segaris dengan garis acuan", "kunci": 36}, {"teks": "Hasil pengukuran (mm)", "kunci": 1.86, "satuan": "mm", "salah": [{"nilai": 5.1, "m": "M15"}]}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 1 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 1,5 mm.", "Garis 36 pada selubung segaris dengan garis acuan: 36 × 0,01 mm = 0,36 mm.", "Hasil = 1,5 + 0,36 = 1,86 mm."]}]}, {"id": "UKUR-033", "format": "isian", "simpul": "DAS-01", "gen": "mikrometer", "fig": "mikrometer", "bantuan": ["Mulai dari skala utama: garis milimeter terakhir, lalu periksa garis setengah milimeter di bawah garis acuan.", "Tambahkan garis skala putar yang segaris dengan garis acuan × 0,01 mm."], "varian": [{"p": {"s": 4, "t": 36}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah paku. Berapa hasil pengukurannya dalam milimeter?", "kunci": 4.36, "satuan": "mm", "salah": [{"nilai": 4.86, "m": "M14"}, {"nilai": 7.6, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 4 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 4 mm.", "Garis 36 pada selubung segaris dengan garis acuan: 36 × 0,01 mm = 0,36 mm.", "Hasil = 4 + 0,36 = 4,36 mm."]}, {"p": {"s": 7.5, "t": 22}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah sedotan. Berapa hasil pengukurannya dalam milimeter?", "kunci": 7.72, "satuan": "mm", "salah": [{"nilai": 7.22, "m": "M14"}, {"nilai": 9.7, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 7 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 7,5 mm.", "Garis 22 pada selubung segaris dengan garis acuan: 22 × 0,01 mm = 0,22 mm.", "Hasil = 7,5 + 0,22 = 7,72 mm."]}, {"p": {"s": 0.5, "t": 12}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur tebal selembar karton. Berapa hasil pengukurannya dalam milimeter?", "kunci": 0.62, "satuan": "mm", "salah": [{"nilai": 0.12, "m": "M14"}, {"nilai": 1.7, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 0 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 0,5 mm.", "Garis 12 pada selubung segaris dengan garis acuan: 12 × 0,01 mm = 0,12 mm.", "Hasil = 0,5 + 0,12 = 0,62 mm."]}, {"p": {"s": 11, "t": 41}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter sebuah kelereng kecil. Berapa hasil pengukurannya dalam milimeter?", "kunci": 11.41, "satuan": "mm", "salah": [{"nilai": 11.91, "m": "M14"}, {"nilai": 15.1, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 11 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 11 mm.", "Garis 41 pada selubung segaris dengan garis acuan: 41 × 0,01 mm = 0,41 mm.", "Hasil = 11 + 0,41 = 11,41 mm."]}, {"p": {"s": 3.5, "t": 7}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur diameter seutas kabel. Berapa hasil pengukurannya dalam milimeter?", "kunci": 3.57, "satuan": "mm", "salah": [{"nilai": 3.07, "m": "M14"}, {"nilai": 4.2, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 3 mm. Garis setengah milimeter sesudahnya juga terlihat, jadi skala utama = 3,5 mm.", "Garis 7 pada selubung segaris dengan garis acuan: 7 × 0,01 mm = 0,07 mm.", "Hasil = 3,5 + 0,07 = 3,57 mm."]}, {"p": {"s": 15, "t": 28}, "soal": "Gambar menunjukkan skala mikrometer sekrup saat mengukur lebar sebuah penghapus kecil. Berapa hasil pengukurannya dalam milimeter?", "kunci": 15.28, "satuan": "mm", "salah": [{"nilai": 15.78, "m": "M14"}, {"nilai": 17.8, "m": "M15"}], "pembahasan": ["Garis milimeter terakhir yang terlihat: 15 mm. Garis setengah milimeter sesudahnya belum terlihat, jadi skala utama = 15 mm.", "Garis 28 pada selubung segaris dengan garis acuan: 28 × 0,01 mm = 0,28 mm.", "Hasil = 15 + 0,28 = 15,28 mm."]}]}, {"id": "UKUR-034", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Bandingkan ketelitian: mistar 1 mm, jangka sorong 0,1 mm, mikrometer 0,01 mm.", "Hasil ukur ditulis tepat sampai ketelitian alatnya."], "varian": [{"soal": "Alat yang paling tepat untuk mengukur tebal selembar kertas (sekitar 0,1 mm) adalah ...", "opsi": ["mistar", "jangka sorong", "mikrometer sekrup", "meteran gulung"], "kunci": 2, "pembahasan": ["Tebal 0,1 mm sama dengan ketelitian jangka sorong, jadi hasilnya terlalu kasar.", "Mikrometer sekrup teliti 0,01 mm, cocok untuk benda setipis kertas."], "salah": {"0": "M16", "1": "M16"}}, {"soal": "Hasil pengukuran manakah yang ditulis sesuai ketelitian mikrometer sekrup?", "opsi": ["3,2 mm", "3,28 mm", "3,285 mm", "3 mm"], "kunci": 1, "pembahasan": ["Mikrometer teliti 0,01 mm, jadi hasilnya ditulis sampai dua angka di belakang koma (dalam mm): 3,28 mm.", "3,2 mm terlalu kasar; 3,285 mm melebihi ketelitian alat."], "salah": {"0": "M16", "2": "M16"}}, {"soal": "Mengapa mikrometer sekrup lebih teliti daripada jangka sorong?", "opsi": ["Karena porosnya lebih panjang", "Karena satu putaran selubung (0,5 mm) dibagi 50 garis, sehingga satu garis bernilai 0,01 mm", "Karena skala utamanya bergaris setiap 0,1 mm", "Karena mikrometer selalu digital"], "kunci": 1, "pembahasan": ["0,5 mm : 50 = 0,01 mm per garis.", "Skala utama mikrometer bergaris setiap 0,5 mm (milimeter dan setengah milimeter), bukan 0,1 mm."], "salah": {"2": "M16"}}]}, {"id": "UKUR-035", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Nol di belakang koma ditulis karena alatnya bisa membacanya."], "varian": [{"soal": "Tebak dulu: apa bedanya?", "opsi": ["Persis sama; nol di belakang tidak berarti apa-apa", "Nilainya sama, tetapi 2,50 cm menunjukkan pengukuran yang teliti sampai 0,01 cm", "2,50 cm lebih besar daripada 2,5 cm", "2,5 cm lebih teliti daripada 2,50 cm"], "kunci": 1, "pembahasan": ["Nilainya sama, tetapi 2,50 cm punya tiga angka penting: alat membaca sampai 0,01 cm dan angka terakhirnya 0.", "2,5 cm hanya teliti sampai 0,1 cm."], "salah": {"0": "M18"}}]}, {"id": "UKUR-036", "format": "bertahap", "simpul": "DAS-01", "gen": "ap-kali-tahap", "bantuan": ["Hitung angka penting setiap data dulu.", "Hasil kali mengikuti angka penting yang paling sedikit."], "varian": [{"p": {"a": "4,25", "b": "1,3", "op": "×"}, "soal": "Panjang sebuah meja 4,25 m dan lebarnya 1,3 m. Hitung luasnya sesuai aturan angka penting.", "langkah": [{"teks": "Banyak angka penting 4,25", "kunci": 3, "satuan": "angka penting"}, {"teks": "Banyak angka penting 1,3", "kunci": 2, "satuan": "angka penting"}, {"teks": "Luas sesuai aturan angka penting (m²)", "kunci": 5.5, "satuan": "m²", "salah": [{"nilai": 5.525, "m": "M19"}]}], "pembahasan": ["4,25 → 3 angka penting.", "1,3 → 2 angka penting.", "4,25 × 1,3 = 5,525, dibulatkan menjadi 2 angka penting: 5,5 m²."]}]}, {"id": "UKUR-037", "format": "isian", "simpul": "DAS-01", "gen": "ap-hitung", "bantuan": ["Coret dulu nol di depan angka bukan nol pertama.", "Semua angka sesudahnya penting, termasuk nol di belakang pada bilangan desimal."], "varian": [{"p": {"x": "0,00520"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 0,00520 m?", "kunci": 3, "satuan": "angka penting", "salah": [{"nilai": 6, "m": "M17"}, {"nilai": 2, "m": "M18"}], "pembahasan": ["Nol di depan (0,00…) hanya menunjukkan letak koma, bukan angka penting.", "Semua angka bukan nol penting. Nol di belakang pada bilangan desimal juga penting.", "Angka pentingnya 5, 2, 0: jumlahnya 3."]}, {"p": {"x": "3,040"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 3,040 kg?", "kunci": 4, "satuan": "angka penting", "salah": [{"nilai": 3, "m": "M18"}], "pembahasan": ["Semua angka bukan nol penting. Nol di antara angka bukan nol juga penting. Nol di belakang pada bilangan desimal juga penting.", "Angka pentingnya 3, 0, 4, 0: jumlahnya 4."]}, {"p": {"x": "105,0"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 105,0 cm?", "kunci": 4, "satuan": "angka penting", "salah": [{"nilai": 3, "m": "M18"}], "pembahasan": ["Semua angka bukan nol penting. Nol di antara angka bukan nol juga penting. Nol di belakang pada bilangan desimal juga penting.", "Angka pentingnya 1, 0, 5, 0: jumlahnya 4."]}, {"p": {"x": "0,0089"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 0,0089 s?", "kunci": 2, "satuan": "angka penting", "salah": [{"nilai": 5, "m": "M17"}], "pembahasan": ["Nol di depan (0,00…) hanya menunjukkan letak koma, bukan angka penting.", "Semua angka bukan nol penting.", "Angka pentingnya 8, 9: jumlahnya 2."]}, {"p": {"x": "20,07"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 20,07 g?", "kunci": 4, "satuan": "angka penting", "salah": [], "pembahasan": ["Semua angka bukan nol penting. Nol di antara angka bukan nol juga penting.", "Angka pentingnya 2, 0, 0, 7: jumlahnya 4."]}, {"p": {"x": "7,00"}, "soal": "Berapa banyak angka penting pada hasil pengukuran 7,00 mm?", "kunci": 3, "satuan": "angka penting", "salah": [{"nilai": 1, "m": "M18"}], "pembahasan": ["Semua angka bukan nol penting. Nol di belakang pada bilangan desimal juga penting.", "Angka pentingnya 7, 0, 0: jumlahnya 3."]}]}, {"id": "UKUR-038", "format": "isian", "simpul": "DAS-01", "gen": "ap-kali", "bantuan": ["Hitung angka penting kedua data; hasil mengikuti yang paling sedikit.", "Hitung dengan kalkulator, lalu bulatkan sampai banyak angka penting itu."], "varian": [{"p": {"a": "1,23", "b": "4,567", "op": "×"}, "soal": "Sebuah pelat berukuran 1,23 cm × 4,567 cm. Berapa luasnya sesuai aturan angka penting?", "kunci": 5.62, "cek_ap": 3, "salah": [{"nilai": 5.61741, "m": "M19"}, {"nilai": 5.617, "m": "M21"}], "pembahasan": ["1,23 punya 3 angka penting; 4,567 punya 4 angka penting.", "Kalkulator: 1,23 × 4,567 = 5,61741.", "Hasil mengikuti angka penting paling sedikit (3): 5,62 cm²."], "satuan": "cm²"}, {"p": {"a": "6,25", "b": "2,5", "op": ":"}, "soal": "Sebuah troli menempuh 6,25 m dalam 2,5 s. Berapa kelajuan rata-ratanya sesuai aturan angka penting?", "kunci": 2.5, "cek_ap": 2, "salah": [], "pembahasan": ["6,25 punya 3 angka penting; 2,5 punya 2 angka penting.", "Kalkulator: 6,25 : 2,5 = 2,5.", "Hasil mengikuti angka penting paling sedikit (2): 2,5 m/s."], "satuan": "m/s"}, {"p": {"a": "9,8", "b": "3,25", "op": "×"}, "soal": "Sebuah pelat berukuran 9,8 cm × 3,25 cm. Berapa luasnya sesuai aturan angka penting?", "kunci": 32, "cek_ap": 2, "salah": [{"nilai": 31.85, "m": "M19"}, {"nilai": 31.9, "m": "M21"}], "pembahasan": ["9,8 punya 2 angka penting; 3,25 punya 3 angka penting.", "Kalkulator: 9,8 × 3,25 = 31,85.", "Hasil mengikuti angka penting paling sedikit (2): 32 cm²."], "satuan": "cm²"}, {"p": {"a": "0,048", "b": "2,56", "op": "×"}, "soal": "Sebuah pelat berukuran 0,048 m × 2,56 m. Berapa luasnya sesuai aturan angka penting?", "kunci": 0.12, "cek_ap": 2, "salah": [{"nilai": 0.12288, "m": "M19"}, {"nilai": 0.123, "m": "M21"}], "pembahasan": ["0,048 punya 2 angka penting; 2,56 punya 3 angka penting.", "Kalkulator: 0,048 × 2,56 = 0,12288.", "Hasil mengikuti angka penting paling sedikit (2): 0,12 m²."], "satuan": "m²"}, {"p": {"a": "125,4", "b": "9,6", "op": ":"}, "soal": "Sebuah mobil menempuh 125,4 m dalam 9,6 s. Berapa kelajuan rata-ratanya sesuai aturan angka penting?", "kunci": 13, "cek_ap": 2, "salah": [{"nilai": 13.0625, "m": "M19"}, {"nilai": 13.06, "m": "M21"}], "pembahasan": ["125,4 punya 4 angka penting; 9,6 punya 2 angka penting.", "Kalkulator: 125,4 : 9,6 = 13,0625.", "Hasil mengikuti angka penting paling sedikit (2): 13 m/s."], "satuan": "m/s"}]}, {"id": "UKUR-039", "format": "isian", "simpul": "DAS-01", "gen": "ap-tambah", "bantuan": ["Pada penjumlahan dan pengurangan, lihat banyak angka di belakang koma, bukan banyak angka penting.", "Bulatkan hasilnya sampai angka di belakang koma yang paling sedikit."], "varian": [{"p": {"a": "25,6", "b": "3,14", "op": "−"}, "soal": "Seutas pita sepanjang 25,6 cm dipotong 3,14 cm. Berapa panjang sisanya sesuai aturan angka penting?", "kunci": 22.5, "cek_ap": 3, "salah": [{"nilai": 22.46, "m": "M19"}], "pembahasan": ["25,6 punya 1 angka di belakang koma; 3,14 punya 2.", "Kalkulator: 25,6 − 3,14 = 22,46.", "Hasil mengikuti angka di belakang koma paling sedikit (1): 22,5 cm."], "satuan": "cm"}, {"p": {"a": "4,006", "b": "0,12", "op": "+"}, "soal": "Sebuah wadah bermassa 4,006 kg diisi bahan bermassa 0,12 kg. Berapa massa totalnya sesuai aturan angka penting?", "kunci": 4.13, "cek_ap": 3, "salah": [{"nilai": 4.126, "m": "M19"}, {"nilai": 4.1, "m": "M20"}], "pembahasan": ["4,006 punya 3 angka di belakang koma; 0,12 punya 2.", "Kalkulator: 4,006 + 0,12 = 4,126.", "Hasil mengikuti angka di belakang koma paling sedikit (2): 4,13 kg."], "satuan": "kg"}, {"p": {"a": "100,2", "b": "3,456", "op": "+"}, "soal": "Dua batang disambung: panjangnya 100,2 m dan 3,456 m. Berapa panjang totalnya sesuai aturan angka penting?", "kunci": 103.7, "cek_ap": 4, "salah": [{"nilai": 103.656, "m": "M19"}], "pembahasan": ["100,2 punya 1 angka di belakang koma; 3,456 punya 3.", "Kalkulator: 100,2 + 3,456 = 103,656.", "Hasil mengikuti angka di belakang koma paling sedikit (1): 103,7 m."], "satuan": "m"}, {"p": {"a": "7,8", "b": "2,36", "op": "−"}, "soal": "Dari segumpal tanah liat bermassa 7,8 g diambil 2,36 g. Berapa massa sisanya sesuai aturan angka penting?", "kunci": 5.4, "cek_ap": 2, "salah": [{"nilai": 5.44, "m": "M19"}], "pembahasan": ["7,8 punya 1 angka di belakang koma; 2,36 punya 2.", "Kalkulator: 7,8 − 2,36 = 5,44.", "Hasil mengikuti angka di belakang koma paling sedikit (1): 5,4 g."], "satuan": "g"}]}, {"id": "UKUR-040", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Hitung berapa tempat koma harus digeser ke kanan sampai angka 1 berada di depan koma."], "varian": [{"soal": "Tebak dulu: jika diameter atom itu ditulis 1,06 × 10ⁿ m, berapakah n?", "opsi": ["10", "−9", "−10", "−11"], "kunci": 2, "pembahasan": ["0,000 000 000 106: koma digeser 10 tempat ke kanan menjadi 1,06.", "Digeser ke kanan → pangkat negatif: 1,06 × 10⁻¹⁰ m."], "salah": {"0": "M22", "1": "M23", "3": "M23"}}]}, {"id": "UKUR-041", "format": "bertahap", "simpul": "DAS-01", "gen": "notasi-kali-tahap", "bantuan": ["Kalikan angka depannya, jumlahkan pangkatnya.", "15 bukan bentuk baku: 15 = 1,5 × 10¹, jadi pangkatnya naik satu."], "varian": [{"p": {"a": ["3", 8], "b": ["5", 2], "op": "×"}, "soal": "Cahaya merambat dengan kelajuan 3 × 10⁸ m/s. Berapa jarak yang ditempuh cahaya dalam 5 × 10² s?", "langkah": [{"teks": "Hasil kali angka depan: 3 × 5", "kunci": 15}, {"teks": "Jumlah pangkat: 8 + 2", "kunci": 10, "salah": [{"nilai": 16, "m": "M25"}]}, {"teks": "Dalam bentuk baku 1,5 × 10ⁿ m, berapa n?", "kunci": 11, "salah": [{"nilai": 10, "m": "M24"}]}], "pembahasan": ["3 × 5 = 15.", "10⁸ × 10² = 10¹⁰, jadi jaraknya 15 × 10¹⁰ m.", "Rapikan: 15 × 10¹⁰ = 1,5 × 10¹¹ m. Angka ini hampir sama dengan jarak rata-rata Bumi–Matahari (sekitar 1,5 × 10¹¹ m)."]}]}, {"id": "UKUR-042", "format": "bertahap", "simpul": "DAS-01", "gen": "notasi", "bantuan": ["Letakkan koma sesudah angka bukan nol pertama: itulah a.", "Hitung berapa tempat koma bergeser. Ke kiri → pangkat positif; ke kanan → pangkat negatif."], "varian": [{"p": {"x": "45000"}, "soal": "Tulis 45 000 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 4.5, "salah": [{"nilai": 45, "m": "M24"}, {"nilai": 0.45, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": 4, "salah": [{"nilai": -4, "m": "M22"}, {"nilai": 5, "m": "M23"}, {"nilai": 3, "m": "M23"}]}], "pembahasan": ["Geser koma ke kiri 4 tempat sampai tersisa satu angka bukan nol di depan koma: 4,5.", "Digeser ke kiri → pangkat positif: 4,5 × 10⁴."]}, {"p": {"x": "0,00072"}, "soal": "Tulis 0,00072 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 7.2, "salah": [{"nilai": 72, "m": "M24"}, {"nilai": 0.72, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": -4, "salah": [{"nilai": 4, "m": "M22"}, {"nilai": -3, "m": "M23"}, {"nilai": -5, "m": "M23"}]}], "pembahasan": ["Geser koma ke kanan 4 tempat sampai tersisa satu angka bukan nol di depan koma: 7,2.", "Digeser ke kanan → pangkat negatif: 7,2 × 10⁻⁴."]}, {"p": {"x": "6370000"}, "soal": "Tulis 6 370 000 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 6.37, "salah": [{"nilai": 63.7, "m": "M24"}, {"nilai": 0.637, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": 6, "salah": [{"nilai": -6, "m": "M22"}, {"nilai": 7, "m": "M23"}, {"nilai": 5, "m": "M23"}]}], "pembahasan": ["Geser koma ke kiri 6 tempat sampai tersisa satu angka bukan nol di depan koma: 6,37.", "Digeser ke kiri → pangkat positif: 6,37 × 10⁶."]}, {"p": {"x": "0,0305"}, "soal": "Tulis 0,0305 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 3.05, "salah": [{"nilai": 30.5, "m": "M24"}, {"nilai": 0.305, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": -2, "salah": [{"nilai": 2, "m": "M22"}, {"nilai": -1, "m": "M23"}, {"nilai": -3, "m": "M23"}]}], "pembahasan": ["Geser koma ke kanan 2 tempat sampai tersisa satu angka bukan nol di depan koma: 3,05.", "Digeser ke kanan → pangkat negatif: 3,05 × 10⁻²."]}, {"p": {"x": "802000000"}, "soal": "Tulis 802 000 000 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 8.02, "salah": [{"nilai": 80.2, "m": "M24"}, {"nilai": 0.802, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": 8, "salah": [{"nilai": -8, "m": "M22"}, {"nilai": 9, "m": "M23"}, {"nilai": 7, "m": "M23"}]}], "pembahasan": ["Geser koma ke kiri 8 tempat sampai tersisa satu angka bukan nol di depan koma: 8,02.", "Digeser ke kiri → pangkat positif: 8,02 × 10⁸."]}, {"p": {"x": "0,0000019"}, "soal": "Tulis 0,0000019 dalam bentuk a × 10ⁿ (1 ≤ a < 10).", "langkah": [{"teks": "Angka depan a", "kunci": 1.9, "salah": [{"nilai": 19, "m": "M24"}, {"nilai": 0.19, "m": "M24"}]}, {"teks": "Pangkat n", "kunci": -6, "salah": [{"nilai": 6, "m": "M22"}, {"nilai": -5, "m": "M23"}, {"nilai": -7, "m": "M23"}]}], "pembahasan": ["Geser koma ke kanan 6 tempat sampai tersisa satu angka bukan nol di depan koma: 1,9.", "Digeser ke kanan → pangkat negatif: 1,9 × 10⁻⁶."]}]}, {"id": "UKUR-043", "format": "pilihan-ganda", "simpul": "DAS-01", "gen": "notasi-kali", "bantuan": ["Kalikan (atau bagi) angka depannya, lalu jumlahkan (atau kurangkan) pangkatnya.", "Periksa angka depan: jika tidak di antara 1 dan 10, geser koma dan ubah pangkatnya."], "varian": [{"p": {"a": ["2", 3], "b": ["4", 5], "op": "×", "posisi": 2}, "soal": "Hasil (2 × 10³) × (4 × 10⁵) dalam bentuk baku adalah ...", "opsi": ["8 × 10⁹", "8 × 10⁻⁸", "8 × 10⁸", "8 × 10¹⁵"], "kunci": 2, "salah": {"0": "M23", "1": "M22", "3": "M25"}, "pembahasan": ["Angka depan: 2 × 4 = 8.", "Pangkat: 3 + 5 = 8.", "Hasil 8 × 10⁸ sudah dalam bentuk baku."]}, {"p": {"a": ["6", -4], "b": ["5", 2], "op": "×", "posisi": 1}, "soal": "Hasil (6 × 10⁻⁴) × (5 × 10²) dalam bentuk baku adalah ...", "opsi": ["30 × 10⁻²", "3 × 10⁻¹", "3 × 10⁻²", "3 × 10⁻⁷"], "kunci": 1, "salah": {"0": "M24", "2": "M23", "3": "M25"}, "pembahasan": ["Angka depan: 6 × 5 = 30.", "Pangkat: −4 + 2 = −2.", "30 × 10⁻² belum baku; rapikan menjadi 3 × 10⁻¹."]}, {"p": {"a": ["9", 6], "b": ["3", 2], "op": ":", "posisi": 3}, "soal": "Hasil (9 × 10⁶) : (3 × 10²) dalam bentuk baku adalah ...", "opsi": ["3 × 10⁵", "3 × 10⁻⁴", "3 × 10⁸", "3 × 10⁴"], "kunci": 3, "salah": {"0": "M23", "1": "M22", "2": "M25"}, "pembahasan": ["Angka depan: 9 : 3 = 3.", "Pangkat: 6 − 2 = 4.", "Hasil 3 × 10⁴ sudah dalam bentuk baku."]}, {"p": {"a": ["1,2", -3], "b": ["4", -5], "op": ":", "posisi": 0}, "soal": "Hasil (1,2 × 10⁻³) : (4 × 10⁻⁵) dalam bentuk baku adalah ...", "opsi": ["3 × 10¹", "0,3 × 10²", "3 × 10²", "3 × 10⁻⁹"], "kunci": 0, "salah": {"1": "M24", "2": "M23", "3": "M25"}, "pembahasan": ["Angka depan: 1,2 : 4 = 0,3.", "Pangkat: −3 − (−5) = 2.", "0,3 × 10² belum baku; rapikan menjadi 3 × 10¹."]}]}, {"id": "UKUR-044", "format": "pilihan-ganda", "simpul": "DAS-01", "gen": "awalan", "bantuan": ["Ganti awalan dengan pangkat sepuluhnya: mikro 10⁻⁶, giga 10⁹, nano 10⁻⁹.", "Rapikan angka depan ke bentuk baku dan sesuaikan pangkatnya."], "varian": [{"p": {"nilai": "4,7", "awalan": "μ", "satuan": "m", "posisi": 1}, "soal": "Sebuah benang sangat halus berdiameter 4,7 μm. Jika ditulis dalam m dengan bentuk baku, nilainya adalah ...", "opsi": ["4,7 × 10⁻³ m", "4,7 × 10⁻⁶ m", "4,7 × 10⁶ m"], "kunci": 1, "salah": {"0": "M26", "2": "M22"}, "pembahasan": ["mikro (μ) = 10⁻⁶.", "4,7 μm = 4,7 × 10⁻⁶ m."]}, {"p": {"nilai": "2,4", "awalan": "G", "satuan": "Hz", "posisi": 2}, "soal": "Banyak jaringan Wi-Fi memakai frekuensi 2,4 GHz. Jika ditulis dalam Hz dengan bentuk baku, nilainya adalah ...", "opsi": ["2,4 × 10⁶ Hz", "2,4 × 10⁻⁹ Hz", "2,4 × 10⁹ Hz"], "kunci": 2, "salah": {"0": "M26", "1": "M22"}, "pembahasan": ["giga (G) = 10⁹.", "2,4 GHz = 2,4 × 10⁹ Hz."]}, {"p": {"nilai": "350", "awalan": "n", "satuan": "m", "posisi": 0}, "soal": "Sinar ultraungu dapat berpanjang gelombang 350 nm. Jika ditulis dalam m dengan bentuk baku, nilainya adalah ...", "opsi": ["3,5 × 10⁻⁷ m", "3,5 × 10⁻⁴ m", "350 × 10⁻⁹ m", "3,5 × 10⁷ m"], "kunci": 0, "salah": {"1": "M26", "2": "M24", "3": "M22"}, "pembahasan": ["nano (n) = 10⁻⁹.", "350 nm = 350 × 10⁻⁹ m = 3,5 × 10⁻⁷ m."]}]}, {"id": "UKUR-045", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Tentukan dulu angka-angka pentingnya; hanya itu yang ditulis di angka depan.", "Angka depan harus di antara 1 dan 10."], "varian": [{"soal": "Hasil ukur 1500 m mempunyai 3 angka penting. Cara menulis yang paling jelas adalah ...", "opsi": ["1500 m", "1,5 × 10³ m", "1,50 × 10³ m", "15,0 × 10² m"], "kunci": 2, "pembahasan": ["Tiga angka penting: 1, 5, 0 → 1,50 × 10³ m.", "1500 m tidak jelas (nol di belakang bilangan bulat); 1,5 × 10³ m hanya 2 angka penting; 15,0 × 10² m bukan bentuk baku."], "salah": {"1": "M18", "3": "M24"}}, {"soal": "Massa 0,0040 kg mempunyai 2 angka penting. Dalam notasi ilmiah, massa ini ditulis ...", "opsi": ["4 × 10⁻³ kg", "4,0 × 10⁻³ kg", "40 × 10⁻⁴ kg", "4,00 × 10⁻³ kg"], "kunci": 1, "pembahasan": ["Nol di depan tidak penting; angka pentingnya 4 dan 0.", "Jadi 4,0 × 10⁻³ kg (2 angka penting)."], "salah": {"0": "M18", "2": "M24"}}]}, {"id": "UKUR-046", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Ruas kiri adalah waktu. Ruas kanan juga harus menghasilkan waktu."], "varian": [{"soal": "Tebak dulu: bisakah kita tahu rumus mana yang salah tanpa percobaan?", "opsi": ["Tidak bisa; harus diukur dengan ayunan sungguhan", "Bisa, dengan memeriksa apakah kedua ruas berdimensi sama", "Bisa; rumus yang lebih pendek pasti benar", "Tidak bisa; keduanya mungkin benar"], "kunci": 1, "pembahasan": ["Kedua ruas rumus yang benar harus berdimensi sama.", "√(L/g) berdimensi [T], tetapi √(g/L) berdimensi [T]⁻¹. Jadi rumus Rina pasti salah; rumus Doni lolos pemeriksaan."]}]}, {"id": "UKUR-047", "format": "bertahap", "simpul": "DAS-01", "bantuan": ["L/g = [L] : ([L][T]⁻²). Membagi membalik tanda pangkat penyebut.", "Akar kuadrat membagi setiap pangkat dengan 2."], "varian": [{"soal": "Periksa dimensi rumus T = 2π√(L/g), dengan L panjang [L] dan g percepatan [L][T]⁻².", "langkah": [{"teks": "Pangkat [T] pada L/g", "kunci": 2}, {"teks": "Pangkat [T] setelah diakar", "kunci": 1}, {"teks": "Pangkat [L] setelah diakar", "kunci": 0}], "pembahasan": ["L/g = [L] : [L][T]⁻² = [L]⁰[T]² = [T]².", "√([T]²) = [T]¹.", "Pangkat [L] = 0, jadi ruas kanan berdimensi [T], sama dengan periode. Rumus lolos pemeriksaan dimensi."]}]}, {"id": "UKUR-048", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Uraikan rumusnya menjadi besaran yang dimensinya sudah kamu tahu.", "Kali → jumlahkan pangkat; bagi → kurangkan pangkat."], "varian": [{"soal": "Dimensi usaha (W = F · s) adalah ...", "opsi": ["[M][L][T]⁻²", "[M][L]²[T]⁻²", "[M][L]²[T]⁻³", "[M][L]⁻¹[T]⁻²"], "kunci": 1, "pembahasan": ["Gaya [M][L][T]⁻², perpindahan [L].", "W = [M][L][T]⁻² · [L] = [M][L]²[T]⁻²."], "salah": {"0": "M28", "2": "M28"}}, {"soal": "Dimensi daya (P = W/t) adalah ...", "opsi": ["[M][L]²[T]⁻²", "[M][L][T]⁻³", "[M][L]²[T]⁻³", "[M][L]²[T]⁻¹"], "kunci": 2, "pembahasan": ["Usaha [M][L]²[T]⁻², waktu [T].", "P = [M][L]²[T]⁻² : [T] = [M][L]²[T]⁻³."], "salah": {"0": "M28"}}, {"soal": "Dimensi tekanan (P = F/A, dengan A luas) adalah ...", "opsi": ["[M][L][T]⁻²", "[M][L]⁻¹[T]⁻²", "[M][L]⁻²[T]⁻²", "[M][L]²[T]⁻²"], "kunci": 1, "pembahasan": ["Gaya [M][L][T]⁻², luas [L]².", "P = [M][L][T]⁻² : [L]² = [M][L]⁻¹[T]⁻²."], "salah": {"0": "M27", "2": "M27"}}, {"soal": "Dimensi momentum (p = m · v) adalah ...", "opsi": ["[M][L][T]⁻¹", "[M][L][T]⁻²", "[M][L]²[T]⁻²", "[M][T]⁻¹"], "kunci": 0, "pembahasan": ["Massa [M], kecepatan [L][T]⁻¹.", "p = [M][L][T]⁻¹."], "salah": {"1": "M28"}}]}, {"id": "UKUR-049", "format": "pilihan-ganda", "simpul": "DAS-01", "bantuan": ["Hitung dimensi setiap suku, termasuk ruas kiri.", "Suku yang dijumlahkan harus berdimensi sama."], "varian": [{"soal": "Dengan s perpindahan, v kecepatan, a percepatan, dan t waktu, persamaan manakah yang benar secara dimensi?", "opsi": ["s = v · t²", "s = a · t", "s = v · t", "s = v : t"], "kunci": 2, "pembahasan": ["v · t = [L][T]⁻¹ · [T] = [L], sama dengan s.", "v · t² = [L][T]; a · t = [L][T]⁻¹; v : t = [L][T]⁻². Ketiganya tidak berdimensi [L]."], "salah": {"0": "M30", "1": "M30", "3": "M30"}}, {"soal": "Dengan v dan v₀ kecepatan, a percepatan, dan s perpindahan, persamaan manakah yang benar secara dimensi?", "opsi": ["v = v₀ + 2as", "v² = v₀² + 2as", "v² = v₀ + a · s", "v = a · s²"], "kunci": 1, "pembahasan": ["v² dan v₀² berdimensi [L]²[T]⁻²; 2as = [L][T]⁻² · [L] = [L]²[T]⁻². Semua suku sama.", "Pada pilihan pertama, v berdimensi [L][T]⁻¹ tetapi 2as berdimensi [L]²[T]⁻²: suku-sukunya tidak sama."], "salah": {"0": "M30", "2": "M30"}}, {"soal": "Dengan E energi, m massa, g percepatan gravitasi, h ketinggian, dan v kecepatan, persamaan manakah yang benar secara dimensi?", "opsi": ["E = m · g", "E = m · g · h", "E = m · v", "E = g · h"], "kunci": 1, "pembahasan": ["m · g · h = [M][L][T]⁻² · [L] = [M][L]²[T]⁻², sama dengan dimensi energi.", "m · g adalah gaya; m · v adalah momentum; g · h tidak memuat massa."], "salah": {"0": "M28", "2": "M28"}}]}, {"id": "UKUR-050", "format": "isian", "simpul": "DAS-01", "gen": "dimensi-pangkat", "bantuan": ["Tulis dimensi kedua ruas, lalu samakan pangkat setiap besaran pokok.", "Tulis jawaban sebagai desimal atau pecahan, misalnya 0,5 atau −1/2."], "varian": [{"p": {"target": {"T": 1}, "faktor": [{"L": 1}, {"L": 1, "T": -2}], "tanya": 0}, "soal": "Periode ayunan T bergantung pada panjang tali L dan percepatan gravitasi g: T = k · Lˣ · gʸ, dengan k tak berdimensi. Berapa nilai x?", "kunci": 0.5, "satuan": "(pangkat)", "pembahasan": ["[T] = [L]ˣ · ([L][T]⁻²)ʸ = [L]ˣ⁺ʸ[T]⁻²ʸ.", "Pangkat [T]: −2y = 1, jadi y = −½.", "Pangkat [L]: x + y = 0, jadi x = ½ = 0,5. Rumusnya T = k√(L/g)."]}, {"p": {"target": {"L": 1, "T": -1}, "faktor": [{"M": 1, "L": 1, "T": -2}, {"M": 1, "L": -1}], "tanya": 1}, "soal": "Kelajuan gelombang pada tali v bergantung pada tegangan tali F ([M][L][T]⁻²) dan massa per satuan panjang μ ([M][L]⁻¹): v = k · Fˣ · μʸ, dengan k tak berdimensi. Berapa nilai y?", "kunci": -0.5, "satuan": "(pangkat)", "pembahasan": ["[L][T]⁻¹ = ([M][L][T]⁻²)ˣ([M][L]⁻¹)ʸ = [M]ˣ⁺ʸ[L]ˣ⁻ʸ[T]⁻²ˣ.", "Pangkat [T]: −2x = −1, jadi x = ½. Pangkat [M]: x + y = 0, jadi y = −½ = −0,5.", "Cek pangkat [L]: x − y = ½ + ½ = 1. Rumusnya v = k√(F/μ)."]}, {"p": {"target": {"L": 1, "T": -1}, "faktor": [{"L": 1, "T": -2}, {"L": 1}], "tanya": 1}, "soal": "Kelajuan benda yang jatuh bebas dari ketinggian h bergantung pada g dan h: v = k · gˣ · hʸ, dengan k tak berdimensi. Berapa nilai y?", "kunci": 0.5, "satuan": "(pangkat)", "pembahasan": ["[L][T]⁻¹ = ([L][T]⁻²)ˣ[L]ʸ = [L]ˣ⁺ʸ[T]⁻²ˣ.", "Pangkat [T]: −2x = −1, jadi x = ½.", "Pangkat [L]: x + y = 1, jadi y = ½ = 0,5. Rumusnya v = k√(gh); nilai k (yaitu √2) tidak bisa ditemukan dengan analisis dimensi."]}]}, {"id": "UKUR-051", "format": "pilihan-ganda-kompleks", "simpul": "DAS-01", "gen": "tka-pipa", "fig": [{"jenis": "jangka-sorong", "p": "luar", "judul": "Diameter luar (jangka sorong)"}, {"jenis": "mikrometer", "p": "tebal", "judul": "Tebal dinding (mikrometer sekrup)"}], "tka": {"tipe": "FIS-UKUR", "acuan": ["FIS25-001"]}, "bantuan": ["Baca kedua alat lebih dulu: jangka sorong teliti 0,1 mm, mikrometer 0,01 mm.", "Dinding pipa ada di dua sisi: diameter dalam = diameter luar − 2 × tebal."], "varian": [{"p": {"luar": {"mm": 18, "k": 6}, "tebal": {"s": 1.5, "t": 25}}, "soal": "Raka akan memasukkan beberapa batang kayu ke dalam sebuah pipa plastik. Ia mengukur diameter luar pipa dengan jangka sorong dan tebal dinding pipa dengan mikrometer sekrup. Hasilnya tampak pada gambar.\nBatang berdiameter berapa saja yang dapat masuk ke dalam pipa?\nJawaban benar lebih dari satu.", "opsi": ["14,60 mm", "15,00 mm", "15,30 mm", "16,10 mm", "16,85 mm"], "kunci": [0, 1], "salah": {"3": "M14", "4": "M31"}, "pembahasan": ["Diameter luar: skala utama 18 mm + garis nonius ke-6 × 0,1 mm = 18,6 mm.", "Tebal dinding: skala utama 1,5 mm (garis setengah milimeter terlihat) + 25 × 0,01 mm = 1,75 mm.", "Diameter dalam = 18,6 − 2 × 1,75 = 15,10 mm. Yang dapat masuk hanya yang lebih kecil dari itu.", "16,10 mm muncul jika garis setengah milimeter terlewat; 16,85 mm muncul jika tebal dikurangkan sekali saja; 15,30 mm sedikit melebihi batas."]}, {"p": {"luar": {"mm": 24, "k": 2}, "tebal": {"s": 2.5, "t": 14}}, "soal": "Sari akan memasukkan beberapa spidol ke dalam sebuah tabung karton. Ia mengukur diameter luar tabung dengan jangka sorong dan tebal dinding tabung dengan mikrometer sekrup. Hasilnya tampak pada gambar.\nSpidol berdiameter berapa saja yang dapat masuk ke dalam tabung?\nJawaban benar lebih dari satu.", "opsi": ["18,42 mm", "18,82 mm", "19,12 mm", "19,92 mm", "21,56 mm"], "kunci": [0, 1], "salah": {"3": "M14", "4": "M31"}, "pembahasan": ["Diameter luar: skala utama 24 mm + garis nonius ke-2 × 0,1 mm = 24,2 mm.", "Tebal dinding: skala utama 2,5 mm (garis setengah milimeter terlihat) + 14 × 0,01 mm = 2,64 mm.", "Diameter dalam = 24,2 − 2 × 2,64 = 18,92 mm. Yang dapat masuk hanya yang lebih kecil dari itu.", "19,92 mm muncul jika garis setengah milimeter terlewat; 21,56 mm muncul jika tebal dikurangkan sekali saja; 19,12 mm sedikit melebihi batas."]}]}, {"id": "UKUR-052", "format": "pilihan-ganda", "simpul": "DAS-01", "gen": "ap-kali", "tka": {"tipe": "FIS-UKUR", "acuan": ["FIS25-001"]}, "bantuan": ["Hitung angka penting kedua hasil ukur.", "Hasil kali mengikuti angka penting paling sedikit; jangan lupa nol di belakang koma bila perlu."], "varian": [{"p": {"a": "15,2", "b": "0,84", "op": "×", "pg": {"posisi": 1}, "satuan_teks": " cm²"}, "soal": "Panjang sebuah pita logam diukur dengan mistar: 15,2 cm. Lebarnya diukur dengan jangka sorong: 0,84 cm. Luas pita sesuai aturan angka penting adalah ...", "opsi": ["12,8 cm²", "13 cm²", "12,77 cm²", "12,768 cm²"], "kunci": 1, "salah": {"0": "M21", "2": "M19", "3": "M19"}, "pembahasan": ["15,2 cm punya 3 angka penting; 0,84 cm punya 2 angka penting.", "15,2 × 0,84 = 12,768.", "Hasil mengikuti angka penting paling sedikit (2): 13 cm²."]}, {"p": {"a": "2,47", "b": "1,6", "op": "×", "pg": {"posisi": 3}, "satuan_teks": " cm²"}, "soal": "Panjang sebuah label diukur dengan jangka sorong: 2,47 cm. Lebarnya diukur dengan mistar: 1,6 cm. Luas label sesuai aturan angka penting adalah ...", "opsi": ["3,95 cm²", "3,952 cm²", "4 cm²", "4,0 cm²"], "kunci": 3, "salah": {"0": "M21", "1": "M19", "2": "M32"}, "pembahasan": ["2,47 cm punya 3 angka penting; 1,6 cm punya 2 angka penting.", "2,47 × 1,6 = 3,952.", "Hasil mengikuti angka penting paling sedikit (2): 4,0 cm².", "Nol di belakang koma perlu ditulis agar angka pentingnya tetap 2."]}]}, {"id": "UKUR-053", "format": "pilihan-ganda", "simpul": "DAS-01", "gen": "tka-kedalaman", "fig": "jangka-sorong", "tka": {"tipe": "FIS-UKUR", "acuan": ["FIS25-001"]}, "bantuan": ["Baca kedalaman lubang dari skala jangka sorong lebih dulu.", "Bagian yang menonjol = panjang baut − kedalaman lubang."], "varian": [{"p": {"mm": 31, "k": 8, "baut": "33,0", "posisi": 0}, "soal": "Kedalaman sebuah lubang di balok kayu diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah baut sepanjang 33,0 mm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian baut yang menonjol di atas permukaan balok?", "opsi": ["1,2 mm", "Baut tidak menonjol", "0,2 mm", "1,92 mm"], "kunci": 0, "salah": {"1": "M10", "2": "M12", "3": "M11"}, "pembahasan": ["Kedalaman: skala utama 31 mm + garis nonius ke-8 × 0,1 mm = 31,8 mm.", "Bagian yang menonjol = 33,0 − 31,8 = 1,2 mm.", "Jika nomor garis nonius dibaca sebagai milimeter, kedalamannya terbaca 39 mm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 32,8 mm."]}, {"p": {"mm": 26, "k": 3, "baut": "30,0", "posisi": 2}, "soal": "Kedalaman lubang pada sebuah papan diukur dengan batang pengukur kedalaman jangka sorong; skalanya tampak pada gambar. Sebuah paku sepanjang 30,0 mm dimasukkan lurus sampai menyentuh dasar lubang. Berapa panjang bagian paku yang menonjol di atas permukaan papan?", "opsi": ["1,0 mm", "2,7 mm", "3,7 mm", "3,97 mm"], "kunci": 2, "salah": {"0": "M10", "1": "M12", "3": "M11"}, "pembahasan": ["Kedalaman: skala utama 26 mm + garis nonius ke-3 × 0,1 mm = 26,3 mm.", "Bagian yang menonjol = 30,0 − 26,3 = 3,7 mm.", "Jika nomor garis nonius dibaca sebagai milimeter, kedalamannya terbaca 29 mm; jika skala utama dibaca pada garis sesudah nol nonius, terbaca 27,3 mm."]}]}], "catatan": [{"judul": "Untuk siapa", "items": ["Jalur mandiri untuk Fisika kelas X, bab Besaran dan Pengukuran (Kurikulum Merdeka, fase E). Satu sesi sekitar 15 menit, di kelas atau di rumah.", "Simpul peta: DAS-01 (besaran, satuan, dan pengukuran) dan DAS-03 (konstanta). Soal setara TKA mengikuti tipe FIS-UKUR dengan contoh FIS25-001."]}, {"judul": "Cara memakai di kelas", "items": ["Tugaskan sesinya, misalnya dua sesi per minggu; jangan hanya disediakan. Latihan daring biasanya hanya membantu siswa yang benar-benar memakainya sesuai takaran.", "Minta siswa mengirim kode progres di akhir minggu. Tempel semua kode di tampilan guru untuk melihat miskonsepsi yang paling sering, lalu bahas itu di pertemuan berikutnya.", "Pakai jalur ini untuk latihan dan pekerjaan rumah, bukan pengganti pelajaran. Pada uji coba di SMP negeri di Indonesia (program MENGEJAR, 2022–2023), perangkat lunak adaptif tanpa pelatihan guru tidak menaikkan hasil belajar."]}, {"judul": "Batas pilot", "items": ["Ketidakpastian pengukuran dan pengukuran berulang belum dilatih; hanya disebut di unit 2.", "Jangka sorong memakai nonius 10 skala (0,1 mm); nonius 20 skala hanya disebut.", "Angka dalam cerita (panjang jengkal, ubin, ukuran benda) adalah angka contoh, bukan data sungguhan.", "Kode progres tidak aman; jangan dipakai sebagai nilai ujian.", "Belum diuji di kelas: urutan, lama sesi, dan aturan penguasaan masih perkiraan."]}], "map_page": "peta-fisika.html", "topics": {"DAS-01": "Besaran, satuan, dan pengukuran", "DAS-02": "Vektor", "DAS-03": "Konstanta dan nilai penting", "MEK-01": "Gerak lurus", "MEK-02": "Gerak parabola dan gerak melingkar", "MEK-03": "Hukum Newton tentang gerak", "MEK-04": "Gravitasi dan hukum Kepler", "MEK-05": "Usaha dan energi", "MEK-06": "Momentum, impuls, dan tumbukan", "MEK-07": "Rotasi dan kesetimbangan benda tegar", "MEK-08": "Elastisitas dan getaran harmonis", "FLT-01": "Fluida statis", "FLT-02": "Fluida dinamis", "FLT-03": "Suhu, kalor, dan perpindahan kalor", "FLT-04": "Teori kinetik gas", "FLT-05": "Termodinamika", "GEL-01": "Gelombang mekanik", "GEL-02": "Bunyi", "GEL-03": "Cahaya dan gelombang elektromagnetik", "GEL-04": "Optika geometri dan alat optik", "LIS-01": "Listrik statis dan kapasitor", "LIS-02": "Listrik arus searah", "LIS-03": "Medan magnet dan gaya Lorentz", "LIS-04": "Induksi elektromagnetik dan arus bolak-balik", "MOD-01": "Radiasi benda hitam dan dualisme gelombang–partikel", "MOD-02": "Perkembangan model atom", "MOD-03": "Relativitas khusus", "MOD-04": "Inti atom dan radioaktivitas", "TER-01": "Energi terbarukan dan perubahan iklim", "TER-02": "Teknologi digital"}};
+// ---------- data and text helpers ----------
+const ITEM = Object.fromEntries(J.soal.map(it => [it.id, it]));
+const UNIT = Object.fromEntries(J.unit.map(u => [u.id, u]));
+const PRE = Object.fromEntries(J.prasyarat.map(p => [p.id, p]));
+const STEPS = ["cek", ...J.unit.map(u => u.id), "akhir"];
+const SKILLS = [...new Set([...J.unit.flatMap(u => u.sendiri), ...J.akhir.soal])].sort();
+const DAY = new URLSearchParams(location.search).has("uji") ? 60e3 : 864e5;  // ?uji: one "day" lasts a minute, for testing reviews
+const ULANG = J.ulang_hari || [1, 3, 7, 21];
+const LETTERS = "ABCDEFGH";
+const ST_NAME = {belum: "Belum", dibantu: "Dibantu", bisa: "Bisa", kuat: "Kuat"};
+const ST_NUM = {belum: 0, dibantu: 1, bisa: 2, kuat: 3};
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const app = $("#app");
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;"}[c]));
+const SUPS = "⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿᵐᵃᵇᶜˣʸ", SUPP = "0123456789+−nmabcxy", SUBS = "₀₁₂₃₄₅₆₇₈₉ₖ", SUBP = "0123456789k";
+// The text faces lack Unicode superscript and subscript characters, so runs of them become <sup>/<sub>.
+function tx(s){
+  return String(s).replace(/[⁰¹²³⁴⁵⁶⁷⁸⁹⁺⁻ⁿᵐᵃᵇᶜˣʸ]+/g, m => "<sup>" + [...m].map(c => SUPP[SUPS.indexOf(c)]).join("") + "</sup>")
+    .replace(/[₀₁₂₃₄₅₆₇₈₉ₖ]+/g, m => "<sub>" + [...m].map(c => SUBP[SUBS.indexOf(c)]).join("") + "</sub>");
+}
+const paras = s => String(s).split("\n").map(p => "<p>" + tx(p) + "</p>").join("");
+const nf = x => String(x).replace("-", "−").replace(".", ",");
+function blocks(isi){
+  return (isi || []).map(b => {
+    if(b.p) return "<p>" + tx(b.p) + "</p>";
+    if(b.li) return "<ul>" + b.li.map(x => "<li>" + tx(x) + "</li>").join("") + "</ul>";
+    if(b.tabel) return '<div class="tbl"><table><thead><tr>' + b.tabel.cols.map(c => "<th>" + tx(c) + "</th>").join("") + "</tr></thead><tbody>" +
+      b.tabel.rows.map(r => "<tr>" + r.map(c => "<td>" + tx(c) + "</td>").join("") + "</tr>").join("") + "</tbody></table></div>";
+    if(b.contoh) return '<div class="example"><h4>Contoh</h4><p>' + tx(b.contoh.soal) + "</p><ol>" + b.contoh.langkah.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>";
+    if(b.jebakan) return '<div class="traps"><h4>Awas</h4><ul>' + b.jebakan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ul></div>";
+    return "";
+  }).join("");
+}
+function topicChips(codes){
+  if(!J.map_page || !(codes || []).length) return "";
+  return '<div class="chips">' + codes.map(c => '<a class="chip" href="' + J.map_page + "#t-" + c + '"><span class="mono">' + c + "</span><span>" + esc((J.topics || {})[c] || "") + "</span></a>").join("") + "</div>";
+}
+
+// ---------- saved progress ----------
+const KEY = "jalur-" + J.id;
+function blank(){ return {v: 1, nama: "", cek: {}, unit: {}, fam: {}, mis: {}, akhir: {hasil: {}}, sesi: null}; }
+function load(){ try { const s = JSON.parse(localStorage.getItem(KEY)); if(s && s.v === 1) return Object.assign(blank(), s); } catch(e) {} return blank(); }
+let S = load();
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(S)); } catch(e) {} }
+function fam(id){ return S.fam[id] || (S.fam[id] = {n: 0, run: 0, seen: [], st: "belum", box: 0, due: null, yw: 0}); }
+function nextVariant(id){
+  const f = fam(id), n = ITEM[id].varian.length;
+  for(let i = 0; i < n; i++) if(!f.seen.includes(i)) return i;
+  return f.seen[0];
+}
+function markSeen(id, i){ const f = fam(id); f.seen = f.seen.filter(x => x !== i).concat(i); }
+function mastered(id){
+  const f = fam(id);
+  if(f.st !== "kuat") f.st = "bisa";
+  if(f.box < 1){ f.box = 1; f.due = Date.now() + ULANG[0] * DAY; }
+}
+function skipped(id){ const f = fam(id); if(f.st === "belum") f.st = "dibantu"; if(!f.box) f.due = Date.now() + DAY; }
+function reviewed(id, ok){
+  const f = fam(id);
+  if(ok){ f.box = Math.min(f.box + 1, ULANG.length); f.st = f.box >= 3 ? "kuat" : "bisa"; f.due = Date.now() + ULANG[f.box - 1] * DAY; }
+  else { f.box = 0; f.st = "dibantu"; f.run = 0; f.due = Date.now() + DAY; }
+}
+function dueList(){
+  const now = Date.now();
+  return SKILLS.filter(id => S.fam[id] && S.fam[id].due && S.fam[id].due <= now).sort((a, b) => S.fam[a].due - S.fam[b].due).slice(0, 3);
+}
+function cekDone(){ return J.prasyarat.every(p => S.cek[p.id] && S.cek[p.id].awal); }
+function akhirDone(){ return J.akhir.soal.every(id => id in S.akhir.hasil); }
+function stepDone(step){ return step === "cek" ? cekDone() : step === "akhir" ? akhirDone() : !!(S.unit[step] && S.unit[step].selesai); }
+function nextStep(){ return STEPS.find(s => !stepDone(s)) || null; }
+function stepTitle(step){ return step === "cek" ? "Cek prasyarat" : step === "akhir" ? J.akhir.judul : step === "ulang" ? "Ulangan" : "Unit " + step.slice(1) + " · " + UNIT[step].judul; }
+function preDigit(pid){
+  const c = S.cek[pid];
+  if(!c || !c.awal) return 0;
+  if(c.awal.every(Boolean)) return 3;
+  return c.ulang ? 2 : 1;
+}
+
+// ---------- figures ----------
+function svgOpen(w, h, label){ return '<svg viewBox="0 0 ' + w + " " + h + '" role="img" aria-label="' + esc(label) + '" font-family="Lato,system-ui,sans-serif">'; }
+const TXT = (x, y, s, size, anchor, extra) => '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (size || 13) + '" text-anchor="' + (anchor || "middle") + '" fill="currentColor"' + (extra || "") + ">" + s + "</text>";
+const LINE = (x1, y1, x2, y2, w, color, extra) => '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + (color || "currentColor") + '" stroke-width="' + (w || 1) + '"' + (extra || "") + "/>";
+
+function figMistar(p, opt = {}){
+  const a = +p.a, b = +p.b;
+  const lo = Math.max(0, Math.floor(a / 10) * 10 - 4), hi = Math.ceil(b / 10) * 10 + 4;
+  const W = 520, L = 14, R = 14, s = (W - L - R) / (hi - lo), X = mm => L + (mm - lo) * s;
+  let g = svgOpen(W, 150, "Mistar: benda dari " + nf(a / 10) + " cm sampai " + nf(b / 10) + " cm");
+  g += '<rect x="' + (lo === 0 ? X(0) - 8 : -2) + '" y="62" width="' + (W + 4) + '" height="66" rx="4" fill="#F6E7B8" stroke="currentColor" stroke-width="1.5"/>';
+  for(let m = lo; m <= hi; m++){
+    const len = m % 10 === 0 ? 24 : m % 5 === 0 ? 16 : 10;
+    g += LINE(X(m), 62, X(m), 62 + len, m % 10 === 0 ? 1.8 : 1.2);
+    if(m % 10 === 0) g += TXT(X(m), 110, String(m / 10), 20, "middle", ' font-weight="700"');
+  }
+  g += TXT(W - 8, 122, "cm", 14, "end");
+  g += '<rect x="' + X(a) + '" y="26" width="' + (X(b) - X(a)) + '" height="28" rx="6" fill="var(--accent-soft)" stroke="currentColor" stroke-width="1.8"/>';
+  g += LINE(X(a), 54, X(a), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"') + LINE(X(b), 54, X(b), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"');
+  if(opt.eye){
+    const ex = opt.eye === "miring" ? Math.min(W - 12, X(b) + 70) : X(b);
+    g += '<circle cx="' + ex + '" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="' + ex + '" cy="10" r="2.5" fill="currentColor"/>';
+    if(opt.eye === "miring"){
+      const hit = X(b) - 1.6 * s;
+      g += LINE(ex, 17, hit, 62, 1.8, "var(--warn)", ' stroke-dasharray="5 3"') + TXT(hit, 146, "bacaan bergeser", 14, "middle", ' fill="var(--warn)"');
+    } else g += LINE(ex, 17, X(b), 62, 1.8, "var(--ok)", ' stroke-dasharray="5 3"');
+  }
+  return g + "</svg>";
+}
+
+function figJangka(p, opt = {}){
+  const x = (+p.mm) + (+p.k) / 10;
+  const lo = Math.max(-2, Math.floor(x) - 4), hi = lo + 18;
+  const W = 520, L = 10, s = (W - 2 * L) / (hi - lo), X = mm => L + (mm - lo) * s;
+  const hiK = opt.highlight ? Math.round((x - Math.floor(x)) * 10) : -1;
+  let g = svgOpen(W, 190, "Skala jangka sorong");
+  g += '<rect x="-2" y="10" width="' + (W + 4) + '" height="82" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
+  g += TXT(10, 32, "cm", 15, "start");
+  for(let m = Math.ceil(lo); m <= hi; m++){
+    if(m < 0) continue;
+    const len = m % 10 === 0 ? 32 : m % 5 === 0 ? 22 : 14;
+    const hit = hiK >= 0 && m === Math.floor(x + 1e-9) + hiK;
+    g += LINE(X(m), 92 - len, X(m), 92, hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    if(m % 10 === 0) g += TXT(X(m), 52, String(m / 10), 24, "middle", ' font-weight="700"');
+  }
+  const v0 = X(x - 1.4), v1 = X(x + 10.4);
+  g += '<rect x="' + v0 + '" y="92" width="' + (v1 - v0) + '" height="74" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5"/>';
+  for(let j = 0; j <= 10; j++){
+    const pos = x + 0.9 * j, big = j % 5 === 0, hit = j === hiK;
+    g += LINE(X(pos), 92, X(pos), 92 + (big ? 28 : 18), hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    if(big) g += TXT(X(pos), 142, String(j), 19, "middle", ' font-weight="700"');
+  }
+  g += TXT(v1 - 6, 160, "nonius", 13, "end", ' fill="var(--muted)"');
+  return g + "</svg>";
+}
+
+function figMikro(p, opt = {}){
+  const s0 = +p.s, t = +p.t, x = s0 + t / 100;
+  const start = Math.max(0, 5 * Math.floor((s0 - 3) / 5));
+  const x0 = 34, k = 40, X = mm => x0 + (mm - start) * k, edge = X(x), tw = 150;
+  const W = Math.max(380, edge + tw + 6), top = 18, bot = 182, gap = 13, ref = 100;
+  let g = svgOpen(W, 200, "Skala mikrometer sekrup");
+  g += '<rect x="-2" y="72" width="' + (edge + 2) + '" height="56" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
+  g += LINE(0, ref, edge, ref, 2);
+  for(let m = start; m < x - 0.04; m++){
+    g += LINE(X(m), ref, X(m), ref - 18, 1.8);
+    if(m % 5 === 0) g += TXT(X(m), 62, String(m), 22, "middle", ' font-weight="700"');
+  }
+  for(let m = start + 0.5; m < x - 0.04; m += 1) g += LINE(X(m), ref, X(m), ref + 16, 1.8);
+  g += TXT(4, 24, "mm", 14, "start");
+  g += '<rect x="' + edge + '" y="' + top + '" width="' + tw + '" height="' + (bot - top) + '" rx="6" fill="#FFFFFF" stroke="currentColor" stroke-width="1.6"/>';
+  g += LINE(edge + 1.5, top + 2, edge + 1.5, bot - 2, 4, "#C9D2DE");
+  for(let d = t - 6; d <= t + 6; d++){
+    const y = ref - (d - t) * gap;
+    if(y < top + 6 || y > bot - 6) continue;
+    const v = ((d % 50) + 50) % 50, big = v % 5 === 0;
+    g += LINE(edge, y, edge + (big ? 30 : 18), y, 1.6);
+    if(big) g += TXT(edge + 38, y + 7, String(v), 20, "start", ' font-weight="700"');
+  }
+  g += TXT(edge + tw - 8, bot - 8, "selubung", 13, "end", ' fill="var(--muted)"');
+  return g + "</svg>";
+}
+const FIG = {"mistar": figMistar, "jangka-sorong": figJangka, "mikrometer": figMikro};
+function figsHTML(it, v){
+  if(!it.fig) return "";
+  const list = typeof it.fig === "string" ? [{jenis: it.fig}] : it.fig;
+  return list.map(f => "<figure>" + FIG[f.jenis](f.p ? v.p[f.p] : v.p) + (f.judul ? "<figcaption>" + esc(f.judul) + "</figcaption>" : "") + "</figure>").join("");
+}
+
+// ---------- widgets ----------
+const WIDGET = {};
+WIDGET["satuan"] = (el, d) => {
+  let cur = 0;
+  function draw(){
+    const u = d.satuan[cur], n = d.panjang_cm / u.cm, W = 520, L = 20, s = (W - 2 * L) / d.panjang_cm;
+    let g = svgOpen(W, 110, "Meja diukur dengan " + u.nama) + '<rect x="' + L + '" y="50" width="' + (d.panjang_cm * s) + '" height="22" rx="4" fill="#C79A6B" stroke="currentColor" stroke-width="1.5"/>';
+    for(let i = 0; i < Math.ceil(n - 1e-9); i++){
+      const w = Math.min(u.cm, d.panjang_cm - i * u.cm) * s;
+      g += '<rect x="' + (L + i * u.cm * s) + '" y="18" width="' + w + '" height="26" rx="3" fill="' + (i % 2 ? "var(--accent-soft)" : "#9FCBEA") + '" stroke="currentColor" stroke-width="1"/>';
+      if(w > 22) g += TXT(L + i * u.cm * s + w / 2, 36, String(i + 1), 12);
+    }
+    g += TXT(W / 2, 98, "meja yang sama", 12, "middle", ' fill="var(--muted)"') + "</svg>";
+    el.querySelector(".w-fig").innerHTML = g;
+    el.querySelector(".readout").innerHTML = "Panjang meja = <b>" + nf(+n.toFixed(2)) + " " + esc(u.nama) + "</b>" + (u.nama === "meter" ? "" : " (satu " + esc(u.nama) + " = " + u.cm + " cm)");
+    $$(".pick button", el).forEach((b, i) => b.setAttribute("aria-pressed", String(i === cur)));
+  }
+  el.innerHTML = '<div class="w-title">Ukur meja yang sama dengan satuan berbeda</div><div class="row pick">' +
+    d.satuan.map((u, i) => '<button class="btn small" type="button" data-i="' + i + '">' + esc(u.nama) + "</button>").join("") +
+    '</div><div class="w-fig"></div><p class="readout"></p><p class="small muted">Panjang jengkal, ubin, dan buku di sini angka contoh.</p>';
+  el.addEventListener("click", e => { const b = e.target.closest("[data-i]"); if(b){ cur = +b.dataset.i; draw(); } });
+  draw();
+};
+WIDGET["mistar"] = el => {
+  let a = 20, len = 47, eye = "tegak", shown = false;
+  function draw(){
+    el.querySelector(".w-fig").innerHTML = figMistar({a, b: a + len}, {eye: eye === "tegak" ? "tegak" : "miring"});
+    el.querySelector(".readout").innerHTML = shown ? "Panjang = " + nf((a + len) / 10) + " cm − " + nf(a / 10) + " cm = <b>" + nf(len / 10) + " cm = " + len + " mm</b>" : "Baca dulu panjangnya, lalu tekan Tunjukkan bacaan.";
+    $$("[data-eye]", el).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.eye === eye)));
+  }
+  el.innerHTML = '<div class="w-title">Geser benda, baca panjangnya</div><div class="w-fig"></div>' +
+    '<label>Ujung kiri <input type="range" min="0" max="50" step="1" value="' + a + '" data-k="a"></label>' +
+    '<label>Panjang <input type="range" min="15" max="80" step="1" value="' + len + '" data-k="len"></label>' +
+    '<div class="row pick"><button class="btn small" type="button" data-eye="tegak">Mata tegak lurus</button><button class="btn small" type="button" data-eye="miring">Mata miring</button>' +
+    '<button class="btn small" type="button" data-show>Tunjukkan bacaan</button></div><p class="readout"></p>';
+  el.addEventListener("input", e => { if(e.target.dataset.k === "a") a = +e.target.value; if(e.target.dataset.k === "len") len = +e.target.value; shown = false; draw(); });
+  el.addEventListener("click", e => { if(e.target.dataset.eye){ eye = e.target.dataset.eye; draw(); } if(e.target.hasAttribute("data-show")){ shown = true; draw(); } });
+  draw();
+};
+WIDGET["jangka-sorong"] = el => {
+  let x = 237, mark = false, shown = false;
+  function draw(){
+    const mm = Math.floor(x / 10), k = x % 10;
+    el.querySelector(".w-fig").innerHTML = figJangka({mm, k}, {highlight: mark});
+    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + mm + " mm + garis nonius ke-" + k + " × 0,1 mm = <b>" + nf(x / 10) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector("[data-k]").value = x;
+  }
+  el.innerHTML = '<div class="w-title">Buka dan tutup rahang jangka sorong</div><div class="w-fig"></div>' +
+    '<label>Bukaan rahang <input type="range" min="0" max="800" step="1" value="' + x + '" data-k="x"></label>' +
+    '<div class="row"><button class="btn small" type="button" data-rand>Benda acak</button><label><input type="checkbox" data-mark> Tandai garis yang berimpit</label>' +
+    '<button class="btn small" type="button" data-show>Tunjukkan hasil</button></div><p class="readout"></p>';
+  el.addEventListener("input", e => { if(e.target.dataset.k) { x = +e.target.value; shown = false; draw(); } if(e.target.hasAttribute("data-mark")){ mark = e.target.checked; draw(); } });
+  el.addEventListener("click", e => { if(e.target.hasAttribute("data-rand")){ x = 30 + Math.floor(Math.random() * 600); shown = false; draw(); } if(e.target.hasAttribute("data-show")){ shown = true; draw(); } });
+  draw();
+};
+WIDGET["mikrometer"] = el => {
+  let x = 268, shown = false;
+  function draw(){
+    const half = Math.floor(x / 50) / 2, t = x % 50;
+    el.querySelector(".w-fig").innerHTML = figMikro({s: half, t: t});
+    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + nf(half) + " mm + garis " + t + " × 0,01 mm = <b>" + nf((x / 100).toFixed(2)) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector("[data-k]").value = x;
+  }
+  el.innerHTML = '<div class="w-title">Putar selubung mikrometer</div><div class="w-fig"></div>' +
+    '<label>Putar <input type="range" min="1" max="2499" step="1" value="' + x + '" data-k="x"></label>' +
+    '<div class="row"><button class="btn small" type="button" data-step="-1">− 0,01 mm</button><button class="btn small" type="button" data-step="1">+ 0,01 mm</button>' +
+    '<button class="btn small" type="button" data-step="50">+ 1 putaran</button><button class="btn small" type="button" data-show>Tunjukkan hasil</button></div><p class="readout"></p>';
+  el.addEventListener("input", e => { if(e.target.dataset.k){ x = +e.target.value; shown = false; draw(); } });
+  el.addEventListener("click", e => { const st = e.target.dataset.step; if(st){ x = Math.max(1, Math.min(2499, x + +st)); shown = false; draw(); } if(e.target.hasAttribute("data-show")){ shown = true; draw(); } });
+  draw();
+};
+function apMarks(raw){
+  const s = raw.trim().replace(/\./g, ",");
+  if(!/^\d+(,\d+)?$/.test(s)) return null;
+  const chars = [...s], hasComma = s.includes(",");
+  let seenNon = false;
+  const lastNon = Math.max(...chars.map((c, i) => /[1-9]/.test(c) ? i : -1));
+  return chars.map((c, i) => {
+    if(c === ",") return {c, k: "n"};
+    if(/[1-9]/.test(c)){ seenNon = true; return {c, k: "y"}; }
+    if(!seenNon) return {c, k: "n"};
+    if(i < lastNon || hasComma) return {c, k: "y"};
+    return {c, k: "q"};
+  });
+}
+function apCount(raw){
+  const m = apMarks(raw);
+  if(!m) return null;
+  const y = m.filter(d => d.k === "y").length, q = m.filter(d => d.k === "q").length;
+  return {min: Math.max(1, y), max: Math.max(1, y + q)};
+}
+WIDGET["angka-penting"] = (el, d) => {
+  el.innerHTML = '<div class="w-title">Tulis sebuah hasil ukur</div><label>Bilangan <input type="text" inputmode="decimal" value="' + esc(d.contoh[0]) + '" data-k></label>' +
+    '<div class="row">' + d.contoh.map(c => '<button class="btn small" type="button" data-c="' + esc(c) + '">' + esc(c) + "</button>").join("") + "</div>" +
+    '<div class="bignum ap" aria-live="polite"></div><p class="readout"></p>' +
+    '<div class="legend"><span><b class="ap y" style="font-size:1rem">5</b> angka penting</span><span><b class="ap n" style="font-size:1rem">0</b> bukan angka penting</span><span><b class="ap q" style="font-size:1rem">0</b> tidak jelas</span></div>';
+  const input = el.querySelector("[data-k]");
+  function draw(){
+    const m = apMarks(input.value), c = apCount(input.value);
+    if(!m){ el.querySelector(".bignum").textContent = "—"; el.querySelector(".readout").textContent = "Tulis bilangan positif, misalnya 0,00520."; return; }
+    el.querySelector(".bignum").innerHTML = m.map(x => '<span class="' + x.k + '">' + x.c + "</span>").join("");
+    el.querySelector(".readout").innerHTML = c.min === c.max ? "<b>" + c.min + " angka penting</b>" :
+      "<b>" + c.min + " sampai " + c.max + " angka penting</b>: nol di belakang bilangan bulat tidak jelas. Tulis dalam notasi ilmiah agar jelas.";
+  }
+  el.addEventListener("input", draw);
+  el.addEventListener("click", e => { const b = e.target.closest("[data-c]"); if(b){ input.value = b.dataset.c; draw(); } });
+  draw();
+};
+WIDGET["geser-koma"] = (el, d) => {
+  let D = "", e0 = 0, c = 0;
+  function setNum(str){
+    const s = str.replace(/\s/g, "");
+    const [ip, fp = ""] = s.split(",");
+    let digits = (ip + fp).replace(/^0+/, "");
+    let e = -fp.length;
+    const trail = digits.match(/0*$/)[0].length;
+    if(!fp.length && trail){ digits = digits.slice(0, digits.length - trail); e += trail; }
+    D = digits || "0"; e0 = e; c = D.length + e0;
+  }
+  function mant(){
+    let s;
+    if(c <= 0) s = "0<span class=\"cm\">,</span>" + "0".repeat(-c) + D;
+    else if(c >= D.length) s = D + "0".repeat(c - D.length);
+    else s = D.slice(0, c) + '<span class="cm">,</span>' + D.slice(c);
+    return s;
+  }
+  function draw(){
+    const n = e0 + D.length - c, baku = c === 1;
+    el.querySelector(".bignum").innerHTML = mant() + " × 10<sup>" + nf(n) + "</sup>";
+    el.querySelector(".readout").innerHTML = baku ? "<b>Bentuk baku</b>: angka depan di antara 1 dan 10." : "Belum bentuk baku. Geser koma sampai tersisa satu angka bukan nol di depannya.";
+  }
+  el.innerHTML = '<div class="w-title">Geser koma; pangkatnya menyesuaikan agar nilainya tetap</div><div class="row">' +
+    d.contoh.map(x => '<button class="btn small" type="button" data-c="' + esc(x) + '">' + esc(x) + "</button>").join("") + '</div>' +
+    '<div class="bignum"></div><div class="row"><button class="btn" type="button" data-m="-1">← koma ke kiri</button><button class="btn" type="button" data-m="1">koma ke kanan →</button></div><p class="readout"></p>';
+  el.addEventListener("click", e => {
+    const b = e.target.closest("[data-c]"); if(b){ setNum(b.dataset.c); draw(); }
+    const m = e.target.closest("[data-m]"); if(m){ c = Math.max(-12, Math.min(D.length + 12, c + +m.dataset.m)); draw(); }
+  });
+  setNum(d.contoh[0]); draw();
+};
+WIDGET["dimensi"] = (el, d) => {
+  el.innerHTML = '<div class="w-title">Periksa setiap calon rumus</div>' + d.set.map((s, i) => '<div class="stack"><p>' + tx(s.tanya) + '</p><div class="cand">' +
+    s.calon.map((c, j) => '<button class="btn" type="button" data-s="' + i + '" data-j="' + j + '">' + tx(c.rumus) + "</button>").join("") + '</div><p class="note" data-out="' + i + '">Pilih satu rumus.</p></div>').join("");
+  el.addEventListener("click", e => {
+    const b = e.target.closest("[data-j]"); if(!b) return;
+    const c = d.set[+b.dataset.s].calon[+b.dataset.j];
+    b.classList.add(c.cocok ? "yes" : "no");
+    el.querySelector('[data-out="' + b.dataset.s + '"]').innerHTML = "<b>" + tx(c.rumus) + "</b>: " + tx(c.uraian);
+  });
+};
+
+// ---------- items ----------
+function parseNum(raw){
+  let s = String(raw).trim().replace(/\s+/g, "").replace(/−/g, "-").replace(/[a-zA-Zμ²³°/]+$/, "");
+  const fr = s.match(/^(-?\d+(?:[.,]\d+)?)\/(\d+(?:[.,]\d+)?)$/);
+  if(fr) return {x: parseFloat(fr[1].replace(",", ".")) / parseFloat(fr[2].replace(",", ".")), txt: null};
+  if(!/^-?\d*[.,]?\d+$/.test(s)) return {x: NaN, txt: null};
+  return {x: parseFloat(s.replace(",", ".")), txt: s.replace("-", "")};
+}
+function tol(key, given){
+  if(given) return given;
+  const ks = String(key), dp = ks.includes(".") ? ks.split(".")[1].length : 0;
+  return 0.4 * Math.pow(10, -dp);
+}
+const near = (x, key, t) => Math.abs(x - key) <= t + 1e-9;
+function gradeNum(raw, key, t, salah, cekAp){
+  const p = parseNum(raw);
+  if(isNaN(p.x)) return {invalid: true};
+  const ok = near(p.x, key, t);
+  let mis = null;
+  if(!ok) for(const sl of salah || []) if(near(p.x, sl.nilai, t)){ mis = sl.m; break; }
+  if(ok && cekAp){
+    const c = p.txt ? apCount(p.txt) : null;
+    if(!c || c.max !== cekAp || c.min !== cekAp){
+      const exact = (salah || []).find(sl => Math.abs(p.x - sl.nilai) < 1e-9);
+      return {ok: false, apWrong: true, mis: exact ? exact.m : null};
+    }
+  }
+  return {ok, mis};
+}
+function controls(it, v, uid){
+  const name = "a" + uid;
+  if(it.format === "isian")
+    return '<div class="fill"><input type="text" inputmode="decimal" autocomplete="off" aria-label="Jawaban" placeholder="Jawaban"><span>' + tx(v.satuan) + "</span></div>";
+  if(it.format === "bertahap")
+    return '<div class="steps-in">' + v.langkah.map((s, i) => '<label class="step-in"><span>' + (i + 1) + ". " + tx(s.teks) + '</span><span class="ans"><input type="text" inputmode="decimal" autocomplete="off" data-i="' + i + '" aria-label="' + esc(s.teks) + '"><span>' + tx(s.satuan || "") + "</span></span></label>").join("") + "</div>";
+  if(it.format === "benar-salah")
+    return '<div class="tbl"><table><thead><tr><th>Pernyataan</th><th>' + it.kolom[0] + "</th><th>" + it.kolom[1] + "</th></tr></thead><tbody>" +
+      v.opsi.map((o, i) => "<tr><td>" + tx(o) + "</td>" + [true, false].map(b => '<td><input type="radio" name="' + name + i + '" value="' + b + '"></td>').join("") + "</tr>").join("") + "</tbody></table></div>";
+  const type = it.format === "pilihan-ganda" ? "radio" : "checkbox";
+  return (it.format === "pilihan-ganda-kompleks" ? '<p class="small muted">Jawaban benar lebih dari satu.</p>' : "") +
+    '<ul class="opts">' + v.opsi.map((o, i) => '<li><label><input type="' + type + '" name="' + name + '" value="' + i + '"><span class="lt">' + LETTERS[i] + ".</span><span>" + tx(o) + "</span></label></li>").join("") + "</ul>";
+}
+let UID = 0;
+// mode: "kait" (prediction, one try), "cek" (diagnostic, one try), "latih" (practice: confidence, help ladder, retries),
+// "tes" (review and mixed set: confidence, one try).
+function mountItem(el, id, vi, mode, hooks = {}){
+  const it = ITEM[id], v = it.varian[vi], uid = ++UID;
+  const conf = mode === "latih" || mode === "tes", ladder = mode === "latih", once = mode !== "latih";
+  const st = {tries: 0, helped: false, level: 0, conf: null, done: false, ok: false, t0: Date.now()};
+  const stem = v.soal.replace(/\nJawaban benar lebih dari satu\.$/, "");
+  el.innerHTML = '<div class="q" data-id="' + id + '" data-v="' + vi + '">' + figsHTML(it, v) + '<div class="stem">' + paras(stem) + "</div>" + controls(it, v, uid) +
+    (conf ? '<div class="conf">Seberapa yakin? <button class="btn small" type="button" data-conf="yakin">Yakin</button><button class="btn small" type="button" data-conf="ragu">Ragu</button><button class="btn small" type="button" data-conf="nebak">Menebak</button></div>' : "") +
+    '<div class="actions"><button class="btn primary" type="button" data-act="check">Periksa</button>' +
+    (ladder ? '<button class="btn" type="button" data-act="hint">' + ladderLabel(0) + "</button>" : "") +
+    '<button class="btn" type="button" data-act="sol" hidden>Pembahasan</button></div>' +
+    '<p class="feedback" aria-live="polite"></p><div class="extra stack"></div><div class="hints"></div>' +
+    '<div class="solution" hidden><b>Pembahasan</b><ol>' + v.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></div>";
+  const fb = $(".feedback", el), extra = $(".extra", el);
+  function ladderLabel(level){
+    const n = it.bantuan.length;
+    if(level < n) return "Bantuan " + (level + 1);
+    if(level === n && it.varian.length > 1) return "Contoh kembar";
+    return "Bantuan habis";
+  }
+  function answer(){
+    if(it.format === "isian"){ const s = $("input", el).value.trim(); return s === "" ? null : s; }
+    if(it.format === "bertahap"){ const a = $$("input", el).map(i => i.value.trim()); return a.some(x => x === "") ? null : a; }
+    if(it.format === "pilihan-ganda"){ const c = $("input:checked", el); return c ? +c.value : null; }
+    if(it.format === "pilihan-ganda-kompleks"){ const c = $$("input:checked", el).map(x => +x.value); return c.length ? c : null; }
+    const rows = v.opsi.map((_, i) => { const c = $('input[name="a' + uid + i + '"]:checked', el); return c ? c.value === "true" : null; });
+    return rows.some(x => x === null) ? null : rows;
+  }
+  function grade(ans){
+    if(it.format === "isian") return gradeNum(ans, v.kunci, tol(v.kunci, v.toleransi), v.salah, v.cek_ap);
+    if(it.format === "bertahap"){
+      const steps = v.langkah.map((s, i) => gradeNum(ans[i], s.kunci, tol(s.kunci, s.toleransi), s.salah));
+      if(steps.some(g => g.invalid)) return {invalid: true};
+      return {ok: steps.every(g => g.ok), steps, mis: (steps.find(g => !g.ok && g.mis) || {}).mis || null};
+    }
+    if(it.format === "pilihan-ganda") return {ok: ans === v.kunci, mis: ans === v.kunci ? null : (v.salah || {})[String(ans)] || null};
+    if(it.format === "pilihan-ganda-kompleks"){
+      const ok = JSON.stringify([...ans].sort((a, b) => a - b)) === JSON.stringify(v.kunci);
+      const wrong = ans.find(i => !v.kunci.includes(i) && (v.salah || {})[String(i)]);
+      return {ok, mis: ok ? null : (wrong !== undefined ? v.salah[String(wrong)] : null)};
+    }
+    const rows = ans.map((b, i) => b === v.kunci[i]);
+    return {ok: rows.every(Boolean), rows, mis: null};
+  }
+  function mark(g, ans){
+    $$(".right,.wrong", el).forEach(x => x.classList.remove("right", "wrong"));
+    if(it.format === "isian") $("input", el).classList.add(g.ok ? "right" : "wrong");
+    else if(it.format === "bertahap") $$(".step-in", el).forEach((row, i) => row.classList.add(g.steps[i].ok ? "right" : "wrong"));
+    else if(it.format === "benar-salah") g.rows.forEach((r, i) => { const td = $('input[name="a' + uid + i + '"]:checked', el); if(td) td.closest("td").classList.add(r ? "right" : "wrong"); });
+    else {
+      [].concat(ans).forEach(i => $('input[value="' + i + '"]', el).closest("label").classList.add([].concat(v.kunci).includes(i) ? "right" : "wrong"));
+      if(once && !g.ok) [].concat(v.kunci).forEach(i => $('input[value="' + i + '"]', el).closest("label").classList.add("right"));
+    }
+  }
+  function lock(){ $$("input", el).forEach(i => i.disabled = true); $$("[data-conf]", el).forEach(b => b.disabled = true); $('[data-act="check"]', el).disabled = true; const h = $('[data-act="hint"]', el); if(h) h.disabled = true; }
+  function showSolution(){ $(".solution", el).hidden = false; $('[data-act="sol"]', el).hidden = true; }
+  function check(){
+    if(st.done) return;
+    const ans = answer();
+    if(ans === null){ fb.className = "feedback no"; fb.textContent = "Isi jawabanmu dulu."; return; }
+    if(conf && !st.conf){ fb.className = "feedback no"; fb.textContent = "Pilih dulu seberapa yakin kamu."; return; }
+    const g = grade(ans);
+    if(g.invalid){ fb.className = "feedback no"; fb.textContent = "Tulis jawaban berupa angka, misalnya 2,37 atau −1/2."; return; }
+    st.tries++;
+    const fast = Date.now() - st.t0 < 4000;
+    st.t0 = Date.now();
+    mark(g, ans);
+    extra.innerHTML = "";
+    if(g.mis){ S.mis[g.mis] = (S.mis[g.mis] || 0) + 1; const m = J.miskonsepsi[g.mis]; extra.insertAdjacentHTML("beforeend", '<div class="mis"><b>' + tx(m.judul) + "</b>" + tx(m.teks) + "</div>"); }
+    if(g.ok){
+      st.ok = true; st.done = true; fb.className = "feedback ok"; fb.textContent = "Benar.";
+      lock(); showSolution();
+    } else {
+      fb.className = "feedback no";
+      fb.textContent = g.apWrong ? "Nilainya sudah benar, tetapi banyak angka pentingnya belum tepat (harus " + v.cek_ap + ")." : once ? "Belum tepat." : "Belum tepat. Perbaiki jawabanmu, atau minta bantuan.";
+      if(st.conf === "yakin") extra.insertAdjacentHTML("afterbegin", '<p class="note">Kamu yakin, tetapi jawabannya belum tepat. Itu tanda ada konsep yang perlu diluruskan.</p>');
+      else if(fast && !once) extra.insertAdjacentHTML("afterbegin", '<p class="note">Pelan-pelan: baca soalnya sekali lagi sebelum menjawab.</p>');
+      if(once){ st.done = true; lock(); showSolution(); }
+      else if(st.tries >= 2) $('[data-act="sol"]', el).hidden = false;
+    }
+    save();
+    if(hooks.onCheck) hooks.onCheck(g, st);
+  }
+  el.addEventListener("click", e => {
+    const b = e.target.closest("button"); if(!b || !el.contains(b)) return;
+    if(b.dataset.conf){ st.conf = b.dataset.conf; $$("[data-conf]", el).forEach(x => x.setAttribute("aria-pressed", String(x === b))); return; }
+    if(b.dataset.act === "check") check();
+    if(b.dataset.act === "sol"){ st.helped = true; showSolution(); if(hooks.onHelp) hooks.onHelp(st); }
+    if(b.dataset.act === "hint"){
+      const n = it.bantuan.length, box = $(".hints", el);
+      if(st.level < n) box.insertAdjacentHTML("beforeend", '<div class="hint"><b>Bantuan ' + (st.level + 1) + "</b>" + tx(it.bantuan[st.level]) + "</div>");
+      else if(st.level === n && it.varian.length > 1){
+        const w = it.varian[(vi + 1) % it.varian.length];
+        box.insertAdjacentHTML("beforeend", '<div class="twin"><b class="small">CONTOH KEMBAR (angka lain)</b>' + figsHTML(it, w) + paras(w.soal.replace(/\nJawaban benar lebih dari satu\.$/, "")) + "<ol>" + w.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>");
+        st.helped = true; if(hooks.onHelp) hooks.onHelp(st);
+      }
+      st.level++;
+      b.textContent = ladderLabel(st.level);
+      if(st.level > n || (st.level === n && it.varian.length < 2)) b.disabled = true;
+    }
+  });
+  el.addEventListener("keydown", e => { if(e.key === "Enter" && e.target.matches("input[type=text]")) check(); });
+  return st;
+}
+
+// ---------- player ----------
+let RUN = null;
+function stepCards(step){
+  if(step === "cek") return [{t: "cek-intro"}, ...J.prasyarat.map(p => ({t: "cek", pid: p.id})), {t: "cek-hasil"}];
+  if(step === "akhir") return [{t: "akhir-intro"}, ...J.akhir.soal.map(id => ({t: "akhir", id})), {t: "akhir-hasil"}];
+  if(step === "ulang") return [{t: "ulang-intro"}, ...dueList().map(id => ({t: "ulang", id})), {t: "ulang-selesai"}];
+  const u = UNIT[step], cards = [];
+  for(const pid of u.butuh || []){
+    const c = S.cek[pid];
+    if(c && c.awal && !c.awal.every(Boolean) && !c.jembatan) cards.push({t: "jembatan", pid}, {t: "ulang-cek", pid});
+  }
+  cards.push({t: "kait"}, {t: "media"}, {t: "lihat"}, {t: "bersama"});
+  u.sendiri.forEach((id, k) => cards.push({t: "sendiri", id, k, n: u.sendiri.length}));
+  cards.push({t: "ringkas"});
+  return cards.map(c => Object.assign(c, {u: step}));
+}
+const cardKey = c => c.t + ":" + (c.id || c.pid || "");
+function startSession(){ if(!S.sesi || Date.now() - S.sesi.last > 2 * 3600e3) S.sesi = {mulai: Date.now(), last: Date.now(), kartu: 0, diingatkan: false}; save(); }
+function open(step, fresh){
+  startSession();
+  const cards = stepCards(step);
+  let i = 0;
+  if(!fresh && S.unit[step] && S.unit[step].at && !S.unit[step].selesai){ const k = cards.findIndex(c => cardKey(c) === S.unit[step].at); if(k > 0) i = k; }
+  if(step === "akhir" && !fresh){ const k = cards.findIndex(c => c.t === "akhir" && !(c.id in S.akhir.hasil)); if(k > 1) i = k; }
+  RUN = {step, cards, i, ready: false};
+  history.replaceState(null, "", location.pathname + location.search);
+  render();
+}
+function continueLearning(){
+  const due = dueList();
+  if(due.length && !(S.sesi && S.sesi.ulangDone && Date.now() - S.sesi.last < 2 * 3600e3)) return open("ulang", true);
+  const s = nextStep();
+  if(s) open(s); else renderHome("Semua bagian selesai. Kembali besok untuk ulangan.");
+}
+function setReady(v = true){ RUN.ready = v; const n = $("#next"); if(n) n.disabled = !v; }
+function advance(){
+  const card = RUN.cards[RUN.i];
+  S.sesi.last = Date.now(); S.sesi.kartu++;
+  if(UNIT[RUN.step]) S.unit[RUN.step] = Object.assign(S.unit[RUN.step] || {}, {at: cardKey(RUN.cards[Math.min(RUN.i + 1, RUN.cards.length - 1)])});
+  if(card.t !== "sesi" && !S.sesi.diingatkan && Date.now() - S.sesi.mulai >= (J.sesi_menit || 15) * 60e3 && RUN.i + 1 < RUN.cards.length){
+    S.sesi.diingatkan = true;
+    RUN.cards.splice(RUN.i + 1, 0, {t: "sesi"});
+  }
+  save();
+  RUN.i++;
+  render();
+}
+function render(){
+  if(!RUN) return renderHome();
+  const c = RUN.cards[RUN.i];
+  RUN.ready = false;
+  const kinds = {"cek-intro": "Cek prasyarat", cek: "Cek prasyarat", "cek-hasil": "Hasil cek", jembatan: "Jembatan", "ulang-cek": "Cek ulang",
+    kait: "Kait", media: "Media", lihat: "Lihat", bersama: "Bersama", sendiri: "Sendiri", ringkas: "Ringkas", "akhir-intro": "Campuran",
+    akhir: "Campuran", "akhir-hasil": "Hasil", "ulang-intro": "Ulangan", ulang: "Ulangan", "ulang-selesai": "Ulangan", sesi: "Istirahat"};
+  app.innerHTML = '<div class="player"><div class="p-top"><div><p class="p-kind">' + kinds[c.t] + (c.t === "sendiri" ? " " + (c.k + 1) + "/" + c.n : "") + '</p><p class="p-step">' + esc(stepTitle(RUN.step)) + "</p></div>" +
+    '<button class="linklike" type="button" id="exit">Simpan dan keluar</button></div>' +
+    '<div class="prog" aria-label="Kartu ' + (RUN.i + 1) + " dari " + RUN.cards.length + '">' + RUN.cards.map((_, k) => "<i" + (k < RUN.i ? ' class="on"' : k === RUN.i ? ' class="cur"' : "") + "></i>").join("") + "</div>" +
+    '<article class="card" id="card"></article><div class="p-nav"><button class="btn" type="button" id="back"' + (RUN.i === 0 ? " disabled" : "") + '>← Kembali</button>' +
+    '<button class="btn primary" type="button" id="next" disabled>Lanjut →</button></div></div>';
+  const el = $("#card");
+  (CARD[c.t] || (() => {}))(c, el);
+  $("#next").disabled = !RUN.ready;
+  $("#next").onclick = () => { if(RUN.i + 1 < RUN.cards.length) advance(); else { advance0(); } };
+  $("#back").onclick = () => { if(RUN.i > 0){ RUN.i--; render(); } };
+  $("#exit").onclick = () => { RUN = null; save(); renderHome(); };
+  window.scrollTo({top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"});
+  const h = $("h2", el); if(h){ h.setAttribute("tabindex", "-1"); h.focus({preventScroll: true}); }
+}
+function advance0(){ S.sesi.last = Date.now(); save(); const s = nextStep(); if(s) open(s); else { RUN = null; renderHome(); } }
+
+const CARD = {};
+CARD["cek-intro"] = (c, el) => {
+  el.innerHTML = "<h2>Cek bekal dulu</h2><p>Ada " + J.prasyarat.length + " kelompok soal singkat untuk memeriksa bekal yang dipakai di bab ini. Ini bukan nilai: hasilnya menentukan kartu jembatan yang perlu kamu baca sebelum unit yang memakainya.</p>" +
+    '<ul class="body">' + J.prasyarat.map(p => "<li><b>" + esc(p.judul) + "</b>: " + tx(p.kenapa) + "</li>").join("") + "</ul>";
+  setReady();
+};
+CARD["cek"] = (c, el) => {
+  const p = PRE[c.pid], done = S.cek[p.id] && S.cek[p.id].awal;
+  el.innerHTML = "<h2>" + esc(p.judul) + '</h2><p class="small muted">' + tx(p.kenapa) + '</p><div data-q="0"></div><div data-q="1"></div>';
+  if(done){ el.insertAdjacentHTML("beforeend", '<p class="note">Sudah dicek: ' + (done.every(Boolean) ? "lulus." : "perlu jembatan.") + "</p>"); }
+  const res = [null, null];
+  p.cek.forEach((id, k) => mountItem($('[data-q="' + k + '"]', el), id, 0, "cek", {onCheck: g => {
+    res[k] = !!g.ok;
+    if(res.every(r => r !== null)){ S.cek[p.id] = Object.assign(S.cek[p.id] || {}, {awal: res.slice()}); save(); setReady(); }
+  }}));
+  if(done) setReady();
+};
+CARD["cek-hasil"] = (c, el) => {
+  const rows = J.prasyarat.map(p => {
+    const ok = S.cek[p.id] && S.cek[p.id].awal && S.cek[p.id].awal.every(Boolean);
+    const first = (p.untuk || [])[0];
+    return "<li>" + (ok ? '<span class="ok-t">✓</span> ' : '<span class="no-t">!</span> ') + "<span><b>" + esc(p.judul) + "</b>: " +
+      (ok ? "lulus." : "kartu jembatan akan muncul" + (first ? " di awal " + esc(stepTitle(first)) : "") + ".") + "</span></li>";
+  }).join("");
+  el.innerHTML = '<h2>Hasil cek bekal</h2><ul class="result-list">' + rows + '</ul><p class="muted small">Jembatan berisi penjelasan singkat, satu latihan, dan cek ulang. Kamu tidak dikunci: semua unit tetap bisa dibuka.</p>';
+  setReady();
+};
+CARD["jembatan"] = (c, el) => {
+  const p = PRE[c.pid];
+  el.innerHTML = "<h2>Jembatan: " + esc(p.judul) + '</h2><div class="body">' + blocks(p.jembatan.isi) + '</div><h3>Coba sekarang</h3><div data-q></div>';
+  mountItem($("[data-q]", el), p.jembatan.soal, 0, "latih", {onCheck: (g, st) => { if(g.ok || st.tries >= 2) setReady(); }});
+};
+CARD["ulang-cek"] = (c, el) => {
+  const p = PRE[c.pid];
+  el.innerHTML = "<h2>Cek ulang: " + esc(p.judul) + '</h2><p class="small muted">Soal serupa dengan angka lain.</p><div data-q="0"></div><div data-q="1"></div>';
+  const res = [null, null];
+  p.cek.forEach((id, k) => mountItem($('[data-q="' + k + '"]', el), id, 1, "cek", {onCheck: g => {
+    res[k] = !!g.ok;
+    if(res.every(r => r !== null)){ S.cek[p.id] = Object.assign(S.cek[p.id], {jembatan: true, ulang: res.every(Boolean)}); save(); setReady(); }
+  }}));
+};
+CARD["kait"] = (c, el) => {
+  const u = UNIT[c.u];
+  el.innerHTML = '<h2>' + esc(u.judul) + '</h2><div class="story">' + paras(u.kait.teks) + '</div><div data-q></div>';
+  mountItem($("[data-q]", el), u.kait.soal, 0, "kait", {onCheck: () => setReady()});
+};
+CARD["media"] = (c, el) => {
+  const m = UNIT[c.u].media;
+  el.innerHTML = "<h2>" + esc(m.judul) + "</h2>" + (m.alat || []).map((w, i) => '<div class="widget" data-w="' + i + '"></div>').join("") + '<div class="body">' + blocks(m.isi) + "</div>" + topicChips(UNIT[c.u].simpul);
+  (m.alat || []).forEach((w, i) => WIDGET[w]($('[data-w="' + i + '"]', el), m.data || {}));
+  setReady();
+};
+CARD["lihat"] = (c, el) => {
+  const l = UNIT[c.u].lihat;
+  let shown = 1;
+  el.innerHTML = '<h2>Lihat contoh</h2><div class="stem">' + paras(l.soal) + "</div>" + (l.fig ? "<figure>" + FIG[l.fig](l.p) + "</figure>" : "") +
+    '<ol class="body revealed" id="steps"></ol><div class="row"><button class="btn" type="button" id="more">Langkah berikutnya</button><span class="small muted">Pikirkan dulu langkah berikutnya sebelum membukanya.</span></div>';
+  function draw(){
+    $("#steps", el).innerHTML = l.langkah.slice(0, shown).map(x => "<li>" + tx(x) + "</li>").join("");
+    if(shown >= l.langkah.length){ $("#more", el).disabled = true; $("#more", el).textContent = "Semua langkah terbuka"; setReady(); }
+  }
+  $("#more", el).onclick = () => { shown++; draw(); };
+  draw();
+};
+CARD["bersama"] = (c, el) => {
+  el.innerHTML = '<h2>Kerjakan bersama</h2><p class="small muted">Soal yang sama jenisnya, dipecah menjadi langkah. Setiap langkah diperiksa sendiri-sendiri.</p><div data-q></div>';
+  mountItem($("[data-q]", el), UNIT[c.u].bersama, 0, "latih", {onCheck: (g, st) => { if(g.ok || st.tries >= 2) setReady(); }, onHelp: () => {}});
+};
+CARD["sendiri"] = (c, el) => {
+  const id = c.id, f = fam(id);
+  let tried = 0;
+  el.innerHTML = '<h2>Latihan mandiri</h2><div class="mastery" id="mast"></div><div data-q></div><div class="row" id="after"></div>';
+  function drawMastery(){
+    const done = f.st === "bisa" || f.st === "kuat";
+    $("#mast", el).innerHTML = done ? '<span class="st s' + ST_NUM[f.st] + '">' + ST_NAME[f.st] + "</span> Sudah dikuasai. Boleh berlatih lagi atau lanjut." :
+      "<i" + (f.run >= 1 ? ' class="on"' : "") + "></i><i" + (f.run >= 2 ? ' class="on"' : "") + "></i> Dua jawaban benar berturut-turut tanpa bantuan = dikuasai.";
+    if(done) setReady();
+  }
+  function mount(){
+    const vi = nextVariant(id); markSeen(id, vi); save();
+    $("#after", el).innerHTML = "";
+    let helped = false;
+    mountItem($("[data-q]", el), id, vi, "latih", {
+      onHelp: () => { helped = true; f.run = 0; drawMastery(); },
+      onCheck: (g, st) => {
+        f.n++;
+        if(!g.ok && st.conf === "yakin") f.yw++;
+        if(!g.ok){ f.run = 0; }
+        if(g.ok){
+          tried++;
+          if(st.tries === 1 && !st.helped && !helped) f.run++; else f.run = 0;
+          const after = $("#after", el);
+          if(f.run >= 2 && f.st !== "bisa" && f.st !== "kuat"){
+            mastered(id);
+            after.innerHTML = '<p class="note"><b>Dikuasai.</b> Dua jawaban benar berturut-turut tanpa bantuan. Soal jenis ini akan kembali untuk ulangan ' + ULANG[0] + " hari lagi.</p>";
+          } else {
+            after.innerHTML = '<button class="btn primary" type="button" data-more>Satu lagi, angka baru</button>' + (st.tries > 1 || st.helped || helped ? '<span class="small muted">Benar setelah dicoba lagi atau dengan bantuan. Coba satu lagi tanpa bantuan.</span>' : "");
+            $("[data-more]", after).onclick = mount;
+          }
+        } else if(st.tries >= 2) {
+          const after = $("#after", el);
+          if(!$("[data-more]", after)) after.insertAdjacentHTML("beforeend", '<button class="btn" type="button" data-more>Coba soal kembar</button>');
+          $("[data-more]", after).onclick = () => { tried++; mount(); };
+        }
+        if((tried >= 3 || f.n >= 5) && f.st !== "bisa" && f.st !== "kuat" && !$("[data-skip]", el)){
+          $("#after", el).insertAdjacentHTML("beforeend", '<button class="btn" type="button" data-skip>Lewati dulu (soal ini akan kembali)</button>');
+          $("[data-skip]", el).onclick = () => { skipped(id); save(); advance(); };
+        }
+        save(); drawMastery();
+      }});
+  }
+  mount(); drawMastery();
+};
+CARD["ringkas"] = (c, el) => {
+  const u = UNIT[c.u], idx = STEPS.indexOf(c.u), nxt = STEPS[idx + 1];
+  S.unit[c.u] = Object.assign(S.unit[c.u] || {}, {selesai: true}); save();
+  const fams = u.sendiri.map(id => '<span class="st s' + ST_NUM[fam(id).st] + '">' + ST_NAME[fam(id).st] + "</span>").join(" ");
+  el.innerHTML = '<h2>Ringkasan: ' + esc(u.judul) + '</h2><ul class="body">' + u.ringkas.map(x => "<li>" + tx(x) + "</li>").join("") + "</ul>" +
+    '<p class="small">Latihan mandiri unit ini: ' + fams + "</p>" + '<div class="teaser"><b>Pertanyaan berikutnya.</b> ' + tx(u.lanjut) + "</div>";
+  setReady();
+  $("#next") && ($("#next").textContent = nxt ? "Ke " + (nxt === "akhir" ? J.akhir.judul : "Unit " + nxt.slice(1)) + " →" : "Selesai");
+};
+CARD["akhir-intro"] = (c, el) => { el.innerHTML = "<h2>" + esc(J.akhir.judul) + "</h2><p>" + tx(J.akhir.teks) + "</p>"; setReady(); };
+CARD["akhir"] = (c, el) => {
+  const it = ITEM[c.id];
+  el.innerHTML = "<h2>Soal campuran</h2>" + (it.tka ? '<p class="small"><span class="st s2">Setara TKA</span> tipe ' + esc(it.tka.tipe) + "</p>" : "") + "<div data-q></div>";
+  if(c.id in S.akhir.hasil){ el.insertAdjacentHTML("beforeend", '<p class="note">Sudah dikerjakan: ' + (S.akhir.hasil[c.id] ? "benar." : "belum tepat.") + "</p>"); setReady(); return; }
+  const vi = nextVariant(c.id); markSeen(c.id, vi);
+  mountItem($("[data-q]", el), c.id, vi, "tes", {onCheck: g => {
+    S.akhir.hasil[c.id] = !!g.ok;
+    const f = fam(c.id);
+    if(g.ok){ if(f.box) reviewed(c.id, true); else mastered(c.id); } else reviewed(c.id, false);
+    save(); setReady();
+  }});
+};
+CARD["akhir-hasil"] = (c, el) => {
+  const ids = J.akhir.soal, ok = ids.filter(id => S.akhir.hasil[id]).length;
+  const unitOf = id => J.unit.find(u => u.sendiri.includes(id));
+  const weak = [...new Set(ids.filter(id => S.akhir.hasil[id] === false).map(id => (unitOf(id) || {}).id).filter(Boolean))];
+  el.innerHTML = "<h2>Hasil campuran: " + ok + " dari " + ids.length + '</h2><ul class="result-list">' + ids.map(id => {
+    const it = ITEM[id], u = unitOf(id);
+    return "<li>" + (S.akhir.hasil[id] ? '<span class="ok-t">✓</span>' : '<span class="no-t">✗</span>') + "<span>" + (it.tka ? "Setara TKA (" + esc(it.tka.tipe) + ")" : esc(u ? u.judul : id)) + "</span></li>";
+  }).join("") + "</ul>" + (weak.length ? "<p>Ulangi unit: " + weak.map(u => esc(stepTitle(u))).join("; ") + ". Soal yang salah sudah masuk jadwal ulangan besok.</p>" : "<p>Semua benar. Soal-soal ini akan kembali beberapa hari lagi untuk ulangan.</p>");
+  setReady();
+};
+CARD["ulang-intro"] = (c, el) => {
+  el.innerHTML = "<h2>Pemanasan: ulangan singkat</h2><p>" + (RUN.cards.length - 2) + " soal dari kartu yang sudah kamu kuasai sebelumnya. Mengingat kembali setelah beberapa hari membuat ingatan lebih kuat daripada membaca ulang.</p>";
+  setReady();
+};
+CARD["ulang"] = (c, el) => {
+  const vi = nextVariant(c.id); markSeen(c.id, vi);
+  const u = J.unit.find(x => x.sendiri.includes(c.id));
+  el.innerHTML = "<h2>Ulangan" + (u ? ": " + esc(u.judul) : "") + "</h2><div data-q></div>";
+  mountItem($("[data-q]", el), c.id, vi, "tes", {onCheck: g => { reviewed(c.id, !!g.ok); save(); setReady(); }});
+};
+CARD["ulang-selesai"] = (c, el) => {
+  S.sesi.ulangDone = true; save();
+  const s = nextStep();
+  el.innerHTML = "<h2>Pemanasan selesai</h2><p>" + (s ? "Lanjutkan ke " + esc(stepTitle(s)) + "." : "Semua bagian sudah selesai. Sampai jumpa di ulangan berikutnya.") + "</p>";
+  setReady();
+};
+CARD["sesi"] = (c, el) => {
+  const min = J.sesi_menit || 15;
+  el.innerHTML = "<h2>Sudah " + min + " menit</h2><p>Sesi pendek yang diulang lebih efektif daripada satu sesi panjang. Progresmu tersimpan; besok beberapa soal akan kembali untuk ulangan.</p>" +
+    '<div class="row"><button class="btn primary" type="button" id="stop">Selesai untuk hari ini</button></div><p class="small muted">Atau tekan Lanjut untuk meneruskan satu kartu lagi.</p>';
+  $("#stop", el).onclick = () => { RUN = null; save(); renderHome("Sampai besok! Ulangan pertama akan menunggu di awal sesi berikutnya."); };
+  setReady();
+};
+
+// ---------- home ----------
+function stepMeta(step){
+  if(step === "cek"){
+    const done = J.prasyarat.filter(p => S.cek[p.id] && S.cek[p.id].awal).length;
+    return {meta: done === J.prasyarat.length ? J.prasyarat.filter(p => preDigit(p.id) === 3).length + " dari " + J.prasyarat.length + " lulus" : done ? done + " dari " + J.prasyarat.length + " dicek" : J.prasyarat.length * 2 + " soal singkat",
+      frac: done / J.prasyarat.length};
+  }
+  if(step === "akhir"){
+    const n = J.akhir.soal.length, d = J.akhir.soal.filter(id => id in S.akhir.hasil).length;
+    return {meta: d ? J.akhir.soal.filter(id => S.akhir.hasil[id]).length + " benar dari " + d + " dikerjakan" : n + " soal, " + J.akhir.soal.filter(id => ITEM[id].tka).length + " setara TKA", frac: d / n};
+  }
+  const u = UNIT[step], m = u.sendiri.filter(id => ST_NUM[fam(id).st] >= 2).length;
+  const sel = S.unit[step] && S.unit[step].selesai;
+  return {meta: (sel ? "Selesai" : S.unit[step] && S.unit[step].at ? "Sedang dikerjakan" : "Belum mulai") + " · dikuasai " + m + " dari " + u.sendiri.length, frac: sel ? Math.max(0.5, m / u.sendiri.length) : 0};
+}
+function renderHome(message){
+  RUN = null;
+  if(location.hash === "#guru") return renderGuru();
+  const due = dueList(), nxt = nextStep();
+  const label = !nxt ? (due.length ? "Mulai ulangan" : "Semua selesai") : (S.sesi || Object.keys(S.cek).length) ? "Lanjutkan: " + stepTitle(nxt) : "Mulai belajar";
+  app.innerHTML = (message ? '<p class="note" style="margin-top:18px">' + esc(message) + "</p>" : "") +
+    '<section><div class="panel hero"><p class="big">Sesi hari ini · sekitar ' + (J.sesi_menit || 15) + " menit</p>" +
+    "<p>" + (due.length ? "<b>" + due.length + " soal</b> menunggu diulang. Pemanasan dulu, lalu lanjut ke kartu berikutnya." : nxt ? "Belajar dalam kartu pendek: lihat contoh, kerjakan bersama, lalu kerjakan sendiri sampai benar-benar bisa." : "Tidak ada ulangan yang jatuh tempo hari ini.") + "</p>" +
+    '<div class="row"><button class="btn primary" type="button" id="go"' + (!nxt && !due.length ? " disabled" : "") + ">" + esc(label) + " →</button></div></div></section>" +
+    '<section><div class="sec-head"><h2>Jalur</h2><p>Urutan yang disarankan; semua bagian bisa dibuka.</p></div><ol class="steps">' +
+    STEPS.map((s, i) => { const m = stepMeta(s); return '<li class="step' + (stepDone(s) ? " done" : "") + '"><span class="no">' + (s === "cek" ? "P" : s === "akhir" ? "★" : s) + '</span><span class="ttl">' + esc(stepTitle(s)) + '</span><span class="meta">' + esc(m.meta) + '</span><span class="bar"><i style="width:' + Math.round(m.frac * 100) + '%"></i></span><button class="btn small go" type="button" data-step="' + s + '">' + (stepDone(s) ? "Ulangi" : "Buka") + "</button></li>"; }).join("") + "</ol></section>" +
+    '<section><div class="sec-head"><h2>Kemampuanmu</h2><p>Setiap kotak satu jenis latihan.</p></div><div class="panel skills">' +
+    J.unit.map(u => '<div class="skill"><span>' + esc(u.judul) + '</span><span class="dots">' + u.sendiri.map(id => '<i class="s' + ST_NUM[fam(id).st] + '" title="' + ST_NAME[fam(id).st] + '"></i>').join("") + "</span></div>").join("") +
+    '<div class="skill"><span>Setara TKA</span><span class="dots">' + J.akhir.soal.filter(id => ITEM[id].tka).map(id => '<i class="s' + ST_NUM[fam(id).st] + '" title="' + ST_NAME[fam(id).st] + '"></i>').join("") + "</span></div>" +
+    '<div class="legend">' + Object.keys(ST_NAME).map(k => '<span><span class="st s' + ST_NUM[k] + '">' + ST_NAME[k] + "</span>" + {belum: "belum dicoba", dibantu: "dicoba, belum dikuasai", bisa: "dua kali benar tanpa bantuan", kuat: "lolos dua ulangan berjarak"}[k] + "</span>").join("") + "</div></div></section>" +
+    '<section><div class="sec-head"><h2>Kirim progres ke guru</h2></div><div class="panel stack"><p class="small">Tulis namamu, buat kode, lalu kirim teksnya ke guru (misalnya lewat pesan). Kode hanya berisi status latihan, bukan jawabanmu.</p>' +
+    '<div class="row"><input type="text" id="nama" maxlength="40" placeholder="Nama" value="' + esc(S.nama || "") + '" aria-label="Nama"><button class="btn" type="button" id="mkcode">Buat kode</button><button class="btn" type="button" id="copy" hidden>Salin</button></div><p class="code" id="code" hidden></p>' +
+    '<p class="small"><a href="#guru" id="guruLink">Tampilan guru</a>: tempel kode dari satu kelas untuk melihat tabel dan miskonsepsi yang paling sering.</p></div></section>' +
+    '<section><details class="notes"><summary>Catatan untuk guru</summary><div class="stack" style="margin-top:10px">' + (J.catatan || []).map(n => '<div class="panel"><h3>' + esc(n.judul) + '</h3><ul class="body">' + n.items.map(i => "<li>" + tx(i) + "</li>").join("") + "</ul></div>").join("") +
+    "</div></details><p style=\"margin-top:14px\"><button class=\"linklike\" type=\"button\" id=\"reset\">Hapus progres di perangkat ini</button></p></section>";
+  $("#go").onclick = continueLearning;
+  $$("[data-step]").forEach(b => b.onclick = () => open(b.dataset.step, stepDone(b.dataset.step)));
+  $("#mkcode").onclick = () => { S.nama = $("#nama").value.trim(); save(); const code = encode(); $("#code").hidden = false; $("#code").textContent = code; $("#copy").hidden = false; };
+  $("#copy").onclick = () => { navigator.clipboard && navigator.clipboard.writeText($("#code").textContent).then(() => { $("#copy").textContent = "Tersalin"; }, () => {}); };
+  $("#reset").onclick = () => { if(confirm("Hapus semua progres jalur ini di perangkat ini?")){ S = blank(); save(); renderHome("Progres dihapus."); } };
+}
+
+// ---------- teacher code ----------
+function checksum(s){ let n = 0; for(const ch of s) n = (n * 31 + ch.codePointAt(0)) % 1296; return n.toString(36).padStart(2, "0"); }
+function encode(){
+  const nama = (S.nama || "Tanpa nama").replace(/[|\n\r]/g, " ").slice(0, 40).trim();
+  const st = SKILLS.map(id => ST_NUM[(S.fam[id] || {}).st || "belum"]).join("");
+  const pr = J.prasyarat.map(p => preDigit(p.id)).join("");
+  const mis = Object.entries(S.mis).sort((a, b) => b[1] - a[1]).slice(0, 5).map(([m, n]) => m + "x" + n).join(",");
+  const yw = SKILLS.reduce((a, id) => a + ((S.fam[id] || {}).yw || 0), 0);
+  const body = [J.kode + "1", nama, st, pr, mis || "-", yw].join("|");
+  return body + "|" + checksum(body);
+}
+function decode(line){
+  const parts = line.trim().split("|");
+  if(parts.length !== 7 || parts[0] !== J.kode + "1") return null;
+  if(checksum(parts.slice(0, 6).join("|")) !== parts[6]) return {bad: true, nama: parts[1]};
+  const st = {}; SKILLS.forEach((id, i) => st[id] = +(parts[2][i] || 0));
+  const mis = parts[4] === "-" ? [] : parts[4].split(",").map(x => { const [m, n] = x.split("x"); return [m, +n]; });
+  return {nama: parts[1], st, pr: [...parts[3]].map(Number), mis, yw: +parts[5]};
+}
+function renderGuru(){
+  app.innerHTML = '<section><div class="sec-head"><h2>Tampilan guru</h2><p><a href="#" id="back">Kembali ke jalur</a></p></div><div class="panel stack">' +
+    '<p class="small">Tempel kode progres siswa, satu baris per siswa. Semua diolah di peramban ini; tidak ada yang dikirim ke mana pun.</p>' +
+    '<textarea id="codes" aria-label="Kode progres" placeholder="' + J.kode + '1|Nama|..."></textarea><div class="row"><button class="btn primary" type="button" id="show">Tampilkan</button></div><div id="out" class="stack"></div></div></section>';
+  $("#back").onclick = e => { e.preventDefault(); history.replaceState(null, "", location.pathname + location.search); renderHome(); };
+  $("#show").onclick = () => {
+    const rows = $("#codes").value.split(/\n+/).filter(l => l.trim()).map(decode);
+    const good = rows.filter(r => r && !r.bad), bad = rows.filter(r => !r || r.bad);
+    if(!good.length){ $("#out").innerHTML = '<p class="note">Tidak ada kode yang terbaca.</p>'; return; }
+    const cell = (k, n) => { const f = n ? k / n : 0; return '<span class="cell" style="background:' + (f >= 1 ? "var(--ok-soft)" : f > 0 ? "#FFF0D6" : "var(--sunk)") + '">' + k + "/" + n + "</span>"; };
+    const tka = J.akhir.soal.filter(id => ITEM[id].tka);
+    const head = "<tr><th>Nama</th><th>Prasyarat</th>" + J.unit.map(u => '<th title="' + esc(u.judul) + '">' + u.id + "</th>").join("") + "<th>TKA</th><th>Yakin salah</th></tr>";
+    const body = good.map(r => "<tr><td>" + esc(r.nama) + '</td><td class="mono">' + r.pr.map(d => ["·", "✗", "✓*", "✓"][d]).join(" ") + "</td>" +
+      J.unit.map(u => "<td>" + cell(u.sendiri.filter(id => r.st[id] >= 2).length, u.sendiri.length) + "</td>").join("") +
+      "<td>" + cell(tka.filter(id => r.st[id] >= 2).length, tka.length) + "</td><td>" + r.yw + "</td></tr>").join("");
+    const tot = {};
+    good.forEach(r => r.mis.forEach(([m, n]) => { tot[m] = tot[m] || {n: 0, s: 0}; tot[m].n += n; tot[m].s++; }));
+    const misList = Object.entries(tot).sort((a, b) => b[1].s - a[1].s || b[1].n - a[1].n).slice(0, 8);
+    const preFail = J.prasyarat.map((p, i) => [p.judul, good.filter(r => r.pr[i] === 1).length]).filter(x => x[1]);
+    $("#out").innerHTML = "<h3>" + good.length + " siswa" + (bad.length ? ' <span class="small muted">(' + bad.length + " baris tidak terbaca)</span>" : "") + "</h3>" +
+      '<div class="tbl"><table class="gtable"><thead>' + head + "</thead><tbody>" + body + "</tbody></table></div>" +
+      '<p class="small muted">Sel = jenis latihan yang dikuasai (Bisa atau Kuat) dari jumlahnya. Prasyarat: ✓ lulus, ✓* lulus setelah jembatan, ✗ belum lulus, · belum dicek.</p>' +
+      (preFail.length ? "<h3>Prasyarat yang belum lulus</h3><ul class=\"body\">" + preFail.map(([j, n]) => "<li>" + esc(j) + ": " + n + " siswa</li>").join("") + "</ul>" : "") +
+      "<h3>Miskonsepsi yang paling sering</h3>" + (misList.length ? '<ol class="body">' + misList.map(([m, v]) => "<li><b>" + tx(J.miskonsepsi[m] ? J.miskonsepsi[m].judul : m) + "</b>: " + v.s + " siswa, " + v.n + " kali. " + tx(J.miskonsepsi[m] ? J.miskonsepsi[m].teks : "") + "</li>").join("") + "</ol>" : "<p>Belum ada.</p>");
+  };
+}
+
+// ---------- start ----------
+$("#eyebrow").textContent = J.subject + " · " + J.src + " · Jalur belajar (pilot)";
+$("#title").innerHTML = tx(J.title);
+$("#lead").innerHTML = tx(J.lead);
+window.addEventListener("hashchange", () => { if(!RUN) renderHome(); });
+renderHome();
+</script>

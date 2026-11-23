@@ -564,6 +564,76 @@ class ModulesTest(unittest.TestCase):
         self.assertEqual(build.site_files(site())["modul-vektor-gerak.pdf"], build.module_pdf("vektor-gerak").read_bytes())
 
 
+class PathsTest(unittest.TestCase):
+    """Learning paths: data/jalur/*.json, scripts/jalur.py, templates/_jalur.html (specs/jalur-spec.md)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.paths, cls.maps, cls.types = site().paths, site().maps, site().tka_types
+
+    def test_paths_are_valid(self):
+        self.assertIn("pengukuran", self.paths)
+        for name, doc in self.paths.items():
+            self.assertEqual(build.jalur.validate_jalur(name, doc, self.maps, self.types), [], name)
+            self.assertEqual(build.jalur.lint_jalur(name, doc), [], name)
+
+    def test_validator_catches_problems(self):
+        doc = copy(self.paths["pengukuran"])
+        items = {it["id"]: it for it in doc["soal"]}
+        generated = next(it for it in doc["soal"] if it.get("gen") == "jangka-sorong")
+        generated["varian"][0]["kunci"] = 99.9                          # key no longer matches its parameters
+        practice = items[doc["unit"][0]["sendiri"][0]]
+        practice["varian"] = practice["varian"][:1]                     # practice family with one variant
+        pg = next(it for it in doc["soal"] if it["format"] == "pilihan-ganda" and it["varian"][0].get("salah"))
+        pg["varian"][0]["salah"] = {"0": "M99"}                         # unknown misconception
+        doc["unit"][1]["media"]["alat"] = ["papan-tulis"]               # unknown widget
+        doc["unit"][2]["bersama"] = doc["unit"][2]["sendiri"][0]        # bersama must be a bertahap item
+        doc["prasyarat"][0]["untuk"] = ["U9"]                           # unknown unit
+        doc["soal"].append(dict(doc["soal"][0]))                        # duplicate id
+        errors = " | ".join(build.jalur.validate_jalur("pengukuran", doc, self.maps, self.types))
+        for needle in ("differs from generator", "needs at least two variants", "known misconception",
+                       "unknown widget", "must be a 'bertahap' item", "unknown unit U9", "duplicate id"):
+            self.assertIn(needle, errors)
+
+    def test_generators_give_known_answers(self):
+        j = build.jalur
+        self.assertEqual(j.g_jangka_sorong({"mm": 23, "k": 7})["kunci"], 23.7)
+        self.assertEqual(j.g_jangka_sorong({"mm": 23, "k": 7, "satuan": "cm"})["kunci"], 2.37)
+        self.assertEqual(j.g_mikrometer({"s": 7.5, "t": 22})["kunci"], 7.72)
+        self.assertIn({"nilai": 7.22, "m": "M14"}, j.g_mikrometer({"s": 7.5, "t": 22})["salah"])  # half-millimetre missed
+        self.assertEqual([j.sig_figs(x) for x in ("0,00520", "105,0", "20,07", "7,00", "0,4")], [3, 4, 4, 3, 1])
+        self.assertEqual(j.g_ap_kali({"a": "3,52", "b": "2,1", "op": "×"})["kunci"], 7.4)
+        self.assertEqual(j.g_ap_tambah({"a": "12,43", "b": "2,1", "op": "+"})["kunci"], 14.5)
+        self.assertEqual(j.g_dimensi_pangkat({"target": {"T": 1}, "faktor": [{"L": 1}, {"L": 1, "T": -2}], "tanya": 0})["kunci"], 0.5)
+        pipe = j.g_tka_pipa({"luar": {"mm": 18, "k": 6}, "tebal": {"s": 1.5, "t": 25}})
+        self.assertEqual([pipe["opsi"][i] for i in pipe["kunci"]], ["14,60 mm", "15,00 mm"])  # inner diameter 15,10 mm
+        with self.assertRaises(ValueError):
+            j.round_sig("2,25", 2)                                       # a dropped 5: textbooks round it differently
+        with self.assertRaises(ValueError):
+            j.sig_figs("1500")                                           # ambiguous trailing zeros
+
+    def test_path_pages_render_and_link(self):
+        pages = build.path_pages(self.paths, self.maps, {})
+        home = build.render_site(site(), {})["index.html"]
+        for doc in self.paths.values():
+            body = pages[f"jalur-{doc['id']}.html"]
+            self.assertNotIn("/*__JALUR__*/", body)
+            self.assertIn(f"<title>{doc['title']}</title>", body)
+            self.assertIn('class="home-link" href="index.html"', body)
+            data = payload(body, "J")
+            self.assertEqual(data["map_page"], f"peta-{doc['map']}.html")
+            self.assertIn("DAS-01", data["topics"])
+            self.assertIn(f'href="jalur-{doc["id"]}.html"', home)
+        self.assertIn("jalur-pengukuran.html", build.page_names(site()))
+
+    def test_template_draws_every_widget_and_figure(self):
+        template = build.read_template("_jalur.html")
+        for name in build.jalur.WIDGETS:
+            self.assertIn(f'WIDGET["{name}"]', template)
+        for name in build.jalur.FIGURES:
+            self.assertIn(f'"{name}":', template.split("const FIG = {")[1].split("};")[0])
+
+
 class HomeTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

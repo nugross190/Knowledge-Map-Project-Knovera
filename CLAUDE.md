@@ -9,6 +9,7 @@ A growing set of study tools for Indonesian high-school (SMA) subjects, publishe
 - **Subject knowledge maps**: one per subject, each a set of coded topics with key facts, formulas, and commonly confused points. Physics is the first (`data/maps/fisika.json`).
 - **The LCCM history kit**: a history map, a 457-question bank, and a quiz-round simulator, built for a history competition.
 - **Learning modules**: one skill taught in lessons and drilled in staged exercises, from easy to TKA level (`data/modules/`). The first is Vektor dan Gerak.
+- **Learning paths (pilot)**: self-paced sequences of short cards with a prerequisite check, worked examples that fade into practice, a help ladder, feedback keyed to named mistakes, mastery on fresh numbers and spaced review (`data/jalur/`). The first is Besaran dan Pengukuran.
 - **TKA practice**: transcribed TKA 2025 exam papers (`data/tka/`) with proposed, unofficial answer keys, on one practice page.
 
 Content is in Indonesian. Code, specs, commits and pull requests are in English.
@@ -20,6 +21,7 @@ Content is in Indonesian. Code, specs, commits and pull requests are in English.
 | Any content work | `specs/agent-workflow.md`, then `specs/quality-checklist.md` |
 | Maps (`data/maps/`) | `specs/map-spec.md` |
 | Modules (`data/modules/`, `print/`) | `specs/module-spec.md`, `print/README.md` |
+| Learning paths (`data/jalur/`) | `specs/jalur-spec.md` |
 | Questions (`data/questions.csv`, `data/questions/`) | `specs/question-spec.md` |
 | TKA banks (`data/tka/`) | `specs/tka-spec.md` |
 | Generating TKA items (`data/tka-generated/`) | `specs/tka-generation.md`, `specs/tka-item-types.md`, `specs/tka-templates/<subject>.md` |
@@ -61,17 +63,20 @@ data/topics.json         history kit: domains, weights, topic codes
 data/questions.csv       history kit: question bank
 data/questions/<id>.csv  subject question banks, one per map (feeds docs/bank-<id>.html)
 data/modules/<id>.json   learning modules: lessons and staged exercises
+data/jalur/<id>.json     learning paths (pilot): prerequisite check, unit cards, item families with variants
 print/                   printable PDF modules (content.py, render.py, print.mjs, <id>.pdf); see print/README.md
 data/tka/<id>.json       TKA exam banks (transcribed papers, proposed keys)
 data/tka-types.json      TKA item types; every transcribed item mapped to one
 data/tka-generated/      agent-generated TKA items (checked by scripts/check_generated.py, not built)
 templates/_map.html      shared page for all subject maps
 templates/_modul.html    shared page for all learning modules
+templates/_jalur.html    shared page for all learning paths (card player, widgets, teacher view)
 templates/_theme.css     shared light theme, added by build.py to every page
 templates/_feed.css, .js the swipe feed ("Mode geser") of the map, bank and TKA pages; pulled in with /*@include _name*/
 templates/_icons.json    subject icons (SVG markup keyed by map id) for the home page and map headers
 templates/*.html         other pages (history map, bank, simulator, start page)
 scripts/build.py         validation, lint, build
+scripts/jalur.py         learning paths: answer generators (keys recomputed from parameters) and validation
 tests/test_build.py      tests
 docs/                    generated site, served by GitHub Pages (includes .nojekyll and 404.html)
 index.html               root safety net: forwards to docs/ if Pages is set to the repo root
