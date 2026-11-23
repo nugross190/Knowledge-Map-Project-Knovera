@@ -19,7 +19,7 @@ FORMATS = ("isian", "bertahap", "pilihan-ganda", "pilihan-ganda-kompleks", "bena
 BLOCKS = ("p", "li", "tabel", "contoh", "jebakan")
 WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "hitung-ap", "geser-koma", "awalan", "dimensi")
 FIGURES = ("mistar", "jangka-sorong", "mikrometer")
-CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan")
+CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan", "toleransi")
 SUP = str.maketrans("0123456789-", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻")
 
 
@@ -175,16 +175,29 @@ def g_satuan_tahap(p):
     return {"langkah": [{"kunci": num(cm)}, {"kunci": num(cm / 100), "salah": _salah((cm, "M03"), avoid=[cm / 100])}]}
 
 
+TOL_CM_RULER = 0.04     # ruler read to 0,1 cm: only the exact reading passes
+TOL_CM_CALIPER = 0.004  # caliper read to 0,01 cm
+TOL_MM_MICRO = 0.004    # micrometer read to 0,01 mm
+
+
 def g_mistar(p):
-    """Object from a mm to b mm on a ruler: length in mm."""
+    """Object from a mm to b mm on a ruler: its length, in mm or (p.satuan "cm") in cm."""
     a, b = D(p["a"]), D(p["b"])
     L = b - a
+    if p.get("satuan") == "cm":
+        pairs = [(L, "M06")] + ([(b / 10, "M05")] if a else [])
+        return {"kunci": num(L / 10), "satuan": "cm", "toleransi": TOL_CM_RULER, "salah": _salah(*pairs, avoid=[L / 10])}
     pairs = [(L / 10, "M06")] + ([(b, "M05")] if a else [])
     return {"kunci": num(L), "satuan": "mm", "salah": _salah(*pairs, avoid=[L])}
 
 
 def g_mistar_tahap(p):
     a, b = D(p["a"]), D(p["b"])
+    if p.get("satuan") == "cm":
+        t = TOL_CM_RULER
+        return {"langkah": [{"kunci": num(a / 10), "toleransi": t}, {"kunci": num(b / 10), "toleransi": t},
+                            {"kunci": num((b - a) / 10), "toleransi": t,
+                             "salah": _salah((b / 10, "M05"), (b - a, "M06"), avoid=[(b - a) / 10])}]}
     return {"langkah": [{"kunci": num(a)}, {"kunci": num(b)},
                         {"kunci": num(b - a), "salah": _salah((b, "M05"), ((b - a) / 10, "M06"), avoid=[b - a])}]}
 
@@ -201,19 +214,27 @@ def _js(p):
 
 
 def g_jangka_sorong(p):
-    """Vernier caliper: main scale mm (line before the vernier zero), vernier line k (10 divisions, 0,1 mm)."""
+    """Vernier caliper: main scale mm (line before the vernier zero), vernier line k (10 divisions, 0,1 mm = 0,01 cm)."""
     mm, k = D(p["mm"]), D(p["k"])
     x = _js(p)
     wrong = [(mm + k, "M10"), (mm + k / 100, "M11"), (mm + 1 + k / 10, "M12")]
     if p.get("satuan", "mm") == "cm":
-        return {"kunci": num(x / 10), "satuan": "cm",
+        return {"kunci": num(x / 10), "satuan": "cm", "toleransi": TOL_CM_CALIPER,
                 "salah": _salah((x, "M06"), *[(v / 10, m) for v, m in wrong], avoid=[x / 10])}
     return {"kunci": num(x), "satuan": "mm", "salah": _salah(*wrong, avoid=[x])}
 
 
 def g_jangka_sorong_tahap(p):
+    """Steps of a caliper reading. In cm (p.satuan "cm"): the cm number, the small lines after it, the vernier line,
+    the result. In mm: the main scale, the vernier line, the result."""
     mm, k = D(p["mm"]), D(p["k"])
     x = _js(p)
+    if p.get("satuan") == "cm":
+        cm, ticks = mm // 10, mm % 10
+        return {"langkah": [{"kunci": num(cm)}, {"kunci": num(ticks), "salah": _salah((ticks + 1, "M12"), avoid=[ticks])},
+                            {"kunci": num(k)},
+                            {"kunci": num(x / 10), "toleransi": TOL_CM_CALIPER,
+                             "salah": _salah(((mm + k) / 10, "M10"), ((mm + k / 100) / 10, "M11"), (x, "M06"), avoid=[x / 10])}]}
     return {"langkah": [{"kunci": num(mm), "salah": _salah((mm + 1, "M12"), avoid=[mm])}, {"kunci": num(k)},
                         {"kunci": num(x), "salah": _salah((mm + k, "M10"), (mm + k / 100, "M11"), avoid=[x])}]}
 
@@ -229,14 +250,20 @@ def g_mikrometer(p):
     """Micrometer: sleeve reading s (with the half-millimetre line), thimble division t (50 divisions, 0,01 mm)."""
     s, t, x = _mk(p)
     half = s - Decimal("0.5") if s % 1 else s + Decimal("0.5")
-    return {"kunci": num(x), "satuan": "mm", "salah": _salah((half + t / 100, "M14"), (s + t / 10, "M15"), avoid=[x])}
+    return {"kunci": num(x), "satuan": "mm", "toleransi": TOL_MM_MICRO,
+            "salah": _salah((half + t / 100, "M14"), (s + t / 10, "M15"), avoid=[x])}
 
 
 def g_mikrometer_tahap(p):
+    """Steps of a micrometer reading: the last millimetre line, the half-millimetre line (0 or 0,5), the thimble line,
+    the result."""
     s, t, x = _mk(p)
-    half = s - Decimal("0.5") if s % 1 else s + Decimal("0.5")
-    return {"langkah": [{"kunci": num(s), "salah": _salah((half, "M14"), avoid=[s])}, {"kunci": num(t)},
-                        {"kunci": num(x), "salah": _salah((s + t / 10, "M15"), avoid=[x])}]}
+    whole, half = s // 1, s % 1
+    return {"langkah": [{"kunci": num(whole)},
+                        {"kunci": num(half), "toleransi": 0.04, "salah": _salah((Decimal("0.5") - half, "M14"), avoid=[half])},
+                        {"kunci": num(t)},
+                        {"kunci": num(x), "toleransi": TOL_MM_MICRO,
+                         "salah": _salah((s + t / 10, "M15"), (x - half + (Decimal("0.5") - half), "M14"), avoid=[x])}]}
 
 
 def g_ap_hitung(p):
@@ -438,17 +465,20 @@ def g_tka_pipa(p):
 
 
 def g_tka_kedalaman(p):
-    """Depth read with the caliper's depth rod; a bolt of length p.baut is pushed in: how much sticks out."""
+    """Depth read with the caliper's depth rod; a bolt of length p.baut (mm) is pushed in: how much sticks out.
+    Options in mm, or in cm when p.satuan is "cm"."""
     depth, bolt = _js(p), D(p["baut"])
     mm, k = D(p["mm"]), D(p["k"])
     out = bolt - depth
     if out <= 0:
         raise ValueError("the bolt must stick out")
-    entries = [(fmt(out, 1) + " mm", None)]
+    cm = p.get("satuan") == "cm"
+    show = (lambda v, dp: fmt(v / 10, dp + 1) + " cm") if cm else (lambda v, dp: fmt(v, dp) + " mm")
+    entries = [(show(out, 1), None)]
     misread = mm + k
-    entries.append(("Baut tidak menonjol" if misread >= bolt else fmt(bolt - misread, 1) + " mm", "M10"))
-    entries.append((fmt(bolt - (mm + 1 + k / 10), 1) + " mm", "M12"))
-    entries.append((fmt(bolt - (mm + k / 100), 2) + " mm", "M11"))
+    entries.append(("Baut tidak menonjol" if misread >= bolt else show(bolt - misread, 1), "M10"))
+    entries.append((show(bolt - (mm + 1 + k / 10), 1), "M12"))
+    entries.append((show(bolt - (mm + k / 100), 2), "M11"))
     return _choice(entries, p["posisi"])
 
 
@@ -557,7 +587,7 @@ def _check_generated(it, v, owner, err):
             err(f"{owner} has {len(steps)} steps; generator {it['gen']} makes {len(expected['langkah'])}")
             return
         for i, (got, want) in enumerate(zip(steps, expected["langkah"]), 1):
-            for key in ("kunci", "salah"):
+            for key in ("kunci", "salah", "toleransi"):
                 if key in want and got.get(key) != want[key]:
                     err(f"{owner} langkah {i} {key} {got.get(key)!r} differs from generator {it['gen']}: {want[key]!r}")
 

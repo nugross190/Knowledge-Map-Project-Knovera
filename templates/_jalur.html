@@ -296,11 +296,26 @@ function svgOpen(w, h, label){ return '<svg viewBox="0 0 ' + w + " " + h + '" ro
 const TXT = (x, y, s, size, anchor, extra) => '<text x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" font-size="' + (size || 13) + '" text-anchor="' + (anchor || "middle") + '" fill="currentColor"' + (extra || "") + ">" + s + "</text>";
 const LINE = (x1, y1, x2, y2, w, color, extra) => '<line x1="' + x1.toFixed(1) + '" y1="' + y1.toFixed(1) + '" x2="' + x2.toFixed(1) + '" y2="' + y2.toFixed(1) + '" stroke="' + (color || "currentColor") + '" stroke-width="' + (w || 1) + '"' + (extra || "") + "/>";
 
+// Reading marks: colour 1 = whole units from the numbered line, colour 2 = small lines (or the half-millimetre line),
+// colour 3 = the vernier or thimble line. opt.marks = how many parts to show (the worked example reveals them one by one).
+const C1 = "#0A64A8", C2 = "#C2410C", C3 = "#15803D";
+function svgBox(y0, w, h, label){ return '<svg viewBox="0 ' + y0 + " " + w + " " + h + '" role="img" aria-label="' + esc(label) + '" font-family="Lato,system-ui,sans-serif">'; }
+function placed(x, W, s, size, color, extra){
+  const anchor = x < 110 ? "start" : x > W - 110 ? "end" : "middle", xx = anchor === "start" ? Math.max(4, x - 12) : anchor === "end" ? Math.min(W - 4, x + 12) : x;
+  return TXT(xx, s.y, s.t, size, anchor, ' font-weight="800" fill="' + color + '"' + (extra || ""));
+}
+function sumText(x, y, parts, total, size){
+  return '<text x="' + x + '" y="' + y + '" font-size="' + size + '" text-anchor="middle" font-weight="800" fill="currentColor">' +
+    parts.map(([t, c], i) => (i ? '<tspan fill="currentColor"> + </tspan>' : "") + '<tspan fill="' + c + '">' + t + "</tspan>").join("") +
+    '<tspan fill="currentColor"> = ' + total + "</tspan></text>";
+}
+const cm1 = v => nf((v / 10).toFixed(1));
+
 function figMistar(p, opt = {}){
-  const a = +p.a, b = +p.b;
+  const a = +p.a, b = +p.b, mk = opt.marks || 0;
   const lo = Math.max(0, Math.floor(a / 10) * 10 - 4), hi = Math.ceil(b / 10) * 10 + 4;
   const W = 520, L = 14, R = 14, s = (W - L - R) / (hi - lo), X = mm => L + (mm - lo) * s;
-  let g = svgOpen(W, 150, "Mistar: benda dari " + nf(a / 10) + " cm sampai " + nf(b / 10) + " cm");
+  let g = svgBox(0, W, mk ? 236 : 150, "Mistar: benda dari " + cm1(a) + " cm sampai " + cm1(b) + " cm");
   g += '<rect x="' + (lo === 0 ? X(0) - 8 : -2) + '" y="62" width="' + (W + 4) + '" height="66" rx="4" fill="#F6E7B8" stroke="currentColor" stroke-width="1.5"/>';
   for(let m = lo; m <= hi; m++){
     const len = m % 10 === 0 ? 24 : m % 5 === 0 ? 16 : 10;
@@ -310,7 +325,20 @@ function figMistar(p, opt = {}){
   g += TXT(W - 8, 122, "cm", 14, "end");
   g += '<rect x="' + X(a) + '" y="26" width="' + (X(b) - X(a)) + '" height="28" rx="6" fill="var(--accent-soft)" stroke="currentColor" stroke-width="1.8"/>';
   g += LINE(X(a), 54, X(a), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"') + LINE(X(b), 54, X(b), 62, 1.4, "currentColor", ' stroke-dasharray="3 2"');
-  if(opt.eye){
+  const end = (v, row) => {
+    const cm = Math.floor(v / 10), t = v % 10, xc = X(cm * 10), y = 158 + row * 26;
+    let h = '<rect x="' + (xc - 15) + '" y="90" width="30" height="27" rx="7" fill="none" stroke="' + C1 + '" stroke-width="3"/>' + LINE(xc, 62, xc, 86, 3.5, C1);
+    for(let m = cm * 10 + 1; m <= v; m++) h += LINE(X(m), 62, X(m), 62 + (m % 5 === 0 ? 16 : 10), 3.5, C2);
+    if(t) h += '<path d="M' + xc + " 134 V140 H" + X(v) + ' V134" fill="none" stroke="' + C2 + '" stroke-width="3"/>';
+    const anchorEnd = row === 1 && X(v) > W / 2, xt = anchorEnd ? Math.min(W - 4, X(v) + 8) : Math.max(4, xc - 8);
+    h += '<text x="' + xt + '" y="' + y + '" font-size="19" font-weight="800" text-anchor="' + (anchorEnd ? "end" : "start") + '"><tspan fill="' + C1 + '">' + cm + " cm</tspan>" +
+      (t ? '<tspan fill="currentColor"> + </tspan><tspan fill="' + C2 + '">' + nf((t / 10).toFixed(1)) + ' cm</tspan>' : "") + '<tspan fill="currentColor"> = ' + cm1(v) + " cm</tspan></text>";
+    return h;
+  };
+  if(mk >= 1) g += end(a, 0);
+  if(mk >= 2) g += end(b, 1);
+  if(mk >= 3) g += TXT(W / 2, 224, "Panjang = " + cm1(b) + " cm − " + cm1(a) + " cm = " + cm1(b - a) + " cm", 21, "middle", ' font-weight="800"');
+  if(opt.eye && !mk){
     const ex = opt.eye === "miring" ? Math.min(W - 12, X(b) + 70) : X(b);
     g += '<circle cx="' + ex + '" cy="10" r="7" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="' + ex + '" cy="10" r="2.5" fill="currentColor"/>';
     if(opt.eye === "miring"){
@@ -322,37 +350,52 @@ function figMistar(p, opt = {}){
 }
 
 function figJangka(p, opt = {}){
-  const x = (+p.mm) + (+p.k) / 10;
-  const lo = Math.max(-2, Math.floor(x) - 4), hi = lo + 18;
-  const W = 520, L = 10, s = (W - 2 * L) / (hi - lo), X = mm => L + (mm - lo) * s;
-  const hiK = opt.highlight ? Math.round((x - Math.floor(x)) * 10) : -1;
-  let g = svgOpen(W, 190, "Skala jangka sorong");
+  const mm = +p.mm, k = +p.k, x = mm + k / 10, mk = opt.marks || 0;
+  // The window always shows the cm number the reading starts from and the whole vernier.
+  const lo = Math.max(-2, Math.min(Math.floor(x) - 4, Math.floor(mm / 10) * 10 - 1)), hi = Math.max(lo + 18, x + 11);
+  const W = 520, L = 10, s = (W - 2 * L) / (hi - lo), X = v => L + (v - lo) * s;
+  const hiK = mk >= 3 || opt.highlight ? k : -1, hiC = mk ? C3 : "var(--warn)";
+  const top = mk ? -70 : 0;
+  let g = svgBox(top, W, mk ? 310 : 190, "Skala jangka sorong");
   g += '<rect x="-2" y="10" width="' + (W + 4) + '" height="82" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
-  g += TXT(10, 32, "cm", 15, "start");
+  if(!mk) g += TXT(10, 32, "cm", 15, "start");
   for(let m = Math.ceil(lo); m <= hi; m++){
     if(m < 0) continue;
     const len = m % 10 === 0 ? 32 : m % 5 === 0 ? 22 : 14;
-    const hit = hiK >= 0 && m === Math.floor(x + 1e-9) + hiK;
-    g += LINE(X(m), 92 - len, X(m), 92, hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    const hit = hiK >= 0 && m === mm + hiK;
+    g += LINE(X(m), 92 - len, X(m), 92, hit ? 3.6 : 1.6, hit ? hiC : "currentColor");
     if(m % 10 === 0) g += TXT(X(m), 52, String(m / 10), 24, "middle", ' font-weight="700"');
   }
   const v0 = X(x - 1.4), v1 = X(x + 10.4);
   g += '<rect x="' + v0 + '" y="92" width="' + (v1 - v0) + '" height="74" fill="#FFFFFF" stroke="currentColor" stroke-width="1.5"/>';
   for(let j = 0; j <= 10; j++){
     const pos = x + 0.9 * j, big = j % 5 === 0, hit = j === hiK;
-    g += LINE(X(pos), 92, X(pos), 92 + (big ? 28 : 18), hit ? 3.2 : 1.6, hit ? "var(--warn)" : "currentColor");
+    g += LINE(X(pos), 92, X(pos), 92 + (big ? 28 : 18), hit ? 3.6 : 1.6, hit ? hiC : "currentColor");
     if(big) g += TXT(X(pos), 142, String(j), 19, "middle", ' font-weight="700"');
   }
   g += TXT(v1 - 6, 160, "nonius", 13, "end", ' fill="var(--muted)"');
+  const cm = Math.floor(mm / 10), t = mm % 10, xc = X(cm * 10);
+  if(mk >= 1){
+    g += '<rect x="' + (xc - 19) + '" y="27" width="38" height="33" rx="8" fill="none" stroke="' + C1 + '" stroke-width="3"/>' + LINE(xc, 60, xc, 92, 3.6, C1);
+    g += placed(xc, W, {t: cm + " cm", y: -44}, 22, C1);
+  }
+  if(mk >= 2){
+    for(let m = cm * 10 + 1; m <= mm; m++) g += LINE(X(m), 92 - (m % 5 === 0 ? 22 : 14), X(m), 92, 3.6, C2);
+    g += LINE(X(x), 4, X(x), 92, 2, C2, ' stroke-dasharray="5 4"');
+    if(t) g += '<path d="M' + xc + " 6 V-2 H" + X(mm) + ' V6" fill="none" stroke="' + C2 + '" stroke-width="3"/>' + placed((xc + X(mm)) / 2, W, {t: "+ " + t + " × 0,1 = " + nf((t / 10).toFixed(1)) + " cm", y: -12}, 18, C2);
+    else g += placed(xc, W, {t: "+ 0 cm", y: -12}, 18, C2);
+  }
+  if(mk >= 3) g += placed(X(x + 0.9 * k), W, {t: "+ " + k + " × 0,01 = " + nf((k / 100).toFixed(2)) + " cm", y: 190}, 18, C3);
+  if(mk >= 4) g += sumText(W / 2, 228, [[cm + " cm", C1], [nf((t / 10).toFixed(1)) + " cm", C2], [nf((k / 100).toFixed(2)) + " cm", C3]], nf(((mm * 10 + k) / 100).toFixed(2)) + " cm", 22);
   return g + "</svg>";
 }
 
 function figMikro(p, opt = {}){
-  const s0 = +p.s, t = +p.t, x = s0 + t / 100;
+  const s0 = +p.s, t = +p.t, x = s0 + t / 100, mk = opt.marks || 0;
   const start = Math.max(0, 5 * Math.floor((s0 - 3) / 5));
   const x0 = 34, k = 40, X = mm => x0 + (mm - start) * k, edge = X(x), tw = 150;
-  const W = Math.max(380, edge + tw + 6), top = 18, bot = 182, gap = 13, ref = 100;
-  let g = svgOpen(W, 200, "Skala mikrometer sekrup");
+  const W = Math.max(mk ? 480 : 380, edge + tw + 6, mk >= 3 ? edge + 250 : 0), top = 18, bot = 182, gap = 13, ref = 100;
+  let g = svgBox(0, W, mk ? (mk >= 4 ? 262 : 222) : 200, "Skala mikrometer sekrup");
   g += '<rect x="-2" y="72" width="' + (edge + 2) + '" height="56" fill="#E8EDF4" stroke="currentColor" stroke-width="1.5"/>';
   g += LINE(0, ref, edge, ref, 2);
   for(let m = start; m < x - 0.04; m++){
@@ -360,24 +403,39 @@ function figMikro(p, opt = {}){
     if(m % 5 === 0) g += TXT(X(m), 62, String(m), 22, "middle", ' font-weight="700"');
   }
   for(let m = start + 0.5; m < x - 0.04; m += 1) g += LINE(X(m), ref, X(m), ref + 16, 1.8);
-  g += TXT(4, 24, "mm", 14, "start");
+  if(!mk) g += TXT(4, 24, "mm", 14, "start");
   g += '<rect x="' + edge + '" y="' + top + '" width="' + tw + '" height="' + (bot - top) + '" rx="6" fill="#FFFFFF" stroke="currentColor" stroke-width="1.6"/>';
   g += LINE(edge + 1.5, top + 2, edge + 1.5, bot - 2, 4, "#C9D2DE");
   for(let d = t - 6; d <= t + 6; d++){
     const y = ref - (d - t) * gap;
     if(y < top + 6 || y > bot - 6) continue;
     const v = ((d % 50) + 50) % 50, big = v % 5 === 0;
-    g += LINE(edge, y, edge + (big ? 30 : 18), y, 1.6);
+    g += LINE(edge, y, edge + (big ? 30 : 18), y, mk >= 3 && d === t ? 3.6 : 1.6, mk >= 3 && d === t ? C3 : "currentColor");
     if(big) g += TXT(edge + 38, y + 7, String(v), 20, "start", ' font-weight="700"');
   }
   g += TXT(edge + tw - 8, bot - 8, "selubung", 13, "end", ' fill="var(--muted)"');
+  const whole = Math.floor(s0), half = s0 % 1 !== 0;
+  if(mk >= 1){
+    g += LINE(X(whole), ref, X(whole), ref - 18, 3.6, C1) + LINE(X(whole), 42, X(whole), 78, 1.6, C1, ' stroke-dasharray="4 3"');
+    g += placed(X(whole), edge, {t: whole + " mm", y: 34}, 20, C1);
+  }
+  if(mk >= 2){
+    if(half) g += LINE(X(whole + 0.5), ref, X(whole + 0.5), ref + 16, 3.6, C2) + placed(X(whole + 0.5), edge, {t: "+ 0,5 mm", y: 150}, 18, C2);
+    else {
+      const left = edge - 8 >= 160, xr = left ? edge - 8 : edge + tw + 10, an = left ? "end" : "start";
+      g += TXT(xr, 150, "+ 0 mm", 18, an, ' font-weight="800" fill="' + C2 + '"') + TXT(xr, 168, "garis 0,5 belum terlihat", 13, an, ' font-weight="700" fill="' + C2 + '"');
+    }
+  }
+  if(mk >= 3) g += TXT(edge, 208, "+ " + t + " × 0,01 = " + nf((t / 100).toFixed(2)) + " mm", 18, "start", ' font-weight="800" fill="' + C3 + '"');
+  if(mk >= 4) g += sumText(W / 2, 248, [[whole + " mm", C1]].concat(half ? [["0,5 mm", C2]] : []).concat([[nf((t / 100).toFixed(2)) + " mm", C3]]), nf(x.toFixed(2)) + " mm", 21);
   return g + "</svg>";
 }
+
 const FIG = {"mistar": figMistar, "jangka-sorong": figJangka, "mikrometer": figMikro};
-function figsHTML(it, v){
+function figsHTML(it, v, opt){
   if(!it.fig) return "";
   const list = typeof it.fig === "string" ? [{jenis: it.fig}] : it.fig;
-  return list.map(f => "<figure>" + FIG[f.jenis](f.p ? v.p[f.p] : v.p) + (f.judul ? "<figcaption>" + esc(f.judul) + "</figcaption>" : "") + "</figure>").join("");
+  return list.map(f => "<figure>" + FIG[f.jenis](f.p ? v.p[f.p] : v.p, opt) + (f.judul ? "<figcaption>" + esc(f.judul) + "</figcaption>" : "") + "</figure>").join("");
 }
 
 // ---------- widgets ----------
@@ -406,8 +464,8 @@ WIDGET["satuan"] = (el, d) => {
 WIDGET["mistar"] = el => {
   let a = 20, len = 47, eye = "tegak", shown = false;
   function draw(){
-    el.querySelector(".w-fig").innerHTML = figMistar({a, b: a + len}, {eye: eye === "tegak" ? "tegak" : "miring"});
-    el.querySelector(".readout").innerHTML = shown ? "Panjang = " + nf((a + len) / 10) + " cm − " + nf(a / 10) + " cm = <b>" + nf(len / 10) + " cm = " + len + " mm</b>" : "Baca dulu panjangnya, lalu tekan Tunjukkan bacaan.";
+    el.querySelector(".w-fig").innerHTML = figMistar({a, b: a + len}, {eye: eye === "tegak" ? "tegak" : "miring", marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? "Panjang = " + cm1(a + len) + " cm − " + cm1(a) + " cm = <b>" + cm1(len) + " cm</b>" : "Baca dulu panjangnya dalam cm, lalu tekan Tunjukkan bacaan.";
     $$("[data-eye]", el).forEach(b => b.setAttribute("aria-pressed", String(b.dataset.eye === eye)));
   }
   el.innerHTML = '<div class="w-title">Geser benda, baca panjangnya</div><div class="w-fig"></div>' +
@@ -423,8 +481,8 @@ WIDGET["jangka-sorong"] = el => {
   let x = 237, mark = false, shown = false;
   function draw(){
     const mm = Math.floor(x / 10), k = x % 10;
-    el.querySelector(".w-fig").innerHTML = figJangka({mm, k}, {highlight: mark});
-    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + mm + " mm + garis nonius ke-" + k + " × 0,1 mm = <b>" + nf(x / 10) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector(".w-fig").innerHTML = figJangka({mm, k}, {highlight: mark, marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? Math.floor(mm / 10) + " cm + " + nf(((mm % 10) / 10).toFixed(1)) + " cm + " + nf((k / 100).toFixed(2)) + " cm = <b>" + nf((x / 100).toFixed(2)) + " cm</b>" : "Baca dulu dalam cm, lalu tekan Tunjukkan hasil.";
     el.querySelector("[data-k]").value = x;
   }
   el.innerHTML = '<div class="w-title">Buka dan tutup rahang jangka sorong</div><div class="w-fig"></div>' +
@@ -439,8 +497,8 @@ WIDGET["mikrometer"] = el => {
   let x = 268, shown = false;
   function draw(){
     const half = Math.floor(x / 50) / 2, t = x % 50;
-    el.querySelector(".w-fig").innerHTML = figMikro({s: half, t: t});
-    el.querySelector(".readout").innerHTML = shown ? "Skala utama " + nf(half) + " mm + garis " + t + " × 0,01 mm = <b>" + nf((x / 100).toFixed(2)) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
+    el.querySelector(".w-fig").innerHTML = figMikro({s: half, t: t}, {marks: shown ? 9 : 0});
+    el.querySelector(".readout").innerHTML = shown ? Math.floor(half) + " mm" + (half % 1 ? " + 0,5 mm" : "") + " + " + nf((t / 100).toFixed(2)) + " mm = <b>" + nf((x / 100).toFixed(2)) + " mm</b>" : "Baca dulu, lalu tekan Tunjukkan hasil.";
     el.querySelector("[data-k]").value = x;
   }
   el.innerHTML = '<div class="w-title">Putar selubung mikrometer</div><div class="w-fig"></div>' +
@@ -660,7 +718,7 @@ function mountItem(el, id, vi, mode, hooks = {}){
     (ladder ? '<button class="btn" type="button" data-act="hint">' + ladderLabel(0) + "</button>" : "") +
     '<button class="btn" type="button" data-act="sol" hidden>Pembahasan</button></div>' +
     '<p class="feedback" aria-live="polite"></p><div class="extra stack"></div><div class="hints"></div>' +
-    '<div class="solution" hidden><b>Pembahasan</b><ol>' + v.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></div>";
+    '<div class="solution" hidden><b>Pembahasan</b>' + figsHTML(it, v, {marks: 9}) + "<ol>" + v.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></div>";
   const fb = $(".feedback", el), extra = $(".extra", el);
   function ladderLabel(level){
     const n = it.bantuan.length;
@@ -741,7 +799,7 @@ function mountItem(el, id, vi, mode, hooks = {}){
       if(st.level < n) box.insertAdjacentHTML("beforeend", '<div class="hint"><b>Bantuan ' + (st.level + 1) + "</b>" + tx(it.bantuan[st.level]) + "</div>");
       else if(st.level === n && it.varian.length > 1){
         const w = it.varian[(vi + 1) % it.varian.length];
-        box.insertAdjacentHTML("beforeend", '<div class="twin"><b class="small">CONTOH KEMBAR (angka lain)</b>' + figsHTML(it, w) + paras(w.soal.replace(/\nJawaban benar lebih dari satu\.$/, "")) + "<ol>" + w.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>");
+        box.insertAdjacentHTML("beforeend", '<div class="twin"><b class="small">CONTOH KEMBAR (angka lain)</b>' + figsHTML(it, w, {marks: 9}) + paras(w.soal.replace(/\nJawaban benar lebih dari satu\.$/, "")) + "<ol>" + w.pembahasan.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div>");
         st.helped = true; if(hooks.onHelp) hooks.onHelp(st);
       }
       st.level++;
@@ -882,10 +940,11 @@ CARD["media"] = (c, el) => {
 CARD["lihat"] = (c, el) => {
   const l = UNIT[c.u].lihat;
   let shown = 1;
-  el.innerHTML = '<h2>Lihat contoh</h2><div class="stem">' + paras(l.soal) + "</div>" + (l.fig ? "<figure>" + FIG[l.fig](l.p) + "</figure>" : "") +
+  el.innerHTML = '<h2>Lihat contoh</h2><div class="stem">' + paras(l.soal) + "</div>" + (l.fig ? '<figure id="lfig"></figure>' : "") +
     '<ol class="body revealed" id="steps"></ol><div class="row"><button class="btn" type="button" id="more">Langkah berikutnya</button><span class="small muted">Pikirkan dulu langkah berikutnya sebelum membukanya.</span></div>';
   function draw(){
     $("#steps", el).innerHTML = l.langkah.slice(0, shown).map(x => "<li>" + tx(x) + "</li>").join("");
+    if(l.fig) $("#lfig", el).innerHTML = FIG[l.fig](l.p, {marks: shown}) + (shown < l.langkah.length ? '<figcaption>Tanda warna muncul bersama setiap langkah.</figcaption>' : "");
     if(shown >= l.langkah.length){ $("#more", el).disabled = true; $("#more", el).textContent = "Semua langkah terbuka"; setReady(); }
   }
   $("#more", el).onclick = () => { shown++; draw(); };
@@ -1073,7 +1132,7 @@ function newId(){ const A = "23456789ABCDEFGHJKLMNPQRSTUVWXYZ"; let s = ""; for(
 function kartuHTML(){
   return '<section class="kcard" id="k-bekal"><h3>Bekal</h3>' + J.prasyarat.map(p => "<h4>" + esc(p.judul) + '</h4><div class="body">' + blocks(p.jembatan.isi) + "</div>").join("") + "</section>" +
     J.unit.map(u => '<section class="kcard" id="k-' + u.id + '"><h3>Unit ' + UNIT_NO[u.id] + " · " + esc(u.judul) + '</h3><div class="body">' + blocks(u.media.isi) + "</div>" +
-      '<div class="example"><h4>Contoh</h4><p>' + tx(u.lihat.soal) + "</p>" + (u.lihat.fig ? "<figure>" + FIG[u.lihat.fig](u.lihat.p) + "</figure>" : "") +
+      '<div class="example"><h4>Contoh</h4><p>' + tx(u.lihat.soal) + "</p>" + (u.lihat.fig ? "<figure>" + FIG[u.lihat.fig](u.lihat.p, {marks: 9}) + "</figure>" : "") +
       "<ol>" + u.lihat.langkah.map(x => "<li>" + tx(x) + "</li>").join("") + "</ol></div></section>").join("");
 }
 function openKartu(){

@@ -616,6 +616,12 @@ class PathsTest(unittest.TestCase):
         self.assertEqual(j.g_dimensi_pangkat({"target": {"T": 1}, "faktor": [{"L": 1}, {"L": 1, "T": -2}], "tanya": 0})["kunci"], 0.5)
         pipe = j.g_tka_pipa({"luar": {"mm": 18, "k": 6}, "tebal": {"s": 1.5, "t": 25}})
         self.assertEqual([pipe["opsi"][i] for i in pipe["kunci"]], ["14,60 mm", "15,00 mm"])  # inner diameter 15,10 mm
+        # ruler and caliper in cm, split as the figures mark them: 2 cm + 1 small line + vernier line 8 = 2,18 cm
+        self.assertEqual(j.g_jangka_sorong({"mm": 21, "k": 8, "satuan": "cm"})["kunci"], 2.18)
+        self.assertEqual([s["kunci"] for s in j.g_jangka_sorong_tahap({"mm": 21, "k": 8, "satuan": "cm"})["langkah"]], [2, 1, 8, 2.18])
+        self.assertEqual(j.g_mistar({"a": 15, "b": 62, "satuan": "cm"})["kunci"], 4.7)
+        self.assertEqual([s["kunci"] for s in j.g_mikrometer_tahap({"s": 2.5, "t": 18})["langkah"]], [2, 0.5, 18, 2.68])
+        self.assertEqual(j.g_tka_kedalaman({"mm": 31, "k": 8, "baut": "33,0", "posisi": 0, "satuan": "cm"})["opsi"][0], "0,12 cm")
         self.assertEqual([s["kunci"] for s in j.g_notasi_tahap({"x": "0,00305"})["langkah"]], [3, 3.05, -3])
         self.assertEqual([s["kunci"] for s in j.g_ap_hitung_tahap({"x": "0,04050"})["langkah"]], [2, 4])
         pick = j.g_ap_pilih({"opsi": ["0,05", "1,250", "20,4", "3,0"], "n": 3})

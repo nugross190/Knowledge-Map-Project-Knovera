@@ -53,6 +53,8 @@ The **material cards** (*kartu materi*) are built from this data, not written se
 
 Item figures use the same drawings: an item with `fig` (`mistar`, `jangka-sorong`, `mikrometer`) is drawn from its variant's `p`.
 
+**Reading marks.** A figure can be drawn with marks that show how the reading is built, in three colours: blue for the whole units from the numbered line (cm on the ruler and caliper, mm on the micrometer), orange for the small lines (0,1 cm each) or the half-millimetre line, green for the vernier line (0,01 cm) or the thimble line (0,01 mm), then the sum, for example 2 cm + 0,1 cm + 0,08 cm = 2,18 cm. The worked example (`lihat`) adds one mark per revealed step, so its `langkah` follow the same order: ruler left end, right end, length; caliper cm, small lines, vernier line, sum; micrometer mm line, half-millimetre line, thimble line, sum. Solutions, twins, material cards and the widgets' shown result carry the full marks. Ruler and caliper readings are in cm; micrometer readings in mm.
+
 ## 3. Items
 
 An item is a family of one or more variants that test the same thing with different numbers or contexts. Saved progress is keyed by the family id, so the family id is **permanent** (`<kode>-NNN`, never renumbered or reused). Variants are listed in order and keyed by position; add new variants at the end.
