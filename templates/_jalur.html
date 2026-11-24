@@ -431,7 +431,112 @@ function figMikro(p, opt = {}){
   return g + "</svg>";
 }
 
-const FIG = {"mistar": figMistar, "jangka-sorong": figJangka, "mikrometer": figMikro};
+// ---------- vector grid figure ----------
+// Modes (from the item's p): legs (a route), a + b (two vectors, tip to tail or from a common tail), dari/ke (one arrow),
+// panah (labelled arrows), rute1/rute2 (two routes), titik (points). Marks: blue = i part, orange = j part, green = resultant.
+const magText = (x, y) => { const s = x * x + y * y, r = Math.round(Math.sqrt(s) * 100) / 100; return Math.abs(r * r - s) < 1e-9 ? nf(r) : "≈ " + nf(r.toFixed(2)); };
+const magEq = (x, y) => { const t = magText(x, y); return t[0] === "≈" ? t : "= " + t; };
+function vecParts(x, y){
+  const parts = [], term = (c, s, first) => { if(!c) return; const sign = c < 0 ? "−" : first ? "" : "+", mag = Math.abs(c) === 1 ? "" : nf(Math.abs(c)); parts.push([first ? sign + mag + s : " " + sign + " " + mag + s, s === "i" ? C1 : C2]); };
+  term(x, "i", true); term(y, "j", !parts.length);
+  return parts.length ? parts : [["0", "currentColor"]];
+}
+const vecText = (x, y) => vecParts(x, y).map(p => p[0]).join("");
+const sq = v => v < 0 ? "(" + nf(v) + ")" : nf(v);
+function figVektor(p, opt = {}){
+  const mk = opt.marks || 0, k = +(p.kotak || 1), u = p.satuan ? " " + p.satuan : "";
+  const arrows = [], pts = [];
+  let S = null, E = null, rname = "R", dashed = null;
+  const add = (x0, y0, x1, y1, label, style) => arrows.push({x0, y0, x1, y1, label, style});
+  const chain = (legs, start, style, tag) => { let c = start.slice(); legs.forEach((l, i) => { add(c[0], c[1], c[0] + l[0], c[1] + l[1], tag ? "" : String(i + 1), style); c = [c[0] + l[0], c[1] + l[1]]; }); return c; };
+  if(p.rute1){
+    const o = p.mulai || [0, 0];
+    E = chain(p.rute1, o, "solid", true); chain(p.rute2, o, "dash", true); S = o; rname = "Δr";
+    pts.push({x: o[0], y: o[1], label: p.nama_dari || "Mulai", start: true}, {x: E[0], y: E[1], label: p.nama_ke || "Tujuan", left: p.rute1[p.rute1.length - 1][0] < 0});
+  } else if(p.legs){
+    const o = p.mulai || [0, 0];
+    E = chain(p.legs, o, "solid"); S = o; rname = "Δr";
+    pts.push({x: o[0], y: o[1], label: p.nama_dari || "Mulai", start: true}, {x: E[0], y: E[1], label: p.nama_ke || "Selesai", left: p.legs[p.legs.length - 1][0] < 0});
+  } else if(p.a){
+    const o = p.mulai || [0, 0], a = p.a, b = p.b, minus = p.op === "−", tail = p.susun === "pangkal";
+    add(o[0], o[1], o[0] + a[0], o[1] + a[1], "A", "solid");
+    const bs = tail ? o : [o[0] + a[0], o[1] + a[1]];
+    add(bs[0], bs[1], bs[0] + b[0], bs[1] + b[1], "B", "solid");
+    S = o; E = minus ? [o[0] + a[0] - b[0], o[1] + a[1] - b[1]] : [o[0] + a[0] + b[0], o[1] + a[1] + b[1]];
+    rname = minus ? "A − B" : "A + B";
+    if(minus) dashed = {x0: o[0] + a[0], y0: o[1] + a[1], x1: E[0], y1: E[1], label: "−B"};
+  } else if(p.panah){
+    p.panah.forEach(a => add(a.dari[0], a.dari[1], a.ke[0], a.ke[1], a.label, "solid"));
+  } else if(p.dari){
+    if(!p.tanpa_panah) add(p.dari[0], p.dari[1], p.ke[0], p.ke[1], p.label || "", "solid");
+    S = p.dari; E = p.ke; rname = p.label || "Δr";
+    if(p.nama_dari) pts.push({x: p.dari[0], y: p.dari[1], label: p.nama_dari, start: true});
+    if(p.nama_ke) pts.push({x: p.ke[0], y: p.ke[1], label: p.nama_ke});
+  }
+  (p.titik || []).forEach(t => pts.push({x: t.di[0], y: t.di[1], label: t.label}));
+  const xs = [], ys = [];
+  arrows.forEach(a => { xs.push(a.x0, a.x1); ys.push(a.y0, a.y1); });
+  pts.forEach(q => { xs.push(q.x); ys.push(q.y); });
+  if(S){ xs.push(S[0], E[0]); ys.push(S[1], E[1]); }
+  if(dashed){ xs.push(dashed.x1); ys.push(dashed.y1); }
+  if(p.sumbu){ xs.push(0); ys.push(0); }
+  let [x0, x1, y0, y1] = p.batas || [Math.min(...xs) - 1, Math.max(...xs) + 1, Math.min(...ys) - 1, Math.max(...ys) + 1];
+  while(x1 - x0 < 6){ x0--; if(x1 - x0 < 6) x1++; }
+  while(y1 - y0 < 5){ y0--; if(y1 - y0 < 5) y1++; }
+  const pad = 16, cell = Math.min(46, 488 / (x1 - x0)), top = 44;
+  const gw = (x1 - x0) * cell, gh = (y1 - y0) * cell, W = Math.max(gw + 2 * pad, 380), left = (W - gw) / 2;
+  const X = gx => left + (gx - x0) * cell, Y = gy => top + (y1 - gy) * cell;
+  // lines under the grid, top to bottom: scale, route legend, then the marks (components, resultant, magnitude)
+  const under = [];
+  if(k !== 1 || p.satuan) under.push("1 kotak = " + nf(k) + u);
+  if(p.rute1) under.push("Rute 1: garis penuh · Rute 2: garis putus-putus");
+  let g = "", marks = [];
+  for(let gx = x0; gx <= x1; gx++) g += LINE(X(gx), Y(y1), X(gx), Y(y0), p.sumbu && gx === 0 ? 1.6 : 1, p.sumbu && gx === 0 ? "currentColor" : "#D6DCE6");
+  for(let gy = y0; gy <= y1; gy++) g += LINE(X(x0), Y(gy), X(x1), Y(gy), p.sumbu && gy === 0 ? 1.6 : 1, p.sumbu && gy === 0 ? "currentColor" : "#D6DCE6");
+  if(p.sumbu){
+    for(let gx = x0 + 1; gx < x1; gx++) if(gx) g += TXT(X(gx), Y(0) + 16, nf(gx), 12, "middle", ' fill="var(--muted)"');
+    for(let gy = y0 + 1; gy < y1; gy++) if(gy) g += TXT(X(0) - 6, Y(gy) + 4, nf(gy), 12, "end", ' fill="var(--muted)"');
+    g += TXT(X(x1) - 2, Y(0) - 6, "x", 14, "end", ' font-style="italic"') + TXT(X(0) + 6, Y(y1) + 13, "y", 14, "start", ' font-style="italic"');
+  }
+  // compass: north (U) is up, east (T) is right
+  const cx = W - pad - 30, cy = 22;
+  g += LINE(cx, cy + 12, cx, cy - 8, 1.8) + '<path d="M' + cx + " " + (cy - 14) + " l-5 7 h10 z" + '" fill="currentColor"/>' + TXT(cx - 8, cy + 2, "U", 14, "end", ' font-weight="800"') +
+    LINE(cx, cy + 12, cx + 14, cy + 12, 1.8) + '<path d="M' + (cx + 20) + " " + (cy + 12) + " l-7 -5 v10 z" + '" fill="currentColor"/>' + TXT(cx + 23, cy + 17, "T", 14, "start", ' font-weight="800"');
+  const arrow = (a, color, w, dash) => {
+    const ax0 = X(a.x0), ay0 = Y(a.y0), ax1 = X(a.x1), ay1 = Y(a.y1), dx = ax1 - ax0, dy = ay1 - ay0, L = Math.hypot(dx, dy);
+    if(!L) return "";
+    const ux = dx / L, uy = dy / L, h = 13, hw = 6.5, bx = ax1 - ux * h, by = ay1 - uy * h;
+    let s = LINE(ax0, ay0, bx, by, w, color, dash ? ' stroke-dasharray="7 5"' : "") +
+      '<path d="M' + ax1.toFixed(1) + " " + ay1.toFixed(1) + " L" + (bx - uy * hw).toFixed(1) + " " + (by + ux * hw).toFixed(1) + " L" + (bx + uy * hw).toFixed(1) + " " + (by - ux * hw).toFixed(1) + ' Z" fill="' + color + '"/>';
+    if(a.label){ const mx = (ax0 + ax1) / 2 - uy * 15, my = (ay0 + ay1) / 2 + ux * 15 + 6; s += TXT(mx, my, a.label, 17, "middle", ' font-weight="800" fill="' + color + '" paint-order="stroke" stroke="#fff" stroke-width="4"'); }
+    return s;
+  };
+  arrows.forEach(a => { g += arrow(a, "currentColor", 2.6, a.style === "dash"); });
+  if(S && mk >= 1){
+    const rx = E[0] - S[0], ry = E[1] - S[1];
+    if(mk >= 3 && dashed) g += arrow(dashed, "var(--muted)", 2, true);
+    if(rx) g += arrow({x0: S[0], y0: S[1], x1: S[0] + rx, y1: S[1]}, C1, 3.6);
+    let line = '<tspan fill="' + C1 + '">komponen i: ' + nf(rx * k) + u + "</tspan>";
+    if(mk >= 2){
+      if(ry) g += arrow({x0: S[0] + rx, y0: S[1], x1: E[0], y1: E[1]}, C2, 3.6);
+      line += '<tspan fill="currentColor"> · </tspan><tspan fill="' + C2 + '">komponen j: ' + nf(ry * k) + u + "</tspan>";
+    }
+    marks.push([16, line]);
+    if(mk >= 3){
+      g += arrow({x0: S[0], y0: S[1], x1: E[0], y1: E[1]}, C3, 3.6);
+      const parts = vecParts(rx * k, ry * k).map(([t, c]) => '<tspan fill="' + c + '">' + t + "</tspan>").join("");
+      marks.push([18, '<tspan fill="' + C3 + '">' + rname + " = </tspan>" + parts + (u ? '<tspan fill="currentColor">' + u + "</tspan>" : "")]);
+      if(p.besar !== false) marks.push([16, "|" + rname + "| = √(" + sq(rx * k) + "² + " + sq(ry * k) + "²) " + magEq(rx * k, ry * k) + u]);
+    }
+  }
+  pts.forEach(q => { g += '<circle cx="' + X(q.x) + '" cy="' + Y(q.y) + '" r="5" fill="currentColor"/>' + TXT(X(q.x) + (q.start || q.left ? -8 : 8), Y(q.y) + (q.start ? 20 : -8), esc(q.label), 15, q.start || q.left ? "end" : "start", ' font-weight="800" paint-order="stroke" stroke="#fff" stroke-width="4"'); });
+  let y = top + gh + 6;
+  under.forEach(t => { y += 20; g += TXT(W / 2, y, t, 14, "middle", ' opacity="0.75"'); });
+  marks.forEach(([fs, html]) => { y += fs + 12; g += '<text x="' + (W / 2) + '" y="' + y + '" font-size="' + fs + '" font-weight="800" text-anchor="middle">' + html + "</text>"; });
+  return '<svg viewBox="0 0 ' + W + " " + (y + 14) + '" style="max-width:' + Math.round(W * 1.3) + 'px;margin:0 auto;display:block" role="img" aria-label="Vektor pada kisi" font-family="Lato,system-ui,sans-serif" data-x0="' + x0 + '" data-y1="' + y1 + '" data-cell="' + cell + '" data-left="' + left + '" data-top="' + top + '">' + g + "</svg>";
+}
+
+const FIG = {"mistar": figMistar, "jangka-sorong": figJangka, "mikrometer": figMikro, "vektor": figVektor};
 function figsHTML(it, v, opt){
   if(!it.fig) return "";
   const list = typeof it.fig === "string" ? [{jenis: it.fig}] : it.fig;
@@ -658,6 +763,82 @@ WIDGET["awalan"] = (el, d) => {
   el.addEventListener("click", e => {
     const b = e.target.closest("[data-p]"); if(b){ pre = +b.dataset.p; draw(); }
     const c = e.target.closest("[data-c]"); if(c){ V.value = c.dataset.c; draw(); }
+  });
+  draw();
+};
+
+function quadText(x, y){
+  const s = v => (v > 0) - (v < 0);
+  return {"1,0": "ke timur", "-1,0": "ke barat", "0,1": "ke utara", "0,-1": "ke selatan", "1,1": "antara timur dan utara", "1,-1": "antara timur dan selatan",
+    "-1,-1": "antara barat dan selatan", "-1,1": "antara barat dan utara", "0,0": "tidak punya arah (vektor nol)"}[s(x) + "," + s(y)];
+}
+function gridPoint(svg, ev){
+  const r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal, sc = vb.width / r.width;
+  const px = (ev.clientX - r.left) * sc, py = (ev.clientY - r.top) * sc, d = svg.dataset;
+  return [Math.round(+d.x0 + (px - +d.left) / +d.cell), Math.round(+d.y1 - (py - +d.top) / +d.cell)];
+}
+WIDGET["panah"] = (el, d) => {
+  const B = d.batas || [-5, 5, -5, 5];
+  let x = 3, y = 4, shown = false;
+  el.innerHTML = '<div class="w-title">Ketuk kisi atau pakai tombol untuk memindahkan ujung panah</div><div class="w-fig"></div>' +
+    '<div class="row"><button class="btn small" type="button" data-d="-1,0">← barat</button><button class="btn small" type="button" data-d="1,0">timur →</button>' +
+    '<button class="btn small" type="button" data-d="0,1">↑ utara</button><button class="btn small" type="button" data-d="0,-1">↓ selatan</button>' +
+    '<button class="btn small" type="button" data-show>Tunjukkan komponen</button></div><p class="readout"></p>';
+  function draw(){
+    el.querySelector(".w-fig").innerHTML = figVektor({dari: [0, 0], ke: [x, y], label: "A", batas: B, sumbu: true}, {marks: shown ? 3 : 0});
+    el.querySelector(".readout").innerHTML = "A = <b>" + vecText(x, y) + "</b> · |A| " + magEq(x, y) + " · arah " + quadText(x, y);
+    el.querySelector("[data-show]").setAttribute("aria-pressed", String(shown));
+  }
+  el.addEventListener("click", e => {
+    const b = e.target.closest("[data-d]");
+    if(b){ const [dx, dy] = b.dataset.d.split(",").map(Number); x = Math.max(B[0], Math.min(B[1], x + dx)); y = Math.max(B[2], Math.min(B[3], y + dy)); draw(); return; }
+    if(e.target.closest("[data-show]")){ shown = !shown; draw(); return; }
+    const svg = e.target.closest("svg");
+    if(svg && el.contains(svg)){ const [gx, gy] = gridPoint(svg, e); x = Math.max(B[0], Math.min(B[1], gx)); y = Math.max(B[2], Math.min(B[3], gy)); draw(); }
+  });
+  draw();
+};
+WIDGET["jumlah-vektor"] = (el, d) => {
+  let a = (d.a || [3, 1]).slice(), b = (d.b || [1, 3]).slice(), op = "+", shown = false;
+  const lim = 4, step = (v, i, s) => { v[i] = Math.max(-lim, Math.min(lim, v[i] + s)); };
+  const pad = (name) => '<span class="row"><b style="min-width:1.2em">' + name + "</b>" + ["x−", "x+", "y−", "y+"].map((t, i) => '<button class="btn small" type="button" data-v="' + name + '" data-i="' + (i >> 1) + '" data-s="' + (i % 2 ? 1 : -1) + '">' + t + "</button>").join("") + "</span>";
+  el.innerHTML = '<div class="w-title">Ubah A dan B, lalu lihat resultannya</div><div class="w-fig"></div>' +
+    '<div class="row">' + pad("A") + pad("B") + '</div><div class="row pick"><button class="btn small" type="button" data-op="+">A + B</button><button class="btn small" type="button" data-op="−">A − B</button>' +
+    '<button class="btn small" type="button" data-show>Tunjukkan resultan</button></div><p class="readout"></p>';
+  function draw(){
+    const s = op === "+" ? 1 : -1, rx = a[0] + s * b[0], ry = a[1] + s * b[1];
+    const xs = [0, a[0], a[0] + b[0], rx], ys = [0, a[1], a[1] + b[1], ry];
+    el.querySelector(".w-fig").innerHTML = figVektor({a, b, op, susun: "ujung", batas: [Math.min(-4, ...xs) - 1, Math.max(4, ...xs) + 1, Math.min(-4, ...ys) - 1, Math.max(4, ...ys) + 1]}, {marks: shown ? 3 : 0});
+    const sg = v => v < 0 ? "(" + nf(v) + ")" : nf(v);
+    el.querySelector(".readout").innerHTML = "A = " + vecText(a[0], a[1]) + ", B = " + vecText(b[0], b[1]) + "<br>" + (op === "+" ? "A + B" : "A − B") + " = (" + nf(a[0]) + " " + op + " " + sg(b[0]) + ")i + (" + nf(a[1]) + " " + op + " " + sg(b[1]) + ")j = <b>" + vecText(rx, ry) + "</b> · besar " + magText(rx, ry);
+    $$("[data-op]", el).forEach(x => x.setAttribute("aria-pressed", String(x.dataset.op === op)));
+    el.querySelector("[data-show]").setAttribute("aria-pressed", String(shown));
+  }
+  el.addEventListener("click", e => {
+    const v = e.target.closest("[data-v]"); if(v){ step(v.dataset.v === "A" ? a : b, +v.dataset.i, +v.dataset.s); draw(); }
+    const o = e.target.closest("[data-op]"); if(o){ op = o.dataset.op; draw(); }
+    if(e.target.closest("[data-show]")){ shown = !shown; draw(); }
+  });
+  draw();
+};
+WIDGET["rute"] = (el, d) => {
+  let cur = 0, shown = false;
+  el.innerHTML = '<div class="w-title">Pilih rute: bandingkan jarak dengan perpindahan</div><div class="row pick">' +
+    d.rute.map((r, i) => '<button class="btn small" type="button" data-r="' + i + '">' + esc(r.nama) + "</button>").join("") + '</div><div class="w-fig"></div>' +
+    '<div class="row"><button class="btn small" type="button" data-show>Tunjukkan perpindahan</button></div><p class="readout"></p>';
+  function draw(){
+    const r = d.rute[cur], k = r.kotak || 1, u = r.satuan, t = r.t;
+    const dist = r.legs.reduce((s, l) => s + Math.hypot(l[0], l[1]) * k, 0), x = r.legs.reduce((s, l) => s + l[0], 0) * k, y = r.legs.reduce((s, l) => s + l[1], 0) * k;
+    const disp = Math.hypot(x, y), f = v => nf(+v.toFixed(2));
+    el.querySelector(".w-fig").innerHTML = figVektor({legs: r.legs, kotak: k, satuan: u}, {marks: shown ? 3 : 0});
+    el.querySelector(".readout").innerHTML = "Jarak = " + f(dist) + " " + u + " · perpindahan Δr = " + vecText(x, y) + " " + u + " (besar " + magText(x, y) + " " + u + ")<br>" +
+      "Waktu " + f(t) + " " + r.st + " → kelajuan rata-rata = " + f(dist / t) + " " + u + "/" + r.st + " · kecepatan rata-rata = " + vecText(+(x / t).toFixed(2), +(y / t).toFixed(2)) + " " + u + "/" + r.st + " (besar " + f(disp / t) + " " + u + "/" + r.st + ")";
+    $$("[data-r]", el).forEach(b => b.setAttribute("aria-pressed", String(+b.dataset.r === cur)));
+    el.querySelector("[data-show]").setAttribute("aria-pressed", String(shown));
+  }
+  el.addEventListener("click", e => {
+    const b = e.target.closest("[data-r]"); if(b){ cur = +b.dataset.r; draw(); }
+    if(e.target.closest("[data-show]")){ shown = !shown; draw(); }
   });
   draw();
 };
@@ -1299,7 +1480,7 @@ function renderGuru(){
 }
 
 // ---------- start ----------
-$("#eyebrow").textContent = J.subject + " · " + J.src + " · Jalur belajar (pilot)";
+$("#eyebrow").textContent = J.subject + " · " + J.src + " · Jalur belajar (" + (J.status || "pilot") + ")";
 $("#title").innerHTML = tx(J.title);
 $("#lead").innerHTML = tx(J.lead);
 document.addEventListener("click", e => {

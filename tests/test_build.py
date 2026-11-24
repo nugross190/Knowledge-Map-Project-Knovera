@@ -10,6 +10,7 @@ import sys
 import tempfile
 import unittest
 from collections import Counter
+from decimal import Decimal
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
@@ -573,6 +574,7 @@ class PathsTest(unittest.TestCase):
 
     def test_paths_are_valid(self):
         self.assertIn("pengukuran", self.paths)
+        self.assertIn("vektor", self.paths)
         for name, doc in self.paths.items():
             self.assertEqual(build.jalur.validate_jalur(name, doc, self.maps, self.types), [], name)
             self.assertEqual(build.jalur.lint_jalur(name, doc), [], name)
@@ -591,10 +593,11 @@ class PathsTest(unittest.TestCase):
         doc["prasyarat"][0]["untuk"] = ["U99"]                          # unknown unit
         doc["paket"][0]["unit"] = doc["paket"][0]["unit"][1:]           # a pack drops a unit
         doc["soal"].append(dict(doc["soal"][0]))                        # duplicate id
+        doc["status"] = "selesai"                                       # status is pilot or draf
         errors = " | ".join(build.jalur.validate_jalur("pengukuran", doc, self.maps, self.types))
         for needle in ("differs from generator", "needs at least two variants", "known misconception",
                        "unknown widget", "must be a 'bertahap' item", "unknown unit U99", "every unit exactly once",
-                       "duplicate id"):
+                       "duplicate id", "status 'selesai'"):
             self.assertIn(needle, errors)
 
     def test_packs_follow_unit_order(self):
@@ -633,6 +636,35 @@ class PathsTest(unittest.TestCase):
         with self.assertRaises(ValueError):
             j.sig_figs("1500")                                           # ambiguous trailing zeros
 
+    def test_vector_generators_give_known_answers(self):
+        j = build.jalur
+        self.assertEqual([j.vfmt(8, -6, "m/s"), j.vfmt(-1, 0), j.vfmt(0, 1), j.vfmt(0, 0)], ["8i − 6j m/s", "−i", "j", "0"])
+        self.assertEqual(j._mag(12, "3,5"), (Decimal("12.5"), True))                        # exact, not rounded
+        self.assertEqual(j._mag(2, 3), (Decimal("3.61"), False))
+        legs = j.g_vek_komponen({"legs": [[6, 0], [-2, 0], [0, -3]], "besar": True})["langkah"]
+        self.assertEqual([s["kunci"] for s in legs], [4, -3, 5])
+        self.assertIn({"nilai": 8, "m": "M09"}, legs[0]["salah"])                          # distance east + west, not displacement
+        minus = j.g_vek_jumlah({"a": [-3, 4], "b": [7, -1], "op": "−", "besar": True})["langkah"]
+        self.assertEqual([s["kunci"] for s in minus], [-10, 5, 11.18])
+        self.assertIn({"nilai": 10, "m": "M08"}, minus[0]["salah"])                        # B − A
+        route = j.g_vek_rute({"legs": [[4, 0], [0, 3]], "kotak": 100, "t": 100})["langkah"]
+        self.assertEqual([s["kunci"] for s in route], [700, 500, 7, 5])
+        drone = j.g_tka_drone({"dari": [1, 1], "ke": [5, 4], "kotak": 100, "t": 50, "posisi": 0})
+        self.assertEqual(drone["opsi"][drone["kunci"]], "8i + 6j m/s")
+        two = j.g_tka_dua_rute({"rute1": [[4, 0], [0, 3]], "rute2": [[0, 5], [4, 0], [0, -2]], "kotak": 100, "t1": 140, "t2": 220,
+                                "klaim": [{"jenis": "perpindahan-sama"}, {"jenis": "selisih-jarak", "nilai": 400},
+                                          {"jenis": "kelajuan-sama"}, {"jenis": "kecepatan-sama"},
+                                          {"jenis": "waktu-agar-kecepatan-sama", "nilai": 140}]})
+        self.assertEqual(two["kunci"], [True, True, True, False, True])                  # same speed 5 m/s, different velocity
+        courier = j.g_tka_kurir({"legs": [[6, 0], [0, 11], [0, -3]], "menit": 20, "posisi": 0})
+        self.assertEqual(courier["opsi"][:2], ["30 km/jam", "60 km/jam"])               # displacement vs distance over 1/3 jam
+        with self.assertRaises(ValueError):
+            j.g_vek_sama({"panah": [{"dari": [0, 0], "ke": [1, 0], "label": "A"}, {"dari": [0, 1], "ke": [2, 1], "label": "P"}], "tanya": "A"})
+        with self.assertRaises(ValueError):
+            j.g_vek_arah({"x": 0, "y": 0, "posisi": 0})                                   # the zero vector has no direction
+        with self.assertRaises(ValueError):
+            j.g_vek_rute({"legs": [[1, 1]], "t": 1})                                     # a √2 leg has no exact length
+
     def test_path_pages_render_and_link(self):
         pages = build.path_pages(self.paths, self.maps, {})
         home = build.render_site(site(), {})["index.html"]
@@ -646,6 +678,7 @@ class PathsTest(unittest.TestCase):
             self.assertIn("DAS-01", data["topics"])
             self.assertIn(f'href="jalur-{doc["id"]}.html"', home)
         self.assertIn("jalur-pengukuran.html", build.page_names(site()))
+        self.assertIn("jalur-vektor.html", build.page_names(site()))
 
     def test_template_draws_every_widget_and_figure(self):
         template = build.read_template("_jalur.html")

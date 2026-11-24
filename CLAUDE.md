@@ -9,7 +9,7 @@ A growing set of study tools for Indonesian high-school (SMA) subjects, publishe
 - **Subject knowledge maps**: one per subject, each a set of coded topics with key facts, formulas, and commonly confused points. Physics is the first (`data/maps/fisika.json`).
 - **The LCCM history kit**: a history map, a 457-question bank, and a quiz-round simulator, built for a history competition.
 - **Learning modules**: one skill taught in lessons and drilled in staged exercises, from easy to TKA level (`data/modules/`). The first is Vektor dan Gerak.
-- **Learning paths (pilot)**: self-paced sequences of short cards with a prerequisite check, worked examples that fade into practice, a help ladder, feedback keyed to named mistakes, mastery on fresh numbers and spaced review (`data/jalur/`). The first is Besaran dan Pengukuran.
+- **Learning paths (pilot)**: self-paced sequences of short cards with a prerequisite check, worked examples that fade into practice, a help ladder, feedback keyed to named mistakes, mastery on fresh numbers and spaced review (`data/jalur/`). Besaran dan Pengukuran is in a classroom pilot; Vektor is a draft.
 - **TKA practice**: transcribed TKA 2025 exam papers (`data/tka/`) with proposed, unofficial answer keys, on one practice page.
 
 Content is in Indonesian. Code, specs, commits and pull requests are in English.
