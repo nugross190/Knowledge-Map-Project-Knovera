@@ -1,0 +1,5783 @@
+{
+ "id": "vektor",
+ "kode": "VEK",
+ "status": "draf",
+ "subject": "Fisika",
+ "map": "fisika",
+ "src": "Kelas X",
+ "title": "Jalur Vektor",
+ "lead": "Belajar mandiri tentang vektor dalam kartu pendek: besar dan arah, menulis dengan i dan j, menjumlah dengan gambar dan komponen, sampai kelajuan dan kecepatan.",
+ "blurb": "Draf jalur belajar mandiri Fisika kelas X: vektor dengan i dan j, besar dan arah, penjumlahan, serta kelajuan dan kecepatan.",
+ "sesi_menit": 15,
+ "ulang_hari": [
+  1,
+  3,
+  7,
+  21
+ ],
+ "prasyarat": [
+  {
+   "id": "P1",
+   "judul": "Membaca titik pada bidang koordinat",
+   "kenapa": "Vektor i dan j digambar pada kisi koordinat. Kamu perlu membaca titik (x, y): x mendatar, y tegak.",
+   "untuk": [
+    "U2",
+    "U4"
+   ],
+   "cek": [
+    "VEK-001",
+    "VEK-002"
+   ],
+   "jembatan": {
+    "isi": [
+     {
+      "li": [
+       "Titik ditulis (x, y): x dulu (mendatar), lalu y (tegak).",
+       "x positif ke kanan, negatif ke kiri; y positif ke atas, negatif ke bawah.",
+       "Pada peta: kanan = timur, atas = utara."
+      ]
+     },
+     {
+      "contoh": {
+       "soal": "Di mana titik (−2, 3)?",
+       "langkah": [
+        "Dari (0, 0) geser 2 satuan ke kiri (x = −2).",
+        "Lalu naik 3 satuan (y = 3)."
+       ]
+      }
+     }
+    ],
+    "soal": "VEK-003"
+   }
+  },
+  {
+   "id": "P2",
+   "judul": "Bilangan negatif",
+   "kenapa": "Komponen ke barat dan ke selatan bernilai negatif. Menjumlah vektor berarti menjumlah bilangan positif dan negatif.",
+   "untuk": [
+    "U2",
+    "U5"
+   ],
+   "cek": [
+    "VEK-004",
+    "VEK-005"
+   ],
+   "jembatan": {
+    "isi": [
+     {
+      "li": [
+       "Menjumlah dengan bilangan negatif = bergerak ke kiri pada garis bilangan: 4 + (−7) = −3.",
+       "Mengurangi bilangan negatif = menambah: 3 − (−2) = 5.",
+       "Untuk vektor: 3 kotak ke timur lalu 5 kotak ke barat = 3 + (−5) = −2, yaitu 2 kotak ke barat."
+      ]
+     },
+     {
+      "contoh": {
+       "soal": "Hitung −5 + 8 − 4.",
+       "langkah": [
+        "−5 + 8 = 3.",
+        "3 − 4 = −1."
+       ]
+      }
+     }
+    ],
+    "soal": "VEK-006"
+   }
+  },
+  {
+   "id": "P3",
+   "judul": "Teorema Pythagoras",
+   "kenapa": "Besar vektor dihitung dari komponennya dengan teorema Pythagoras.",
+   "untuk": [
+    "U3",
+    "U5",
+    "U6"
+   ],
+   "cek": [
+    "VEK-007",
+    "VEK-008"
+   ],
+   "jembatan": {
+    "isi": [
+     {
+      "li": [
+       "Pada segitiga siku-siku: c² = a² + b², dengan c sisi miring.",
+       "Jadi c = √(a² + b²). Jangan lupa menarik akar.",
+       "Tripel yang sering muncul: 3-4-5, 6-8-10, 5-12-13, 8-15-17."
+      ]
+     },
+     {
+      "contoh": {
+       "soal": "Sisi tegak 9 dan 12. Berapa sisi miringnya?",
+       "langkah": [
+        "c² = 81 + 144 = 225.",
+        "c = √225 = 15."
+       ]
+      }
+     }
+    ],
+    "soal": "VEK-009"
+   }
+  },
+  {
+   "id": "P4",
+   "judul": "Arah mata angin",
+   "kenapa": "Arah vektor sering dinyatakan dengan mata angin: timur, utara, barat, selatan, dan arah di antaranya.",
+   "untuk": [
+    "U1",
+    "U2",
+    "U3"
+   ],
+   "cek": [
+    "VEK-010",
+    "VEK-011"
+   ],
+   "jembatan": {
+    "isi": [
+     {
+      "li": [
+       "Pada peta: atas = utara, bawah = selatan, kanan = timur, kiri = barat.",
+       "Di antaranya: timur laut (timur dan utara), tenggara (timur dan selatan), barat daya (barat dan selatan), barat laut (barat dan utara).",
+       "Pasangan yang berlawanan: utara–selatan, timur–barat, timur laut–barat daya, tenggara–barat laut."
+      ]
+     },
+     {
+      "contoh": {
+       "soal": "Andi berjalan ke barat laut. Ke mana ia harus berjalan untuk kembali?",
+       "langkah": [
+        "Lawan barat laut adalah tenggara.",
+        "Jadi ia berjalan ke tenggara."
+       ]
+      }
+     }
+    ],
+    "soal": "VEK-012"
+   }
+  },
+  {
+   "id": "P5",
+   "judul": "Pembagian dan satuan per",
+   "kenapa": "Kelajuan dan kecepatan adalah hasil bagi: jarak atau perpindahan tiap satuan waktu.",
+   "untuk": [
+    "U6"
+   ],
+   "cek": [
+    "VEK-013",
+    "VEK-014"
+   ],
+   "jembatan": {
+    "isi": [
+     {
+      "li": [
+       "Per berarti tiap satu. Kelajuan dalam m/s = meter tiap sekon.",
+       "Ubah menit ke jam dengan membagi 60: 30 menit = 0,5 jam.",
+       "km/jam = jarak dalam km dibagi waktu dalam jam."
+      ]
+     },
+     {
+      "contoh": {
+       "soal": "12 km ditempuh dalam 30 menit. Berapa km/jam?",
+       "langkah": [
+        "30 menit = 0,5 jam.",
+        "12 : 0,5 = 24 km/jam."
+       ]
+      }
+     }
+    ],
+    "soal": "VEK-015"
+   }
+  }
+ ],
+ "paket": [
+  {
+   "id": "K1",
+   "judul": "Mengenal vektor",
+   "unit": [
+    "U1",
+    "U2",
+    "U3"
+   ]
+  },
+  {
+   "id": "K2",
+   "judul": "Operasi vektor dan gerak",
+   "unit": [
+    "U4",
+    "U5",
+    "U6"
+   ]
+  }
+ ],
+ "unit": [
+  {
+   "id": "U1",
+   "judul": "Skalar dan vektor",
+   "simpul": [
+    "DAS-02"
+   ],
+   "butuh": [
+    "P4"
+   ],
+   "kait": {
+    "teks": "Ani bilang rumahnya 3 km dari sekolah. Budi berjalan 3 km dari sekolah, tetapi tidak sampai di rumah Ani.",
+    "soal": "VEK-016"
+   },
+   "media": {
+    "judul": "Besar dan arah",
+    "alat": [
+     "panah"
+    ],
+    "data": {
+     "batas": [
+      -5,
+      5,
+      -5,
+      5
+     ]
+    },
+    "isi": [
+     {
+      "p": "Besaran skalar cukup dinyatakan dengan nilai dan satuan: massa 50 kg, waktu 10 s. Besaran vektor memerlukan nilai, satuan, dan arah: perpindahan 3 km ke timur."
+     },
+     {
+      "tabel": {
+       "cols": [
+        "Skalar",
+        "Vektor"
+       ],
+       "rows": [
+        [
+         "jarak",
+         "perpindahan"
+        ],
+        [
+         "kelajuan",
+         "kecepatan"
+        ],
+        [
+         "massa",
+         "berat (gaya)"
+        ],
+        [
+         "waktu, suhu, energi",
+         "gaya, percepatan"
+        ]
+       ]
+      }
+     },
+     {
+      "li": [
+       "Vektor digambar sebagai panah: panjangnya menunjukkan besar, ujungnya menunjukkan arah.",
+       "Vektor ditulis dengan huruf tebal (A) atau dengan panah di atas huruf; besarnya ditulis |A|.",
+       "Dua vektor sama jika panjang dan arahnya sama, di mana pun letaknya.",
+       "−A sama panjang dengan A tetapi berlawanan arah."
+      ]
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Gambar menunjukkan empat panah pada kisi. Panah mana yang sama dengan A, dan mana yang sama dengan −A?",
+    "fig": "vektor",
+    "p": {
+     "panah": [
+      {
+       "dari": [
+        0,
+        5
+       ],
+       "ke": [
+        4,
+        5
+       ],
+       "label": "A"
+      },
+      {
+       "dari": [
+        5,
+        3
+       ],
+       "ke": [
+        9,
+        3
+       ],
+       "label": "P"
+      },
+      {
+       "dari": [
+        4,
+        1
+       ],
+       "ke": [
+        0,
+        1
+       ],
+       "label": "Q"
+      },
+      {
+       "dari": [
+        6,
+        1
+       ],
+       "ke": [
+        9,
+        1
+       ],
+       "label": "R"
+      }
+     ]
+    },
+    "langkah": [
+     "A: 4 kotak ke timur.",
+     "P juga 4 kotak ke timur, jadi P = A walaupun letaknya berbeda. R searah tetapi hanya 3 kotak, jadi R ≠ A.",
+     "Q 4 kotak ke barat: sama panjang tetapi berlawanan arah, jadi Q = −A."
+    ]
+   },
+   "bersama": "VEK-017",
+   "sendiri": [
+    "VEK-018",
+    "VEK-019",
+    "VEK-020"
+   ],
+   "ringkas": [
+    "Vektor = besar + arah; skalar = besar saja.",
+    "Vektor digambar sebagai panah: panjang = besar, ujung = arah.",
+    "Vektor sama jika panjang dan arahnya sama; −A berlawanan arah dengan A."
+   ],
+   "lanjut": "Menulis \"3 km ke timur lalu 4 km ke utara\" itu panjang. Adakah cara menulis vektor yang singkat dan bisa dihitung?"
+  },
+  {
+   "id": "U2",
+   "judul": "Menulis vektor dengan i dan j",
+   "simpul": [
+    "DAS-02"
+   ],
+   "butuh": [
+    "P1",
+    "P2",
+    "P4"
+   ],
+   "kait": {
+    "teks": "Dari gerbang sekolah, Rudi berjalan 3 kotak ke timur lalu 4 kotak ke utara pada peta kisi.",
+    "soal": "VEK-021"
+   },
+   "media": {
+    "judul": "Vektor satuan i dan j",
+    "alat": [
+     "panah"
+    ],
+    "data": {
+     "batas": [
+      -5,
+      5,
+      -5,
+      5
+     ]
+    },
+    "isi": [
+     {
+      "li": [
+       "i adalah 1 satuan ke timur (sumbu x positif); j adalah 1 satuan ke utara (sumbu y positif).",
+       "Ke barat: komponen i negatif. Ke selatan: komponen j negatif. Contoh: 2 km ke barat = −2i km.",
+       "Vektor dari titik (x₁, y₁) ke titik (x₂, y₂) adalah (x₂ − x₁)i + (y₂ − y₁)j.",
+       "Beberapa langkah berturut-turut: jumlahkan semua komponen i, lalu semua komponen j."
+      ]
+     },
+     {
+      "jebakan": [
+       "3i + 4j berbeda dengan 4i + 3j: komponen i selalu mendatar, j selalu tegak.",
+       "Tanda negatif menunjukkan arah (barat atau selatan), bukan panjang yang negatif."
+      ]
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Pada peta (1 kotak = 1 km), sebuah sepeda bergerak dari rumah ke warung seperti pada gambar. Tulis perpindahannya dengan i dan j.",
+    "fig": "vektor",
+    "p": {
+     "dari": [
+      1,
+      1
+     ],
+     "ke": [
+      5,
+      -2
+     ],
+     "nama_dari": "Rumah",
+     "nama_ke": "Warung",
+     "satuan": "km",
+     "besar": false
+    },
+    "langkah": [
+     "Mendatar: dari x = 1 ke x = 5: 5 − 1 = 4, jadi 4i.",
+     "Tegak: dari y = 1 ke y = −2: −2 − 1 = −3, jadi −3j.",
+     "Perpindahan = (4i − 3j) km."
+    ]
+   },
+   "bersama": "VEK-022",
+   "sendiri": [
+    "VEK-023",
+    "VEK-024",
+    "VEK-025"
+   ],
+   "ringkas": [
+    "i = 1 satuan ke timur, j = 1 satuan ke utara.",
+    "Barat dan selatan memberi komponen negatif.",
+    "Vektor dari titik awal ke akhir: (x₂ − x₁)i + (y₂ − y₁)j."
+   ],
+   "lanjut": "Rudi berpindah 3i + 4j kotak. Seberapa jauh ia dari gerbang jika diukur lurus? Apakah 7 kotak?"
+  },
+  {
+   "id": "U3",
+   "judul": "Besar dan arah vektor",
+   "simpul": [
+    "DAS-02"
+   ],
+   "butuh": [
+    "P3"
+   ],
+   "kait": {
+    "teks": "Sebuah drone terbang 6 km ke timur, lalu 8 km ke utara.",
+    "soal": "VEK-026"
+   },
+   "media": {
+    "judul": "Pythagoras untuk vektor",
+    "alat": [
+     "panah"
+    ],
+    "data": {
+     "batas": [
+      -5,
+      5,
+      -5,
+      5
+     ]
+    },
+    "isi": [
+     {
+      "li": [
+       "Komponen i dan j saling tegak lurus, jadi besar vektor adalah sisi miring segitiga siku-siku: |A| = √(x² + y²).",
+       "Besar vektor selalu positif; tanda komponen tidak berpengaruh: |−3i + 4j| = √(9 + 16) = 5.",
+       "Arah dibaca dari tanda komponen (tabel di bawah). Besar sudut arahnya dihitung dengan trigonometri dan dibahas tersendiri."
+      ]
+     },
+     {
+      "tabel": {
+       "cols": [
+        "Komponen i",
+        "Komponen j",
+        "Arah"
+       ],
+       "rows": [
+        [
+         "+",
+         "+",
+         "antara timur dan utara"
+        ],
+        [
+         "+",
+         "−",
+         "antara timur dan selatan"
+        ],
+        [
+         "−",
+         "−",
+         "antara barat dan selatan"
+        ],
+        [
+         "−",
+         "+",
+         "antara barat dan utara"
+        ],
+        [
+         "+ atau −",
+         "0",
+         "tepat ke timur atau ke barat"
+        ]
+       ]
+      }
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Tentukan besar dan arah vektor A pada gambar (1 kotak = 1 m).",
+    "fig": "vektor",
+    "p": {
+     "dari": [
+      0,
+      0
+     ],
+     "ke": [
+      -3,
+      4
+     ],
+     "label": "A",
+     "satuan": "m"
+    },
+    "langkah": [
+     "Komponen i: x = −3 m (ke barat).",
+     "Komponen j: y = 4 m (ke utara). Keduanya menjadi sisi tegak segitiga siku-siku: 3 m dan 4 m.",
+     "|A| = √((−3)² + 4²) = √25 = 5 m, arahnya antara barat dan utara."
+    ]
+   },
+   "bersama": "VEK-027",
+   "sendiri": [
+    "VEK-028",
+    "VEK-029",
+    "VEK-030"
+   ],
+   "ringkas": [
+    "|A| = √(x² + y²); hasilnya selalu positif.",
+    "Besar vektor bukan jumlah komponennya.",
+    "Arah dibaca dari tanda komponen i dan j."
+   ],
+   "lanjut": "Rudi berjalan 3i + 4j kotak, lalu 2i − j kotak. Di mana ia sekarang? Bisakah dua vektor dijumlahkan?"
+  },
+  {
+   "id": "U4",
+   "judul": "Menjumlah vektor dengan gambar",
+   "simpul": [
+    "DAS-02"
+   ],
+   "butuh": [
+    "P1"
+   ],
+   "kait": {
+    "teks": "Dodi berjalan 4 kotak ke timur lalu 3 kotak ke utara. Sinta berjalan 3 kotak ke utara lalu 4 kotak ke timur. Keduanya berangkat dari gerbang yang sama.",
+    "soal": "VEK-031"
+   },
+   "media": {
+    "judul": "Ujung ke pangkal",
+    "alat": [
+     "jumlah-vektor"
+    ],
+    "data": {
+     "a": [
+      3,
+      1
+     ],
+     "b": [
+      1,
+      3
+     ]
+    },
+    "isi": [
+     {
+      "li": [
+       "Metode segitiga: gambar A, lalu letakkan pangkal B di ujung A. Resultan A + B ditarik dari pangkal A ke ujung B.",
+       "Metode jajargenjang: A dan B dari pangkal yang sama; resultan adalah diagonal jajargenjang yang dibentuknya. Hasilnya sama.",
+       "A − B = A + (−B): balik arah B, lalu sambungkan ujung ke pangkal.",
+       "Pada kisi, komponen resultan dibaca dengan menghitung kotak dari pangkal A ke ujung B."
+      ]
+     },
+     {
+      "jebakan": [
+       "|A + B| sama dengan |A| + |B| hanya jika A dan B searah; biasanya lebih kecil.",
+       "B − A berlawanan arah dengan A − B."
+      ]
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Gambar menunjukkan A = 4i + j dan B = −i + 3j yang disusun ujung ke pangkal (1 kotak = 1 m). Tentukan A + B.",
+    "fig": "vektor",
+    "p": {
+     "a": [
+      4,
+      1
+     ],
+     "b": [
+      -1,
+      3
+     ],
+     "op": "+",
+     "susun": "ujung",
+     "satuan": "m"
+    },
+    "langkah": [
+     "Komponen i resultan: dari pangkal A ke ujung B, 3 kotak ke timur (4 + (−1) = 3).",
+     "Komponen j resultan: 4 kotak ke utara (1 + 3 = 4).",
+     "A + B = (3i + 4j) m, besarnya 5 m, lebih kecil dari |A| + |B| ≈ 4,12 + 3,16 = 7,28 m."
+    ]
+   },
+   "bersama": "VEK-032",
+   "sendiri": [
+    "VEK-033",
+    "VEK-034",
+    "VEK-035"
+   ],
+   "ringkas": [
+    "Ujung ke pangkal: resultan dari pangkal pertama ke ujung terakhir.",
+    "A + B = B + A.",
+    "A − B = A + (−B); |A + B| ≤ |A| + |B|."
+   ],
+   "lanjut": "Menghitung kotak lambat jika angkanya besar, misalnya 125i + 40j. Bisakah resultan dihitung langsung dari komponennya?"
+  },
+  {
+   "id": "U5",
+   "judul": "Menjumlah vektor dengan komponen",
+   "simpul": [
+    "DAS-02"
+   ],
+   "butuh": [
+    "P2",
+    "P3"
+   ],
+   "kait": {
+    "teks": "A = (3i + 4j) m dan B = (5i − 2j) m.",
+    "soal": "VEK-036"
+   },
+   "media": {
+    "judul": "Jumlahkan per komponen",
+    "alat": [
+     "jumlah-vektor"
+    ],
+    "data": {
+     "a": [
+      2,
+      3
+     ],
+     "b": [
+      3,
+      -1
+     ]
+    },
+    "isi": [
+     {
+      "li": [
+       "A + B: jumlahkan komponen i dengan komponen i, dan komponen j dengan komponen j.",
+       "A − B: kurangkan per komponen, hati-hati dengan tanda negatif: 4 − (−2) = 6.",
+       "Besar resultan dihitung paling akhir: |R| = √(Rx² + Ry²).",
+       "Untuk rute dengan banyak langkah, jumlahkan semua komponen i dan semua komponen j."
+      ]
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "A = (2i + 5j) m dan B = (4i − 2j) m. Hitung A + B dan besarnya.",
+    "fig": "vektor",
+    "p": {
+     "a": [
+      2,
+      5
+     ],
+     "b": [
+      4,
+      -2
+     ],
+     "op": "+",
+     "susun": "ujung",
+     "satuan": "m"
+    },
+    "langkah": [
+     "Komponen i: 2 + 4 = 6.",
+     "Komponen j: 5 + (−2) = 3.",
+     "A + B = (6i + 3j) m; |A + B| = √(6² + 3²) = √45 ≈ 6,71 m."
+    ]
+   },
+   "bersama": "VEK-037",
+   "sendiri": [
+    "VEK-038",
+    "VEK-039",
+    "VEK-040"
+   ],
+   "ringkas": [
+    "Jumlahkan atau kurangkan per komponen.",
+    "Hati-hati dengan tanda: 4 − (−2) = 6.",
+    "Besar resultan dihitung terakhir dengan Pythagoras."
+   ],
+   "lanjut": "Perpindahan 10 km ditempuh dalam 2 jam. Berapa kecepatannya? Bagaimana jika jalannya berbelok-belok?"
+  },
+  {
+   "id": "U6",
+   "judul": "Kelajuan dan kecepatan dengan vektor",
+   "simpul": [
+    "DAS-02",
+    "MEK-01"
+   ],
+   "butuh": [
+    "P3",
+    "P5"
+   ],
+   "kait": {
+    "teks": "Sebuah angkot berangkat dari terminal, berkeliling sejauh 18 km, lalu kembali ke terminal setelah 45 menit.",
+    "soal": "VEK-041"
+   },
+   "media": {
+    "judul": "Jarak, perpindahan, kelajuan, kecepatan",
+    "alat": [
+     "rute"
+    ],
+    "data": {
+     "rute": [
+      {
+       "nama": "Rute A",
+       "legs": [
+        [
+         3,
+         0
+        ],
+        [
+         0,
+         4
+        ]
+       ],
+       "kotak": 20,
+       "satuan": "m",
+       "t": 40,
+       "st": "s"
+      },
+      {
+       "nama": "Rute B",
+       "legs": [
+        [
+         0,
+         4
+        ],
+        [
+         3,
+         0
+        ]
+       ],
+       "kotak": 20,
+       "satuan": "m",
+       "t": 40,
+       "st": "s"
+      },
+      {
+       "nama": "Bolak-balik",
+       "legs": [
+        [
+         5,
+         0
+        ],
+        [
+         -5,
+         0
+        ]
+       ],
+       "kotak": 20,
+       "satuan": "m",
+       "t": 40,
+       "st": "s"
+      },
+      {
+       "nama": "Berliku",
+       "legs": [
+        [
+         0,
+         2
+        ],
+        [
+         3,
+         0
+        ],
+        [
+         0,
+         -1
+        ],
+        [
+         2,
+         0
+        ],
+        [
+         0,
+         3
+        ],
+        [
+         -2,
+         0
+        ]
+       ],
+       "kotak": 20,
+       "satuan": "m",
+       "t": 65,
+       "st": "s"
+      }
+     ]
+    },
+    "isi": [
+     {
+      "li": [
+       "Jarak = jumlah panjang setiap ruas lintasan (skalar).",
+       "Perpindahan Δr = vektor dari titik awal ke titik akhir.",
+       "Kelajuan rata-rata = jarak : waktu (skalar).",
+       "Kecepatan rata-rata v = Δr : Δt = (Δx : Δt)i + (Δy : Δt)j; arahnya sama dengan arah perpindahan.",
+       "Besar kecepatan rata-rata tidak pernah lebih dari kelajuan rata-rata; sama hanya jika lintasannya lurus tanpa berbalik."
+      ]
+     },
+     {
+      "jebakan": [
+       "Lintasan yang kembali ke titik awal: perpindahan nol, jadi kecepatan rata-rata nol, walaupun kelajuannya tidak nol."
+      ]
+     }
+    ]
+   },
+   "lihat": {
+    "soal": "Seorang siswa berlari 60 m ke timur, lalu 80 m ke utara dalam 40 s (1 kotak = 20 m). Hitung kelajuan rata-rata dan kecepatan rata-ratanya.",
+    "fig": "vektor",
+    "p": {
+     "legs": [
+      [
+       3,
+       0
+      ],
+      [
+       0,
+       4
+      ]
+     ],
+     "kotak": 20,
+     "satuan": "m"
+    },
+    "langkah": [
+     "Ruas pertama: 60 m ke timur, yaitu komponen i perpindahan.",
+     "Ruas kedua: 80 m ke utara, komponen j. Jarak = 60 + 80 = 140 m, jadi kelajuan rata-rata = 140 : 40 = 3,5 m/s.",
+     "Perpindahan Δr = (60i + 80j) m, besarnya 100 m. Kecepatan rata-rata = (1,5i + 2j) m/s, besarnya 100 : 40 = 2,5 m/s."
+    ]
+   },
+   "bersama": "VEK-042",
+   "sendiri": [
+    "VEK-043",
+    "VEK-044",
+    "VEK-045"
+   ],
+   "ringkas": [
+    "Kelajuan rata-rata = jarak : waktu; kecepatan rata-rata = perpindahan : waktu.",
+    "Kecepatan rata-rata adalah vektor: (Δx : Δt)i + (Δy : Δt)j.",
+    "Besar kecepatan rata-rata ≤ kelajuan rata-rata; nol jika kembali ke titik awal."
+   ],
+   "lanjut": "Semua unit selesai. Ujian akhir mencampur semua jenis soal, termasuk tiga soal setara TKA tentang rute dan kecepatan."
+  }
+ ],
+ "akhir": {
+  "judul": "Ujian akhir",
+  "teks": "Soal dari kedua paket diacak, termasuk tiga soal setara TKA. Setiap soal dikerjakan sekali, tanpa bantuan. Kartu materi boleh dibuka; jumlah pembukaannya dicatat untuk guru.",
+  "soal": [
+   "VEK-023",
+   "VEK-028",
+   "VEK-046",
+   "VEK-033",
+   "VEK-039",
+   "VEK-047",
+   "VEK-044",
+   "VEK-030",
+   "VEK-040",
+   "VEK-048",
+   "VEK-043",
+   "VEK-019"
+  ]
+ },
+ "miskonsepsi": {
+  "M01": {
+   "judul": "Besaran berarah dikira skalar",
+   "teks": "Besaran yang punya arah, seperti perpindahan, kecepatan, dan gaya, adalah vektor. Jarak, kelajuan, massa, dan waktu adalah skalar."
+  },
+  "M02": {
+   "judul": "Vektor dikira sama karena panjang atau letaknya",
+   "teks": "Dua vektor sama jika panjang dan arahnya sama, di mana pun letaknya. Panjang sama tetapi arah berbeda, atau arah sama tetapi panjang berbeda, bukan vektor yang sama."
+  },
+  "M03": {
+   "judul": "Tanda arah terbalik",
+   "teks": "Dengan i ke timur dan j ke utara, gerak ke barat memberi komponen i negatif dan gerak ke selatan memberi komponen j negatif."
+  },
+  "M04": {
+   "judul": "Komponen i dan j tertukar",
+   "teks": "Komponen i adalah langkah mendatar (timur–barat), komponen j langkah tegak (utara–selatan). Titik (3, −2) berarti 3 ke kanan lalu 2 ke bawah."
+  },
+  "M05": {
+   "judul": "Besar vektor dikira jumlah komponennya",
+   "teks": "Komponen i dan j saling tegak lurus, jadi besarnya memakai Pythagoras: |3i + 4j| = √(3² + 4²) = 5, bukan 7."
+  },
+  "M06": {
+   "judul": "Lupa menarik akar",
+   "teks": "Setelah menjumlahkan kuadrat komponen, tarik akarnya: √(3² + 4²) = √25 = 5, bukan 25."
+  },
+  "M07": {
+   "judul": "Besar resultan dikira jumlah besar vektor",
+   "teks": "|A + B| sama dengan |A| + |B| hanya jika A dan B searah. Hitung dulu komponen resultan, baru besarnya."
+  },
+  "M08": {
+   "judul": "Pengurangan vektor terbalik atau tertukar",
+   "teks": "A − B = A + (−B): balik arah B, lalu jumlahkan. B − A berlawanan arah dengan A − B, dan A + B adalah operasi yang lain."
+  },
+  "M09": {
+   "judul": "Jarak dan perpindahan tertukar",
+   "teks": "Jarak = jumlah panjang setiap ruas lintasan. Perpindahan = vektor dari titik awal ke titik akhir; besarnya tidak pernah lebih dari jarak."
+  },
+  "M10": {
+   "judul": "Kelajuan dan kecepatan tertukar",
+   "teks": "Kelajuan rata-rata = jarak : waktu. Kecepatan rata-rata = perpindahan : waktu."
+  },
+  "M11": {
+   "judul": "Menit tidak diubah ke jam",
+   "teks": "Untuk km/jam, ubah dulu waktu ke jam: 20 menit = 20 : 60 jam."
+  },
+  "M12": {
+   "judul": "Arah kecepatan diabaikan",
+   "teks": "Kecepatan adalah vektor: arahnya harus sama dengan arah perpindahan. Besar yang benar dengan arah yang salah tetap salah."
+  },
+  "M13": {
+   "judul": "Urutan penjumlahan dikira penting",
+   "teks": "A + B = B + A: urutan langkah tidak mengubah posisi akhir."
+  },
+  "M14": {
+   "judul": "Lupa membagi dengan waktu",
+   "teks": "Kecepatan = perpindahan dibagi waktu. Perpindahan saja bukan kecepatan, dan perpindahan dikali waktu juga bukan."
+  },
+  "M15": {
+   "judul": "Pengurangan bilangan negatif",
+   "teks": "Mengurangi bilangan negatif sama dengan menambah: 3 − (−2) = 3 + 2 = 5."
+  },
+  "M16": {
+   "judul": "Arah mata angin tertukar",
+   "teks": "Menghadap utara: timur di kanan, barat di kiri. Timur laut berlawanan dengan barat daya; tenggara berlawanan dengan barat laut."
+  },
+  "M17": {
+   "judul": "Per berarti dibagi",
+   "teks": "Per berarti tiap satu: 120 m dalam 40 s berarti 120 : 40 = 3 m tiap sekon, bukan 120 × 40."
+  }
+ },
+ "soal": [
+  {
+   "id": "VEK-001",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "titik",
+   "fig": "vektor",
+   "bantuan": [
+    "Baca x dulu (mendatar), lalu y (tegak).",
+    "Kanan dan atas positif; kiri dan bawah negatif."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 3,
+      "y": -2,
+      "posisi": 0,
+      "titik": [
+       {
+        "di": [
+         3,
+         -2
+        ],
+        "label": "P"
+       }
+      ],
+      "sumbu": true,
+      "batas": [
+       -5,
+       5,
+       -5,
+       5
+      ]
+     },
+     "soal": "Koordinat titik P pada gambar adalah ...",
+     "opsi": [
+      "(3, −2)",
+      "(−2, 3)",
+      "(−3, −2)",
+      "(−3, 2)"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M04",
+      "2": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "P berada 3 satuan ke kanan (x = 3) dan 2 satuan ke bawah (y = −2).",
+      "Jadi P = (3, −2)."
+     ]
+    },
+    {
+     "p": {
+      "x": -4,
+      "y": 1,
+      "posisi": 2,
+      "titik": [
+       {
+        "di": [
+         -4,
+         1
+        ],
+        "label": "Q"
+       }
+      ],
+      "sumbu": true,
+      "batas": [
+       -5,
+       5,
+       -5,
+       5
+      ]
+     },
+     "soal": "Koordinat titik Q pada gambar adalah ...",
+     "opsi": [
+      "(1, −4)",
+      "(4, 1)",
+      "(−4, 1)",
+      "(4, −1)"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M04",
+      "1": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "Q berada 4 satuan ke kiri (x = −4) dan 1 satuan ke atas (y = 1).",
+      "Jadi Q = (−4, 1)."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-002",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "x negatif berarti ke kiri, y positif berarti ke atas."
+   ],
+   "varian": [
+    {
+     "soal": "Titik (−3, 4) terletak di ...",
+     "opsi": [
+      "kiri atas titik asal (0, 0)",
+      "kanan atas titik asal",
+      "kiri bawah titik asal",
+      "kanan bawah titik asal"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "x = −3: ke kiri. y = 4: ke atas.",
+      "Jadi titiknya di kiri atas titik asal."
+     ],
+     "salah": {
+      "1": "M03",
+      "2": "M03",
+      "3": "M04"
+     }
+    },
+    {
+     "soal": "Titik (2, −5) terletak di ...",
+     "opsi": [
+      "kiri atas titik asal (0, 0)",
+      "kanan atas titik asal",
+      "kiri bawah titik asal",
+      "kanan bawah titik asal"
+     ],
+     "kunci": 3,
+     "pembahasan": [
+      "x = 2: ke kanan. y = −5: ke bawah.",
+      "Jadi titiknya di kanan bawah titik asal."
+     ],
+     "salah": {
+      "0": "M04",
+      "1": "M03",
+      "2": "M03"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-003",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "titik",
+   "fig": "vektor",
+   "bantuan": [
+    "Mulai dari (0, 0): geser mendatar dulu, lalu tegak."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": -1,
+      "y": -3,
+      "posisi": 1,
+      "titik": [
+       {
+        "di": [
+         -1,
+         -3
+        ],
+        "label": "R"
+       }
+      ],
+      "sumbu": true,
+      "batas": [
+       -5,
+       5,
+       -5,
+       5
+      ]
+     },
+     "soal": "Koordinat titik R pada gambar adalah ...",
+     "opsi": [
+      "(−3, −1)",
+      "(−1, −3)",
+      "(1, −3)",
+      "(1, 3)"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M04",
+      "2": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "R berada 1 satuan ke kiri dan 3 satuan ke bawah.",
+      "Jadi R = (−1, −3)."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-004",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "operasi",
+   "bantuan": [
+    "Pada garis bilangan, menambah bilangan negatif berarti bergerak ke kiri."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": -3,
+      "b": 5,
+      "op": "+"
+     },
+     "soal": "−3 + 5 = ...",
+     "kunci": 2,
+     "pembahasan": [
+      "Dari −3 bergerak 5 ke kanan: −3 + 5 = 2."
+     ],
+     "satuan": "(tanpa satuan)",
+     "salah": [
+      {
+       "nilai": -8,
+       "m": "M03"
+      },
+      {
+       "nilai": 8,
+       "m": "M03"
+      }
+     ]
+    },
+    {
+     "p": {
+      "a": 4,
+      "b": -7,
+      "op": "+"
+     },
+     "soal": "4 + (−7) = ...",
+     "kunci": -3,
+     "pembahasan": [
+      "Menambah −7 berarti bergerak 7 ke kiri: 4 − 7 = −3."
+     ],
+     "satuan": "(tanpa satuan)",
+     "salah": [
+      {
+       "nilai": 3,
+       "m": "M03"
+      },
+      {
+       "nilai": 11,
+       "m": "M03"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-005",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "operasi",
+   "bantuan": [
+    "Mengurangi bilangan negatif sama dengan menambah."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": 3,
+      "b": -2,
+      "op": "−"
+     },
+     "soal": "3 − (−2) = ...",
+     "kunci": 5,
+     "pembahasan": [
+      "3 − (−2) = 3 + 2 = 5."
+     ],
+     "satuan": "(tanpa satuan)",
+     "salah": [
+      {
+       "nilai": 1,
+       "m": "M15"
+      }
+     ]
+    },
+    {
+     "p": {
+      "a": -6,
+      "b": -4,
+      "op": "−"
+     },
+     "soal": "−6 − (−4) = ...",
+     "kunci": -2,
+     "pembahasan": [
+      "−6 − (−4) = −6 + 4 = −2."
+     ],
+     "satuan": "(tanpa satuan)",
+     "salah": [
+      {
+       "nilai": -10,
+       "m": "M15"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-006",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "operasi",
+   "bantuan": [
+    "Dari −2, bergerak 5 ke kiri."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": -2,
+      "b": 5,
+      "op": "−"
+     },
+     "soal": "−2 − 5 = ...",
+     "kunci": -7,
+     "pembahasan": [
+      "Dari −2 bergerak 5 ke kiri: −7."
+     ],
+     "satuan": "(tanpa satuan)",
+     "salah": [
+      {
+       "nilai": 3,
+       "m": "M03"
+      },
+      {
+       "nilai": -3,
+       "m": "M03"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-007",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "vek-besar",
+   "bantuan": [
+    "Sisi miring c = √(a² + b²).",
+    "Kuadratkan, jumlahkan, lalu tarik akar."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 6,
+      "y": 8
+     },
+     "soal": "Sebuah segitiga siku-siku memiliki sisi tegak 6 cm dan 8 cm. Berapa panjang sisi miringnya?",
+     "kunci": 10,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 14,
+       "m": "M05"
+      },
+      {
+       "nilai": 100,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "c² = 6² + 8² = 36 + 64 = 100.",
+      "c = √100 = 10 cm."
+     ],
+     "satuan": "cm"
+    },
+    {
+     "p": {
+      "x": 5,
+      "y": 12
+     },
+     "soal": "Sebuah segitiga siku-siku memiliki sisi tegak 5 cm dan 12 cm. Berapa panjang sisi miringnya?",
+     "kunci": 13,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 17,
+       "m": "M05"
+      },
+      {
+       "nilai": 169,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "c² = 25 + 144 = 169.",
+      "c = √169 = 13 cm."
+     ],
+     "satuan": "cm"
+    }
+   ]
+  },
+  {
+   "id": "VEK-008",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "vek-besar",
+   "bantuan": [
+    "Sisi miring c = √(a² + b²).",
+    "Tulis hasilnya dengan dua angka di belakang koma."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 1,
+      "y": 2
+     },
+     "soal": "Sisi tegak sebuah segitiga siku-siku 1 cm dan 2 cm. Berapa panjang sisi miringnya (dua angka di belakang koma)?",
+     "kunci": 2.24,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 3,
+       "m": "M05"
+      },
+      {
+       "nilai": 5,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "c² = 1 + 4 = 5.",
+      "c = √5 ≈ 2,24 cm."
+     ],
+     "satuan": "cm"
+    },
+    {
+     "p": {
+      "x": 2,
+      "y": 3
+     },
+     "soal": "Sisi tegak sebuah segitiga siku-siku 2 cm dan 3 cm. Berapa panjang sisi miringnya (dua angka di belakang koma)?",
+     "kunci": 3.61,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 5,
+       "m": "M05"
+      },
+      {
+       "nilai": 13,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "c² = 4 + 9 = 13.",
+      "c = √13 ≈ 3,61 cm."
+     ],
+     "satuan": "cm"
+    }
+   ]
+  },
+  {
+   "id": "VEK-009",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "vek-besar",
+   "bantuan": [
+    "Kuadratkan kedua sisi tegak, jumlahkan, lalu tarik akar."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 8,
+      "y": 15
+     },
+     "soal": "Sisi tegak sebuah segitiga siku-siku 8 m dan 15 m. Berapa panjang sisi miringnya?",
+     "kunci": 17,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 23,
+       "m": "M05"
+      },
+      {
+       "nilai": 289,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "c² = 64 + 225 = 289.",
+      "c = √289 = 17 m."
+     ],
+     "satuan": "m"
+    }
+   ]
+  },
+  {
+   "id": "VEK-010",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Bayangkan peta: atas utara, kanan timur."
+   ],
+   "varian": [
+    {
+     "soal": "Jika kamu menghadap utara, arah timur ada di sebelah ...",
+     "opsi": [
+      "kanan",
+      "kiri",
+      "belakang",
+      "depan"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Menghadap utara: timur di kanan, barat di kiri, selatan di belakang."
+     ],
+     "salah": {
+      "1": "M16"
+     }
+    },
+    {
+     "soal": "Arah yang berlawanan dengan barat daya adalah ...",
+     "opsi": [
+      "tenggara",
+      "barat laut",
+      "timur laut",
+      "selatan"
+     ],
+     "kunci": 2,
+     "pembahasan": [
+      "Barat daya berada di antara barat dan selatan; lawannya di antara timur dan utara, yaitu timur laut."
+     ],
+     "salah": {
+      "0": "M16",
+      "1": "M16"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-011",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Arah di antara dua mata angin utama punya nama sendiri."
+   ],
+   "varian": [
+    {
+     "soal": "Pada peta biasa, arah ke atas menunjukkan ...",
+     "opsi": [
+      "utara",
+      "timur",
+      "selatan",
+      "barat"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Peta biasanya digambar dengan utara di atas dan timur di kanan."
+     ],
+     "salah": {
+      "1": "M16"
+     }
+    },
+    {
+     "soal": "Arah di antara selatan dan timur disebut ...",
+     "opsi": [
+      "barat daya",
+      "tenggara",
+      "timur laut",
+      "barat laut"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "Antara timur dan selatan adalah tenggara."
+     ],
+     "salah": {
+      "0": "M16",
+      "2": "M16"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-012",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Lawan arah ada di seberang mawar angin."
+   ],
+   "varian": [
+    {
+     "soal": "Arah yang berlawanan dengan tenggara adalah ...",
+     "opsi": [
+      "barat laut",
+      "barat daya",
+      "timur laut",
+      "utara"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Tenggara berada di antara timur dan selatan; lawannya di antara barat dan utara, yaitu barat laut."
+     ],
+     "salah": {
+      "1": "M16",
+      "2": "M16"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-013",
+   "format": "isian",
+   "simpul": "MEK-01",
+   "gen": "operasi",
+   "bantuan": [
+    "Per berarti tiap satu: bagi jaraknya dengan waktunya."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": 120,
+      "b": 40,
+      "op": ":"
+     },
+     "soal": "Sebuah troli menempuh 120 m dalam 40 s. Berapa meter yang ditempuh tiap sekon?",
+     "kunci": 3,
+     "pembahasan": [
+      "120 m : 40 s = 3 m/s."
+     ],
+     "satuan": "m/s",
+     "salah": [
+      {
+       "nilai": 4800,
+       "m": "M17"
+      }
+     ]
+    },
+    {
+     "p": {
+      "a": 90,
+      "b": 2,
+      "op": ":"
+     },
+     "soal": "Sebuah bus menempuh 90 km dalam 2 jam. Berapa km yang ditempuh tiap jam?",
+     "kunci": 45,
+     "pembahasan": [
+      "90 km : 2 jam = 45 km/jam."
+     ],
+     "satuan": "km/jam",
+     "salah": [
+      {
+       "nilai": 180,
+       "m": "M17"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-014",
+   "format": "isian",
+   "simpul": "MEK-01",
+   "gen": "operasi",
+   "bantuan": [
+    "1 jam = 60 menit, jadi menit dibagi 60."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": 15,
+      "b": 60,
+      "op": ":"
+     },
+     "soal": "15 menit = ... jam",
+     "kunci": 0.25,
+     "pembahasan": [
+      "15 : 60 = 0,25 jam."
+     ],
+     "satuan": "jam",
+     "salah": [
+      {
+       "nilai": 0.15,
+       "m": "M11"
+      },
+      {
+       "nilai": 900,
+       "m": "M11"
+      }
+     ]
+    },
+    {
+     "p": {
+      "a": 45,
+      "b": 60,
+      "op": ":"
+     },
+     "soal": "45 menit = ... jam",
+     "kunci": 0.75,
+     "pembahasan": [
+      "45 : 60 = 0,75 jam."
+     ],
+     "satuan": "jam",
+     "salah": [
+      {
+       "nilai": 0.45,
+       "m": "M11"
+      },
+      {
+       "nilai": 2700,
+       "m": "M11"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-015",
+   "format": "isian",
+   "simpul": "MEK-01",
+   "gen": "operasi",
+   "bantuan": [
+    "Bagi jarak dengan waktu dalam jam."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": 9,
+      "b": "0,5",
+      "op": ":"
+     },
+     "soal": "Sebuah sepeda menempuh 9 km dalam 0,5 jam. Berapa km/jam kelajuannya?",
+     "kunci": 18,
+     "pembahasan": [
+      "9 km : 0,5 jam = 18 km/jam."
+     ],
+     "satuan": "km/jam",
+     "salah": [
+      {
+       "nilai": 4.5,
+       "m": "M17"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-016",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "3 km ke mana? Ke timur, ke barat, atau ke arah lain?"
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: apa yang kurang dari keterangan Ani?",
+     "opsi": [
+      "Arahnya",
+      "Satuannya",
+      "Waktu tempuhnya",
+      "Tidak ada; Budi salah menghitung"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Keterangan 3 km hanya memberi besar. Tanpa arah, Budi bisa berjalan 3 km ke arah mana saja.",
+      "Besaran yang memerlukan besar dan arah disebut vektor; perpindahan adalah vektor."
+     ],
+     "salah": {
+      "3": "M01"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-017",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "fig": "vektor",
+   "bantuan": [
+    "Hitung kotak dari pangkal ke ujung setiap panah.",
+    "Sama berarti sama panjang dan sama arah."
+   ],
+   "varian": [
+    {
+     "soal": "Gambar menunjukkan empat panah pada kisi.",
+     "langkah": [
+      {
+       "teks": "Panjang panah B (kotak)",
+       "kunci": 3
+      },
+      {
+       "teks": "Panjang panah D (kotak)",
+       "kunci": 3
+      },
+      {
+       "teks": "Banyak panah yang sama dengan B, termasuk B sendiri",
+       "kunci": 2
+      }
+     ],
+     "pembahasan": [
+      "B: 3 kotak ke utara. D: 3 kotak ke selatan, jadi D = −B (sama panjang, berlawanan arah).",
+      "C juga 3 kotak ke utara: C = B. E searah tetapi hanya 2 kotak.",
+      "Jadi yang sama dengan B ada 2: B dan C."
+     ],
+     "p": {
+      "panah": [
+       {
+        "dari": [
+         0,
+         0
+        ],
+        "ke": [
+         0,
+         3
+        ],
+        "label": "B"
+       },
+       {
+        "dari": [
+         2,
+         1
+        ],
+        "ke": [
+         2,
+         4
+        ],
+        "label": "C"
+       },
+       {
+        "dari": [
+         4,
+         4
+        ],
+        "ke": [
+         4,
+         1
+        ],
+        "label": "D"
+       },
+       {
+        "dari": [
+         6,
+         0
+        ],
+        "ke": [
+         6,
+         2
+        ],
+        "label": "E"
+       }
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-018",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Tanyakan untuk setiap besaran: apakah arah ikut menentukan nilainya?",
+    "Perpindahan, kecepatan, percepatan, dan gaya punya arah."
+   ],
+   "varian": [
+    {
+     "soal": "Kelompok besaran manakah yang semuanya vektor?",
+     "opsi": [
+      "perpindahan, kecepatan, gaya",
+      "jarak, kelajuan, waktu",
+      "massa, gaya, suhu",
+      "perpindahan, kelajuan, waktu"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Perpindahan, kecepatan, dan gaya memerlukan arah.",
+      "Jarak, kelajuan, waktu, massa, dan suhu adalah skalar."
+     ],
+     "salah": {
+      "1": "M01",
+      "3": "M01"
+     }
+    },
+    {
+     "soal": "Manakah yang merupakan besaran skalar?",
+     "opsi": [
+      "kecepatan",
+      "gaya",
+      "kelajuan",
+      "perpindahan"
+     ],
+     "kunci": 2,
+     "pembahasan": [
+      "Kelajuan hanya punya besar (misalnya 10 m/s).",
+      "Kecepatan, gaya, dan perpindahan punya arah, jadi vektor."
+     ],
+     "salah": {
+      "0": "M01",
+      "1": "M01",
+      "3": "M01"
+     }
+    },
+    {
+     "soal": "Pernyataan manakah yang menyatakan besaran vektor dengan lengkap?",
+     "opsi": [
+      "Mobil bergerak 60 km/jam",
+      "Pesawat terbang 800 km/jam ke barat",
+      "Suhu ruangan 30 °C",
+      "Tali sepanjang 2 m"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "Vektor lengkap memuat besar dan arah: 800 km/jam ke barat.",
+      "60 km/jam tanpa arah adalah kelajuan (skalar)."
+     ],
+     "salah": {
+      "0": "M01"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-019",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "vek-sama",
+   "fig": "vektor",
+   "bantuan": [
+    "Hitung berapa kotak ke kanan atau kiri, dan ke atas atau bawah, untuk setiap panah.",
+    "Vektor sama jika langkah mendatar dan tegaknya persis sama."
+   ],
+   "varian": [
+    {
+     "p": {
+      "panah": [
+       {
+        "dari": [
+         0,
+         0
+        ],
+        "ke": [
+         3,
+         1
+        ],
+        "label": "A"
+       },
+       {
+        "dari": [
+         1,
+         3
+        ],
+        "ke": [
+         4,
+         4
+        ],
+        "label": "P"
+       },
+       {
+        "dari": [
+         5,
+         0
+        ],
+        "ke": [
+         2,
+         -1
+        ],
+        "label": "Q"
+       },
+       {
+        "dari": [
+         0,
+         2
+        ],
+        "ke": [
+         6,
+         4
+        ],
+        "label": "R"
+       }
+      ],
+      "tanya": "A"
+     },
+     "soal": "Gambar menunjukkan beberapa panah pada kisi. Panah manakah yang sama dengan vektor A?",
+     "opsi": [
+      "Panah P",
+      "Panah Q",
+      "Panah R"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M02",
+      "2": "M02"
+     },
+     "pembahasan": [
+      "Panah A: 3i + j.",
+      "Panah P: 3i + j.",
+      "Panah Q: −3i − j.",
+      "Panah R: 6i + 2j.",
+      "Hanya P yang langkah mendatar dan tegaknya sama dengan A, jadi P = A."
+     ]
+    },
+    {
+     "p": {
+      "panah": [
+       {
+        "dari": [
+         0,
+         0
+        ],
+        "ke": [
+         -2,
+         3
+        ],
+        "label": "A"
+       },
+       {
+        "dari": [
+         5,
+         0
+        ],
+        "ke": [
+         7,
+         -3
+        ],
+        "label": "P"
+       },
+       {
+        "dari": [
+         3,
+         1
+        ],
+        "ke": [
+         1,
+         4
+        ],
+        "label": "Q"
+       },
+       {
+        "dari": [
+         -4,
+         0
+        ],
+        "ke": [
+         -6,
+         2
+        ],
+        "label": "R"
+       }
+      ],
+      "tanya": "A"
+     },
+     "soal": "Gambar menunjukkan beberapa panah pada kisi. Panah manakah yang sama dengan vektor A?",
+     "opsi": [
+      "Panah P",
+      "Panah Q",
+      "Panah R"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M02",
+      "2": "M02"
+     },
+     "pembahasan": [
+      "Panah A: −2i + 3j.",
+      "Panah P: 2i − 3j.",
+      "Panah Q: −2i + 3j.",
+      "Panah R: −2i + 2j.",
+      "Hanya Q yang langkah mendatar dan tegaknya sama dengan A, jadi Q = A."
+     ]
+    },
+    {
+     "p": {
+      "panah": [
+       {
+        "dari": [
+         0,
+         0
+        ],
+        "ke": [
+         4,
+         0
+        ],
+        "label": "A"
+       },
+       {
+        "dari": [
+         6,
+         4
+        ],
+        "ke": [
+         2,
+         4
+        ],
+        "label": "P"
+       },
+       {
+        "dari": [
+         1,
+         -2
+        ],
+        "ke": [
+         3,
+         -2
+        ],
+        "label": "Q"
+       },
+       {
+        "dari": [
+         0,
+         2
+        ],
+        "ke": [
+         4,
+         2
+        ],
+        "label": "R"
+       }
+      ],
+      "tanya": "A"
+     },
+     "soal": "Gambar menunjukkan beberapa panah pada kisi. Panah manakah yang sama dengan vektor A?",
+     "opsi": [
+      "Panah P",
+      "Panah Q",
+      "Panah R"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M02",
+      "1": "M02"
+     },
+     "pembahasan": [
+      "Panah A: 4i.",
+      "Panah P: −4i.",
+      "Panah Q: 2i.",
+      "Panah R: 4i.",
+      "Hanya R yang langkah mendatar dan tegaknya sama dengan A, jadi R = A."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-020",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Tanda negatif pada vektor membalik arahnya; besarnya tetap."
+   ],
+   "varian": [
+    {
+     "soal": "Jika A = 5 m ke utara, maka −A adalah ...",
+     "opsi": [
+      "5 m ke selatan",
+      "5 m ke utara",
+      "−5 m, tanpa arah",
+      "2,5 m ke selatan"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "−A sama panjang dengan A tetapi berlawanan arah: 5 m ke selatan."
+     ],
+     "salah": {
+      "1": "M03"
+     }
+    },
+    {
+     "soal": "Jika B = 3 km ke timur, maka −B adalah ...",
+     "opsi": [
+      "3 km ke timur",
+      "3 km ke barat",
+      "0 km",
+      "6 km ke barat"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "−B sama panjang dengan B tetapi berlawanan arah: 3 km ke barat."
+     ],
+     "salah": {
+      "0": "M03"
+     }
+    },
+    {
+     "soal": "Vektor A dan B sama panjang tetapi berlawanan arah. Pernyataan yang benar adalah ...",
+     "opsi": [
+      "A = B",
+      "A = −B",
+      "A + B = 2A",
+      "A dan B bukan vektor"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "Sama panjang dan berlawanan arah berarti A = −B (dan A + B = 0)."
+     ],
+     "salah": {
+      "0": "M02"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-021",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Satu huruf untuk arah mendatar, satu huruf untuk arah tegak."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: cara menulis perpindahan Rudi yang paling ringkas adalah ...",
+     "opsi": [
+      "3i + 4j",
+      "4i + 3j",
+      "3 + 4 = 7",
+      "34"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Dengan i = 1 kotak ke timur dan j = 1 kotak ke utara: 3i + 4j.",
+      "4i + 3j berarti 4 ke timur dan 3 ke utara, tempat yang berbeda."
+     ],
+     "salah": {
+      "1": "M04",
+      "2": "M05"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-022",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-komponen",
+   "fig": "vektor",
+   "bantuan": [
+    "Hitung kotak dari pangkal ke ujung: ke kanan positif, ke kiri negatif.",
+    "Lalu ke atas positif, ke bawah negatif."
+   ],
+   "varian": [
+    {
+     "p": {
+      "dari": [
+       -2,
+       3
+      ],
+      "ke": [
+       3,
+       1
+      ],
+      "satuan": "km",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan perpindahan sebuah drone (1 kotak = 1 km).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 5,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M03"
+        },
+        {
+         "nilai": -2,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": -2,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M03"
+        },
+        {
+         "nilai": 5,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Mendatar: dari x = −2 ke x = 3: 3 − (−2) = 5, jadi 5i.",
+      "Tegak: dari y = 3 ke y = 1: 1 − 3 = −2, jadi −2j.",
+      "Perpindahan = (5i − 2j) km."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-023",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-komponen",
+   "fig": "vektor",
+   "bantuan": [
+    "Hitung kotak dari pangkal ke ujung panah: ke kanan positif, ke kiri negatif.",
+    "Ke atas positif, ke bawah negatif."
+   ],
+   "varian": [
+    {
+     "p": {
+      "dari": [
+       0,
+       0
+      ],
+      "ke": [
+       4,
+       3
+      ],
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Tulis vektor perpindahan pada gambar dengan i dan j (1 kotak = 1 m).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 4,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -4,
+         "m": "M03"
+        },
+        {
+         "nilai": 3,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": 3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -3,
+         "m": "M03"
+        },
+        {
+         "nilai": 4,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Mendatar: dari x = 0 ke x = 4: 4 − 0 = 4, jadi 4i.",
+      "Tegak: dari y = 0 ke y = 3: 3 − 0 = 3, jadi 3j.",
+      "Perpindahan = (4i + 3j) m."
+     ]
+    },
+    {
+     "p": {
+      "dari": [
+       2,
+       4
+      ],
+      "ke": [
+       -1,
+       1
+      ],
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Tulis vektor perpindahan pada gambar dengan i dan j (1 kotak = 1 m).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": -3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": -3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Mendatar: dari x = 2 ke x = −1: −1 − 2 = −3, jadi −3i.",
+      "Tegak: dari y = 4 ke y = 1: 1 − 4 = −3, jadi −3j.",
+      "Perpindahan = (−3i − 3j) m."
+     ]
+    },
+    {
+     "p": {
+      "dari": [
+       -3,
+       -2
+      ],
+      "ke": [
+       2,
+       -4
+      ],
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Tulis vektor perpindahan pada gambar dengan i dan j (1 kotak = 1 m).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M03"
+        },
+        {
+         "nilai": -2,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": -2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M03"
+        },
+        {
+         "nilai": 5,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Mendatar: dari x = −3 ke x = 2: 2 − (−3) = 5, jadi 5i.",
+      "Tegak: dari y = −2 ke y = −4: −4 − (−2) = −2, jadi −2j.",
+      "Perpindahan = (5i − 2j) m."
+     ]
+    },
+    {
+     "p": {
+      "dari": [
+       1,
+       -3
+      ],
+      "ke": [
+       1,
+       2
+      ],
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Tulis vektor perpindahan pada gambar dengan i dan j (1 kotak = 1 m).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 0,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 5,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M03"
+        },
+        {
+         "nilai": 0,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Tidak ada langkah mendatar: komponen i = 0.",
+      "Tegak: dari y = −3 ke y = 2: 2 − (−3) = 5, jadi 5j.",
+      "Perpindahan = 5j m."
+     ]
+    },
+    {
+     "p": {
+      "dari": [
+       4,
+       1
+      ],
+      "ke": [
+       -2,
+       1
+      ],
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Tulis vektor perpindahan pada gambar dengan i dan j (1 kotak = 1 m).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": -6,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M03"
+        },
+        {
+         "nilai": 0,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": 0,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -6,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Mendatar: dari x = 4 ke x = −2: −2 − 4 = −6, jadi −6i.",
+      "Tidak ada langkah tegak: komponen j = 0.",
+      "Perpindahan = −6i m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-024",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-komponen",
+   "bantuan": [
+    "Tulis setiap langkah sebagai komponen: timur dan utara positif, barat dan selatan negatif.",
+    "Jumlahkan semua komponen i, lalu semua komponen j."
+   ],
+   "varian": [
+    {
+     "p": {
+      "legs": [
+       [
+        -5,
+        0
+       ],
+       [
+        0,
+        2
+       ]
+      ],
+      "satuan": "km"
+     },
+     "soal": "Sebuah drone terbang 5 km ke barat, lalu 2 km ke utara. Tulis perpindahannya dengan i dan j (i ke timur, j ke utara).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": -5,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 5,
+         "m": "M03"
+        },
+        {
+         "nilai": 2,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": 2,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -2,
+         "m": "M03"
+        },
+        {
+         "nilai": -5,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −5.",
+      "Komponen j: 2.",
+      "Perpindahan = (−5i + 2j) km."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        3,
+        0
+       ],
+       [
+        0,
+        -6
+       ],
+       [
+        2,
+        0
+       ]
+      ],
+      "satuan": "km"
+     },
+     "soal": "Seorang kurir berjalan 3 km ke timur, 6 km ke selatan, lalu 2 km ke timur. Tulis perpindahannya dengan i dan j (i ke timur, j ke utara).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 5,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M03"
+        },
+        {
+         "nilai": -6,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": -6,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M03"
+        },
+        {
+         "nilai": 5,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 3 + 2 = 5.",
+      "Komponen j: −6.",
+      "Perpindahan = (5i − 6j) km."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        0,
+        4
+       ],
+       [
+        -7,
+        0
+       ],
+       [
+        0,
+        -1
+       ]
+      ],
+      "satuan": "km"
+     },
+     "soal": "Sebuah perahu bergerak 4 km ke utara, 7 km ke barat, lalu 1 km ke selatan. Tulis perpindahannya dengan i dan j (i ke timur, j ke utara).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": -7,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M03"
+        },
+        {
+         "nilai": 3,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": 3,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -3,
+         "m": "M03"
+        },
+        {
+         "nilai": -7,
+         "m": "M04"
+        },
+        {
+         "nilai": 5,
+         "m": "M09"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −7.",
+      "Komponen j: 4 + (−1) = 3.",
+      "Perpindahan = (−7i + 3j) km."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        6,
+        0
+       ],
+       [
+        -2,
+        0
+       ],
+       [
+        0,
+        -3
+       ]
+      ],
+      "satuan": "m"
+     },
+     "soal": "Seorang siswa berlari 6 m ke timur, 2 m ke barat, lalu 3 m ke selatan. Tulis perpindahannya dengan i dan j (i ke timur, j ke utara).",
+     "langkah": [
+      {
+       "teks": "Komponen i (timur positif)",
+       "kunci": 4,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -4,
+         "m": "M03"
+        },
+        {
+         "nilai": -3,
+         "m": "M04"
+        },
+        {
+         "nilai": 8,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (utara positif)",
+       "kunci": -3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M03"
+        },
+        {
+         "nilai": 4,
+         "m": "M04"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 6 + (−2) = 4.",
+      "Komponen j: −3.",
+      "Perpindahan = (4i − 3j) m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-025",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "i ke timur, j ke utara. Barat dan selatan memberi tanda negatif."
+   ],
+   "varian": [
+    {
+     "soal": "Perpindahan 4 km ke selatan ditulis ...",
+     "opsi": [
+      "−4j km",
+      "4j km",
+      "−4i km",
+      "4i km"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Selatan adalah arah tegak (j) yang negatif: −4j km."
+     ],
+     "salah": {
+      "1": "M03",
+      "2": "M04",
+      "3": "M04"
+     }
+    },
+    {
+     "soal": "Vektor −3i km menunjukkan perpindahan ...",
+     "opsi": [
+      "3 km ke barat",
+      "3 km ke timur",
+      "3 km ke selatan",
+      "Tidak mungkin; panjang tidak bisa negatif"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Komponen i mendatar; tanda negatif berarti ke barat: 3 km ke barat."
+     ],
+     "salah": {
+      "1": "M03",
+      "2": "M04"
+     }
+    },
+    {
+     "soal": "Perpindahan 2 m ke timur dan 5 m ke selatan ditulis ...",
+     "opsi": [
+      "2i + 5j",
+      "2i − 5j",
+      "−2i + 5j",
+      "5i − 2j"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "Timur: +2i. Selatan: −5j. Jadi 2i − 5j."
+     ],
+     "salah": {
+      "0": "M03",
+      "2": "M03",
+      "3": "M04"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-026",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Gambar segitiga siku-siku: 6 dan 8 adalah sisi tegaknya."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: seberapa jauh drone dari tempat berangkat, diukur lurus?",
+     "opsi": [
+      "14 km",
+      "10 km",
+      "2 km",
+      "48 km"
+     ],
+     "kunci": 1,
+     "pembahasan": [
+      "Jarak lurus adalah sisi miring segitiga siku-siku dengan sisi 6 km dan 8 km.",
+      "√(6² + 8²) = √100 = 10 km, bukan 6 + 8 = 14 km."
+     ],
+     "salah": {
+      "0": "M05"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-027",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-besar-tahap",
+   "bantuan": [
+    "Kuadratkan setiap komponen; hasilnya selalu positif.",
+    "Jumlahkan, lalu tarik akarnya."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 5,
+      "y": -12
+     },
+     "soal": "Hitung besar vektor B = (5i − 12j) m.",
+     "langkah": [
+      {
+       "teks": "x² (m²)",
+       "kunci": 25,
+       "satuan": "m²"
+      },
+      {
+       "teks": "y² (m²)",
+       "kunci": 144,
+       "satuan": "m²"
+      },
+      {
+       "teks": "|B| (m)",
+       "kunci": 13,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 17,
+         "m": "M05"
+        },
+        {
+         "nilai": 169,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "x² = 5² = 25.",
+      "y² = (−12)² = 144 (kuadrat bilangan negatif bernilai positif).",
+      "|B| = √(25 + 144) = √169 = 13 m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-028",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "vek-besar",
+   "bantuan": [
+    "Kuadratkan kedua komponen (tanda negatif hilang), jumlahkan, lalu tarik akar.",
+    "Tulis dua angka di belakang koma bila hasilnya tidak bulat."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": 3,
+      "y": 4
+     },
+     "soal": "Berapa besar vektor A = (3i + 4j) km?",
+     "kunci": 5,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 7,
+       "m": "M05"
+      },
+      {
+       "nilai": 25,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √(3² + 4²) = √25.",
+      "|A| = 5 km."
+     ],
+     "satuan": "km"
+    },
+    {
+     "p": {
+      "x": -6,
+      "y": 8
+     },
+     "soal": "Berapa besar vektor A = (−6i + 8j) m?",
+     "kunci": 10,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 14,
+       "m": "M05"
+      },
+      {
+       "nilai": 100,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √((−6)² + 8²) = √100.",
+      "|A| = 10 m."
+     ],
+     "satuan": "m"
+    },
+    {
+     "p": {
+      "x": 5,
+      "y": -12
+     },
+     "soal": "Berapa besar vektor A = (5i − 12j) m?",
+     "kunci": 13,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 17,
+       "m": "M05"
+      },
+      {
+       "nilai": 169,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √(5² + (−12)²) = √169.",
+      "|A| = 13 m."
+     ],
+     "satuan": "m"
+    },
+    {
+     "p": {
+      "x": -8,
+      "y": -15
+     },
+     "soal": "Berapa besar vektor A = (−8i − 15j) km?",
+     "kunci": 17,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 23,
+       "m": "M05"
+      },
+      {
+       "nilai": 289,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √((−8)² + (−15)²) = √289.",
+      "|A| = 17 km."
+     ],
+     "satuan": "km"
+    },
+    {
+     "p": {
+      "x": 2,
+      "y": 3
+     },
+     "soal": "Berapa besar vektor A = (2i + 3j) m?",
+     "kunci": 3.61,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 5,
+       "m": "M05"
+      },
+      {
+       "nilai": 13,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √(2² + 3²) = √13.",
+      "|A| ≈ 3,61 m."
+     ],
+     "satuan": "m"
+    },
+    {
+     "p": {
+      "x": -1,
+      "y": -1
+     },
+     "soal": "Berapa besar vektor A = (−i − j) m?",
+     "kunci": 1.41,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 2,
+       "m": "M05"
+      }
+     ],
+     "pembahasan": [
+      "|A| = √((−1)² + (−1)²) = √2.",
+      "|A| ≈ 1,41 m."
+     ],
+     "satuan": "m"
+    }
+   ]
+  },
+  {
+   "id": "VEK-029",
+   "format": "isian",
+   "simpul": "DAS-02",
+   "gen": "vek-besar",
+   "fig": "vektor",
+   "bantuan": [
+    "Hitung komponen dalam kotak, lalu kalikan dengan nilai 1 kotak.",
+    "Besar = √(x² + y²)."
+   ],
+   "varian": [
+    {
+     "p": {
+      "dari": [
+       0,
+       0
+      ],
+      "ke": [
+       3,
+       4
+      ],
+      "kotak": 2,
+      "satuan": "km"
+     },
+     "soal": "Berapa besar perpindahan pada gambar (1 kotak = 2 km)?",
+     "kunci": 10,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 14,
+       "m": "M05"
+      },
+      {
+       "nilai": 100,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "Komponen: 3 kotak dan 4 kotak, yaitu (6i + 8j) km.",
+      "Besar = √(6² + 8²) = 10 km."
+     ],
+     "satuan": "km"
+    },
+    {
+     "p": {
+      "dari": [
+       -2,
+       2
+      ],
+      "ke": [
+       2,
+       -1
+      ],
+      "kotak": 3,
+      "satuan": "m"
+     },
+     "soal": "Berapa besar perpindahan pada gambar (1 kotak = 3 m)?",
+     "kunci": 15,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 21,
+       "m": "M05"
+      },
+      {
+       "nilai": 225,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "Komponen: 4 kotak dan −3 kotak, yaitu (12i − 9j) m.",
+      "Besar = √(12² + (−9)²) = 15 m."
+     ],
+     "satuan": "m"
+    },
+    {
+     "p": {
+      "dari": [
+       1,
+       -2
+      ],
+      "ke": [
+       -4,
+       -2
+      ],
+      "kotak": 1,
+      "satuan": "m"
+     },
+     "soal": "Berapa besar perpindahan pada gambar (1 kotak = 1 m)?",
+     "kunci": 5,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 25,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "Komponen: −5 kotak dan 0 kotak, yaitu −5i m.",
+      "Besar = √((−5)² + 0²) = 5 m."
+     ],
+     "satuan": "m"
+    },
+    {
+     "p": {
+      "dari": [
+       -3,
+       0
+      ],
+      "ke": [
+       2,
+       4
+      ],
+      "kotak": 1,
+      "satuan": "m"
+     },
+     "soal": "Berapa besar perpindahan pada gambar (1 kotak = 1 m)?",
+     "kunci": 6.4,
+     "toleransi": 0.01,
+     "salah": [
+      {
+       "nilai": 9,
+       "m": "M05"
+      },
+      {
+       "nilai": 41,
+       "m": "M06"
+      }
+     ],
+     "pembahasan": [
+      "Komponen: 5 kotak dan 4 kotak, yaitu (5i + 4j) m.",
+      "Besar = √(5² + 4²) ≈ 6,40 m."
+     ],
+     "satuan": "m"
+    }
+   ]
+  },
+  {
+   "id": "VEK-030",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "vek-arah",
+   "bantuan": [
+    "Lihat tanda komponen i (timur atau barat) dan komponen j (utara atau selatan)."
+   ],
+   "varian": [
+    {
+     "p": {
+      "x": -5,
+      "y": 2,
+      "posisi": 1
+     },
+     "soal": "Vektor A = (−5i + 2j) m menunjuk ...",
+     "opsi": [
+      "antara timur dan selatan",
+      "antara barat dan utara",
+      "antara barat dan selatan",
+      "antara timur dan utara"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M03",
+      "2": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "Pada A: komponen i negatif (ke barat); komponen j positif (ke utara).",
+      "Jadi arahnya antara barat dan utara."
+     ]
+    },
+    {
+     "p": {
+      "x": 4,
+      "y": -7,
+      "posisi": 0
+     },
+     "soal": "Vektor A = (4i − 7j) m menunjuk ...",
+     "opsi": [
+      "antara timur dan selatan",
+      "antara barat dan utara",
+      "antara timur dan utara",
+      "antara barat dan selatan"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M03",
+      "2": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "Pada A: komponen i positif (ke timur); komponen j negatif (ke selatan).",
+      "Jadi arahnya antara timur dan selatan."
+     ]
+    },
+    {
+     "p": {
+      "x": -3,
+      "y": -3,
+      "posisi": 2
+     },
+     "soal": "Vektor A = (−3i − 3j) km menunjuk ...",
+     "opsi": [
+      "antara timur dan utara",
+      "antara barat dan utara",
+      "antara barat dan selatan",
+      "antara timur dan selatan"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M03",
+      "1": "M03",
+      "3": "M03"
+     },
+     "pembahasan": [
+      "Pada A: komponen i negatif (ke barat); komponen j negatif (ke selatan).",
+      "Jadi arahnya antara barat dan selatan."
+     ]
+    },
+    {
+     "p": {
+      "x": 0,
+      "y": 6,
+      "posisi": 3
+     },
+     "soal": "Vektor A = 6j m menunjuk ...",
+     "opsi": [
+      "ke selatan",
+      "ke timur",
+      "antara timur dan utara",
+      "ke utara"
+     ],
+     "kunci": 3,
+     "salah": {
+      "0": "M03",
+      "1": "M04"
+     },
+     "pembahasan": [
+      "Pada A: tidak ada komponen mendatar; komponen j positif (ke utara).",
+      "Jadi arahnya ke utara."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-031",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Tulis perjalanan masing-masing dengan i dan j."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: apakah mereka sampai di tempat yang sama?",
+     "opsi": [
+      "Ya, urutan langkah tidak mengubah posisi akhir",
+      "Tidak, Dodi lebih jauh ke timur",
+      "Tidak, Sinta lebih jauh ke utara",
+      "Hanya jika langkah mereka sama cepat"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Dodi: 4i + 3j. Sinta: 3j + 4i = 4i + 3j. Posisi akhirnya sama.",
+      "Penjumlahan vektor bersifat komutatif: A + B = B + A."
+     ],
+     "salah": {
+      "1": "M13",
+      "2": "M13"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-032",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-jumlah",
+   "fig": "vektor",
+   "bantuan": [
+    "Resultan ditarik dari pangkal A ke ujung B.",
+    "Hitung kotak mendatar dulu, lalu tegak."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       2,
+       3
+      ],
+      "b": [
+       3,
+       -1
+      ],
+      "op": "+",
+      "susun": "ujung",
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan A dan B yang disusun ujung ke pangkal (1 kotak = 1 m). Baca komponen resultan A + B.",
+     "langkah": [
+      {
+       "teks": "Komponen i resultan (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -1,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j resultan (m)",
+       "kunci": 2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Dari pangkal A ke ujung B: 5 kotak ke timur (2 + 3).",
+      "Dan 2 kotak ke utara (3 + (−1)).",
+      "A + B = (5i + 2j) m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-033",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-jumlah",
+   "fig": "vektor",
+   "bantuan": [
+    "Resultan ditarik dari pangkal A ke ujung B.",
+    "Hitung kotak dari pangkal A ke ujung B: mendatar, lalu tegak."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       3,
+       2
+      ],
+      "b": [
+       1,
+       -4
+      ],
+      "op": "+",
+      "susun": "ujung",
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan A dan B yang disusun ujung ke pangkal (1 kotak = 1 m). Tentukan komponen A + B.",
+     "langkah": [
+      {
+       "teks": "Komponen i resultan (m)",
+       "kunci": 4,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j resultan (m)",
+       "kunci": -2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 3 + 1 = 4.",
+      "Komponen j: 2 + (−4) = −2.",
+      "A + B = (4i − 2j) m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       -2,
+       3
+      ],
+      "b": [
+       -3,
+       -1
+      ],
+      "op": "+",
+      "susun": "ujung",
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan A dan B yang disusun ujung ke pangkal (1 kotak = 1 m). Tentukan komponen A + B.",
+     "langkah": [
+      {
+       "teks": "Komponen i resultan (m)",
+       "kunci": -5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 1,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j resultan (m)",
+       "kunci": 2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −2 + (−3) = −5.",
+      "Komponen j: 3 + (−1) = 2.",
+      "A + B = (−5i + 2j) m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       1,
+       -3
+      ],
+      "b": [
+       4,
+       1
+      ],
+      "op": "+",
+      "susun": "ujung",
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan A dan B yang disusun ujung ke pangkal (1 kotak = 1 m). Tentukan komponen A + B.",
+     "langkah": [
+      {
+       "teks": "Komponen i resultan (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -3,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j resultan (m)",
+       "kunci": -2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -4,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 1 + 4 = 5.",
+      "Komponen j: −3 + 1 = −2.",
+      "A + B = (5i − 2j) m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       -4,
+       -1
+      ],
+      "b": [
+       2,
+       4
+      ],
+      "op": "+",
+      "susun": "ujung",
+      "satuan": "m",
+      "besar": false
+     },
+     "soal": "Gambar menunjukkan A dan B yang disusun ujung ke pangkal (1 kotak = 1 m). Tentukan komponen A + B.",
+     "langkah": [
+      {
+       "teks": "Komponen i resultan (m)",
+       "kunci": -2,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -6,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j resultan (m)",
+       "kunci": 3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M03"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −4 + 2 = −2.",
+      "Komponen j: −1 + 4 = 3.",
+      "A + B = (−2i + 3j) m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-034",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "vek-pilih",
+   "fig": "vektor",
+   "bantuan": [
+    "Baca A dan B dari gambar, lalu kurangkan per komponen.",
+    "A − B = A + (−B): balik arah B."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       4,
+       2
+      ],
+      "b": [
+       1,
+       3
+      ],
+      "op": "−",
+      "susun": "pangkal",
+      "posisi": 1
+     },
+     "soal": "Gambar menunjukkan A dan B yang berpangkal sama (1 kotak = 1 satuan). Vektor A − B adalah ...",
+     "opsi": [
+      "−3i + j",
+      "3i − j",
+      "5i + 5j",
+      "i + j"
+     ],
+     "kunci": 1,
+     "salah": {
+      "0": "M08",
+      "2": "M08",
+      "3": "M04"
+     },
+     "pembahasan": [
+      "Dari gambar: A = 4i + 2j dan B = i + 3j.",
+      "A − B = (4 − 1)i + (2 − 3)j = 3i − j.",
+      "B − A berlawanan arah dengan jawaban ini; A + B adalah operasi yang lain."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       -2,
+       3
+      ],
+      "b": [
+       2,
+       1
+      ],
+      "op": "−",
+      "susun": "pangkal",
+      "posisi": 3
+     },
+     "soal": "Gambar menunjukkan A dan B yang berpangkal sama (1 kotak = 1 satuan). Vektor A − B adalah ...",
+     "opsi": [
+      "4i − 2j",
+      "4j",
+      "−3i + j",
+      "−4i + 2j"
+     ],
+     "kunci": 3,
+     "salah": {
+      "0": "M08",
+      "1": "M08",
+      "2": "M04"
+     },
+     "pembahasan": [
+      "Dari gambar: A = −2i + 3j dan B = 2i + j.",
+      "A − B = (−2 − 2)i + (3 − 1)j = −4i + 2j.",
+      "B − A berlawanan arah dengan jawaban ini; A + B adalah operasi yang lain."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       1,
+       -2
+      ],
+      "b": [
+       -3,
+       -1
+      ],
+      "op": "−",
+      "susun": "pangkal",
+      "posisi": 0
+     },
+     "soal": "Gambar menunjukkan A dan B yang berpangkal sama (1 kotak = 1 satuan). Vektor A − B adalah ...",
+     "opsi": [
+      "4i − j",
+      "−4i + j",
+      "−2i − 3j",
+      "2i + j"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M08",
+      "2": "M08",
+      "3": "M04"
+     },
+     "pembahasan": [
+      "Dari gambar: A = i − 2j dan B = −3i − j.",
+      "A − B = (1 − (−3))i + (−2 − (−1))j = 4i − j.",
+      "B − A berlawanan arah dengan jawaban ini; A + B adalah operasi yang lain."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-035",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Coba gambar kedua vektor ujung ke pangkal untuk beberapa arah berbeda."
+   ],
+   "varian": [
+    {
+     "soal": "Dua vektor besarnya 3 satuan dan 4 satuan. Besar resultan yang tidak mungkin adalah ...",
+     "opsi": [
+      "8 satuan",
+      "1 satuan",
+      "5 satuan",
+      "7 satuan"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Resultan terbesar jika searah (3 + 4 = 7) dan terkecil jika berlawanan (4 − 3 = 1).",
+      "Semua nilai dari 1 sampai 7 mungkin; 8 tidak mungkin."
+     ]
+    },
+    {
+     "soal": "Kapan besar resultan A + B sama dengan |A| + |B|?",
+     "opsi": [
+      "Jika A dan B searah",
+      "Jika A dan B tegak lurus",
+      "Jika A dan B berlawanan arah",
+      "Selalu"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Ujung ke pangkal membentuk satu garis lurus hanya jika searah.",
+      "Jika tegak lurus, resultannya √(A² + B²), lebih kecil dari A + B."
+     ],
+     "salah": {
+      "1": "M05",
+      "3": "M07"
+     }
+    },
+    {
+     "soal": "Jika B = −A, maka A + B adalah ...",
+     "opsi": [
+      "vektor nol",
+      "2A",
+      "2B",
+      "A dengan arah terbalik"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "−A sama panjang dengan A tetapi berlawanan arah.",
+      "Ujung −A kembali ke pangkal A, jadi resultannya vektor nol."
+     ],
+     "salah": {
+      "1": "M08"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-036",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "bantuan": [
+    "Jumlahkan komponen i dengan komponen i, dan komponen j dengan komponen j."
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: A + B = ...",
+     "opsi": [
+      "(8i + 2j) m",
+      "(8i + 6j) m",
+      "(15i − 8j) m",
+      "10 m"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Jumlahkan komponen sejenis: i: 3 + 5 = 8; j: 4 + (−2) = 2.",
+      "A + B = (8i + 2j) m."
+     ],
+     "salah": {
+      "1": "M03",
+      "3": "M07"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-037",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-jumlah",
+   "bantuan": [
+    "Kurangkan per komponen; hati-hati dengan tanda: 4 − (−1) = 5.",
+    "Besar dihitung paling akhir."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       -3,
+       4
+      ],
+      "b": [
+       7,
+       -1
+      ],
+      "op": "−",
+      "besar": true
+     },
+     "soal": "A = (−3i + 4j) m dan B = (7i − j) m. Hitung A − B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A − B (m)",
+       "kunci": -10,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 10,
+         "m": "M08"
+        },
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A − B (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M08"
+        },
+        {
+         "nilai": 3,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A − B| (m, dua angka di belakang koma)",
+       "kunci": 11.18,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 12.07,
+         "m": "M07"
+        },
+        {
+         "nilai": 15,
+         "m": "M05"
+        },
+        {
+         "nilai": 125,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −3 − 7 = −10.",
+      "Komponen j: 4 − (−1) = 5.",
+      "A − B = (−10i + 5j) m; |A − B| = √(100 + 25) = √125 ≈ 11,18 m."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-038",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-jumlah",
+   "bantuan": [
+    "Jumlahkan per komponen, lalu hitung besarnya dengan Pythagoras."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       1,
+       2
+      ],
+      "b": [
+       2,
+       2
+      ],
+      "op": "+",
+      "besar": true
+     },
+     "soal": "A = (i + 2j) m dan B = (2i + 2j) m. Hitung A + B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A + B (m)",
+       "kunci": 3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -1,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A + B (m)",
+       "kunci": 4,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 0,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A + B| (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 5.07,
+         "m": "M07"
+        },
+        {
+         "nilai": 7,
+         "m": "M05"
+        },
+        {
+         "nilai": 25,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 1 + 2 = 3.",
+      "Komponen j: 2 + 2 = 4.",
+      "A + B = (3i + 4j) m. Besarnya √(3² + 4²) = 5 m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       4,
+       -3
+      ],
+      "b": [
+       2,
+       -5
+      ],
+      "op": "+",
+      "besar": true
+     },
+     "soal": "A = (4i − 3j) km dan B = (2i − 5j) km. Hitung A + B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A + B (km)",
+       "kunci": 6,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A + B (km)",
+       "kunci": -8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A + B| (km)",
+       "kunci": 10,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 10.39,
+         "m": "M07"
+        },
+        {
+         "nilai": 14,
+         "m": "M05"
+        },
+        {
+         "nilai": 100,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 4 + 2 = 6.",
+      "Komponen j: −3 + (−5) = −8.",
+      "A + B = (6i − 8j) km. Besarnya √(6² + (−8)²) = 10 km."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       -7,
+       3
+      ],
+      "b": [
+       2,
+       9
+      ],
+      "op": "+",
+      "besar": true
+     },
+     "soal": "A = (−7i + 3j) m dan B = (2i + 9j) m. Hitung A + B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A + B (m)",
+       "kunci": -5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -9,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A + B (m)",
+       "kunci": 12,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -6,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A + B| (m)",
+       "kunci": 13,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 16.84,
+         "m": "M07"
+        },
+        {
+         "nilai": 17,
+         "m": "M05"
+        },
+        {
+         "nilai": 169,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −7 + 2 = −5.",
+      "Komponen j: 3 + 9 = 12.",
+      "A + B = (−5i + 12j) m. Besarnya √((−5)² + 12²) = 13 m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       10,
+       6
+      ],
+      "b": [
+       -2,
+       -21
+      ],
+      "op": "+",
+      "besar": true
+     },
+     "soal": "A = (10i + 6j) km dan B = (−2i − 21j) km. Hitung A + B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A + B (km)",
+       "kunci": 8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 12,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A + B (km)",
+       "kunci": -15,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 27,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A + B| (km)",
+       "kunci": 17,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 32.76,
+         "m": "M07"
+        },
+        {
+         "nilai": 23,
+         "m": "M05"
+        },
+        {
+         "nilai": 289,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 10 + (−2) = 8.",
+      "Komponen j: 6 + (−21) = −15.",
+      "A + B = (8i − 15j) km. Besarnya √(8² + (−15)²) = 17 km."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-039",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-jumlah",
+   "bantuan": [
+    "Kurangkan per komponen; mengurangi bilangan negatif sama dengan menambah.",
+    "Besar dihitung paling akhir."
+   ],
+   "varian": [
+    {
+     "p": {
+      "a": [
+       5,
+       1
+      ],
+      "b": [
+       2,
+       -3
+      ],
+      "op": "−",
+      "besar": true
+     },
+     "soal": "A = (5i + j) m dan B = (2i − 3j) m. Hitung A − B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A − B (m)",
+       "kunci": 3,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -3,
+         "m": "M08"
+        },
+        {
+         "nilai": 7,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A − B (m)",
+       "kunci": 4,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -4,
+         "m": "M08"
+        },
+        {
+         "nilai": -2,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A − B| (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 8.71,
+         "m": "M07"
+        },
+        {
+         "nilai": 7,
+         "m": "M05"
+        },
+        {
+         "nilai": 25,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 5 − 2 = 3.",
+      "Komponen j: 1 − (−3) = 4.",
+      "A − B = (3i + 4j) m. Besarnya √(3² + 4²) = 5 m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       -1,
+       6
+      ],
+      "b": [
+       5,
+       -2
+      ],
+      "op": "−",
+      "besar": true
+     },
+     "soal": "A = (−i + 6j) km dan B = (5i − 2j) km. Hitung A − B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A − B (km)",
+       "kunci": -6,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 6,
+         "m": "M08"
+        },
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A − B (km)",
+       "kunci": 8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -8,
+         "m": "M08"
+        },
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A − B| (km)",
+       "kunci": 10,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 11.47,
+         "m": "M07"
+        },
+        {
+         "nilai": 14,
+         "m": "M05"
+        },
+        {
+         "nilai": 100,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −1 − 5 = −6.",
+      "Komponen j: 6 − (−2) = 8.",
+      "A − B = (−6i + 8j) km. Besarnya √((−6)² + 8²) = 10 km."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       3,
+       -4
+      ],
+      "b": [
+       -2,
+       8
+      ],
+      "op": "−",
+      "besar": true
+     },
+     "soal": "A = (3i − 4j) m dan B = (−2i + 8j) m. Hitung A − B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A − B (m)",
+       "kunci": 5,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -5,
+         "m": "M08"
+        },
+        {
+         "nilai": 1,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A − B (m)",
+       "kunci": -12,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 12,
+         "m": "M08"
+        },
+        {
+         "nilai": 4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A − B| (m)",
+       "kunci": 13,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 13.25,
+         "m": "M07"
+        },
+        {
+         "nilai": 17,
+         "m": "M05"
+        },
+        {
+         "nilai": 169,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 3 − (−2) = 5.",
+      "Komponen j: −4 − 8 = −12.",
+      "A − B = (5i − 12j) m. Besarnya √(5² + (−12)²) = 13 m."
+     ]
+    },
+    {
+     "p": {
+      "a": [
+       0,
+       7
+      ],
+      "b": [
+       -8,
+       -8
+      ],
+      "op": "−",
+      "besar": true
+     },
+     "soal": "A = 7j km dan B = (−8i − 8j) km. Hitung A − B dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i dari A − B (km)",
+       "kunci": 8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -8,
+         "m": "M08"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j dari A − B (km)",
+       "kunci": 15,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -15,
+         "m": "M08"
+        },
+        {
+         "nilai": -1,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "|A − B| (km)",
+       "kunci": 17,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 18.31,
+         "m": "M07"
+        },
+        {
+         "nilai": 23,
+         "m": "M05"
+        },
+        {
+         "nilai": 289,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 0 − (−8) = 8.",
+      "Komponen j: 7 − (−8) = 15.",
+      "A − B = (8i + 15j) km. Besarnya √(8² + 15²) = 17 km."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-040",
+   "format": "bertahap",
+   "simpul": "DAS-02",
+   "gen": "vek-komponen",
+   "bantuan": [
+    "Tulis setiap langkah sebagai komponen, lalu jumlahkan semua komponen i dan semua komponen j.",
+    "Besar perpindahan dihitung terakhir."
+   ],
+   "varian": [
+    {
+     "p": {
+      "legs": [
+       [
+        2,
+        0
+       ],
+       [
+        0,
+        8
+       ],
+       [
+        4,
+        0
+       ]
+      ],
+      "satuan": "km",
+      "besar": true
+     },
+     "soal": "Sebuah perahu bergerak 2 km ke timur, 8 km ke utara, lalu 4 km ke timur. Tentukan perpindahannya dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i (km)",
+       "kunci": 6,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -6,
+         "m": "M03"
+        },
+        {
+         "nilai": 8,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (km)",
+       "kunci": 8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -8,
+         "m": "M03"
+        },
+        {
+         "nilai": 6,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (km)",
+       "kunci": 10,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 14,
+         "m": "M05"
+        },
+        {
+         "nilai": 100,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 2 + 4 = 6.",
+      "Komponen j: 8.",
+      "Perpindahan = (6i + 8j) km.",
+      "Besarnya = √(6² + 8²) = 10 km."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        -4,
+        0
+       ],
+       [
+        0,
+        -5
+       ],
+       [
+        0,
+        2
+       ]
+      ],
+      "satuan": "km",
+      "besar": true
+     },
+     "soal": "Seorang kurir bersepeda 4 km ke barat, 5 km ke selatan, lalu 2 km ke utara. Tentukan perpindahannya dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i (km)",
+       "kunci": -4,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 4,
+         "m": "M03"
+        },
+        {
+         "nilai": -3,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (km)",
+       "kunci": -3,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 3,
+         "m": "M03"
+        },
+        {
+         "nilai": -4,
+         "m": "M04"
+        },
+        {
+         "nilai": 7,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (km)",
+       "kunci": 5,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M05"
+        },
+        {
+         "nilai": 25,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −4.",
+      "Komponen j: −5 + 2 = −3.",
+      "Perpindahan = (−4i − 3j) km.",
+      "Besarnya = √((−4)² + (−3)²) = 5 km."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        0,
+        9
+       ],
+       [
+        5,
+        0
+       ],
+       [
+        0,
+        3
+       ],
+       [
+        7,
+        0
+       ]
+      ],
+      "satuan": "m",
+      "besar": true
+     },
+     "soal": "Seekor semut berjalan 9 m ke utara, 5 m ke timur, 3 m ke utara, lalu 7 m ke timur. Tentukan perpindahannya dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i (m)",
+       "kunci": 12,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -12,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (m)",
+       "kunci": 12,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": -12,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (m)",
+       "kunci": 16.97,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 24,
+         "m": "M05"
+        },
+        {
+         "nilai": 288,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: 5 + 7 = 12.",
+      "Komponen j: 9 + 3 = 12.",
+      "Perpindahan = (12i + 12j) m.",
+      "Besarnya = √(12² + 12²) ≈ 16,97 m."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        -6,
+        0
+       ],
+       [
+        0,
+        4
+       ],
+       [
+        -2,
+        0
+       ],
+       [
+        0,
+        2
+       ]
+      ],
+      "satuan": "km",
+      "besar": true
+     },
+     "soal": "Sebuah drone terbang 6 km ke barat, 4 km ke utara, 2 km ke barat, lalu 2 km ke utara. Tentukan perpindahannya dan besarnya.",
+     "langkah": [
+      {
+       "teks": "Komponen i (km)",
+       "kunci": -8,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 8,
+         "m": "M03"
+        },
+        {
+         "nilai": 6,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j (km)",
+       "kunci": 6,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": -6,
+         "m": "M03"
+        },
+        {
+         "nilai": -8,
+         "m": "M04"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (km)",
+       "kunci": 10,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 14,
+         "m": "M05"
+        },
+        {
+         "nilai": 100,
+         "m": "M06"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Komponen i: −6 + (−2) = −8.",
+      "Komponen j: 4 + 2 = 6.",
+      "Perpindahan = (−8i + 6j) km.",
+      "Besarnya = √((−8)² + 6²) = 10 km."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-041",
+   "format": "pilihan-ganda",
+   "simpul": "MEK-01",
+   "bantuan": [
+    "Di mana angkot berakhir dibandingkan tempat berangkatnya?"
+   ],
+   "varian": [
+    {
+     "soal": "Tebak dulu: berapa kecepatan rata-rata angkot itu?",
+     "opsi": [
+      "0 km/jam",
+      "24 km/jam",
+      "0,4 km/jam",
+      "Tidak bisa dihitung tanpa peta rute"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Angkot kembali ke titik awal, jadi perpindahannya nol dan kecepatan rata-ratanya 0 km/jam.",
+      "24 km/jam (18 km : 0,75 jam) adalah kelajuan rata-ratanya, bukan kecepatannya."
+     ],
+     "salah": {
+      "1": "M10",
+      "2": "M11"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-042",
+   "format": "bertahap",
+   "simpul": "MEK-01",
+   "gen": "vek-rute",
+   "fig": "vektor",
+   "bantuan": [
+    "Jarak: jumlahkan panjang setiap ruas. Perpindahan: dari titik awal ke titik akhir.",
+    "Bagi masing-masing dengan waktunya."
+   ],
+   "varian": [
+    {
+     "p": {
+      "legs": [
+       [
+        4,
+        0
+       ],
+       [
+        0,
+        3
+       ]
+      ],
+      "kotak": 100,
+      "satuan": "m",
+      "t": 100
+     },
+     "soal": "Sebuah sepeda bergerak sesuai gambar (1 kotak = 100 m) dalam 100 s.",
+     "langkah": [
+      {
+       "teks": "Jarak (m)",
+       "kunci": 700,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 500,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (m)",
+       "kunci": 500,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 700,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Kelajuan rata-rata (m/s)",
+       "kunci": 7,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 5,
+         "m": "M10"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 5,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M10"
+        },
+        {
+         "nilai": 500,
+         "m": "M14"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Jarak = 400 + 300 = 700 m.",
+      "Perpindahan = (400i + 300j) m, besarnya √(400² + 300²) = 500 m.",
+      "Kelajuan rata-rata = 700 : 100 = 7 m/s.",
+      "Besar kecepatan rata-rata = 500 : 100 = 5 m/s."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-043",
+   "format": "bertahap",
+   "simpul": "MEK-01",
+   "gen": "vek-rute",
+   "fig": "vektor",
+   "bantuan": [
+    "Jarak = jumlah panjang ruas; perpindahan = dari awal ke akhir.",
+    "Kelajuan memakai jarak, kecepatan memakai perpindahan."
+   ],
+   "varian": [
+    {
+     "p": {
+      "legs": [
+       [
+        0,
+        3
+       ],
+       [
+        4,
+        0
+       ]
+      ],
+      "kotak": 10,
+      "satuan": "m",
+      "t": 20
+     },
+     "soal": "Seorang siswa bergerak sesuai gambar (1 kotak = 10 m) dalam 20 s.",
+     "langkah": [
+      {
+       "teks": "Jarak (m)",
+       "kunci": 70,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 50,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (m)",
+       "kunci": 50,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 70,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Kelajuan rata-rata (m/s)",
+       "kunci": 3.5,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 2.5,
+         "m": "M10"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 2.5,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 3.5,
+         "m": "M10"
+        },
+        {
+         "nilai": 50,
+         "m": "M14"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Jarak = 30 + 40 = 70 m.",
+      "Perpindahan = (40i + 30j) m, besarnya √(40² + 30²) = 50 m.",
+      "Kelajuan rata-rata = 70 : 20 = 3,5 m/s.",
+      "Besar kecepatan rata-rata = 50 : 20 = 2,5 m/s."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        -6,
+        0
+       ],
+       [
+        0,
+        -8
+       ]
+      ],
+      "kotak": 5,
+      "satuan": "m",
+      "t": 25
+     },
+     "soal": "Sebuah troli bergerak sesuai gambar (1 kotak = 5 m) dalam 25 s.",
+     "langkah": [
+      {
+       "teks": "Jarak (m)",
+       "kunci": 70,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 50,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (m)",
+       "kunci": 50,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 70,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Kelajuan rata-rata (m/s)",
+       "kunci": 2.8,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M10"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 2,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 2.8,
+         "m": "M10"
+        },
+        {
+         "nilai": 50,
+         "m": "M14"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Jarak = 30 + 40 = 70 m.",
+      "Perpindahan = (−30i − 40j) m, besarnya √((−30)² + (−40)²) = 50 m.",
+      "Kelajuan rata-rata = 70 : 25 = 2,8 m/s.",
+      "Besar kecepatan rata-rata = 50 : 25 = 2 m/s."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        5,
+        0
+       ],
+       [
+        0,
+        12
+       ]
+      ],
+      "kotak": 1,
+      "satuan": "km",
+      "t": "0,5"
+     },
+     "soal": "Sebuah mobil bergerak sesuai gambar (1 kotak = 1 km) dalam 0,5 jam.",
+     "langkah": [
+      {
+       "teks": "Jarak (km)",
+       "kunci": 17,
+       "satuan": "km",
+       "salah": [
+        {
+         "nilai": 13,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (km)",
+       "kunci": 13,
+       "satuan": "km",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 17,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Kelajuan rata-rata (km/jam)",
+       "kunci": 34,
+       "satuan": "km/jam",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 26,
+         "m": "M10"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (km/jam)",
+       "kunci": 26,
+       "satuan": "km/jam",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 34,
+         "m": "M10"
+        },
+        {
+         "nilai": 13,
+         "m": "M14"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Jarak = 5 + 12 = 17 km.",
+      "Perpindahan = (5i + 12j) km, besarnya √(5² + 12²) = 13 km.",
+      "Kelajuan rata-rata = 17 : 0,5 = 34 km/jam.",
+      "Besar kecepatan rata-rata = 13 : 0,5 = 26 km/jam."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        2,
+        0
+       ],
+       [
+        0,
+        4
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        0,
+        4
+       ]
+      ],
+      "kotak": 10,
+      "satuan": "m",
+      "t": 50
+     },
+     "soal": "Seekor kucing bergerak sesuai gambar (1 kotak = 10 m) dalam 50 s.",
+     "langkah": [
+      {
+       "teks": "Jarak (m)",
+       "kunci": 140,
+       "satuan": "m",
+       "salah": [
+        {
+         "nilai": 100,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Besar perpindahan (m)",
+       "kunci": 100,
+       "satuan": "m",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 140,
+         "m": "M09"
+        }
+       ]
+      },
+      {
+       "teks": "Kelajuan rata-rata (m/s)",
+       "kunci": 2.8,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 2,
+         "m": "M10"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 2,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 2.8,
+         "m": "M10"
+        },
+        {
+         "nilai": 100,
+         "m": "M14"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "Jarak = 20 + 40 + 40 + 40 = 140 m.",
+      "Perpindahan = (60i + 80j) m, besarnya √(60² + 80²) = 100 m.",
+      "Kelajuan rata-rata = 140 : 50 = 2,8 m/s.",
+      "Besar kecepatan rata-rata = 100 : 50 = 2 m/s."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-044",
+   "format": "bertahap",
+   "simpul": "MEK-01",
+   "gen": "vek-kecepatan",
+   "bantuan": [
+    "Bagi setiap komponen perpindahan dengan waktunya.",
+    "Besar kecepatan dihitung dengan Pythagoras."
+   ],
+   "varian": [
+    {
+     "p": {
+      "dx": 12,
+      "dy": -9,
+      "t": 3
+     },
+     "soal": "Sebuah bola berpindah Δr = (12i − 9j) m dalam 3 s. Tentukan kecepatan rata-ratanya.",
+     "langkah": [
+      {
+       "teks": "Komponen i kecepatan (m/s)",
+       "kunci": 4,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 12,
+         "m": "M14"
+        },
+        {
+         "nilai": -4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j kecepatan (m/s)",
+       "kunci": -3,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": -9,
+         "m": "M14"
+        },
+        {
+         "nilai": 3,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 5,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M05"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "v = Δr : Δt = (12i − 9j) : 3.",
+      "Komponen: 12 : 3 = 4 dan −9 : 3 = −3, jadi v = (4i − 3j) m/s.",
+      "Besarnya √(4² + (−3)²) = 5 m/s."
+     ]
+    },
+    {
+     "p": {
+      "dx": -30,
+      "dy": 40,
+      "t": 10
+     },
+     "soal": "Sebuah perahu berpindah Δr = (−30i + 40j) m dalam 10 s. Tentukan kecepatan rata-ratanya.",
+     "langkah": [
+      {
+       "teks": "Komponen i kecepatan (m/s)",
+       "kunci": -3,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": -30,
+         "m": "M14"
+        },
+        {
+         "nilai": 3,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j kecepatan (m/s)",
+       "kunci": 4,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 40,
+         "m": "M14"
+        },
+        {
+         "nilai": -4,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 5,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M05"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "v = Δr : Δt = (−30i + 40j) : 10.",
+      "Komponen: −30 : 10 = −3 dan 40 : 10 = 4, jadi v = (−3i + 4j) m/s.",
+      "Besarnya √((−3)² + 4²) = 5 m/s."
+     ]
+    },
+    {
+     "p": {
+      "dx": -40,
+      "dy": -30,
+      "t": 5
+     },
+     "soal": "Seekor burung berpindah Δr = (−40i − 30j) m dalam 5 s. Tentukan kecepatan rata-ratanya.",
+     "langkah": [
+      {
+       "teks": "Komponen i kecepatan (m/s)",
+       "kunci": -8,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": -40,
+         "m": "M14"
+        },
+        {
+         "nilai": 8,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j kecepatan (m/s)",
+       "kunci": -6,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": -30,
+         "m": "M14"
+        },
+        {
+         "nilai": 6,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (m/s)",
+       "kunci": 10,
+       "satuan": "m/s",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 14,
+         "m": "M05"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "v = Δr : Δt = (−40i − 30j) : 5.",
+      "Komponen: −40 : 5 = −8 dan −30 : 5 = −6, jadi v = (−8i − 6j) m/s.",
+      "Besarnya √((−8)² + (−6)²) = 10 m/s."
+     ]
+    },
+    {
+     "p": {
+      "dx": 24,
+      "dy": 7,
+      "t": 2
+     },
+     "soal": "Sebuah kapal berpindah Δr = (24i + 7j) km dalam 2 jam. Tentukan kecepatan rata-ratanya.",
+     "langkah": [
+      {
+       "teks": "Komponen i kecepatan (km/jam)",
+       "kunci": 12,
+       "satuan": "km/jam",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 24,
+         "m": "M14"
+        },
+        {
+         "nilai": -12,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Komponen j kecepatan (km/jam)",
+       "kunci": 3.5,
+       "satuan": "km/jam",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 7,
+         "m": "M14"
+        },
+        {
+         "nilai": -3.5,
+         "m": "M03"
+        }
+       ]
+      },
+      {
+       "teks": "Besar kecepatan rata-rata (km/jam)",
+       "kunci": 12.5,
+       "satuan": "km/jam",
+       "toleransi": 0.01,
+       "salah": [
+        {
+         "nilai": 15.5,
+         "m": "M05"
+        }
+       ]
+      }
+     ],
+     "pembahasan": [
+      "v = Δr : Δt = (24i + 7j) : 2.",
+      "Komponen: 24 : 2 = 12 dan 7 : 2 = 3,5, jadi v = (12i + 3,5j) km/jam.",
+      "Besarnya √(12² + 3,5²) = 12,5 km/jam."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-045",
+   "format": "pilihan-ganda",
+   "simpul": "MEK-01",
+   "bantuan": [
+    "Kelajuan memakai jarak; kecepatan memakai perpindahan.",
+    "Perpindahan nol jika kembali ke titik awal."
+   ],
+   "varian": [
+    {
+     "soal": "Seorang pelari mengelilingi lintasan 400 m tepat satu putaran dalam 80 s. Pernyataan yang benar adalah ...",
+     "opsi": [
+      "Kelajuan rata-rata 5 m/s, kecepatan rata-rata 0 m/s",
+      "Kelajuan dan kecepatan rata-rata sama-sama 5 m/s",
+      "Kelajuan rata-rata 0 m/s, kecepatan rata-rata 5 m/s",
+      "Keduanya 0 m/s"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Jarak 400 m, jadi kelajuan rata-rata = 400 : 80 = 5 m/s.",
+      "Pelari kembali ke titik awal: perpindahan 0, jadi kecepatan rata-rata 0 m/s."
+     ],
+     "salah": {
+      "1": "M10",
+      "2": "M09"
+     }
+    },
+    {
+     "soal": "Manakah yang selalu benar untuk setiap perjalanan?",
+     "opsi": [
+      "Besar kecepatan rata-rata ≤ kelajuan rata-rata",
+      "Besar kecepatan rata-rata ≥ kelajuan rata-rata",
+      "Keduanya selalu sama",
+      "Kecepatan rata-rata tidak punya arah"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Besar perpindahan tidak pernah lebih dari jarak, dan keduanya dibagi waktu yang sama.",
+      "Jadi besar kecepatan rata-rata ≤ kelajuan rata-rata."
+     ],
+     "salah": {
+      "1": "M09",
+      "2": "M10",
+      "3": "M01"
+     }
+    },
+    {
+     "soal": "Dua siswa berangkat dari gerbang dan tiba di kantin pada saat yang sama. Siswa A lewat jalan lurus, siswa B lewat jalan memutar. Pernyataan yang benar adalah ...",
+     "opsi": [
+      "Kecepatan rata-rata keduanya sama, kelajuan rata-rata B lebih besar",
+      "Kecepatan rata-rata B lebih besar",
+      "Kelajuan rata-rata keduanya sama",
+      "Kecepatan rata-rata A lebih besar"
+     ],
+     "kunci": 0,
+     "pembahasan": [
+      "Perpindahan dan waktunya sama, jadi kecepatan rata-ratanya sama.",
+      "Jarak B lebih panjang, jadi kelajuan rata-rata B lebih besar."
+     ],
+     "salah": {
+      "1": "M10",
+      "2": "M09"
+     }
+    }
+   ]
+  },
+  {
+   "id": "VEK-046",
+   "format": "pilihan-ganda",
+   "simpul": "DAS-02",
+   "gen": "tka-drone",
+   "fig": "vektor",
+   "tka": {
+    "tipe": "FIS-STRATEGI",
+    "acuan": [
+     "FIS25-002"
+    ]
+   },
+   "bantuan": [
+    "Tentukan dulu perpindahan dari titik asal ke titik tujuan.",
+    "Kecepatan = perpindahan : waktu, dengan arah yang sama."
+   ],
+   "varian": [
+    {
+     "p": {
+      "dari": [
+       1,
+       1
+      ],
+      "ke": [
+       5,
+       4
+      ],
+      "kotak": 100,
+      "satuan": "m",
+      "t": 50,
+      "posisi": 0,
+      "tanpa_panah": true,
+      "nama_dari": "G",
+      "nama_ke": "T"
+     },
+     "soal": "Sebuah drone pengantar paket harus terbang lurus dari titik G ke titik T (lihat peta, 1 kotak = 100 m) dan tiba tepat 50 s setelah berangkat. Kecepatan manakah yang harus diatur pada drone? (i ke timur, j ke utara)",
+     "opsi": [
+      "8i + 6j m/s",
+      "6i + 8j m/s",
+      "−8i − 6j m/s",
+      "10 m/s ke timur",
+      "400i + 300j m/s"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M04",
+      "2": "M03",
+      "3": "M12",
+      "4": "M14"
+     },
+     "pembahasan": [
+      "Perpindahan G ke T: 4 kotak mendatar dan 3 kotak tegak = (400i + 300j) m.",
+      "Kecepatan = perpindahan : waktu = (400i + 300j) : 50 = (8i + 6j) m/s.",
+      "Pilihan lain: komponen tertukar, arah terbalik (dari tujuan ke asal), besar benar tetapi arah salah, atau perpindahan yang belum dibagi waktu."
+     ]
+    },
+    {
+     "p": {
+      "dari": [
+       0,
+       4
+      ],
+      "ke": [
+       6,
+       -4
+      ],
+      "kotak": 50,
+      "satuan": "m",
+      "t": 25,
+      "posisi": 3,
+      "tanpa_panah": true,
+      "nama_dari": "A",
+      "nama_ke": "B"
+     },
+     "soal": "Sebuah drone pengantar paket harus terbang lurus dari titik A ke titik B (lihat peta, 1 kotak = 50 m) dan tiba tepat 25 s setelah berangkat. Kecepatan manakah yang harus diatur pada drone? (i ke timur, j ke utara)",
+     "opsi": [
+      "−16i + 12j m/s",
+      "−12i + 16j m/s",
+      "20 m/s ke timur",
+      "12i − 16j m/s",
+      "300i − 400j m/s"
+     ],
+     "kunci": 3,
+     "salah": {
+      "0": "M04",
+      "1": "M03",
+      "2": "M12",
+      "4": "M14"
+     },
+     "pembahasan": [
+      "Perpindahan A ke B: 6 kotak mendatar dan −8 kotak tegak = (300i − 400j) m.",
+      "Kecepatan = perpindahan : waktu = (300i − 400j) : 25 = (12i − 16j) m/s.",
+      "Pilihan lain: komponen tertukar, arah terbalik (dari tujuan ke asal), besar benar tetapi arah salah, atau perpindahan yang belum dibagi waktu."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-047",
+   "format": "benar-salah",
+   "simpul": "MEK-01",
+   "gen": "tka-dua-rute",
+   "fig": "vektor",
+   "tka": {
+    "tipe": "FIS-STRATEGI",
+    "acuan": [
+     "FIS25-017"
+    ]
+   },
+   "kolom": [
+    "Tepat",
+    "Tidak Tepat"
+   ],
+   "bantuan": [
+    "Hitung jarak setiap rute dan perpindahan dari H ke P.",
+    "Kecepatan rata-rata = perpindahan : waktu; kelajuan rata-rata = jarak : waktu."
+   ],
+   "varian": [
+    {
+     "p": {
+      "rute1": [
+       [
+        4,
+        0
+       ],
+       [
+        0,
+        3
+       ]
+      ],
+      "rute2": [
+       [
+        0,
+        5
+       ],
+       [
+        4,
+        0
+       ],
+       [
+        0,
+        -2
+       ]
+      ],
+      "kotak": 100,
+      "satuan": "m",
+      "t1": 140,
+      "t2": 220,
+      "nama_dari": "H",
+      "nama_ke": "P",
+      "klaim": [
+       {
+        "jenis": "perpindahan-sama"
+       },
+       {
+        "jenis": "selisih-jarak",
+        "nilai": 400
+       },
+       {
+        "jenis": "kecepatan-sama"
+       },
+       {
+        "jenis": "waktu-agar-kecepatan-sama",
+        "nilai": 140
+       }
+      ]
+     },
+     "soal": "Rina bersepeda dari rumah (H) ke perpustakaan (P). Peta menunjukkan dua rute (1 kotak = 100 m). Rute 1 ditempuh dalam 140 s, rute 2 dalam 220 s. Tentukan Tepat atau Tidak Tepat untuk setiap pernyataan.",
+     "kunci": [
+      true,
+      true,
+      false,
+      true
+     ],
+     "pembahasan": [
+      "Rute 1: 400 m + 300 m = 700 m. Rute 2: 500 m + 400 m + 200 m = 1100 m. Selisihnya 400 m.",
+      "Kedua rute berakhir di P, jadi perpindahannya sama: (400i + 300j) m, besarnya 500 m.",
+      "Kecepatan rata-rata rute 1 = 500 : 140 ≈ 3,57 m/s; rute 2 = 500 : 220 ≈ 2,27 m/s, jadi tidak sama (kelajuan rata-ratanya sama-sama 5 m/s).",
+      "Dengan perpindahan yang sama, kecepatan rata-rata sama jika waktunya sama, yaitu 140 s."
+     ],
+     "opsi": [
+      "Kedua rute menghasilkan perpindahan yang sama, yaitu (400i + 300j) m.",
+      "Jarak rute 2 lebih panjang 400 m daripada jarak rute 1.",
+      "Kecepatan rata-rata Rina sama pada kedua rute.",
+      "Agar kecepatan rata-ratanya sama dengan rute 1, rute 2 harus ditempuh dalam 140 s."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "VEK-048",
+   "format": "pilihan-ganda",
+   "simpul": "MEK-01",
+   "gen": "tka-kurir",
+   "tka": {
+    "tipe": "FIS-HITUNG",
+    "acuan": [
+     "FIS25-005"
+    ]
+   },
+   "bantuan": [
+    "Kecepatan rata-rata memakai perpindahan, bukan jarak.",
+    "Ubah menit ke jam sebelum membagi."
+   ],
+   "varian": [
+    {
+     "p": {
+      "legs": [
+       [
+        6,
+        0
+       ],
+       [
+        0,
+        11
+       ],
+       [
+        0,
+        -3
+       ]
+      ],
+      "menit": 20,
+      "posisi": 0
+     },
+     "soal": "Seorang kurir motor mengantar paket: 6 km ke timur, 11 km ke utara, lalu 3 km ke selatan. Seluruh perjalanan memakan waktu 20 menit. Berapa besar kecepatan rata-rata kurir itu?",
+     "opsi": [
+      "30 km/jam",
+      "60 km/jam",
+      "0,5 km/jam",
+      "200 km/jam"
+     ],
+     "kunci": 0,
+     "salah": {
+      "1": "M10",
+      "2": "M11",
+      "3": "M14"
+     },
+     "pembahasan": [
+      "Perpindahan = (6i + 8j) km, besarnya √(6² + 8²) = 10 km.",
+      "20 menit = 20 : 60 jam.",
+      "Besar kecepatan rata-rata = 10 : (20/60) = 30 km/jam.",
+      "Pilihan lain memakai jarak 20 km (kelajuan), lupa mengubah menit ke jam, atau mengalikan dengan waktu."
+     ]
+    },
+    {
+     "p": {
+      "legs": [
+       [
+        0,
+        -9
+       ],
+       [
+        -14,
+        0
+       ],
+       [
+        2,
+        0
+       ]
+      ],
+      "menit": 45,
+      "posisi": 2
+     },
+     "soal": "Seorang kurir motor mengantar paket: 9 km ke selatan, 14 km ke barat, lalu 2 km ke timur. Seluruh perjalanan memakan waktu 45 menit. Berapa besar kecepatan rata-rata kurir itu?",
+     "opsi": [
+      "33,33 km/jam",
+      "0,33 km/jam",
+      "20 km/jam",
+      "675 km/jam"
+     ],
+     "kunci": 2,
+     "salah": {
+      "0": "M10",
+      "1": "M11",
+      "3": "M14"
+     },
+     "pembahasan": [
+      "Perpindahan = (−12i − 9j) km, besarnya √((−12)² + (−9)²) = 15 km.",
+      "45 menit = 45 : 60 jam.",
+      "Besar kecepatan rata-rata = 15 : (45/60) = 20 km/jam.",
+      "Pilihan lain memakai jarak 25 km (kelajuan), lupa mengubah menit ke jam, atau mengalikan dengan waktu."
+     ]
+    }
+   ]
+  }
+ ],
+ "catatan": [
+  {
+   "judul": "Untuk siapa",
+   "items": [
+    "Jalur mandiri Fisika kelas X, bab Vektor: dua paket masing-masing tiga unit, lalu ujian akhir.",
+    "Simpul peta: DAS-02 (vektor) dan MEK-01 (jarak, perpindahan, kelajuan, kecepatan)."
+   ]
+  },
+  {
+   "judul": "Status",
+   "items": [
+    "Draf: belum diuji siswa dan belum ditinjau guru. Urutan, jumlah soal, dan target waktu per paket masih bisa berubah."
+   ]
+  },
+  {
+   "judul": "Konvensi",
+   "items": [
+    "i ke timur (sumbu x positif), j ke utara (sumbu y positif). Setiap gambar memakai kisi dengan skala tertulis.",
+    "Arah dinyatakan dengan kuadran (misalnya antara timur dan utara). Besar sudut arah dengan trigonometri belum dibahas di jalur ini."
+   ]
+  },
+  {
+   "judul": "Batas draf",
+   "items": [
+    "Resultan dua vektor bersudut (rumus kosinus) dan penguraian vektor dengan sin dan cos belum dilatih; keduanya ada di Modul Vektor dan Gerak.",
+    "Angka dalam cerita (jarak di peta, waktu tempuh) adalah angka contoh, bukan data sungguhan."
+   ]
+  }
+ ]
+}

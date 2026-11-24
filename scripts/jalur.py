@@ -16,9 +16,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 FORMATS = ("isian", "bertahap", "pilihan-ganda", "pilihan-ganda-kompleks", "benar-salah")
+STATUSES = ("pilot", "draf")  # draf: written, not yet tried with students; pilot: in a classroom trial
 BLOCKS = ("p", "li", "tabel", "contoh", "jebakan")
-WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "hitung-ap", "geser-koma", "awalan", "dimensi")
-FIGURES = ("mistar", "jangka-sorong", "mikrometer")
+WIDGETS = ("satuan", "mistar", "jangka-sorong", "mikrometer", "angka-penting", "hitung-ap", "geser-koma", "awalan", "dimensi",
+           "panah", "jumlah-vektor", "rute")
+FIGURES = ("mistar", "jangka-sorong", "mikrometer", "vektor")
 CHECKED = ("kunci", "opsi", "salah", "cek_ap", "satuan", "toleransi")
 SUP = str.maketrans("0123456789-", "⁰¹²³⁴⁵⁶⁷⁸⁹⁻")
 
@@ -494,6 +496,283 @@ GEN = {
 }
 
 
+# ---------- vectors (data/jalur/vektor.json) ----------
+# Convention: i points east (+x), j points north (+y). Grid figures use whole squares; p.kotak is the length of one
+# square in p.satuan (default 1), so components in real units are grid components × kotak.
+
+TOL_VEK = 0.01  # magnitudes and quotients are given exactly or to two decimals
+
+
+def vfmt(x, y, unit=""):
+    """Vector text '8i − 6j m/s' with unit coefficients written as i and −i, zero components left out."""
+    def term(c, sym, first):
+        c = D(c)
+        if c == 0:
+            return ""
+        sign = "−" if c < 0 else ("" if first else "+")
+        mag = "" if abs(c) == 1 else fmt(abs(c))
+        return (sign + mag + sym) if first else f" {sign} {mag}{sym}"
+    s = term(x, "i", True)
+    s += term(y, "j", s == "")
+    s = s.strip() or "0"
+    return s + (" " + unit if unit else "")
+
+
+def _mag(x, y):
+    """(magnitude, exact): the exact root when x² + y² has one within two decimals (5, 12,5), else rounded to two decimals."""
+    s = D(x) ** 2 + D(y) ** 2
+    r = s.sqrt()
+    q = r.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    if q * q == s:
+        return (q.to_integral_value() if q == q.to_integral_value() else q.normalize()), True
+    return q, False
+
+
+def _quot(a, b):
+    """a / b, exact when it terminates within two decimals, else rounded to two decimals."""
+    q = D(a) / D(b)
+    r = q.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+    return (q.normalize() if q == r else r)
+
+
+def _resultant(p):
+    """Net grid displacement of p: from p.dari to p.ke, the sum of p.legs, or p.a ± p.b."""
+    if "legs" in p:
+        return sum(D(l[0]) for l in p["legs"]), sum(D(l[1]) for l in p["legs"])
+    if "a" in p:
+        s = 1 if p.get("op", "+") == "+" else -1
+        return D(p["a"][0]) + s * D(p["b"][0]), D(p["a"][1]) + s * D(p["b"][1])
+    return D(p["ke"][0]) - D(p["dari"][0]), D(p["ke"][1]) - D(p["dari"][1])
+
+
+def g_operasi(p):
+    """Plain arithmetic: p {a, b, op}; a division is rounded to two decimals when it does not terminate."""
+    v = OPS[p["op"]](D(p["a"]), D(p["b"]))
+    return {"kunci": num(_quot(v, 1) if p["op"] == ":" else v)}
+
+
+def g_titik(p):
+    """Coordinates of a point read from a grid, as a choice: correct, x and y swapped, a sign dropped."""
+    x, y = int(p["x"]), int(p["y"])
+    pt = lambda a, b: f"({fmt(a)}, {fmt(b)})"
+    entries = [(pt(x, y), None), (pt(y, x), "M04"), (pt(-x, y) if x else pt(x, -y), "M03"), (pt(-x, -y), "M03")]
+    seen, uniq = set(), []
+    for t, m in entries:
+        if t not in seen:
+            uniq.append((t, m))
+            seen.add(t)
+    return _choice(uniq, p["posisi"])
+
+
+def g_vek_komponen(p):
+    """Steps: the i component, the j component (and with p.besar the magnitude), in real units."""
+    k = D(p.get("kotak", 1))
+    gx, gy = _resultant(p)
+    x, y = gx * k, gy * k
+    sx = [(-x, "M03"), (y, "M04")]
+    sy = [(-y, "M03"), (x, "M04")]
+    if "legs" in p:
+        sx.append((sum(abs(D(l[0])) for l in p["legs"]) * k, "M09"))
+        sy.append((sum(abs(D(l[1])) for l in p["legs"]) * k, "M09"))
+    steps = [{"kunci": num(x), "salah": _salah(*sx, avoid=[x])}, {"kunci": num(y), "salah": _salah(*sy, avoid=[y])}]
+    if p.get("besar"):
+        m, _ = _mag(x, y)
+        steps.append({"kunci": num(m), "toleransi": TOL_VEK, "salah": _salah((abs(x) + abs(y), "M05"), (x * x + y * y, "M06"), avoid=[m])})
+    return {"langkah": steps}
+
+
+def g_vek_besar(p):
+    """Magnitude of a vector given by components p.x, p.y (or a figure's dari/ke/legs)."""
+    if "x" in p:
+        x, y = D(p["x"]), D(p["y"])
+    else:
+        k = D(p.get("kotak", 1))
+        gx, gy = _resultant(p)
+        x, y = gx * k, gy * k
+    m, _ = _mag(x, y)
+    return {"kunci": num(m), "toleransi": TOL_VEK, "salah": _salah((abs(x) + abs(y), "M05"), (x * x + y * y, "M06"), avoid=[m])}
+
+
+def g_vek_besar_tahap(p):
+    x, y = D(p["x"]), D(p["y"])
+    m, _ = _mag(x, y)
+    return {"langkah": [{"kunci": num(x * x)}, {"kunci": num(y * y)},
+                        {"kunci": num(m), "toleransi": TOL_VEK, "salah": _salah((abs(x) + abs(y), "M05"), (x * x + y * y, "M06"), avoid=[m])}]}
+
+
+ARAH = {(1, 0): "ke timur", (-1, 0): "ke barat", (0, 1): "ke utara", (0, -1): "ke selatan",
+        (1, 1): "antara timur dan utara", (1, -1): "antara timur dan selatan",
+        (-1, -1): "antara barat dan selatan", (-1, 1): "antara barat dan utara"}
+
+
+def _sgn(v):
+    v = D(v)
+    return (v > 0) - (v < 0)
+
+
+def g_vek_arah(p):
+    """Direction of x·i + y·j in words, as a choice: correct, opposite (signs flipped), x and y swapped, one sign flipped."""
+    x, y = D(p["x"]), D(p["y"])
+    if x == 0 and y == 0:
+        raise ValueError("the zero vector has no direction")
+    key = (_sgn(x), _sgn(y))
+    cands = [(ARAH[key], None), (ARAH[(-key[0], -key[1])], "M03")]
+    swapped = (key[1], key[0])
+    if ARAH[swapped] not in [c for c, _ in cands]:
+        cands.append((ARAH[swapped], "M04"))
+    for alt in [(key[0], -key[1]), (-key[0], key[1]), (1, 1), (-1, -1), (1, -1), (-1, 1)]:
+        if len(cands) == 4:
+            break
+        if alt != (0, 0) and ARAH[alt] not in [c for c, _ in cands]:
+            cands.append((ARAH[alt], "M03" if alt in [(key[0], -key[1]), (-key[0], key[1])] else None))
+    return _choice(cands, p["posisi"])
+
+
+def g_vek_sama(p):
+    """Which labelled arrow equals arrow p.tanya: options are the other labels in order. A wrong arrow with the same
+    length but another direction, or the same direction but another length, is keyed to M02."""
+    arrows = {a["label"]: (D(a["ke"][0]) - D(a["dari"][0]), D(a["ke"][1]) - D(a["dari"][1])) for a in p["panah"]}
+    target = arrows[p["tanya"]]
+    labels = [a["label"] for a in p["panah"] if a["label"] != p["tanya"]]
+    equal = [l for l in labels if arrows[l] == target]
+    if len(equal) != 1:
+        raise ValueError(f"exactly one arrow must equal {p['tanya']}: {equal}")
+    tm, _ = _mag(*target)
+    salah = {}
+    for i, l in enumerate(labels):
+        if l == equal[0]:
+            continue
+        m, _ = _mag(*arrows[l])
+        same_dir = (_sgn(arrows[l][0]), _sgn(arrows[l][1])) == (_sgn(target[0]), _sgn(target[1]))
+        if m == tm or same_dir:
+            salah[str(i)] = "M02"
+    return {"opsi": [f"Panah {l}" for l in labels], "kunci": labels.index(equal[0]), "salah": salah}
+
+
+def g_vek_jumlah(p):
+    """Steps of A ± B: the i component, the j component, and with p.besar the magnitude."""
+    (ax, ay), (bx, by) = [D(v) for v in p["a"]], [D(v) for v in p["b"]]
+    plus = p.get("op", "+") == "+"
+    x, y = (ax + bx, ay + by) if plus else (ax - bx, ay - by)
+    wx = [(ax - bx, "M03")] if plus else [(bx - ax, "M08"), (ax + bx, "M03")]
+    wy = [(ay - by, "M03")] if plus else [(by - ay, "M08"), (ay + by, "M03")]
+    steps = [{"kunci": num(x), "salah": _salah(*wx, avoid=[x])}, {"kunci": num(y), "salah": _salah(*wy, avoid=[y])}]
+    if p.get("besar"):
+        m, _ = _mag(x, y)
+        ma, _ = _mag(ax, ay)
+        mb, _ = _mag(bx, by)
+        steps.append({"kunci": num(m), "toleransi": TOL_VEK,
+                      "salah": _salah((ma + mb, "M07"), (abs(x) + abs(y), "M05"), (x * x + y * y, "M06"), avoid=[m])})
+    return {"langkah": steps}
+
+
+def g_vek_pilih(p):
+    """A ± B in i, j form as a choice: correct, the other operation or B − A, components crossed, magnitudes added."""
+    (ax, ay), (bx, by) = [D(v) for v in p["a"]], [D(v) for v in p["b"]]
+    plus = p.get("op", "+") == "+"
+    x, y = (ax + bx, ay + by) if plus else (ax - bx, ay - by)
+    u = p.get("satuan", "")
+    entries = [(vfmt(x, y, u), None)]
+    if plus:
+        entries.append((vfmt(ax - bx, ay - by, u), "M08"))
+    else:
+        entries.append((vfmt(bx - ax, by - ay, u), "M08"))
+        entries.append((vfmt(ax + bx, ay + by, u), "M08"))
+    entries.append((vfmt(ax + (by if plus else -by), ay + (bx if plus else -bx), u), "M04"))
+    seen, uniq = set(), []
+    for t, m in entries:
+        if t not in seen and len(uniq) < 4:
+            uniq.append((t, m))
+            seen.add(t)
+    return _choice(uniq, p["posisi"])
+
+
+def _rute(p):
+    k = D(p.get("kotak", 1))
+    legs = [(D(a) * k, D(b) * k) for a, b in p["legs"]]
+    lengths = [_mag(a, b) for a, b in legs]
+    if not all(exact for _, exact in lengths):
+        raise ValueError("route legs must have exact lengths")
+    dist = sum(m for m, _ in lengths)
+    x, y = sum(a for a, _ in legs), sum(b for _, b in legs)
+    disp, _ = _mag(x, y)
+    return dist, x, y, disp, D(p["t"])
+
+
+def g_vek_rute(p):
+    """Steps of a route: distance, displacement magnitude, average speed, average velocity magnitude."""
+    dist, x, y, disp, t = _rute(p)
+    speed, vel = _quot(dist, t), _quot(disp, t)
+    return {"langkah": [{"kunci": num(dist), "salah": _salah((disp, "M09"), avoid=[dist])},
+                        {"kunci": num(disp), "toleransi": TOL_VEK, "salah": _salah((dist, "M09"), (abs(x) + abs(y), "M05"), avoid=[disp])},
+                        {"kunci": num(speed), "toleransi": TOL_VEK, "salah": _salah((_quot(disp, t), "M10"), avoid=[speed])},
+                        {"kunci": num(vel), "toleransi": TOL_VEK, "salah": _salah((_quot(dist, t), "M10"), (disp, "M14"), avoid=[vel])}]}
+
+
+def g_vek_kecepatan(p):
+    """Steps of average velocity from a displacement p.dx, p.dy in time p.t: v_x, v_y, |v|."""
+    x, y, t = D(p["dx"]), D(p["dy"]), D(p["t"])
+    vx, vy = _quot(x, t), _quot(y, t)
+    m, _ = _mag(vx, vy)
+    return {"langkah": [{"kunci": num(vx), "toleransi": TOL_VEK, "salah": _salah((x, "M14"), (-vx, "M03"), avoid=[vx])},
+                        {"kunci": num(vy), "toleransi": TOL_VEK, "salah": _salah((y, "M14"), (-vy, "M03"), avoid=[vy])},
+                        {"kunci": num(m), "toleransi": TOL_VEK, "salah": _salah((abs(vx) + abs(vy), "M05"), avoid=[m])}]}
+
+
+def g_tka_drone(p):
+    """A drone must fly straight from p.dari to p.ke (grid, p.kotak m per square) in p.t s: which velocity to set."""
+    k, t = D(p["kotak"]), D(p["t"])
+    gx, gy = _resultant(p)
+    x, y = gx * k, gy * k
+    vx, vy = _quot(x, t), _quot(y, t)
+    m, _ = _mag(vx, vy)
+    entries = [(vfmt(vx, vy, "m/s"), None), (vfmt(vy, vx, "m/s"), "M04"), (vfmt(-vx, -vy, "m/s"), "M03"),
+               (fmt(m) + " m/s ke timur", "M12"), (vfmt(x, y, "m/s"), "M14")]
+    return _choice(entries, p["posisi"])
+
+
+def g_tka_dua_rute(p):
+    """Two routes from the same start: truth of each claim in p.klaim (kinds below), for a Tepat / Tidak Tepat item."""
+    def info(legs, t):
+        return _rute({"legs": legs, "kotak": p["kotak"], "t": t})
+    d1, x1, y1, r1, t1 = info(p["rute1"], p["t1"])
+    d2, x2, y2, r2, t2 = info(p["rute2"], p["t2"])
+    out = []
+    for c in p["klaim"]:
+        kind = c["jenis"]
+        if kind == "perpindahan-sama":
+            out.append((x1, y1) == (x2, y2))
+        elif kind == "selisih-jarak":
+            out.append(d2 - d1 == D(c["nilai"]))
+        elif kind == "kelajuan-sama":
+            out.append(d1 / t1 == d2 / t2)
+        elif kind == "kecepatan-sama":
+            out.append((x1 / t1, y1 / t1) == (x2 / t2, y2 / t2))
+        elif kind == "waktu-agar-kecepatan-sama":
+            out.append((x2 / D(c["nilai"]), y2 / D(c["nilai"])) == (x1 / t1, y1 / t1))
+        else:
+            raise ValueError(f"unknown claim {kind}")
+    return {"kunci": out}
+
+
+def g_tka_kurir(p):
+    """Magnitude of average velocity in km/jam for legs in km and a time in minutes, as a choice."""
+    dist, x, y, disp, t = _rute({"legs": p["legs"], "t": p["menit"]})
+    hours = D(p["menit"]) / 60
+    key = _quot(disp, hours)
+    entries = [(fmt(key) + " km/jam", None), (fmt(_quot(dist, hours)) + " km/jam", "M10"),
+               (fmt(_quot(disp, t)) + " km/jam", "M11"), (fmt(disp * t) + " km/jam", "M14")]
+    return _choice(entries, p["posisi"])
+
+
+GEN.update({
+    "operasi": g_operasi, "titik": g_titik, "vek-komponen": g_vek_komponen, "vek-besar": g_vek_besar,
+    "vek-besar-tahap": g_vek_besar_tahap, "vek-arah": g_vek_arah, "vek-sama": g_vek_sama, "vek-jumlah": g_vek_jumlah,
+    "vek-pilih": g_vek_pilih, "vek-rute": g_vek_rute, "vek-kecepatan": g_vek_kecepatan,
+    "tka-drone": g_tka_drone, "tka-dua-rute": g_tka_dua_rute, "tka-kurir": g_tka_kurir,
+})
+
+
 # ---------- validation ----------
 
 def load_jalur():
@@ -610,6 +889,8 @@ def validate_jalur(name, doc, maps, tka_types):
     kode = doc["kode"]
     if not re.fullmatch(r"[A-Z]{2,5}", kode):
         err(f"kode '{kode}' must be 2-5 uppercase letters")
+    if doc.get("status", "pilot") not in STATUSES:
+        err(f"status '{doc['status']}' must be one of {', '.join(STATUSES)}")
     codes = None
     if doc.get("map"):
         if doc["map"] not in maps:

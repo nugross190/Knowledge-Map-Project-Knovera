@@ -1,6 +1,6 @@
 # Learning path spec (pilot)
 
-Status: pilot, 2026-11. The first path is `data/jalur/pengukuran.json` (Fisika kelas X, Besaran dan Pengukuran). Expect the format to change after classroom use.
+Status: pilot, 2026-11. Paths: `data/jalur/pengukuran.json` (Fisika kelas X, Besaran dan Pengukuran; pilot) and `data/jalur/vektor.json` (Fisika kelas X, Vektor; draft). Expect the format to change after classroom use.
 
 A learning path (*jalur belajar*) is one JSON file, `data/jalur/<id>.json`, rendered by `templates/_jalur.html` into `docs/jalur-<id>.html`. A module (`specs/module-spec.md`) is a lesson list plus staged exercises the student browses freely. A path is a self-paced sequence of short cards with support built in: a prerequisite check that routes to bridges, worked examples that fade into practice, a help ladder, feedback keyed to named mistakes, mastery on fresh numbers, and spaced review. The design follows the research summary that led to it: short units only work when they end in retrieval, return later, and keep a teacher in the loop.
 
@@ -9,6 +9,7 @@ A learning path (*jalur belajar*) is one JSON file, `data/jalur/<id>.json`, rend
 ```
 path
 ├── id, kode, subject, map, src, title, lead, blurb
+├── status                   "pilot" (in a classroom trial, the default) or "draf" (written, not yet tried); shown in the page header
 ├── sesi_menit               target minutes per pack, shown to the student (default 15)
 ├── ulang_hari[]             review intervals in days for boxes 1, 2, 3, ... (default [1, 3, 7, 21])
 ├── prasyarat[]              prerequisite skills
@@ -50,8 +51,13 @@ The **material cards** (*kartu materi*) are built from this data, not written se
 | `geser-koma` | A number whose decimal comma moves while the power of ten keeps the value | `contoh[]` |
 | `awalan` | A value with a unit prefix rewritten as a power of ten and in standard form | `contoh[]` |
 | `dimensi` | Candidate formulas and the dimensions of each side | `set[]` ({tanya, calon[]: {rumus, uraian, cocok}}) |
+| `panah` | One arrow from the origin on a coordinate grid; the student moves its head (buttons or a tap) and reads A in i and j, its magnitude and its quadrant | `batas` ([x0, x1, y0, y1], optional) |
+| `jumlah-vektor` | A and B tip to tail with steppers for each component, A + B or A − B, and the resultant | `a`, `b` (starting components) |
+| `rute` | Named routes on a grid: distance against displacement, average speed against average velocity | `rute[]` ({nama, legs[], kotak, satuan, t, st}) |
 
-Item figures use the same drawings: an item with `fig` (`mistar`, `jangka-sorong`, `mikrometer`) is drawn from its variant's `p`.
+Item figures use the same drawings: an item with `fig` (`mistar`, `jangka-sorong`, `mikrometer`, `vektor`) is drawn from its variant's `p`.
+
+**Vector figure** (`vektor`). A grid with a compass (U up, T right); i points east and j north. `p` picks one layout: `legs` (a route of steps from `mulai`, default the origin), `rute1` + `rute2` (two routes from one start, solid and dashed), `a` + `b` with `op` (`+` or `−`) and `susun` (`ujung` tip to tail, `pangkal` from a common tail), `dari` + `ke` (one arrow; `tanpa_panah` shows only the two points), `panah[]` (labelled arrows `{dari, ke, label}`), or `titik[]` (points `{di, label}`). Shared keys: `kotak` (real units per square), `satuan`, `sumbu` (draw numbered axes), `batas`, `nama_dari` / `nama_ke`, `label`, `besar: false` (leave out the magnitude). Marks: blue = i component, orange = j component, green = the resultant with its i, j form and, unless `besar` is false, its magnitude by Pythagoras. A worked example's `langkah` follow that order.
 
 **Reading marks.** A figure can be drawn with marks that show how the reading is built, in three colours: blue for the whole units from the numbered line (cm on the ruler and caliper, mm on the micrometer), orange for the small lines (0,1 cm each) or the half-millimetre line, green for the vernier line (0,01 cm) or the thimble line (0,01 mm), then the sum, for example 2 cm + 0,1 cm + 0,08 cm = 2,18 cm. The worked example (`lihat`) adds one mark per revealed step, so its `langkah` follow the same order: ruler left end, right end, length; caliper cm, small lines, vernier line, sum; micrometer mm line, half-millimetre line, thimble line, sum. Solutions, twins, material cards and the widgets' shown result carry the full marks. Ruler and caliper readings are in cm; micrometer readings in mm.
 
@@ -109,4 +115,4 @@ Progress lives in the student's browser (`localStorage`), like the other pages.
 
 ## 6. What the build checks
 
-`validate_jalur` in `scripts/jalur.py` stops the build on: missing fields, an id that does not match the file name, item ids not `<kode>-NNN` or duplicated, references to unknown items, units, prerequisites, misconceptions or map topics, packs that do not list every unit exactly once in unit order, a practice family with fewer than two variants, keys that do not fit the format, unknown widgets or figures, a TKA type or `acuan` that does not exist, and any generated variant that differs from its generator's output.
+`validate_jalur` in `scripts/jalur.py` stops the build on: missing fields, an id that does not match the file name, item ids not `<kode>-NNN` or duplicated, references to unknown items, units, prerequisites, misconceptions or map topics, packs that do not list every unit exactly once in unit order, a practice family with fewer than two variants, keys that do not fit the format, an unknown `status`, unknown widgets or figures, a TKA type or `acuan` that does not exist, and any generated variant that differs from its generator's output.
