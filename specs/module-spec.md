@@ -54,6 +54,8 @@ module
 
 A module MAY have a printable PDF, `print/<id>.pdf`, made from `print/<id>/content.py` (see `print/README.md`). The build copies it to `docs/modul-<id>.pdf` and the page shows a "Versi cetak (PDF)" button. Its items follow the same writing rules (§3); `content.check()` MUST re-derive every numeric answer, and the tests run it.
 
+A module MAY also have a teacher's guide, `print/<id>-guru.pdf`, made from `print/<id>-guru/` (lesson plans per meeting, misconceptions, assessment, a compact key). It refers to the student module's items by number, and its `content.check()` checks those references and re-derives every new number. The build copies it to `docs/modul-<id>-guru.pdf` and the page shows a "Panduan guru (PDF)" button.
+
 ## 5. What the build checks
 
 `validate_module` in `scripts/build.py` stops the build on structural errors (fields, ids, stage numbering, keys per format, unknown map topics, TKA type, format and `acuan`). `lint_module` warns on fewer than 3 stages, a stage with fewer than 4 items, no TKA-style items, or no `blurb`.

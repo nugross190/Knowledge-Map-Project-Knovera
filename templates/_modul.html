@@ -155,6 +155,7 @@ footer{margin-top:40px;color:var(--muted);font-size:.85rem;border-top:1px solid 
       <a class="btn primary" href="#latihan">Latihan bertahap</a>
       <a class="btn" id="mapLink" hidden>Peta materi</a>
       <a class="btn" id="pdfLink" hidden download>Versi cetak (PDF)</a>
+      <a class="btn" id="guruLink" hidden download>Panduan guru (PDF)</a>
     </nav>
   </header>
 
@@ -240,6 +241,7 @@ function renderTop(){
     $("mapLink").hidden = false; $("mapLink").href = MOD.map_page; $("mapLink").textContent = MOD.map_title || "Peta materi";
   }
   if(MOD.pdf){ $("pdfLink").hidden = false; $("pdfLink").href = MOD.pdf; }
+  if(MOD.guru_pdf){ $("guruLink").hidden = false; $("guruLink").href = MOD.guru_pdf; }
   $("lessons").innerHTML = MOD.materi.map((l, i) => {
     const body = l.isi.map(b => {
       if(b.p) return "<p>" + b.p + "</p>";

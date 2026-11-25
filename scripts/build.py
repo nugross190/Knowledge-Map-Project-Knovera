@@ -4,11 +4,11 @@ Usage:  python scripts/build.py              # validate, print the report, and r
         python scripts/build.py --artifact   # also write build/*.fragment.html for the claude.ai copies
 Reads:  data/topics.json and data/questions.csv (history kit), data/maps/*.json, data/questions/*.csv,
         data/tka/*.json, data/tka-types.json, data/modules/*.json, data/jalur/*.json, data/subjects.json, data/cp/*.json,
-        print/<id>.pdf, and
+        print/<id>.pdf and print/<id>-guru.pdf, and
         templates/*.html with their shared parts: templates/_theme.css (added to every page), templates/_feed.css
         and _feed.js (the swipe feed, where a template includes them) and templates/_icons.json (subject icons).
 Writes: docs/: one page per template, peta-<id>.html per map, bank-<id>.html per subject bank, modul-<id>.html (and
-        modul-<id>.pdf) per module, jalur-<id>.html per learning path, questions.json and .nojekyll. Only files whose content changed are rewritten,
+        modul-<id>.pdf, modul-<id>-guru.pdf) per module, jalur-<id>.html per learning path, questions.json and .nojekyll. Only files whose content changed are rewritten,
         and generated files that are no longer built are removed, so a second run changes nothing.
 Exits with status 1, writing nothing, if the data has errors.
 """
@@ -711,9 +711,10 @@ def rewrite_links(body, links):
     return body
 
 
-def module_pdf(mod_id):
-    """Path of a module's printable PDF (print/<id>.pdf, made by print/print.mjs), or None."""
-    path = ROOT / "print" / f"{mod_id}.pdf"
+def module_pdf(mod_id, guide=False):
+    """Path of a module's printable PDF (print/<id>.pdf, made by print/print.mjs), or None.
+    With guide=True: the teacher's guide, print/<id>-guru.pdf."""
+    path = ROOT / "print" / (f"{mod_id}-guru.pdf" if guide else f"{mod_id}.pdf")
     return path if path.exists() else None
 
 
@@ -722,6 +723,7 @@ def page_names(site):
     names = [p.name for p in sorted((ROOT / "templates").glob("*.html")) if not p.name.startswith("_")]
     names += [f"peta-{i}.html" for i in site.maps] + [f"bank-{i}.html" for i in site.banks]
     names += [f"modul-{i}.html" for i in site.modules] + [f"modul-{i}.pdf" for i in site.modules if module_pdf(i)]
+    names += [f"modul-{i}-guru.pdf" for i in site.modules if module_pdf(i, guide=True)]
     names += [f"jalur-{i}.html" for i in site.paths]
     return names
 
@@ -799,6 +801,9 @@ def module_pages(modules, maps, links, tka_types=None):
         pdf = f"modul-{mod['id']}.pdf"
         if module_pdf(mod["id"]):
             data["pdf"] = links.get(pdf, pdf)
+        guru = f"modul-{mod['id']}-guru.pdf"
+        if module_pdf(mod["id"], guide=True):
+            data["guru_pdf"] = links.get(guru, guru)
         if mod.get("map") in maps:
             m = maps[mod["map"]]
             data["map_page"] = links.get(f"peta-{m['id']}.html", f"peta-{m['id']}.html")
@@ -965,6 +970,8 @@ def site_files(site):
     for mod_id in site.modules:
         if module_pdf(mod_id):
             files[f"modul-{mod_id}.pdf"] = module_pdf(mod_id).read_bytes()
+        if module_pdf(mod_id, guide=True):
+            files[f"modul-{mod_id}-guru.pdf"] = module_pdf(mod_id, guide=True).read_bytes()
     files[".nojekyll"] = ""  # tells GitHub Pages to publish docs/ as-is instead of running it through Jekyll
     return files
 

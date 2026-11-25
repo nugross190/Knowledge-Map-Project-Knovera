@@ -564,6 +564,15 @@ class ModulesTest(unittest.TestCase):
         self.assertEqual(payload(hosted, "MOD")["pdf"], f"{build.PAGES_URL}modul-vektor-gerak.pdf")
         self.assertEqual(build.site_files(site())["modul-vektor-gerak.pdf"], build.module_pdf("vektor-gerak").read_bytes())
 
+    def test_teacher_guide_pdf_is_published_and_linked(self):
+        guide = build.module_pdf("vektor-gerak", guide=True)
+        self.assertIsNotNone(guide, "print/vektor-gerak-guru.pdf is missing")
+        local = build.module_pages(self.modules, self.maps, {}, self.types)["modul-vektor-gerak.html"]
+        hosted = build.module_pages(self.modules, self.maps, build.hosted_links(site()), self.types)["modul-vektor-gerak.html"]
+        self.assertEqual(payload(local, "MOD")["guru_pdf"], "modul-vektor-gerak-guru.pdf")
+        self.assertEqual(payload(hosted, "MOD")["guru_pdf"], f"{build.PAGES_URL}modul-vektor-gerak-guru.pdf")
+        self.assertEqual(build.site_files(site())["modul-vektor-gerak-guru.pdf"], guide.read_bytes())
+
 
 class PathsTest(unittest.TestCase):
     """Learning paths: data/jalur/*.json, scripts/jalur.py, templates/_jalur.html (specs/jalur-spec.md)."""
